@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Konfigurator Maszyn CNC</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        #container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        label { display: block; margin: 10px 0; }
+        select, input { width: 100%; padding: 8px; margin-top: 5px; }
+        button { padding: 10px 20px; margin: 10px 5px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        #podsumowanie { margin-top: 20px; border: 1px solid #ccc; padding: 10px; display: none; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        #atc-ilosc, .opcja-dodatkowa { display: none; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Konfigurator Maszyn CNC</h1>
+        
+        <!-- Sekcja wgrywania plików -->
+        <label>Wgraj pliki tabel (cennik, modele, specyfikacje):</label>
+        <input type="file" id="upload-files" multiple accept=".xlsx">
+        <button onclick="loadFiles()">Wgraj i załaduj dane</button>
+        
+        <!-- Formularz konfiguracji -->
+        <form id="config-form">
+            <label>Nazwa Klienta: <input type="text" id="klient" required></label>
+            <label>Typ Maszyny: 
+                <select id="typ" onchange="updateModels()" required>
+                    <option value="">Wybierz</option>
+                    <option value="frezarka">Frezarka</option>
+                    <option value="tokarka">Tokarka</option>
+                    <option value="ploter">Ploter</option>
+                    <option value="grawerka">Grawerka</option>
+                    <option value="inne">Inne</option>
+                </select>
+            </label>
+            <label>Model: <select id="model" onchange="loadSpec()" required></select></label>
+            <label>Ilość osi: <select id="osi"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+            <label>Obszar roboczy (np. 700x500 mm): <input type="text" id="obszar"></label>
+            <label>Wysokość nad materiałem (mm): <input type="number" id="wysokosc"></label>
+            <label>Moc wrzeciona: <select id="moc"><option>0.8 kW</option><option>1.5 kW</option><option>2.2 kW</option><option>3 kW</option></select></label>
+            <label>Magazyn narzędziowy ATC: <select id="atc" onchange="toggleAtc()"><option>Nie</option><option>Tak</option></select></label>
+            <label id="atc-ilosc">Ilość narzędzi: <select id="narzedzia"><option>1</option><!-- ... do 20 --></select></label>
+            <label>Sonda 3D: <select id="sonda"><option>Nie</option><option>Tak</option></select></label>
+            
+            <!-- Rezerwa na 10 dodatkowych opcji -->
+            <h3>Dodatkowe opcje (rezerwa)</h3>
+            <label>Opcja 1 (np. Chłodzenie): <input type="text" class="opcja-dodatkowa"></label>
+            <!-- Powtórz dla 2-10, ukryte na starcie, pokaż dynamicznie jeśli potrzebne -->
+            
+            <label>Marża (%): <input type="number" id="marza" value="20"></label>
+            <label>Dodatkowe koszty (PLN): <input type="number" id="dodatkowe" value="0"></label>
+        </form>
+        
+        <button onclick="obliczCene()">Oblicz cenę</button>
+        <button onclick="zapiszOferte()">Zapisz ofertę</button>
+        
+        <!-- Podsumowanie -->
+        <div id="podsumowanie">
+            <h2>Podsumowanie oferty</h2>
+            <table id="tabela-spec">
+                <thead><tr><th>Komponent</th><th>Ilość</th><th>Cena jednostkowa (PLN)</th><th>Suma (PLN)</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <p id="suma-netto"></p>
+        </div>
+    </div>
+
+    <script>
+        let cennik = {}; // Obiekt cen z pliku
+        let modele = {}; // Modele pogrupowane po typie
+        let specs = {}; // Specyfikacje modeli
+
+        // Funkcja do wgrywania i parsowania plików
+        async function loadFiles() {
+            const files = document.getElementById('upload-files').files;
+            for (let file of files) {
+                const data = await file.arrayBuffer();
+                const workbook = XLSX.read(data, {type: 'array'});
+                const sheetName = workbook.SheetNames[0];
+                const sheet = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {header: 1});
+                
+                if (file.name.includes('cennik')) {
+                    sheet.slice(1).forEach(row => { if (row[0]) cennik[row[0]] = parseFloat(row[1]); });
+                } else if (file.name.includes('modele')) {
+                    sheet.slice(1).forEach(row => {
+                        if (!modele[row[0]]) modele[row[0]] = [];
+                        modele[row[0]].push(row[1]);
+                    });
+                } else {
+                    // Specyfikacje: np. dla frezarka.xlsx, arkusze jak FZ500
+                    workbook.SheetNames.forEach(name => {
+                        const specSheet = XLSX.utils.sheet_to_json(workbook.Sheets[name], {header: ['komponent', 'wartosc']});
+                        specs[name] = specSheet.slice(1);
+                    });
+                }
+            }
+            alert('Dane załadowane!');
+            updateModels(); // Odśwież listy
+        }
+
+        // Aktualizacja listy modeli po wyborze typu
+        function updateModels() {
+            const typ = document.getElementById('typ').value;
+            const modelSelect = document.getElementById('model');
+            modelSelect.innerHTML = '<option value="">Wybierz</option>';
+            if (modele[typ]) {
+                modele[typ].forEach(m => {
+                    const opt = document.createElement('option');
+                    opt.value = m; opt.text = m;
+                    modelSelect.add(opt);
+                });
+            }
+        }
+
+        // Ładowanie specyfikacji modelu
+        function loadSpec() {
+            const model = document.getElementById('model').value;
+            return specs[model] || []; // Zwraca tablicę komponentów
+        }
+
+        // Toggle dla pola ATC
+        function toggleAtc() {
+            const atc = document.getElementById('atc').value;
+            document.getElementById('atc-ilosc').style.display = atc === 'Tak' ? 'block' : 'none';
+        }
+
+        // Oblicz cenę
+        function obliczCene() {
+            const spec = loadSpec();
+            if (spec.length === 0) { alert('Załaduj specyfikację modelu!'); return; }
+
+            // Modyfikacja spec na podstawie parametrów (uproszczona logika)
+            const osi = parseInt(document.getElementById('osi').value);
+            const obszar = document.getElementById('obszar').value.split('x').map(Number);
+            spec.forEach(item => {
+                if (item.komponent.includes('Profil aluminiowy')) {
+                    item.wartosc = parseFloat(item.wartosc) * (1 + (osi - 3) * 0.1); // +10% na oś
+                }
+                if (item.komponent.includes('Prowadnica') && obszar[0] > 700) {
+                    item.wartosc *= 1.2; // +20% dla większego obszaru
+                }
+                // Dodaj logikę dla innych parametrów
+            });
+
+            // Kalkulacja kosztów
+            let suma = 0;
+            const tabelaBody = document.querySelector('#tabela-spec tbody');
+            tabelaBody.innerHTML = '';
+            spec.forEach(item => {
+                const ilosc = parseFloat(item.wartosc) || 1;
+                const cenaJed = cennik[item.komponent] || 0;
+                const sumaJed = ilosc * cenaJed;
+                suma += sumaJed;
+                const row = `<tr><td>${item.komponent}</td><td>${item.wartosc}</td><td>${cenaJed}</td><td>${sumaJed}</td></tr>`;
+                tabelaBody.innerHTML += row;
+            });
+
+            const marza = parseFloat(document.getElementById('marza').value) / 100;
+            const dodatkowe = parseFloat(document.getElementById('dodatkowe').value);
+            suma = suma * (1 + marza) + dodatkowe;
+
+            document.getElementById('suma-netto').innerText = `Kwota netto: ${suma.toFixed(2)} PLN`;
+            document.getElementById('podsumowanie').style.display = 'block';
+        }
+
+        // Zapisz ofertę (XLSX i PDF)
+        async function zapiszOferte() {
+            const klient = document.getElementById('klient').value;
+            if (!klient) { alert('Podaj nazwę klienta!'); return; }
+
+            // Generuj XLSX
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.aoa_to_sheet([['Komponent', 'Ilość', 'Cena', 'Suma']]);
+            const rows = document.querySelectorAll('#tabela-spec tbody tr');
+            rows.forEach((row, i) => {
+                const cells = row.querySelectorAll('td');
+                XLSX.utils.sheet_add_aoa(ws, [[cells[0].textContent, cells[1].textContent, cells[2].textContent, cells[3].textContent]], {origin: i + 1});
+            });
+            XLSX.utils.book_append_sheet(wb, ws, 'Oferta');
+            XLSX.writeFile(wb, `${klient}.xlsx`);
+
+            // Generuj PDF
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+            const element = document.getElementById('podsumowanie');
+            const canvas = await html2canvas(element);
+            const imgData = canvas.toDataURL('image/png');
+            pdf.addImage(imgData, 'PNG', 10, 10, 180, 0);
+            pdf.save(`${klient}.pdf`);
+        }
+
+        // Inicjalizacja listy narzędzi (1-20)
+        const narzedziaSelect = document.getElementById('narzedzia');
+        for (let i = 1; i <= 20; i++) {
+            const opt = document.createElement('option');
+            opt.value = i; opt.text = i;
+            narzedziaSelect.add(opt);
+        }
+    </script>
+</body>
+</html>
