@@ -6,6 +6,7 @@
   import DaneTechniczne from "../assets/menu/dane_techniczne.svelte";
   import MenuEmail from "../assets/menu/menu_email.svelte";
   import MenuDownload from "../assets/menu/menu_download.svelte";
+  import CtaButtonHero from "./cta-button-hero.svelte";
 
   register();
 
@@ -148,9 +149,8 @@
                       dla ambitnych projektów.
                     </p>
 
-                    <button class="cta-button-hero" on:click={close}>
-                      <span class="maszyny_span">Zobacz więcej</span>
-                    </button>
+                    <CtaButtonHero on:click={close} text="Wróć" />
+                  
                   </div>
 
                   <div
@@ -247,10 +247,15 @@
             alt="Frezarki CNC"
           />
 
-          <button class="cta-button-hero" on:click={closeFW}>
+        <!--   <button class="cta-button-hero" on:click={closeFW}>
             <span class="maszyny_span">Zamknij szczegóły</span>
-          </button>
+                    </button> -->
+
+                   
+
+
         </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
       </div>
 
       <div

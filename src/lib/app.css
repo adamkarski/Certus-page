@@ -160,9 +160,26 @@ a {
   color: #595959;
   padding-top: 4rem;
   text-align: left;
+  padding-left: 2rem;
   ul {
     list-style-type: none;
     padding-left: 0;
+    margin-top: 2rem;
+  }
+  img{
+
+    max-width: 25rem;
+  }
+  h2{
+    margin-top: 4rem;
+    padding-left: 2rem;
+  }
+  p{
+    padding-left: 2rem;
+  }
+  
+  li{
+    padding-left: 2rem;
   }
 }
 .activeMachine .right_content {
@@ -172,7 +189,7 @@ a {
   align-content: flex-start;
   align-items: flex-start;
   justify-content: flex-start;
-  max-width: 30vw;
+  max-width: 35vw;
   h1 {
     text-align: left;
     margin-top: 4rem;
@@ -185,6 +202,7 @@ a {
     padding-top: 2em;
     text-align: left;
     padding-left: 1.5em;
+    width: 35vw;
   }
 
   .right_menu {
@@ -248,20 +266,20 @@ a {
   position: absolute;
 }
 
-.activeMachine .left_image .cta-button-hero {
-  position: absolute;
-  left: 2em;
-  bottom: 4em;
-}
-.activeMachine .left_image .cta-button-hero {
-  margin-left: 90px;
-}
-.activeMachine .left_image .cta-button-hero {
-  height: 31px;
-}
-.activeMachine .left_image .cta-button-hero:before {
-  margin-left: -35px;
-}
+/* .activeMachine .left_image .cta-button-hero { */
+  /* position: absolute; */
+  /* left: 2em; */
+  /* bottom: 4em; */
+/* } */
+/* .activeMachine .left_image .cta-button-hero { */
+  /* margin-left: 90px; */
+/* } */
+/* .activeMachine .left_image .cta-button-hero { */
+  /* height: 31px; */
+/* } */
+/* .activeMachine .left_image .cta-button-hero:before { */
+  /* margin-left: -35px; */
+/* } */
 
 
 .activeMachine .left h1 {
@@ -273,40 +291,6 @@ a {
   padding-top: 2em;
 }
 
-.cta-button-hero {
-  background-color: #96a500;
-  border-radius: 12px;
-  border-top-left-radius: 0px;
-  padding-left: 40px;
-  height: 2rem;
-  font-weight: 600;
-  font-size: 1.3rem;
-  width: 16rem;
-  text-align: left;
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  flex-direction: row;
-  color: white;
-  border: none;
-  font-family: "Poppins";
-  margin-left: 34px;
-
-  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
-}
-.cta-button-hero:before {
-  content: "";
-  width: 51px;
-  height: 31px;
-  background-image: url(/src/assets/button-cta.svg);
-  background-size: cover;
-  left: -2px;
-  position: absolute;
-}
-.cta-button-hero:focus {
-  outline: none;
-  outline-offset: 0px;
-}
 
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out;
