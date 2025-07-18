@@ -39,7 +39,10 @@
   const close = () => (activeCategory = null);
 
   const openFW = (x) => (activeMachine = x);
-  const closeFW = () => (activeMachine = null);
+  const closeFW = () => {
+    activeMachine = null;
+    expandedView = false;
+  };
 
   const expandRightInfo = () => (expandedView = !expandedView);
 
@@ -286,26 +289,43 @@
             od opcji) pozwalające maszynie zachować wysoką jakość i dokładność obróbki.
           </p>
 
-
           <div class="right_menu">
             <nav>
               <ul>
+                <li on:click={expandRightInfo}>
+                  <DaneTechniczne text="Dane techniczne" />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
 
-
-              <li on:click={expandRightInfo}> <DaneTechniczne text="Dane techniczne"  /> </li>
-              <li><MenuDownload text="Do pobrania" href="/pobierz" /></li> 
-              <li><MenuEmail text="Kontakt" href="/kontakt" /> </li>
-               
-
-              
-       <!--          <li><a href="#"><img src="/src/assets/menu/menu_download.svg" alt="Do pobrania" />Do pobrania</a></li>
+                <!--          <li><a href="#"><img src="/src/assets/menu/menu_download.svg" alt="Do pobrania" />Do pobrania</a></li>
                 <li><a href="#"><img src="/src/assets/menu/menu_email.svg" alt="Kontakt" />Kontakt</a></li> -->
               </ul>
             </nav>
-            </div>
+          </div>
         </div>
 
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
 
+              <img src="/src/assets/maszyny/certus_7111_temp_schemat01.png" alt="certus_7111_temp_schemat01" />
+              <img src="/src/assets/maszyny/certus_7111_temp_schemat02.png" alt="certus_7111_temp_schemat02" />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: 1200 x 1200 x 350 mm</li>
+                <li>Silniki: Serwo AC</li>
+                <li>Chłodzenie: Automatyczne</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Wolnostojący</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
       </div>
     </div>
   {/if}
