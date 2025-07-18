@@ -23,6 +23,7 @@
         /* hover colours */
         .icon-link:hover .cls-2{ fill: #96a500; }
         .icon-link:hover .cls-3{ fill: #c5d418; }
+        .icon-link:focus { border: none; outline: none; }
       </style>
     </defs>
 

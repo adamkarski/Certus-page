@@ -69,4 +69,5 @@
   .icon-link:hover svg {
     transform: scale(1.1);
   }
+  .icon-link:focus { border: none; outline: none; }
 </style>

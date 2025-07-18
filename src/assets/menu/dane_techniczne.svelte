@@ -67,6 +67,7 @@
   .icon-link:hover {
     color: #96a500;
   }
+  .icon-link:focus { border: none; outline: none; }
 
   svg {
     width: 1.5rem;

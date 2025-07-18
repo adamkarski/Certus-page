@@ -48,6 +48,11 @@
   left: 4em;
   bottom: 4em;
 }
+:global(.flex_table .cta-button-hero) {
+  position: relative;
+  top: 1.6em;
+  left: -1em;
+}   
 .cta-svg .cls-1 {
   fill: #c5d418;
   transition: fill 0.2s;
