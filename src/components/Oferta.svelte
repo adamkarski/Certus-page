@@ -36,22 +36,33 @@
 <section id="services" class="services">
   <div class="services-container">
     <div class="section-header">
-      <h2 class="section-title">OUR SERVICES</h2>
-      <div class="title-underline"></div>
+      <h2 class="section-title">Polski producent maszyn CNC</h2>
+      
       <p class="section-subtitle">
-        We offer a comprehensive range of financial services designed to meet all your business needs
+        10 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów CNC.
+        <br/> 
+        Kompleksowa obsługa od projektu po serwis.
+        <br/> <br/>
+        — wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy
+        
       </p>
     </div>
     
     <div class="services-grid">
-      {#each services as service}
-        <div class="service-card">
-          <div class="service-icon">{service.icon}</div>
-          <h3 class="service-title">{service.title}</h3>
-          <p class="service-description">{service.description}</p>
-          <button class="service-btn">LEARN MORE</button>
-        </div>
-      {/each}
+      
+      <div class="service-card">
+        <div class="service-icon"></div>
+        <h3 class="service-title">Tokarki CNC</h3>
+        <button class="service-btn"></button>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"></div>
+        <h3 class="service-title">Frezarki CNC</h3>
+        <button class="service-btn"></button>
+      </div>
+
+
     </div>
   </div>
 </section>
@@ -60,7 +71,7 @@
   .services {
     width: 100%;
     padding: 100px 0;
-    background: #f8f9fa;
+    background: #F7F7F7;
   }
   
   .services-container {

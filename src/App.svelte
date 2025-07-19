@@ -1,7 +1,7 @@
 <script lang="ts">
   import Header from './components/Header.svelte'
   import Hero from './components/Hero.svelte'
-  import Services from './components/Services.svelte'
+  import Oferta from './components/Oferta.svelte'
   import About from './components/About.svelte'
   import References from './components/References.svelte'
   import Contact from './components/Contact.svelte'
@@ -12,7 +12,7 @@
   <Header />
   <main>
     <Hero />
-    <Services />
+    <Oferta />
     <About />
     <References />
     <Contact />

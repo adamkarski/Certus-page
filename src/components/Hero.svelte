@@ -57,6 +57,16 @@
     duration: 500,
     easing: cubicOut,
   };
+
+  // --- BLOKADA SCROLLA BODY DLA expandedView ---
+  $: {
+    if (activeMachine) {
+      document.body.classList.add('no-scroll-hero');
+    } else {
+      document.body.classList.remove('no-scroll-hero');
+    }
+  }
+  // --- KONIEC BLOKADY SCROLLA ---
 </script>
 
 <!-- Tło i gradient pozostają statyczne -->
@@ -792,4 +802,23 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
       font-size: 28px;
     }
   }
+
+  /* --- BLOKADA SCROLLA BODY DLA expandedView --- */
+  :global(body.no-scroll-hero) {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100vw;
+    .activeMachine .right{
+      overflow-x: auto;
+      .right_params{overflow: hidden;}
+    }
+  }
+  /* --- KONIEC BLOKADY SCROLLA --- */
+
+  /* --- SCROLL TYLKO W OBRĘBIE PARAMS --- */
+  .right_params {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  /* --- KONIEC SCROLLA PARAMS --- */
 </style>
