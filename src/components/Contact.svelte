@@ -1,297 +1,321 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   let formData = {
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    subject: '',
-    message: ''
+    phone: '',
+    message: '',
+    privacy: false,
+    country: 'PL',
+  };
+  let isSubmitting = false;
+  let submitMessage = '';
+  let phonePrefix = '+48';
+  const countryPrefixes = [
+    { code: 'PL', prefix: '+48' },
+    // Możesz dodać więcej prefixów jeśli chcesz
+  ];
+
+  function handleCountryChange(e: Event) {
+    const code = (e.target as HTMLSelectElement).value;
+    const found = countryPrefixes.find(c => c.code === code);
+    phonePrefix = found ? found.prefix : '';
+    formData.country = code;
   }
-  
-  let isSubmitting = false
-  let submitMessage = ''
-  
+
   const handleSubmit = async (e: Event) => {
-    e.preventDefault()
-    isSubmitting = true
-    
+    e.preventDefault();
+    if (!formData.privacy) {
+      submitMessage = 'Musisz zaakceptować politykę prywatności.';
+      return;
+    }
+    isSubmitting = true;
+    submitMessage = '';
     setTimeout(() => {
-      isSubmitting = false
-      submitMessage = 'Thank you for your message! We will contact you soon.'
-      formData = { name: '', email: '', subject: '', message: '' }
-    }, 1000)
-  }
+      isSubmitting = false;
+      submitMessage = 'Dziękujemy za wiadomość! Skontaktujemy się wkrótce.';
+      formData = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        message: '',
+        privacy: false,
+        country: 'PL',
+      };
+      phonePrefix = '+48';
+    }, 1000);
+  };
 </script>
 
-<section id="contact" class="contact">
-  <div class="contact-container">
-   
-   contact.svelte
-   
-    <!--  <div class="section-header">
-      <h2 class="section-title">CONTACT US</h2>
-      <div class="title-underline"></div>
-      <p class="section-subtitle">
-        Get in touch with our financial experts today
-      </p>
-    </div> -->
-    
-    <div class="contact-content">
-  <!--     <div class="contact-info">
-        <div class="info-card">
-          <div class="info-icon">📍</div>
-          <h3 class="info-title">ADDRESS</h3>
-          <p class="info-text">123 Financial Street<br>Business District<br>New York, NY 10001</p>
+<section class="contact-flex">
+  <div class="contact-left">
+    <h2>Masz pytania? Skontaktuj się z nami!</h2>
+    <ul class="contact-bullets">
+      <li>
+        <span class="bullet"></span>
+        Wypełnij formularz, a nasz doradca skontaktuje się z Tobą, by omówić szczegóły i przygotować indywidualną wycenę.
+      </li>
+      <li>
+        <span class="bullet"></span>
+        Nasz zespół ekspertów chętnie pomoże w doborze odpowiedniego urządzenia, przygotuje ofertę lub wyjaśni szczegóły techniczne.
+      </li>
+      <li>
+        <span class="bullet"></span>
+        Skorzystaj z bezpłatnej konsultacji – odpowiadamy szybko i rzeczowo, zazwyczaj w ciągu 24 godzin.
+      </li>
+    </ul>
+    <div class="contact-info-block">
+      <div class="info-row"><span class="info-icon">📞</span> <b>+48 606 324 406</b></div>
+      <div class="info-row"><span class="info-icon">✉️</span> <b>biuro@mg-certus.pl</b></div>
+      <div class="info-row"><span class="info-icon">📍</span> <b>Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</b></div>
+    </div>
+    <div class="contact-social">
+      <a href="#" aria-label="Instagram" class="social-icon"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="7" y="17" font-size="12" fill="#222">IG</text></svg></a>
+      <a href="#" aria-label="YouTube" class="social-icon"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="4" y="17" font-size="12" fill="#222">YT</text></svg></a>
+      <a href="#" aria-label="LinkedIn" class="social-icon"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="4" y="17" font-size="12" fill="#222">IN</text></svg></a>
+    </div>
+  </div>
+  <div class="contact-right">
+    <form class="contact-form" on:submit={handleSubmit} autocomplete="off">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">Imię</label>
+          <input id="firstName" type="text" placeholder="Imię" bind:value={formData.firstName} required />
         </div>
-        
-        <div class="info-card">
-          <div class="info-icon">📞</div>
-          <h3 class="info-title">PHONE</h3>
-          <p class="info-text">+1 (555) 123-4567<br>+1 (555) 987-6543</p>
-        </div>
-        
-        <div class="info-card">
-          <div class="info-icon">✉️</div>
-          <h3 class="info-title">EMAIL</h3>
-          <p class="info-text">info@financer.com<br>support@financer.com</p>
-        </div>
-        
-        <div class="info-card">
-          <div class="info-icon">🕒</div>
-          <h3 class="info-title">HOURS</h3>
-          <p class="info-text">Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM</p>
+        <div class="form-group">
+          <label for="lastName">Nazwisko</label>
+          <input id="lastName" type="text" placeholder="Nazwisko" bind:value={formData.lastName} required />
         </div>
       </div>
-      
-      <div class="contact-form-section">
-        <form class="contact-form" on:submit={handleSubmit}>
-          <div class="form-row">
-            <div class="form-group">
-              <input 
-                type="text" 
-                placeholder="Your Name" 
-                class="form-input"
-                bind:value={formData.name}
-                required
-              />
-            </div>
-            <div class="form-group">
-              <input 
-                type="email" 
-                placeholder="Your Email" 
-                class="form-input"
-                bind:value={formData.email}
-                required
-              />
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <input 
-              type="text" 
-              placeholder="Subject" 
-              class="form-input"
-              bind:value={formData.subject}
-              required
-            />
-          </div>
-          
-          <div class="form-group">
-            <textarea 
-              placeholder="Your Message" 
-              class="form-textarea"
-              rows="6"
-              bind:value={formData.message}
-              required
-            ></textarea>
-          </div>
-          
-          <button type="submit" class="submit-btn" disabled={isSubmitting}>
-            {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
-          </button>
-          
-          {#if submitMessage}
-            <div class="success-message">{submitMessage}</div>
-          {/if}
-        </form>
-      </div> -->
-    </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@company.com" bind:value={formData.email} required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Numer telefonu</label>
+        <div class="phone-row">
+          <select bind:value={formData.country} on:change={handleCountryChange}>
+            {#each countryPrefixes as c}
+              <option value={c.code}>{c.code}</option>
+            {/each}
+          </select>
+          <input id="phone" type="tel" placeholder="+48 (000) 000-000" bind:value={formData.phone} required pattern="[0-9\-\s\(\)]+" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Wiadomość</label>
+        <textarea id="message" placeholder="Wiadomość" rows="5" bind:value={formData.message} required></textarea>
+      </div>
+      <div class="form-group checkbox-row">
+        <input id="privacy" type="checkbox" bind:checked={formData.privacy} />
+        <label for="privacy">Zgadzam się z polityką prywatności.</label>
+      </div>
+      <button type="submit" class="submit-btn" disabled={isSubmitting}>
+        {isSubmitting ? 'wysyłanie...' : 'wyślij wiadomość'}
+      </button>
+      {#if submitMessage}
+        <div class="success-message">{submitMessage}</div>
+      {/if}
+    </form>
   </div>
 </section>
 
 <style>
-  .contact {
-    width: 100%;
-    padding: 100px 0;
-    background: #f8f9fa;
+.contact-flex {
+  display: flex;
+  gap: 40px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(44, 90, 160, 0.08);
+  padding: 40px 32px;
+  max-width: 1200px;
+  margin: 40px auto;
+  align-items: stretch;
+}
+.contact-left {
+  flex: 1.1;
+  background: #232c32;
+  color: #fff;
+  border-radius: 12px;
+  padding: 40px 36px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 340px;
+  max-width: 480px;
+}
+.contact-left h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  line-height: 1.2;
+}
+.contact-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+}
+.contact-bullets li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.bullet {
+  display: inline-block;
+  width: 6px;
+  height: 28px;
+  background: #cddc39;
+  border-radius: 2px;
+  margin-right: 16px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.contact-info-block {
+  margin: 32px 0 18px 0;
+}
+.info-row {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+.info-icon {
+  font-size: 1.2rem;
+  margin-right: 6px;
+}
+.contact-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+}
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #cddc39;
+  border-radius: 50%;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(44,90,160,0.08);
+}
+.social-icon:hover {
+  background: #fff;
+}
+.contact-right {
+  flex: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-form {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(44,90,160,0.06);
+  padding: 36px 32px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.form-row {
+  display: flex;
+  gap: 18px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+}
+.form-group label {
+  font-size: 0.98rem;
+  color: #232c32;
+  font-weight: 500;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 12px 14px;
+  border: 1.5px solid #e0e3e7;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #f8f9fa;
+  transition: border 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border: 1.5px solid #cddc39;
+}
+.phone-row {
+  display: flex;
+  gap: 8px;
+}
+.phone-row select {
+  min-width: 56px;
+  background: #f8f9fa;
+}
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+.submit-btn {
+  width: 100%;
+  padding: 14px 0;
+  background: linear-gradient(90deg, #cddc39 0 20%, #fff 20% 100%);
+  color: #232c32;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  margin-top: 8px;
+  box-shadow: 0 2px 8px rgba(44,90,160,0.06);
+  transition: background 0.2s, color 0.2s;
+}
+.submit-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #fff 0 80%, #cddc39 80% 100%);
+  color: #232c32;
+}
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.success-message {
+  margin-top: 12px;
+  padding: 12px;
+  background: #eaf7d6;
+  color: #3a5a1a;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
+@media (max-width: 900px) {
+  .contact-flex {
+    flex-direction: column;
+    padding: 24px 6px;
+    gap: 24px;
   }
-  
-  .contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  .contact-left, .contact-right {
+    max-width: 100%;
+    min-width: 0;
+    padding: 24px 12px;
   }
-  
-  .section-header {
-    text-align: center;
-    margin-bottom: 80px;
-  }
-  
-  .section-title {
-    font-size: 42px;
-    font-weight: 800;
-    color: #2c5aa0;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-  }
-  
-  .title-underline {
-    width: 80px;
-    height: 4px;
-    background: #ffd700;
-    margin: 0 auto 30px;
-  }
-  
-  .section-subtitle {
-    font-size: 18px;
-    color: #666;
-    line-height: 1.6;
-  }
-  
-  .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-  }
-  
-  .contact-info {
-    display: grid;
-    gap: 30px;
-  }
-  
-  .info-card {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .info-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .info-icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  
-  .info-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: #2c5aa0;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-  }
-  
-  .info-text {
-    color: #666;
-    line-height: 1.6;
-    margin: 0;
-  }
-  
   .contact-form {
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    padding: 24px 10px;
   }
-  
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 25px;
-  }
-  
-  .form-input,
-  .form-textarea {
-    width: 100%;
-    padding: 15px 20px;
-    border: 2px solid #e9ecef;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-    font-family: inherit;
-  }
-  
-  .form-input:focus,
-  .form-textarea:focus {
-    outline: none;
-    border-color: #2c5aa0;
-  }
-  
-  .form-textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-  
-  .submit-btn {
-    width: 100%;
-    padding: 18px;
-    background: #2c5aa0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .submit-btn:hover:not(:disabled) {
-    background: #1a4480;
-    transform: translateY(-2px);
-  }
-  
-  .submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-  
-  .success-message {
-    margin-top: 20px;
-    padding: 15px;
-    background: #d4edda;
-    color: #155724;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 600;
-  }
-  
-  @media (max-width: 768px) {
-    .contact {
-      padding: 80px 0;
-    }
-    
-    .section-title {
-      font-size: 32px;
-    }
-    
-    .contact-content {
-      grid-template-columns: 1fr;
-      gap: 50px;
-    }
-    
-    .form-row {
-      grid-template-columns: 1fr;
-    }
-    
-    .contact-form {
-      padding: 30px 20px;
-    }
-  }
+}
 </style>

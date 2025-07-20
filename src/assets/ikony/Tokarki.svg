@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 184 185">
+  <!-- Generator: Adobe Illustrator 29.6.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 207)  -->
+  <defs>
+    <style>
+      .st0 {
+        mask: url(#mask);
+      }
+
+      .st1 {
+        fill: #96a500;
+      }
+
+      .st2 {
+        fill: #595959;
+      }
+
+      .st3 {
+        fill: none;
+        stroke: #a2a3a2;
+        stroke-miterlimit: 10;
+        stroke-width: 1.81px;
+      }
+
+      .st4, .st5 {
+        fill: #c5d417;
+      }
+
+      .st6 {
+        fill: #fff;
+      }
+
+      .st7 {
+        fill: #6b6b6b;
+      }
+
+      .st5 {
+        stroke: #96a500;
+      }
+
+      .st8 {
+        fill: #eee;
+      }
+    </style>
+    <mask id="mask" x="56.29" y="92.09" width="118.61" height="53.17" maskUnits="userSpaceOnUse">
+      <g id="mask0_2630_711">
+        <path class="st6" d="M144.42,131.76c0,2.42-1.76,4.37-3.94,4.37H60.23c-2.17,0-3.94-1.96-3.94-4.37v-35.3c0-2.42,1.76-4.37,3.94-4.37h80.25c2.17,0,3.94,1.96,3.94,4.37v35.3Z"/>
+      </g>
+    </mask>
+  </defs>
+  <path class="st7" d="M96.02,136.66h6.54v-15.7h-6.54v15.7Z"/>
+  <path class="st2" d="M96.1,127.61v2.54h6.48v-2.54h-6.48Z"/>
+  <path class="st3" d="M113.05,85.5H25.45v69.41h.07v25.17h11.37l9.82-8.11v-17.07h97.05v17.35l10.28,7.82h10.92v-94.58h-51.91ZM144.86,132.24c0,2.45-1.77,4.43-3.96,4.43H60.25c-2.19,0-3.96-1.98-3.96-4.43v-35.72c0-2.45,1.77-4.43,3.96-4.43h80.66c2.19,0,3.96,1.98,3.96,4.43v35.72Z"/>
+  <path class="st4" d="M59.83,106.88v12.91h10.58v-12.91h-10.58Z"/>
+  <path class="st7" d="M56.89,102.67v21.32h5.11v-21.32h-5.11Z"/>
+  <path class="st8" d="M70.9,110.38h-.46v6.48h.46v-6.48Z"/>
+  <path class="st2" d="M63,106.96h-1.06v12.76h1.06v-12.76Z"/>
+  <path class="st1" d="M128.5,106.88v12.91h12.01v-12.91h-12.01Z"/>
+  <path class="st7" d="M131.57,106.8v25.95h10.42v-25.95h-10.42Z"/>
+  <path class="st4" d="M124.15,110.31v6.54h17.82v-6.54h-17.82Z"/>
+  <path class="st2" d="M127.93,116.86h.52v-6.48h-.52v6.48Z"/>
+  <path class="st2" d="M136.91,119.72h1.2v-12.76h-1.2v12.76Z"/>
+  <path class="st2" d="M131.58,119.89v4.42h10.36v-4.42h-10.36Z"/>
+  <path class="st5" d="M31.68,106.51v-6.88c0-2.1,1.7-3.79,3.79-3.79h10.84c2.09,0,3.79,1.7,3.79,3.79v6.88c0,2.1-1.7,3.79-3.79,3.79h-10.84c-2.03,0-3.69-1.59-3.79-3.6v-.2Z"/>
+  <path class="st3" d="M118.73,154.92h21.19H25.52"/>
+  <g class="st0">
+    <path class="st7" d="M167.1,145.26c4.31,0,7.8-3.49,7.8-7.79s-3.49-7.79-7.8-7.79h-73.38c-4.31,0-7.8,3.49-7.8,7.79s3.49,7.79,7.8,7.79h73.38Z"/>
+  </g>
+</svg>

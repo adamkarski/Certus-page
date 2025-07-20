@@ -2,10 +2,13 @@
   import Header from './components/Header.svelte'
   import Hero from './components/Hero.svelte'
   import Oferta from './components/Oferta.svelte'
-  import About from './components/About.svelte'
-  import References from './components/References.svelte'
   import Contact from './components/Contact.svelte'
   import Footer from './components/Footer.svelte'
+  import Video from './components/Video.svelte';
+  import Onas from './components/Onas.svelte';
+  import ImageSection_01 from './components/image_section_01.svelte';
+  import ImageSection_02 from './components/image_section_02.svelte';
+    import Referencje from './components/Referencje.svelte';
 </script>
 
 <div class="app">
@@ -13,9 +16,12 @@
   <main>
     <Hero />
     <Oferta />
-    <About />
-    <References />
+    <Video />
+    <Onas />
+    <ImageSection_01 />
     <Contact />
+    <ImageSection_02 />
+    <Referencje />
   </main>
   <Footer />
 </div>

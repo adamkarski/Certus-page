@@ -34,6 +34,16 @@
       title: "Tokarki CNC",
       img: "/src/assets/maszyny/certus_7111_temp.png",
     },
+    {
+      id: "serwis",
+      title: "Serwis, gwarancyjny i pogwarancyjny",
+      img: "/src/assets/certus-serwis-pogwarancyjny.png",
+    },
+    {
+      id: "pomoc",
+      title: "Pomagamy, wdrażamy optymalizujemy procesy produkcji",
+      img: "/src/assets/certus-pomoc-wdrozenia.png",
+    },
   ];
 
   const open = (c) => (activeCategory = c);
@@ -88,6 +98,7 @@
             pagination
             space-between="0"
             slides-per-view="2"
+            slides-per-group="2"
             mousewheel
             autoplay
           >
@@ -431,6 +442,7 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
     h2 {
       margin-top: 4rem;
       padding-left: 2rem;
+      font-size: x-large;
     }
     p {
       padding-left: 2rem;
@@ -450,10 +462,12 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
     max-width: 35vw;
     h1 {
       text-align: left;
-      margin-top: 4rem;
-      border-left: solid 0.4em #96a500;
-      margin-left: -0.9em;
-      padding-left: 1.5em;
+    margin-top: 4rem;
+    border-left: solid 0.4em #96a500;
+    margin-left: -21.6px;
+    padding-left: 1.5em;
+    color: var(--color-text-primary);
+    font-size: x-large;
     }
 
     p {
@@ -526,7 +540,7 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
 
   .activeMachine .left h1 {
     font-size: 3em;
-
+    color: white;
     width: 100%;
     text-align: left;
     padding-left: 2em;
@@ -625,14 +639,17 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
   /* ————————————————  LAYOUT  ———————————————— */
   .hero {
     width: 100%;
-    height: 75vh;
+    height: 81vh;
     position: relative;
+    
   }
   .hero-bg {
     width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
+    padding-top: 4em;
+
   }
 
   .hero-content {
