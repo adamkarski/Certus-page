@@ -20,9 +20,9 @@
     </div>
     <div class="text-795-142-656"><span class="f95142656_span">795 142 656</span></div>
     <div class="rectangle-16"></div>
-    <div class="o-nas"><span class="onas_span">O nas</span></div>
+    <a class="o-nas" href="/onas"><span class="onas_span">O nas</span></a>
     <div class="rectangle-53"></div>
-    <div class="maszyny"><span class="maszyny_span">Maszyny</span></div>
+    <a class="maszyny" href="/maszyny"><span class="maszyny_span">Maszyny</span></a>
     <div class="brane"><span class="brane_span">Branże</span></div>
     <div class="serwis"><span class="serwis_span">Serwis</span></div>
     <div class="vuesaxlinearsearch-normal">
@@ -31,7 +31,9 @@
       <div class="vector_04"></div>
     </div>
     <div class="logo-certus">
+      <a href="/">
         <LogoCertus/>
+      </a>
     </div>
   </div>
 <style>
