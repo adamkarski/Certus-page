@@ -1,15 +1,35 @@
 <script lang="ts">
-  import LogoCertus from "../assets/logo_certus.svelte";
-
+  import { onMount } from 'svelte';
   const currentYear = new Date().getFullYear();
+
+
+  let LottiePlayer;
+
+onMount(async () => {
+    const module = await import('@lottiefiles/svelte-lottie-player');
+    LottiePlayer = module.LottiePlayer;
+});
+
+
+
+
 </script>
 
 <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-content">
+  <div class="footer-container gradientFooter">
+    <div class="footer-content ">
       <div class="footer-section">
         <div class="footer-logo">
-          <LogoCertus />
+          {#if LottiePlayer}
+          <!-- src="assets/logo-certus.json?"+Math.random() -->
+          <LottiePlayer
+            src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json?"
+            +Math.random()
+            autoplay={true}
+            loop={false}
+            controls={false}
+          ></LottiePlayer>
+        {/if}
         </div>
         <h5 class="footer-description">
           Możesz nam zaufać!
@@ -80,7 +100,7 @@
     <div class="footer-bottom">
       <div class="footer-bottom-content">
         <p class="copyright">
-          © {currentYear} FINANCER. All rights reserved.
+          © {currentYear} CERTUS wszelkie prawa zastrzeżone.
         </p>
         <div class="footer-bottom-links">
           <a href="#" class="footer-link">Privacy Policy</a>
@@ -93,16 +113,25 @@
 </footer>
 
 <style>
+
+
+:global(.gradientFooter) {
+  background: linear-gradient(0deg, #7c8897 0%, #3e4042 100%);
+
+  }
+
+
   .footer {
     width: 100%;
     background: #1a1a1a;
     color: white;
-    padding: 80px 0 0;
+
   }
 
   .footer-container {
     width: 100%;
     padding: 0 45px;
+    padding-top: 80px;
   }
 
   .footer-content {
@@ -145,7 +174,7 @@
   }
 
   .social-link:hover {
-    color: #ffd700;
+    color: #7c8897;
   }
 
   .footer-title {
@@ -174,9 +203,17 @@
   }
 
   .footer-link:hover {
-    color: #ffd700;
+    color: white;
+    background-color: var(--color-primary);
+    padding: 5px;
+
   }
 
+  hr{
+
+color: #ccc;
+
+  }
   .contact-info {
     margin-top: 0;
   }
@@ -206,7 +243,7 @@
   }
 
   .copyright {
-    color: #999;
+    color: #ccc;
     font-size: 14px;
     margin: 0;
   }

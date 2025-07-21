@@ -385,7 +385,8 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
     transform: scale(1.02);
     transition: all 0.2s ease-in-out;
   }
-  .gradientHero {
+  
+  :global(.gradientHero) {
     background: linear-gradient(180deg, #7c8897 0%, #3e4042 100%);
   }
 

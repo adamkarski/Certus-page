@@ -57,6 +57,7 @@
   background: none;
   padding: 0;
   margin: 0;
+  padding-bottom: 10em;
 }
 .info-cards-wrapper {
   display: flex;
