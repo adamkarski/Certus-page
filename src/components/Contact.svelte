@@ -162,7 +162,7 @@
         <label for="message">Wiadomość</label>
         <textarea id="message" placeholder="Wiadomość" rows="5" bind:value={formData.message} required></textarea>
       </div>
-      <div class="form-group privacy-group checkbox-row">
+      <div class="form-group privacy-group checkbox-row no-sel">
         <input id="privacy" type="checkbox" bind:checked={formData.privacy} />
         <label for="privacy">Zgadzam się z polityką prywatności.</label>
       </div>

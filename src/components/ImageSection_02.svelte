@@ -25,7 +25,7 @@
 </script>
 
 <section id="image-section-02" class="image-section-02">
-  <div class="image-container-02">
+  <div class="image-container-02 no-sel">
     <img
       src={imgSrc}
       alt="Certus maszyny tworzone z pasją i precyzją"
@@ -34,7 +34,7 @@
     <div class="image-header-02" bind:this={headerEl} class:visible={visible}>
       {#if visible}
         <h2 class="no-sel" in:fade={{ duration: 600, delay: 800 }}>
-          Pomagamy wdrażamy,<br/>
+          Pomagamy, wdrażamy,<br/>
           optymalizujemy procesy produkcyjne
         </h2>
 

@@ -37,7 +37,7 @@
     <div class="video-header" bind:this={headerEl} class:visible={visible}>
       {#if visible}
         <h1 class="no-sel" in:fade={{ duration: 600, delay: 800 }}>
-          Pomagamy wdrażamy,<br/>
+          Pomagamy, wdrażamy,<br/>
           optymalizujemy procesy produkcyjne
         </h1>
       {/if}

@@ -16,7 +16,7 @@
   });
 </script>
 
-<section class="info-cards-section" bind:this={sectionEl}>
+<section class="info-cards-section no-sel" bind:this={sectionEl}>
   <div class="info-cards-wrapper">
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 0 : 9999 }}>
       <div class="info-card-header">
