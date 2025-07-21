@@ -104,14 +104,14 @@
  
   :global(.first-container-back){
  
-    background-image: url(assets/first-block-polyline.svg);
+    background-image: url('assets/first-block-polyline.svg');
     position: absolute;
     top: 77.6vh;
     width: 100%;
     height: 44px;
     background-repeat: no-repeat;
     background-position-x: -1500px;
-    background-size: cover;o
+    background-size: cover;
     img{
       height: 37px;
 

@@ -1,4 +1,4 @@
-<script>
+<script >
   import { register } from "swiper/element/bundle";
   import { fade, fly } from "svelte/transition";
   import { cubicOut } from "svelte/easing";
@@ -7,7 +7,7 @@
   import MenuEmail from "../assets/menu/menu_email.svelte";
   import MenuDownload from "../assets/menu/menu_download.svelte";
   import CtaButtonHero from "./cta-button-hero.svelte";
-  import { onMount } from "svelte";
+  import {onMount}  from "svelte";
   import { browser } from "$app/environment";
 
   register();
@@ -60,11 +60,20 @@
   const open = (c) => (activeCategory = c);
   const close = () => (activeCategory = null);
 
-  const openFW = (x) => (activeMachine = x);
+  const openFW = (x) => {
+    // expandedView after 5s 
+    activeMachine = x;
+    
+    setTimeout(() => {
+      expandedView = true;
+    }, 800);
+  };
   const closeFW = () => {
     activeMachine = null;
     expandedView = false;
   };
+  
+
 
   const expandRightInfo = () => (expandedView = !expandedView);
 
@@ -158,13 +167,15 @@
                       materiałów. Doskonałe do detali i dekoracji.
                     </h3>
                     <br />
-                    <h2>
-                      Certus 1212 <span class="IconDoc"
-                        ><IconDoc
+                    <a on:click={() => openFW("Frezarkia Certus 1212")}>
+                      Certus 1212 
+                      <IconDoc
                           on:click={() => openFW("Frezarkia Certus 1212")}
-                        /></span
-                      >
-                    </h2>
+                        />
+                      
+                    </a>  
+                      
+                    
                     <p>
                       Duże pole robocze (1200x1200x350 mm) <br />
                       dla ambitnych projektów.
