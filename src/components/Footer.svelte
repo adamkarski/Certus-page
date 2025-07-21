@@ -103,20 +103,20 @@ onMount(async () => {
           © {currentYear} CERTUS wszelkie prawa zastrzeżone.
         </p>
         <div class="footer-bottom-links">
-          <a href="#" class="footer-link">Privacy Policy</a>
-          <a href="#" class="footer-link">Terms of Service</a>
-          <a href="#" class="footer-link">Sitemap</a>
+          <a href="#" class="footer-link">Polityka prywatności</a>
+        
+          <a href="/sitemap" class="footer-link">Mapa witryny</a>
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-<style>
+<style lang="scss">
 
 
 :global(.gradientFooter) {
-  background: linear-gradient(0deg, #7c8897 0%, #3e4042 100%);
+  background: linear-gradient(0deg, #67717e 0%, #3e4042 100%);
 
   }
 
@@ -174,7 +174,10 @@ onMount(async () => {
   }
 
   .social-link:hover {
-    color: #7c8897;
+    color: white;
+    background-color: var(--color-primary);
+    transition: all 0.2s ease;
+    font-weight: 400;
   }
 
   .footer-title {
@@ -196,6 +199,7 @@ onMount(async () => {
   }
 
   .footer-link {
+    transition: all 0.2s ease;
     color: #ccc;
     text-decoration: none;
     font-size: 14px;
@@ -205,17 +209,28 @@ onMount(async () => {
   .footer-link:hover {
     color: white;
     background-color: var(--color-primary);
-    padding: 5px;
+      padding: 5px;
+    font-weight: 800;
+    transition: all 0.2s ease;
 
   }
 
-  hr{
-
-color: #ccc;
-
-  }
+  
   .contact-info {
     margin-top: 0;
+    transition: all 0.2s ease;
+
+    a{
+      transition: all 0.2s ease;
+    }
+
+    a:hover{
+
+      color: white;
+    background-color: var(--color-primary);
+      padding: 2px;
+    font-weight: 800;
+    }
   }
 
   .contact-item {
@@ -232,7 +247,7 @@ color: #ccc;
   }
 
   .footer-bottom {
-    border-top: 1px solid #333;
+    border-top: 1px solid var(--color-primary-dark);
     padding: 30px 0;
   }
 
