@@ -20,7 +20,7 @@
   <div class="info-cards-wrapper">
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 0 : 9999 }}>
       <div class="info-card-header">
-        <img src="/assets/red-arrow.svg" alt="Ikona" class="info-icon" />
+        <img src="/assets/green-arrow.svg" alt="Najwyższa jakość komponentów" class="info-icon" />
         <span class="info-title">Najwyższa jakość<br>komponentów:</span>
       </div>
       <p class="info-desc">
@@ -29,7 +29,7 @@
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 300 : 9999 }}>
       <div class="info-card-header">
-        <img src="/assets/red-arrow.svg" alt="Ikona" class="info-icon" />
+        <img src="/assets/green-arrow.svg" alt="Własny serwis gwarancyjny i pogwarancyjny" class="info-icon" />
         <span class="info-title">Własny serwis:</span>
       </div>
       <p class="info-desc">
@@ -38,7 +38,7 @@
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 600 : 9999 }}>
       <div class="info-card-header">
-        <img src="/assets/red-arrow.svg" alt="Ikona" class="info-icon" />
+        <img src="/assets/green-arrow.svg" alt="Ponad 10 lat doświadczenia w branży CNC" class="info-icon" />
         <span class="info-title">Ponad 10 lat<br>doświadczenia<br>w branży</span>
       </div>
       <p class="info-desc">

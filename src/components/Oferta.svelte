@@ -106,7 +106,7 @@
  
     background-image: url(assets/first-block-polyline.svg);
     position: absolute;
-    top: 77.3vh;
+    top: 77.6vh;
     width: 100%;
     height: 44px;
     background-repeat: no-repeat;
