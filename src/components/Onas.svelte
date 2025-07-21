@@ -38,7 +38,7 @@
       <div class="o-nas-right">
         <div class="step">
           <img
-            src="/src/assets/ikony/onas-analiza-potrzeb.svg"
+            src="/assets/ikony/onas-analiza-potrzeb.svg"
             alt="Analiza Potrzeb"
           />
           <div class="step-content">
@@ -50,7 +50,7 @@
         </div>
         <div class="step">
           <img
-            src="/src/assets/ikony/onas-dobor-rozwiazan.svg"
+            src="/assets/ikony/onas-dobor-rozwiazan.svg"
             alt="Dobór rozwiązania"
           />
           <div class="step-content">
@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="step">
-          <img src="/src/assets/ikony/onas-wdrozenie.svg" alt="Wdrożenie" />
+          <img src="/assets/ikony/onas-wdrozenie.svg" alt="Wdrożenie" />
           <div class="step-content">
             <div class="step-title">Wdrożenie</div>
             <div class="step-description">
@@ -70,7 +70,7 @@
           </div>
         </div>
         <div class="step">
-          <img src="/src/assets/ikony/onas-Wsparcie.svg" alt="Wsparcie" />
+          <img src="/assets/ikony/onas-wsparcie.svg" alt="Wsparcie" />
           <div class="step-content">
             <div class="step-title">Wsparcie</div>
             <div class="step-description">

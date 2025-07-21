@@ -56,20 +56,20 @@
         <div class="contact-info">
           <p class="contact-item">
             <span class="contact-icon">
-              <img src="src/assets/ikony/lokalizacja.svg" alt="Lokalizacja">
+              <img src="assets/ikony/lokalizacja.svg" alt="Lokalizacja">
             </span>
            <a href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</a>
             
           </p>
           <p class="contact-item">
             <span class="contact-icon">
-              <img src="src/assets/ikony/telefon.svg" alt="Telefon">
+              <img src="assets/ikony/telefon.svg" alt="Telefon">
             </span>
             <a href="tel:+48 606 324 406">+48 606 324 406</a>
           </p>
           <p class="contact-item">
             <span class="contact-icon">
-              <img src="src/assets/ikony/email.svg" alt="Email">
+              <img src="assets/ikony/email.svg" alt="Email">
             </span>
            <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a>
           </p>

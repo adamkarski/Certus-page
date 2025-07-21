@@ -28,32 +28,32 @@
     {
       id: "frezarki",
       title: "Frezarki CNC",
-      img: "/src/assets/maszyny/certus_7111_temp.png",
+      img: "/assets/maszyny/certus_7111_temp.png",
     },
     {
       id: "grawerki",
       title: "Grawerki CNC",
-      img: "/src/assets/maszyny/certus_7111_temp.png",
+      img: "/assets/maszyny/certus_7111_temp.png",
     },
     {
       id: "plotery",
       title: "Plotery CNC",
-      img: "/src/assets/maszyny/certus_7111_temp.png",
+      img: "/assets/maszyny/certus_7111_temp.png",
     },
     {
       id: "tokarki",
       title: "Tokarki CNC",
-      img: "/src/assets/maszyny/certus_7111_temp.png",
+      img: "/assets/maszyny/certus_7111_temp.png",
     },
     {
       id: "serwis",
       title: "Serwis, gwarancyjny i pogwarancyjny",
-      img: "/src/assets/certus-serwis-pogwarancyjny.png",
+      img: "/assets/certus-serwis-pogwarancyjny.png",
     },
     {
       id: "pomoc",
       title: "Pomagamy, wdrażamy optymalizujemy procesy produkcji",
-      img: "/src/assets/certus-pomoc-wdrozenia.png",
+      img: "/assets/certus-pomoc-wdrozenia.png",
     },
   ];
 
@@ -191,7 +191,7 @@
                     in:fade={{ duration: 600, delay: 0 }}
                   >
                     <img
-                      src="/src/assets/maszyny/certus_7111_temp.png"
+                      src="/assets/maszyny/certus_7111_temp.png"
                       alt="Frezarki CNC"
                       draggable="false"
                     />
@@ -212,7 +212,7 @@
             <h1 in:fade={{ duration: 600, delay: 200 }}>Grawerki CNC</h1>
             <div class="category-image" in:fade={{ duration: 600, delay: 400 }}>
               <img
-                src="/src/assets/maszyny/certus_7111_temp.png"
+                src="/assets/maszyny/certus_7111_temp.png"
                 alt="Grawerki CNC"
               />
             </div>
@@ -229,7 +229,7 @@
             <h1 in:fade={{ duration: 600, delay: 200 }}>Plotery CNC</h1>
             <div class="category-image" in:fade={{ duration: 600, delay: 400 }}>
               <img
-                src="/src/assets/maszyny/certus_7111_temp.png"
+                src="/assets/maszyny/certus_7111_temp.png"
                 alt="Plotery CNC"
               />
             </div>
@@ -246,7 +246,7 @@
             <h1 in:fade={{ duration: 600, delay: 200 }}>Tokarki CNC</h1>
             <div class="category-image" in:fade={{ duration: 600, delay: 400 }}>
               <img
-                src="/src/assets/maszyny/certus_7111_temp.png"
+                src="/assets/maszyny/certus_7111_temp.png"
                 alt="Tokarki CNC"
               />
             </div>
@@ -270,13 +270,13 @@
           <img
             style="filter: blur(120px);"
             draggable="false"
-            src="/src/assets/maszyny/certus_7111_temp.png"
+            src="/assets/maszyny/certus_7111_temp.png"
             alt="Frezarki CNC"
           />
           <img
             class="back_image"
             draggable="false"
-            src="/src/assets/maszyny/certus_7111_temp.png"
+            src="/assets/maszyny/certus_7111_temp.png"
             alt="Frezarki CNC"
           />
 
@@ -332,8 +332,8 @@
                 <li><MenuDownload text="Do pobrania" href="#" /></li>
                 <li><MenuEmail text="Kontakt" href="#" /></li>
 
-                <!--          <li><a href="#"><img src="/src/assets/menu/menu_download.svg" alt="Do pobrania" />Do pobrania</a></li>
-                <li><a href="#"><img src="/src/assets/menu/menu_email.svg" alt="Kontakt" />Kontakt</a></li> -->
+                <!--          <li><a href="#"><img src="/assets/menu/menu_download.svg" alt="Do pobrania" />Do pobrania</a></li>
+                <li><a href="#"><img src="/assets/menu/menu_email.svg" alt="Kontakt" />Kontakt</a></li> -->
               </ul>
             </nav>
           </div>
@@ -346,11 +346,11 @@
               in:fade={{ duration: 300, delay: 200 }}
             >
               <img
-                src="/src/assets/maszyny/certus_7111_temp_schemat01.png"
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
                 alt="certus_7111_temp_schemat01"
               />
               <img
-                src="/src/assets/maszyny/certus_7111_temp_schemat02.png"
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
                 alt="certus_7111_temp_schemat02"
               />
 
@@ -562,7 +562,7 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
 
   .category-content .container {
     position: relative;
-    background-image: url(/src/assets/Background_Hero_swipe.jpg);
+    background-image: url(/assets/Background_Hero_swipe.jpg);
     width: 135rem;
     height: 400px;
     border-radius: 1rem;

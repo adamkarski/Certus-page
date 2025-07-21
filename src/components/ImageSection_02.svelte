@@ -6,7 +6,7 @@
   const sectionId = "image-section-02";
   let headerEl: HTMLDivElement;
 
-  const imgSrc = '/src/assets/certus-szkolenia-wdrozenia.jpg';
+  const imgSrc = '/assets/certus-szkolenia-wdrozenia.jpg';
 
   onMount(() => {
     const observer = new IntersectionObserver(
@@ -44,7 +44,7 @@
     <div class="phone" bind:this={headerEl} class:visible={visible}>
       {#if visible}
         <div class="no-sel" in:fade={{ duration: 600, delay: 800 }}>
-          <img src="/src/assets/phone.svg" alt="kontakt telefoniczny" />
+          <img src="/assets/phone.svg" alt="kontakt telefoniczny" />
           <a href="tel:+48601601601">+48 601 601 601</a>
        </div>
       {/if}

@@ -21,7 +21,7 @@ onMount(async () => {
 
     <div class="rectangle-15"></div>
    <!--  <img class="rectangle-80" src="" /> -->
-    <img class="rectangle-81" src="/src/assets/menu_back.png" />
+    <img class="rectangle-81" src="/assets/menu_back.png" />
     <div class="isolation_mode">
       <div class="vector"></div>
       <div class="vector_01"></div>

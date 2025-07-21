@@ -60,7 +60,7 @@
     <div class="oferta-grid">
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="src/assets/ikony/frezarki.svg" alt="Frezarki CNC" />
+          <img src="assets/ikony/frezarki.svg" alt="Frezarki CNC" />
         </div>
 
         <CtaButton text="Frezarki CNC" />
@@ -68,7 +68,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="src/assets/ikony/tokarki.svg" alt="Toakrki CNC" />
+          <img src="assets/ikony/tokarki.svg" alt="Toakrki CNC" />
         </div>
 
         <CtaButton text="Tokarki CNC" />
@@ -76,7 +76,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="src/assets/ikony/grawerki.svg" alt="Grawerki CNC" />
+          <img src="assets/ikony/grawerki.svg" alt="Grawerki CNC" />
         </div>
 
         <CtaButton text="Grawerki CNC" />
@@ -84,7 +84,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="src/assets/ikony/Plotery.svg" alt="Plotery CNC" />
+          <img src="assets/ikony/plotery.svg" alt="Plotery CNC" />
         </div>
 
         <CtaButton text="Plotery CNC" />
@@ -104,7 +104,7 @@
  
   :global(.first-container-back){
  
-    background-image: url(src/assets/first-block-polyline.svg);
+    background-image: url(assets/first-block-polyline.svg);
     position: absolute;
     top: 77.3vh;
     width: 100%;

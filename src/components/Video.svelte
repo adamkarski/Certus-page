@@ -21,7 +21,7 @@
 
   $: visible = $visibilityStore[sectionId] === true;
 
-  const videoSrc = '/src/assets/video/video.m4v';
+  const videoSrc = '/assets/video/video.m4v';
 </script>
 
 <section id="video" class="video">

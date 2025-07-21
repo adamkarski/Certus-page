@@ -167,7 +167,7 @@ section .section-title::before {
   left: -14px;
   width: 28px;
   height: 43px;
-  background-image: url(/src/assets/red-arrow.svg);
+  background-image: url(/assets/red-arrow.svg);
 }
 
 section .section-subtitle {

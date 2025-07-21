@@ -8,7 +8,7 @@
 
 
 
-  const imgSrc = '/src/assets/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg';
+  const imgSrc = '/assets/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg';
 
 
   onMount(() => {
@@ -26,7 +26,7 @@
 
   $: visible = $visibilityStore[sectionId] === true;
 
-  const videoSrc = '/src/assets/video/video.m4v';
+  const videoSrc = '/assets/video/video.m4v';
 </script>
 
 <section id="image-section-01" class="image-section-01">
