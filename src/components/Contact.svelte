@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import CtaButton from './cta-button.svelte';
   let formData = {
     firstName: '',
     lastName: '',
@@ -13,7 +14,55 @@
   let submitMessage = '';
   let phonePrefix = '+48';
   const countryPrefixes = [
-    { code: 'PL', prefix: '+48' },
+    { code: 'Polska', prefix: '+48' },
+    { code: 'Österreich', prefix: '+43' },
+    { code: 'België', prefix: '+32' },
+    { code: 'България (Bŭlgariya)', prefix: '+359' },
+    { code: 'Schweiz', prefix: '+41' },
+    { code: 'Česká republika', prefix: '+420' },
+    { code: 'Deutschland', prefix: '+49' },
+    { code: 'Danmark', prefix: '+45' },
+    { code: 'Eesti', prefix: '+372' },
+    { code: 'España', prefix: '+34' },
+    { code: 'Suomi', prefix: '+358' },
+    { code: 'France', prefix: '+33' },
+    { code: 'United Kingdom', prefix: '+44' },
+    { code: 'Ελλάδα (Elláda)', prefix: '+30' },
+    { code: 'Hrvatska', prefix: '+385' },
+    { code: 'Magyarország', prefix: '+36' },
+    { code: 'Éire', prefix: '+353' },
+    { code: 'Italia', prefix: '+39' },
+    { code: 'Lietuva', prefix: '+370' },
+    { code: 'Latvija', prefix: '+371' },
+    { code: 'Nederland', prefix: '+31' },
+    { code: 'Norge', prefix: '+47' },
+    { code: 'Portugal', prefix: '+351' },
+    { code: 'România', prefix: '+40' },
+    { code: 'Россия (Rossiya)', prefix: '+7' },
+    { code: 'Sverige', prefix: '+46' },
+    { code: 'Slovenija', prefix: '+386' },
+    { code: 'Slovensko', prefix: '+421' },
+    { code: 'Україна (Ukrayina)', prefix: '+380' },
+    { code: 'United States', prefix: '+1' },
+    { code: 'الإمارات العربية المتحدة (Al-Imārāt al-ʿArabīyah al-Muttaḥidah)', prefix: '+971' },
+    { code: 'বাংলাদেশ (Bānglādesh)', prefix: '+880' },
+    { code: '中国 (Zhōngguó)', prefix: '+86' },
+    { code: '香港 (Xiānggǎng)', prefix: '+852' },
+    { code: 'Indonesia', prefix: '+62' },
+    { code: 'ישראל (Yisra\'el)', prefix: '+972' },
+    { code: 'भारत (Bhārat)', prefix: '+91' },
+    { code: 'ایران (Īrān)', prefix: '+98' },
+    { code: '日本 (Nihon)', prefix: '+81' },
+    { code: '대한민국 (Daehan Minguk)', prefix: '+82' },
+    { code: 'Malaysia', prefix: '+60' },
+    { code: 'Pilipinas', prefix: '+63' },
+    { code: 'پاکستان (Pākistān)', prefix: '+92' },
+    { code: 'المملكة العربية السعودية (Al-Mamlakah al-ʿArabīyah as-Saʿūdīyah)', prefix: '+966' },
+    { code: 'Singapore', prefix: '+65' },
+    { code: 'ประเทศไทย (Prathet Thai)', prefix: '+66' },
+    { code: 'Türkiye', prefix: '+90' },
+    { code: '臺灣 (Táiwān)', prefix: '+886' },
+    { code: 'Việt Nam', prefix: '+84' }
     // Możesz dodać więcej prefixów jeśli chcesz
   ];
 
@@ -50,26 +99,31 @@
 </script>
 
 <section class="contact-flex">
-  <div class="contact-left">
+
+
+
+
+  <div class="contact-left no-sel">
     <h2>Masz pytania? Skontaktuj się z nami!</h2>
-    <ul class="contact-bullets">
+    <ul class="contact-bullets no-sel">
       <li>
         <span class="bullet"></span>
         Wypełnij formularz, a nasz doradca skontaktuje się z Tobą, by omówić szczegóły i przygotować indywidualną wycenę.
       </li>
       <li>
         <span class="bullet"></span>
-        Nasz zespół ekspertów chętnie pomoże w doborze odpowiedniego urządzenia, przygotuje ofertę lub wyjaśni szczegóły techniczne.
+        Nasz zespół ekspertów chętnie pomoże<br/> w doborze odpowiedniego urządzenia, przygotuje ofertę lub wyjaśni szczegóły techniczne.
       </li>
       <li>
         <span class="bullet"></span>
-        Skorzystaj z bezpłatnej konsultacji – odpowiadamy szybko i rzeczowo, zazwyczaj w ciągu 24 godzin.
+        Skorzystaj z bezpłatnej konsultacji<br/> – odpowiadamy szybko i rzeczowo,<br/> zazwyczaj w ciągu 24 godzin.
       </li>
     </ul>
     <div class="contact-info-block">
-      <div class="info-row"><span class="info-icon">📞</span> <b>+48 606 324 406</b></div>
-      <div class="info-row"><span class="info-icon">✉️</span> <b>biuro@mg-certus.pl</b></div>
-      <div class="info-row"><span class="info-icon">📍</span> <b>Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</b></div>
+      <div class="info-row"><span class="info-icon"><img src="src/assets/ikony/telefon.svg" alt="Telefon"></span> <b><a href="tel:+48 606 324 406">+48 606 324 406</a></b></div>
+      <div class="info-row"><span class="info-icon"><img src="src/assets/ikony/email.svg" alt="Email"></span> <b><a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a></b></div>
+      <div class="info-row"><span class="info-icon"><img src="src/assets/ikony/lokalizacja.svg" alt="Lokalizacja"></span> <b><a href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</a>
+      </b></div>
     </div>
     <div class="contact-social">
       <a href="#" aria-label="Instagram" class="social-icon"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="7" y="17" font-size="12" fill="#222">IG</text></svg></a>
@@ -96,25 +150,29 @@
       <div class="form-group">
         <label for="phone">Numer telefonu</label>
         <div class="phone-row">
-          <select bind:value={formData.country} on:change={handleCountryChange}>
+          <select bind:value={formData.country} on:change={handleCountryChange} class="country-select">
             {#each countryPrefixes as c}
               <option value={c.code}>{c.code}</option>
             {/each}
           </select>
-          <input id="phone" type="tel" placeholder="+48 (000) 000-000" bind:value={formData.phone} required pattern="[0-9\-\s\(\)]+" />
+          <input id="phone" type="tel" placeholder="" bind:value={formData.phone} required pattern="[0-9\-\s\(\)]+" />
         </div>
       </div>
       <div class="form-group">
         <label for="message">Wiadomość</label>
         <textarea id="message" placeholder="Wiadomość" rows="5" bind:value={formData.message} required></textarea>
       </div>
-      <div class="form-group checkbox-row">
+      <div class="form-group privacy-group checkbox-row">
         <input id="privacy" type="checkbox" bind:checked={formData.privacy} />
         <label for="privacy">Zgadzam się z polityką prywatności.</label>
       </div>
-      <button type="submit" class="submit-btn" disabled={isSubmitting}>
-        {isSubmitting ? 'wysyłanie...' : 'wyślij wiadomość'}
-      </button>
+   <!--    <button type="submit" class="submit-btn" disabled={isSubmitting}>
+        
+      </button> -->
+<div class="text-left">
+      <CtaButton  text="{isSubmitting ? 'wysyłanie...' : 'wyślij wiadomość'}" type="submit"  disabled={isSubmitting} />
+      
+</div>
       {#if submitMessage}
         <div class="success-message">{submitMessage}</div>
       {/if}
@@ -122,36 +180,83 @@
   </div>
 </section>
 
-<style>
+<style lang="scss">
+  .country-select{
+    max-width: 120px;
+  }
+.form-group.privacy-group.checkbox-row {
+  display: flex;
+    flex-direction: row;
+    padding-top: 20px;;
+padding-bottom: 20px;;
+
+    label{
+      font-size: 12px;
+    }
+}
 .contact-flex {
   display: flex;
-  gap: 40px;
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 8px 32px rgba(44, 90, 160, 0.08);
-  padding: 40px 32px;
-  max-width: 1200px;
-  margin: 40px auto;
-  align-items: stretch;
+    gap: 0px;
+    box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
+    border-radius: 14px;
+    max-width: 1060px;
+    margin: 126px auto;
+    align-items: stretch;
+   
 }
+.text-left{
+  display: flex;
+    text-align: left;
+    width: 100%;
+    align-content: end;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.contact-left:before {
+  content: "x";
+  
+    position: absolute;
+    overflow: hidden;
+    width: 110px;
+    height: 110px;
+    margin-left: -70px;
+    margin-top: -74px;
+    background: #ffffff;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    border-left: 2px solid rgb(255 255 255);
+    border-top: 2px solid rgb(255, 255, 255);
+    background-repeat: no-repeat;
+}
+
+:global(.contact-flex .cta-button:hover){
+  width: 64%;
+}
+
 .contact-left {
   flex: 1.1;
-  background: #232c32;
-  color: #fff;
-  border-radius: 12px;
-  padding: 40px 36px 32px 36px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 340px;
-  max-width: 480px;
+    background: #232c32;
+    color: #fff;
+    border-radius: 20px 0px 0px 20px;
+    padding: 40px 36px 32px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 340px;
+    max-width: 480px;
+    background-image: url(/src//assets/kontakt-background.jpg);
+    background-size: cover;
 }
 .contact-left h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 32px;
-  line-height: 1.2;
+  font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 32px;
+    line-height: 1.2;
+    color: white;
+    max-width: 300px;
+    left: -31px;
 }
+
 .contact-bullets {
   list-style: none;
   padding: 0;
@@ -165,14 +270,14 @@
   line-height: 1.5;
 }
 .bullet {
-  display: inline-block;
-  width: 6px;
-  height: 28px;
-  background: #cddc39;
-  border-radius: 2px;
-  margin-right: 16px;
-  margin-top: 4px;
-  flex-shrink: 0;
+  width: 11px;
+    height: 63px;
+    background: var(--color-primary);
+    border-radius: 0;
+    margin-right: 16px;
+    margin-top: 4px;
+    flex-shrink: 0;
+    position: relative;
 }
 .contact-info-block {
   margin: 32px 0 18px 0;
@@ -218,7 +323,6 @@
   max-width: 480px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(44,90,160,0.06);
   padding: 36px 32px 28px 32px;
   display: flex;
   flex-direction: column;
@@ -270,29 +374,7 @@
   gap: 10px;
   margin-top: 4px;
 }
-.submit-btn {
-  width: 100%;
-  padding: 14px 0;
-  background: linear-gradient(90deg, #cddc39 0 20%, #fff 20% 100%);
-  color: #232c32;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  margin-top: 8px;
-  box-shadow: 0 2px 8px rgba(44,90,160,0.06);
-  transition: background 0.2s, color 0.2s;
-}
-.submit-btn:hover:not(:disabled) {
-  background: linear-gradient(90deg, #fff 0 80%, #cddc39 80% 100%);
-  color: #232c32;
-}
-.submit-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
+
 .success-message {
   margin-top: 12px;
   padding: 12px;

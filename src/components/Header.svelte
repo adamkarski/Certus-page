@@ -4,6 +4,7 @@
   const toggleMenu = () => {
     isMenuOpen = !isMenuOpen
   }
+ 
 </script>
 
 <header class="header">

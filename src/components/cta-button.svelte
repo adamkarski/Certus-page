@@ -1,10 +1,13 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
   export let text: string = "OK";
+  export let type: string = "button";
+  export let disabled: boolean = false;
+
   const dispatch = createEventDispatcher();
 </script>
 
-<button class="cta-button-hero" on:click={() => dispatch('click')}>
+<button class="cta-button" on:click={() => dispatch('click')}>
   <span class="maszyny_span">{text}</span>
   <svg class="cta-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158.04 93.76">
     <polyline class="cls-1" points="109.49 0 158.04 0 49.13 93.76 0 93.76"/>
@@ -12,9 +15,9 @@
   </svg>
 </button>
 
-<style>
- .cta-button-hero { 
- background-color: #96a500; 
+<style lang="scss">
+ .cta-button { 
+ background-color: #eeeeee; 
  border-radius: 12px; 
  border-top-left-radius: 0px; 
  padding-left: 40px; 
@@ -33,8 +36,16 @@
   margin-left: 34px;
     transition: all ease-in-out 0.2s;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+  color: var(--color-text-primary);
+  :hover{
+  color: #eeeeee;
 }
-
+}
+.cta-button:hover span{
+  margin-right: auto;
+  margin-left: 1em;
+  color: #eeeeee;
+}
 .cta-svg {
     width: 2em;
     height: 1.2em;
@@ -43,41 +54,55 @@
     position: absolute;
 }
 
-:global(.activeMachine .cta-button-hero) {
-  position: absolute;
-  left: 4em;
-  bottom: 4em;
-}
-:global(.flex_table .cta-button-hero) {
-  position: relative;
-  top: 1.6em;
-  left: -1em;
-}   
+
 .cta-svg .cls-1 {
-  fill: #c5d418;
-  transition: fill 0.2s;
-}
-.cta-svg .cls-2 {
   fill: #96a500;
   transition: fill 0.2s;
 }
+.cta-svg .cls-2 {
+  fill: #eeeeee;
+  transition: fill 0.2s;
+}
 
-.cta-button-hero:hover {
+.cta-button:hover {
   /* background: #222; */
   background-color: #7e8c00;
 }
-.cta-button-hero:hover .cta-svg .cls-1 {
+.cta-button:hover .cta-svg .cls-1 {
  /*  fill: #95a500; */
 }
-.cta-button-hero:hover .cta-svg .cls-2 {
+.cta-button:hover .cta-svg .cls-2 {
   fill: #7e8c00;
 }
 
 
+:global(.oferta-card:hover)
+ {
+ 
+  .cta-button:hover {
+  /* background: #222; */
+  background-color: #7e8c00;
+}
+.cta-button:hover .cta-svg .cls-1 {
+ /*  fill: #95a500; */
+}
+.cta-button:hover .cta-svg .cls-2 {
+  fill: #7e8c00;
+}
+  .cta-button:hover span{
+  margin-right: auto;
+  margin-left: 1em;
+  color: #eeeeee;
+}
+
+
+ }
 
 
 
-.cta-button-hero:focus {
+
+
+.cta-button:focus {
   outline: none;
   outline-offset: 0px;
 }

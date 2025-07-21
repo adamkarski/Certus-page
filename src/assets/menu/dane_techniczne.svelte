@@ -2,9 +2,13 @@
 <script lang="ts">
   export let href: string = '#';
   export let text: string = 'xxx';
+
+  import { createEventDispatcher } from 'svelte';
+  const dispatch = createEventDispatcher();
+
 </script>
 
-<a {href} class="icon-link">
+<a {href} class="icon-link" on:click={() => dispatch('click')}>
   <svg
     id="Layer_1"
     data-name="Layer 1"

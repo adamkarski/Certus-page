@@ -11,10 +11,15 @@
         <div class="footer-logo">
           <LogoCertus />
         </div>
-        <p class="footer-description">
-          Your trusted partner in financial success. We provide comprehensive
-          financial solutions to help businesses achieve their goals.
-        </p>
+        <h5 class="footer-description">
+          Możesz nam zaufać!
+        </h5>
+        
+        <h5 class="footer-description-secondary">
+          Jesteśmy polskim producentem z ponad 10 letnim doświadczeniem w branży maszyn CNC.
+
+        </h5>
+
         <div class="social-links">
           <a href="#" class="social-link">Facebook</a>
           <a href="#" class="social-link">Twitter</a>
@@ -24,41 +29,49 @@
       </div>
 
       <div class="footer-section">
-        <h4 class="footer-title">SERVICES</h4>
+        <h4 class="footer-title">PRODUKTY</h4>
         <ul class="footer-links">
-          <li><a href="#" class="footer-link">Business Consulting</a></li>
-          <li><a href="#" class="footer-link">Financial Planning</a></li>
-          <li><a href="#" class="footer-link">Investment Management</a></li>
-          <li><a href="#" class="footer-link">Banking Solutions</a></li>
-          <li><a href="#" class="footer-link">Risk Management</a></li>
+          <li><a href="#" class="footer-link">Frezarki CNC</a></li>
+          <li><a href="#" class="footer-link">Tokarki CNC</a></li>
+          <li><a href="#" class="footer-link">Grawerki CNC</a></li>
+          <li><a href="#" class="footer-link">Plotery CNC</a></li>
+       
         </ul>
       </div>
 
       <div class="footer-section">
-        <h4 class="footer-title">COMPANY</h4>
+        <h4 class="footer-title">FIRMA</h4>
         <ul class="footer-links">
-          <li><a href="#" class="footer-link">About Us</a></li>
-          <li><a href="#" class="footer-link">Our Team</a></li>
-          <li><a href="#" class="footer-link">Careers</a></li>
-          <li><a href="#" class="footer-link">News</a></li>
-          <li><a href="#" class="footer-link">Contact</a></li>
+          <li><a href="#" class="footer-link">O nas</a></li>
+          <li><a href="#" class="footer-link">Wszystkie maszyny CNC</a></li>
+              <li><a href="#" class="footer-link">Zwroty / Reklamacje</a></li>
+          <li><a href="#" class="footer-link">Dokumentacja</a></li>
+          
+          <li><a href="#" class="footer-link">Kontakt</a></li>
         </ul>
       </div>
 
       <div class="footer-section">
-        <h4 class="footer-title">CONTACT INFO</h4>
+        <h4 class="footer-title">Kontakt</h4>
         <div class="contact-info">
           <p class="contact-item">
-            <span class="contact-icon">📍</span>
-            123 Financial Street, NY 10001
+            <span class="contact-icon">
+              <img src="src/assets/ikony/lokalizacja.svg" alt="Lokalizacja">
+            </span>
+           <a href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</a>
+            
           </p>
           <p class="contact-item">
-            <span class="contact-icon">📞</span>
-            +1 (555) 123-4567
+            <span class="contact-icon">
+              <img src="src/assets/ikony/telefon.svg" alt="Telefon">
+            </span>
+            <a href="tel:+48 606 324 406">+48 606 324 406</a>
           </p>
           <p class="contact-item">
-            <span class="contact-icon">✉️</span>
-            info@financer.com
+            <span class="contact-icon">
+              <img src="src/assets/ikony/email.svg" alt="Email">
+            </span>
+           <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a>
           </p>
         </div>
       </div>
@@ -110,6 +123,13 @@
     line-height: 1.6;
     margin-bottom: 30px;
     font-size: 15px;
+  }
+  .footer-description-secondary{
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-weight: 400;
+    max-width: 23vh;
   }
 
   .social-links {

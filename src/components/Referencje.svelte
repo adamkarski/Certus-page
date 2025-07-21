@@ -93,7 +93,7 @@
   height: 28px;
   margin-right: 2px;
   margin-top: 2px;
-  filter: hue-rotate(60deg) brightness(0.8) saturate(2.5);
+ 
 }
 .info-title {
   font-size: 2rem;

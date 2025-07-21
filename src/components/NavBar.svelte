@@ -1,5 +1,13 @@
-<script>
+<script lang="ts">
+	// import LottiePlayer from './../../node_modules/@lottiefiles/svelte-lottie-player/src/components/LottiePlayer.svelte';
   import LogoCertus from '../assets/logo_certus.svelte';
+  import { onMount } from 'svelte';
+  let LottiePlayer;
+
+onMount(async () => {
+    const module = await import('@lottiefiles/svelte-lottie-player');
+    LottiePlayer = module.LottiePlayer;
+});
 </script>
 
 <div class="navbar">
@@ -32,20 +40,27 @@
     </div>
     <div class="logo-certus">
       <a href="/">
-        <LogoCertus/>
+   <!--      <LogoCertus/> -->
+        {#if LottiePlayer}
+
+        <!-- src="src/assets/logo-certus.json?"+Math.random() -->
+         <LottiePlayer
+  
+  src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json?"+Math.random()
+  autoplay={true}
+  loop={false}
+  controls={false}
+></LottiePlayer> 
+{/if}
       </a>
     </div>
   </div>
-<style>
+<style lang="scss">
 
-
-.logo-text {
-    font-size: 28px;
-    font-weight: 800;
-    color: #2c5aa0;
-    letter-spacing: 1px;
-  }
-
+:global(.lottie-player .animation svg > g > g:nth-child(5)){
+  // g > g:nth-child(3) > g > g:nth-child(6)
+  opacity: 0.0;
+}
 
    .rectangle-15 {
   width: 1380px;
@@ -204,68 +219,7 @@
   opacity: 0;
 }
 
-.vector_05 {
-  width: 57.40px;
-  height: 61px;
-  left: 0px;
-  top: 0px;
-  position: absolute;
-  background: white;
-}
 
-.vector_06 {
-  width: 54px;
-  height: 26px;
-  left: 175px;
-  top: 17px;
-  position: absolute;
-  background: white;
-}
-
-.vector_07 {
-  width: 33px;
-  height: 26px;
-  left: 227px;
-  top: 17px;
-  position: absolute;
-  background: white;
-}
-
-.vector_08 {
-  width: 32px;
-  height: 26px;
-  left: 141px;
-  top: 17px;
-  position: absolute;
-  background: white;
-}
-
-.vector_09 {
-  width: 29px;
-  height: 26px;
-  left: 85px;
-  top: 17px;
-  position: absolute;
-  background: white;
-}
-
-.vector_10 {
-  width: 28px;
-  height: 16px;
-  left: 113px;
-  top: 27px;
-  position: absolute;
-  background: white;
-}
-
-.vector_11 {
-  width: 25px;
-  height: 5px;
-  left: 119px;
-  top: 17px;
-  position: absolute;
-  background: white;
-}
 
 .isolation_mode {
   width: 31px;
@@ -305,19 +259,19 @@
   border-radius: 41px;
 }
 
-.rectangle-80 {
-  width: 355px;
-  height: 60px;
-  left: 1009px;
-  top: 15px;
-  position: absolute;
-  background: linear-gradient(0deg, rgba(82.01, 81.12, 81.12, 0.66) 0%, rgba(82.01, 81.12, 81.12, 0.66) 100%);
-  border-radius: 41px;
-}
 
 .navbar {
   width: 1380px;
   height: 90px;
   position: relative;
+
+  a:focus{
+
+outline: none;
+outline-offset: 0px;
+
+  }
+
+
 }
 </style>

@@ -7,12 +7,23 @@
   import MenuEmail from "../assets/menu/menu_email.svelte";
   import MenuDownload from "../assets/menu/menu_download.svelte";
   import CtaButtonHero from "./cta-button-hero.svelte";
+  import { onMount } from "svelte";
+  import { browser } from "$app/environment";
 
   register();
 
   let activeCategory = null;
   let activeMachine = null;
   let expandedView = false;
+  let swiperReady = false;
+  onMount(() => {
+    setTimeout(() => {
+      swiperReady = true;
+    }, 150); // 150ms na inicjalizację Swipera
+  });
+  function handleSwiperInit() {
+    swiperReady = true;
+  }
   const list = [
     {
       id: "frezarki",
@@ -69,58 +80,60 @@
   };
 
   // --- BLOKADA SCROLLA BODY DLA expandedView ---
-  $: {
-    if (activeMachine) {
-      document.body.classList.add('no-scroll-hero');
-    } else {
-      document.body.classList.remove('no-scroll-hero');
-    }
+  $: if (browser) {
+   if (activeMachine) document.body.classList.add('no-scroll-hero');
+    else document.body.classList.remove('no-scroll-hero');
   }
+  $: console.log('activeMachine=', activeMachine);
   // --- KONIEC BLOKADY SCROLLA ---
 </script>
 
 <!-- Tło i gradient pozostają statyczne -->
-<section class="hero">
+<section class="hero"  >
   <div class="hero-bg gradientHero">
-    <div class="hero-overlay"></div>
+    <div class="hero-overlay" ></div>
 
     <!-- Kontener dla animacji crossfade -->
-    <div class="hero-content">
-      <!-- 1. Slider - pokazuje się gdy nie ma aktywnej kategorii -->
+    <div class="hero-content" in:fade={{ duration: 650 , delay: 800}}>
+       <!-- 1. Slider - pokazuje się gdy nie ma aktywnej kategorii -->
       {#if !activeCategory}
-        <div
-          class="view slider-view"
-          in:fade={fadeConfig}
-          out:fade={fadeConfig}
-        >
-          <swiper-container
-            loop
-            pagination
-            space-between="0"
-            slides-per-view="2"
-            slides-per-group="2"
-            mousewheel
-            autoplay
+        {#if swiperReady}
+          <div
+            class="view slider-view"
+            in:fade={fadeConfig}
+            out:fade={fadeConfig}
           >
-            {#each list as cat}
-              <swiper-slide>
-                <div
-                  class="items items-left lift"
-                  on:click={() => open(cat.id)}
-                >
-                  <div class="headlines">
-                    <div class="topline">{cat.title}</div>
-                  </div>
-                  <div class="item">
-                    <div class="image">
-                      <img src={cat.img} alt="CERTUS 7111" draggable="false" />
+            <swiper-container
+              loop
+              pagination
+              space-between="0"
+              slides-per-view="2"
+              slides-per-group="2"
+              mousewheel
+              autoplay
+            >
+              {#each list as cat}
+                <swiper-slide>
+                  <div
+                    class="items items-left lift"
+                    on:click={() => open(cat.id)}
+                  >
+                    <div class="headlines">
+                      <div class="topline">{cat.title}</div>
+                    </div>
+                    <div class="item">
+                      <div class="image">
+                        <img src={cat.img} alt="CERTUS 7111" draggable="false" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </swiper-slide>
-            {/each}
-          </swiper-container>
-        </div>
+                </swiper-slide>
+              {/each}
+            </swiper-container>
+          </div>
+        {:else}
+          <div class="view slider-view" style="min-height: 400px;"></div>
+        {/if}
       {/if}
 
       <!-- 2. Widoki kategorii - każdy z własną animacją -->
@@ -313,8 +326,8 @@
           <div class="right_menu">
             <nav>
               <ul>
-                <li on:click={expandRightInfo}>
-                  <DaneTechniczne text="Dane techniczne" />
+                <li >
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
                 </li>
                 <li><MenuDownload text="Do pobrania" href="#" /></li>
                 <li><MenuEmail text="Kontakt" href="#" /></li>
@@ -559,11 +572,7 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(208.74, 220.7, 224.12, 0.81) 0%,
-        rgba(173, 180, 182, 0.85) 100%
-      );
+      background: linear-gradient(180deg, rgb(208 201 201 / 81%) 0%, rgb(136 126 126 / 85%) 100%);
       border-radius: 1rem;
       border-left: 11px solid rgb(150, 165, 0);
       z-index: 1;

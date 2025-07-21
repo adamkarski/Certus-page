@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CtaButton from "./cta-button.svelte";
+  import CtaButton from "./cta-button-kategory.svelte";
   const oferta = [
     {
       icon: "💼",
@@ -41,6 +41,8 @@
 </script>
 
 <section id="oferta" class="oferta">
+
+
   <div class="oferta-container">
     <div class="section-header">
       <h2 class="section-title">Polski producent maszyn CNC</h2>
@@ -87,14 +89,35 @@
 
         <CtaButton text="Plotery CNC" />
       </div>
-
-
-
     </div>
   </div>
+  <div class="first-container-back">
+    
+    
+
+  </div>
+
+
 </section>
 
-<style>
+<style lang="scss">
+ 
+  :global(.first-container-back){
+ 
+    background-image: url(src/assets/first-block-polyline.svg);
+    position: absolute;
+    top: 77.3vh;
+    width: 100%;
+    height: 44px;
+    background-repeat: no-repeat;
+    background-position-x: -1500px;
+    background-size: cover;o
+    img{
+      height: 37px;
+
+    }
+
+  }
   .oferta {
     width: 100%;
     padding: 100px 0;
@@ -102,30 +125,13 @@
   }
 
   .oferta-container {
+    overflow: hidden;
     width: 100%;
     padding: 0 20px;
   }
 
   .section-header {
     margin-bottom: 80px;
-  }
-
-  .section-title {
-    /*    font-size: 42px;
-    font-weight: 800;
-    color: #2c5aa0;
-    margin-bottom: 20px;
-    letter-spacing: 2px; */
-  }
-
-  .title-underline {
-    width: 80px;
-    height: 4px;
-    background: #ffd700;
-    margin: 0 auto 30px;
-  }
-
-  .section-subtitle {
   }
 
   .oferta-grid {
@@ -138,53 +144,28 @@
     padding: 40px 30px;
     border-radius: 10px;
     text-align: center;
-    width: 4em;
+    background: gray;
     transition: all 0.3s ease;
   }
 
   .oferta-card:hover {
     transform: translateY(-10px);
-    /* border-top-color: #2c5aa0; */
+ 
+    
   }
+
+
+
 
   .oferta-icon {
     font-size: 60px;
     margin-bottom: 25px;
     display: block;
     width: 4em;
-  }
 
-  .oferta-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #2c5aa0;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-  }
-
-  .oferta-description {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    font-size: 15px;
-  }
-
-  .oferta-btn {
-    background: #2c5aa0;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 5px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 14px;
-  }
-
-  .oferta-btn:hover {
-    background: #1a4480;
-    transform: translateY(-2px);
+    img{
+      margin-left: 0.6em;
+    }
   }
 
   @media (max-width: 768px) {
