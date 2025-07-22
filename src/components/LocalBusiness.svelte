@@ -1,6 +1,6 @@
 <svelte:head>
   <script type="application/ld+json">
-    {JSON.stringify({
+    {
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "Organization"],
       "name": "Certus",
@@ -80,7 +80,7 @@
           "bestRating": "5"
         }
       }
-    })}
+    }
   </script>
 </svelte:head> 
 
