@@ -150,7 +150,11 @@ section .section-header {
 }
 
 section .section-subtitle {
-  margin-left: 1em;
+  margin-left: 1.4em;
+  color: var(--color-text-secondary);
+  font-size: 21px;
+  line-height: 1.6;
+  margin-top: 0.5em;
 }
 
 section .section-title {
@@ -159,6 +163,7 @@ section .section-title {
   font-weight: 600;
   font-size: 38px;
   text-align: left;
+  
 }
 
 section .section-title::before {
@@ -170,20 +175,13 @@ section .section-title::before {
   background-image: url(/assets/red-arrow.svg);
 }
 
-section .section-subtitle {
-  color: var(--color-text-secondary);
-  font-size: 21px;
-  line-height: 1.6;
-  /* max-width: 600px; */
-  /* margin: 0 auto; */
-}
-
 /* Utility classes */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  padding-left: 9.4em !important;
+  padding-right: 9.4em !important;
 }
+
+
 
 .text-center {
   text-align: center;

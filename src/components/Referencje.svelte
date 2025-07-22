@@ -48,7 +48,7 @@
   </div>
 </section>
 
-<style>
+<style lang="scss">
 .info-cards-section {
   width: 100%;
   display: flex;
@@ -82,18 +82,36 @@
   flex-direction: column;
   gap: 18px;
   justify-content: flex-start;
+  position: relative; // Dodaj to!
+
 }
+.info-card::before{
+  content: url(/assets/images/triangle.svg); // Użyj ścieżki absolutnej, jak w <img>
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 119px;
+  height: 68px;
+  pointer-events: none;
+   
+
+  }
 .info-card-header {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 8px;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: flex-start;
+    height: 7em;
+ 
 }
 .info-icon {
-  width: 28px;
-  height: 28px;
-  margin-right: 2px;
-  margin-top: 2px;
+  width: 34px;
+    height: 44px;
+    margin-right: 2px;
+    margin-top: 2px;
  
 }
 .info-title {
@@ -101,12 +119,15 @@
   font-weight: 700;
   color: #555a5e;
   line-height: 1.1;
+  margin-top: 6px;
 }
 .info-desc {
   font-size: 1.1rem;
   color: #222;
   margin: 0;
   font-weight: 400;
+  padding-left: 1em;
+  bottom: 0px;
 }
 @media (max-width: 1100px) {
   .info-cards-wrapper {

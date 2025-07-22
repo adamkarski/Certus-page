@@ -3,15 +3,16 @@
 </script>
 
 <section id="o-nas" class="o-nas">
-  <div class="o-nas-container">
+  <div class="o-nas-container container">
     <div class="o-nas-content">
       <div class="o-nas-text">
-        <h2 class="section-title">Nasze maszyny CNC łączą polską inżynierię</h2>
+        <h2 class="section-title ">Nasze maszyny CNC łączą polską inżynierię</h2>
 
-        <p class="o-nas-description">
+        <p class=" section-subtitle">
           z najnowocześniejszymi technologiami obróbki.
         </p>
-        <p class="o-nas-description">
+        <br/><br/>
+        <p class="section-subtitle">
           Zaprojektowane z myślą o małych zakładach i dużych kombinatach,
           oferują:
         </p>

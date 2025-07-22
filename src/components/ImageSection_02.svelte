@@ -100,8 +100,9 @@ h3 {
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
+      z-index: 2;
       pointer-events: none;
+      
 
       .pattern.one {
         background-image: url(/assets/images/pattern-image2-1.png);
@@ -118,9 +119,9 @@ h3 {
         position: absolute;
         width: 100%;
         height: 63px;
-        z-index: 10;
-        left: 0px;
-        bottom: -7px;
+        z-index: 11;
+        left: 0;
+        bottom: 0;
         pointer-events: auto;
       }
     }
@@ -144,15 +145,15 @@ h3 {
   }
   .image-header-02 {
     min-height: 80px;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    width: 100%;
     text-align: left;
     padding: 2rem 0 1rem 0;
     background: transparent;
     position: absolute;
-    z-index: 2;
-    margin-left: 11em;
-    margin-top: -15em;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    padding-left: 11em;
   }
   .image-header-02 h2 {
     margin: 0;

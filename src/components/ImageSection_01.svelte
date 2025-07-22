@@ -58,6 +58,7 @@
     height: 100%;
     z-index: 1;
     pointer-events: none;
+    opacity: 0.8;
 
     .pattern.one {
       background-image: url(/assets/images/pattern-image1.png);

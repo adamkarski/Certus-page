@@ -61,6 +61,7 @@
     height: 100%;
     z-index: 1;
     pointer-events: none;
+    opacity: 0.6;
   }
   .video-pattern-1 {
     background-image: url(/assets/images/pattern-video-1.png);
