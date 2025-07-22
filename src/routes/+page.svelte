@@ -9,6 +9,7 @@
   import ImageSection_01 from '../components/ImageSection_01.svelte';
   import ImageSection_02 from '../components/ImageSection_02.svelte';
   import Referencje from '../components/Referencje.svelte';
+  import LocalBusiness from '../components/LocalBusiness.svelte';
 </script>
 
 <svelte:head>
@@ -18,6 +19,7 @@
 
 <div class="app">
   <Header />
+  <LocalBusiness/>
   <main>
     <Hero />
     <Oferta />
