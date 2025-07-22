@@ -105,7 +105,7 @@ onMount(async () => {
         <div class="footer-bottom-links">
           <a href="#" class="footer-link">Polityka prywatności</a>
         
-          <a href="/sitemap" class="footer-link">Mapa witryny</a>
+          <a href="#" class="footer-link">Mapa witryny</a>
         </div>
       </div>
     </div>
