@@ -6,7 +6,7 @@
   const sectionId = "image-section-02";
   let headerEl: HTMLDivElement;
 
-  const imgSrc = '/assets/certus-szkolenia-wdrozenia.jpg';
+  const imgSrc = "/assets/certus-szkolenia-wdrozenia.jpg";
 
   onMount(() => {
     const observer = new IntersectionObserver(
@@ -15,7 +15,7 @@
           setSectionVisible(sectionId);
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.05 },
     );
     if (headerEl) observer.observe(headerEl);
     return () => observer.disconnect();
@@ -31,67 +31,147 @@
       alt="Certus maszyny tworzone z pasją i precyzją"
       class="plain-image-02"
     />
-    <div class="image-header-02" bind:this={headerEl} class:visible={visible}>
+    <div class="image-header-02" bind:this={headerEl} class:visible>
       {#if visible}
         <h2 class="no-sel" in:fade={{ duration: 600, delay: 800 }}>
-          Pomagamy, wdrażamy,<br/>
-          optymalizujemy procesy produkcyjne
+          Od pomysłu do gotowego rozwiązania
         </h2>
 
-        <p>Umów bezpłatną konsultację techniczną z naszym ekspertem</p>
+        <h3>Umów bezpłatną konsultację techniczną z naszym ekspertem</h3>
       {/if}
     </div>
-    <div class="phone" bind:this={headerEl} class:visible={visible}>
+    <div class="phone-holder" bind:this={headerEl} class:visible>
       {#if visible}
         <div class="no-sel" in:fade={{ duration: 600, delay: 800 }}>
-          <img src="/assets/phone.svg" alt="kontakt telefoniczny" />
-          <a href="tel:+48601601601">+48 601 601 601</a>
-       </div>
+          <img src="/assets/ikony/telefon.svg" alt="kontakt telefoniczny" />
+          <a href="tel:+48606324406">606 324 406</a>
+        </div>
       {/if}
+    </div>
+    <div class="pattern-overlay no-sel">
+      <div class="pattern one"></div>
+      <div class="pattern two"></div>
     </div>
   </div>
 </section>
 
-<style>
-.image-section-02 {
-  width: 100vw;
-  position: relative;
-  overflow: hidden;
-}
-.image-container-02 {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  background: linear-gradient(180deg,rgba(247, 247, 247, 1) 0%, rgba(255, 255, 255, 1) 100%);
-}
-.plain-image-02 {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  object-position: center top;
-}
-.image-header-02 {
-  min-height: 80px;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  text-align: left;
-  padding: 2rem 0 1rem 0;
-  background: transparent;
-  position: absolute;
-  z-index: 2;
-  margin-left: 11em;
-  margin-top: -15em;
-}
-.image-header-02 h2 {
-  margin: 0;
-  font-size: 2.5rem;
-  color: white;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
-@media (max-width: 768px) {
-  .image-header-02 h2 {
-    font-size: 1.5rem;
+<style lang="scss">
+
+h3 {
+    margin: 0;
+    color: white;
+    font-weight: 300;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
   }
-}
+.image-section-02 {
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+
+    .phone-holder {
+      position: absolute;
+      right: 8em;
+      width: auto;
+      height: auto;
+      margin-top: -88px;
+      z-index: 100;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+
+        img {
+          width: 34px;
+        }
+        a {
+          font-size: 3em;
+          font-weight: 800;
+          padding-left: 0.5em;
+        }
+      }
+    }
+
+    .pattern-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+
+      .pattern.one {
+        background-image: url(/assets/images/pattern-image2-1.png);
+        position: absolute;
+        width: 157px;
+        height: 181px;
+        z-index: 10;
+        right: -27px;
+        top: -42px;
+        pointer-events: auto;
+      }
+      .pattern.two {
+        background-image: url(/assets/images/pattern-image1-2.png);
+        position: absolute;
+        width: 100%;
+        height: 63px;
+        z-index: 10;
+        left: 0px;
+        bottom: -7px;
+        pointer-events: auto;
+      }
+    }
+  }
+  .image-container-02 {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    background: linear-gradient(
+      180deg,
+      rgba(247, 247, 247, 1) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+  .plain-image-02 {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .image-header-02 {
+    min-height: 80px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    text-align: left;
+    padding: 2rem 0 1rem 0;
+    background: transparent;
+    position: absolute;
+    z-index: 2;
+    margin-left: 11em;
+    margin-top: -15em;
+  }
+  .image-header-02 h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    margin-left: -0.8em;
+  }
+  .image-header-02 h2:before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 46px;
+      margin-left: -40px;
+      background-image: url(assets/red-arrow.svg);
+    }
+  @media (max-width: 768px) {
+    .image-header-02 h2 {
+      font-size: 1.5rem;
+    }
+  }
 </style>
