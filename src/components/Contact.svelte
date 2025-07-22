@@ -244,7 +244,7 @@ padding-bottom: 20px;;
     justify-content: space-between;
     min-width: 340px;
     max-width: 480px;
-    background-image: url(/src//assets/kontakt-background.jpg);
+    background-image: url(/assets/kontakt-background.jpg);
     background-size: cover;
 }
 .contact-left h2 {

@@ -39,15 +39,15 @@
     <div class="image-header" bind:this={headerEl} class:visible={visible}>
       {#if visible}
         <h1 class="no-sel" in:fade={{ duration: 600, delay: 800 }}>
-          Pomagamy, wdrażamy,<br/>
-          optymalizujemy procesy produkcyjne
+          Tworzone z pasją i precyzją
         </h1>
+        <h3>Optymalne do wykonywanych zadań.</h3>
       {/if}
     </div>
   </div>
 </section>
 
-<style>
+<style lang="scss">
 .image-header {
   min-height: 80px;
   width: 100vw;
@@ -59,18 +59,28 @@
   z-index: 2;
   margin-left: 11em;
   margin-top: -15em;
+ 
+  h1:before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 46px;
+      margin-left: -40px;
+      background-image: url(assets/red-arrow.svg);
+    }
 }
-.image-header h1 {
+.image-header h1{
   margin: 0;
   font-size: 2.5rem;
   color: white;
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  
 }
 .image-container {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  background: linear-gradient(180deg,rgba(247, 247, 247, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(180deg,rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
 }
 .masked-image {
   width: 100%;

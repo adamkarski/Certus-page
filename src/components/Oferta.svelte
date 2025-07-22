@@ -144,8 +144,12 @@
     padding: 40px 30px;
     border-radius: 10px;
     text-align: center;
-    background: gray;
+   
     transition: all 0.3s ease;
+    display: grid;
+    align-items: end;
+    justify-content: center;
+    align-content: center;
   }
 
   .oferta-card:hover {

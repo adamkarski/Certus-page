@@ -1,16 +1,42 @@
 <script lang="ts">
-  // import LottiePlayer from './../../node_modules/@lottiefiles/svelte-lottie-player/src/components/LottiePlayer.svelte';
-  import LogoCertus from "../assets/logo_certus.svelte";
+ 
   import { onMount } from "svelte";
+  import { preloaderVisible } from '$lib/preloaderStore';
   let LottiePlayer;
 
+  let scrolled = false;
+  let showLottie = false;
+
   onMount(async () => {
+    // Dynamiczny import LottiePlayer
     const module = await import("@lottiefiles/svelte-lottie-player");
     LottiePlayer = module.LottiePlayer;
+
+    // Obsługa scrolla
+    const handleScroll = () => {
+      scrolled = window.scrollY > 50;
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    // Nasłuchuj na zmianę preloadera
+    const unsubscribe = preloaderVisible.subscribe((visible) => {
+      if (!visible) {
+        showLottie = false;
+        setTimeout(() => {
+          showLottie = true; // wymuś ponowne renderowanie animacji
+        }, 0);
+      }
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      unsubscribe();
+    };
   });
 </script>
 
-<div class="navbar no-sel">
+<div class="navbar no-sel" class:scrolled={scrolled}>
   <!-- 
     <div class="logo">
         <span class="logo-text">FINANCER</span>
@@ -40,15 +66,13 @@
   <div class="logo-certus">
     <a href="/">
      
-      {#if LottiePlayer}
-        <!-- src="assets/logo-certus.json?"+Math.random() -->
-        <LottiePlayer
-          src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json?"
-          +Math.random()
+      {#if showLottie && LottiePlayer}
+        <svelte:component this={LottiePlayer}
+          src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json?" + Math.random()
           autoplay={true}
           loop={false}
           controls={false}
-        ></LottiePlayer>
+        />
       {/if}
     </a>
   </div>
@@ -263,10 +287,16 @@
     width: 1380px;
     height: 90px;
     position: relative;
+    transition: background-color 0.3s ease-in-out;
 
     a:focus {
       outline: none;
       outline-offset: 0px;
     }
+  }
+
+  .navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 </style>

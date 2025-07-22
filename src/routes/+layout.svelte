@@ -3,6 +3,7 @@
   import { page } from '$app/stores';
   import '../lib/app.css';
   import { onMount } from 'svelte';
+  import { preloaderVisible } from '$lib/preloaderStore';
   let loading = true;
   onMount(() => {
     window.addEventListener('load', () => {
@@ -10,6 +11,7 @@
     });
     setTimeout(() => loading = false, 2000); // fallback
   });
+  $: preloaderVisible.set(loading);
 </script>
 
 {#if loading}
