@@ -8,7 +8,7 @@
       "url": "https://certus.pl",
       "logo": "https://www.mg-certus.pl/wp-content/uploads/2024/01/logo.png",
       "image": "https://www.mg-certus.pl/wp-content/uploads/2024/01/logo.png",
-      "description": "Polski producent maszyn CNC, ploterów i frezarek do obróbki metalu. Precyzja do ±0,01 mm, intuicyjne sterowanie i pełny serwis.",
+      "description": "Polski producent maszyn CNC, ploterów i frezarek do obróbki metalu, drewna i tworzyw. Precyzja do ±0,01 mm, intuicyjne sterowanie i pełny serwis.",
       "telephone": "+48 606 324 406",
       "email": "biuro@mg-certus.pl",
       "vatID": "PL5512037411",

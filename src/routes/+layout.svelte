@@ -2,7 +2,21 @@
   import { fade } from 'svelte/transition';
   import { page } from '$app/stores';
   import '../lib/app.css';
+  import { onMount } from 'svelte';
+  let loading = true;
+  onMount(() => {
+    window.addEventListener('load', () => {
+      loading = false;
+    });
+    setTimeout(() => loading = false, 2000); // fallback
+  });
 </script>
+
+{#if loading}
+  <div class="preloader">
+    <img src="/assets/logo-certus.svg" alt="Loading..." width="64" height="64" />
+  </div>
+{/if}
 
 {#key $page.url.pathname}
   <div transition:fade>
@@ -11,6 +25,16 @@
 {/key}
 
 <style>
+  .preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s;
+  }
   :global(*) {
     margin: 0;
     padding: 0;
