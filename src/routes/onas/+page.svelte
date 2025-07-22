@@ -7,7 +7,7 @@
   import Contact from '../../components/Contact.svelte';
   import ImageSection_02 from '../../components/ImageSection_02.svelte';
   import Referencje from '../../components/Referencje.svelte';
-  
+  import LocalBusiness from '../../components/LocalBusiness.svelte';
 </script>
 
 <svelte:head>
@@ -15,8 +15,11 @@
   <meta name="description" content="O naszej firmie, poznaj naszą historię i zespół" />
 </svelte:head>
 
+
+
 <div class="app">
   <Header />
+  <LocalBusiness/>
   <main>
     <Onas />
     <ImageSection_01 />

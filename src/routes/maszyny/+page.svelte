@@ -2,12 +2,16 @@
   import Header from '../../components/Header.svelte'
   import Footer from '../../components/Footer.svelte'
   import Oferta from '../../components/Oferta.svelte';
+
 </script>
 
 <svelte:head>
   <title>Maszyny CNC - Certus</title>
   <meta name="description" content="Poznaj naszą ofertę maszyn CNC - wysokiej jakości urządzenia przemysłowe" />
 </svelte:head>
+
+
+
 
 <div class="app">
   <Header />
