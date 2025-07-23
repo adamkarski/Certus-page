@@ -101,7 +101,7 @@
 
   .o-nas-container {
     width: 100%;
-    padding: 0 20px;
+    padding: 0 9rem;
   }
 
   .o-nas-content {

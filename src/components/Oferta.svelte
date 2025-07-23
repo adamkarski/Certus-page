@@ -92,7 +92,7 @@
   .oferta-container {
     overflow: hidden;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 9rem;
   }
 
   .section-header {

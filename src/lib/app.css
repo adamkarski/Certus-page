@@ -178,10 +178,25 @@ section .section-title::before {
 
 /* Utility classes */
 .container {
-  padding-left: 9.4em !important;
-  padding-right: 9.4em !important;
+    @media (width >= 96rem) {
+        max-width: 100%;
+    }
 }
-
+.container {
+  @media (width >= 80rem) {
+      max-width: 100%;
+  }
+}
+.container {
+  @media (width >= 64rem) {
+      max-width: 100%;
+  }
+}
+.container {
+  @media (width >= 48rem) {
+      max-width: 100%;
+  }
+}
 
 
 .text-center {
