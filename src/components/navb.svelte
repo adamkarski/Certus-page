@@ -126,7 +126,7 @@
           <!-- Maszyny -->
           <a
             href="/maszyny"
-            class="px-4 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-xl transition-all duration-300 font-medium"
+            class="nav-link"
           >
             Maszyny
           </a>
@@ -138,7 +138,7 @@
             on:mouseleave={handleMouseLeave}
           >
             <button
-              class="px-4 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-xl transition-all duration-300 font-medium flex items-center space-x-1"
+              class="dropdown-button flex items-center space-x-1"
               class:text-green-600={isDropdownOpen}
               class:bg-green-50={isDropdownOpen}
             >
@@ -183,7 +183,7 @@
           <!-- Serwis -->
           <a
             href="#"
-            class="px-4 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-xl transition-all duration-300 font-medium"
+            class="nav-link"
           >
             Serwis
           </a>
@@ -191,7 +191,7 @@
           <!-- O nas -->
           <a
             href="/onas"
-            class="px-4 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-xl transition-all duration-300 font-medium"
+            class="nav-link"
           >
             O nas
           </a>
@@ -204,7 +204,7 @@
                   type="text"
                   id="search-input"
                   placeholder="Szukaj..."
-                  class="bg-gray-50 border border-gray-200 rounded-2xl px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 placeholder-gray-400"
+                  class="search-input"
                   class:w-64={!isFocused}
                   class:w-80={isFocused}
                   bind:value={query}
@@ -266,7 +266,7 @@
   
             <!-- Kontakt telefoniczny -->
             <div
-              class="hidden lg:flex items-center space-x-3 bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 ml-4"
+              class="phone-contact hidden lg:flex items-center space-x-3 ml-4"
             >
               <div
                 class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
@@ -285,7 +285,7 @@
   
             <!-- Mobile menu button -->
             <button
-              class="md:hidden p-2 rounded-xl text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-300 ml-4"
+              class="mobile-menu-button md:hidden p-2 rounded-xl ml-4"
             >
               <svg
                 class="w-6 h-6"
@@ -378,8 +378,96 @@
   }
 
   .submenu-item:hover {
-    color: var(--color-primary); /* text-green-600 */
+    color: #22c55e; /* text-green-600 */
     background-color: #f0fdf4; /* bg-green-50 */
     border-color: #22c55e; /* border-green-500 */
+  }
+
+  .nav-link {
+    padding: 8px 16px; /* px-4 py-2 */
+    color: #4b5563; /* text-gray-700 */
+    transition: all 300ms ease-in-out; /* transition-all duration-300 */
+    font-weight: 500; /* font-medium */
+    border-radius: 12px; /* rounded-xl */
+
+    &:hover {
+      color: #22c55e; /* hover:text-green-600 */
+      background-color: #f0fdf4; /* hover:bg-green-50 */
+    }
+  }
+
+  .dropdown-button {
+    padding: 8px 16px; /* px-4 py-2 */
+    color: #4b5563; /* text-gray-700 */
+    transition: all 300ms ease-in-out; /* transition-all duration-300 */
+    font-weight: 500; /* font-medium */
+    border-radius: 12px; /* rounded-xl */
+
+    &:hover {
+      color: #22c55e; /* hover:text-green-600 */
+      background-color: #f0fdf4; /* hover:bg-green-50 */
+    }
+  }
+
+  .search-input {
+    background-color: #f9fafb; /* bg-gray-50 */
+    border: 1px solid #e5e7eb; /* border border-gray-200 */
+    border-radius: 12px; /* rounded-2xl */
+    padding: 8px 40px 8px 16px; /* px-4 py-2 pr-10 */
+    outline: none; /* focus:outline-none */
+    transition: all 300ms ease-in-out; /* transition-all duration-300 */
+    color: #6b7280; /* placeholder-gray-400 */
+
+    &:focus {
+      ring: 2px solid #22c55e; /* focus:ring-2 focus:ring-green-500 */
+      border-color: transparent; /* focus:border-transparent */
+    }
+  }
+
+  .phone-contact {
+    background: linear-gradient(to right, #22c55e, #16a34a); /* bg-gradient-to-r from-green-500 to-green-600 */
+    color: white; /* text-white */
+    padding: 12px 24px; /* px-6 py-3 */
+    border-radius: 12px; /* rounded-2xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    transition: all 300ms ease-in-out; /* transition-all duration-300 */
+
+    &:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
+      transform: scale(1.05); /* hover:scale-105 */
+    }
+
+    div:first-child {
+      width: 32px; /* w-8 */
+      height: 32px; /* h-8 */
+      background-color: rgba(255, 255, 255, 0.2); /* bg-white/20 */
+      border-radius: 9999px; /* rounded-full */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    div:last-child {
+      text-align: right;
+    }
+
+    .text-sm {
+      font-size: 0.875rem; /* text-sm */
+      opacity: 0.9; /* opacity-90 */
+    }
+
+    .font-bold {
+      font-weight: 700; /* font-bold */
+    }
+  }
+
+  .mobile-menu-button {
+    color: #4b5563; /* text-gray-700 */
+    transition: all 300ms ease-in-out; /* transition-all duration-300 */
+
+    &:hover {
+      color: #22c55e; /* hover:text-green-600 */
+      background-color: #f0fdf4; /* hover:bg-green-50 */
+    }
   }
 </style>
