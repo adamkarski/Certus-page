@@ -11,20 +11,19 @@
 <section id="maszyny" class="maszyny">
   <div class="maszyny-container container">
     <div class="section-header">
-      <h2 class="section-title">Maszyny</h2>
+      
+      
+      <h1 class="no-sel">Kategorie maszyn</h1>
 
-      <p class="section-subtitle">
-        10 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów
-        CNC.
-        <br />
-        Kompleksowa obsługa od projektu po serwis.
-        <br /> <br />
-        — wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy
-      </p>
+      <hr>
+      
     </div>
   
     
-    <div class="oferta-container container">
+   
+  
+  </div>
+  <div class="oferta-container container">
 
     <div class="oferta-grid">
       <div class="oferta-card">
@@ -64,16 +63,21 @@
 
     </div>"
 
-  
-  </div>
-
   <!-- gruba HR z przezroczystą kolorową tło -->
   <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
 </section>
 
 <style lang="scss">
 
+h1{
 
+  font-size: 21px;
+  font-weight: 400;
+}
+hr{
+  margin-top: 1em;
+  border: 1px solid rgba($color: #000000, $alpha: 0.2);
+}
 
 .oferta-container {
     overflow: hidden;
@@ -92,17 +96,7 @@
     pointer-events: none;
     opacity: 0.3;
 
-    .pattern.one {
-      transform: scale(1.2) skew(-15deg, 0deg);
-      background-image: url(/assets/images/pattern-image1-2.png);
-      position: absolute;
-      width: 100%;
-      height: 63px;
-      z-index: 41;
-      left: 1px;
-      bottom: -8px;
-      pointer-events: auto;
-    }
+    
     .pattern.two {
       transform: scale(1.2) skew(-15deg, 0deg);
       background-image: url(/assets/images/pattern-image1-2.png);
