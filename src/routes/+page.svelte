@@ -15,6 +15,7 @@
 <svelte:head>
   <title>Certus - Maszyny tworzone z pasją i precyzją</title>
   <meta name="description" content="Certus - specjalizujemy się w produkcji maszyn przemysłowych najwyższej jakości" />
+  <link rel="preload" href="/static/assets/Background_Hero_swipe.jpg" as="image">
 </svelte:head>
 
 <div class="app">

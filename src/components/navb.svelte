@@ -264,20 +264,21 @@
   border-radius: 72px;
   background-color:rgba(190, 190, 190, 0.13) !important;
   .contenerNav{
-
-    display: flex
-;
+    display: flex;
     gap: 1rem;
     width: 100%;
     padding-top: 15px;
     flex-direction: row;
     margin-left: 12px;
     margin-right: 12px;
-    @media screen and (max-width: 768px){
+   /*  @media screen and (max-width: 768px){
       margin-left: auto;
       margin-right: auto;
       width: fit-content;
-    }
+    } */
+.contenerNav{
+  opacity: 0.4  ;
+}
 
   }
 }

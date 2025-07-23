@@ -9,6 +9,7 @@
   import CtaButtonHero from "./cta-button-hero.svelte";
   import {onMount}  from "svelte";
   import { browser } from "$app/environment";
+  import { writable } from 'svelte/store';
 
   register();
 
@@ -16,14 +17,22 @@
   let activeMachine = null;
   let expandedView = false;
   let swiperReady = false;
+
+  // Zmienna do śledzenia stanów ładowania obrazków
+  let imageLoadingStates = writable({});
+
   onMount(() => {
     setTimeout(() => {
       swiperReady = true;
     }, 150); // 150ms na inicjalizację Swipera
+
+    preloadImages();
   });
+
   function handleSwiperInit() {
     swiperReady = true;
   }
+
   const list = [
     {
       id: "frezarki",
@@ -56,6 +65,22 @@
       img: "/assets/certus-pomoc-wdrozenia.png",
     },
   ];
+
+  // Funkcja do preloadingu obrazków
+  function preloadImages() {
+    list.forEach((item) => {
+      imageLoadingStates.update(current => ({ ...current, [item.id]: false })); // Ustaw stan ładowania na false
+      const img = new Image();
+      img.src = item.img;
+      img.onload = () => {
+        imageLoadingStates.update(current => ({ ...current, [item.id]: true })); // Ustaw stan ładowania na true po załadowaniu
+      };
+      img.onerror = () => {
+        console.error(`Błąd ładowania obrazka: ${item.img}`);
+        imageLoadingStates.update(current => ({ ...current, [item.id]: true })); // Ustaw na true nawet w przypadku błędu, aby nie blokować
+      };
+    });
+  }
 
   const open = (c) => (activeCategory = c);
   const close = () => (activeCategory = null);
@@ -132,7 +157,17 @@
                     </div>
                     <div class="item">
                       <div class="image">
-                        <img src={cat.img} alt="CERTUS 7111" draggable="false" />
+                        {#if $imageLoadingStates[cat.id]}
+                          <img src={cat.img} alt={cat.title} draggable="false" />
+                        {:else}
+                          <div class="image-loader">
+                            <svg width="50" height="50" viewBox="0 0 50 50">
+                              <circle cx="25" cy="25" r="20" fill="none" stroke-width="5" stroke="#96a500" stroke-dasharray="31.4 31.4" stroke-linecap="round">
+                                <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+                              </circle>
+                            </svg>
+                          </div>
+                        {/if}
                       </div>
                     </div>
                   </div>
@@ -866,6 +901,16 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
     height: 100%;
     object-fit: cover;
     transition: all 0.3s ease;
+  }
+
+  .image-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 200px; /* Minimalna wysokość, żeby loader był widoczny */
+    background-color: #f0f0f0;
   }
 
   /* ————————————————  INNE  ———————————————— */
