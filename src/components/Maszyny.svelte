@@ -1,16 +1,17 @@
 <script lang="ts">
   import CtaButton from "./cta-button-kategory.svelte";
-  const oferta = [
-   
-  ];
+  const maszyny = [];
 </script>
 
-<section id="oferta" class="oferta">
+<section class="maszyny_page gradientHero">
+  <div class="first-container-back"></div>
+  <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
+</section>
 
-
-  <div class="oferta-container container">
+<section id="maszyny" class="maszyny">
+  <div class="maszyny-container container">
     <div class="section-header">
-      <h2 class="section-title">Polski producent maszyn CNC</h2>
+      <h2 class="section-title">Maszyny</h2>
 
       <p class="section-subtitle">
         10 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów
@@ -21,6 +22,9 @@
         — wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy
       </p>
     </div>
+  
+    
+    <div class="oferta-container container">
 
     <div class="oferta-grid">
       <div class="oferta-card">
@@ -55,41 +59,89 @@
         <CtaButton text="Plotery CNC" />
       </div>
     </div>
+
+  
+
+    </div>"
+
+  
   </div>
-  <div class="first-container-back">
-    
-    
 
-  </div>
-
-
+  <!-- gruba HR z przezroczystą kolorową tło -->
+  <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
 </section>
 
 <style lang="scss">
- 
-  :global(.first-container-back){
- 
-    background-image: url('/assets/first-block-polyline.svg');
+
+
+
+.oferta-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 0 9rem;
+  }
+
+
+  .pattern-overlay {
     position: absolute;
-    top: 77.6vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.3;
+
+    .pattern.one {
+      transform: scale(1.2) skew(-15deg, 0deg);
+      background-image: url(/assets/images/pattern-image1-2.png);
+      position: absolute;
+      width: 100%;
+      height: 63px;
+      z-index: 41;
+      left: 1px;
+      bottom: -8px;
+      pointer-events: auto;
+    }
+    .pattern.two {
+      transform: scale(1.2) skew(-15deg, 0deg);
+      background-image: url(/assets/images/pattern-image1-2.png);
+      position: absolute;
+      width: 100%;
+      height: 63px;
+      z-index: 11;
+      left: 0;
+      bottom: -10px;
+      pointer-events: auto;
+    }
+  }
+
+  .maszyny_page {
+    min-width: 100vw;
+    margin: 0 auto;
+
+    min-height: 20vh;
+
+    background-color: red;
+  }
+
+  .first-container-back {
+    background-image: url(/assets/first-block-polyline.svg);
+    position: absolute;
+    top: 209px;
     width: 100%;
     height: 44px;
     background-repeat: no-repeat;
     background-position-x: -1500px;
     background-size: cover;
-    img{
-      height: 37px;
-
-    }
-
   }
-  .oferta {
+  .maszyny {
     width: 100%;
     padding: 100px 0;
     background: #f7f7f7;
   }
 
-  .oferta-container {
+  .maszyny-container {
     overflow: hidden;
     width: 100%;
     padding: 0 9rem;
@@ -99,49 +151,40 @@
     margin-bottom: 80px;
   }
 
-  :global(.oferta-grid){
+  .maszyny-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    .oferta-card {
+  }
+
+  .maszyny-card {
     padding: 40px 30px;
     border-radius: 10px;
     text-align: center;
-   
+
     transition: all 0.3s ease;
     display: grid;
     align-items: end;
     justify-content: center;
     align-content: center;
   }
-  .oferta-card:hover {
+
+  .maszyny-card:hover {
     transform: translateY(-10px);
- 
-    
   }
 
-  .oferta-icon {
+  .maszyny-icon {
     font-size: 60px;
     margin-bottom: 25px;
     display: block;
     width: 4em;
 
-    img{
+    img {
       margin-left: 0.6em;
     }
   }
 
-  }
-
-  
-
-  
-
-
-
-  
-
   @media (max-width: 768px) {
-    .oferta {
+    .maszyny {
       padding: 80px 0;
     }
 
@@ -149,12 +192,12 @@
       font-size: 32px;
     }
 
-    .oferta-grid {
+    .maszyny-grid {
       grid-template-columns: 1fr;
       gap: 30px;
     }
 
-    .oferta-card {
+    .maszyny-card {
       padding: 30px 20px;
     }
   }
