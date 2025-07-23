@@ -1,4 +1,5 @@
 <script lang="ts">
+
   import { fade } from 'svelte/transition';
   import { page } from '$app/stores';
   import '../lib/app.css';
@@ -15,8 +16,8 @@
 </script>
 
 {#if loading}
-  <div class="preloader">
-    <img src="/assets/logo-certus.svg" alt="Loading..." width="64" height="64" />
+  <div class="preloader no-sel gradientHero">
+    <img src="/assets/logo-certus.svg" alt="Wczytuje stronę..." width="64" height="64" />
   </div>
 {/if}
 
@@ -36,6 +37,8 @@
     align-items: center;
     justify-content: center;
     transition: opacity 0.5s;
+    background: linear-gradient(180deg, #7c8897 0%, #3e4042 100%);
+
   }
   :global(*) {
     margin: 0;

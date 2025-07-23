@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Navb from './navb.svelte';
  
   import { onMount } from "svelte";
   import { preloaderVisible } from '$lib/preloaderStore';
@@ -36,18 +37,30 @@
   });
 </script>
 
+
+
+
+
+<Navb/>
+
+
+
 <div class="navbar no-sel" class:scrolled={scrolled}>
   <!-- 
     <div class="logo">
         <span class="logo-text">FINANCER</span>
       </div> -->
 
-  <div class="rectangle-15"></div>
+
+
+
+
+
+  <div class="ramka">
   <!--  <img class="rectangle-80" src="" /> -->
   <img class="rectangle-81" src="/assets/menu_back.png" />
   <div class="isolation_mode">
-    <div class="vector"></div>
-    <div class="vector_01"></div>
+    <img class="" src="/assets/ikony/telefon.svg" />
   </div>
   <div class="text-795-142-656">
     <span class="f95142656_span">795 142 656</span>
@@ -77,14 +90,22 @@
     </a>
   </div>
 </div>
-
+</div>
 <style lang="scss">
+
+
+.navbar {
+
+
+
+}
+
   :global(.lottie-player .animation svg > g > g:nth-child(5)) {
     // g > g:nth-child(3) > g > g:nth-child(6)
     opacity: 0;
   }
 
-  .rectangle-15 {
+  .ramka {
     width: 1380px;
     height: 90px;
     left: 0px;
@@ -93,6 +114,9 @@
     opacity: 0.13;
     background: #bebebe;
     border-radius: 70px;
+  
+    
+
   }
 
   .vector {
@@ -127,6 +151,7 @@
     left: 1190px;
     top: 35px;
     position: absolute;
+    width: 200px
   }
 
   .rectangle-16 {
