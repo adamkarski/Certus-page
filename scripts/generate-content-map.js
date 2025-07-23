@@ -1,66 +1,43 @@
-
-
 import fs from 'fs';
 import path from 'path';
 import { globSync } from 'glob';
-import matter from 'gray-matter';
+import { parse } from 'node-html-parser';
 
-const siteUrl = 'https://twoja-domena.com'; // Zmień na swój URL
-const contentPath = 'src/routes/**/*.md';
+const buildDir = '.svelte-kit/output/prerendered';
 const searchIndexPath = 'static/search-index.json';
-const sitemapPath = 'static/sitemap.xml';
 
-console.log('🚀 Rozpoczynam generowanie mapy strony i indeksu wyszukiwania...');
+console.log('🚀 Rozpoczynam generowanie indeksu wyszukiwania z plików produkcyjnych...');
 
-const pages = globSync(contentPath).map((filePath) => {
-  // Normalizuj ścieżkę do formatu URL
-  const urlPath = filePath
-    .replace(/^src\/routes/, '') // Usuń `src/routes`
-    .replace(/\/\+page\.md$/, '') // Usuń `+page.md`
-    .replace(/\/index\.md$/, '') // Usuń `index.md` (jeśli używasz)
-    .replace(/\\/g, '/'); // Zamień \ na /
+// Sprawdź, czy katalog build istnieje
+if (!fs.existsSync(buildDir)) {
+  console.warn(`⚠️ Katalog ${buildDir} nie istnieje. Prawdopodobnie projekt nie został jeszcze zbudowany. Przerywam.`);
+  process.exit(0); // Zakończ bez błędu
+}
 
+const pages = globSync(`${buildDir}/**/*.html`).map((filePath) => {
   const fileContent = fs.readFileSync(filePath, 'utf8');
-  const { data, content } = matter(fileContent);
+  const root = parse(fileContent);
 
-  console.log(`📄 Przetwarzam: ${filePath} -> ${siteUrl}${urlPath}`);
+  // Wyciągnij tytuł strony
+  const title = root.querySelector('title')?.text || path.basename(filePath, '.html');
+
+  // Wyciągnij treść z głównych tagów
+  const mainContent = root.querySelector('main')?.structuredText || '';
+
+  // Wygeneruj ścieżkę URL
+  const urlPath = '/' + path.relative(buildDir, filePath).replace(/\\/g, '/').replace(/index\.html$/, '');
+
+  console.log(`📄 Indeksuję: ${filePath}`);
 
   return {
-    url: `${siteUrl}${urlPath}`,
-    title: data.title,
-    description: data.description,
-    // Możesz dodać treść, jeśli chcesz ją przeszukiwać
-    // content: content.slice(0, 200) // np. pierwsze 200 znaków
+    slug: urlPath,
+    title: title,
+    content: mainContent.replace(/\s+/g, ' ').trim(), // Usuń nadmiarowe białe znaki
   };
-}).filter(page => page.title); // Pomiń strony bez tytułu
+});
 
-// 1. Generowanie indeksu wyszukiwania
-const searchIndex = pages.map(page => ({
-  slug: page.url.replace(siteUrl, ''), // Użyj ścieżki jako sluga
-  title: page.title,
-  description: page.description,
-}));
-
-fs.writeFileSync(searchIndexPath, JSON.stringify(searchIndex, null, 2));
-console.log(`💾 Indeks wyszukiwania zapisany w: ${searchIndexPath}`);
-
-// 2. Generowanie sitemap.xml
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${pages
-    .map(
-      (page) => `
-    <url>
-      <loc>${page.url}</loc>
-      <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-      <priority>0.8</priority>
-    </url>`
-    )
-    .join('')}
-</urlset>`;
-
-fs.writeFileSync(sitemapPath, sitemap);
-console.log(`🗺️ Mapa strony zapisana w: ${sitemapPath}`);
+// Zapisz indeks do pliku JSON
+fs.writeFileSync(searchIndexPath, JSON.stringify(pages, null, 2));
+console.log(`💾 Indeks wyszukiwania z ${pages.length} stronami został zapisany w: ${searchIndexPath}`);
 
 console.log('✅ Gotowe!');
-

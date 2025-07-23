@@ -1,6 +1,7 @@
 <script lang="ts">
   let isMenuOpen = false
     import NavBar from './NavBar.svelte'
+    import Navb from './navb.svelte';
   const toggleMenu = () => {
     isMenuOpen = !isMenuOpen
   }
@@ -13,7 +14,8 @@
     
 
 
-    <NavBar/>
+    <!-- <NavBar/> -->
+    <Navb/>
 
 
 

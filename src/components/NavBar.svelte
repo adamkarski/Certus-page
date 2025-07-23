@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Navb from './navb.svelte';
+
  
   import { onMount } from "svelte";
   import { preloaderVisible } from '$lib/preloaderStore';

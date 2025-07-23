@@ -166,7 +166,7 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="pl" >\n  <head>\n    ' + head + '\n    <meta charset="utf-8" />\n    <link rel="icon" type="image/svg+xml" href="%sveltekit:assets%/assets/favicon/favicon.svg" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <link rel="manifest" crossorigin="use-credentials" href="%sveltekit:assets%/site.webmanifest" />\n\n    <link rel="preconnect" href="https://fonts.googleapis.com">\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n\n    <link rel="icon" type="image/png" href="%sveltekit:assets%/assets/favicon/favicon-96x96.png" sizes="96x96" />\n    <link rel="icon" type="image/svg+xml" href="%sveltekit:assets%/assets/favicon/favicon.svg" />\n    <link rel="shortcut icon" href="%sveltekit:assets%/assets/favicon/favicon.ico" />\n    <link rel="apple-touch-icon" sizes="180x180" href="%sveltekit:assets%/assets/favicon/apple-touch-icon.png" />\n    <meta name="apple-mobile-web-app-title" content="Certus" />\n\n   \n  </head>\n  <body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="pl" %sveltekit:theme%>\n  <head>\n    ' + head + '\n    <meta charset="utf-8" />\n    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <link rel="manifest" crossorigin="use-credentials" href="/site.webmanifest" />\n\n    <link rel="preconnect" href="https://fonts.googleapis.com">\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n\n    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />\n    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />\n    <link rel="shortcut icon" href="/favicon/favicon.ico" />\n    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />\n    <meta name="apple-mobile-web-app-title" content="Certus" />\n\n   \n  </head>\n  <body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -238,7 +238,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "vbsgut"
+  version_hash: "1dl7a8u"
 };
 async function get_hooks() {
   let handle;

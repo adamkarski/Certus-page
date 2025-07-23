@@ -1,6 +1,10 @@
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
   import { fly, fade } from 'svelte/transition';
+  import { preloaderVisible } from '$lib/preloaderStore';
+  let LottiePlayer;
+  let scrolled = false;
+  let showLottie = false;
   
   let isFocused = false;
   let isDropdownOpen = false;
@@ -20,7 +24,34 @@
   let allPosts = [];
   let filteredPosts = [];
 
+
+
+
+
+
+
   onMount(async () => {
+    // Dynamiczny import LottiePlayer
+    const module = await import("@lottiefiles/svelte-lottie-player");
+    LottiePlayer = module.LottiePlayer;
+
+    // Obsługa scrolla
+    const handleScroll = () => {
+      scrolled = window.scrollY > 50;
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    // Nasłuchuj na zmianę preloadera
+    const unsubscribe = preloaderVisible.subscribe((visible) => {
+      if (!visible) {
+        showLottie = false;
+        setTimeout(() => {
+          showLottie = true; // wymuś ponowne renderowanie animacji
+        }, 0);
+      }
+    });
+
     // Pobierz indeks przy ładowaniu komponentu
     const response = await fetch('/search-index.json');
     allPosts = await response.json();
@@ -34,6 +65,11 @@
         isFocused = false;
       });
     }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      unsubscribe();
+    };
   });
 
   const search = () => {
@@ -46,8 +82,8 @@
     
     filteredPosts = allPosts.filter(post => {
       const titleMatch = post.title.toLowerCase().includes(lowerCaseQuery);
-      const descriptionMatch = post.description.toLowerCase().includes(lowerCaseQuery);
-      return titleMatch || descriptionMatch;
+      const contentMatch = post.content.toLowerCase().includes(lowerCaseQuery);
+      return titleMatch || contentMatch;
     });
   };
 
@@ -67,21 +103,31 @@
       isDropdownOpen = false;
     }, 150);
   }
+
+
+
+
+
+
 </script>
 
-<nav class="relative z-50">
+<nav class="relative z-50" class:scrolled={scrolled}>
   <!-- Główna ramka navbar -->
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="relative bg-white/90 backdrop-blur-md shadow-lg rounded-3xl border border-gray-200/50 mt-4">
-      <div class="flex items-center justify-between px-8 py-4">
+  <div class="mx-auto max-w-7xl   px-4 sm:px-6 lg:px-8 ramka">
+    <div class="relative menubar">
+      <div class="flex items-center justify-between px-8 py-4 contenerNav">
         
         <!-- Logo -->
-        <div class="flex items-center">
+        <div class="flex items-center logoCertus">
           <a href="/" class="flex items-center space-x-2 group">
-            <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-              <span class="text-white font-bold text-xl">C</span>
-            </div>
-            <span class="text-2xl font-bold text-gray-800 group-hover:text-green-600 transition-colors duration-300">CERTUS</span>
+            {#if showLottie && LottiePlayer}
+              <svelte:component this={LottiePlayer}
+                src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json?" + Math.random()
+                autoplay={true}
+                loop={false}
+                controls={false}
+              />
+            {/if}
           </a>
         </div>
 
@@ -126,7 +172,7 @@
           </div>
 
           <!-- Serwis -->
-          <a href="/serwis" 
+          <a href="#" 
              class="px-4 py-2 text-gray-700 hover:text-green-600 hover:bg-green-50 rounded-xl transition-all duration-300 font-medium">
             Serwis
           </a>
@@ -209,3 +255,38 @@
     </div>
   </div>
 </nav>
+
+
+<style lang="scss">
+.ramka{
+  display: flex;
+  height: 95px;
+  border-radius: 72px;
+  background-color:rgba(190, 190, 190, 0.13) !important;
+  .contenerNav{
+
+    display: flex
+;
+    gap: 1rem;
+    width: 100%;
+    padding-top: 15px;
+    flex-direction: row;
+    margin-left: 12px;
+    margin-right: 12px;
+    @media screen and (max-width: 768px){
+      margin-left: auto;
+      margin-right: auto;
+      width: fit-content;
+    }
+
+  }
+}
+.logoCertus{
+  min-width: 200px;
+  padding-right: 3px;
+}
+
+
+
+
+</style>
