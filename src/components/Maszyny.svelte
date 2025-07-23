@@ -28,7 +28,7 @@
     <div class="oferta-grid">
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/frezarki.svg" alt="Frezarki CNC" />
+          <img src="/assets/ikony/frezarki.svg" alt="Frezarki CNC" />
         </div>
 
         <CtaButton text="Frezarki CNC" />
@@ -36,7 +36,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/tokarki.svg" alt="Toakrki CNC" />
+          <img src="/assets/ikony/tokarki.svg" alt="Toakrki CNC" />
         </div>
 
         <CtaButton text="Tokarki CNC" />
@@ -44,7 +44,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/grawerki.svg" alt="Grawerki CNC" />
+          <img src="/assets/ikony/grawerki.svg" alt="Grawerki CNC" />
         </div>
 
         <CtaButton text="Grawerki CNC" />
@@ -52,7 +52,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/plotery.svg" alt="Plotery CNC" />
+          <img src="/assets/ikony/plotery.svg" alt="Plotery CNC" />
         </div>
 
         <CtaButton text="Plotery CNC" />
@@ -145,35 +145,34 @@ hr{
     margin-bottom: 80px;
   }
 
-  .maszyny-grid {
+  :global(.oferta-grid) {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
 
-  .maszyny-card {
-    padding: 40px 30px;
-    border-radius: 10px;
-    text-align: center;
+    .oferta-card {
+      padding: 40px 30px;
+      border-radius: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: grid;
+      align-items: end;
+      justify-content: center;
+      align-content: center;
+    }
 
-    transition: all 0.3s ease;
-    display: grid;
-    align-items: end;
-    justify-content: center;
-    align-content: center;
-  }
+    .oferta-card:hover {
+      transform: translateY(-10px);
+    }
 
-  .maszyny-card:hover {
-    transform: translateY(-10px);
-  }
+    .oferta-icon {
+      font-size: 60px;
+      margin-bottom: 25px;
+      display: block;
+      width: 4em;
 
-  .maszyny-icon {
-    font-size: 60px;
-    margin-bottom: 25px;
-    display: block;
-    width: 4em;
-
-    img {
-      margin-left: 0.6em;
+      img {
+        margin-left: 0.6em;
+      }
     }
   }
 
@@ -186,12 +185,12 @@ hr{
       font-size: 32px;
     }
 
-    .maszyny-grid {
+    .oferta-grid {
       grid-template-columns: 1fr;
       gap: 30px;
     }
 
-    .maszyny-card {
+    .oferta-card {
       padding: 30px 20px;
     }
   }
