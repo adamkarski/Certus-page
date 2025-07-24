@@ -17,6 +17,7 @@
   let activeMachine = null;
   let expandedView = false;
   let swiperReady = false;
+  let swiperElement; // Declare swiperElement
 
   // Zmienna do śledzenia stanów ładowania obrazków
   let imageLoadingStates = writable({});
@@ -24,13 +25,80 @@
   onMount(() => {
     setTimeout(() => {
       swiperReady = true;
+      // Initial load logic
+      if (browser) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const slideId = urlParams.get('slide');
+        const categoryId = urlParams.get('category');
+        const machineId = urlParams.get('machine');
+
+        if (slideId) {
+          const index = list.findIndex(item => item.id === slideId);
+          if (index !== -1 && swiperElement && swiperElement.swiper) {
+            swiperElement.swiper.slideToLoop(index);
+          }
+        }
+
+        if (categoryId) {
+          activeCategory = categoryId;
+        }
+
+        if (machineId) {
+          activeMachine = machineId;
+          expandedView = true; // Automatically expand if machineId is present
+        }
+
+        window.addEventListener('popstate', handlePopstate);
+      }
     }, 150); // 150ms na inicjalizację Swipera
 
     preloadImages();
+
+    return () => {
+      if (browser) {
+        window.removeEventListener('popstate', handlePopstate);
+      }
+    };
   });
 
   function handleSwiperInit() {
     swiperReady = true;
+  }
+
+  function handleSlideChange(event) {
+    if (browser) {
+      const swiper = event.detail[0];
+      const currentSlideIndex = swiper.realIndex;
+      const currentSlideId = list[currentSlideIndex].id;
+      const url = new URL(window.location.href);
+      url.searchParams.set('slide', currentSlideId);
+      history.pushState({ slide: currentSlideId }, '', url.toString());
+    }
+  }
+
+  function handlePopstate(event) {
+    if (browser) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const slideId = urlParams.get('slide');
+      const categoryId = urlParams.get('category');
+      const machineId = urlParams.get('machine');
+
+      if (slideId) {
+        const index = list.findIndex(item => item.id === slideId);
+        if (index !== -1 && swiperElement && swiperElement.swiper) {
+          swiperElement.swiper.slideToLoop(index);
+        }
+      } else {
+        // If no slide param, go back to initial state (first slide)
+        if (swiperElement && swiperElement.swiper) {
+          swiperElement.swiper.slideToLoop(0);
+        }
+      }
+
+      activeCategory = categoryId;
+      activeMachine = machineId;
+      expandedView = !!machineId; // Set expandedView based on machineId presence
+    }
   }
 
   const list = [
@@ -82,13 +150,30 @@
     });
   }
 
-  const open = (c) => (activeCategory = c);
-  const close = () => (activeCategory = null);
+  const open = (c) => {
+    activeCategory = c;
+    if (browser) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('category', c);
+      history.pushState({ category: c }, '', url.toString());
+    }
+  };
+  const close = () => {
+    activeCategory = null;
+    if (browser) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('category');
+      history.pushState({ category: null }, '', url.toString());
+    }
+  };
 
   const openFW = (x) => {
-    // expandedView after 5s 
     activeMachine = x;
-    
+    if (browser) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('machine', x);
+      history.pushState({ machine: x }, '', url.toString());
+    }
     setTimeout(() => {
       expandedView = true;
     }, 800);
@@ -96,6 +181,11 @@
   const closeFW = () => {
     activeMachine = null;
     expandedView = false;
+    if (browser) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('machine');
+      history.pushState({ machine: null }, '', url.toString());
+    }
   };
   
 
@@ -145,6 +235,8 @@
               slides-per-group="2"
               mousewheel
               autoplay
+              bind:this={swiperElement}
+              on:slidechange={handleSlideChange}
             >
               {#each list as cat}
                 <swiper-slide>
