@@ -7,7 +7,7 @@
   const dispatch = createEventDispatcher();
 </script>
 
-<button class="cta-button" on:click={() => dispatch('click')}>
+<button class="cta-button" on:click={() => dispatch('click')} type={type} disabled={disabled}>
   <span class="maszyny_span">{text}</span>
   <svg class="cta-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158.04 93.76">
     <polyline class="cls-1" points="109.49 0 158.04 0 49.13 93.76 0 93.76"/>

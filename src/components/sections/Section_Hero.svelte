@@ -260,7 +260,8 @@
             >
               {#each list as cat}
                 <swiper-slide>
-                  <div
+                  <button
+                    type="button"
                     class="items items-left lift"
                     on:click={() => open(cat.id)}
                   >
@@ -282,7 +283,7 @@
                         {/if}
                       </div>
                     </div>
-                  </div>
+                  
                 </swiper-slide>
               {/each}
             </swiper-container>
@@ -314,13 +315,12 @@
                       materiałów. Doskonałe do detali i dekoracji.
                     </h3>
                     <br />
-                    <a on:click={() => openFW("Frezarkia Certus 1212")}>
+                    <button type="button" on:click={() => openFW("Frezarkia Certus 1212")}>
                       Certus 1212 
                       <IconDoc
-                          on:click={() => openFW("Frezarkia Certus 1212")}
                         />
                       
-                    </a>  
+                    
                       
                     
                     <p>
@@ -332,7 +332,6 @@
                     <h2>
                       Certus 1212 <span class="IconDoc"
                         ><IconDoc
-                          on:click={() => openFW("Certus 1212 (drugi)")}
                         /></span
                       >
                     </h2>
@@ -559,17 +558,7 @@
       pointer-events: none;
       opacity: 0.3;
 
-      .pattern.one {
-        background-image: url(/assets/images/pattern-image2-1.png);
-        position: absolute;
-        width: 157px;
-        height: 181px;
-        z-index: 10;
-        right: -27px;
-        top: -42px;
-        pointer-events: auto;
       
-      }
       .pattern.two {
         transform:scale(1.2) skew(-15deg, 0deg);
         background-image: url(/assets/images/pattern-image1-2.png);
@@ -735,16 +724,7 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
             width: 1.7em;
             margin-right: 20px;
           }
-          li a {
-            display: flex;
-            align-content: center;
-            align-items: center;
-            flex-direction: row;
-            &:focus {
-              outline: none;
-              border: none;
-            }
-          }
+          
         }
       }
     }

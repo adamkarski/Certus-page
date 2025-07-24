@@ -1,16 +1,15 @@
 <script lang="ts">
   import Section_Header from '../components/sections/Section_Header.svelte'
-  import Section_Footer from '../components/sections/Section_Footer.svelte'
-  import Section_Hero from '../components/sections/Section_Hero.svelte'
-  import Section_Onas from '../components/sections/Section_Onas.svelte'
   import Section_Oferta from '../components/sections/Section_Oferta.svelte'
-  import Section_Contact from '../components/sections/Section_Contact.svelte'
+  import Section_Kontakt from '../components/sections/Section_Kontakt.svelte'
+  import Section_Footer from '../components/sections/Section_Footer.svelte'
   import Section_Video from '../components/sections/Section_Video.svelte';
+  import Section_Onas from '../components/sections/Section_Onas.svelte';
   import Section_Image01 from '../components/sections/Section_Image01.svelte';
   import Section_Image02 from '../components/sections/Section_Image02.svelte';
   import Section_Referencje from '../components/sections/Section_Referencje.svelte';
   import LocalBusiness from '../components/LocalBusiness.svelte';
-
+  import SectionHero from '../components/sections/Section_Hero.svelte';
 </script>
 
 <svelte:head>
@@ -19,25 +18,25 @@
 </svelte:head>
 
 <div class="app">
-  <Section_Header />sec
+  <Section_Header />
   <LocalBusiness/>
   <main>
-    <Section_Hero />
+    <Section_Header />
+    <SectionHero />
     <Section_Oferta />
     <Section_Video />
     <Section_Onas />
     <Section_Image01 />
-    <Section_Contact />
+    <Section_Kontakt />
     <Section_Image02 />
     <Section_Referencje />
   </main>
   <Section_Footer />
 </div>
 
-<style lang="scss">
+<style>
   .app {
     width: 100%;
     overflow-x: hidden;
   }
-
 </style>

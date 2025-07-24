@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Section_Kontakt from './sections/Section_Kontakt.svelte';
   import { typoFix } from '$lib/utils/typography';
 </script>
 
@@ -13,11 +14,20 @@
       <h1 class="no-sel">Kontakt</h1>
       <hr />
     </div>
-    <p>{@html typoFix("Skontaktuj się z nami w sprawie oferty lub serwisu.")}</p>
+    <p>{@html typoFix("W tym miejscu znajdziesz informacje o naszej firmie i ofercie.")}</p>
   </div>
+  <Section_Kontakt />
 </section>
 
 <style lang="scss">
+
+:global(.contact-left:before) {
+      background: #552626;
+
+      border-left: 2px solid rgb(113, 111, 111);
+      border-top: 2px solid rgb(120, 116, 116);
+    }
+  
   .kontakt-container {
     overflow: hidden;
     width: 100%;

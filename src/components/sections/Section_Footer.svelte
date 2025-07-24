@@ -18,13 +18,14 @@
         <div class="footer-logo">
           {#if LottiePlayer}
             <!-- src="assets/logo-certus.json?"+Math.random() -->
-            <LottiePlayer
+            <svelte:component
+              this={LottiePlayer}
               src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json?"
               +Math.random()
               autoplay={true}
               loop={false}
               controls={false}
-            ></LottiePlayer>
+            ></svelte:component>
           {/if}
         </div>
         <h5 class="footer-description">{@html typoFix('Możesz nam zaufać!')}</h5>

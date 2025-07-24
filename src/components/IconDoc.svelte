@@ -11,7 +11,7 @@ function handleClick() {
 
 <div class:className></div>
 
-<button class="icon-doc" on:click={handleClick} role="button" tabindex="0">
+<button class="icon-doc" on:click={handleClick} tabindex="0">
 
 
 

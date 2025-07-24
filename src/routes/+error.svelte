@@ -145,46 +145,7 @@
     align-items: center;
   }
 
-  .btn-primary,
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    min-width: 250px;
-    justify-content: center;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, #96a500, #c5d418);
-    color: white;
-    box-shadow: 0 4px 15px rgba(150, 165, 0, 0.3);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(150, 165, 0, 0.4);
-  }
-
-  .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-  }
-
-  .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
-  }
+  
 
   .error-links {
     display: flex;
@@ -246,11 +207,7 @@
       margin-bottom: 2rem;
     }
 
-    .btn-primary,
-    .btn-secondary {
-      min-width: 200px;
-      padding: 0.875rem 1.5rem;
-    }
+ 
 
     .error-links {
       gap: 1rem;
@@ -272,9 +229,5 @@
       font-size: 1rem;
     }
 
-    .btn-primary,
-    .btn-secondary {
-      min-width: 100%;
-    }
   }
 </style>
