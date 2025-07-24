@@ -36,29 +36,30 @@
 
         <div class="social-links">
           <a
-            href="https://www.facebook.com/certus_example"
+            href="https://m.facebook.com/CertusCNC/"
             class="social-link"
             title="Odwiedź nas na Facebooku"
             rel="nofollow noopener noreferrer">Facebook</a
           >
           <a
-            href="https://twitter.com/certus_example"
+            href="https://www.youtube.com/user/MGCERTUS/videos"
             class="social-link"
-            title="Odwiedź nas na Twitterze"
-            rel="nofollow noopener noreferrer">Twitter</a
+            title="Nasze maszyny CNC w akcji"
+            rel="nofollow noopener noreferrer">Youtube</a
           >
-          <a
+         
+          <!-- <a
             href="https://www.linkedin.com/company/certus_example"
             class="social-link"
             title="Odwiedź nas na LinkedIn"
             rel="nofollow noopener noreferrer">LinkedIn</a
-          >
-          <a
+          > -->
+          <!-- <a
             href="https://www.instagram.com/certus_example"
             class="social-link"
             title="Odwiedź nas na Instagramie"
             rel="nofollow noopener noreferrer">Instagram</a
-          >
+          > -->
         </div>
       </div>
 
