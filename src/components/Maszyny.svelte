@@ -64,27 +64,46 @@
     <h2>Frezarki CNC</h2>
   </div>
   <hr class="maszyny-dane-hr" />
-  <ul class="maszyny-dane-lista">
-    <li>Przeznaczone do frezowania stali, aluminium, drewna, plastiku itp.</li>
-    <li>Kompletna zabudowa umożliwiająca chłodzenie narzędzi i materiału.</li>
-    <li>Zintegrowany odstojnik, zbiornik na chłodziwo oraz pompa.</li>
-    <li>Trwałe osłony stalowe prowadnic i śrub kulowych.</li>
-    <li>Wolnostojący panel sterujący.</li>
-    <li>Polskojęzyczne oprogramowanie, transfer danych przez LAN.</li>
-    <li>Serwonapędy hybrydowe lub serwa AC (w zależności od opcji).</li>
-    <li>Wysoka sztywność i precyzja w swojej klasie.</li>
-  </ul>
-  <div class="maszyny-dane-podtytul">Wersja bazowa zawiera m.in.:</div>
-  <ul class="maszyny-dane-lista-small">
-    <li>Konstrukcję o zwiększonej sztywności z pełną zabudową,</li>
-    <li>System chłodzenia w obiegu zamkniętym z pompą i odstojnikiem,</li>
-    <li>Niezależny panel sterowania z komputerem i przyciskami fizycznymi,</li>
-    <li>Wrzeciono z automatyczną wymianą narzędzi (ATC),</li>
-    <li>Polskojęzyczne sterowanie PikoCNC z modułem CAM,</li>
-    <li>Serwonapędy hybrydowe,</li>
-    <li>Instrukcje obsługi i dokumentację DTR w języku polskim,</li>
-    <li>Podstawowe szkolenie użytkownika.</li>
-  </ul>
+
+  <div class="maszyny-dane-text-image">
+    <div class="left">
+      <ul class="maszyny-dane-lista">
+        <li>
+          Przeznaczone do frezowania stali, aluminium, drewna, plastiku itp.
+        </li>
+        <li>
+          Kompletna zabudowa umożliwiająca chłodzenie narzędzi i materiału.
+        </li>
+        <li>Zintegrowany odstojnik, zbiornik na chłodziwo oraz pompa.</li>
+        <li>Trwałe osłony stalowe prowadnic i śrub kulowych.</li>
+        <li>Wolnostojący panel sterujący.</li>
+        <li>Polskojęzyczne oprogramowanie, transfer danych przez LAN.</li>
+        <li>Serwonapędy hybrydowe lub serwa AC (w zależności od opcji).</li>
+        <li>Wysoka sztywność i precyzja w swojej klasie.</li>
+      </ul>
+      <div class="maszyny-dane-podtytul">Wersja bazowa zawiera m.in.:</div>
+      <ul class="maszyny-dane-lista-small">
+        <li>Konstrukcję o zwiększonej sztywności z pełną zabudową,</li>
+        <li>System chłodzenia w obiegu zamkniętym z pompą i odstojnikiem,</li>
+        <li>
+          Niezależny panel sterowania z komputerem i przyciskami fizycznymi,
+        </li>
+        <li>Wrzeciono z automatyczną wymianą narzędzi (ATC),</li>
+        <li>Polskojęzyczne sterowanie PikoCNC z modułem CAM,</li>
+        <li>Serwonapędy hybrydowe,</li>
+        <li>Instrukcje obsługi i dokumentację DTR w języku polskim,</li>
+        <li>Podstawowe szkolenie użytkownika.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat01.png"
+        alt="certus_7111_temp_schemat01"
+      />
+      <img src="/assets/maszyny/certus_7111_temp_schemat02.png" alt="certus_7111_temp_schemat02" >
+    </div>
+  </div>
+
   <div class="maszyny-dane-tabela-wrap">
     <table class="maszyny-dane-tabela">
       <thead>
@@ -169,18 +188,29 @@
     padding-top: 2em;
     padding-bottom: 1em;
   }
+  .maszyny-dane-text-image {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
 
-.maszyny-dane-lista-small li{
-  padding-left: 1em;
-  font-size: 15px !important;
-   border-left: 5px solid var(--color-primary);
-  margin-bottom: 0.3em;
-  margin-left: 30px;
-  color: var(--color-text-secondary);
-}
-li{
-  color: var(--color-text-secondary);
-}
+    .right {
+      width: 32% !important;
+      text-align: right !important;
+    }
+  }
+  .maszyny-dane-lista-small li {
+    padding-left: 1em;
+    font-size: 15px !important;
+    border-left: 5px solid var(--color-primary);
+    margin-bottom: 0.3em;
+    margin-left: 30px;
+    color: var(--color-text-secondary);
+  }
+  li {
+    color: var(--color-text-secondary);
+  }
   h1 {
     font-size: 21px;
     font-weight: 400;
@@ -291,11 +321,9 @@ li{
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-    padding: 3rem 2.5rem 2.5rem 2.5rem;
+    padding: 3rem 9rem 2.5rem 9rem; /* Zmieniono padding, aby odpowiadał szerokości kontenera */
     margin-bottom: 3rem;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    /* Usunięto max-width i margin: auto */
   }
   .maszyny-dane-header {
     display: flex;
