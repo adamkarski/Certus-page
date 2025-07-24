@@ -55,7 +55,7 @@
 </section>
 
 <section id="Frezarki" class="maszyny-dane">
-  <div class="maszyny-dane-header">
+  <div class="maszyny-dane-header no-sel">
     <img
       src="/assets/ikony/frezarki.svg"
       alt="Frezarki CNC"
@@ -63,7 +63,7 @@
     />
     <h2>Frezarki CNC</h2>
   </div>
-  <hr />
+  <hr class="maszyny-dane-hr" />
   <ul class="maszyny-dane-lista">
     <li>Przeznaczone do frezowania stali, aluminium, drewna, plastiku itp.</li>
     <li>Kompletna zabudowa umożliwiająca chłodzenie narzędzi i materiału.</li>
@@ -75,7 +75,7 @@
     <li>Wysoka sztywność i precyzja w swojej klasie.</li>
   </ul>
   <div class="maszyny-dane-podtytul">Wersja bazowa zawiera m.in.:</div>
-  <ul class="maszyny-dane-lista">
+  <ul class="maszyny-dane-lista-small">
     <li>Konstrukcję o zwiększonej sztywności z pełną zabudową,</li>
     <li>System chłodzenia w obiegu zamkniętym z pompą i odstojnikiem,</li>
     <li>Niezależny panel sterowania z komputerem i przyciskami fizycznymi,</li>
@@ -136,12 +136,12 @@
     margin-bottom: 1.5rem !important;
     flex-direction: row !important;
     justify-content: flex-start !important;
+    margin-bottom: -10px !important;
 
     img {
       width: 120px;
       margin-left: calc(-2px);
       margin-right: calc(-32px);
-      // border: 1px solid gray;
       height: 120px;
       background: none;
       border-radius: 0px;
@@ -149,15 +149,38 @@
       box-shadow: none;
     }
     h2 {
-      position: relative ;
+      position: relative;
       background-color: #eeeeee !important;
       height: 30px;
-      font-size: 1.3em !important; 
+      font-size: 1.3em !important;
       font-weight: 500 !important;
       padding-top: 3px;
       margin-bottom: 10px !important;
     }
   }
+  .maszyny-dane-hr {
+    margin-bottom: 4em !important;
+  }
+  .maszyny-dane-podtytul {
+    font-weight: 700;
+    font-size: 21px;
+    color: #000000;
+    padding-left: 1.1em;
+    padding-top: 2em;
+    padding-bottom: 1em;
+  }
+
+.maszyny-dane-lista-small li{
+  padding-left: 1em;
+  font-size: 15px !important;
+   border-left: 5px solid var(--color-primary);
+  margin-bottom: 0.3em;
+  margin-left: 30px;
+  color: var(--color-text-secondary);
+}
+li{
+  color: var(--color-text-secondary);
+}
   h1 {
     font-size: 21px;
     font-weight: 400;
