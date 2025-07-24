@@ -111,6 +111,11 @@ header {
   z-index: 12;
 }
 
+main {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
 /* Typography */
 h1,
 h2,
