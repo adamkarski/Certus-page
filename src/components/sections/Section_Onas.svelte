@@ -1,35 +1,26 @@
 <script>
   import CtaButton from "../cta-button.svelte";
+  import { typoFix } from '$lib/utils/typography';
 </script>
 
 <section id="o-nas" class="o-nas">
   <div class="o-nas-container container">
     <div class="o-nas-content">
       <div class="o-nas-text">
-        <h2 class="section-title ">Nasze maszyny CNC łączą polską inżynierię</h2>
+        <h2 class="section-title ">{@html typoFix('Nasze maszyny CNC łączą polską inżynierię')}</h2>
 
-        <p class=" section-subtitle">
-          z najnowocześniejszymi technologiami obróbki.
-        </p>
+        <p class=" section-subtitle">{@html typoFix('z najnowocześniejszymi technologiami obróbki.')}</p>
         <br/><br/>
-        <p class="section-subtitle">
-          Zaprojektowane z myślą o małych zakładach i dużych kombinatach,
-          oferują:
-        </p>
+        <p class="section-subtitle">{@html typoFix('Zaprojektowane z myślą o małych zakładach i dużych kombinatach, oferują:')}</p>
         <div class="o-nas-features">
           <ul>
-            <li class="feature">Precyzja obróbki do ±0,01mm</li>
-            <li class="feature">Kompatybilność z różnymi materiałami</li>
-            <li class="feature">Intuicyjne oprogramowanie sterujące</li>
-            <li class="feature">
-              Kompleksowy serwis gwarancyjny i pogwarancyjny
-            </li>
+            <li class="feature">{@html typoFix('Precyzja obróbki do ±0,01mm')}</li>
+            <li class="feature">{@html typoFix('Kompatybilność z różnymi materiałami')}</li>
+            <li class="feature">{@html typoFix('Intuicyjne oprogramowanie sterujące')}</li>
+            <li class="feature">{@html typoFix('Kompleksowy serwis gwarancyjny i pogwarancyjny')}</li>
           </ul>
         </div>
-        <p class="o-nas-description">
-          Idealne rozwiązanie dla firm wymagających wysokiej jakości obróbki
-          metali w produkcji prototypów i serii masowych.
-        </p>
+        <p class="o-nas-description">{@html typoFix('Idealne rozwiązanie dla firm wymagających wysokiej jakości obróbki metali w produkcji prototypów i serii masowych.')}</p>
 
         <div class="center-cta">
           <CtaButton text="Zapraszamy na bezpłatną konsultację" />

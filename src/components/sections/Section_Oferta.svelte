@@ -1,5 +1,6 @@
 <script lang="ts">
   import CtaButton from "../cta-button-kategory.svelte";
+  import { typoFix } from '$lib/utils/typography';
   const oferta = [
    
   ];
@@ -10,15 +11,12 @@
 
   <div class="oferta-container container">
     <div class="section-header">
-      <h2 class="section-title">Polski producent maszyn CNC</h2>
+      <h2 class="section-title">{@html typoFix('Polski producent maszyn CNC')}</h2>
 
       <p class="section-subtitle">
-        10 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów
-        CNC.
-        <br />
-        Kompleksowa obsługa od projektu po serwis.
-        <br /> <br />
-        — wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy
+        {@html typoFix('10 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów CNC.')}<br />
+        {@html typoFix('Kompleksowa obsługa od projektu po serwis.')}<br /><br />
+        {@html typoFix('— wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy')}
       </p>
     </div>
 

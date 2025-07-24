@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import { typoFix } from '$lib/utils/typography';
   let sectionEl: HTMLElement;
   let visible = false;
 
@@ -21,19 +22,19 @@
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 0 : 9999 }}>
       <div class="info-card-header">
         <img src="/assets/green-arrow.svg" alt="Najwyższa jakość komponentów" class="info-icon" />
-        <span class="info-title">Najwyższa jakość<br>komponentów:</span>
+        <span class="info-title">{@html typoFix('Najwyższa jakość<br>komponentów:')}</span>
       </div>
       <p class="info-desc">
-        Wszystkie maszyny są produkowane z użyciem najwyższej jakości komponentów, co gwarantuje trwałość i niezawodność.
+        {@html typoFix('Wszystkie maszyny są produkowane z użyciem najwyższej jakości komponentów, co gwarantuje trwałość i niezawodność.')}
       </p>
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 300 : 9999 }}>
       <div class="info-card-header">
         <img src="/assets/green-arrow.svg" alt="Własny serwis gwarancyjny i pogwarancyjny" class="info-icon" />
-        <span class="info-title">Własny serwis:</span>
+        <span class="info-title">{@html typoFix('Własny serwis:')}</span>
       </div>
       <p class="info-desc">
-        Firma oferuje pomoc w konfiguracji i ustawieniu maszyn, serwis gwarancyjny i pogwarancyjny, w tym serwis na miejscu, co zapewnia ciągłość pracy urządzeń.
+        {@html typoFix('Firma oferuje pomoc w konfiguracji i ustawieniu maszyn, serwis gwarancyjny i pogwarancyjny, w tym serwis na miejscu, co zapewnia ciągłość pracy urządzeń.')}
       </p>
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 600 : 9999 }}>
@@ -42,7 +43,7 @@
         <span class="info-title">Ponad 10 lat<br>doświadczenia<br>w branży</span>
       </div>
       <p class="info-desc">
-        Z ponad dekadą doświadczenia w branży CNC, CERTUS jest wiarygodnym partnerem dla wymagających klientów.
+        {@html typoFix('Z ponad dekadą doświadczenia w branży CNC, CERTUS jest wiarygodnym partnerem dla wymagających klientów.')}
       </p>
     </div>
   </div>

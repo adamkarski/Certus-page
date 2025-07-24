@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { typoFix } from '$lib/utils/typography';
+</script>
+
 <section class="serwis_page gradientHero">
   <div class="first-container-back"></div>
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
@@ -9,6 +13,7 @@
       <h1 class="no-sel">Serwis</h1>
       <hr />
     </div>
+    <p>{@html typoFix("Serwis gwarancyjny i pogwarancyjny maszyn Certus.")}</p>
   </div>
 </section>
 

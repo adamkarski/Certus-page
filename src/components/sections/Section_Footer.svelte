@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { typoFix } from '$lib/utils/typography';
   const currentYear = new Date().getFullYear();
 
   let LottiePlayer;
@@ -26,12 +27,12 @@
             ></LottiePlayer>
           {/if}
         </div>
-        <h5 class="footer-description">Możesz nam zaufać!</h5>
+        <h5 class="footer-description">{@html typoFix('Możesz nam zaufać!')}</h5>
 
         <h5 class="footer-description-secondary">
-          Jesteśmy polskim producentem z ponad 10 letnim doświadczeniem w branży
-          maszyn CNC.
+          {@html typoFix('Jesteśmy polskim producentem z ponad 10 letnim doświadczeniem w branży maszyn CNC.')}
         </h5>
+       
 
         <div class="social-links">
           <a

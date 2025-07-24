@@ -2,6 +2,7 @@
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   import { visibilityStore, setSectionVisible } from "../../lib/visibilityStore";
+  import { typoFix } from '$lib/utils/typography';
 
   const sectionId = "video-header";
   let headerEl: HTMLDivElement;
@@ -45,8 +46,7 @@
     <div class="video-header" bind:this={headerEl} class:visible>
       {#if visible}
         <h1 class="no-sel" in:fade={{ duration: 600, delay: 800 }}>
-          Pomagamy, wdrażamy,<br />
-          optymalizujemy procesy produkcyjne
+          {@html typoFix('Pomagamy, wdrażamy,<br />optymalizujemy procesy produkcyjne')}
         </h1>
       {/if}
     </div>

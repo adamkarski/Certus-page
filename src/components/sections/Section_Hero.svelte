@@ -11,6 +11,7 @@
   import { browser } from "$app/environment";
   import { writable } from 'svelte/store';
   import { resetHeroSwiper } from '../../lib/resetHeroSwiperStore';
+  import { typoFix } from '$lib/utils/typography';
 
   register();
 

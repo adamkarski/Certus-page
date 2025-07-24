@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { typoFix } from '$lib/utils/typography';
+</script>
+
 <section class="reklamacje_page gradientHero">
   <div class="first-container-back"></div>
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
@@ -9,6 +13,7 @@
       <h1 class="no-sel">Reklamacje</h1>
       <hr />
     </div>
+    <p>{@html typoFix("Reklamacje i zwroty w firmie Certus.")}</p>
   </div>
 </section>
 

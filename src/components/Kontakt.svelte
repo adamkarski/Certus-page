@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { typoFix } from '$lib/utils/typography';
+</script>
+
 <section class="kontakt_page gradientHero">
   <div class="first-container-back"></div>
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
@@ -9,6 +13,7 @@
       <h1 class="no-sel">Kontakt</h1>
       <hr />
     </div>
+    <p>{@html typoFix("Skontaktuj się z nami w sprawie oferty lub serwisu.")}</p>
   </div>
 </section>
 
