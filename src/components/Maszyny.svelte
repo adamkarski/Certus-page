@@ -1,6 +1,13 @@
 <script lang="ts">
   import CtaButton from "./cta-button-kategory.svelte";
   const maszyny = [];
+
+  function scrollToSection(id: string) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 </script>
 
 <section class="maszyny_page gradientHero">
@@ -23,7 +30,7 @@
           <img src="/assets/ikony/frezarki.svg" alt="Frezarki CNC" />
         </div>
 
-        <CtaButton text="Frezarki CNC" />
+        <CtaButton text="Frezarki CNC" on:click={() => scrollToSection('Frezarki')} />
       </div>
 
       <div class="oferta-card">
@@ -31,7 +38,7 @@
           <img src="/assets/ikony/tokarki.svg" alt="Toakrki CNC" />
         </div>
 
-        <CtaButton text="Tokarki CNC" />
+        <CtaButton text="Tokarki CNC" on:click={() => scrollToSection('Tokarki')} />
       </div>
 
       <div class="oferta-card">
@@ -39,7 +46,7 @@
           <img src="/assets/ikony/grawerki.svg" alt="Grawerki CNC" />
         </div>
 
-        <CtaButton text="Grawerki CNC" />
+        <CtaButton text="Grawerki CNC" on:click={() => scrollToSection('Grawerki')} />
       </div>
 
       <div class="oferta-card">
@@ -47,7 +54,7 @@
           <img src="/assets/ikony/plotery.svg" alt="Plotery CNC" />
         </div>
 
-        <CtaButton text="Plotery CNC" />
+        <CtaButton text="Plotery CNC" on:click={() => scrollToSection('Plotery')} />
       </div>
     </div>
   </div>
@@ -193,11 +200,37 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; /* Zmieniono na wrap */
+
+    .left {
+      flex: 1; /* Pozwól lewej kolumnie rosnąć */
+      min-width: 50%; /* Minimalna szerokość, aby nie było zbyt wąsko na większych ekranach */
+    }
 
     .right {
-      width: 32% !important;
-      text-align: right !important;
+      width: 32%; /* Zachowaj oryginalną szerokość na większych ekranach */
+      text-align: right;
+
+      img {
+        max-width: 100%; /* Upewnij się, że obrazki nie wychodzą poza kontener */
+        height: auto;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .maszyny-dane-text-image {
+      flex-direction: column; /* Ułóż elementy w kolumnie na małych ekranach */
+
+      .left,
+      .right {
+        width: 100%; /* Zajmij całą szerokość */
+        text-align: left; /* Wyrównaj tekst do lewej */
+      }
+
+      .right {
+        margin-top: 20px; /* Dodaj odstęp między sekcjami */
+      }
     }
   }
   .maszyny-dane-lista-small li {
