@@ -9,7 +9,8 @@
   import Section_Image02 from '../components/sections/Section_Image02.svelte';
   import Section_Referencje from '../components/sections/Section_Referencje.svelte';
   import LocalBusiness from '../components/LocalBusiness.svelte';
-  import SectionHero from '../components/sections/Section_Hero.svelte';
+  import Section_Hero from '../components/sections/Section_Hero.svelte';
+  export let params; // Dodano deklarację params
 </script>
 
 <svelte:head>
@@ -22,7 +23,7 @@
   <LocalBusiness/>
   <main>
     <Section_Header />
-    <SectionHero />
+    <Section_Hero />
     <Section_Oferta />
     <Section_Video />
     <Section_Onas />

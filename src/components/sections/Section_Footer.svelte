@@ -20,11 +20,14 @@
             <!-- src="assets/logo-certus.json?"+Math.random() -->
             <svelte:component
               this={LottiePlayer}
-              src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json?"
-              +Math.random()
+              src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"
               autoplay={true}
               loop={false}
               controls={false}
+              height="auto"
+              width="auto"
+              background="transparent"
+              controlsLayout="none"
             ></svelte:component>
           {/if}
         </div>

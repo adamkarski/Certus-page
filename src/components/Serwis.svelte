@@ -67,6 +67,7 @@
     width: 100%;
     padding: 100px 0;
     background: #f7f7f7;
+        color: var(--color-text-secondary);
   }
 
   .section-header {

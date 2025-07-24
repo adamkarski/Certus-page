@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Section_Kontakt from './sections/Section_Kontakt.svelte';
   import { typoFix } from '$lib/utils/typography';
+  export let isKontaktPage = false;
 </script>
 
 <section class="kontakt_page gradientHero">
@@ -16,17 +17,12 @@
     </div>
     <p>{@html typoFix("W tym miejscu znajdziesz informacje o naszej firmie i ofercie.")}</p>
   </div>
-  <Section_Kontakt />
+  <Section_Kontakt {isKontaktPage} />
 </section>
 
 <style lang="scss">
 
-:global(.contact-left:before) {
-      background: #552626;
 
-      border-left: 2px solid rgb(113, 111, 111);
-      border-top: 2px solid rgb(120, 116, 116);
-    }
   
   .kontakt-container {
     overflow: hidden;
@@ -77,11 +73,17 @@
     width: 100%;
     padding: 100px 0;
     background: #f7f7f7;
+    color: var(--color-text-secondary);
   }
 
   .section-header {
     margin-bottom: 80px;
+    
   }
+  
+  
+
+
 
   @media (max-width: 768px) {
     .kontakt {

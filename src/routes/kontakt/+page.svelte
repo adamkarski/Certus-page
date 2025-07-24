@@ -16,7 +16,7 @@
 <div class="app">
   <Section_Header />
   <main>
-    <Kontakt />
+    <Kontakt isKontaktPage={true} />
 
     <Section_Image02 />
     <Section_Referencje />
