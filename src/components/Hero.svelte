@@ -10,6 +10,7 @@
   import {onMount}  from "svelte";
   import { browser } from "$app/environment";
   import { writable } from 'svelte/store';
+  import { resetHeroSwiper } from '../lib/resetHeroSwiperStore';
 
   register();
 
@@ -214,8 +215,20 @@
    if (activeMachine) document.body.classList.add('no-scroll-hero');
     else document.body.classList.remove('no-scroll-hero');
   }
-  $: console.log('activeMachine=', activeMachine);
+
   // --- KONIEC BLOKADY SCROLLA ---
+
+  $: if ($resetHeroSwiper) {
+    if (swiperElement && swiperElement.swiper) {
+      setTimeout(() => {
+        swiperElement.swiper.slideToLoop(0);
+      }, 100); // Zwiększone opóźnienie dla pewności
+    }
+    activeCategory = null;
+    activeMachine = null;
+    expandedView = false;
+    resetHeroSwiper.set(false); // Reset the store value
+  }
 </script>
 
 <!-- Tło i gradient pozostają statyczne -->

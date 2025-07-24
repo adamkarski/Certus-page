@@ -2,6 +2,9 @@
   import { onMount } from "svelte";
   import { fly, fade } from "svelte/transition";
   import { preloaderVisible } from "$lib/preloaderStore";
+  import { goto } from '$app/navigation';
+  import { resetHeroSwiper } from '../lib/resetHeroSwiperStore';
+
   let LottiePlayer;
   let scrolled = false;
   let showLottie = false;
@@ -97,6 +100,11 @@
       isDropdownOpen = false;
     }, 150);
   }
+
+  function handleLogoClick() {
+    resetHeroSwiper.set(true);
+    goto('/');
+  }
 </script>
 
 <nav class="relative z-50" class:scrolled>
@@ -106,7 +114,7 @@
       <div class="flex items-center px-8 py-4 contenerNav">
         <!-- Logo -->
         <div class="flex items-center logoCertus">
-          <a href="/" class="flex items-center space-x-2 group">
+          <a href="/" class="flex items-center space-x-2 group" on:click|preventDefault={handleLogoClick}>
             {#if showLottie && LottiePlayer}
               <svelte:component
                 this={LottiePlayer}
