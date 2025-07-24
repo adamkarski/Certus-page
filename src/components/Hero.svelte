@@ -32,20 +32,23 @@
         const categoryId = urlParams.get('category');
         const machineId = urlParams.get('machine');
 
+        // Explicitly set activeCategory, activeMachine, and expandedView based on URL params
+        activeCategory = categoryId;
+        activeMachine = machineId;
+        expandedView = !!machineId; // Set expandedView based on machineId presence
+
         if (slideId) {
           const index = list.findIndex(item => item.id === slideId);
           if (index !== -1 && swiperElement && swiperElement.swiper) {
             swiperElement.swiper.slideToLoop(index);
           }
-        }
-
-        if (categoryId) {
-          activeCategory = categoryId;
-        }
-
-        if (machineId) {
-          activeMachine = machineId;
-          expandedView = true; // Automatically expand if machineId is present
+        } else {
+          // If no slide param, ensure Swiper is on the first slide after a small delay
+          if (swiperElement && swiperElement.swiper) {
+            setTimeout(() => {
+              swiperElement.swiper.slideToLoop(0);
+            }, 0);
+          }
         }
 
         window.addEventListener('popstate', handlePopstate);
@@ -83,21 +86,24 @@
       const categoryId = urlParams.get('category');
       const machineId = urlParams.get('machine');
 
+      // Explicitly set activeCategory, activeMachine, and expandedView based on URL params
+      activeCategory = categoryId;
+      activeMachine = machineId;
+      expandedView = !!machineId; // Set expandedView based on machineId presence
+
       if (slideId) {
         const index = list.findIndex(item => item.id === slideId);
         if (index !== -1 && swiperElement && swiperElement.swiper) {
           swiperElement.swiper.slideToLoop(index);
         }
       } else {
-        // If no slide param, go back to initial state (first slide)
+        // If no slide param, ensure Swiper is on the first slide after a small delay
         if (swiperElement && swiperElement.swiper) {
-          swiperElement.swiper.slideToLoop(0);
+          setTimeout(() => {
+            swiperElement.swiper.slideToLoop(0);
+          }, 0);
         }
       }
-
-      activeCategory = categoryId;
-      activeMachine = machineId;
-      expandedView = !!machineId; // Set expandedView based on machineId presence
     }
   }
 
@@ -485,11 +491,11 @@
             >
               <img
                 src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="certus_7111_temp_schemat01"
+                alt="Schemat techniczny frezarki Certus 7111 - widok 1"
               />
               <img
                 src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="certus_7111_temp_schemat02"
+                alt="Schemat techniczny frezarki Certus 7111 - widok 2"
               />
 
               <h2>Parametry techniczne</h2>

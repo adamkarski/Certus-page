@@ -44,7 +44,7 @@
       {#if visible}
         <div class="no-sel" in:fade={{ duration: 600, delay: 800 }}>
           <img src="/assets/ikony/telefon.svg" alt="kontakt telefoniczny" />
-          <a href="tel:+48606324406">606 324 406</a>
+          <a href="tel:+48606324406" title="Zadzwoń do Certus">606 324 406</a>
         </div>
       {/if}
     </div>

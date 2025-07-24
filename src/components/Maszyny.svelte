@@ -35,7 +35,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/tokarki.svg" alt="Toakrki CNC" />
+          <img src="/assets/ikony/tokarki.svg" alt="Tokarki CNC" />
         </div>
 
         <CtaButton text="Tokarki CNC" on:click={() => scrollToSection('Tokarki')} />
@@ -105,9 +105,9 @@
     <div class="right">
       <img
         src="/assets/maszyny/certus_7111_temp_schemat01.png"
-        alt="certus_7111_temp_schemat01"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 1"
       />
-      <img src="/assets/maszyny/certus_7111_temp_schemat02.png" alt="certus_7111_temp_schemat02" >
+      <img src="/assets/maszyny/certus_7111_temp_schemat02.png" alt="Schemat techniczny frezarki Certus 7111 - widok 2" >
     </div>
   </div>
 

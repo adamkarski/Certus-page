@@ -41,20 +41,20 @@ onMount(async () => {
         </h5>
 
         <div class="social-links">
-          <a href="#" class="social-link">Facebook</a>
-          <a href="#" class="social-link">Twitter</a>
-          <a href="#" class="social-link">LinkedIn</a>
-          <a href="#" class="social-link">Instagram</a>
+          <a href="https://www.facebook.com/certus_example" class="social-link" title="Odwiedź nas na Facebooku" rel="nofollow noopener noreferrer">Facebook</a>
+          <a href="https://twitter.com/certus_example" class="social-link" title="Odwiedź nas na Twitterze" rel="nofollow noopener noreferrer">Twitter</a>
+          <a href="https://www.linkedin.com/company/certus_example" class="social-link" title="Odwiedź nas na LinkedIn" rel="nofollow noopener noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/certus_example" class="social-link" title="Odwiedź nas na Instagramie" rel="nofollow noopener noreferrer">Instagram</a>
         </div>
       </div>
 
       <div class="footer-section">
         <h4 class="footer-title">PRODUKTY</h4>
         <ul class="footer-links">
-          <li><a href="#" class="footer-link">Frezarki CNC</a></li>
-          <li><a href="#" class="footer-link">Tokarki CNC</a></li>
-          <li><a href="#" class="footer-link">Grawerki CNC</a></li>
-          <li><a href="#" class="footer-link">Plotery CNC</a></li>
+          <li><a href="/maszyny/frezarki" class="footer-link" title="Frezarki CNC">Frezarki CNC</a></li>
+          <li><a href="/maszyny/tokarki" class="footer-link" title="Tokarki CNC">Tokarki CNC</a></li>
+          <li><a href="/maszyny/grawerki" class="footer-link" title="Grawerki CNC">Grawerki CNC</a></li>
+          <li><a href="/maszyny/plotery" class="footer-link" title="Plotery CNC">Plotery CNC</a></li>
        
         </ul>
       </div>
@@ -62,12 +62,12 @@ onMount(async () => {
       <div class="footer-section">
         <h4 class="footer-title">FIRMA</h4>
         <ul class="footer-links">
-          <li><a href="#" class="footer-link">O nas</a></li>
-          <li><a href="#" class="footer-link">Wszystkie maszyny CNC</a></li>
-              <li><a href="#" class="footer-link">Zwroty / Reklamacje</a></li>
-          <li><a href="#" class="footer-link">Dokumentacja</a></li>
+          <li><a href="/onas" class="footer-link" title="O nas">O nas</a></li>
+          <li><a href="/maszyny" class="footer-link" title="Wszystkie maszyny CNC">Wszystkie maszyny CNC</a></li>
+              <li><a href="/zwroty-reklamacje" class="footer-link" title="Zwroty / Reklamacje">Zwroty / Reklamacje</a></li>
+          <li><a href="/dokumentacja" class="footer-link" title="Dokumentacja">Dokumentacja</a></li>
           
-          <li><a href="#" class="footer-link">Kontakt</a></li>
+          <li><a href="/kontakt" class="footer-link" title="Kontakt">Kontakt</a></li>
         </ul>
       </div>
 
@@ -78,20 +78,20 @@ onMount(async () => {
             <span class="contact-icon">
               <img src="assets/ikony/lokalizacja.svg" alt="Lokalizacja">
             </span>
-           <a href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</a>
+           <a href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" title="Otwórz lokalizację Certus w Google Maps" rel="noopener noreferrer">Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</a>
             
           </p>
           <p class="contact-item">
             <span class="contact-icon">
               <img src="assets/ikony/telefon.svg" alt="Telefon">
             </span>
-            <a href="tel:+48 606 324 406">+48 606 324 406</a>
+            <a href="tel:+48 606 324 406" title="Zadzwoń do Certus">+48 606 324 406</a>
           </p>
           <p class="contact-item">
             <span class="contact-icon">
               <img src="assets/ikony/email.svg" alt="Email">
             </span>
-           <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a>
+           <a href="mailto:biuro@mg-certus.pl" title="Wyślij e-mail do Certus">biuro@mg-certus.pl</a>
           </p>
         </div>
       </div>
@@ -103,9 +103,9 @@ onMount(async () => {
           © {currentYear} CERTUS wszelkie prawa zastrzeżone.
         </p>
         <div class="footer-bottom-links">
-          <a href="#" class="footer-link">Polityka prywatności</a>
+          <a href="/polityka-prywatnosci" class="footer-link" title="Polityka prywatności">Polityka prywatności</a>
         
-          <a href="#" class="footer-link">Mapa witryny</a>
+          <a href="/mapa-witryny" class="footer-link" title="Mapa witryny">Mapa witryny</a>
         </div>
       </div>
     </div>

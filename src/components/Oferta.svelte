@@ -33,7 +33,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/tokarki.svg" alt="Toakrki CNC" />
+          <img src="assets/ikony/tokarki.svg" alt="Tokarki CNC" />
         </div>
 
         <CtaButton text="Tokarki CNC" />

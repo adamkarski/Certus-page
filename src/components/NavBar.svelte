@@ -58,9 +58,9 @@
 
   <div class="ramka">
   <!--  <img class="rectangle-80" src="" /> -->
-  <img class="rectangle-81" src="/assets/menu_back.png" />
+  <img class="rectangle-81" src="/assets/menu_back.png" alt="Tło menu nawigacyjnego" />
   <div class="isolation_mode">
-    <img class="" src="/assets/ikony/telefon.svg" />
+    <img class="" src="/assets/ikony/telefon.svg" alt="Ikona telefonu" />
   </div>
   <div class="text-795-142-656">
     <span class="f95142656_span">795 142 656</span>

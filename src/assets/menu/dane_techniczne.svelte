@@ -8,7 +8,7 @@
 
 </script>
 
-<a {href} class="icon-link" on:click={() => dispatch('click')}>
+<a {href} class="icon-link" on:click={() => dispatch('click')} title={text}>
   <svg
     id="Layer_1"
     data-name="Layer 1"

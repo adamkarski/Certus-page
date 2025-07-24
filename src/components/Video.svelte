@@ -33,6 +33,7 @@
       loop
       playsinline
       class="masked-video"
+      title="Wideo prezentujące procesy produkcyjne Certus"
     />
 
     <div class="pattern-overlay">

@@ -120,15 +120,15 @@
       </li>
     </ul>
     <div class="contact-info-block">
-      <div class="info-row"><span class="info-icon"><img src="assets/ikony/telefon.svg" alt="Telefon"></span> <b><a href="tel:+48 606 324 406">+48 606 324 406</a></b></div>
-      <div class="info-row"><span class="info-icon"><img src="assets/ikony/email.svg" alt="Email"></span> <b><a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a></b></div>
-      <div class="info-row"><span class="info-icon"><img src="assets/ikony/lokalizacja.svg" alt="Lokalizacja"></span> <b><a href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</a>
+      <div class="info-row"><span class="info-icon"><img src="assets/ikony/telefon.svg" alt="Telefon"></span> <b><a href="tel:+48 606 324 406" title="Zadzwoń do Certus">+48 606 324 406</a></b></div>
+      <div class="info-row"><span class="info-icon"><img src="assets/ikony/email.svg" alt="Email"></span> <b><a href="mailto:biuro@mg-certus.pl" title="Wyślij e-mail do Certus">biuro@mg-certus.pl</a></b></div>
+      <div class="info-row"><span class="info-icon"><img src="assets/ikony/lokalizacja.svg" alt="Lokalizacja"></span> <b><a href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" title="Otwórz lokalizację Certus w Google Maps" rel="noopener noreferrer">Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</a>
       </b></div>
     </div>
     <div class="contact-social">
-      <a href="#" aria-label="Instagram" class="social-icon"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="7" y="17" font-size="12" fill="#222">IG</text></svg></a>
-      <a href="#" aria-label="YouTube" class="social-icon"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="4" y="17" font-size="12" fill="#222">YT</text></svg></a>
-      <a href="#" aria-label="LinkedIn" class="social-icon"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="4" y="17" font-size="12" fill="#222">IN</text></svg></a>
+      <a href="https://www.instagram.com/certus_example" aria-label="Instagram" class="social-icon" rel="nofollow noopener noreferrer"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="7" y="17" font-size="12" fill="#222">IG</text></svg></a>
+      <a href="https://www.youtube.com/certus_example" aria-label="YouTube" class="social-icon" rel="nofollow noopener noreferrer"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="4" y="17" font-size="12" fill="#222">YT</text></svg></a>
+      <a href="https://www.linkedin.com/company/certus_example" aria-label="LinkedIn" class="social-icon" rel="nofollow noopener noreferrer"> <svg width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#fff"/><text x="4" y="17" font-size="12" fill="#222">IN</text></svg></a>
     </div>
   </div>
   <div class="contact-right">

@@ -49,7 +49,7 @@
 
       <!-- Akcje -->
       <div class="error-actions" transition:fly={{ y: 30, duration: 800, delay: 800 }}>
-        <a href="/" style="text-decoration: none;">
+        <a href="/" style="text-decoration: none;" title="Wróć do strony głównej Certus">
           <CtaButtonKategory text="Wróć do strony głównej" />
         </a>
         <button style="background: none; border: none; padding: 0; margin: 0;" on:click={() => history.back()}>
@@ -63,9 +63,9 @@
 
 
 
-        <a href="" class="link">Nasze maszyny</a>
-        <a href="/onas" class="link">O nas</a>
-        <a href="/kontakt" class="link">Kontakt</a>
+        <a href="/maszyny" class="link" title="Zobacz nasze maszyny CNC">Nasze maszyny</a>
+        <a href="/onas" class="link" title="Dowiedz się więcej o firmie Certus">O nas</a>
+        <a href="/kontakt" class="link" title="Skontaktuj się z nami">Kontakt</a>
       </div>
     </div>
   </div>
