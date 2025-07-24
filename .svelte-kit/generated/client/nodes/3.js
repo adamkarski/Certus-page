@@ -1,3 +1,3 @@
-import * as universal from "../../../../src/routes/onas/+layout.ts";
+import * as universal from "../../../../src/routes/mapa-witryny/+layout.ts";
 export { universal };
 export { default as component } from "../../../../node_modules/@sveltejs/kit/src/runtime/components/svelte-4/layout.svelte";

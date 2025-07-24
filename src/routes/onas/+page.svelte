@@ -1,13 +1,10 @@
 <script lang="ts">
-  import Header from '../../components/Header.svelte'
-  import Footer from '../../components/Footer.svelte'
-  import Oferta from '../../components/Oferta.svelte';
+  
   import Onas from '../../components/Onas.svelte';
-  import ImageSection_01 from '../../components/ImageSection_01.svelte';
-  import Contact from '../../components/Contact.svelte';
-  import ImageSection_02 from '../../components/ImageSection_02.svelte';
-  import Referencje from '../../components/Referencje.svelte';
-  import LocalBusiness from '../../components/LocalBusiness.svelte';
+  import Section_Header from "../../components/sections/Section_Header.svelte";
+  import Section_Footer from "../../components/sections/Section_Footer.svelte";
+  import Section_Image02 from "../../components/sections/Section_Image02.svelte";
+  import Section_Referencje from "../../components/sections/Section_Referencje.svelte";
 </script>
 
 <svelte:head>
@@ -15,24 +12,25 @@
   <meta name="description" content="O naszej firmie, poznaj naszą historię i zespół" />
 </svelte:head>
 
-
-
 <div class="app">
-  <Header />
-  <LocalBusiness/>
+  <Section_Header />
   <main>
     <Onas />
-    <ImageSection_01 />
-    <Contact />
-    <ImageSection_02 />
-    <Referencje />
+    <Section_Image02 />
+    <Section_Referencje />
   </main>
-  <Footer />
+  <Section_Footer />
 </div>
 
-<style>
+
+
+<style lang="scss">
   .app {
     width: 100%;
     overflow-x: hidden;
+  }
+
+  :global(body) {
+  
   }
 </style>

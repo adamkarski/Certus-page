@@ -1,15 +1,16 @@
 <script lang="ts">
-  import Header from '../components/Header.svelte'
-  import Hero from '../components/Hero.svelte'
-  import Oferta from '../components/Oferta.svelte'
-  import Contact from '../components/Contact.svelte'
-  import Footer from '../components/Footer.svelte'
-  import Video from '../components/Video.svelte';
-  import Onas from '../components/Onas.svelte';
-  import ImageSection_01 from '../components/ImageSection_01.svelte';
-  import ImageSection_02 from '../components/ImageSection_02.svelte';
-  import Referencje from '../components/Referencje.svelte';
+  import Section_Header from '../components/sections/Section_Header.svelte'
+  import Section_Footer from '../components/sections/Section_Footer.svelte'
+  import Section_Hero from '../components/sections/Section_Hero.svelte'
+  import Section_Onas from '../components/sections/Section_Onas.svelte'
+  import Section_Oferta from '../components/sections/Section_Oferta.svelte'
+  import Section_Contact from '../components/sections/Section_Contact.svelte'
+  import Section_Video from '../components/sections/Section_Video.svelte';
+  import Section_Image01 from '../components/sections/Section_Image01.svelte';
+  import Section_Image02 from '../components/sections/Section_Image02.svelte';
+  import Section_Referencje from '../components/sections/Section_Referencje.svelte';
   import LocalBusiness from '../components/LocalBusiness.svelte';
+
 </script>
 
 <svelte:head>
@@ -18,19 +19,19 @@
 </svelte:head>
 
 <div class="app">
-  <Header />
+  <Section_Header />sec
   <LocalBusiness/>
   <main>
-    <Hero />
-    <Oferta />
-    <Video />
-    <Onas />
-    <ImageSection_01 />
-    <Contact />
-    <ImageSection_02 />
-    <Referencje />
+    <Section_Hero />
+    <Section_Oferta />
+    <Section_Video />
+    <Section_Onas />
+    <Section_Image01 />
+    <Section_Contact />
+    <Section_Image02 />
+    <Section_Referencje />
   </main>
-  <Footer />
+  <Section_Footer />
 </div>
 
 <style>

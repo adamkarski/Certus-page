@@ -8,33 +8,56 @@
       "_internal.js"
     ]
   },
-  "_Footer.js": {
-    "file": "chunks/Footer.js",
-    "name": "Footer",
+  "_Section_Image01.js": {
+    "file": "chunks/Section_Image01.js",
+    "name": "Section_Image01",
+    "imports": [
+      "_ssr.js",
+      "_Section_Referencje.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Section_Image01.IesAFphk.css"
+    ]
+  },
+  "_Section_Image02.js": {
+    "file": "chunks/Section_Image02.js",
+    "name": "Section_Image02",
+    "imports": [
+      "_ssr.js",
+      "_Section_Referencje.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Section_Image02.CMXLgolM.css"
+    ]
+  },
+  "_Section_Referencje.js": {
+    "file": "chunks/Section_Referencje.js",
+    "name": "Section_Referencje",
+    "imports": [
+      "_ssr.js",
+      "_exports.js",
+      "_state.svelte.js",
+      "_index.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Section_Referencje.DZf_-cPt.css"
+    ]
+  },
+  "_Serwis.js": {
+    "file": "chunks/Serwis.js",
+    "name": "Serwis",
     "imports": [
       "_ssr.js"
     ],
     "css": [
-      "_app/immutable/assets/Footer.ChLiMtIz.css"
+      "_app/immutable/assets/Serwis.DmFVTnC8.css"
     ]
   },
-  "_LocalBusiness.js": {
-    "file": "chunks/LocalBusiness.js",
-    "name": "LocalBusiness",
+  "_cta-button-kategory.js": {
+    "file": "chunks/cta-button-kategory.js",
+    "name": "cta-button-kategory",
     "imports": [
-      "_ssr.js",
-      "_index.js"
-    ],
-    "css": [
-      "_app/immutable/assets/LocalBusiness.CdI6t11J.css"
-    ]
-  },
-  "_Oferta.js": {
-    "file": "chunks/Oferta.js",
-    "name": "Oferta",
-    "imports": [
-      "_ssr.js",
-      "_Footer.js"
+      "_ssr.js"
     ],
     "css": [
       "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css"
@@ -71,13 +94,20 @@
     "file": "chunks/ssr2.js",
     "name": "ssr"
   },
+  "_state.svelte.js": {
+    "file": "chunks/state.svelte.js",
+    "name": "state.svelte",
+    "imports": [
+      "_ssr2.js"
+    ]
+  },
   "_stores.js": {
     "file": "chunks/stores.js",
     "name": "stores",
     "imports": [
       "_ssr.js",
       "_exports.js",
-      "_ssr2.js"
+      "_state.svelte.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/svelte-4/layout.svelte": {
@@ -131,7 +161,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.C6KEbukx.css"
+      "_app/immutable/assets/_layout.CdYyv_i4.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -147,12 +177,68 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_Footer.js",
-      "_Oferta.js",
-      "_LocalBusiness.js"
+      "_Section_Referencje.js",
+      "_index.js",
+      "_cta-button-kategory.js",
+      "_Section_Image01.js",
+      "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DuNrGCBF.css"
+      "_app/immutable/assets/_page.CqJN7J5Y.css"
+    ]
+  },
+  "src/routes/dokumentacja/+page.svelte": {
+    "file": "entries/pages/dokumentacja/_page.svelte.js",
+    "name": "entries/pages/dokumentacja/_page.svelte",
+    "src": "src/routes/dokumentacja/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Section_Referencje.js",
+      "_Section_Image01.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.1FrnO9AI.css"
+    ]
+  },
+  "src/routes/kontakt/+layout.ts": {
+    "file": "entries/pages/kontakt/_layout.ts.js",
+    "name": "entries/pages/kontakt/_layout.ts",
+    "src": "src/routes/kontakt/+layout.ts",
+    "isEntry": true
+  },
+  "src/routes/kontakt/+page.svelte": {
+    "file": "entries/pages/kontakt/_page.svelte.js",
+    "name": "entries/pages/kontakt/_page.svelte",
+    "src": "src/routes/kontakt/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Section_Referencje.js",
+      "_Section_Image02.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.Cdm7ihuW.css"
+    ]
+  },
+  "src/routes/mapa-witryny/+layout.ts": {
+    "file": "entries/pages/mapa-witryny/_layout.ts.js",
+    "name": "entries/pages/mapa-witryny/_layout.ts",
+    "src": "src/routes/mapa-witryny/+layout.ts",
+    "isEntry": true
+  },
+  "src/routes/mapa-witryny/+page.svelte": {
+    "file": "entries/pages/mapa-witryny/_page.svelte.js",
+    "name": "entries/pages/mapa-witryny/_page.svelte",
+    "src": "src/routes/mapa-witryny/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Section_Referencje.js",
+      "_Section_Image02.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DfkrTxSj.css"
     ]
   },
   "src/routes/maszyny/+layout.ts": {
@@ -168,11 +254,12 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_Footer.js",
-      "_Oferta.js"
+      "_cta-button-kategory.js",
+      "_Section_Referencje.js",
+      "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CWHESAV-.css"
+      "_app/immutable/assets/_page.G4wbZLK0.css"
     ]
   },
   "src/routes/onas/+layout.ts": {
@@ -188,12 +275,73 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_Footer.js",
-      "_LocalBusiness.js"
+      "_Section_Referencje.js",
+      "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DzDwB2c2.css",
-      "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css"
+      "_app/immutable/assets/_page.D0FX6g1A.css"
+    ]
+  },
+  "src/routes/polityka-prywatnosci/+layout.ts": {
+    "file": "entries/pages/polityka-prywatnosci/_layout.ts.js",
+    "name": "entries/pages/polityka-prywatnosci/_layout.ts",
+    "src": "src/routes/polityka-prywatnosci/+layout.ts",
+    "isEntry": true
+  },
+  "src/routes/polityka-prywatnosci/+page.svelte": {
+    "file": "entries/pages/polityka-prywatnosci/_page.svelte.js",
+    "name": "entries/pages/polityka-prywatnosci/_page.svelte",
+    "src": "src/routes/polityka-prywatnosci/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Serwis.js",
+      "_Section_Referencje.js",
+      "_Section_Image02.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CxEsy0ca.css"
+    ]
+  },
+  "src/routes/reklamacje/+layout.ts": {
+    "file": "entries/pages/reklamacje/_layout.ts.js",
+    "name": "entries/pages/reklamacje/_layout.ts",
+    "src": "src/routes/reklamacje/+layout.ts",
+    "isEntry": true
+  },
+  "src/routes/reklamacje/+page.svelte": {
+    "file": "entries/pages/reklamacje/_page.svelte.js",
+    "name": "entries/pages/reklamacje/_page.svelte",
+    "src": "src/routes/reklamacje/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Section_Referencje.js",
+      "_Section_Image02.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BgrTBdjy.css"
+    ]
+  },
+  "src/routes/serwis/+layout.ts": {
+    "file": "entries/pages/serwis/_layout.ts.js",
+    "name": "entries/pages/serwis/_layout.ts",
+    "src": "src/routes/serwis/+layout.ts",
+    "isEntry": true
+  },
+  "src/routes/serwis/+page.svelte": {
+    "file": "entries/pages/serwis/_page.svelte.js",
+    "name": "entries/pages/serwis/_page.svelte",
+    "src": "src/routes/serwis/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Serwis.js",
+      "_Section_Referencje.js",
+      "_Section_Image02.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CxEsy0ca.css"
     ]
   }
 }

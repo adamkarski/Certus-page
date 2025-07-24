@@ -1,10 +1,11 @@
 <script lang="ts">
-  import Header from '../../components/Header.svelte'
-  import Footer from '../../components/Footer.svelte'
-  import Oferta from '../../components/Oferta.svelte';
-import Maszyny from '../../components/Maszyny.svelte';
-  import ImageSection_02 from '../../components/ImageSection_02.svelte';
-  import Referencje from '../../components/Referencje.svelte';
+  import Maszyny from '../../components/Maszyny.svelte';
+
+  import Section_Header from "../../components/sections/Section_Header.svelte";
+  import Section_Footer from "../../components/sections/Section_Footer.svelte";
+  import Section_Image02 from "../../components/sections/Section_Image02.svelte";
+  import Section_Referencje from "../../components/sections/Section_Referencje.svelte";
+
 </script>
 
 <svelte:head>
@@ -16,21 +17,15 @@ import Maszyny from '../../components/Maszyny.svelte';
 
 
 <div class="app">
-  <Header />
+  <Section_Header />
   <main>
 
-  
-
     <Maszyny />
-    <ImageSection_02 />
-    <Referencje />
+
+
+    <Section_Image02 />
+    <Section_Referencje />
   </main>
-  <Footer />
+  <Section_Footer />
 </div>
 
-<style>
-  .app {
-    width: 100%;
-    overflow-x: hidden;
-  }
-</style>
