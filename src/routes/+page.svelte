@@ -34,9 +34,10 @@
   <Section_Footer />
 </div>
 
-<style>
+<style lang="scss">
   .app {
     width: 100%;
     overflow-x: hidden;
   }
+
 </style>

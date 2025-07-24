@@ -871,7 +871,7 @@ cursor: -webkit-image-set(url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIw
     height: 100%;
     position: relative;
     overflow: hidden;
-    padding-top: 4em;
+    padding-top: 80px;
 
   }
 

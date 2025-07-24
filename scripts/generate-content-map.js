@@ -25,7 +25,7 @@ const pages = globSync(`${buildDir}/**/*.html`).map((filePath) => {
   const mainContent = root.querySelector('main')?.structuredText || '';
 
   // Wygeneruj ścieżkę URL
-  const urlPath = '/' + path.relative(buildDir, filePath).replace(/\\/g, '/').replace(/^pages\//, '').replace(/index\.html$/, '');
+  const urlPath = '/' + path.relative(buildDir, filePath).replace(/\\/g, '/').replace(/^pages\//, '').replace(/index\.html$/, '').replace(/\.html$/, '');
 
   console.log(`📄 Indeksuję: ${filePath}`);
 

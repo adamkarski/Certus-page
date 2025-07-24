@@ -27,8 +27,25 @@
   </div>
 {/key}
 
-<style>
-  .preloader {
+<style lang="scss">
+.ramka {
+    width: 1380px;
+    height: 90px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    opacity: 0.13;
+    background: #bebebe;
+    border-radius: 70px;
+  
+    
+
+  }
+:global(.lottie-player .animation svg > g > g:nth-child(5)) {
+    // g > g:nth-child(3) > g > g:nth-child(6)
+    opacity: 0;
+  }
+.preloader {
     position: fixed;
     inset: 0;
     z-index: 9999;
