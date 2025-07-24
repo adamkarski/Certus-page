@@ -11,20 +11,12 @@
 <section id="maszyny" class="maszyny">
   <div class="maszyny-container container">
     <div class="section-header">
-      
-      
       <h1 class="no-sel">Kategorie maszyn</h1>
 
-      <hr>
-      
+      <hr />
     </div>
-  
-    
-   
-  
   </div>
   <div class="oferta-container container">
-
     <div class="oferta-grid">
       <div class="oferta-card">
         <div class="oferta-icon">
@@ -58,33 +50,129 @@
         <CtaButton text="Plotery CNC" />
       </div>
     </div>
+  </div>
+  "
+</section>
 
-  
-
-    </div>"
-
-  <!-- gruba HR z przezroczystą kolorową tło -->
-  <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+<section id="Frezarki" class="maszyny-dane">
+  <div class="maszyny-dane-header">
+    <img
+      src="/assets/ikony/frezarki.svg"
+      alt="Frezarki CNC"
+      class="maszyny-dane-ikona"
+    />
+    <h2>Frezarki CNC</h2>
+  </div>
+  <hr />
+  <ul class="maszyny-dane-lista">
+    <li>Przeznaczone do frezowania stali, aluminium, drewna, plastiku itp.</li>
+    <li>Kompletna zabudowa umożliwiająca chłodzenie narzędzi i materiału.</li>
+    <li>Zintegrowany odstojnik, zbiornik na chłodziwo oraz pompa.</li>
+    <li>Trwałe osłony stalowe prowadnic i śrub kulowych.</li>
+    <li>Wolnostojący panel sterujący.</li>
+    <li>Polskojęzyczne oprogramowanie, transfer danych przez LAN.</li>
+    <li>Serwonapędy hybrydowe lub serwa AC (w zależności od opcji).</li>
+    <li>Wysoka sztywność i precyzja w swojej klasie.</li>
+  </ul>
+  <div class="maszyny-dane-podtytul">Wersja bazowa zawiera m.in.:</div>
+  <ul class="maszyny-dane-lista">
+    <li>Konstrukcję o zwiększonej sztywności z pełną zabudową,</li>
+    <li>System chłodzenia w obiegu zamkniętym z pompą i odstojnikiem,</li>
+    <li>Niezależny panel sterowania z komputerem i przyciskami fizycznymi,</li>
+    <li>Wrzeciono z automatyczną wymianą narzędzi (ATC),</li>
+    <li>Polskojęzyczne sterowanie PikoCNC z modułem CAM,</li>
+    <li>Serwonapędy hybrydowe,</li>
+    <li>Instrukcje obsługi i dokumentację DTR w języku polskim,</li>
+    <li>Podstawowe szkolenie użytkownika.</li>
+  </ul>
+  <div class="maszyny-dane-tabela-wrap">
+    <table class="maszyny-dane-tabela">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Pole pracy</th>
+          <th>Waga [t]</th>
+          <th>Opcje wyposażenia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>CERTUS 1212<br />STANDARD / ATC</b></td>
+          <td>1200 x 1200 x 350</td>
+          <td>4,2</td>
+          <td>Automatyczna wymiana narzędzi (ATC), magazyn narzędzi</td>
+        </tr>
+        <tr>
+          <td><b>CERTUS 1080<br />STANDARD / ATC</b></td>
+          <td>1000 x 800 x 350</td>
+          <td>3,5</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><b>CERTUS 7060<br />STANDARD / ATC</b></td>
+          <td>700 x 600 x 279</td>
+          <td>1,2</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><b>CERTUS 4040<br />STANDARD / ATC</b></td>
+          <td>400 x 400 x 350</td>
+          <td>0,7</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="maszyny-dane-cta">
+    <CtaButton text="Zamów konsultację" />
+  </div>
 </section>
 
 <style lang="scss">
+  .maszyny-dane-header {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
 
-h1{
+    img {
+      width: 120px;
+      margin-left: calc(-2px);
+      margin-right: calc(-32px);
+      // border: 1px solid gray;
+      height: 120px;
+      background: none;
+      border-radius: 0px;
+      padding: 0px;
+      box-shadow: none;
+    }
+    h2 {
+      position: relative ;
+      background-color: #eeeeee !important;
+      height: 30px;
+      font-size: 1.3em !important; 
+      font-weight: 500 !important;
+      padding-top: 3px;
+      margin-bottom: 10px !important;
+    }
+  }
+  h1 {
+    font-size: 21px;
+    font-weight: 400;
+  }
+  hr,
+  .maszyny-dane hr {
+    margin-top: 1em;
+    border: 1px solid rgba($color: #000000, $alpha: 0.2);
+  }
 
-  font-size: 21px;
-  font-weight: 400;
-}
-hr{
-  margin-top: 1em;
-  border: 1px solid rgba($color: #000000, $alpha: 0.2);
-}
-
-.oferta-container {
+  .oferta-container {
     overflow: hidden;
     width: 100%;
     padding: 0 9rem;
   }
-
 
   .pattern-overlay {
     position: absolute;
@@ -96,7 +184,6 @@ hr{
     pointer-events: none;
     opacity: 0.3;
 
-    
     .pattern.two {
       transform: scale(1.2) skew(-15deg, 0deg);
       background-image: url(/assets/images/pattern-image1-2.png);
@@ -175,6 +262,97 @@ hr{
       }
     }
   }
+
+  /* --- UNIFIKOWANE STYLE DLA BLOKU MASZYNY --- */
+  .maszyny-dane {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    padding: 3rem 2.5rem 2.5rem 2.5rem;
+    margin-bottom: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .maszyny-dane-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .maszyny-dane-ikona {
+    width: 60px;
+    height: 60px;
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+  }
+  .maszyny-dane h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  .maszyny-dane-lista {
+    margin: 0 0 1.2rem 0;
+    padding-left: 1.2em;
+    font-size: 1.08rem;
+    color: #222;
+  }
+  .maszyny-dane-lista li {
+    margin-bottom: 0.3em;
+    line-height: 1.5;
+  }
+  .maszyny-dane-podtytul {
+    font-weight: 600;
+    margin: 1.2em 0 0.5em 0;
+    font-size: 1.1rem;
+  }
+  .maszyny-dane-tabela-wrap {
+    overflow-x: auto;
+    margin: 1.5em 0 1.5em 0;
+  }
+  .maszyny-dane-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fafbfc;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 1rem;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);
+  }
+  .maszyny-dane-tabela th,
+  .maszyny-dane-tabela td {
+    padding: 0.8em 1em;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+  }
+  .maszyny-dane-tabela th {
+    background: #f1f3f6;
+    font-weight: 600;
+    font-size: 1.05em;
+  }
+  .maszyny-dane-tabela tr:last-child td {
+    border-bottom: none;
+  }
+  .maszyny-dane-cta {
+    margin-top: 2.2em;
+    text-align: right;
+  }
+  @media (max-width: 900px) {
+    .maszyny-dane {
+      padding: 2rem 1rem;
+    }
+    .maszyny-dane-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+    .maszyny-dane-cta {
+      text-align: center;
+    }
+  }
+  /* --- KONIEC UNIFIKOWANYCH STYLI --- */
 
   @media (max-width: 768px) {
     .maszyny {
