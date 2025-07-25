@@ -30,6 +30,16 @@
       "_app/immutable/assets/Section_Image02.CMXLgolM.css"
     ]
   },
+  "_Section_Kontakt.js": {
+    "file": "chunks/Section_Kontakt.js",
+    "name": "Section_Kontakt",
+    "imports": [
+      "_ssr.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Section_Kontakt.CcHNFC6D.css"
+    ]
+  },
   "_Section_Referencje.js": {
     "file": "chunks/Section_Referencje.js",
     "name": "Section_Referencje",
@@ -40,17 +50,18 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/Section_Referencje.DZf_-cPt.css"
+      "_app/immutable/assets/Section_Referencje.BpJobD9X.css"
     ]
   },
   "_Serwis.js": {
     "file": "chunks/Serwis.js",
     "name": "Serwis",
     "imports": [
-      "_ssr.js"
+      "_ssr.js",
+      "_Section_Referencje.js"
     ],
     "css": [
-      "_app/immutable/assets/Serwis.DmFVTnC8.css"
+      "_app/immutable/assets/Serwis._prwteEn.css"
     ]
   },
   "_cta-button-kategory.js": {
@@ -140,7 +151,7 @@
       "_stores.js"
     ],
     "css": [
-      "_app/immutable/assets/_error.CFNDax1i.css",
+      "_app/immutable/assets/_error.6rzje1C_.css",
       "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css"
     ]
   },
@@ -161,7 +172,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CdYyv_i4.css"
+      "_app/immutable/assets/_layout.CPbpiUL1.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -178,13 +189,14 @@
     "imports": [
       "_ssr.js",
       "_Section_Referencje.js",
-      "_index.js",
       "_cta-button-kategory.js",
+      "_Section_Kontakt.js",
       "_Section_Image01.js",
-      "_Section_Image02.js"
+      "_Section_Image02.js",
+      "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CqJN7J5Y.css"
+      "_app/immutable/assets/_page.CW0tvc91.css"
     ]
   },
   "src/routes/dokumentacja/+page.svelte": {
@@ -198,7 +210,7 @@
       "_Section_Image01.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.1FrnO9AI.css"
+      "_app/immutable/assets/_page.yR2LPWyI.css"
     ]
   },
   "src/routes/kontakt/+layout.ts": {
@@ -214,11 +226,12 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
+      "_Section_Kontakt.js",
       "_Section_Referencje.js",
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.Cdm7ihuW.css"
+      "_app/immutable/assets/_page.CQYhN58e.css"
     ]
   },
   "src/routes/mapa-witryny/+layout.ts": {
@@ -238,7 +251,7 @@
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.DfkrTxSj.css"
+      "_app/immutable/assets/_page.BdbZY6Rq.css"
     ]
   },
   "src/routes/maszyny/+layout.ts": {
@@ -279,7 +292,7 @@
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.D0FX6g1A.css"
+      "_app/immutable/assets/_page.D6AD7B9d.css"
     ]
   },
   "src/routes/polityka-prywatnosci/+layout.ts": {
@@ -320,7 +333,7 @@
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.BgrTBdjy.css"
+      "_app/immutable/assets/_page.Dy_JpW2c.css"
     ]
   },
   "src/routes/serwis/+layout.ts": {

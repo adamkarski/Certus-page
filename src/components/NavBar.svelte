@@ -192,7 +192,7 @@
 
 
                <!-- Bestselller -->
-               <a href="/certus69" class="nav-link"> Bestselller certus69 drop</a>
+               <a href="#" class="nav-link"> Bestselller certus69 drop</a>
 
 
           <!-- Serwis -->
