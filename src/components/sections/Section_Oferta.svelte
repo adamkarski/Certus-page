@@ -34,9 +34,16 @@
           <img src="assets/ikony/tokarki.svg" alt="Tokarki CNC" />
         </div>
 
-        <CtaButton text="Tokarki CNC" />
+        <CtaButton text="Plotery przemysłowe CNC" />
       </div>
 
+      <div class="oferta-card">
+        <div class="oferta-icon">
+          <img src="assets/ikony/grawerki.svg" alt="Grawerki CNC" />
+        </div>
+
+        <CtaButton text="Frezarki pięcioosiowe" />
+      </div>
       <div class="oferta-card">
         <div class="oferta-icon">
           <img src="assets/ikony/grawerki.svg" alt="Grawerki CNC" />
@@ -45,13 +52,13 @@
         <CtaButton text="Grawerki CNC" />
       </div>
 
-      <div class="oferta-card">
+     <!--  <div class="oferta-card">
         <div class="oferta-icon">
           <img src="assets/ikony/plotery.svg" alt="Plotery CNC" />
         </div>
 
         <CtaButton text="Plotery CNC" />
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="first-container-back">

@@ -138,10 +138,9 @@
 
         <!-- Menu główne -->
         <div class="md:flex items-center space-x-1 menuItems">
-          <!-- Maszyny -->
-          <a href="/maszyny" class="nav-link"> Maszyny </a>
+     
 
-          <!-- Branże z dropdown -->
+          <!-- Maszyny z dropdown -->
           <div
             class="relative"
             on:mouseenter={handleMouseEnter}
@@ -153,7 +152,7 @@
               class:text-green-600={isDropdownOpen}
               class:bg-green-50={isDropdownOpen}
             >
-              <span>Branże</span>
+              <span>Maszyny</span>
               <svg
                 class="w-4 h-4 transition-transform duration-300"
                 class:rotate-180={isDropdownOpen}
@@ -190,6 +189,11 @@
               </div>
             {/if}
           </div>
+
+
+               <!-- Bestselller -->
+               <a href="/certus69" class="nav-link"> Bestselller certus69 drop</a>
+
 
           <!-- Serwis -->
           <a href="/serwis" class="nav-link"> Serwis </a>
@@ -306,6 +310,9 @@
               </svg>
             </button>
           </div>
+       
+       
+       
         </div>
 
         <!-- Spacer to push search and phone to the right -->
@@ -327,7 +334,7 @@
 }
 
   .searchBox {
-    display: flex;
+    display: none;
     align-content: center;
     align-items: center;
     width: auto;

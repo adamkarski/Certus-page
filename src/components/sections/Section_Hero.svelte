@@ -117,29 +117,30 @@
     },
     {
       id: "grawerki",
-      title: "Grawerki CNC",
+      title: "Plotery przemysłowe CNC",
       img: "/assets/maszyny/certus_7111_temp.png",
     },
     {
       id: "plotery",
-      title: "Plotery CNC",
+      title: "Frezarki pięcioosiowe",
       img: "/assets/maszyny/certus_7111_temp.png",
     },
     {
       id: "tokarki",
-      title: "Tokarki CNC",
+      title: "Grawerka CNC",
       img: "/assets/maszyny/certus_7111_temp.png",
     },
     {
-      id: "serwis",
-      title: "Serwis, gwarancyjny i pogwarancyjny",
-      img: "/assets/certus-serwis-pogwarancyjny.png",
+      id: "linearne",
+      title: "Plotery tnące linearne CNC",
+      img: "/assets/maszyny/certus_7111_temp.png",
     },
     {
-      id: "pomoc",
-      title: "Pomagamy, wdrażamy optymalizujemy procesy produkcji",
-      img: "/assets/certus-pomoc-wdrozenia.png",
+      id: "specjalistyczne",
+      title: "Maszyny specjalistyczne",
+      img: "/assets/maszyny/certus_7111_temp.png",
     },
+ 
   ];
 
   // Funkcja do preloadingu obrazków
