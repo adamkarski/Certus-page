@@ -197,7 +197,10 @@
           <!-- O nas -->
           <a href="/onas" class="nav-link"> O nas </a>
 
-          <div class="flex items-right">
+          <!-- Kontakt -->
+           <a href="/kontakt" class="nav-link"> Kontakt </a>
+
+          <div class="flex items-right searchBox">
             <!-- Search Box -->
             <div class="relative">
               <div class="flex items-center">
@@ -319,6 +322,19 @@
     width: 100%;
   }
 
+.nav-link:first-of-type{
+  margin-left: 25px;
+}
+
+  .searchBox {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    width: auto;
+    #search-input{
+      width: 100px;
+    }
+  }
   *:focus {
     outline: 0px solid #2c5aa0;
     outline-offset: 0px;
@@ -330,6 +346,7 @@
     color: #616d5d;
     font-size: 0.9em;
     font-weight: 200;
+    margin-right: 20px;
     a {
       padding-left: 20px;
       padding-right: 20px;
@@ -342,6 +359,7 @@
   }
   nav {
     width: 100%;
+    margin-top: 2.3em;
   }
   .ramka {
     display: flex;
@@ -352,12 +370,11 @@
       display: flex;
       gap: 1rem;
       width: 100%;
-      padding-top: 15px;
+      padding-top: 8px;
       flex-direction: row;
       margin-left: 12px;
       margin-right: 12px;
       justify-content: space-between;
-      opacity: 0.4;
     }
   }
   .logoCertus {
@@ -413,24 +430,12 @@
   }
 
   .phone-contact {
-    background: linear-gradient(
-      to right,
-      #22c55e,
-      #16a34a
-    ); /* bg-gradient-to-r from-green-500 to-green-600 */
-    color: white; /* text-white */
-    padding: 12px 24px; /* px-6 py-3 */
-    border-radius: 12px; /* rounded-2xl */
-    box-shadow:
-      0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    padding: 12px 24px;
+    border-radius: 12px;
+    transition: all 300ms ease-in-out;
     transition: all 300ms ease-in-out; /* transition-all duration-300 */
 
     &:hover {
-      box-shadow:
-        0 20px 25px -5px rgba(0, 0, 0, 0.1),
-        0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
-      transform: scale(1.05); /* hover:scale-105 */
     }
 
     div:first-child {
