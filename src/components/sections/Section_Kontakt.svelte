@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import CtaButton from "../cta-button.svelte";
+    import { fade } from "svelte/transition";
   export let isKontaktPage = false; // Dodano deklarację propsa
   let formData = {
     firstName: "",
@@ -14,27 +15,27 @@
   let isSubmitting = false;
   let submitMessage = "";
   let phonePrefix = "+48";
-  let messageInputMode: 'text' | 'record' | null = null; // 'text', 'record', or null (initial state)
+  let messageInputMode: "text" | "record" | null = null; // 'text', 'record', or null (initial state)
   let isRecording = false;
-  let recordedFileName = '';
+  let recordedFileName = "";
 
   function selectTextInputMode() {
-    messageInputMode = 'text';
+    messageInputMode = "text";
     isRecording = false;
-    recordedFileName = '';
-    formData.message = ''; // Clear message when switching modes
+    recordedFileName = "";
+    formData.message = ""; // Clear message when switching modes
   }
 
   function selectRecordInputMode() {
-    messageInputMode = 'record';
+    messageInputMode = "record";
     isRecording = false;
-    recordedFileName = '';
-    formData.message = ''; // Clear message when switching modes
+    recordedFileName = "";
+    formData.message = ""; // Clear message when switching modes
   }
 
   function startRecording() {
     isRecording = true;
-    recordedFileName = ''; // Clear previous recording
+    recordedFileName = ""; // Clear previous recording
     // Simulate recording for a few seconds
     setTimeout(() => {
       stopRecording();
@@ -116,33 +117,33 @@
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
     if (!formData.privacy) {
-      submitMessage = 'Musisz zaakceptować politykę prywatności.';
+      submitMessage = "Musisz zaakceptować politykę prywatności.";
       return;
     }
 
     // Ensure message is set for recorded mode
-    if (messageInputMode === 'record' && !formData.message) {
-      submitMessage = 'Proszę nagrać wiadomość.';
+    if (messageInputMode === "record" && !formData.message) {
+      submitMessage = "Proszę nagrać wiadomość.";
       return;
     }
 
     isSubmitting = true;
-    submitMessage = '';
+    submitMessage = "";
     setTimeout(() => {
       isSubmitting = false;
-      submitMessage = 'Dziękujemy za wiadomość! Skontaktujemy się wkrótce.';
+      submitMessage = "Dziękujemy za wiadomość! Skontaktujemy się wkrótce.";
       formData = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        message: '',
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
         privacy: false,
-        country: 'PL',
+        country: "PL",
       };
-      phonePrefix = '+48';
+      phonePrefix = "+48";
       messageInputMode = null; // Reset input mode after submission
-      recordedFileName = '';
+      recordedFileName = "";
     }, 1000);
   };
 </script>
@@ -281,10 +282,15 @@
       </div>
       {#if messageInputMode === null}
         <div class="message-mode-selection">
-          <CtaButton text="Wpisz wiadomość" on:click={selectTextInputMode} />
-          <CtaButton text="Nagraj wiadomość" on:click={selectRecordInputMode} />
+          <button on:click={selectTextInputMode} class="writeMessage" in:fade={{ }}>
+            <img src="/assets/ikony/message.svg" alt="Wpisz wiadomość" />
+          </button>
+
+          <button on:click={selectRecordInputMode} class="recordMessage" in:fade={{ }}>
+            <img src="/assets/ikony/record.svg" alt="Nagraj wiadomość" />
+          </button>
         </div>
-      {:else if messageInputMode === 'text'}
+      {:else if messageInputMode === "text"}
         <div class="form-group">
           <label for="message">Wiadomość</label>
           <textarea
@@ -295,7 +301,7 @@
             required
           ></textarea>
         </div>
-      {:else if messageInputMode === 'record'}
+      {:else if messageInputMode === "record"}
         <div class="form-group">
           <label>Wiadomość głosowa</label>
           {#if !isRecording && !recordedFileName}
@@ -305,7 +311,10 @@
             <CtaButton text="Zatrzymaj nagrywanie" on:click={stopRecording} />
           {:else if recordedFileName}
             <p>Nagrano: {recordedFileName}</p>
-            <CtaButton text="Nagraj ponownie" on:click={selectRecordInputMode} />
+            <CtaButton
+              text="Nagraj ponownie"
+              on:click={selectRecordInputMode}
+            />
           {/if}
         </div>
       {/if}
@@ -331,14 +340,39 @@
 </section>
 
 <style lang="scss">
+  .message-mode-selection {
+    display: flex;
+    transition: all ease 0.5s;
+    button {
+      display: flex;
+      width: 50%;
+      height: 120px;
+      border: 1px solid var(--color-gray-200);
+      border-radius: 6px;
+      background-color: var(--color-bg-overlay);
+      text-align: center;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      transition: all ease 0.5s;
+      img {
+        width: 30%;
+        opacity: 0.5;
+      }
+      
+    }
+  }
+  .message-mode-selection button:hover{
+
+    border: 1px solid var(--color-primary-dark);
+
+
+  }
   .country-select {
     max-width: 120px;
   }
-  a:hover{
-
+  a:hover {
     color: var(--color-primary);
-
-
   }
   .form-group.privacy-group.checkbox-row {
     display: flex;
@@ -562,9 +596,15 @@
   }
 
   @keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   @media (max-width: 900px) {
