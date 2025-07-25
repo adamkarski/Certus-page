@@ -10,12 +10,10 @@
 
 <header class="header">
   <div class="header-container">
-   
-    
-
-
-    <!-- <NavBar/> -->
-    <NavBar/>
+    <div class="inner-header">
+      <!-- <NavBar/> -->
+      <NavBar />
+    </div>
 
 
 
@@ -51,10 +49,16 @@
   }
   
   .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .inner-header {
+    width: 100%;
+    padding: 0 9rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

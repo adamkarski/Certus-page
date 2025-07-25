@@ -2,8 +2,8 @@
   import { onMount } from "svelte";
   import { fly, fade } from "svelte/transition";
   import { preloaderVisible } from "$lib/preloaderStore";
-  import { goto } from '$app/navigation';
-  import { resetHeroSwiper } from '../lib/resetHeroSwiperStore';
+  import { goto } from "$app/navigation";
+  import { resetHeroSwiper } from "../lib/resetHeroSwiperStore";
 
   let LottiePlayer;
   let scrolled = false;
@@ -104,18 +104,22 @@
 
   function handleLogoClick() {
     resetHeroSwiper.set(true);
-    goto('/');
+    goto("/");
   }
 </script>
 
 <nav class="relative z-50" class:scrolled>
   <!-- Główna ramka navbar -->
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ramka">
+  <div class="px-4 sm:px-6 lg:px-8 ramka">
     <div class="relative menubar">
       <div class="flex items-center px-8 py-4 contenerNav">
         <!-- Logo -->
         <div class="flex items-center logoCertus">
-          <a href="/" class="flex items-center space-x-2 group" on:click|preventDefault={handleLogoClick}>
+          <a
+            href="/"
+            class="flex items-center space-x-2 group"
+            on:click|preventDefault={handleLogoClick}
+          >
             {#if showLottie && LottiePlayer}
               <svelte:component
                 this={LottiePlayer}
@@ -135,12 +139,7 @@
         <!-- Menu główne -->
         <div class="md:flex items-center space-x-1 menuItems">
           <!-- Maszyny -->
-          <a
-            href="/maszyny"
-            class="nav-link"
-          >
-            Maszyny
-          </a>
+          <a href="/maszyny" class="nav-link"> Maszyny </a>
 
           <!-- Branże z dropdown -->
           <div
@@ -193,21 +192,11 @@
           </div>
 
           <!-- Serwis -->
-          <a
-            href="/serwis"
-            class="nav-link"
-          >
-            Serwis
-          </a>
+          <a href="/serwis" class="nav-link"> Serwis </a>
 
           <!-- O nas -->
-          <a
-            href="/onas"
-            class="nav-link"
-          >
-            O nas
-          </a>
-       
+          <a href="/onas" class="nav-link"> O nas </a>
+
           <div class="flex items-right">
             <!-- Search Box -->
             <div class="relative">
@@ -223,7 +212,9 @@
                   on:focus={() => (active = true)}
                   on:keyup={search}
                 />
-                <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                <div
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2"
+                >
                   <svg
                     class="w-5 h-5 text-gray-400"
                     fill="none"
@@ -275,7 +266,7 @@
                 </div>
               {/if}
             </div>
-  
+
             <!-- Kontakt telefoniczny -->
             <div
               class="phone-contact hidden lg:flex items-center space-x-3 ml-4"
@@ -294,11 +285,9 @@
                 <div class="font-bold">795 142 656</div>
               </div>
             </div>
-  
+
             <!-- Mobile menu button -->
-            <button
-              class="mobile-menu-button md:hidden p-2 rounded-xl ml-4"
-            >
+            <button class="mobile-menu-button md:hidden p-2 rounded-xl ml-4">
               <svg
                 class="w-6 h-6"
                 fill="none"
@@ -314,47 +303,36 @@
               </svg>
             </button>
           </div>
-       
-
         </div>
 
         <!-- Spacer to push search and phone to the right -->
-    <!--     <div class="flex-grow"></div> -->
+        <!--     <div class="flex-grow"></div> -->
 
         <!-- Search Box and Phone Contact Group -->
-    
       </div>
     </div>
   </div>
 </nav>
 
 <style lang="scss">
+  .menubar {
+    width: 100%;
+  }
 
-
-
-
- 
-
-*:focus {
+  *:focus {
     outline: 0px solid #2c5aa0;
     outline-offset: 0px;
   }
 
-
-
   .menuItems {
-   
     background: white;
     border-radius: 72px;
-    color: #616D5D;
+    color: #616d5d;
     font-size: 0.9em;
     font-weight: 200;
-    a{
-
+    a {
       padding-left: 20px;
       padding-right: 20px;
-
-
     }
   }
 
@@ -378,14 +356,8 @@
       flex-direction: row;
       margin-left: 12px;
       margin-right: 12px;
-      /*  @media screen and (max-width: 768px){
-      margin-left: auto;
-      margin-right: auto;
-      width: fit-content;
-    } */
-      .contenerNav {
-        opacity: 0.4;
-      }
+      justify-content: space-between;
+      opacity: 0.4;
     }
   }
   .logoCertus {
@@ -441,15 +413,23 @@
   }
 
   .phone-contact {
-    background: linear-gradient(to right, #22c55e, #16a34a); /* bg-gradient-to-r from-green-500 to-green-600 */
+    background: linear-gradient(
+      to right,
+      #22c55e,
+      #16a34a
+    ); /* bg-gradient-to-r from-green-500 to-green-600 */
     color: white; /* text-white */
     padding: 12px 24px; /* px-6 py-3 */
     border-radius: 12px; /* rounded-2xl */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
     transition: all 300ms ease-in-out; /* transition-all duration-300 */
 
     &:hover {
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
       transform: scale(1.05); /* hover:scale-105 */
     }
 
