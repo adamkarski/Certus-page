@@ -1,0 +1,50 @@
+[
+  {
+    "id": "frezarki",
+    "title": "Frezarki CNC",
+    "img": "/assets/maszyny/certus_7111_temp.png",
+    "startExpanded": true,
+    "url": null,
+    "icon": "/assets/ikony/frezarki.svg"
+  },
+  {
+    "id": "ploteryPrzemyslowe",
+    "title": "Plotery przemysłowe CNC",
+    "img": "/assets/maszyny/certus_7111_temp.png",
+    "startExpanded": false,
+    "url": null,
+    "icon": "/assets/ikony/ploteryPrzemyslowe.svg"
+  },
+  {
+    "id": "frezarki5osiowe",
+    "title": "Frezarki pięcioosiowe",
+    "img": "/assets/maszyny/certus_7111_temp.png",
+    "startExpanded": false,
+    "url": null,
+    "icon": "/assets/ikony/frezarki5osiowe.svg"
+  },
+  {
+    "id": "grawerki",
+    "title": "Grawerki CNC",
+    "img": "/assets/maszyny/certus_7111_temp.png",
+    "startExpanded": false,
+    "url": null,
+    "icon": "/assets/ikony/grawerki.svg"
+  },
+  {
+    "id": "ploteryLinearne",
+    "title": "Plotery tnące linearne CNC",
+    "img": "/assets/maszyny/certus_7111_temp.png",
+    "startExpanded": false,
+    "url": null,
+    "icon": "/assets/ikony/ploteryLinearne.svg"
+  },
+  {
+    "id": "specjalistyczne",
+    "title": "Maszyny specjalistyczne",
+    "img": "/assets/maszyny/certus_7111_temp.png",
+    "startExpanded": false,
+    "url": "/maszyny/#specjalistyczne",
+    "icon": "/assets/ikony/specjalistyczne.svg"
+  }
+]

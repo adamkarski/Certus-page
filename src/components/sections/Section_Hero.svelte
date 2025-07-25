@@ -12,6 +12,7 @@
   import { writable } from 'svelte/store';
   import { resetHeroSwiper } from '../../lib/resetHeroSwiperStore';
   import { typoFix } from '$lib/utils/typography';
+  import list from '$lib/data/maszyny.json';
 
   register();
 
@@ -32,7 +33,12 @@
         const urlParams = new URLSearchParams(window.location.search);
         const slideId = urlParams.get('slide');
         const categoryId = urlParams.get('category');
-        const machineId = urlParams.get('machine');
+        let machineId = urlParams.get('machine'); // Make mutable
+
+        const category = list.find(item => item.id === categoryId);
+        if (category && category.startExpanded && !machineId) {
+          machineId = 'Certus 1212'; // Set default machine for direct URL
+        }
 
         // Explicitly set activeCategory, activeMachine, and expandedView based on URL params
         activeCategory = categoryId;
@@ -86,7 +92,12 @@
       const urlParams = new URLSearchParams(window.location.search);
       const slideId = urlParams.get('slide');
       const categoryId = urlParams.get('category');
-      const machineId = urlParams.get('machine');
+      let machineId = urlParams.get('machine'); // Make mutable
+
+      const category = list.find(item => item.id === categoryId);
+      if (category && category.startExpanded && !machineId) {
+        machineId = 'Certus 1212'; // Set default machine for back button
+      }
 
       // Explicitly set activeCategory, activeMachine, and expandedView based on URL params
       activeCategory = categoryId;
@@ -109,39 +120,7 @@
     }
   }
 
-  const list = [
-    {
-      id: "frezarki",
-      title: "Frezarki CNC",
-      img: "/assets/maszyny/certus_7111_temp.png",
-    },
-    {
-      id: "grawerki",
-      title: "Plotery przemysłowe CNC",
-      img: "/assets/maszyny/certus_7111_temp.png",
-    },
-    {
-      id: "plotery",
-      title: "Frezarki pięcioosiowe",
-      img: "/assets/maszyny/certus_7111_temp.png",
-    },
-    {
-      id: "tokarki",
-      title: "Grawerka CNC",
-      img: "/assets/maszyny/certus_7111_temp.png",
-    },
-    {
-      id: "linearne",
-      title: "Plotery tnące linearne CNC",
-      img: "/assets/maszyny/certus_7111_temp.png",
-    },
-    {
-      id: "specjalistyczne",
-      title: "Maszyny specjalistyczne",
-      img: "/assets/maszyny/certus_7111_temp.png",
-    },
- 
-  ];
+  
 
   // Funkcja do preloadingu obrazków
   function preloadImages() {
@@ -160,11 +139,20 @@
   }
 
   const open = (c) => {
-    activeCategory = c;
-    if (browser) {
-      const url = new URL(window.location.href);
-      url.searchParams.set('category', c);
-      history.pushState({ category: c }, '', url.toString());
+    const category = list.find(item => item.id === c);
+    if (category) {
+      activeCategory = c; // Zawsze ustawiaj aktywną kategorię
+
+      if (browser) { // Aktualizuj URL dla kategorii
+        const url = new URL(window.location.href);
+        url.searchParams.set('category', c);
+        history.pushState({ category: c }, '', url.toString());
+      }
+
+      if (category.startExpanded) {
+        // Jeśli kategoria ma startować rozwinięta, wywołaj openFW z domyślną maszyną
+        openFW('Certus 1212'); 
+      }
     }
   };
   const close = () => {
@@ -188,12 +176,18 @@
     }, 800);
   };
   const closeFW = () => {
+    const category = list.find(item => item.id === activeCategory);
     activeMachine = null;
     expandedView = false;
     if (browser) {
       const url = new URL(window.location.href);
       url.searchParams.delete('machine');
       history.pushState({ machine: null }, '', url.toString());
+    }
+
+    // If the category was meant to start expanded, close it completely
+    if (category && category.startExpanded) {
+      close();
     }
   };
   
@@ -261,30 +255,53 @@
             >
               {#each list as cat}
                 <swiper-slide>
-                  <button
-                    type="button"
-                    class="items items-left lift"
-                    on:click={() => open(cat.id)}
-                  >
-                    <div class="headlines">
-                      <div class="topline">{cat.title}</div>
-                    </div>
-                    <div class="item">
-                      <div class="image">
-                        {#if $imageLoadingStates[cat.id]}
-                          <img src={cat.img} alt={cat.title} draggable="false" />
-                        {:else}
-                          <div class="image-loader">
-                            <svg width="50" height="50" viewBox="0 0 50 50">
-                              <circle cx="25" cy="25" r="20" fill="none" stroke-width="5" stroke="#96a500" stroke-dasharray="31.4 31.4" stroke-linecap="round">
-                                <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
-                              </circle>
-                            </svg>
-                          </div>
-                        {/if}
+                  {#if cat.url}
+                    <a href={cat.url} class="items items-left lift">
+                      <div class="headlines">
+                        <div class="topline">{cat.title}</div>
                       </div>
-                    </div>
-                  
+                      <div class="item">
+                        <div class="image">
+                          {#if $imageLoadingStates[cat.id]}
+                            <img src={cat.img} alt={cat.title} draggable="false" />
+                          {:else}
+                            <div class="image-loader">
+                              <svg width="50" height="50" viewBox="0 0 50 50">
+                                <circle cx="25" cy="25" r="20" fill="none" stroke-width="5" stroke="#96a500" stroke-dasharray="31.4 31.4" stroke-linecap="round">
+                                  <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+                                </circle>
+                              </svg>
+                            </div>
+                          {/if}
+                        </div>
+                      </div>
+                    </a>
+                  {:else}
+                    <button
+                      type="button"
+                      class="items items-left lift"
+                      on:click={() => open(cat.id)}
+                    >
+                      <div class="headlines">
+                        <div class="topline">{cat.title}</div>
+                      </div>
+                      <div class="item">
+                        <div class="image">
+                          {#if $imageLoadingStates[cat.id]}
+                            <img src={cat.img} alt={cat.title} draggable="false" />
+                          {:else}
+                            <div class="image-loader">
+                              <svg width="50" height="50" viewBox="0 0 50 50">
+                                <circle cx="25" cy="25" r="20" fill="none" stroke-width="5" stroke="#96a500" stroke-dasharray="31.4 31.4" stroke-linecap="round">
+                                  <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+                                </circle>
+                              </svg>
+                            </div>
+                          {/if}
+                        </div>
+                      </div>
+                    </button>
+                  {/if}
                 </swiper-slide>
               {/each}
             </swiper-container>
@@ -295,7 +312,7 @@
       {/if}
 
       <!-- 2. Widoki kategorii - każdy z własną animacją -->
-      {#if activeCategory === "frezarki"}
+      {#if activeCategory === "grawerki" && !activeMachine}
         <div
           class="view category-view no-sel"
           in:fly={{ ...flyConfig, y: 50 }}
@@ -359,23 +376,67 @@
             </div>
           </div>
         </div>
-      {:else if activeCategory === "grawerki"}
+      {:else if activeCategory === "frezarki" && !activeMachine}
         <div
-          class="view category-view"
+          class="view category-view no-sel"
           in:fly={{ ...flyConfig, y: 50 }}
           out:fly={{ ...flyConfig, y: -50 }}
         >
-          <button class="back" on:click={close}>← Wróć</button>
           <div class="category-content">
-            <h1 in:fade={{ duration: 600, delay: 200 }}>Grawerki CNC</h1>
-            <div class="category-image" in:fade={{ duration: 600, delay: 400 }}>
-              <img
-                src="/assets/maszyny/certus_7111_temp.png"
-                alt="Grawerki CNC"
-              />
-            </div>
+        <!--     <div class="container" in:fade={{ duration: 600, delay: 200 }}>
+              <div class="back_category"></div>
+              <div class="content">
+                <h1 in:fade={{ duration: 600, delay: 500 }}>Frezarki CNC</h1>
+                <div
+                  class="flex_table"
+                  in:fade={{ duration: 600, delay: 1200 }}
+                >
+                  <div>
+                    <h3>
+                      Specjalistyczne frezarki CNC do drewna i innych
+                      materiałów. Doskonałe do detali i dekoracji.
+                    </h3>
+                    <br />
+                    <button type="button" on:click={() => openFW("Certus 1212")}>
+                      Certus 1212 
+                      <IconDoc
+                        />
+                    <p>
+                      Duże pole robocze (1200x1200x350 mm) <br />
+                      dla ambitnych projektów.
+                    </p>
+
+                    <br />
+                    <h2>
+                      Certus 1212 <span class="IconDoc"
+                        ><IconDoc
+                        /></span
+                      >
+                    </h2>
+                    <p>
+                      Duże pole robocze (1200x1200x350 mm) <br />
+                      dla ambitnych projektów.
+                    </p>
+
+                    <CtaButtonHero on:click={close} text="Wróć" />
+                  </div>
+
+                  <div
+                    class="category-image"
+                    in:fade={{ duration: 600, delay: 0 }}
+                  >
+                    <img
+                      src="/assets/maszyny/certus_7111_temp.png"
+                      alt="Frezarki CNC"
+                      draggable="false"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div> -->
           </div>
         </div>
+      
       {:else if activeCategory === "plotery"}
         <div
           class="view category-view"
@@ -438,9 +499,7 @@
             alt="Frezarki CNC"
           />
 
-          <!--   <button class="cta-button-hero" on:click={closeFW}>
-            <span class="maszyny_span">Zamknij szczegóły</span>
-                    </button> -->
+          
         </div>
         <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
       </div>
@@ -497,7 +556,7 @@
           </div>
         </div>
 
-        {#if expandedView}
+        {#if expandedView && activeCategory === "frezarki"}
           <div class="right_params">
             <div
               class="right_params_content"
@@ -523,6 +582,33 @@
             </div>
           </div>
         {/if}
+        {#if expandedView && activeCategory === "frezarki5osiowe"}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny frezarki Certus 7111 - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny frezarki Certus 7111 - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: 1200 x 1200 x 350 mm</li>
+                <li>Silniki: Serwo AC</li>
+                <li>Chłodzenie: Automatyczne</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Wolnostojący</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+
       </div>
 
 

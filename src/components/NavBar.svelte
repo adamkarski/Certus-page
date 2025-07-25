@@ -4,15 +4,19 @@
   import { preloaderVisible } from "$lib/preloaderStore";
   import { goto } from "$app/navigation";
   import { resetHeroSwiper } from "../lib/resetHeroSwiperStore";
+  import kategorieMaszyn from "$lib/data/maszyny.json";
 
   let LottiePlayer;
   let scrolled = false;
   let showLottie = false;
 
   let isFocused = false;
-  let isDropdownOpen = false;
+  let isMaszynyDropdownOpen = false;
+  let isBranzeDropdownOpen = false;
   let dropdownTimeout;
   let active = false; // Dodano deklarację 'active'
+  let hoveredCategory = kategorieMaszyn[0]; // Domyślnie pierwsza kategoria
+  let showIconsInMegaMenu = false; // Nowa zmienna do przełączania widoku ikon/zdjęć
 
   // Lista branż
   const branze = [
@@ -142,20 +146,16 @@
 
           <!-- Maszyny z dropdown -->
           <div
-            class="relative dropDownMenu" 
-            on:mouseenter={handleMouseEnter}
-            on:mouseleave={handleMouseLeave}
+            class="relative dropDownMenu"
+            on:mouseenter={() => isMaszynyDropdownOpen = true}
+            on:mouseleave={() => isMaszynyDropdownOpen = false}
             role="group"
           >
-            <button
-              class="dropdown-button flex items-center space-x-1"
-              class:text-green-600={isDropdownOpen}
-              class:bg-green-50={isDropdownOpen}
-            >
+            <a href="/maszyny" class="nav-link flex items-center space-x-1">
               <span>Maszyny</span>
               <svg
                 class="w-4 h-4 transition-transform duration-300"
-                class:rotate-180={isDropdownOpen}
+                class:rotate-180={isMaszynyDropdownOpen}
                 fill="none"
                 stroke="#cbcbcb"
                 viewBox="0 0 24 24"
@@ -167,24 +167,45 @@
                   d="M19 9l-7 7-7-7"
                 ></path>
               </svg>
-            </button>
+            </a>
 
             <!-- Dropdown menu -->
-            {#if isDropdownOpen}
+            {#if isMaszynyDropdownOpen}
               <div
-                class="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
+                class="mega-menu absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
                 transition:fly={{ y: -10, duration: 200 }}
               >
-                <div class="py-2">
-                  {#each branze as branza, i}
-                    <a
-                      href={branza.href}
-                      class="submenu-item block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500"
-                      in:fade={{ delay: i * 50, duration: 200 }}
-                    >
-                      {branza.name}
-                    </a>
-                  {/each}
+                <div class="flex">
+                  <div class="w-1/3 py-4 px-2">
+                    <ul>
+                      {#each kategorieMaszyn as kategoria, i}
+                        <li>
+                          <a
+                            href={kategoria.url || `/maszyny?category=${kategoria.id}`}
+                            class="submenu-item block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500 flex items-center"
+                            on:mouseenter={() => hoveredCategory = kategoria}
+                            in:fade={{ delay: i * 50, duration: 200 }}
+                          >
+                         
+                            {kategoria.title}
+                          </a>
+                        </li>
+                      {/each}
+                    </ul>
+                  </div>
+                  <div class="w-2/3 bg-gray-50 flex flex-col items-center justify-center p-4">
+                    <div class="mb-4">
+                     
+                    </div>
+                    {#if hoveredCategory}
+                      <div class="text-center">
+                       
+                          <img src={hoveredCategory.img} alt={hoveredCategory.title} class="max-h-48 mx-auto mb-4 rounded-lg">
+                       
+                        <!-- <h3 class="font-semibold text-lg">{hoveredCategory.title}</h3> -->
+                      </div>
+                    {/if}
+                  </div>
                 </div>
               </div>
             {/if}
@@ -329,8 +350,8 @@
     width: 100%;
   }
 
-.nav-link:first-of-type{
-  margin-left: 25px;
+.nav-link:last-of-type{
+  margin-right: 20px;
 }
 
   .searchBox {
@@ -484,5 +505,9 @@
       color: #22c55e; /* hover:text-green-600 */
       background-color: #f0fdf4; /* hover:bg-green-50 */
     }
+  }
+
+  .mega-menu {
+    width: 600px; /* Szerokość mega menu */
   }
 </style>
