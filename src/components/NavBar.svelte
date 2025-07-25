@@ -142,7 +142,7 @@
 
           <!-- Maszyny z dropdown -->
           <div
-            class="relative"
+            class="relative dropDownMenu" 
             on:mouseenter={handleMouseEnter}
             on:mouseleave={handleMouseLeave}
             role="group"
@@ -354,6 +354,13 @@
     font-size: 0.9em;
     font-weight: 200;
     margin-right: 20px;
+    height: 76px;
+
+    .dropDownMenu{
+
+      margin-left: 25px;
+
+    }
     a {
       padding-left: 20px;
       padding-right: 20px;
