@@ -16,12 +16,12 @@
 
   // Lista branż
   const branze = [
-    { name: "Motoryzacja", href: "/branze/motoryzacja" },
-    { name: "Lotnictwo", href: "/branze/lotnictwo" },
-    { name: "Medycyna", href: "/branze/medycyna" },
-    { name: "Elektronika", href: "/branze/elektronika" },
-    { name: "Przemysł spożywczy", href: "/branze/przemysl-spozywczy" },
-    { name: "Energetyka", href: "/branze/energetyka" },
+    { name: "Frezarki CNC", href: "/maszyny/#frezarki" },
+    { name: "Plotery przemysłowe CNC", href: "/maszyny/#plotery" },
+    { name: "Frezarki pięcioosiowe", href: "/maszyny/#piecioosiowe" },
+    { name: "Grawerka CNC", href: "/maszyny/#grawerkicnc" },
+    { name: "Plotery tnące linearne CNC", href: "/maszyny/#linearne" },
+    { name: "Maszyny specjalityczne ", href: "/maszyny/#specjalistyczne" },
   ];
 
   let query = "";
