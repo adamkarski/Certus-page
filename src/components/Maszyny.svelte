@@ -25,50 +25,90 @@
   </div>
   <div class="oferta-container container">
     <div class="oferta-grid">
+
+
+
       <div class="oferta-card">
         <div class="oferta-icon">
           <img src="/assets/ikony/frezarki.svg" alt="Frezarki CNC" />
         </div>
 
-        <CtaButton text="Frezarki CNC" on:click={() => scrollToSection('Frezarki')} />
+        <CtaButton text="Frezarki CNC HMM" on:click={() => scrollToSection('Frezarki')} />
       </div>
+
+      
+      
+      
+      <div class="oferta-card">
+        <div class="oferta-icon">
+          <img src="/assets/ikony/ploteryPrzemyslowe.svg" alt="Przemysłowe plotery CNC" />
+        </div>
+
+        <CtaButton text="Przemysłowe plotery CN " on:click={() => scrollToSection('ploteryPrzemyslowe')} />
+      </div>
+
+
+
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/tokarki.svg" alt="Tokarki CNC" />
+          <img src="/assets/ikony/ploteryPrzemysloweWzabudowie.svg" alt="Przemysłowe plotery CNC" />
         </div>
 
-        <CtaButton text="Tokarki CNC" on:click={() => scrollToSection('Tokarki')} />
+        <CtaButton text="Przemysłowe plotery CNC w zabudowie" on:click={() => scrollToSection('ploteryPrzemysloweZabudowa')} />
       </div>
+
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/grawerki.svg" alt="Grawerki CNC" />
+          <img src="/assets/ikony/frezarki5osiowe.svg" alt="Frezarki pięcioosiowe" />
         </div>
 
-        <CtaButton text="Grawerki CNC" on:click={() => scrollToSection('Grawerki')} />
+        <CtaButton text="Frezarki pięcioosiowe" on:click={() => scrollToSection('frezarki5osiowe')} />
       </div>
+
+
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/plotery.svg" alt="Plotery CNC" />
+          <img src="/assets/ikony/ploteryPrzemyslowe.svg" alt="Grawerki CNC" />
         </div>
 
-        <CtaButton text="Plotery CNC" on:click={() => scrollToSection('Plotery')} />
+        <CtaButton text="Grawerki CNC" on:click={() => scrollToSection('grawerki')} />
       </div>
+
+
+
+      <div class="oferta-card">
+        <div class="oferta-icon">
+          <img src="/assets/ikony/ploteryLinearne.svg" alt="Plotery tnące linearne CNC" />
+        </div>
+
+        <CtaButton text="Plotery tnące linearne CNC" on:click={() => scrollToSection('ploteryLinearne')} />
+      </div>
+
+
+
+
+      
+   
+   
+   
+   
+   
     </div>
   </div>
   "
 </section>
 
-<section id="Frezarki" class="maszyny-dane">
+<section id="frezarki" class="maszyny-dane">
   <div class="maszyny-dane-header no-sel">
     <img
       src="/assets/ikony/frezarki.svg"
       alt="Frezarki CNC"
       class="maszyny-dane-ikona"
     />
-    <h2>Frezarki CNC</h2>
+    <h2>Frezarki CNC HMM</h2>
   </div>
   <hr class="maszyny-dane-hr" />
 
