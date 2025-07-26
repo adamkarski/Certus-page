@@ -15,7 +15,7 @@
     "startExpanded": false,
     "url": null,
     "icon": "/assets/ikony/ploteryPrzemyslowe.svg",
-    "machine":["m_ploter","m_ploter1"]
+    "machine":["m_ploter","m-ploter1"]
   },
   {
     "id": "frezarki5osiowe",
