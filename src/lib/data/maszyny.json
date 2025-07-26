@@ -5,7 +5,8 @@
     "img": "/assets/maszyny/certus_7111_temp.png",
     "startExpanded": true,
     "url": null,
-    "icon": "/assets/ikony/frezarki.svg"
+    "icon": "/assets/ikony/frezarki.svg",
+    "machine":"m_frezarka"
   },
   {
     "id": "ploteryPrzemyslowe",
@@ -13,31 +14,35 @@
     "img": "/assets/maszyny/certus_7111_temp.png",
     "startExpanded": false,
     "url": null,
-    "icon": "/assets/ikony/ploteryPrzemyslowe.svg"
+    "icon": "/assets/ikony/ploteryPrzemyslowe.svg",
+    "machine":["m_ploter","m_ploter1"]
   },
   {
     "id": "frezarki5osiowe",
     "title": "Frezarki pięcioosiowe",
     "img": "/assets/maszyny/certus_7111_temp.png",
-    "startExpanded": false,
+    "startExpanded": true,
     "url": null,
-    "icon": "/assets/ikony/frezarki5osiowe.svg"
+    "icon": "/assets/ikony/frezarki5osiowe.svg",
+    "machine":"m_frezarka5osi"
   },
   {
     "id": "grawerki",
     "title": "Grawerki CNC",
     "img": "/assets/maszyny/certus_7111_temp.png",
-    "startExpanded": false,
+    "startExpanded": true,
     "url": null,
-    "icon": "/assets/ikony/grawerki.svg"
+    "icon": "/assets/ikony/grawerki.svg",
+    "machine":"m_grawerka"
   },
   {
     "id": "ploteryLinearne",
     "title": "Plotery tnące linearne CNC",
     "img": "/assets/maszyny/certus_7111_temp.png",
-    "startExpanded": false,
+    "startExpanded": true,
     "url": null,
-    "icon": "/assets/ikony/ploteryLinearne.svg"
+    "icon": "/assets/ikony/ploteryLinearne.svg",
+    "machine":"m_ploterLinear"
   },
   {
     "id": "specjalistyczne",
@@ -45,6 +50,7 @@
     "img": "/assets/maszyny/certus_7111_temp.png",
     "startExpanded": false,
     "url": "/maszyny/#specjalistyczne",
-    "icon": "/assets/ikony/specjalistyczne.svg"
+    "icon": "/assets/ikony/specjalistyczne.svg",
+    "machine":"m_special"
   }
 ]

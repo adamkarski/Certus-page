@@ -37,7 +37,12 @@
 
         const category = list.find(item => item.id === categoryId);
         if (category && category.startExpanded && !machineId) {
-          machineId = 'Certus 1212'; // Set default machine for direct URL
+          if (typeof category.machine === 'string') {
+            machineId = category.machine; // Set default machine from category.machine
+          } else if (Array.isArray(category.machine) && category.machine.length > 0) {
+            // If it's an array, don't set a default machineId here, let the category view handle it
+            machineId = null;
+          }
         }
 
         // Explicitly set activeCategory, activeMachine, and expandedView based on URL params
@@ -88,6 +93,7 @@
   }
 
   function handlePopstate(event) {
+    console.log('handlePopstate called. event.state:', event.state);
     if (browser) {
       const urlParams = new URLSearchParams(window.location.search);
       const slideId = urlParams.get('slide');
@@ -96,7 +102,12 @@
 
       const category = list.find(item => item.id === categoryId);
       if (category && category.startExpanded && !machineId) {
-        machineId = 'Certus 1212'; // Set default machine for back button
+        if (typeof category.machine === 'string') {
+          machineId = category.machine; // Set default machine from category.machine
+        } else if (Array.isArray(category.machine) && category.machine.length > 0) {
+          // If it's an array, don't set a default machineId here, let the category view handle it
+          machineId = null;
+        }
       }
 
       // Explicitly set activeCategory, activeMachine, and expandedView based on URL params
@@ -138,20 +149,26 @@
     });
   }
 
-  const open = (c) => {
+  const openCategory = (c) => {
+    console.log('openCategory called with:', c);
     const category = list.find(item => item.id === c);
     if (category) {
-      activeCategory = c; // Zawsze ustawiaj aktywną kategorię
+      activeCategory = c;
 
-      if (browser) { // Aktualizuj URL dla kategorii
+      if (browser) {
         const url = new URL(window.location.href);
         url.searchParams.set('category', c);
-        history.pushState({ category: c }, '', url.toString());
+        url.searchParams.delete('machine'); // Clear machine when changing category
+        history.pushState({ category: c, machine: null }, '', url.toString());
       }
 
       if (category.startExpanded) {
-        // Jeśli kategoria ma startować rozwinięta, wywołaj openFW z domyślną maszyną
-        openFW('Certus 1212'); 
+        if (typeof category.machine === 'string') {
+          openMachine(category.machine);
+        }
+      } else {
+        activeMachine = null;
+        expandedView = false;
       }
     }
   };
@@ -164,8 +181,9 @@
     }
   };
 
-  const openFW = (x) => {
+  const openMachine = (x) => {
     activeMachine = x;
+    console.log('openMachine called with:', x, 'activeCategory:', activeCategory);
     if (browser) {
       const url = new URL(window.location.href);
       url.searchParams.set('machine', x);
@@ -185,9 +203,8 @@
       history.pushState({ machine: null }, '', url.toString());
     }
 
-    // If the category was meant to start expanded, close it completely
     if (category && category.startExpanded) {
-      close();
+      close(); // Go back to main swiper
     }
   };
   
@@ -280,7 +297,7 @@
                     <button
                       type="button"
                       class="items items-left lift"
-                      on:click={() => open(cat.id)}
+                      on:click={() => openCategory(cat.id)}
                     >
                       <div class="headlines">
                         <div class="topline">{cat.title}</div>
@@ -312,7 +329,7 @@
       {/if}
 
       <!-- 2. Widoki kategorii - każdy z własną animacją -->
-      {#if activeCategory === "grawerki" && !activeMachine}
+      {#if activeCategory === "ploteryPrzemyslowe" && !activeMachine}
         <div
           class="view category-view no-sel"
           in:fly={{ ...flyConfig, y: 50 }}
@@ -322,56 +339,16 @@
             <div class="container" in:fade={{ duration: 600, delay: 200 }}>
               <div class="back_category"></div>
               <div class="content">
-                <h1 in:fade={{ duration: 600, delay: 500 }}>Frezarki CNC</h1>
-                <div
-                  class="flex_table"
-                  in:fade={{ duration: 600, delay: 1200 }}
-                >
-                  <div>
-                    <h3>
-                      Specjalistyczne grawerki CNC do drewna i innych
-                      materiałów. Doskonałe do detali i dekoracji.
-                    </h3>
-                    <br />
-                    <button type="button" on:click={() => openFW("Frezarkia Certus 1212")}>
-                      Certus 1212 
-                      <IconDoc
-                        />
-                      
-                    
-                      
-                    
-                    <p>
-                      Duże pole robocze (1200x1200x350 mm) <br />
-                      dla ambitnych projektów.
-                    </p>
-
-                    <br />
-                    <h2>
-                      Certus 1212 <span class="IconDoc"
-                        ><IconDoc
-                        /></span
-                      >
-                    </h2>
-                    <p>
-                      Duże pole robocze (1200x1200x350 mm) <br />
-                      dla ambitnych projektów.
-                    </p>
-
-                    <CtaButtonHero on:click={close} text="Wróć" />
-                  </div>
-
-                  <div
-                    class="category-image"
-                    in:fade={{ duration: 600, delay: 0 }}
-                  >
-                    <img
-                      src="/assets/maszyny/certus_7111_temp.png"
-                      alt="Frezarki CNC"
-                      draggable="false"
-                    />
-                  </div>
-                </div>
+                <h1>{list.find(item => item.id === activeCategory)?.title}</h1>
+                {#if list.find(item => item.id === activeCategory)?.machine}
+                  {#each list.find(item => item.id === activeCategory).machine as machineId}
+                    <button type="button" on:click={() => openMachine(machineId)}>
+                      {machineId}
+                      <IconDoc />
+                    </button>
+                  {/each}
+                {/if}
+                <CtaButtonHero on:click={close} text="Wróć" />
               </div>
             </div>
           </div>
@@ -383,91 +360,106 @@
           out:fly={{ ...flyConfig, y: -50 }}
         >
           <div class="category-content">
-        <!--     <div class="container" in:fade={{ duration: 600, delay: 200 }}>
+            <div class="container" in:fade={{ duration: 600, delay: 200 }}>
               <div class="back_category"></div>
               <div class="content">
-                <h1 in:fade={{ duration: 600, delay: 500 }}>Frezarki CNC</h1>
-                <div
-                  class="flex_table"
-                  in:fade={{ duration: 600, delay: 1200 }}
-                >
-                  <div>
-                    <h3>
-                      Specjalistyczne frezarki CNC do drewna i innych
-                      materiałów. Doskonałe do detali i dekoracji.
-                    </h3>
-                    <br />
-                    <button type="button" on:click={() => openFW("Certus 1212")}>
-                      Certus 1212 
-                      <IconDoc
-                        />
-                    <p>
-                      Duże pole robocze (1200x1200x350 mm) <br />
-                      dla ambitnych projektów.
-                    </p>
-
-                    <br />
-                    <h2>
-                      Certus 1212 <span class="IconDoc"
-                        ><IconDoc
-                        /></span
-                      >
-                    </h2>
-                    <p>
-                      Duże pole robocze (1200x1200x350 mm) <br />
-                      dla ambitnych projektów.
-                    </p>
-
-                    <CtaButtonHero on:click={close} text="Wróć" />
-                  </div>
-
-                  <div
-                    class="category-image"
-                    in:fade={{ duration: 600, delay: 0 }}
-                  >
-                    <img
-                      src="/assets/maszyny/certus_7111_temp.png"
-                      alt="Frezarki CNC"
-                      draggable="false"
-                    />
-                  </div>
-                </div>
+                <h1>{list.find(item => item.id === activeCategory)?.title}</h1>
+                {#if list.find(item => item.id === activeCategory)?.machine}
+                  <button type="button" on:click={() => openMachine(list.find(item => item.id === activeCategory).machine)}>
+                    {list.find(item => item.id === activeCategory).machine}
+                    <IconDoc />
+                  </button>
+                {/if}
+                <CtaButtonHero on:click={close} text="Wróć" />
               </div>
-            </div> -->
-          </div>
-        </div>
-      
-      {:else if activeCategory === "plotery"}
-        <div
-          class="view category-view"
-          in:fly={{ ...flyConfig, y: 50 }}
-          out:fly={{ ...flyConfig, y: -50 }}
-        >
-          <button class="back" on:click={close}>← Wróć</button>
-          <div class="category-content">
-            <h1 in:fade={{ duration: 600, delay: 200 }}>Plotery CNC</h1>
-            <div class="category-image" in:fade={{ duration: 600, delay: 400 }}>
-              <img
-                src="/assets/maszyny/certus_7111_temp.png"
-                alt="Plotery CNC"
-              />
             </div>
           </div>
         </div>
-      {:else if activeCategory === "tokarki"}
+      {:else if activeCategory === "frezarki5osiowe" && !activeMachine}
         <div
-          class="view category-view"
+          class="view category-view no-sel"
           in:fly={{ ...flyConfig, y: 50 }}
           out:fly={{ ...flyConfig, y: -50 }}
         >
-          <button class="back" on:click={close}>← Wróć</button>
           <div class="category-content">
-            <h1 in:fade={{ duration: 600, delay: 200 }}>Tokarki CNC</h1>
-            <div class="category-image" in:fade={{ duration: 600, delay: 400 }}>
-              <img
-                src="/assets/maszyny/certus_7111_temp.png"
-                alt="Tokarki CNC"
-              />
+            <div class="container" in:fade={{ duration: 600, delay: 200 }}>
+              <div class="back_category"></div>
+              <div class="content">
+                <h1>{list.find(item => item.id === activeCategory)?.title}</h1>
+                {#if list.find(item => item.id === activeCategory)?.machine}
+                  <button type="button" on:click={() => openMachine(list.find(item => item.id === activeCategory).machine)}>
+                    {list.find(item => item.id === activeCategory).machine}
+                    <IconDoc />
+                  </button>
+                {/if}
+                <CtaButtonHero on:click={close} text="Wróć" />
+              </div>
+            </div>
+          </div>
+        </div>
+      {:else if activeCategory === "grawerki" && !activeMachine}
+        <div
+          class="view category-view no-sel"
+          in:fly={{ ...flyConfig, y: 50 }}
+          out:fly={{ ...flyConfig, y: -50 }}
+        >
+          <div class="category-content">
+            <div class="container" in:fade={{ duration: 600, delay: 200 }}>
+              <div class="back_category"></div>
+              <div class="content">
+                <h1>{list.find(item => item.id === activeCategory)?.title}</h1>
+                {#if list.find(item => item.id === activeCategory)?.machine}
+                  <button type="button" on:click={() => openMachine(list.find(item => item.id === activeCategory).machine)}>
+                    {list.find(item => item.id === activeCategory).machine}
+                    <IconDoc />
+                  </button>
+                {/if}
+                <CtaButtonHero on:click={close} text="Wróć" />
+              </div>
+            </div>
+          </div>
+        </div>
+      {:else if activeCategory === "ploteryLinearne" && !activeMachine}
+        <div
+          class="view category-view no-sel"
+          in:fly={{ ...flyConfig, y: 50 }}
+          out:fly={{ ...flyConfig, y: -50 }}
+        >
+          <div class="category-content">
+            <div class="container" in:fade={{ duration: 600, delay: 200 }}>
+              <div class="back_category"></div>
+              <div class="content">
+                <h1>{list.find(item => item.id === activeCategory)?.title}</h1>
+                {#if list.find(item => item.id === activeCategory)?.machine}
+                  <button type="button" on:click={() => openMachine(list.find(item => item.id === activeCategory).machine)}>
+                    {list.find(item => item.id === activeCategory).machine}
+                    <IconDoc />
+                  </button>
+                {/if}
+                <CtaButtonHero on:click={close} text="Wróć" />
+              </div>
+            </div>
+          </div>
+        </div>
+      {:else if activeCategory === "specjalistyczne" && !activeMachine}
+        <div
+          class="view category-view no-sel"
+          in:fly={{ ...flyConfig, y: 50 }}
+          out:fly={{ ...flyConfig, y: -50 }}
+        >
+          <div class="category-content">
+            <div class="container" in:fade={{ duration: 600, delay: 200 }}>
+              <div class="back_category"></div>
+              <div class="content">
+                <h1>{list.find(item => item.id === activeCategory)?.title}</h1>
+                {#if list.find(item => item.id === activeCategory)?.machine}
+                  <button type="button" on:click={() => openMachine(list.find(item => item.id === activeCategory).machine)}>
+                    {list.find(item => item.id === activeCategory).machine}
+                    <IconDoc />
+                  </button>
+                {/if}
+                <CtaButtonHero on:click={close} text="Wróć" />
+              </div>
             </div>
           </div>
         </div>
@@ -476,14 +468,15 @@
   </div>
 
   {#if activeMachine}
-    <div class="activeMachine no-sel">
+  <div class="activeMachine no-sel">
+    {#if activeCategory === "frezarki" && activeMachine === "m_frezarka"}
       <div
         class="left gradientHero"
         class:short={expandedView}
         in:fade={{ duration: 300, delay: 200 }}
         out:fade={{ duration: 300, delay: 100 }}
       >
-        <h1>Certus 1212</h1>
+        <h1>Certus 1212 m_frezarka</h1>
 
         <div class="left_image no-sel">
           <img
@@ -498,8 +491,6 @@
             src="/assets/maszyny/certus_7111_temp.png"
             alt="Frezarki CNC"
           />
-
-          
         </div>
         <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
       </div>
@@ -512,6 +503,7 @@
       >
         <div class="right_content">
           <h1>
+            
             Do szybkiego i wydajnego frezowania w materiałach takich jak stal,
             aluminium, drewno, plastik itp.
           </h1>
@@ -543,20 +535,17 @@
           <div class="right_menu">
             <nav>
               <ul>
-                <li >
+                <li>
                   <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
                 </li>
                 <li><MenuDownload text="Do pobrania" href="#" /></li>
                 <li><MenuEmail text="Kontakt" href="#" /></li>
-
-                <!--          <li><a href="#"><img src="/assets/menu/menu_download.svg" alt="Do pobrania" />Do pobrania</a></li>
-                <li><a href="#"><img src="/assets/menu/menu_email.svg" alt="Kontakt" />Kontakt</a></li> -->
               </ul>
             </nav>
           </div>
         </div>
 
-        {#if expandedView && activeCategory === "frezarki"}
+        {#if expandedView}
           <div class="right_params">
             <div
               class="right_params_content"
@@ -582,42 +571,846 @@
             </div>
           </div>
         {/if}
-        {#if expandedView && activeCategory === "frezarki5osiowe"}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny frezarki Certus 7111 - widok 1"
-              />
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny frezarki Certus 7111 - widok 2"
-              />
+      </div>
+    {:else if activeCategory === "ploteryPrzemyslowe" && activeMachine === "m_ploter"}
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Ploter Przemysłowy m_ploter</h1>
 
-              <h2>Parametry techniczne</h2>
-              <ul>
-                <li>Wymiary: 1200 x 1200 x 350 mm</li>
-                <li>Silniki: Serwo AC</li>
-                <li>Chłodzenie: Automatyczne</li>
-                <li>Oprogramowanie: Polskojęzyczne</li>
-                <li>Panel sterujący: Wolnostojący</li>
-              </ul>
-            </div>
-          </div>
-        {/if}
-
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Ploter Przemysłowy"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Ploter Przemysłowy"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
       </div>
 
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for m_ploter (Plotery Przemysłowe) -->
+            Szczegóły dla plotera przemysłowego m_ploter.
+          </h1>
+          <p>
+            To jest przykładowy opis dla plotera przemysłowego m_ploter.
+            Możesz tutaj dodać więcej informacji o jego funkcjach i zastosowaniach.
+          </p>
 
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
 
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny plotera przemysłowego m_ploter - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny plotera przemysłowego m_ploter - widok 2"
+              />
 
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: XXXX x YYYY x ZZZZ mm</li>
+                <li>Silniki: Serwo AC</li>
+                <li>Chłodzenie: Automatyczne</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Wolnostojący</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Ploter Przemysłowy m_ploter</h1>
 
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Ploter Przemysłowy"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Ploter Przemysłowy"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+      </div>
 
-    </div>
-  {/if}
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for m_ploter (Plotery Przemysłowe) -->
+            Szczegóły dla plotera przemysłowego m_ploter.
+          </h1>
+          <p>
+            To jest przykładowy opis dla plotera przemysłowego m_ploter.
+            Możesz tutaj dodać więcej informacji o jego funkcjach i zastosowaniach.
+          </p>
+
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny plotera przemysłowego m_ploter - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny plotera przemysłowego m_ploter - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: XXXX x YYYY x ZZZZ mm</li>
+                <li>Silniki: Serwo AC</li>
+                <li>Chłodzenie: Automatyczne</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Wolnostojący</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+    {:else if activeCategory === "ploteryPrzemyslowe" && activeMachine === "m_ploter1"}
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Ploter Przemysłowy m_ploter1</h1>
+
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Ploter Przemysłowy"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Ploter Przemysłowy"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+      </div>
+
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for m_ploter1 (Plotery Przemysłowe) -->
+            Szczegóły dla plotera przemysłowego m_ploter1.
+          </h1>
+          <p>
+            To jest przykładowy opis dla plotera przemysłowego m_ploter1.
+            Możesz tutaj dodać więcej informacji o jego funkcjach i zastosowaniach.
+          </p>
+
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: XXXX x YYYY x ZZZZ mm</li>
+                <li>Silniki: Serwo AC</li>
+                <li>Chłodzenie: Automatyczne</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Wolnostojący</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Ploter Przemysłowy m_ploter1</h1>
+
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Ploter Przemysłowy"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Ploter Przemysłowy"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+      </div>
+
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for m_ploter1 (Plotery Przemysłowe) -->
+            Szczegóły dla plotera przemysłowego m_ploter1.
+          </h1>
+          <p>
+            To jest przykładowy opis dla plotera przemysłowego m_ploter1.
+            Możesz tutaj dodać więcej informacji o jego funkcjach i zastosowaniach.
+          </p>
+
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: XXXX x YYYY x ZZZZ mm</li>
+                <li>Silniki: Serwo AC</li>
+                <li>Chłodzenie: Automatyczne</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Wolnostojący</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+    {:else if activeCategory === "frezarki5osiowe" && activeMachine === "m_frezarka5osi"}
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Frezarka Certus</h1>
+
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Grawerki CNC"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Grawerki CNC"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+      </div>
+
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for Grawerka Certus 6040 (Grawerki) -->
+            Precyzyjne frezarki5osiowe w różnych materiałach.
+          </h1>
+          <p>
+            Idealna do tworzenia detali, tabliczek znamionowych, biżuterii i innych precyzyjnych zastosowań.
+            <br />
+            Wyposażona w wysokiej jakości wrzeciono i precyzyjne prowadnice.
+            <br />
+            Łatwa w obsłudze, z intuicyjnym oprogramowaniem.
+          </p>
+
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny grawerki Certus 6040 - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny grawerki Certus 6040 - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: 600 x 400 x 150 mm</li>
+                <li>Silniki: Krokowe</li>
+                <li>Chłodzenie: Powietrzne</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Zintegrowany</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+    {:else if activeCategory === "grawerki" && activeMachine === "m_grawerka"}
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Grawerka Certus 3030</h1>
+
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Grawerki CNC"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Grawerki CNC"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+      </div>
+
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for Grawerka Certus 3030 (Grawerki) -->
+            Kompaktowa grawerka do małych i średnich projektów.
+          </h1>
+          <p>
+            Idealna do personalizacji przedmiotów, tworzenia prototypów i prac hobbystycznych.
+            <br />
+            Wysoka precyzja i łatwość obsługi.
+            <br />
+            Solidna konstrukcja zapewniająca stabilność.
+          </p>
+
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny grawerki Certus 3030 - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny grawerki Certus 3030 - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: 300 x 300 x 100 mm</li>
+                <li>Silniki: Krokowe</li>
+                <li>Chłodzenie: Powietrzne</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Zintegrowany</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+    {:else if activeCategory === "ploteryLinearne" && activeMachine === "m_ploterLinear"}
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Ploter Linearny Certus 200</h1>
+
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Tokarki CNC"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Tokarki CNC"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+      </div>
+
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for Tokarka Certus 200 (Tokarki) -->
+            Wysokowydajna tokarka CNC do obróbki metalu.
+          </h1>
+          <p>
+            Idealna do produkcji seryjnej i precyzyjnych elementów.
+            <br />
+            Wyposażona w zaawansowane systemy sterowania i automatyzacji.
+            <br />
+            Solidna konstrukcja zapewniająca długotrwałą pracę.
+          </p>
+
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny tokarki Certus 200 - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny tokarki Certus 200 - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: 2000 x 1000 x 1500 mm</li>
+                <li>Silniki: Serwo AC</li>
+                <li>Chłodzenie: Cieczą</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Wolnostojący</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+    {:else if activeCategory === "specjalistyczne" && activeMachine === "m_special"}
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Ploter specjalistyczne Certus Laser 1</h1>
+
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Plotery CNC"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Plotery CNC"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+      </div>
+
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for Ploter Certus Laser 1 (Plotery) -->
+            Precyzyjny ploter specjalistyczny do cięcia i grawerowania.
+          </h1>
+          <p>
+            Idealny do obróbki drewna, akrylu, skóry i innych materiałów.
+            <br />
+            Wysoka prędkość i dokładność cięcia.
+            <br />
+            Łatwa integracja z oprogramowaniem CAD/CAM.
+          </p>
+
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny plotera Certus Laser 1 - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny plotera Certus Laser 1 - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: 1500 x 900 x 800 mm</li>
+                <li>Moc lasera: 100W</li>
+                <li>Obszar roboczy: 1300 x 900 mm</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Zintegrowany</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+   
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Ploter Certus Tnący 1</h1>
+
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Plotery CNC"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Plotery CNC"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+      </div>
+
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for Ploter Certus Tnący 1 (Plotery) -->
+            Wysokowydajny ploter tnący do folii i innych materiałów.
+          </h1>
+          <p>
+            Idealny do produkcji reklam, naklejek i odzieży.
+            <br />
+            Szybkie i precyzyjne cięcie.
+            <br />
+            Łatwa obsługa i konserwacja.
+          </p>
+
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny plotera Certus Tnący 1 - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny plotera Certus Tnący 1 - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: 1200 x 600 x 500 mm</li>
+                <li>Szerokość cięcia: 1100 mm</li>
+                <li>Prędkość cięcia: 800 mm/s</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Zintegrowany</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+   
+      <div
+        class="left gradientHero"
+        class:short={expandedView}
+        in:fade={{ duration: 300, delay: 200 }}
+        out:fade={{ duration: 300, delay: 100 }}
+      >
+        <h1>Frezarka 5-osiowa Certus 1</h1>
+
+        <div class="left_image no-sel">
+          <img
+            style="filter: blur(120px);"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Frezarki 5-osiowe CNC"
+          />
+          <img
+            class="back_image"
+            draggable="false"
+            src="/assets/maszyny/certus_7111_temp.png"
+            alt="Frezarki 5-osiowe CNC"
+          />
+        </div>
+        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+      </div>
+
+      <div
+        class="right"
+        class:expanded={expandedView}
+        in:fly={{ x: 200, duration: 500, delay: 0 }}
+        out:fly={{ x: 400, duration: 500, delay: 400 }}
+      >
+        <div class="right_content">
+          <h1>
+            <!-- Content for Frezarka 5-osiowa Certus 1 (Frezarki 5-osiowe) -->
+            Zaawansowana frezarka 5-osiowa do skomplikowanych kształtów.
+          </h1>
+          <p>
+            Idealna do produkcji form, prototypów i elementów lotniczych.
+            <br />
+            Wysoka precyzja i elastyczność obróbki.
+            <br />
+            Zintegrowane oprogramowanie CAM.
+          </p>
+
+          <div class="right_menu">
+            <nav>
+              <ul>
+                <li>
+                  <DaneTechniczne text="Dane techniczne" on:click={expandRightInfo} />
+                </li>
+                <li><MenuDownload text="Do pobrania" href="#" /></li>
+                <li><MenuEmail text="Kontakt" href="#" /></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        {#if expandedView}
+          <div class="right_params">
+            <div
+              class="right_params_content"
+              in:fade={{ duration: 300, delay: 200 }}
+            >
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                alt="Schemat techniczny frezarki 5-osiowej Certus 1 - widok 1"
+              />
+              <img
+                src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                alt="Schemat techniczny frezarki 5-osiowej Certus 1 - widok 2"
+              />
+
+              <h2>Parametry techniczne</h2>
+              <ul>
+                <li>Wymiary: 2500 x 1500 x 1800 mm</li>
+                <li>Liczba osi: 5</li>
+                <li>Wrzeciono: 24000 RPM</li>
+                <li>Oprogramowanie: Polskojęzyczne</li>
+                <li>Panel sterujący: Wolnostojący</li>
+              </ul>
+            </div>
+          </div>
+        {/if}
+      </div>
+    {/if}
+  </div>
+{/if}
 
 
   <div class="pattern-overlay no-sel">
