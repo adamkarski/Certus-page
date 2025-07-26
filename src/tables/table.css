@@ -47,7 +47,25 @@ table {
     border-collapse: collapse;
     background-color: white;
     font-size: 14px;
+
 }
+
+tbody tr td img{
+
+float: left;
+margin-right: 20px;;
+
+}
+
+tbody tr td .text{width: auto;display: flow-root;}
+
+
+.options-list li:hover{
+    transition: all ease 0.3s;
+
+    background-color: white;
+}
+
 
 th {
     background: linear-gradient(135deg, #3498db, #2980b9);
@@ -71,8 +89,17 @@ td:first-child {
     font-weight: 600;
     background-color: #f8f9fa;
     border-right: 2px solid #3498db;
-    width: 35%;
+    /* width: 90%; */
     min-width: 250px;
+    /* display: inline-grid; */
+    flex-direction: row;
+    align-items: start;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: start;
+    height: auto;
+    min-height: 36px;
+    justify-items: stretch;
 }
 
 td:last-child {
