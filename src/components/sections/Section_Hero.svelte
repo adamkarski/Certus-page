@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import IconDoc from "../IconDoc.svelte";
   import DaneTechniczne from "../../assets/menu/dane_techniczne.svelte";
   import MenuEmail from "../../assets/menu/menu_email.svelte";
@@ -28,56 +28,32 @@
   onMount(() => {
     setTimeout(() => {
       swiperReady = true;
-      // Initial load logic
       if (browser) {
         const urlParams = new URLSearchParams(window.location.search);
         const slideId = urlParams.get("slide");
         const categoryId = urlParams.get("category");
-        let machineId = urlParams.get("machine"); // Make mutable
+        let machineId = urlParams.get("machine");
 
-        const category = list.find((item) => item.id === categoryId);
-        if (category && category.startExpanded && !machineId) {
-          if (typeof category.machine === "string") {
-            machineId = category.machine; // Set default machine from category.machine
-          } else if (
-            Array.isArray(category.machine) &&
-            category.machine.length > 0
-          ) {
-            // If it's an array, don't set a default machineId here, let the category view handle it
-            machineId = null;
-          }
-        }
-
-        // Explicitly set activeCategory, activeMachine, and expandedView based on URL params
         activeCategory = categoryId;
         activeMachine = machineId;
-        expandedView = !!machineId; // Set expandedView based on machineId presence
+        expandedView = !!machineId;
 
         if (slideId) {
-          const index = list.findIndex((item) => item.id === slideId);
-          if (index !== -1 && swiperElement && swiperElement.swiper) {
-            swiperElement.swiper.slideToLoop(index);
-          }
-        } else {
-          // If no slide param, ensure Swiper is on the first slide after a small delay
-          if (swiperElement && swiperElement.swiper) {
-            setTimeout(() => {
-              swiperElement.swiper.slideToLoop(0);
-            }, 0);
-          }
+        const index = list.findIndex((item) => item.id === slideId);
+        if (index !== -1 && swiperElement && swiperElement.swiper) {
+          swiperElement.swiper.slideToLoop(index);
         }
-
-        window.addEventListener("popstate", handlePopstate);
+      } else if (!activeCategory && swiperElement && swiperElement.swiper) {
+        setTimeout(() => {
+          swiperElement.swiper.slideToLoop(0);
+        }, 0);
       }
-    }, 150); // 150ms na inicjalizację Swipera
-
-    preloadImages();
-
-    return () => {
-      if (browser) {
-        window.removeEventListener("popstate", handlePopstate);
-      }
-    };
+    }
+    }, 0); // Upewnij się, że swiperElement jest dostępny
+    if (browser) {
+      window.addEventListener("popstate", handlePopstate);
+    }
+    preloadImages(); // Preload images on mount
   });
 
   function handleSwiperInit() {
@@ -91,48 +67,30 @@
       const currentSlideId = list[currentSlideIndex].id;
       const url = new URL(window.location.href);
       url.searchParams.set("slide", currentSlideId);
-      history.pushState({ slide: currentSlideId }, "", url.toString());
+      history.replaceState({ slide: currentSlideId }, "", url.toString());
     }
   }
 
   function handlePopstate(event) {
-    console.log("handlePopstate called. event.state:", event.state);
     if (browser) {
       const urlParams = new URLSearchParams(window.location.search);
       const slideId = urlParams.get("slide");
       const categoryId = urlParams.get("category");
-      let machineId = urlParams.get("machine"); // Make mutable
+      const machineId = urlParams.get("machine");
 
-      const category = list.find((item) => item.id === categoryId);
-      if (category && category.startExpanded && !machineId) {
-        if (typeof category.machine === "string") {
-          machineId = category.machine; // Set default machine from category.machine
-        } else if (
-          Array.isArray(category.machine) &&
-          category.machine.length > 0
-        ) {
-          // If it's an array, don't set a default machineId here, let the category view handle it
-          machineId = null;
-        }
-      }
-
-      // Explicitly set activeCategory, activeMachine, and expandedView based on URL params
       activeCategory = categoryId;
       activeMachine = machineId;
-      expandedView = !!machineId; // Set expandedView based on machineId presence
+      expandedView = !!machineId;
 
       if (slideId) {
         const index = list.findIndex((item) => item.id === slideId);
         if (index !== -1 && swiperElement && swiperElement.swiper) {
           swiperElement.swiper.slideToLoop(index);
         }
-      } else {
-        // If no slide param, ensure Swiper is on the first slide after a small delay
-        if (swiperElement && swiperElement.swiper) {
-          setTimeout(() => {
-            swiperElement.swiper.slideToLoop(0);
-          }, 0);
-        }
+      } else if (!activeCategory && swiperElement && swiperElement.swiper) {
+        setTimeout(() => {
+          swiperElement.swiper.slideToLoop(0);
+        }, 0);
       }
     }
   }
@@ -163,66 +121,64 @@
   }
 
   const openCategory = (c) => {
-    console.log("openCategory called with:", c);
     const category = list.find((item) => item.id === c);
     if (category) {
       activeCategory = c;
-
       if (browser) {
         const url = new URL(window.location.href);
         url.searchParams.set("category", c);
-        url.searchParams.delete("machine"); // Clear machine when changing category
-        history.pushState({ category: c, machine: null }, "", url.toString());
-      }
 
-      if (category.startExpanded) {
-        if (typeof category.machine === "string") {
-          openMachine(category.machine);
+        if (category.startExpanded && typeof category.machine === "string") {
+          // If startExpanded and single machine, go directly to machine view
+          activeMachine = category.machine;
+          expandedView = true;
+          url.searchParams.set("machine", category.machine);
+          history.pushState({ category: c, machine: category.machine }, "", url.toString());
+        } else {
+          // Otherwise, go to category view (even if startExpanded and multiple machines)
+          activeMachine = null;
+          expandedView = false;
+          url.searchParams.delete("machine");
+          history.pushState({ category: c, machine: null }, "", url.toString());
         }
-      } else {
-        activeMachine = null;
-        expandedView = false;
       }
     }
   };
   const close = () => {
     activeCategory = null;
+    activeMachine = null; // Ensure activeMachine is null when closing category view
+    expandedView = false; // Ensure expandedView is false when closing category view
     if (browser) {
       const url = new URL(window.location.href);
       url.searchParams.delete("category");
-      history.pushState({ category: null }, "", url.toString());
+      url.searchParams.delete("machine"); // Also clear machine param
+      history.pushState({ category: null, machine: null }, "", url.toString());
     }
   };
 
   const openMachine = (x) => {
     activeMachine = x;
-    console.log(
-      "openMachine called with:",
-      x,
-      "activeCategory:",
-      activeCategory,
-    );
     if (browser) {
       const url = new URL(window.location.href);
       url.searchParams.set("machine", x);
-      history.pushState({ machine: x }, "", url.toString());
+      if (activeCategory) {
+        url.searchParams.set("category", activeCategory);
+      }
+      history.pushState({ category: activeCategory, machine: x }, "", url.toString());
     }
     setTimeout(() => {
       expandedView = true;
     }, 800);
   };
   const closeFW = () => {
-    const category = list.find((item) => item.id === activeCategory);
+    activeCategory = null;
     activeMachine = null;
     expandedView = false;
     if (browser) {
       const url = new URL(window.location.href);
+      url.searchParams.delete("category");
       url.searchParams.delete("machine");
-      history.pushState({ machine: null }, "", url.toString());
-    }
-
-    if (category && category.startExpanded) {
-      close(); // Go back to main swiper
+      history.pushState({ category: null, machine: null }, "", url.toString());
     }
   };
 
@@ -423,13 +379,16 @@
   </div>
 
   {#if activeMachine}
-    <div class="activeMachine no-sel">
+    <div class="activeMachine no-sel" in:fade={{ duration: 300, delay: 0 }}
+    out:fade={{ duration: 300, delay: 0 }}>
       {#if activeCategory === "frezarki" && activeMachine === "m_frezarka"}
-        <div
+       
+    
+      <div
           class="left gradientHero"
           class:short={expandedView}
-          in:fade={{ duration: 300, delay: 200 }}
-          out:fade={{ duration: 300, delay: 100 }}
+          in:fade={{ duration: 300, delay: 0 }}
+          out:fade={{ duration: 300, delay: 0 }}
         >
           <h1>Certus 1212 m_frezarka</h1>
 

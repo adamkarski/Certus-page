@@ -28,4 +28,3 @@
   </main>
   <Section_Footer />
 </div>
-

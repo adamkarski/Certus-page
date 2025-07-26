@@ -15,7 +15,7 @@
       <h1 class="no-sel">Kontakt</h1>
       <hr />
     </div>
-    <p>{@html typoFix("W tym miejscu znajdziesz informacje o naszej firmie i ofercie.")}</p>
+    <!-- <p>{@html typoFix("W tym miejscu znajdziesz informacje o naszej firmie i ofercie.")}</p> -->
   </div>
   <Section_Kontakt {isKontaktPage} />
 </section>
