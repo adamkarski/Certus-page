@@ -39,16 +39,16 @@
         expandedView = !!machineId;
 
         if (slideId) {
-        const index = list.findIndex((item) => item.id === slideId);
-        if (index !== -1 && swiperElement && swiperElement.swiper) {
-          swiperElement.swiper.slideToLoop(index);
+          const index = list.findIndex((item) => item.id === slideId);
+          if (index !== -1 && swiperElement && swiperElement.swiper) {
+            swiperElement.swiper.slideToLoop(index);
+          }
+        } else if (!activeCategory && swiperElement && swiperElement.swiper) {
+          setTimeout(() => {
+            swiperElement.swiper.slideToLoop(0);
+          }, 0);
         }
-      } else if (!activeCategory && swiperElement && swiperElement.swiper) {
-        setTimeout(() => {
-          swiperElement.swiper.slideToLoop(0);
-        }, 0);
       }
-    }
     }, 0); // Upewnij się, że swiperElement jest dostępny
     if (browser) {
       window.addEventListener("popstate", handlePopstate);
@@ -133,7 +133,11 @@
           activeMachine = category.machine;
           expandedView = true;
           url.searchParams.set("machine", category.machine);
-          history.pushState({ category: c, machine: category.machine }, "", url.toString());
+          history.pushState(
+            { category: c, machine: category.machine },
+            "",
+            url.toString(),
+          );
         } else {
           // Otherwise, go to category view (even if startExpanded and multiple machines)
           activeMachine = null;
@@ -164,7 +168,11 @@
       if (activeCategory) {
         url.searchParams.set("category", activeCategory);
       }
-      history.pushState({ category: activeCategory, machine: x }, "", url.toString());
+      history.pushState(
+        { category: activeCategory, machine: x },
+        "",
+        url.toString(),
+      );
     }
     setTimeout(() => {
       expandedView = true;
@@ -355,36 +363,47 @@
                   {list.find((item) => item.id === activeCategory)?.title}
                 </h1>
 
-                <button type="button" on:click={() => openMachine("m-ploter")}>
-                  <IconDoc />
-                </button>
+                <div class="subListMachines">
+                  <div>
+                    <h2>W zabudowie</h2>
+                    <button
+                      type="button"
+                      on:click={() => openMachine("m-ploter")}
+                    >
+                      <img class="image" src="/assets/maszyny/88930d1c.png" />
+                    </button>
+                  </div>
 
-                <br/>
-                <br/>
-                <br/>
-
-                <button type="button" on:click={() => openMachine("m-ploter1")}>
-                  <IconDoc />
-                </button>
-                <br/><br/><br/>
+                  <div>
+                    <h2>Bez zabudowy</h2>
+                    <button
+                      type="button"
+                      on:click={() => openMachine("m-ploter1")}
+                    >
+                      <img
+                        class="image"
+                        src="/assets/maszyny/80f5ea646ec.png"
+                      />
+                    </button>
+                  </div>
+                </div>
                 <CtaButtonHero on:click={close} text="Wróć" />
               </div>
             </div>
           </div>
         </div>
-
-      
       {/if}
     </div>
   </div>
 
   {#if activeMachine}
-    <div class="activeMachine no-sel" in:fade={{ duration: 300, delay: 0 }}
-    out:fade={{ duration: 300, delay: 0 }}>
+    <div
+      class="activeMachine no-sel"
+      in:fade={{ duration: 300, delay: 0 }}
+      out:fade={{ duration: 300, delay: 0 }}
+    >
       {#if activeCategory === "frezarki" && activeMachine === "m_frezarka"}
-       
-    
-      <div
+        <div
           class="left gradientHero"
           class:short={expandedView}
           in:fade={{ duration: 300, delay: 0 }}
@@ -502,13 +521,13 @@
             <img
               style="filter: blur(120px);"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
+              src="/assets/maszyny/88930d1c.png"
               alt="Ploter Przemysłowy"
             />
             <img
               class="back_image"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
+              src="/assets/maszyny/88930d1c.png"
               alt="Ploter Przemysłowy"
             />
           </div>
@@ -588,13 +607,13 @@
             <img
               style="filter: blur(120px);"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
+              src="/assets/maszyny/80f5ea646ec.png"
               alt="Ploter Przemysłowy"
             />
             <img
               class="back_image"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
+              src="/assets/maszyny/80f5ea646ec.png"
               alt="Ploter Przemysłowy"
             />
           </div>
@@ -1202,6 +1221,21 @@
 </section>
 
 <style lang="scss">
+
+.subListMachines{
+
+  display: flex;
+  .image{
+
+    cursor: pointer;
+  }
+  button{
+
+cursor: pointer;
+}
+}
+
+
   .pattern-overlay {
     position: absolute;
     top: 0;

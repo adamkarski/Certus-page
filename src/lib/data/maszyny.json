@@ -11,11 +11,11 @@
   {
     "id": "ploteryPrzemyslowe",
     "title": "Plotery przemysłowe CNC",
-    "img": "/assets/maszyny/certus_7111_temp.png",
+    "img": "/assets/maszyny/combined_88930d1c.png",
     "startExpanded": false,
     "url": null,
     "icon": "/assets/ikony/ploteryPrzemyslowe.svg",
-    "machine":["m_ploter","m-ploter1"]
+    "machine":["m-ploter","m-ploter1"]
   },
   {
     "id": "frezarki5osiowe",
