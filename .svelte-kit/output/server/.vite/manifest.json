@@ -50,7 +50,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/Section_Referencje.BpJobD9X.css"
+      "_app/immutable/assets/Section_Referencje.ByigrpS8.css"
     ]
   },
   "_Serwis.js": {
@@ -172,7 +172,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CPbpiUL1.css"
+      "_app/immutable/assets/_layout.jbwl2SC9.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -196,7 +196,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CW0tvc91.css"
+      "_app/immutable/assets/_page.V-M0ZvDJ.css"
     ]
   },
   "src/routes/dokumentacja/+page.svelte": {

@@ -13,6 +13,7 @@
   import { resetHeroSwiper } from "../../lib/resetHeroSwiperStore";
   import { typoFix } from "$lib/utils/typography";
   import list from "$lib/data/maszyny.json";
+  import { Navigation, Pagination } from 'swiper/modules';
 
   register();
 
@@ -249,6 +250,8 @@
               autoplay
               bind:this={swiperElement}
               on:slidechange={handleSlideChange}
+              
+              modules={[Navigation]}
             >
               {#each list as cat}
                 <swiper-slide>
@@ -347,6 +350,7 @@
           <div class="view slider-view" style="min-height: 400px;"></div>
         {/if}
       {/if}
+      
 
       <!-- 2. Widoki kategorii - każdy z własną animacją -->
       {#if activeCategory === "ploteryPrzemyslowe" && !activeMachine}
@@ -370,7 +374,7 @@
                       type="button"
                       on:click={() => openMachine("m-ploter")}
                     >
-                      <img class="image" src="/assets/maszyny/88930d1c.png" />
+                      <img class="image" src="/assets/maszyny/88930d1c.png" alt="Ploter Przemysłowy w zabudowie" />
                     </button>
                   </div>
 
@@ -383,6 +387,7 @@
                       <img
                         class="image"
                         src="/assets/maszyny/80f5ea646ec.png"
+                        alt="Ploter Przemysłowy bez zabudowy"
                       />
                     </button>
                   </div>
@@ -395,6 +400,17 @@
       {/if}
     </div>
   </div>
+
+  <div id="swiper-button-prev-hero" class="swiper-button-prev" on:click={() => { if (swiperElement && swiperElement.swiper) swiperElement.swiper.slidePrev(); }}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l7.02 7.02a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+      </svg>
+    </div>
+    <div id="swiper-button-next-hero" class="swiper-button-next" on:click={() => { if (swiperElement && swiperElement.swiper) swiperElement.swiper.slideNext(); }}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.69 4.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+      </svg>
+    </div>
 
   {#if activeMachine}
     <div
@@ -1754,4 +1770,40 @@ cursor: pointer;
     overflow-y: auto;
   }
   /* --- KONIEC SCROLLA PARAMS --- */
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+  }
+
+  .swiper-button-prev {
+    left: 10px;
+  }
+
+  .swiper-button-next {
+    right: 10px;
+  }
+
+  .swiper-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .swiper-button-prev svg,
+  .swiper-button-next svg {
+    width: 24px;
+    height: 24px;
+  }
 </style>
