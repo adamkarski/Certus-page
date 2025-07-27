@@ -1,5 +1,9 @@
 <script lang="ts">
   import CtaButton from "./cta-button-kategory.svelte";
+  import Section_Maszyny_Image01 from "./sections/Section_Maszyny_Image01.svelte";
+  import Section_Maszyny_Video from "./sections/Section_Maszyny_Video.svelte";
+  import Section_Maszyny_Image02 from "./sections/Section_Maszyny_Image02.svelte";
+  
   const maszyny = [];
 
   function scrollToSection(id: string) {
@@ -284,17 +288,21 @@
     </div>
     
     <div class="maszyny-dane-gallery-column">
-      <div class="gallery-preview">
-        <h3>Galeria zdjęć</h3>
-        <p>Zobacz frezarki CNC HMM w akcji</p>
-        <button class="gallery-cta">Przejdź do galerii</button>
-      </div>
+      <Section_Maszyny_Image01 
+        sectionId="frezarki-image-01"
+        imgSrc="/assets/maszyny/certus_7111_temp_schemat01.png"
+        title="Frezarki CNC HMM"
+        subtitle="Precyzyjne obróbki skrawaniem"
+      />
       
-      <div class="gallery-preview">
-        <h3>Dokumentacja</h3>
-        <p>Pobierz specyfikację techniczną</p>
-        <button class="gallery-cta">Pobierz PDF</button>
-      </div>
+      <Section_Maszyny_Image02 
+        sectionId="frezarki-gallery"
+        imgSrc="/assets/maszyny/certus_7111_temp.png"
+        title="Galeria realizacji"
+        subtitle="Zobacz nasze frezarki w akcji"
+        ctaText="Przejdź do galerii"
+        ctaAction={() => console.log('Galeria frezarek')}
+      />
     </div>
   </div>
   <div class="maszyny-dane-cta">
@@ -412,17 +420,19 @@
     </div>
     
     <div class="maszyny-dane-gallery-column">
-      <div class="gallery-preview">
-        <h3>Galeria zdjęć</h3>
-        <p>Zobacz plotery przemysłowe w akcji</p>
-        <button class="gallery-cta">Przejdź do galerii</button>
-      </div>
+      <Section_Maszyny_Video 
+        sectionId="plotery-video"
+        videoSrc="/assets/video/video.m4v"
+        title="Plotery w akcji"
+        subtitle="Zobacz jak działają nasze plotery"
+      />
       
-      <div class="gallery-preview">
-        <h3>Wideo prezentacja</h3>
-        <p>Obejrzyj jak działają plotery</p>
-        <button class="gallery-cta">Zobacz wideo</button>
-      </div>
+      <Section_Maszyny_Image01 
+        sectionId="plotery-image"
+        imgSrc="/assets/maszyny/88930d1c.png"
+        title="Przemysłowe plotery CNC"
+        subtitle="Wydajność i precyzja"
+      />
     </div>
   </div>
   <div class="maszyny-dane-cta">
@@ -548,17 +558,21 @@
     </div>
     
     <div class="maszyny-dane-gallery-column">
-      <div class="gallery-preview">
-        <h3>Galeria zdjęć</h3>
-        <p>Zobacz plotery w zabudowie</p>
-        <button class="gallery-cta">Przejdź do galerii</button>
-      </div>
+      <Section_Maszyny_Image02 
+        sectionId="zabudowa-gallery"
+        imgSrc="/assets/maszyny/combined_88930d1c.png"
+        title="Plotery w zabudowie"
+        subtitle="Kompaktowe rozwiązania"
+        ctaText="Zobacz galerie"
+        ctaAction={() => console.log('Galeria zabudowa')}
+      />
       
-      <div class="gallery-preview">
-        <h3>Specyfikacja</h3>
-        <p>Szczegółowe parametry techniczne</p>
-        <button class="gallery-cta">Pobierz spec</button>
-      </div>
+      <Section_Maszyny_Image01 
+        sectionId="zabudowa-specs"
+        imgSrc="/assets/certus-pomoc-wdrozenia.png"
+        title="Dokumentacja techniczna"
+        subtitle="Pobierz specyfikację"
+      />
     </div>
   </div>
   <div class="maszyny-dane-cta">
@@ -638,17 +652,19 @@
     </div>
     
     <div class="maszyny-dane-gallery-column">
-      <div class="gallery-preview">
-        <h3>Galeria zdjęć</h3>
-        <p>Zobacz grawerki CNC w pracy</p>
-        <button class="gallery-cta">Przejdź do galerii</button>
-      </div>
+      <Section_Maszyny_Image01 
+        sectionId="grawerki-image"
+        imgSrc="/assets/maszyny/80f5ea646ec.png"
+        title="Grawerki CNC"
+        subtitle="Precyzyjne grawerowanie"
+      />
       
-      <div class="gallery-preview">
-        <h3>Przykłady prac</h3>
-        <p>Realizacje na grawerkach</p>
-        <button class="gallery-cta">Zobacz prace</button>
-      </div>
+      <Section_Maszyny_Video 
+        sectionId="grawerki-video"
+        videoSrc="/assets/video/video.m4v"
+        title="Przykłady prac"
+        subtitle="Zobacz realizacje na grawerkach"
+      />
     </div>
   </div>
   <div class="maszyny-dane-cta">
@@ -736,17 +752,21 @@
     </div>
     
     <div class="maszyny-dane-gallery-column">
-      <div class="gallery-preview">
-        <h3>Galeria zdjęć</h3>
-        <p>Zobacz frezarki 5-osiowe</p>
-        <button class="gallery-cta">Przejdź do galerii</button>
-      </div>
+      <Section_Maszyny_Image02 
+        sectionId="frezarki5-gallery"
+        imgSrc="/assets/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg"
+        title="Frezarki 5-osiowe"
+        subtitle="Skomplikowane kształty 3D"
+        ctaText="Zobacz możliwości"
+        ctaAction={() => console.log('Galeria 5-osiowe')}
+      />
       
-      <div class="gallery-preview">
-        <h3>Możliwości obróbki</h3>
-        <p>Przykłady skomplikowanych detali</p>
-        <button class="gallery-cta">Zobacz możliwości</button>
-      </div>
+      <Section_Maszyny_Image01 
+        sectionId="frezarki5-details"
+        imgSrc="/assets/maszyny/certus_7111_temp_schemat02.png"
+        title="Przykłady detali"
+        subtitle="Precyzyjne obróbki wieloosiowe"
+      />
     </div>
   </div>
   <div class="maszyny-dane-cta">
@@ -828,17 +848,21 @@
     </div>
     
     <div class="maszyny-dane-gallery-column">
-      <div class="gallery-preview">
-        <h3>Galeria zdjęć</h3>
-        <p>Zobacz plotery tnące w akcji</p>
-        <button class="gallery-cta">Przejdź do galerii</button>
-      </div>
+      <Section_Maszyny_Video 
+        sectionId="plotery-tnace-video"
+        videoSrc="/assets/video/video.m4v"
+        title="Plotery tnące w akcji"
+        subtitle="Zobacz proces cięcia materiałów"
+      />
       
-      <div class="gallery-preview">
-        <h3>Materiały do cięcia</h3>
-        <p>Zobacz jakie materiały można ciąć</p>
-        <button class="gallery-cta">Zobacz materiały</button>
-      </div>
+      <Section_Maszyny_Image02 
+        sectionId="plotery-materials"
+        imgSrc="/assets/certus-serwis-pogwarancyjny.png"
+        title="Materiały do cięcia"
+        subtitle="Szeroka gama możliwości"
+        ctaText="Zobacz materiały"
+        ctaAction={() => console.log('Materiały do cięcia')}
+      />
     </div>
   </div>
   <div class="maszyny-dane-cta">
@@ -1094,8 +1118,10 @@
   /* Nowy layout flex dla sekcji z tabelą */
   .maszyny-dane-content {
     display: flex;
+    flex-direction: row;
     gap: 30px;
     margin-bottom: 40px;
+    align-items: flex-start;
   }
 
   .maszyny-dane-table-column {
@@ -1108,48 +1134,10 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    min-width: 300px;
   }
 
-  .gallery-preview {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    border: 2px dashed #dee2e6;
-    transition: all 0.3s ease;
-  }
 
-  .gallery-preview:hover {
-    border-color: #3498db;
-    background: #e3f2fd;
-  }
-
-  .gallery-preview h3 {
-    margin: 0 0 10px 0;
-    color: #2c3e50;
-    font-size: 1.2em;
-  }
-
-  .gallery-preview p {
-    margin: 0 0 15px 0;
-    color: #6c757d;
-    font-size: 0.9em;
-  }
-
-  .gallery-cta {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s ease;
-  }
-
-  .gallery-cta:hover {
-    background: #2980b9;
-  }
   .maszyny-dane-tabela {
     width: 100%;
     border-collapse: collapse;
@@ -1289,6 +1277,36 @@
   }
   /* --- KONIEC STYLI DLA NOWYCH TABEL --- */
 
+  /* Tablet i mniejsze laptopy */
+  @media (max-width: 1200px) {
+    .maszyny-dane .maszyny-dane-content {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .maszyny-dane .maszyny-dane-table-column,
+    .maszyny-dane .maszyny-dane-gallery-column {
+      flex: none;
+      width: 100%;
+      min-width: auto;
+    }
+
+    .maszyny-dane .maszyny-dane-gallery-column {
+      order: 2;
+    }
+
+    .maszyny-dane .maszyny-dane-table-column {
+      order: 1;
+    }
+  }
+
+  /* Średnie tablety */
+  @media (max-width: 1024px) {
+    .maszyny-dane .maszyny-dane-content {
+      gap: 25px;
+    }
+  }
+
   @media (max-width: 768px) {
     .maszyny {
       padding: 80px 0;
@@ -1307,15 +1325,17 @@
       padding: 30px 20px;
     }
 
-    /* Responsywny layout dla nowego flex */
-    .maszyny-dane-content {
+    /* Dodatkowe style dla małych ekranów */
+    .maszyny-dane .maszyny-dane-content {
       flex-direction: column;
       gap: 20px;
     }
 
-    .maszyny-dane-table-column,
-    .maszyny-dane-gallery-column {
-      flex: 1;
+    .maszyny-dane .maszyny-dane-table-column,
+    .maszyny-dane .maszyny-dane-gallery-column {
+      flex: none;
+      width: 100%;
+      min-width: auto;
     }
 
     .options-list li {
@@ -1323,12 +1343,12 @@
       padding: 4px 8px;
     }
 
-    .gallery-preview {
-      padding: 15px;
+    .maszyny-dane-tabela-wrap {
+      overflow-x: auto;
     }
 
-    .gallery-preview h3 {
-      font-size: 1.1em;
+    .maszyny-dane-tabela {
+      min-width: 500px;
     }
   }
 </style>

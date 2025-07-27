@@ -9,8 +9,8 @@
 </script>
 
 <svelte:head>
-  <title>O nas - Certus</title>
-  <meta name="description" content="O naszej firmie, poznaj naszą historię i zespół" />
+  <title>Serwis maszyn CNC - Gwarancyjny i pogwarancyjny - Certus</title>
+  <meta name="description" content="Profesjonalny serwis maszyn CNC Certus. Oferujemy serwis gwarancyjny, pogwarancyjny oraz przeróbki maszyn. Doświadczony zespół techników." />
 </svelte:head>
 
 <div class="app">
