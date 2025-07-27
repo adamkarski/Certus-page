@@ -5,6 +5,7 @@
   import { goto } from "$app/navigation";
   import { resetHeroSwiper } from "../lib/resetHeroSwiperStore";
   import kategorieMaszyn from "$lib/data/maszyny.json";
+  import CtaButton from "./cta-button.svelte";
 
   let LottiePlayer;
   let scrolled = false;
@@ -13,6 +14,7 @@
   let isFocused = false;
   let isMaszynyDropdownOpen = false;
   let isBranzeDropdownOpen = false;
+  let isBestsellerDropdownOpen = false;
   let dropdownTimeout;
   let active = false; // Dodano deklarację 'active'
   let hoveredCategory = kategorieMaszyn[0]; // Domyślnie pierwsza kategoria
@@ -212,8 +214,75 @@
           </div>
 
 
-               <!-- Bestselller -->
-               <a href="#" class="nav-link"> Bestselller certus69 drop</a>
+          <!-- Bestseller z dropdown -->
+          <div
+            class="relative dropDownMenu"
+            on:mouseenter={() => isBestsellerDropdownOpen = true}
+            on:mouseleave={() => isBestsellerDropdownOpen = false}
+            role="group"
+          >
+            <a href="#" class="nav-link flex items-center space-x-1">
+              <span>Bestseller</span>
+              <svg
+                class="w-4 h-4 transition-transform duration-300"
+                class:rotate-180={isBestsellerDropdownOpen}
+                fill="none"
+                stroke="#cbcbcb"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </a>
+
+            <!-- Bestseller Dropdown menu -->
+            {#if isBestsellerDropdownOpen}
+              <div
+                class="bestseller-dropdown absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
+                transition:fly={{ y: -10, duration: 200 }}
+              >
+                <div class="bestseller-content p-6">
+                  <div class="bestseller-header mb-4">
+                    <div class="bestseller-badge">
+                      <span class="badge-text">🏆 BESTSELLER</span>
+                    </div>
+                    <h3 class="bestseller-title">Plotery przemysłowe CNC</h3>
+                    <p class="bestseller-subtitle">Najchętniej wybierane przez naszych klientów</p>
+                  </div>
+                  
+                  <div class="bestseller-image mb-4">
+                    <img 
+                      src="/assets/maszyny/combined_88930d1c.png" 
+                      alt="Plotery przemysłowe CNC - Bestseller" 
+                      class="bestseller-img"
+                    />
+                  </div>
+                  
+                  <div class="bestseller-features mb-4">
+                    <ul class="features-list">
+                      <li>✓ Najwyższa precyzja cięcia</li>
+                      <li>✓ Sprawdzone w tysiącach firm</li>
+                      <li>✓ Kompleksowa obsługa serwisowa</li>
+                    </ul>
+                  </div>
+                  
+                  <div class="bestseller-cta">
+                    <CtaButton 
+                      text="Zobacz dlaczego wybierają nas" 
+                      on:click={() => {
+                        isBestsellerDropdownOpen = false;
+                        window.location.href = '/maszyny/#ploteryPrzemyslowe';
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            {/if}
+          </div>
 
 
           <!-- Serwis -->
@@ -509,5 +578,100 @@
 
   .mega-menu {
     width: 600px; /* Szerokość mega menu */
+  }
+
+  /* Style dla bestseller dropdown */
+  .bestseller-dropdown {
+    width: 380px;
+    z-index: 1000;
+  }
+
+  .bestseller-content {
+    text-align: center;
+  }
+
+  .bestseller-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700, #ffb347);
+    color: #8b4513;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  }
+
+  .bestseller-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .bestseller-subtitle {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0;
+    line-height: 1.4;
+  }
+
+  .bestseller-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+  }
+
+  .bestseller-img {
+    max-width: 100%;
+    max-height: 160px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .features-list li {
+    font-size: 0.875rem;
+    color: #374151;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .bestseller-cta {
+    margin-top: 16px;
+  }
+
+  /* Dostosowanie CTA button w dropdown */
+  .bestseller-dropdown :global(.cta-button) {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    font-size: 1rem;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bestseller-dropdown :global(.cta-button .maszyny_span) {
+    text-align: center;
+    width: 100%;
+  }
+
+  .bestseller-dropdown :global(.cta-svg) {
+    margin-left: -60px;
   }
 </style>
