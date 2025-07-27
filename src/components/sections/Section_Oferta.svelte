@@ -23,7 +23,7 @@
     <div class="oferta-grid">
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/frezarki.svg" alt="Frezarki CNC" />
+          <img src="assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
         </div>
 
         <CtaButton text="Frezarki CNC" />
@@ -31,7 +31,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/tokarki.svg" alt="Tokarki CNC" />
+          <img src="assets/ikony/maszyny/tokarki.svg" alt="Tokarki CNC" />
         </div>
 
         <CtaButton text="Plotery przemysłowe CNC" />
@@ -39,14 +39,14 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/grawerki.svg" alt="Grawerki CNC" />
+          <img src="assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
         </div>
 
         <CtaButton text="Frezarki pięcioosiowe" />
       </div>
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/grawerki.svg" alt="Grawerki CNC" />
+          <img src="assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
         </div>
 
         <CtaButton text="Grawerki CNC" />
@@ -54,7 +54,7 @@
 
      <!--  <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="assets/ikony/plotery.svg" alt="Plotery CNC" />
+          <img src="assets/ikony/maszyny/plotery.svg" alt="Plotery CNC" />
         </div>
 
         <CtaButton text="Plotery CNC" />

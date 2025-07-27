@@ -5,7 +5,7 @@
     "img": "/assets/maszyny/certus_7111_temp.png",
     "startExpanded": true,
     "url": null,
-    "icon": "/assets/ikony/frezarki.svg",
+    "icon": "/assets/ikony/maszyny/frezarki.svg",
     "machine":"m_frezarka"
   },
   {
@@ -14,7 +14,7 @@
     "img": "/assets/maszyny/combined_88930d1c.png",
     "startExpanded": false,
     "url": null,
-    "icon": "/assets/ikony/ploteryPrzemyslowe.svg",
+    "icon": "/assets/ikony/maszyny/ploteryPrzemyslowe.svg",
     "machine":["m-ploter","m-ploter1"]
   },
   {
@@ -23,7 +23,7 @@
     "img": "/assets/maszyny/certus_7111_temp.png",
     "startExpanded": true,
     "url": null,
-    "icon": "/assets/ikony/frezarki5osiowe.svg",
+    "icon": "/assets/ikony/maszyny/frezarki5osiowe.svg",
     "machine":"m_frezarka5osi"
   },
   {
@@ -32,7 +32,7 @@
     "img": "/assets/maszyny/certus_7111_temp.png",
     "startExpanded": true,
     "url": null,
-    "icon": "/assets/ikony/grawerki.svg",
+    "icon": "/assets/ikony/maszyny/grawerki.svg",
     "machine":"m_grawerka"
   },
   {
@@ -41,7 +41,7 @@
     "img": "/assets/maszyny/certus_7111_temp.png",
     "startExpanded": true,
     "url": null,
-    "icon": "/assets/ikony/ploteryLinearne.svg",
+    "icon": "/assets/ikony/maszyny/ploteryLinearne.svg",
     "machine":"m_ploterLinear"
   },
   {
@@ -50,7 +50,7 @@
     "img": "/assets/maszyny/certus_7111_temp.png",
     "startExpanded": false,
     "url": "/maszyny/#specjalistyczne",
-    "icon": "/assets/ikony/specjalistyczne.svg",
+    "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
     "machine":"m_special"
   }
 ]

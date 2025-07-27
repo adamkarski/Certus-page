@@ -30,7 +30,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/frezarki.svg" alt="Frezarki CNC" />
+          <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
         </div>
 
         <CtaButton text="Frezarki CNC HMM" on:click={() => scrollToSection('Frezarki')} />
@@ -41,7 +41,7 @@
       
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/ploteryPrzemyslowe.svg" alt="Przemysłowe plotery CNC" />
+          <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="Przemysłowe plotery CNC" />
         </div>
 
         <CtaButton text="Przemysłowe plotery CN " on:click={() => scrollToSection('ploteryPrzemyslowe')} />
@@ -52,7 +52,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/ploteryPrzemysloweWzabudowie.svg" alt="Przemysłowe plotery CNC" />
+          <img src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg" alt="Przemysłowe plotery CNC" />
         </div>
 
         <CtaButton text="Przemysłowe plotery CNC w zabudowie" on:click={() => scrollToSection('ploteryPrzemysloweZabudowa')} />
@@ -61,7 +61,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/frezarki5osiowe.svg" alt="Frezarki pięcioosiowe" />
+          <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="Frezarki pięcioosiowe" />
         </div>
 
         <CtaButton text="Frezarki pięcioosiowe" on:click={() => scrollToSection('frezarki5osiowe')} />
@@ -71,7 +71,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/ploteryPrzemyslowe.svg" alt="Grawerki CNC" />
+          <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="Grawerki CNC" />
         </div>
 
         <CtaButton text="Grawerki CNC" on:click={() => scrollToSection('grawerki')} />
@@ -81,7 +81,7 @@
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/ploteryLinearne.svg" alt="Plotery tnące linearne CNC" />
+          <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="Plotery tnące linearne CNC" />
         </div>
 
         <CtaButton text="Plotery tnące linearne CNC" on:click={() => scrollToSection('ploteryLinearne')} />
@@ -104,7 +104,7 @@
 <section id="frezarki" class="maszyny-dane">
   <div class="maszyny-dane-header no-sel">
     <img
-      src="/assets/ikony/frezarki.svg"
+      src="/assets/ikony/maszyny/frezarki.svg"
       alt="Frezarki CNC"
       class="maszyny-dane-ikona"
     />

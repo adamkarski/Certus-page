@@ -13,7 +13,6 @@
   import { resetHeroSwiper } from "../../lib/resetHeroSwiperStore";
   import { typoFix } from "$lib/utils/typography";
   import list from "$lib/data/maszyny.json";
-  import { Navigation, Pagination } from 'swiper/modules';
 
   register();
 
@@ -57,18 +56,109 @@
     preloadImages(); // Preload images on mount
   });
 
-  function handleSwiperInit() {
+  function handleSwiperInit(event) {
+    const swiper = event.detail[0];
     swiperReady = true;
+    
+    // Update navigation buttons state
+    updateNavigationButtons(swiper);
+    
+    // Listen for slide changes to update navigation
+    swiper.on('slideChange', () => {
+      updateNavigationButtons(swiper);
+    });
+  }
+
+  // Function to update navigation buttons based on current slide
+  function updateNavigationButtons(swiper) {
+    if (!swiper) return;
+    
+    const prevButton = document.getElementById('swiper-button-prev-hero');
+    const nextButton = document.getElementById('swiper-button-next-hero');
+    
+    if (prevButton && nextButton) {
+      // Without loop mode, we can use isBeginning and isEnd
+      const currentIndex = swiper.activeIndex;
+      const totalSlides = list.length;
+      const slidesPerView = 2; // slides-per-view="2"
+      
+      console.log('Navigation update:', { 
+        currentIndex, 
+        totalSlides, 
+        slidesPerView, 
+        isBeginning: swiper.isBeginning, 
+        isEnd: swiper.isEnd,
+        containerWidth: swiper.width,
+        slideWidth: swiper.slidesSizesGrid?.[0],
+        allSlides: swiper.slides?.length
+      });
+      
+      // Remove existing disabled classes
+      prevButton.classList.remove('swiper-button-disabled');
+      nextButton.classList.remove('swiper-button-disabled');
+      
+      // Alternative logic for slides-per-group="2"
+      const slidesPerGroup = 2;
+      const maxGroups = Math.ceil(totalSlides / slidesPerGroup);
+      const currentGroup = Math.floor(currentIndex / slidesPerGroup);
+      
+      console.log('Group info:', { currentGroup, maxGroups, slidesPerGroup });
+      
+      // Check if we're at the beginning (group 0)
+      if (currentGroup === 0) {
+        console.log('Disabling prev button - at first group');
+        prevButton.classList.add('swiper-button-disabled');
+      }
+      
+      // Check if we're at the end (last group)
+      if (currentGroup >= maxGroups - 1) {
+        console.log('Disabling next button - at last group');
+        nextButton.classList.add('swiper-button-disabled');
+      }
+    }
+  }
+
+  // Navigation button click handlers
+  function handlePrevClick() {
+    if (swiperElement && swiperElement.swiper) {
+      const currentIndex = swiperElement.swiper.activeIndex;
+      const currentGroup = Math.floor(currentIndex / 2);
+      
+      console.log('Prev click - currentGroup:', currentGroup);
+      if (currentGroup > 0) {
+        swiperElement.swiper.slidePrev();
+        // Update buttons after slide change
+        setTimeout(() => updateNavigationButtons(swiperElement.swiper), 100);
+      }
+    }
+  }
+
+  function handleNextClick() {
+    if (swiperElement && swiperElement.swiper) {
+      const currentIndex = swiperElement.swiper.activeIndex;
+      const maxGroups = Math.ceil(list.length / 2);
+      const currentGroup = Math.floor(currentIndex / 2);
+      
+      console.log('Next click - currentGroup:', currentGroup, 'maxGroups:', maxGroups);
+      if (currentGroup < maxGroups - 1) {
+        swiperElement.swiper.slideNext();
+        // Update buttons after slide change
+        setTimeout(() => updateNavigationButtons(swiperElement.swiper), 100);
+      }
+    }
   }
 
   function handleSlideChange(event) {
     if (browser) {
       const swiper = event.detail[0];
-      const currentSlideIndex = swiper.realIndex;
+      const currentSlideIndex = swiper.activeIndex;
       const currentSlideId = list[currentSlideIndex].id;
       const url = new URL(window.location.href);
       url.searchParams.set("slide", currentSlideId);
       history.replaceState({ slide: currentSlideId }, "", url.toString());
+      
+      // Update navigation buttons
+      updateNavigationButtons(swiper);
     }
   }
 
@@ -208,6 +298,30 @@
   $: if (browser) {
     if (activeMachine) document.body.classList.add("no-scroll-hero");
     else document.body.classList.remove("no-scroll-hero");
+
+    // Zarządzanie widocznością przycisków nawigacyjnych
+    const prevButton = document.getElementById('swiper-button-prev-hero');
+    const nextButton = document.getElementById('swiper-button-next-hero');
+    if (prevButton && nextButton) {
+      if (activeCategory && !activeMachine) {
+        // Hide navigation in intermediate view (category selected but no machine)
+        prevButton.classList.add('hide-navigation');
+        nextButton.classList.add('hide-navigation');
+      } else if (!activeCategory) {
+        // Show navigation in main slider view and update button states
+        prevButton.classList.remove('hide-navigation');
+        nextButton.classList.remove('hide-navigation');
+        
+        // Update navigation buttons if swiper is ready
+        if (swiperElement && swiperElement.swiper) {
+          updateNavigationButtons(swiperElement.swiper);
+        }
+      } else {
+        // Hide navigation in expanded machine view
+        prevButton.classList.add('hide-navigation');
+        nextButton.classList.add('hide-navigation');
+      }
+    }
   }
 
   // --- KONIEC BLOKADY SCROLLA ---
@@ -240,8 +354,30 @@
             in:fade={fadeConfig}
             out:fade={fadeConfig}
           >
+            <!-- Custom Navigation Buttons -->
+            <button 
+              id="swiper-button-prev-hero" 
+              class="swiper-nav-button swiper-nav-prev"
+              on:click={handlePrevClick}
+              aria-label="Previous slide"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            
+            <button 
+              id="swiper-button-next-hero" 
+              class="swiper-nav-button swiper-nav-next"
+              on:click={handleNextClick}
+              aria-label="Next slide"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
             <swiper-container
-              loop
               pagination
               space-between="0"
               slides-per-view="2"
@@ -250,8 +386,7 @@
               autoplay
               bind:this={swiperElement}
               on:slidechange={handleSlideChange}
-              
-              modules={[Navigation]}
+              on:swiperinit={handleSwiperInit}
             >
               {#each list as cat}
                 <swiper-slide>
@@ -350,7 +485,6 @@
           <div class="view slider-view" style="min-height: 400px;"></div>
         {/if}
       {/if}
-      
 
       <!-- 2. Widoki kategorii - każdy z własną animacją -->
       {#if activeCategory === "ploteryPrzemyslowe" && !activeMachine}
@@ -374,7 +508,7 @@
                       type="button"
                       on:click={() => openMachine("m-ploter")}
                     >
-                      <img class="image" src="/assets/maszyny/88930d1c.png" alt="Ploter Przemysłowy w zabudowie" />
+                      <img class="image" src="/assets/maszyny/88930d1c.png" />
                     </button>
                   </div>
 
@@ -387,7 +521,6 @@
                       <img
                         class="image"
                         src="/assets/maszyny/80f5ea646ec.png"
-                        alt="Ploter Przemysłowy bez zabudowy"
                       />
                     </button>
                   </div>
@@ -400,17 +533,6 @@
       {/if}
     </div>
   </div>
-
-  <div id="swiper-button-prev-hero" class="swiper-button-prev" on:click={() => { if (swiperElement && swiperElement.swiper) swiperElement.swiper.slidePrev(); }}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-        <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l7.02 7.02a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
-      </svg>
-    </div>
-    <div id="swiper-button-next-hero" class="swiper-button-next" on:click={() => { if (swiperElement && swiperElement.swiper) swiperElement.swiper.slideNext(); }}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-        <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.69 4.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
-      </svg>
-    </div>
 
   {#if activeMachine}
     <div
@@ -1238,6 +1360,17 @@
 
 <style lang="scss">
 
+
+:global(.swiper-nav-button.swiper-button-disabled){
+
+opacity: 0.1 !important;
+cursor: not-allowed !important;
+pointer-events: none !important;
+transition: all;
+
+
+}
+
 .subListMachines{
 
   display: flex;
@@ -1771,39 +1904,67 @@ cursor: pointer;
   }
   /* --- KONIEC SCROLLA PARAMS --- */
 
-  .swiper-button-prev,
-  .swiper-button-next {
+  /* ————————————————  NAVIGATION BUTTONS  ———————————————— */
+  .swiper-nav-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    color: white;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .swiper-button-prev {
-    left: 10px;
+  .swiper-nav-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
   }
 
-  .swiper-button-next {
-    right: 10px;
+  .swiper-nav-prev {
+    left: 2rem;
   }
 
-  .swiper-button-disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  .swiper-nav-next {
+    right: 2rem;
   }
 
-  .swiper-button-prev svg,
-  .swiper-button-next svg {
-    width: 24px;
-    height: 24px;
+  .swiper-nav-button.swiper-button-disabled {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-50%) scale(0.8);
   }
+
+  .swiper-nav-button.hide-navigation {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%) scale(0.8);
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .swiper-nav-button {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .swiper-nav-prev {
+      left: 1rem;
+    }
+    
+    .swiper-nav-next {
+      right: 1rem;
+    }
+  }
+  /* --- KONIEC NAVIGATION BUTTONS --- */
 </style>
