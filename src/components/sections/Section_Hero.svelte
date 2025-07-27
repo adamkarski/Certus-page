@@ -41,12 +41,22 @@
         if (slideId) {
           const index = list.findIndex((item) => item.id === slideId);
           if (index !== -1 && swiperElement && swiperElement.swiper) {
-            swiperElement.swiper.slideToLoop(index);
+            swiperElement.swiper.slideTo(index);
+            setTimeout(() => updateNavigationButtons(swiperElement.swiper), 100);
           }
         } else if (!activeCategory && swiperElement && swiperElement.swiper) {
           setTimeout(() => {
-            swiperElement.swiper.slideToLoop(0);
+            swiperElement.swiper.slideTo(0);
+            setTimeout(() => updateNavigationButtons(swiperElement.swiper), 100);
           }, 0);
+        }
+        
+        // Always update navigation buttons on mount
+        if (swiperElement && swiperElement.swiper) {
+          setTimeout(() => {
+            console.log('Updating buttons on mount');
+            updateNavigationButtons(swiperElement.swiper);
+          }, 200);
         }
       }
     }, 0); // Upewnij się, że swiperElement jest dostępny
@@ -60,13 +70,24 @@
     const swiper = event.detail[0];
     swiperReady = true;
     
+    console.log('Swiper initialized, updating buttons');
+    
     // Update navigation buttons state
     updateNavigationButtons(swiper);
     
     // Listen for slide changes to update navigation
     swiper.on('slideChange', () => {
+      console.log('Slide changed, updating buttons');
       updateNavigationButtons(swiper);
     });
+  }
+
+  // Reactive function to update buttons when view changes
+  $: if (browser && swiperElement && swiperElement.swiper && (activeCategory !== undefined || expandedView !== undefined)) {
+    setTimeout(() => {
+      console.log('View changed, updating buttons');
+      updateNavigationButtons(swiperElement.swiper);
+    }, 100);
   }
 
   // Function to update navigation buttons based on current slide

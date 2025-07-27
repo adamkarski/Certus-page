@@ -46,6 +46,7 @@ declare module '$env/static/private' {
 	export const VOLTA_HOME: string;
 	export const ZDOTDIR: string;
 	export const ZPFX: string;
+	export const TERM_SESSION_ID: string;
 	export const npm_package_devDependencies_svelte_preprocess: string;
 	export const npm_package_devDependencies__sveltejs_kit: string;
 	export const npm_package_private: string;
@@ -70,6 +71,7 @@ declare module '$env/static/private' {
 	export const PATH: string;
 	export const npm_config_argv: string;
 	export const npm_package_dependencies_swiper: string;
+	export const LaunchInstanceID: string;
 	export const _: string;
 	export const USER_ZDOTDIR: string;
 	export const __CFBundleIdentifier: string;
@@ -120,6 +122,7 @@ declare module '$env/static/private' {
 	export const _P9K_SSH_TTY: string;
 	export const npm_config_init_version: string;
 	export const npm_config_ignore_optional: string;
+	export const SECURITYSESSIONID: string;
 	export const npm_package_dependencies__lottiefiles_svelte_lottie_player: string;
 	export const npm_package_scripts_check: string;
 	export const COLORTERM: string;
@@ -177,6 +180,7 @@ declare module '$env/dynamic/private' {
 		VOLTA_HOME: string;
 		ZDOTDIR: string;
 		ZPFX: string;
+		TERM_SESSION_ID: string;
 		npm_package_devDependencies_svelte_preprocess: string;
 		npm_package_devDependencies__sveltejs_kit: string;
 		npm_package_private: string;
@@ -201,6 +205,7 @@ declare module '$env/dynamic/private' {
 		PATH: string;
 		npm_config_argv: string;
 		npm_package_dependencies_swiper: string;
+		LaunchInstanceID: string;
 		_: string;
 		USER_ZDOTDIR: string;
 		__CFBundleIdentifier: string;
@@ -251,6 +256,7 @@ declare module '$env/dynamic/private' {
 		_P9K_SSH_TTY: string;
 		npm_config_init_version: string;
 		npm_config_ignore_optional: string;
+		SECURITYSESSIONID: string;
 		npm_package_dependencies__lottiefiles_svelte_lottie_player: string;
 		npm_package_scripts_check: string;
 		COLORTERM: string;

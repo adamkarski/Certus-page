@@ -25,4 +25,4 @@ dist-ssr
 /build
 /.svelte-kit/output
 /build
-/build
+/.svelte-kit
