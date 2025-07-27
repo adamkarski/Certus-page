@@ -98,10 +98,10 @@
    
     </div>
   </div>
-  "
 </section>
 
-<section id="frezarki" class="maszyny-dane">
+<!-- Frezarki CNC HMM -->
+<section id="Frezarki" class="maszyny-dane">
   <div class="maszyny-dane-header no-sel">
     <img
       src="/assets/ikony/maszyny/frezarki.svg"
@@ -151,43 +151,695 @@
     </div>
   </div>
 
-  <div class="maszyny-dane-tabela-wrap">
-    <table class="maszyny-dane-tabela">
+  <div class="maszyny-dane-content">
+    <div class="maszyny-dane-table-column">
+      <div class="maszyny-dane-tabela-wrap">
+        <table class="maszyny-dane-tabela frezarki">
+          <thead>
+            <tr>
+              <th>Parametr</th>
+              <th>Dostępne opcje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" />
+                <div class="text">Wymiary obszaru roboczego (mm)</div>
+              </td>
+              <td class="highlight-options">
+                <ul class="options-list">
+                  <li>400×400</li>
+                  <li>600×400</li>
+                  <li>700×600</li>
+                  <li>1000×700</li>
+                  <li>1000×800</li>
+                  <li>1200×1000</li>
+                  <li>1200×1200</li>
+                  <li>1500×2000</li>
+                  <li>2000×2500</li>
+                  <li>2000×3000</li>
+                  <li>2000×4000</li>
+                  <li>700×1600</li>
+                  <li>1000×1200</li>
+                  <li>1000×1400</li>
+                  <li>1400×1000</li>
+                  <li>1400×1200</li>
+                  <li>1400×1600</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" />
+                <div class="text">Wysokość nad stołem roboczym (mm)</div>
+              </td>
+              <td class="highlight-options">
+                <ul class="options-list">
+                  <li>270</li>
+                  <li>300</li>
+                  <li>350</li>
+                  <li>400</li>
+                  <li>500</li>
+                  <li>600</li>
+                  <li>270-600 (różne opcje)</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="/assets/ikony/table/rodzajewzeciona.svg" alt="Wrzeciona" />
+                <div class="text">Rodzaje wrzeciona</div>
+              </td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>24k obrotów (2,2kW-16kW)</li>
+                  <li>40k obrotów (5kW)</li>
+                  <li>50k obrotów (3kW)</li>
+                  <li>Wolnoobrotowe z wysokim momentem (serwonapęd 5/7,5kW)</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="/assets/ikony/table/oswietlenie.svg" alt="Oświetlenie" />
+                <div class="text">Oświetlenie obszaru roboczego</div>
+              </td>
+              <td class="standard-feature">✓ W standardzie</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="/assets/ikony/table/atc.svg" alt="ATC" />
+                <div class="text">Automatyczny magazyn narzędzi ATC</div>
+              </td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Bez wymiany</li>
+                  <li>Magazyn rewolwerowy</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" />
+                <div class="text">Niezależny pulpit operatorski</div>
+              </td>
+              <td class="standard-feature">✓ Tak</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="/assets/ikony/table/opcje.svg" alt="Opcje" />
+                <div class="text">Opcje dodatkowe</div>
+              </td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Chłodzenie (ciągłe cieczą)</li>
+                  <li>Chłodzenie (mgła olejowa)</li>
+                  <li>Pomiar wysokości narzędzia</li>
+                  <li>Sonda 3D z makrami</li>
+                  <li>Centralne smarowanie</li>
+                  <li>Kamera wizyjna</li>
+                  <li>4. oś obrotowa</li>
+                  <li>5. oś obrotowa</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" />
+                <div class="text">Typ stołu roboczego</div>
+              </td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>T-rowkowy</li>
+                  <li>Podciśnieniowy</li>
+                  <li>Próżniowy</li>
+                  <li>Hybrydowy</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="maszyny-dane-gallery-column">
+      <div class="gallery-preview">
+        <h3>Galeria zdjęć</h3>
+        <p>Zobacz frezarki CNC HMM w akcji</p>
+        <button class="gallery-cta">Przejdź do galerii</button>
+      </div>
+      
+      <div class="gallery-preview">
+        <h3>Dokumentacja</h3>
+        <p>Pobierz specyfikację techniczną</p>
+        <button class="gallery-cta">Pobierz PDF</button>
+      </div>
+    </div>
+  </div>
+  <div class="maszyny-dane-cta">
+    <CtaButton text="Zamów konsultację" />
+  </div>
+</section>
+
+<!-- Przemysłowe plotery CNC -->
+<section id="ploteryPrzemyslowe" class="maszyny-dane">
+  <div class="maszyny-dane-header no-sel">
+    <img
+      src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
+      alt="Przemysłowe plotery CNC"
+      class="maszyny-dane-ikona"
+    />
+    <h2>Przemysłowe plotery CNC</h2>
+  </div>
+  <hr class="maszyny-dane-hr" />
+
+  <div class="maszyny-dane-content">
+    <div class="maszyny-dane-table-column">
+      <div class="maszyny-dane-tabela-wrap">
+        <table class="maszyny-dane-tabela plotery">
+          <thead>
+            <tr>
+              <th>Parametr</th>
+              <th>Dostępne opcje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wymiary obszaru roboczego (mm)</td>
+              <td class="highlight-options">
+                <ul class="options-list">
+                  <li>1500×2000</li>
+                  <li>2000×2500</li>
+                  <li>2000×3000</li>
+                  <li>2000×4000</li>
+                  <li>700×1600</li>
+                  <li>1000×1200</li>
+                  <li>1000×1400</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Wysokość nad stołem roboczym (mm)</td>
+              <td class="highlight-options">
+                <ul class="options-list">
+                  <li>270</li>
+                  <li>300</li>
+                  <li>350</li>
+                  <li>400</li>
+                  <li>500</li>
+                  <li>600</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Rodzaje wrzeciona</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>24k obrotów (2,2kW-16kW)</li>
+                  <li>40k obrotów (5kW)</li>
+                  <li>50k obrotów (3kW)</li>
+                  <li>Wolnoobrotowe z wysokim momentem (serwonapęd 5/7,5kW)</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Oświetlenie obszaru roboczego</td>
+              <td class="standard-feature">✓ W standardzie</td>
+            </tr>
+            <tr>
+              <td>Automatyczny magazyn narzędzi ATC</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Bez wymiany</li>
+                  <li>Magazyn rewolwerowy</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Niezależny pulpit operatorski</td>
+              <td class="standard-feature">✓ Tak</td>
+            </tr>
+            <tr>
+              <td>Opcje dodatkowe</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Chłodzenie (ciągłe cieczą)</li>
+                  <li>Chłodzenie (mgła olejowa)</li>
+                  <li>Pomiar wysokości narzędzia</li>
+                  <li>Sonda 3D z makrami</li>
+                  <li>Centralne smarowanie</li>
+                  <li>Kamera wizyjna</li>
+                  <li>4. oś obrotowa</li>
+                  <li>5. oś obrotowa</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Typ stołu roboczego</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>T-rowkowy</li>
+                  <li>Podciśnieniowy</li>
+                  <li>Próżniowy</li>
+                  <li>Hybrydowy</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="maszyny-dane-gallery-column">
+      <div class="gallery-preview">
+        <h3>Galeria zdjęć</h3>
+        <p>Zobacz plotery przemysłowe w akcji</p>
+        <button class="gallery-cta">Przejdź do galerii</button>
+      </div>
+      
+      <div class="gallery-preview">
+        <h3>Wideo prezentacja</h3>
+        <p>Obejrzyj jak działają plotery</p>
+        <button class="gallery-cta">Zobacz wideo</button>
+      </div>
+    </div>
+  </div>
+  <div class="maszyny-dane-cta">
+    <CtaButton text="Zamów konsultację" />
+  </div>
+</section>
+
+<!-- Przemysłowe plotery CNC w zabudowie -->
+<section id="ploteryPrzemysloweZabudowa" class="maszyny-dane">
+  <div class="maszyny-dane-header no-sel">
+    <img
+      src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg"
+      alt="Przemysłowe plotery CNC w zabudowie"
+      class="maszyny-dane-ikona"
+    />
+    <h2>Przemysłowe plotery CNC w zabudowie</h2>
+  </div>
+  <hr class="maszyny-dane-hr" />
+
+  <div class="maszyny-dane-content">
+    <div class="maszyny-dane-table-column">
+      <div class="maszyny-dane-tabela-wrap">
+        <table class="maszyny-dane-tabela zabudowa">
       <thead>
         <tr>
-          <th>Model</th>
-          <th>Pole pracy</th>
-          <th>Waga [t]</th>
-          <th>Opcje wyposażenia</th>
+          <th>Parametr</th>
+          <th>Dostępne opcje</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><b>CERTUS 1212<br />STANDARD / ATC</b></td>
-          <td>1200 x 1200 x 350</td>
-          <td>4,2</td>
-          <td>Automatyczna wymiana narzędzi (ATC), magazyn narzędzi</td>
+          <td>Wymiary obszaru roboczego (mm)</td>
+          <td class="highlight-options">
+            <ul class="options-list">
+              <li>1400×1000</li>
+              <li>1400×1200</li>
+              <li>1400×1600</li>
+            </ul>
+          </td>
         </tr>
         <tr>
-          <td><b>CERTUS 1080<br />STANDARD / ATC</b></td>
-          <td>1000 x 800 x 350</td>
-          <td>3,5</td>
-          <td></td>
+          <td>Wysokość nad stołem roboczym (mm)</td>
+          <td class="highlight-options">
+            <ul class="options-list">
+              <li>270</li>
+              <li>300</li>
+              <li>350</li>
+              <li>400</li>
+              <li>500</li>
+              <li>600</li>
+            </ul>
+          </td>
         </tr>
         <tr>
-          <td><b>CERTUS 7060<br />STANDARD / ATC</b></td>
-          <td>700 x 600 x 279</td>
-          <td>1,2</td>
-          <td></td>
+          <td>Rodzaje wrzeciona</td>
+          <td class="specs-text">
+            <ul class="options-list">
+              <li>24k obrotów (2,2kW-16kW)</li>
+              <li>40k obrotów (5kW)</li>
+              <li>50k obrotów (3kW)</li>
+              <li>Wolnoobrotowe z wysokim momentem (serwonapęd 5/7,5kW)</li>
+            </ul>
+          </td>
         </tr>
         <tr>
-          <td><b>CERTUS 4040<br />STANDARD / ATC</b></td>
-          <td>400 x 400 x 350</td>
-          <td>0,7</td>
-          <td></td>
+          <td>Oświetlenie obszaru roboczego</td>
+          <td class="standard-feature">✓ W standardzie</td>
+        </tr>
+        <tr>
+          <td>Automatyczny magazyn narzędzi ATC</td>
+          <td class="specs-text">
+            <ul class="options-list">
+              <li>Bez wymiany</li>
+              <li>Magazyn rewolwerowy</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Niezależny pulpit operatorski</td>
+          <td class="standard-feature">✓ Tak</td>
+        </tr>
+        <tr>
+          <td>Opróżniany zbiornik na wióry</td>
+          <td class="standard-feature">✓ Tak</td>
+        </tr>
+        <tr>
+          <td>Osłony boczne</td>
+          <td class="standard-feature">✓ Tak</td>
+        </tr>
+        <tr>
+          <td>Stół roboczy poziomo-pionowy T-rowkowy</td>
+          <td class="standard-feature">✓ Do 1000mm wysokości</td>
+        </tr>
+        <tr>
+          <td>Opcje dodatkowe</td>
+          <td class="specs-text">
+            <ul class="options-list">
+              <li>Chłodzenie (ciągłe cieczą)</li>
+              <li>Chłodzenie (mgła olejowa)</li>
+              <li>Pomiar wysokości narzędzia</li>
+              <li>Sonda 3D</li>
+              <li>Centralne smarowanie</li>
+              <li>Kamera</li>
+              <li>4. oś obrotowa</li>
+              <li>5. oś obrotowa</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>Typ stołu roboczego</td>
+          <td class="specs-text">
+            <ul class="options-list">
+              <li>T-rowkowy</li>
+              <li>Podciśnieniowy</li>
+              <li>Próżniowy</li>
+              <li>Hybrydowy</li>
+            </ul>
+          </td>
         </tr>
       </tbody>
-    </table>
+        </table>
+      </div>
+    </div>
+    
+    <div class="maszyny-dane-gallery-column">
+      <div class="gallery-preview">
+        <h3>Galeria zdjęć</h3>
+        <p>Zobacz plotery w zabudowie</p>
+        <button class="gallery-cta">Przejdź do galerii</button>
+      </div>
+      
+      <div class="gallery-preview">
+        <h3>Specyfikacja</h3>
+        <p>Szczegółowe parametry techniczne</p>
+        <button class="gallery-cta">Pobierz spec</button>
+      </div>
+    </div>
+  </div>
+  <div class="maszyny-dane-cta">
+    <CtaButton text="Zamów konsultację" />
+  </div>
+</section>
+
+<!-- Grawerki CNC -->
+<section id="grawerki" class="maszyny-dane">
+  <div class="maszyny-dane-header no-sel">
+    <img
+      src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
+      alt="Grawerki CNC"
+      class="maszyny-dane-ikona"
+    />
+    <h2>Grawerki CNC</h2>
+  </div>
+  <hr class="maszyny-dane-hr" />
+
+  <div class="maszyny-dane-content">
+    <div class="maszyny-dane-table-column">
+      <div class="maszyny-dane-tabela-wrap">
+        <table class="maszyny-dane-tabela grawerka">
+          <thead>
+            <tr>
+              <th>Parametr</th>
+              <th>Dostępne opcje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wymiary obszaru roboczego (mm)</td>
+              <td class="highlight-options">375×400</td>
+            </tr>
+            <tr>
+              <td>Automatyczny magazyn narzędzi ATC</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Bez wymiany</li>
+                  <li>Magazyn rewolwerowy</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Niezależny pulpit operatorski</td>
+              <td class="standard-feature">✓ Tak</td>
+            </tr>
+            <tr>
+              <td>Opcje dodatkowe</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Chłodzenie (ciągłe cieczą)</li>
+                  <li>Chłodzenie (mgła olejowa)</li>
+                  <li>Pomiar wysokości narzędzia</li>
+                  <li>Sonda 3D</li>
+                  <li>Centralne smarowanie</li>
+                  <li>Kamera</li>
+                  <li>4. oś obrotowa</li>
+                  <li>5. oś obrotowa</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Typ stołu roboczego</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>T-rowkowy</li>
+                  <li>Podciśnieniowy</li>
+                  <li>Próżniowy</li>
+                  <li>Hybrydowy</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="maszyny-dane-gallery-column">
+      <div class="gallery-preview">
+        <h3>Galeria zdjęć</h3>
+        <p>Zobacz grawerki CNC w pracy</p>
+        <button class="gallery-cta">Przejdź do galerii</button>
+      </div>
+      
+      <div class="gallery-preview">
+        <h3>Przykłady prac</h3>
+        <p>Realizacje na grawerkach</p>
+        <button class="gallery-cta">Zobacz prace</button>
+      </div>
+    </div>
+  </div>
+  <div class="maszyny-dane-cta">
+    <CtaButton text="Zamów konsultację" />
+  </div>
+</section>
+
+<!-- Frezarki pięcioosiowe -->
+<section id="frezarki5osiowe" class="maszyny-dane">
+  <div class="maszyny-dane-header no-sel">
+    <img
+      src="/assets/ikony/maszyny/frezarki5osiowe.svg"
+      alt="Frezarki pięcioosiowe"
+      class="maszyny-dane-ikona"
+    />
+    <h2>Frezarki pięcioosiowe</h2>
+  </div>
+  <hr class="maszyny-dane-hr" />
+
+  <div class="maszyny-dane-content">
+    <div class="maszyny-dane-table-column">
+      <div class="maszyny-dane-tabela-wrap">
+        <table class="maszyny-dane-tabela piecosie">
+          <thead>
+            <tr>
+              <th>Parametr</th>
+              <th>Dostępne opcje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wymiar obszaru roboczego (mm)</td>
+              <td class="highlight-options">⌀ 350</td>
+            </tr>
+            <tr>
+              <td>Automatyczny magazyn narzędzi ATC</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Bez wymiany</li>
+                  <li>Magazyn rewolwerowy</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Niezależny pulpit operatorski</td>
+              <td class="standard-feature">✓ Tak</td>
+            </tr>
+            <tr>
+              <td>Opcje dodatkowe</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Chłodzenie (ciągłe cieczą)</li>
+                  <li>Chłodzenie (mgła olejowa)</li>
+                  <li>Pomiar wysokości narzędzia</li>
+                  <li>Sonda 3D</li>
+                  <li>Centralne smarowanie</li>
+                  <li>Kamera</li>
+                  <li>4. oś obrotowa</li>
+                  <li>5. oś obrotowa</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Typ stołu roboczego</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>T-rowkowy</li>
+                  <li>Podciśnieniowy</li>
+                  <li>Próżniowy</li>
+                  <li>Hybrydowy</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Zakres pracy osi A</td>
+              <td class="highlight-options">0-360°</td>
+            </tr>
+            <tr>
+              <td>Zakres pracy osi B</td>
+              <td class="highlight-options">0-210°</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="maszyny-dane-gallery-column">
+      <div class="gallery-preview">
+        <h3>Galeria zdjęć</h3>
+        <p>Zobacz frezarki 5-osiowe</p>
+        <button class="gallery-cta">Przejdź do galerii</button>
+      </div>
+      
+      <div class="gallery-preview">
+        <h3>Możliwości obróbki</h3>
+        <p>Przykłady skomplikowanych detali</p>
+        <button class="gallery-cta">Zobacz możliwości</button>
+      </div>
+    </div>
+  </div>
+  <div class="maszyny-dane-cta">
+    <CtaButton text="Zamów konsultację" />
+  </div>
+</section>
+
+<!-- Plotery tnące linearne CNC -->
+<section id="ploteryLinearne" class="maszyny-dane">
+  <div class="maszyny-dane-header no-sel">
+    <img
+      src="/assets/ikony/maszyny/ploteryLinearne.svg"
+      alt="Plotery tnące linearne CNC"
+      class="maszyny-dane-ikona"
+    />
+    <h2>Plotery tnące linearne CNC</h2>
+  </div>
+  <hr class="maszyny-dane-hr" />
+
+  <div class="maszyny-dane-content">
+    <div class="maszyny-dane-table-column">
+      <div class="maszyny-dane-tabela-wrap">
+        <table class="maszyny-dane-tabela tnace">
+          <thead>
+            <tr>
+              <th>Parametr</th>
+              <th>Dostępne opcje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wymiary obszaru roboczego (mm)</td>
+              <td class="highlight-options">
+                <ul class="options-list">
+                  <li>1500×2000</li>
+                  <li>2000×2500</li>
+                  <li>2000×3000</li>
+                  <li>2000×4000</li>
+                  <li>700×1600</li>
+                  <li>1000×1200</li>
+                  <li>1000×1400</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Wysokość nad stołem roboczym (mm)</td>
+              <td class="highlight-options">270</td>
+            </tr>
+            <tr>
+              <td>Nóż oscylacyjny</td>
+              <td class="standard-feature">✓ Pneumatyczny</td>
+            </tr>
+            <tr>
+              <td>Głowica tnąca</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Frezująca</li>
+                  <li>Bigująca</li>
+                  <li>Znakująca</li>
+                  <li>Pisząca</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Niezależny pulpit operatorski</td>
+              <td class="standard-feature">✓ Tak</td>
+            </tr>
+            <tr>
+              <td>Typ stołu roboczego</td>
+              <td class="standard-feature">✓ Próżniowy</td>
+            </tr>
+            <tr>
+              <td>Taśmowy, bezkońcowy stół transportowy</td>
+              <td class="standard-feature">✓ Tak</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="maszyny-dane-gallery-column">
+      <div class="gallery-preview">
+        <h3>Galeria zdjęć</h3>
+        <p>Zobacz plotery tnące w akcji</p>
+        <button class="gallery-cta">Przejdź do galerii</button>
+      </div>
+      
+      <div class="gallery-preview">
+        <h3>Materiały do cięcia</h3>
+        <p>Zobacz jakie materiały można ciąć</p>
+        <button class="gallery-cta">Zobacz materiały</button>
+      </div>
+    </div>
   </div>
   <div class="maszyny-dane-cta">
     <CtaButton text="Zamów konsultację" />
@@ -435,6 +1087,68 @@
   .maszyny-dane-tabela-wrap {
     overflow-x: auto;
     margin: 1.5em 0 1.5em 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Nowy layout flex dla sekcji z tabelą */
+  .maszyny-dane-content {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .maszyny-dane-table-column {
+    flex: 2;
+    min-width: 0; /* Pozwala na shrinking */
+  }
+
+  .maszyny-dane-gallery-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .gallery-preview {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    border: 2px dashed #dee2e6;
+    transition: all 0.3s ease;
+  }
+
+  .gallery-preview:hover {
+    border-color: #3498db;
+    background: #e3f2fd;
+  }
+
+  .gallery-preview h3 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 1.2em;
+  }
+
+  .gallery-preview p {
+    margin: 0 0 15px 0;
+    color: #6c757d;
+    font-size: 0.9em;
+  }
+
+  .gallery-cta {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .gallery-cta:hover {
+    background: #2980b9;
   }
   .maszyny-dane-tabela {
     width: 100%;
@@ -478,6 +1192,103 @@
   }
   /* --- KONIEC UNIFIKOWANYCH STYLI --- */
 
+  /* --- STYLE DLA NOWYCH TABEL --- */
+  tbody tr td img {
+    float: left;
+    margin-right: 20px;
+  }
+
+  tbody tr td .text {
+    width: auto;
+    display: flow-root;
+  }
+
+  .options-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    list-style-type: none;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+  }
+
+  .options-list li {
+    padding: 6px;
+    position: relative;
+    list-style-type: none;
+    border: 1px solid gray;
+    border-radius: 15px;
+    width: auto;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.04);
+    margin-bottom: 4px;
+    margin-right: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    transition: all ease 0.3s;
+  }
+
+  .options-list li:hover {
+    background-color: white;
+  }
+
+  .standard-feature {
+    color: #27ae60;
+    font-weight: 600;
+  }
+
+  .specs-text {
+    line-height: 1.5;
+  }
+
+  .highlight-options {
+    /* Dodatkowe style dla wyróżnionych opcji */
+  }
+
+  /* Ujednolicone kolory nagłówków dla wszystkich tabel */
+  .frezarki th,
+  .plotery th,
+  .zabudowa th,
+  .grawerka th,
+  .piecosie th,
+  .tnace th {
+    background: linear-gradient(135deg, #3498db, #2980b9) !important;
+  }
+
+  /* Dodatkowe style dla pierwszej kolumny tabel */
+  .maszyny-dane-tabela td:first-child {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    border-right: 2px solid #3498db;
+    min-width: 250px;
+    flex-direction: row;
+    align-items: start;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: start;
+    height: auto;
+    min-height: 36px;
+    justify-items: stretch;
+  }
+
+  .maszyny-dane-tabela td:last-child {
+    width: 65%;
+  }
+
+  .maszyny-dane-tabela tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .maszyny-dane-tabela tr:hover {
+    background-color: #e3f2fd;
+    transition: background-color 0.3s ease;
+  }
+  /* --- KONIEC STYLI DLA NOWYCH TABEL --- */
+
   @media (max-width: 768px) {
     .maszyny {
       padding: 80px 0;
@@ -494,6 +1305,30 @@
 
     .oferta-card {
       padding: 30px 20px;
+    }
+
+    /* Responsywny layout dla nowego flex */
+    .maszyny-dane-content {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .maszyny-dane-table-column,
+    .maszyny-dane-gallery-column {
+      flex: 1;
+    }
+
+    .options-list li {
+      font-size: 0.8rem;
+      padding: 4px 8px;
+    }
+
+    .gallery-preview {
+      padding: 15px;
+    }
+
+    .gallery-preview h3 {
+      font-size: 1.1em;
     }
   }
 </style>
