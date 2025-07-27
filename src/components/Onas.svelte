@@ -1,5 +1,21 @@
 <script lang="ts">
+  import { fade } from 'svelte/transition';
+  import { onMount } from 'svelte';
   import { typoFix } from '$lib/utils/typography';
+  
+  let sectionEl: HTMLElement;
+  let visible = false;
+
+  onMount(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) visible = true;
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionEl) observer.observe(sectionEl);
+    return () => observer.disconnect();
+  });
 </script>
 
 <section class="onas_page gradientHero">
@@ -14,48 +30,55 @@
       <hr />
     </div>
     
-    <div class="content-section">
-      <h2>Jesteśmy polskim producentem maszyn CNC</h2>
-      <p>{@html typoFix("Jesteśmy bardzo dumni z naszej ponad 10-letniej historii w branży nowoczesnych maszyn CNC. Nasze doświadczenie to oczywiście nie tylko liczby! Nasz sukces liczymy bowiem w ilości udanych projektów oraz w pełni zadowolonych Klientów. Zaczynając na małych warsztatach, aż po duże kompleksy produkcyjne, dostarczamy im wysokiej jakości urządzenia sterowane numerycznie. Te rewolucjonizują procesy produkcyjne!")}</p>
+    <div class="content-intro">
+      <p class="intro-text">{@html typoFix("Jesteśmy bardzo dumni z naszej ponad 10-letniej historii w branży nowoczesnych maszyn CNC. Nasze doświadczenie to oczywiście nie tylko liczby! Nasz sukces liczymy bowiem w ilości udanych projektów oraz w pełni zadowolonych Klientów.")}</p>
     </div>
+  </div>
+</section>
 
-    <div class="content-section">
-      <h2>Doskonale zgrani inżynierowie</h2>
-      <p>{@html typoFix("Nasz zespół inżynierów to klucz do Twojego sukcesu. Ich wieloletnie doświadczenie, kreatywność, a także zgranie pozwalają nam bowiem kreować maszyny o nietypowej budowie i funkcjonalności. Dla Klientów z branż tak różnorodnych, jak produkcja okularów przemysł tekstylny czy obróbka kamienia, a nawet złotnictwo jesteśmy w stanie zrealizować projekty, które spełniała najwyższe standardy oraz oczekiwania!")}</p>
-    </div>
-
-    <div class="content-section">
-      <h2>Bogata oferta maszyn CNC</h2>
-      <p>{@html typoFix("W naszej ofercie znajdziesz nie tylko nietypowe projekty, ale również sprawdzone i solidne maszyny. Możemy Ci zaproponować frezarki CNC do aluminium, plotery, grawerki do drewna, tokarki oraz centra obróbcze. Wszystkie dostępne w naszym asortymencie urządzenia spełniają najwyższe standardy przemysłowe, są także przygotowane do intensywnej pracy w Twoim zakładzie produkcyjnym.")}</p>
-    </div>
-
-    <div class="features-grid">
-      <div class="feature-card">
-        <h3>Stawiamy na jakość</h3>
-        <p>{@html typoFix("Do produkcji naszych maszyn wykorzystujemy komponenty najwyższej jakości.")}</p>
+<!-- Sekcja z kartami informacyjnymi -->
+<section class="info-cards-section no-sel" bind:this={sectionEl}>
+  <div class="info-cards-wrapper">
+    <div class="info-card" in:fade={{ duration: 500, delay: visible ? 0 : 9999 }}>
+      <div class="info-card-header">
+        <img src="/assets/green-arrow.svg" alt="Doświadczony zespół" class="info-icon" />
+        <span class="info-title">{@html typoFix('Doskonale zgrani<br>inżynierowie:')}</span>
       </div>
-      <div class="feature-card">
-        <h3>Optymalne rozwiązania</h3>
-        <p>{@html typoFix("Pomagamy w konfiguracji i dobrze maszyn odpowiadających Państwa potrzebom.")}</p>
+      <p class="info-desc">
+        {@html typoFix('Nasz zespół inżynierów to klucz do Twojego sukcesu. Ich wieloletnie doświadczenie, kreatywność, a także zgranie pozwalają nam kreować maszyny o nietypowej budowie i funkcjonalności.')}
+      </p>
+    </div>
+    <div class="info-card" in:fade={{ duration: 500, delay: visible ? 300 : 9999 }}>
+      <div class="info-card-header">
+        <img src="/assets/green-arrow.svg" alt="Bogata oferta" class="info-icon" />
+        <span class="info-title">{@html typoFix('Bogata oferta<br>maszyn CNC:')}</span>
       </div>
-      <div class="feature-card">
-        <h3>Własny serwis</h3>
-        <p>{@html typoFix("Zapewniamy serwis gwarancyjny i pogwarancyjny oraz przeróbki maszyn innych producentów.")}</p>
+      <p class="info-desc">
+        {@html typoFix('W naszej ofercie znajdziesz frezarki CNC do aluminium, plotery, grawerki do drewna, tokarki oraz centra obróbcze. Wszystkie urządzenia spełniają najwyższe standardy przemysłowe.')}
+      </p>
+    </div>
+    <div class="info-card" in:fade={{ duration: 500, delay: visible ? 600 : 9999 }}>
+      <div class="info-card-header">
+        <img src="/assets/green-arrow.svg" alt="Jakość bez kompromisów" class="info-icon" />
+        <span class="info-title">Jakość, która<br>nie lubi<br>kompromisów</span>
       </div>
+      <p class="info-desc">
+        {@html typoFix('Do produkcji naszych maszyn używamy tylko komponentów najwyższej jakości. To zapewnia nie tylko ich niezawodność, ale także precyzję i efektywność.')}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Dodatkowa sekcja z treścią -->
+<section id="onas-details" class="onas-details">
+  <div class="onas-container container">
+    <div class="content-section">
+      <h2 class="section-title">Nietypowe projekty dla wymagających Klientów</h2>
+      <p>{@html typoFix("Jednym z naszych atutów jest zdolność do tworzenia maszyn o nietypowej budowie i funkcjonalności. Pracowaliśmy dla Klientów z różnych branż, takich jak <strong>złotnictwo, produkcja okularów, przemysł tekstylny czy obróbka kamienia</strong>. Dostarczane przez nas urządzenia są nie tylko niezawodne, ale także dostosowane do specyficznych potrzeb.")}</p>
     </div>
 
     <div class="content-section">
-      <h2>Jakość, która nie lubi kompromisów</h2>
-      <p>{@html typoFix("Do produkcji naszych maszyn używamy tylko komponentów najwyższej jakości. To zapewnia nie tylko ich niezawodność, ale także precyzję i efektywność. Jesteśmy dumni z tego, że nasze maszyny CNC spełniają oczekiwania nawet tych najbardziej wymagających Klientów.")}</p>
-    </div>
-
-    <div class="content-section">
-      <h2>Nietypowe projekty dla wymagających Klientów</h2>
-      <p>{@html typoFix("Jednym z naszych atutów jest zdolność do tworzenia maszyn o nietypowej budowie i funkcjonalności. Pracowaliśmy dla Klientów z różnych branż, takich jak złotnictwo, produkcja okularów, przemysł tekstylny czy obróbka kamienia. Dostarczane przez nas urządzenia są nie tylko niezawodne, ale także dostosowane do specyficznych potrzeb.")}</p>
-    </div>
-
-    <div class="content-section">
-      <h2>Zaufaj profesjonalistom</h2>
+      <h2 class="section-title">Zaufaj profesjonalistom</h2>
       <p>{@html typoFix("Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Dodatkowo oferujemy własny serwis gwarancyjny i pogwarancyjny oraz przeróbki maszyn innych producentów.")}</p>
     </div>
   </div>
@@ -118,14 +141,129 @@
     margin-bottom: 80px;
   }
 
+  .content-intro {
+    margin-bottom: 40px;
+    
+    .intro-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+  }
+
+  // Importujemy style dla info-cards-section z istniejącego komponentu
+  .info-cards-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: none;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 10em;
+  }
+  
+  .info-cards-wrapper {
+    display: flex;
+    gap: 3vw;
+    width: 100%;
+    max-width: 1400px;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 40px 0 0 0;
+  }
+  
+  .info-card {
+    background: #f7f7f7;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 32px 32px 32px 32px;
+    width: 100%;
+    max-width: 400px;
+    min-width: 320px;
+    min-height: 260px;
+    border-top: 4px solid #555a5e;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    justify-content: flex-start;
+    position: relative;
+  }
+  
+  .info-card::before{
+    content: url(/assets/images/triangle.svg);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 119px;
+    height: 68px;
+    pointer-events: none;
+  }
+  
+  .info-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: flex-start;
+    height: 7em;
+  }
+  
+  .info-icon {
+    width: 34px;
+    height: 44px;
+    margin-right: 2px;
+    margin-top: 2px;
+  }
+  
+  .info-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #555a5e;
+    line-height: 1.1;
+    margin-top: 6px;
+  }
+  
+  .info-desc {
+    font-size: 1.1rem;
+    color: #222;
+    margin: 0;
+    font-weight: 400;
+    padding-left: 1em;
+    bottom: 0px;
+  }
+
+  // Style dla dodatkowej sekcji
+  .onas-details {
+    width: 100%;
+    padding: 100px 0;
+    background: white;
+    color: var(--color-text-secondary);
+  }
+
   .content-section {
     margin-bottom: 60px;
     
-    h2 {
-      color: var(--color-primary);
-      font-size: 1.8rem;
-      margin-bottom: 20px;
+    .section-title {
+      position: relative;
+      color: var(--color-text-secondary);
+      font-family: "Poppins", sans-serif;
       font-weight: 600;
+      font-size: 38px;
+      text-align: left;
+      margin-bottom: 30px;
+      
+      &::before {
+        content: "";
+        position: absolute;
+        left: -14px;
+        width: 28px;
+        height: 43px;
+        background-image: url(/assets/red-arrow.svg);
+      }
     }
     
     p {
@@ -135,35 +273,16 @@
     }
   }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 60px 0;
-    
-    .feature-card {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-      }
-      
-      h3 {
-        color: var(--color-primary);
-        font-size: 1.4rem;
-        margin-bottom: 15px;
-        font-weight: 600;
-      }
-      
-      p {
-        line-height: 1.6;
-        margin-bottom: 0;
-      }
+  @media (max-width: 1100px) {
+    .info-cards-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+    .info-card {
+      max-width: 600px;
+      min-width: 0;
+      width: 90vw;
     }
   }
 
@@ -176,27 +295,27 @@
       padding: 0 2rem;
     }
     
-    .content-section {
-      h2 {
-        font-size: 1.5rem;
-      }
-      
-      p {
-        font-size: 1rem;
-      }
+    .content-intro .intro-text {
+      font-size: 1rem;
     }
     
-    .features-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-      
-      .feature-card {
-        padding: 20px;
-        
-        h3 {
-          font-size: 1.2rem;
-        }
-      }
+    .info-title {
+      font-size: 1.2rem;
+    }
+    .info-card {
+      padding: 20px 10px 20px 10px;
+      min-height: 180px;
+    }
+    .info-desc {
+      font-size: 0.98rem;
+    }
+    
+    .content-section .section-title {
+      font-size: 28px;
+    }
+    
+    .onas-details {
+      padding: 80px 0;
     }
   }
 </style>
