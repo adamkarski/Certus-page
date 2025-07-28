@@ -8,10 +8,16 @@
   export let params; // Dodano deklarację params
   let loading = true;
   onMount(() => {
-    window.addEventListener('load', () => {
+    // Sprawdź czy strona już się załadowała
+    if (document.readyState === 'complete') {
       loading = false;
-    });
-    setTimeout(() => loading = false, 2000); // fallback
+    } else {
+      window.addEventListener('load', () => {
+        loading = false;
+      });
+    }
+    // Fallback - wyłącz preloader po 1 sekundzie
+    setTimeout(() => loading = false, 1000);
   });
   $: preloaderVisible.set(loading);
 </script>

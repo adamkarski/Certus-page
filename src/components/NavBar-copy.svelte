@@ -57,10 +57,12 @@
     // Nasłuchuj na zmianę preloadera
     const unsubscribe = preloaderVisible.subscribe((visible) => {
       if (!visible) {
-        showLottie = true;
+        showLottie = false;
+        setTimeout(() => {
+          showLottie = true; // wymuś ponowne renderowanie animacji
+        }, 0);
       }
     });
-    showLottie = true;
 
     // Pobierz indeks przy ładowaniu komponentu
     const response = await fetch("/search-index.json");

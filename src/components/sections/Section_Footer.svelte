@@ -4,20 +4,10 @@
   const currentYear = new Date().getFullYear();
 
   let LottiePlayer;
-  let showLogo = false;
 
   onMount(async () => {
-    try {
-      const module = await import("@lottiefiles/svelte-lottie-player");
-      LottiePlayer = module.LottiePlayer;
-      showLogo = true;
-    } catch (error) {
-      console.error('Failed to load LottiePlayer:', error);
-      // Fallback - pokaż logo po 2 sekundach
-      setTimeout(() => {
-        showLogo = true;
-      }, 2000);
-    }
+    const module = await import("@lottiefiles/svelte-lottie-player");
+    LottiePlayer = module.LottiePlayer;
   });
 </script>
 
@@ -26,23 +16,21 @@
     <div class="footer-content">
       <div class="footer-section">
         <div class="footer-logo">
-          {#if showLogo && LottiePlayer}
-            <!-- src="assets/logo-certus.json?"+Math.random() -->
-            <svelte:component
-              this={LottiePlayer}
-              src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"
-              autoplay={true}
-              loop={false}
-              controls={false}
-              height="auto"
-              width="auto"
-              background="transparent"
-              controlsLayout="none"
-            ></svelte:component>
-          {:else if showLogo}
-            <!-- Fallback logo jeśli LottiePlayer nie załaduje się -->
-            <div class="fallback-logo">CERTUS</div>
-          {/if}
+          <div style="width: 21em; height: auto;">
+            {#if LottiePlayer}
+              <svelte:component
+                this={LottiePlayer}
+                src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"
+                autoplay={true}
+                loop={false}
+                controls={false}
+                height="auto"
+                width="auto"
+                background="transparent"
+                controlsLayout="none"
+              ></svelte:component>
+            {/if}
+          </div>
         </div>
         <h5 class="footer-description">{@html typoFix('Możesz nam zaufać!')}</h5>
 
@@ -222,13 +210,6 @@
     margin-bottom: 20px;
     letter-spacing: 1px;
     width: 21em;
-  }
-
-  .fallback-logo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #96a500;
-    padding: 20px 0;
   }
 
   .footer-description {

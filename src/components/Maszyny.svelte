@@ -339,6 +339,47 @@
     <h2>Przemysłowe plotery CNC</h2>
   </div>
   <hr class="maszyny-dane-hr" />
+    <div class="maszyny-dane-text-image">
+    <div class="left">
+      <ul class="maszyny-dane-lista">
+        <li>
+          Przeznaczone do frezowania stali, aluminium, drewna, plastiku itp.
+        </li>
+        <li>
+          Kompletna zabudowa umożliwiająca chłodzenie narzędzi i materiału.
+        </li>
+        <li>Zintegrowany odstojnik, zbiornik na chłodziwo oraz pompa.</li>
+        <li>Trwałe osłony stalowe prowadnic i śrub kulowych.</li>
+        <li>Wolnostojący panel sterujący.</li>
+        <li>Polskojęzyczne oprogramowanie, transfer danych przez LAN.</li>
+        <li>Serwonapędy hybrydowe lub serwa AC (w zależności od opcji).</li>
+        <li>Wysoka sztywność i precyzja w swojej klasie.</li>
+      </ul>
+      <div class="maszyny-dane-podtytul">Wersja bazowa zawiera m.in.:</div>
+      <ul class="maszyny-dane-lista-small">
+        <li>Konstrukcję o zwiększonej sztywności z pełną zabudową,</li>
+        <li>System chłodzenia w obiegu zamkniętym z pompą i odstojnikiem,</li>
+        <li>
+          Niezależny panel sterowania z komputerem i przyciskami fizycznymi,
+        </li>
+        <li>Wrzeciono z automatyczną wymianą narzędzi (ATC),</li>
+        <li>Polskojęzyczne sterowanie PikoCNC z modułem CAM,</li>
+        <li>Serwonapędy hybrydowe,</li>
+        <li>Instrukcje obsługi i dokumentację DTR w języku polskim,</li>
+        <li>Podstawowe szkolenie użytkownika.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat01.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 1"
+      />
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat02.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 2"
+      />
+    </div>
+  </div>
 
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
@@ -352,7 +393,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>Wymiary obszaru roboczego (mm)</td>
+              <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
               <td class="highlight-options">
                 <ul class="options-list">
                   <li>1500×2000</li>
@@ -366,7 +407,7 @@
               </td>
             </tr>
             <tr>
-              <td>Wysokość nad stołem roboczym (mm)</td>
+              <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczym (mm)</div></td>
               <td class="highlight-options">
                 <ul class="options-list">
                   <li>270</li>
@@ -379,7 +420,7 @@
               </td>
             </tr>
             <tr>
-              <td>Rodzaje wrzeciona</td>
+              <td><img src="/assets/ikony/table/rodzajewzeciona.svg" alt="Wrzeciona" /><div class="text">Rodzaje wrzeciona</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>24k obrotów (2,2kW-16kW)</li>
@@ -390,11 +431,11 @@
               </td>
             </tr>
             <tr>
-              <td>Oświetlenie obszaru roboczego</td>
+              <td><img src="/assets/ikony/table/oswietlenie.svg" alt="Oświetlenie" /><div class="text">Oświetlenie obszaru roboczego</div></td>
               <td class="standard-feature">✓ W standardzie</td>
             </tr>
             <tr>
-              <td>Automatyczny magazyn narzędzi ATC</td>
+              <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Bez wymiany</li>
@@ -403,11 +444,11 @@
               </td>
             </tr>
             <tr>
-              <td>Niezależny pulpit operatorski</td>
+              <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
               <td class="standard-feature">✓ Tak</td>
             </tr>
             <tr>
-              <td>Opcje dodatkowe</td>
+              <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Chłodzenie (ciągłe cieczą)</li>
@@ -422,7 +463,7 @@
               </td>
             </tr>
             <tr>
-              <td>Typ stołu roboczego</td>
+              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>T-rowkowy</li>
@@ -469,6 +510,47 @@
     <h2>Przemysłowe plotery CNC w zabudowie</h2>
   </div>
   <hr class="maszyny-dane-hr" />
+    <div class="maszyny-dane-text-image">
+    <div class="left">
+      <ul class="maszyny-dane-lista">
+        <li>
+          Przeznaczone do frezowania stali, aluminium, drewna, plastiku itp.
+        </li>
+        <li>
+          Kompletna zabudowa umożliwiająca chłodzenie narzędzi i materiału.
+        </li>
+        <li>Zintegrowany odstojnik, zbiornik na chłodziwo oraz pompa.</li>
+        <li>Trwałe osłony stalowe prowadnic i śrub kulowych.</li>
+        <li>Wolnostojący panel sterujący.</li>
+        <li>Polskojęzyczne oprogramowanie, transfer danych przez LAN.</li>
+        <li>Serwonapędy hybrydowe lub serwa AC (w zależności od opcji).</li>
+        <li>Wysoka sztywność i precyzja w swojej klasie.</li>
+      </ul>
+      <div class="maszyny-dane-podtytul">Wersja bazowa zawiera m.in.:</div>
+      <ul class="maszyny-dane-lista-small">
+        <li>Konstrukcję o zwiększonej sztywności z pełną zabudową,</li>
+        <li>System chłodzenia w obiegu zamkniętym z pompą i odstojnikiem,</li>
+        <li>
+          Niezależny panel sterowania z komputerem i przyciskami fizycznymi,
+        </li>
+        <li>Wrzeciono z automatyczną wymianą narzędzi (ATC),</li>
+        <li>Polskojęzyczne sterowanie PikoCNC z modułem CAM,</li>
+        <li>Serwonapędy hybrydowe,</li>
+        <li>Instrukcje obsługi i dokumentację DTR w języku polskim,</li>
+        <li>Podstawowe szkolenie użytkownika.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat01.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 1"
+      />
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat02.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 2"
+      />
+    </div>
+  </div>
 
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
@@ -482,7 +564,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>Wymiary obszaru roboczego (mm)</td>
+              <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
               <td class="highlight-options">
                 <ul class="options-list">
                   <li>1400×1000</li>
@@ -492,7 +574,7 @@
               </td>
             </tr>
             <tr>
-              <td>Wysokość nad stołem roboczym (mm)</td>
+              <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczym (mm)</div></td>
               <td class="highlight-options">
                 <ul class="options-list">
                   <li>270</li>
@@ -505,7 +587,7 @@
               </td>
             </tr>
             <tr>
-              <td>Rodzaje wrzeciona</td>
+              <td><img src="/assets/ikony/table/rodzajewzeciona.svg" alt="Wrzeciona" /><div class="text">Rodzaje wrzeciona</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>24k obrotów (2,2kW-16kW)</li>
@@ -516,11 +598,11 @@
               </td>
             </tr>
             <tr>
-              <td>Oświetlenie obszaru roboczego</td>
+              <td><img src="/assets/ikony/table/oswietlenie.svg" alt="Oświetlenie" /><div class="text">Oświetlenie obszaru roboczego</div></td>
               <td class="standard-feature">✓ W standardzie</td>
             </tr>
             <tr>
-              <td>Automatyczny magazyn narzędzi ATC</td>
+              <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Bez wymiany</li>
@@ -529,23 +611,23 @@
               </td>
             </tr>
             <tr>
-              <td>Niezależny pulpit operatorski</td>
+              <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
               <td class="standard-feature">✓ Tak</td>
             </tr>
             <tr>
-              <td>Opróżniany zbiornik na wióry</td>
+              <td><div class="text">Opróżniany zbiornik na wióry</div></td>
               <td class="standard-feature">✓ Tak</td>
             </tr>
             <tr>
-              <td>Osłony boczne</td>
+              <td><div class="text">Osłony boczne</div></td>
               <td class="standard-feature">✓ Tak</td>
             </tr>
             <tr>
-              <td>Stół roboczy poziomo-pionowy T-rowkowy</td>
+              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Stół roboczy poziomo-pionowy T-rowkowy</div></td>
               <td class="standard-feature">✓ Do 1000mm wysokości</td>
             </tr>
             <tr>
-              <td>Opcje dodatkowe</td>
+              <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Chłodzenie (ciągłe cieczą)</li>
@@ -560,7 +642,7 @@
               </td>
             </tr>
             <tr>
-              <td>Typ stołu roboczego</td>
+              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>T-rowkowy</li>
@@ -609,6 +691,47 @@
     <h2>Grawerki CNC</h2>
   </div>
   <hr class="maszyny-dane-hr" />
+    <div class="maszyny-dane-text-image">
+    <div class="left">
+      <ul class="maszyny-dane-lista">
+        <li>
+          Przeznaczone do frezowania stali, aluminium, drewna, plastiku itp.
+        </li>
+        <li>
+          Kompletna zabudowa umożliwiająca chłodzenie narzędzi i materiału.
+        </li>
+        <li>Zintegrowany odstojnik, zbiornik na chłodziwo oraz pompa.</li>
+        <li>Trwałe osłony stalowe prowadnic i śrub kulowych.</li>
+        <li>Wolnostojący panel sterujący.</li>
+        <li>Polskojęzyczne oprogramowanie, transfer danych przez LAN.</li>
+        <li>Serwonapędy hybrydowe lub serwa AC (w zależności od opcji).</li>
+        <li>Wysoka sztywność i precyzja w swojej klasie.</li>
+      </ul>
+      <div class="maszyny-dane-podtytul">Wersja bazowa zawiera m.in.:</div>
+      <ul class="maszyny-dane-lista-small">
+        <li>Konstrukcję o zwiększonej sztywności z pełną zabudową,</li>
+        <li>System chłodzenia w obiegu zamkniętym z pompą i odstojnikiem,</li>
+        <li>
+          Niezależny panel sterowania z komputerem i przyciskami fizycznymi,
+        </li>
+        <li>Wrzeciono z automatyczną wymianą narzędzi (ATC),</li>
+        <li>Polskojęzyczne sterowanie PikoCNC z modułem CAM,</li>
+        <li>Serwonapędy hybrydowe,</li>
+        <li>Instrukcje obsługi i dokumentację DTR w języku polskim,</li>
+        <li>Podstawowe szkolenie użytkownika.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat01.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 1"
+      />
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat02.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 2"
+      />
+    </div>
+  </div>
 
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
@@ -622,11 +745,11 @@
           </thead>
           <tbody>
             <tr>
-              <td>Wymiary obszaru roboczego (mm)</td>
+              <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
               <td class="highlight-options">375×400</td>
             </tr>
             <tr>
-              <td>Automatyczny magazyn narzędzi ATC</td>
+              <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Bez wymiany</li>
@@ -635,11 +758,11 @@
               </td>
             </tr>
             <tr>
-              <td>Niezależny pulpit operatorski</td>
+              <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
               <td class="standard-feature">✓ Tak</td>
             </tr>
             <tr>
-              <td>Opcje dodatkowe</td>
+              <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Chłodzenie (ciągłe cieczą)</li>
@@ -654,7 +777,7 @@
               </td>
             </tr>
             <tr>
-              <td>Typ stołu roboczego</td>
+              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>T-rowkowy</li>
@@ -701,6 +824,47 @@
     <h2>Frezarki pięcioosiowe</h2>
   </div>
   <hr class="maszyny-dane-hr" />
+    <div class="maszyny-dane-text-image">
+    <div class="left">
+      <ul class="maszyny-dane-lista">
+        <li>
+          Przeznaczone do frezowania stali, aluminium, drewna, plastiku itp.
+        </li>
+        <li>
+          Kompletna zabudowa umożliwiająca chłodzenie narzędzi i materiału.
+        </li>
+        <li>Zintegrowany odstojnik, zbiornik na chłodziwo oraz pompa.</li>
+        <li>Trwałe osłony stalowe prowadnic i śrub kulowych.</li>
+        <li>Wolnostojący panel sterujący.</li>
+        <li>Polskojęzyczne oprogramowanie, transfer danych przez LAN.</li>
+        <li>Serwonapędy hybrydowe lub serwa AC (w zależności od opcji).</li>
+        <li>Wysoka sztywność i precyzja w swojej klasie.</li>
+      </ul>
+      <div class="maszyny-dane-podtytul">Wersja bazowa zawiera m.in.:</div>
+      <ul class="maszyny-dane-lista-small">
+        <li>Konstrukcję o zwiększonej sztywności z pełną zabudową,</li>
+        <li>System chłodzenia w obiegu zamkniętym z pompą i odstojnikiem,</li>
+        <li>
+          Niezależny panel sterowania z komputerem i przyciskami fizycznymi,
+        </li>
+        <li>Wrzeciono z automatyczną wymianą narzędzi (ATC),</li>
+        <li>Polskojęzyczne sterowanie PikoCNC z modułem CAM,</li>
+        <li>Serwonapędy hybrydowe,</li>
+        <li>Instrukcje obsługi i dokumentację DTR w języku polskim,</li>
+        <li>Podstawowe szkolenie użytkownika.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat01.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 1"
+      />
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat02.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 2"
+      />
+    </div>
+  </div>
 
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
@@ -714,11 +878,11 @@
           </thead>
           <tbody>
             <tr>
-              <td>Wymiar obszaru roboczego (mm)</td>
+              <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiar obszaru roboczego (mm)</div></td>
               <td class="highlight-options">⌀ 350</td>
             </tr>
             <tr>
-              <td>Automatyczny magazyn narzędzi ATC</td>
+              <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Bez wymiany</li>
@@ -727,11 +891,11 @@
               </td>
             </tr>
             <tr>
-              <td>Niezależny pulpit operatorski</td>
+              <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
               <td class="standard-feature">✓ Tak</td>
             </tr>
             <tr>
-              <td>Opcje dodatkowe</td>
+              <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Chłodzenie (ciągłe cieczą)</li>
@@ -746,7 +910,7 @@
               </td>
             </tr>
             <tr>
-              <td>Typ stołu roboczego</td>
+              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>T-rowkowy</li>
@@ -757,11 +921,11 @@
               </td>
             </tr>
             <tr>
-              <td>Zakres pracy osi A</td>
+              <td><div class="text">Zakres pracy osi A</div></td>
               <td class="highlight-options">0-360°</td>
             </tr>
             <tr>
-              <td>Zakres pracy osi B</td>
+              <td><div class="text">Zakres pracy osi B</div></td>
               <td class="highlight-options">0-210°</td>
             </tr>
           </tbody>
@@ -803,6 +967,47 @@
     <h2>Plotery tnące linearne CNC</h2>
   </div>
   <hr class="maszyny-dane-hr" />
+    <div class="maszyny-dane-text-image">
+    <div class="left">
+      <ul class="maszyny-dane-lista">
+        <li>
+          Przeznaczone do frezowania stali, aluminium, drewna, plastiku itp.
+        </li>
+        <li>
+          Kompletna zabudowa umożliwiająca chłodzenie narzędzi i materiału.
+        </li>
+        <li>Zintegrowany odstojnik, zbiornik na chłodziwo oraz pompa.</li>
+        <li>Trwałe osłony stalowe prowadnic i śrub kulowych.</li>
+        <li>Wolnostojący panel sterujący.</li>
+        <li>Polskojęzyczne oprogramowanie, transfer danych przez LAN.</li>
+        <li>Serwonapędy hybrydowe lub serwa AC (w zależności od opcji).</li>
+        <li>Wysoka sztywność i precyzja w swojej klasie.</li>
+      </ul>
+      <div class="maszyny-dane-podtytul">Wersja bazowa zawiera m.in.:</div>
+      <ul class="maszyny-dane-lista-small">
+        <li>Konstrukcję o zwiększonej sztywności z pełną zabudową,</li>
+        <li>System chłodzenia w obiegu zamkniętym z pompą i odstojnikiem,</li>
+        <li>
+          Niezależny panel sterowania z komputerem i przyciskami fizycznymi,
+        </li>
+        <li>Wrzeciono z automatyczną wymianą narzędzi (ATC),</li>
+        <li>Polskojęzyczne sterowanie PikoCNC z modułem CAM,</li>
+        <li>Serwonapędy hybrydowe,</li>
+        <li>Instrukcje obsługi i dokumentację DTR w języku polskim,</li>
+        <li>Podstawowe szkolenie użytkownika.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat01.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 1"
+      />
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat02.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 2"
+      />
+    </div>
+  </div>
 
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
@@ -816,7 +1021,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>Wymiary obszaru roboczego (mm)</td>
+              <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
               <td class="highlight-options">
                 <ul class="options-list">
                   <li>1500×2000</li>
@@ -830,15 +1035,15 @@
               </td>
             </tr>
             <tr>
-              <td>Wysokość nad stołem roboczym (mm)</td>
+              <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczym (mm)</div></td>
               <td class="highlight-options">270</td>
             </tr>
             <tr>
-              <td>Nóż oscylacyjny</td>
+              <td><div class="text">Nóż oscylacyjny</div></td>
               <td class="standard-feature">✓ Pneumatyczny</td>
             </tr>
             <tr>
-              <td>Głowica tnąca</td>
+              <td><div class="text">Głowica tnąca</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Frezująca</li>
@@ -849,15 +1054,15 @@
               </td>
             </tr>
             <tr>
-              <td>Niezależny pulpit operatorski</td>
+              <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
               <td class="standard-feature">✓ Tak</td>
             </tr>
             <tr>
-              <td>Typ stołu roboczego</td>
+              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
               <td class="standard-feature">✓ Próżniowy</td>
             </tr>
             <tr>
-              <td>Taśmowy, bezkońcowy stół transportowy</td>
+              <td><div class="text">Taśmowy, bezkońcowy stół transportowy</div></td>
               <td class="standard-feature">✓ Tak</td>
             </tr>
           </tbody>
@@ -889,7 +1094,7 @@
 </section>
 
 <style lang="scss">
-  .maszyny-dane-tabela {
+  .maszyny-dane .maszyny-dane-tabela {
     .text {
       color: var(--color-text-primary);
     }
@@ -1137,7 +1342,7 @@
   }
   .maszyny-dane-tabela-wrap {
     overflow-x: auto;
-    margin: 1.5em 0 1.5em 0;
+    margin: 0em 0 1.5em 0;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
@@ -1149,6 +1354,7 @@
     gap: 30px;
     margin-bottom: 40px;
     align-items: flex-start;
+    margin-top: 4em;
   }
 
   .maszyny-dane-table-column {
