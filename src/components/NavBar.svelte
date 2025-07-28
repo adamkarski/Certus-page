@@ -3,9 +3,17 @@
   import { fly, fade } from "svelte/transition";
   import { preloaderVisible } from "$lib/preloaderStore";
   import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
   import { resetHeroSwiper } from "../lib/resetHeroSwiperStore";
   import kategorieMaszyn from "$lib/data/maszyny.json";
   import CtaButton from "./cta-button.svelte";
+
+  // Reaktywne zmienne dla aktywnych linków
+  $: currentPath = $page.url.pathname;
+  $: isMaszynyActive = currentPath === '/maszyny' || currentPath.startsWith('/maszyny/');
+  $: isSerwisActive = currentPath === '/serwis' || currentPath.startsWith('/serwis/');
+  $: isOnasActive = currentPath === '/onas' || currentPath.startsWith('/onas/');
+  $: isKontaktActive = currentPath === '/kontakt' || currentPath.startsWith('/kontakt/');
 
   let LottiePlayer;
   let scrolled = false;
@@ -55,6 +63,13 @@
         }, 0);
       }
     });
+
+    // Fallback - pokaż logo po 1 sekundzie jeśli preloader nie zniknie
+    setTimeout(() => {
+      if (!showLottie) {
+        showLottie = true;
+      }
+    }, 1000);
 
     // Pobierz indeks przy ładowaniu komponentu
     const response = await fetch("/search-index.json");
@@ -114,7 +129,7 @@
   }
 </script>
 
-<nav class="relative z-50" class:scrolled>
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" class:scrolled>
   <!-- Główna ramka navbar -->
   <div class="px-4 sm:px-6 lg:px-8 ramka">
     <div class="relative menubar">
@@ -153,7 +168,7 @@
             on:mouseleave={() => isMaszynyDropdownOpen = false}
             role="group"
           >
-            <a href="/maszyny" class="nav-link flex items-center space-x-1">
+            <a href="/maszyny" class="nav-link flex items-center space-x-1" class:active={isMaszynyActive}>
               <span>Maszyny</span>
               <svg
                 class="w-4 h-4 transition-transform duration-300"
@@ -286,13 +301,19 @@
 
 
           <!-- Serwis -->
-          <a href="/serwis" class="nav-link"> Serwis </a>
+          <a href="/serwis" class="nav-link" class:active={isSerwisActive} data-path={currentPath} data-active={isSerwisActive}>
+            <span>Serwis</span>
+          </a>
 
           <!-- O nas -->
-          <a href="/onas" class="nav-link"> O nas </a>
+          <a href="/onas" class="nav-link" class:active={isOnasActive} data-path={currentPath} data-active={isOnasActive}>
+            <span>O nas</span>
+          </a>
 
           <!-- Kontakt -->
-           <a href="/kontakt" class="nav-link"> Kontakt </a>
+          <a href="/kontakt" class="nav-link" class:active={isKontaktActive} data-path={currentPath} data-active={isKontaktActive}>
+            <span>Kontakt</span>
+          </a>
 
           <div class="flex items-right searchBox">
             <!-- Search Box -->
@@ -463,8 +484,27 @@
   }
   nav {
     width: 100%;
-    margin-top: 2.3em;
+    margin-top: 0;
+    padding-top: 2.3em;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
   }
+
+  nav.scrolled {
+    padding-top: 1em;
+    background: rgba(50, 50, 50, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  nav.scrolled .ramka {
+    background-color: rgba(80, 80, 80, 0.3) !important;
+  }
+
+  nav.scrolled .menuItems {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
   .ramka {
     display: flex;
     height: 95px;
@@ -498,10 +538,38 @@
     transition: all 300ms ease-in-out; /* transition-all duration-300 */
     font-weight: 500; /* font-medium */
     border-radius: 12px; /* rounded-xl */
+    position: relative;
+    overflow: hidden;
 
     &:hover {
       color: #22c55e; /* hover:text-green-600 */
       background-color: #f0fdf4; /* hover:bg-green-50 */
+    }
+
+    &.active {
+      color: white !important;
+      background: #96a500 !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27.38 16.53'%3E%3Cpath fill='%2396a500' d='M13.87,0S0,16.53,0,16.53c3.37,0,10.14,0,13.51,0,0,0,13.87-16.53,13.87-16.53'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: center center !important;
+      background-size: 100% 100% !important;
+      position: relative;
+      padding: 10px 18px !important;
+      border-radius: 0 !important;
+      border: 2px solid #96a500; /* Debug border */
+      
+      span {
+        position: relative;
+        z-index: 2;
+        font-weight: 600 !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      &:hover {
+        color: white !important;
+        filter: brightness(0.9);
+        background: #7e8c00 !important;
+      }
     }
   }
 

@@ -3,13 +3,13 @@
   import Section_Maszyny_Image01 from "./sections/Section_Maszyny_Image01.svelte";
   import Section_Maszyny_Video from "./sections/Section_Maszyny_Video.svelte";
   import Section_Maszyny_Image02 from "./sections/Section_Maszyny_Image02.svelte";
-  
+
   const maszyny = [];
 
   function scrollToSection(id: string) {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   }
 </script>
@@ -29,77 +29,86 @@
   </div>
   <div class="oferta-container container">
     <div class="oferta-grid">
-
-
-
       <div class="oferta-card">
         <div class="oferta-icon">
           <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
         </div>
 
-        <CtaButton text="Frezarki CNC HMM" on:click={() => scrollToSection('Frezarki')} />
+        <CtaButton
+          text="Frezarki CNC HMM"
+          on:click={() => scrollToSection("Frezarki")}
+        />
       </div>
-
-      
-      
-      
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="Przemysłowe plotery CNC" />
-        </div>
-
-        <CtaButton text="Przemysłowe plotery CN " on:click={() => scrollToSection('ploteryPrzemyslowe')} />
-      </div>
-
-
-
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg" alt="Przemysłowe plotery CNC" />
+          <img
+            src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
+            alt="Przemysłowe plotery CNC"
+          />
         </div>
 
-        <CtaButton text="Przemysłowe plotery CNC w zabudowie" on:click={() => scrollToSection('ploteryPrzemysloweZabudowa')} />
+        <CtaButton
+          text="Przemysłowe plotery CN "
+          on:click={() => scrollToSection("ploteryPrzemyslowe")}
+        />
       </div>
-
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="Frezarki pięcioosiowe" />
+          <img
+            src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg"
+            alt="Przemysłowe plotery CNC"
+          />
         </div>
 
-        <CtaButton text="Frezarki pięcioosiowe" on:click={() => scrollToSection('frezarki5osiowe')} />
+        <CtaButton
+          text="Przemysłowe plotery CNC w zabudowie"
+          on:click={() => scrollToSection("ploteryPrzemysloweZabudowa")}
+        />
       </div>
-
-
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="Grawerki CNC" />
+          <img
+            src="/assets/ikony/maszyny/frezarki5osiowe.svg"
+            alt="Frezarki pięcioosiowe"
+          />
         </div>
 
-        <CtaButton text="Grawerki CNC" on:click={() => scrollToSection('grawerki')} />
+        <CtaButton
+          text="Frezarki pięcioosiowe"
+          on:click={() => scrollToSection("frezarki5osiowe")}
+        />
       </div>
-
-
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="Plotery tnące linearne CNC" />
+          <img
+            src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
+            alt="Grawerki CNC"
+          />
         </div>
 
-        <CtaButton text="Plotery tnące linearne CNC" on:click={() => scrollToSection('ploteryLinearne')} />
+        <CtaButton
+          text="Grawerki CNC"
+          on:click={() => scrollToSection("grawerki")}
+        />
       </div>
 
+      <div class="oferta-card">
+        <div class="oferta-icon">
+          <img
+            src="/assets/ikony/maszyny/ploteryLinearne.svg"
+            alt="Plotery tnące linearne CNC"
+          />
+        </div>
 
-
-
-      
-   
-   
-   
-   
-   
+        <CtaButton
+          text="Plotery tnące linearne CNC"
+          on:click={() => scrollToSection("ploteryLinearne")}
+        />
+      </div>
     </div>
   </div>
 </section>
@@ -151,7 +160,10 @@
         src="/assets/maszyny/certus_7111_temp_schemat01.png"
         alt="Schemat techniczny frezarki Certus 7111 - widok 1"
       />
-      <img src="/assets/maszyny/certus_7111_temp_schemat02.png" alt="Schemat techniczny frezarki Certus 7111 - widok 2" >
+      <img
+        src="/assets/maszyny/certus_7111_temp_schemat02.png"
+        alt="Schemat techniczny frezarki Certus 7111 - widok 2"
+      />
     </div>
   </div>
 
@@ -212,7 +224,10 @@
             </tr>
             <tr>
               <td>
-                <img src="/assets/ikony/table/rodzajewzeciona.svg" alt="Wrzeciona" />
+                <img
+                  src="/assets/ikony/table/rodzajewzeciona.svg"
+                  alt="Wrzeciona"
+                />
                 <div class="text">Rodzaje wrzeciona</div>
               </td>
               <td class="specs-text">
@@ -226,7 +241,10 @@
             </tr>
             <tr>
               <td>
-                <img src="/assets/ikony/table/oswietlenie.svg" alt="Oświetlenie" />
+                <img
+                  src="/assets/ikony/table/oswietlenie.svg"
+                  alt="Oświetlenie"
+                />
                 <div class="text">Oświetlenie obszaru roboczego</div>
               </td>
               <td class="standard-feature">✓ W standardzie</td>
@@ -286,22 +304,22 @@
         </table>
       </div>
     </div>
-    
+
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image01 
+      <Section_Maszyny_Image01
         sectionId="frezarki-image-01"
         imgSrc="/assets/maszyny/certus_7111_temp_schemat01.png"
         title="Frezarki CNC HMM"
         subtitle="Precyzyjne obróbki skrawaniem"
       />
-      
-      <Section_Maszyny_Image02 
+
+      <Section_Maszyny_Image02
         sectionId="frezarki-gallery"
         imgSrc="/assets/maszyny/certus_7111_temp.png"
         title="Galeria realizacji"
         subtitle="Zobacz nasze frezarki w akcji"
         ctaText="Przejdź do galerii"
-        ctaAction={() => console.log('Galeria frezarek')}
+        ctaAction={() => console.log("Galeria frezarek")}
       />
     </div>
   </div>
@@ -418,16 +436,16 @@
         </table>
       </div>
     </div>
-    
+
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Video 
+      <Section_Maszyny_Video
         sectionId="plotery-video"
         videoSrc="/assets/video/video.m4v"
         title="Plotery w akcji"
         subtitle="Zobacz jak działają nasze plotery"
       />
-      
-      <Section_Maszyny_Image01 
+
+      <Section_Maszyny_Image01
         sectionId="plotery-image"
         imgSrc="/assets/maszyny/88930d1c.png"
         title="Przemysłowe plotery CNC"
@@ -456,118 +474,118 @@
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
         <table class="maszyny-dane-tabela zabudowa">
-      <thead>
-        <tr>
-          <th>Parametr</th>
-          <th>Dostępne opcje</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Wymiary obszaru roboczego (mm)</td>
-          <td class="highlight-options">
-            <ul class="options-list">
-              <li>1400×1000</li>
-              <li>1400×1200</li>
-              <li>1400×1600</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>Wysokość nad stołem roboczym (mm)</td>
-          <td class="highlight-options">
-            <ul class="options-list">
-              <li>270</li>
-              <li>300</li>
-              <li>350</li>
-              <li>400</li>
-              <li>500</li>
-              <li>600</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>Rodzaje wrzeciona</td>
-          <td class="specs-text">
-            <ul class="options-list">
-              <li>24k obrotów (2,2kW-16kW)</li>
-              <li>40k obrotów (5kW)</li>
-              <li>50k obrotów (3kW)</li>
-              <li>Wolnoobrotowe z wysokim momentem (serwonapęd 5/7,5kW)</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>Oświetlenie obszaru roboczego</td>
-          <td class="standard-feature">✓ W standardzie</td>
-        </tr>
-        <tr>
-          <td>Automatyczny magazyn narzędzi ATC</td>
-          <td class="specs-text">
-            <ul class="options-list">
-              <li>Bez wymiany</li>
-              <li>Magazyn rewolwerowy</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>Niezależny pulpit operatorski</td>
-          <td class="standard-feature">✓ Tak</td>
-        </tr>
-        <tr>
-          <td>Opróżniany zbiornik na wióry</td>
-          <td class="standard-feature">✓ Tak</td>
-        </tr>
-        <tr>
-          <td>Osłony boczne</td>
-          <td class="standard-feature">✓ Tak</td>
-        </tr>
-        <tr>
-          <td>Stół roboczy poziomo-pionowy T-rowkowy</td>
-          <td class="standard-feature">✓ Do 1000mm wysokości</td>
-        </tr>
-        <tr>
-          <td>Opcje dodatkowe</td>
-          <td class="specs-text">
-            <ul class="options-list">
-              <li>Chłodzenie (ciągłe cieczą)</li>
-              <li>Chłodzenie (mgła olejowa)</li>
-              <li>Pomiar wysokości narzędzia</li>
-              <li>Sonda 3D</li>
-              <li>Centralne smarowanie</li>
-              <li>Kamera</li>
-              <li>4. oś obrotowa</li>
-              <li>5. oś obrotowa</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>Typ stołu roboczego</td>
-          <td class="specs-text">
-            <ul class="options-list">
-              <li>T-rowkowy</li>
-              <li>Podciśnieniowy</li>
-              <li>Próżniowy</li>
-              <li>Hybrydowy</li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
+          <thead>
+            <tr>
+              <th>Parametr</th>
+              <th>Dostępne opcje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Wymiary obszaru roboczego (mm)</td>
+              <td class="highlight-options">
+                <ul class="options-list">
+                  <li>1400×1000</li>
+                  <li>1400×1200</li>
+                  <li>1400×1600</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Wysokość nad stołem roboczym (mm)</td>
+              <td class="highlight-options">
+                <ul class="options-list">
+                  <li>270</li>
+                  <li>300</li>
+                  <li>350</li>
+                  <li>400</li>
+                  <li>500</li>
+                  <li>600</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Rodzaje wrzeciona</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>24k obrotów (2,2kW-16kW)</li>
+                  <li>40k obrotów (5kW)</li>
+                  <li>50k obrotów (3kW)</li>
+                  <li>Wolnoobrotowe z wysokim momentem (serwonapęd 5/7,5kW)</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Oświetlenie obszaru roboczego</td>
+              <td class="standard-feature">✓ W standardzie</td>
+            </tr>
+            <tr>
+              <td>Automatyczny magazyn narzędzi ATC</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Bez wymiany</li>
+                  <li>Magazyn rewolwerowy</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Niezależny pulpit operatorski</td>
+              <td class="standard-feature">✓ Tak</td>
+            </tr>
+            <tr>
+              <td>Opróżniany zbiornik na wióry</td>
+              <td class="standard-feature">✓ Tak</td>
+            </tr>
+            <tr>
+              <td>Osłony boczne</td>
+              <td class="standard-feature">✓ Tak</td>
+            </tr>
+            <tr>
+              <td>Stół roboczy poziomo-pionowy T-rowkowy</td>
+              <td class="standard-feature">✓ Do 1000mm wysokości</td>
+            </tr>
+            <tr>
+              <td>Opcje dodatkowe</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>Chłodzenie (ciągłe cieczą)</li>
+                  <li>Chłodzenie (mgła olejowa)</li>
+                  <li>Pomiar wysokości narzędzia</li>
+                  <li>Sonda 3D</li>
+                  <li>Centralne smarowanie</li>
+                  <li>Kamera</li>
+                  <li>4. oś obrotowa</li>
+                  <li>5. oś obrotowa</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Typ stołu roboczego</td>
+              <td class="specs-text">
+                <ul class="options-list">
+                  <li>T-rowkowy</li>
+                  <li>Podciśnieniowy</li>
+                  <li>Próżniowy</li>
+                  <li>Hybrydowy</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
-    
+
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image02 
+      <Section_Maszyny_Image02
         sectionId="zabudowa-gallery"
         imgSrc="/assets/maszyny/combined_88930d1c.png"
         title="Plotery w zabudowie"
         subtitle="Kompaktowe rozwiązania"
         ctaText="Zobacz galerie"
-        ctaAction={() => console.log('Galeria zabudowa')}
+        ctaAction={() => console.log("Galeria zabudowa")}
       />
-      
-      <Section_Maszyny_Image01 
+
+      <Section_Maszyny_Image01
         sectionId="zabudowa-specs"
         imgSrc="/assets/certus-pomoc-wdrozenia.png"
         title="Dokumentacja techniczna"
@@ -650,16 +668,16 @@
         </table>
       </div>
     </div>
-    
+
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image01 
+      <Section_Maszyny_Image01
         sectionId="grawerki-image"
         imgSrc="/assets/maszyny/80f5ea646ec.png"
         title="Grawerki CNC"
         subtitle="Precyzyjne grawerowanie"
       />
-      
-      <Section_Maszyny_Video 
+
+      <Section_Maszyny_Video
         sectionId="grawerki-video"
         videoSrc="/assets/video/video.m4v"
         title="Przykłady prac"
@@ -750,18 +768,18 @@
         </table>
       </div>
     </div>
-    
+
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image02 
+      <Section_Maszyny_Image02
         sectionId="frezarki5-gallery"
         imgSrc="/assets/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg"
         title="Frezarki 5-osiowe"
         subtitle="Skomplikowane kształty 3D"
         ctaText="Zobacz możliwości"
-        ctaAction={() => console.log('Galeria 5-osiowe')}
+        ctaAction={() => console.log("Galeria 5-osiowe")}
       />
-      
-      <Section_Maszyny_Image01 
+
+      <Section_Maszyny_Image01
         sectionId="frezarki5-details"
         imgSrc="/assets/maszyny/certus_7111_temp_schemat02.png"
         title="Przykłady detali"
@@ -846,22 +864,22 @@
         </table>
       </div>
     </div>
-    
+
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Video 
+      <Section_Maszyny_Video
         sectionId="plotery-tnace-video"
         videoSrc="/assets/video/video.m4v"
         title="Plotery tnące w akcji"
         subtitle="Zobacz proces cięcia materiałów"
       />
-      
-      <Section_Maszyny_Image02 
+
+      <Section_Maszyny_Image02
         sectionId="plotery-materials"
         imgSrc="/assets/certus-serwis-pogwarancyjny.png"
         title="Materiały do cięcia"
         subtitle="Szeroka gama możliwości"
         ctaText="Zobacz materiały"
-        ctaAction={() => console.log('Materiały do cięcia')}
+        ctaAction={() => console.log("Materiały do cięcia")}
       />
     </div>
   </div>
@@ -871,6 +889,15 @@
 </section>
 
 <style lang="scss">
+  .maszyny-dane-tabela {
+    .text {
+      color: var(--color-text-primary);
+    }
+    img {
+      width: 30px;
+    }
+  }
+
   .maszyny-dane-header {
     display: flex !important;
     align-items: flex-end !important;
@@ -1136,7 +1163,6 @@
     gap: 20px;
     min-width: 300px;
   }
-
 
   .maszyny-dane-tabela {
     width: 100%;

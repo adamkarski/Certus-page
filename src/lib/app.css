@@ -18,6 +18,17 @@ img{
   box-sizing: border-box;
 }
 
+body {
+  padding-top: 160px; /* Przestrzeń dla fixed navbar */
+}
+
+/* Debug styles for active menu items */
+.nav-link.active {
+  background: #96a500 !important;
+  color: white !important;
+  border: 2px solid red !important; /* Temporary debug border */
+}
+
 .no-sel {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
