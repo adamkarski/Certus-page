@@ -36,7 +36,7 @@
 
         <CtaButton
           text="Frezarki CNC HMM"
-          on:click={() => scrollToSection("Frezarki")}
+          on:click={() => scrollToSection('frezarki')}
         />
       </div>
 
@@ -49,8 +49,8 @@
         </div>
 
         <CtaButton
-          text="Przemysłowe plotery CN "
-          on:click={() => scrollToSection("ploteryPrzemyslowe")}
+          text="Plotery CNC"
+          on:click={() => scrollToSection('ploteryPrzemyslowe')}
         />
       </div>
 
@@ -63,7 +63,7 @@
         </div>
 
         <CtaButton
-          text="Przemysłowe plotery CNC w zabudowie"
+          text="Plotery CNC w zabudowie"
           on:click={() => scrollToSection("ploteryPrzemysloweZabudowa")}
         />
       </div>
@@ -78,7 +78,7 @@
 
         <CtaButton
           text="Frezarki pięcioosiowe"
-          on:click={() => scrollToSection("frezarki5osiowe")}
+          on:click={() => scrollToSection('frezarki5osiowe')}
         />
       </div>
 
@@ -92,7 +92,7 @@
 
         <CtaButton
           text="Grawerki CNC"
-          on:click={() => scrollToSection("grawerki")}
+          on:click={() => scrollToSection('grawerki')}
         />
       </div>
 
@@ -106,7 +106,7 @@
 
         <CtaButton
           text="Plotery tnące linearne CNC"
-          on:click={() => scrollToSection("ploteryLinearne")}
+          on:click={() => scrollToSection('ploteryLinearne')}
         />
       </div>
     </div>
@@ -114,7 +114,7 @@
 </section>
 
 <!-- Frezarki CNC HMM -->
-<section id="Frezarki" class="maszyny-dane">
+<section id="frezarki" class="maszyny-dane">
   <div class="maszyny-dane-header no-sel">
     <img
       src="/assets/ikony/maszyny/frezarki.svg"
@@ -247,7 +247,7 @@
                 />
                 <div class="text">Oświetlenie obszaru roboczego</div>
               </td>
-              <td class="standard-feature">✓ W standardzie</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>W standardzie</td>
             </tr>
             <tr>
               <td>
@@ -266,7 +266,7 @@
                 <img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" />
                 <div class="text">Niezależny pulpit operatorski</div>
               </td>
-              <td class="standard-feature">✓ Tak</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
             </tr>
             <tr>
               <td>
@@ -432,7 +432,7 @@
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/oswietlenie.svg" alt="Oświetlenie" /><div class="text">Oświetlenie obszaru roboczego</div></td>
-              <td class="standard-feature">✓ W standardzie</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>W standardzie</td>
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
@@ -445,7 +445,7 @@
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
-              <td class="standard-feature">✓ Tak</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
@@ -599,7 +599,7 @@
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/oswietlenie.svg" alt="Oświetlenie" /><div class="text">Oświetlenie obszaru roboczego</div></td>
-              <td class="standard-feature">✓ W standardzie</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>W standardzie</td>
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
@@ -612,22 +612,29 @@
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
-              <td class="standard-feature">✓ Tak</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
             </tr>
             <tr>
-              <td><div class="text">Opróżniany zbiornik na wióry</div></td>
-              <td class="standard-feature">✓ Tak</td>
+
+              <td><img src="/assets/ikony/table/zbiornik.svg" alt="oprozniany zbiornik na wióry" /><div class="text">Opróżniany zbiornik na wióry</div></td>
+
+              
+              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
             </tr>
             <tr>
-              <td><div class="text">Osłony boczne</div></td>
-              <td class="standard-feature">✓ Tak</td>
+
+
+              <td><img src="/assets/ikony/table/oslonyboczne.svg" alt="osłony boczne" /><div class="text">Osłony boczne</div></td>
+
+              
+              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
             </tr>
             <tr>
-              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Stół roboczy poziomo-pionowy T-rowkowy</div></td>
-              <td class="standard-feature">✓ Do 1000mm wysokości</td>
+              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół roboczy" /><div class="text">Stół roboczy poziomo-pionowy T-rowkowy</div></td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Do 1000mm wysokości</td>
             </tr>
             <tr>
-              <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
+              <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje dodatkowe" /><div class="text">Opcje dodatkowe</div></td>
               <td class="specs-text">
                 <ul class="options-list">
                   <li>Chłodzenie (ciągłe cieczą)</li>
@@ -746,7 +753,7 @@
           <tbody>
             <tr>
               <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
-              <td class="highlight-options">375×400</td>
+              <td class="highlight-options"><ul class="options-list"><li>375×400</li></ul></td>
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
@@ -759,7 +766,7 @@
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
-              <td class="standard-feature">✓ Tak</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
@@ -892,7 +899,7 @@
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
-              <td class="standard-feature">✓ Tak</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
@@ -922,11 +929,11 @@
             </tr>
             <tr>
               <td><div class="text">Zakres pracy osi A</div></td>
-              <td class="highlight-options">0-360°</td>
+              <td class="highlight-options"><ul class="options-list"><li>0-360°</li></ul></td>
             </tr>
             <tr>
               <td><div class="text">Zakres pracy osi B</div></td>
-              <td class="highlight-options">0-210°</td>
+              <td class="highlight-options"><ul class="options-list"><li>0-210°</li></ul></td>
             </tr>
           </tbody>
         </table>
@@ -1040,7 +1047,7 @@
             </tr>
             <tr>
               <td><div class="text">Nóż oscylacyjny</div></td>
-              <td class="standard-feature">✓ Pneumatyczny</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Pneumatyczny</td>
             </tr>
             <tr>
               <td><div class="text">Głowica tnąca</div></td>
@@ -1055,15 +1062,15 @@
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
-              <td class="standard-feature">✓ Tak</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
             </tr>
             <tr>
               <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
-              <td class="standard-feature">✓ Próżniowy</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Próżniowy</td>
             </tr>
             <tr>
               <td><div class="text">Taśmowy, bezkońcowy stół transportowy</div></td>
-              <td class="standard-feature">✓ Tak</td>
+              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
             </tr>
           </tbody>
         </table>
@@ -1094,6 +1101,20 @@
 </section>
 
 <style lang="scss">
+
+  table thead th{
+
+
+    background-color: #788391;
+
+  }
+.check-mark{
+
+
+
+margin-right: 10px;
+
+}
   .maszyny-dane .maszyny-dane-tabela {
     .text {
       color: var(--color-text-primary);
@@ -1440,8 +1461,8 @@
     padding: 6px;
     position: relative;
     list-style-type: none;
-    border: 1px solid gray;
-    border-radius: 15px;
+    border: 1px solid rgba(128, 128, 128, 0.366);
+    border-radius: 5px;
     width: auto;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.04);
@@ -1457,7 +1478,7 @@
   }
 
   .standard-feature {
-    color: #27ae60;
+    color: var(--color-primary-dark);
     font-weight: 600;
   }
 
@@ -1476,7 +1497,7 @@
   .grawerka th,
   .piecosie th,
   .tnace th {
-    background: linear-gradient(135deg, #3498db, #2980b9) !important;
+    color: #5d636b;
   }
 
   /* Dodatkowe style dla pierwszej kolumny tabel */

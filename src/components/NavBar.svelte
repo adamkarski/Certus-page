@@ -20,13 +20,12 @@
   let showLottie = false;
 
   let isFocused = false;
-  let isMaszynyDropdownOpen = false;
+  let isMaszynyDropdownOpen = true;
   let isBranzeDropdownOpen = false;
   let isBestsellerDropdownOpen = false;
   let dropdownTimeout;
   let active = false; // Dodano deklarację 'active'
   let hoveredCategory = kategorieMaszyn[0]; // Domyślnie pierwsza kategoria
-  let showIconsInMegaMenu = false; // Nowa zmienna do przełączania widoku ikon/zdjęć
 
   // Lista branż
   const branze = [
@@ -189,7 +188,7 @@
                       {#each kategorieMaszyn as kategoria, i}
                         <li>
                           <a
-                            href={kategoria.url || `/maszyny?category=${kategoria.id}`}
+                            href={`/maszyny/#${kategoria.id}`}
                             class="submenu-item block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500 flex items-center"
                             on:mouseenter={() => hoveredCategory = kategoria}
                             in:fade={{ delay: i * 50, duration: 200 }}
@@ -199,6 +198,9 @@
                           </a>
                         </li>
                       {/each}
+
+
+                     
                     </ul>
                   </div>
                   <div class="w-2/3 bg-gray-50 flex flex-col items-center justify-center p-4">
@@ -533,8 +535,9 @@
     overflow: hidden;
 
     &:hover {
-      color: #22c55e; /* hover:text-green-600 */
-      background-color: #f0fdf4; /* hover:bg-green-50 */
+      color: var(--color-text-primary);
+    background-color: var(--color-gray-100);
+    border-color: var(--color-primary-dark);
     }
 
     &.active {
@@ -630,13 +633,31 @@
     transition: all 300ms ease-in-out; /* transition-all duration-300 */
 
     &:hover {
-      color: #22c55e; /* hover:text-green-600 */
-      background-color: #f0fdf4; /* hover:bg-green-50 */
+      color: var(--color-text-primary);
+    background-color: var(--color-gray-100);
+   
     }
   }
 
   .mega-menu {
-    width: 600px; /* Szerokość mega menu */
+    width: 600px;
+    padding: 24px;
+    margin-top: 0px;
+    margin-left: 210px;
+  
+    ul li{
+
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .submenu-item:hover{
+      color: var(--color-text-primary);
+    background-color: var(--color-gray-100);
+    border-color: var(--color-primary-dark);
+
+
+    }
   }
 
   /* Style dla bestseller dropdown */

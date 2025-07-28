@@ -324,7 +324,7 @@ select {
 
 /* Selection */
 ::selection {
-  background: var(--color-primary);
+  background: #5d636b;
   color: white;
 }
 

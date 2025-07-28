@@ -13,7 +13,7 @@
 </button>
 
 <style>
- .cta-button-hero { 
+ :global(.cta-button-hero) { 
  background-color: #96a500; 
  border-radius: 12px; 
  border-top-left-radius: 0px; 
@@ -34,6 +34,10 @@
     transition: all ease-in-out 0.2s;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
 }
+
+
+
+
 
 .cta-svg {
     width: 2em;
