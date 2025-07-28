@@ -197,6 +197,9 @@
     width: 100%;
     padding: 0 45px;
     padding-top: 80px;
+    padding-left: 8em;
+    padding-right: 8em;
+    
   }
 
   .footer-content {
