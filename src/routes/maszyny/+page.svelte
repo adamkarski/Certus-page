@@ -1,11 +1,21 @@
 <script lang="ts">
   import Maszyny from '../../components/Maszyny.svelte';
-
   import Section_Header from "../../components/sections/Section_Header.svelte";
   import Section_Footer from "../../components/sections/Section_Footer.svelte";
   import Section_Image02 from "../../components/sections/Section_Image02.svelte";
   import Section_Referencje from "../../components/sections/Section_Referencje.svelte";
+  import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
 
+  onMount(() => {
+    if (browser && window.location.hash) {
+      const id = window.location.hash.substring(1); // Remove the #
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
 </script>
 
 <svelte:head>

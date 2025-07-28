@@ -114,6 +114,21 @@
     resetHeroSwiper.set(true);
     goto("/");
   }
+
+  function handleMaszynyNavigation(event: MouseEvent, categoryId: string) {
+    event.preventDefault();
+    isMaszynyDropdownOpen = false; // Close dropdown on click
+    if (currentPath.startsWith('/maszyny')) {
+      // Already on /maszyny page, scroll to section
+      const element = document.getElementById(categoryId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to /maszyny page with hash
+      goto(`/maszyny/#${categoryId}`);
+    }
+  }
 </script>
 
 <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-sel" class:scrolled>
@@ -185,7 +200,7 @@
                       {#each kategorieMaszyn as kategoria, i}
                         <li>
                           <a
-                            href={`/maszyny/#${kategoria.id}`}
+                            on:click={(e) => handleMaszynyNavigation(e, kategoria.id)}
                             class="submenu-item block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500 flex items-center"
                             on:mouseenter={() => hoveredCategory = kategoria}
                             in:fade={{ delay: i * 50, duration: 200 }}
