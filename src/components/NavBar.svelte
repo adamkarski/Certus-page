@@ -20,7 +20,7 @@
   let showLottie = false;
 
   let isFocused = false;
-  let isMaszynyDropdownOpen = true;
+  let isMaszynyDropdownOpen = false;
   let isBranzeDropdownOpen = false;
   let isBestsellerDropdownOpen = false;
   let dropdownTimeout;
@@ -255,9 +255,9 @@
               >
                 <div class="bestseller-content p-6">
                   <div class="bestseller-header mb-4">
-                    <div class="bestseller-badge">
-                      <span class="badge-text">🏆 BESTSELLER</span>
-                    </div>
+                    <!-- <div class="bestseller-badge">
+                      <span class="badge-text"> BESTSELLER</span>
+                    </div> -->
                     <h3 class="bestseller-title">Plotery przemysłowe CNC</h3>
                     <p class="bestseller-subtitle">Najchętniej wybierane przez naszych klientów</p>
                   </div>
@@ -502,6 +502,8 @@
     display: flex;
     height: 95px;
     border-radius: 72px;
+    margin-left: 8em;
+    margin-right: 8em;
     background-color: rgba(190, 190, 190, 0.13) !important;
     .contenerNav {
       display: flex;
@@ -520,9 +522,9 @@
   }
 
   .submenu-item:hover {
-    color: #22c55e; /* text-green-600 */
-    background-color: #f0fdf4; /* bg-green-50 */
-    border-color: #22c55e; /* border-green-500 */
+    color: var(--color-text-primary);
+    background-color: var(--color-gray-100);
+    border-color: var(--color-primary-dark);
   }
 
   .nav-link {
@@ -664,6 +666,9 @@
   .bestseller-dropdown {
     width: 380px;
     z-index: 1000;
+    padding: 24px;
+    margin-top: 0px;
+    // margin-left: 210px;
   }
 
   .bestseller-content {

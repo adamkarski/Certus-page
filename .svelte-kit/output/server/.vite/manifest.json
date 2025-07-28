@@ -51,7 +51,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/Section_Referencje.CbjlyALV.css"
+      "_app/immutable/assets/Section_Referencje.Bx5Z1Tj-.css"
     ]
   },
   "_Serwis.js": {
@@ -166,7 +166,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CEdirQup.css"
+      "_app/immutable/assets/_layout.nTBQv2fY.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -190,7 +190,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CVxDcvUb.css"
+      "_app/immutable/assets/_page.B7lotsyF.css"
     ]
   },
   "src/routes/dokumentacja/+page.svelte": {
@@ -266,7 +266,7 @@
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.Bn28IGq5.css"
+      "_app/immutable/assets/_page.BccLbHUJ.css"
     ]
   },
   "src/routes/onas/+layout.ts": {
