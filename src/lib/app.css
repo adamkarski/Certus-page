@@ -19,7 +19,7 @@ img{
 }
 
 body {
-  padding-top: 160px; /* Przestrzeń dla fixed navbar */
+  /* padding-top: 160px; Przestrzeń dla fixed navbar */
 }
 
 /* Styles for active menu items */

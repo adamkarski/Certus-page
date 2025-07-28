@@ -484,14 +484,15 @@
   }
 
   nav.scrolled {
-    padding-top: 1em;
+    padding-top: 0em;
     background: rgba(50, 50, 50, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
   nav.scrolled .ramka {
-    background-color: rgba(80, 80, 80, 0.3) !important;
+    padding-top: 0px;
+    background-color: transparent !important;
   }
 
   nav.scrolled .menuItems {
