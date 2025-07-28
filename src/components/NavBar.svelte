@@ -21,10 +21,8 @@
 
   let isFocused = false;
   let isMaszynyDropdownOpen = false;
-  let isBranzeDropdownOpen = false;
   let isBestsellerDropdownOpen = false;
   let dropdownTimeout;
-  let active = false; // Dodano deklarację 'active'
   let hoveredCategory = kategorieMaszyn[0]; // Domyślnie pierwsza kategoria
 
   // Lista branż
@@ -104,12 +102,11 @@
 
   function handleMouseEnter() {
     clearTimeout(dropdownTimeout);
-    isDropdownOpen = true;
+   
   }
 
   function handleMouseLeave() {
     dropdownTimeout = setTimeout(() => {
-      isDropdownOpen = false;
     }, 150);
   }
 
@@ -119,7 +116,7 @@
   }
 </script>
 
-<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" class:scrolled>
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-sel" class:scrolled>
   <!-- Główna ramka navbar -->
   <div class="px-4 sm:px-6 lg:px-8 ramka">
     <div class="relative menubar">
@@ -203,17 +200,11 @@
                      
                     </ul>
                   </div>
-                  <div class="w-2/3 bg-gray-50 flex flex-col items-center justify-center p-4">
-                    <div class="mb-4">
-                     
-                    </div>
+                  <div class="w-2/3 bg-gray-50 flex flex-col items-center justify-center p-4 image-container">
                     {#if hoveredCategory}
-                      <div class="text-center">
-                       
-                          <img src={hoveredCategory.img} alt={hoveredCategory.title} class="max-h-48 mx-auto mb-4 rounded-lg">
-                       
-                        <!-- <h3 class="font-semibold text-lg">{hoveredCategory.title}</h3> -->
-                      </div>
+                      {#key hoveredCategory.id}
+                        <img src={hoveredCategory.img} alt={hoveredCategory.title} class="max-h-48 mx-auto mb-4 rounded-lg menu-image" in:fade={{ delay: 150, duration: 150 }} out:fade={{ duration: 150 }}>
+                      {/key}
                     {/if}
                   </div>
                 </div>
@@ -224,7 +215,7 @@
 
           <!-- Bestseller z dropdown -->
           <div
-            class="relative dropDownMenu"
+            class="relative dropDownMenu bestsellerDropDown"
             on:mouseenter={() => isBestsellerDropdownOpen = true}
             on:mouseleave={() => isBestsellerDropdownOpen = false}
             role="group"
@@ -304,7 +295,7 @@
           </a>
 
           <!-- Kontakt -->
-          <a href="/kontakt" class="nav-link" class:active={isKontaktActive}>
+          <a href="/kontakt" class="nav-link kontakt-nav" class:active={isKontaktActive}>
             <span>Kontakt</span>
           </a>
 
@@ -429,11 +420,22 @@
 </nav>
 
 <style lang="scss">
+
+
+
+.bestsellerDropDown{
+
+  margin-left: 0px !important;
+  padding-left: 0px;
+
+}
+
+
   .menubar {
     width: 100%;
   }
 
-.nav-link:last-of-type{
+.nav-link.kontakt-nav{
   margin-right: 20px;
 }
 
@@ -457,8 +459,9 @@
     color: #616d5d;
     font-size: 0.9em;
     font-weight: 200;
-    margin-right: 20px;
+    margin-right: 22px;
     height: 76px;
+    margin-top: 2px;
 
     .dropDownMenu{
 
@@ -472,7 +475,7 @@
   }
 
   .menuItems a:focus {
-    outline: 0px solid #2c5aa0;
+    outline: 0px solid #788391;
     outline-offset: 0px;
   }
   nav {
@@ -492,6 +495,8 @@
 
   nav.scrolled .ramka {
     padding-top: 0px;
+    margin-left: 7.3em;
+    margin-right: 7.3em;
     background-color: transparent !important;
   }
 
@@ -544,15 +549,16 @@
     }
 
     &.active {
+      
       color: white !important;
-      background: #96a500 !important;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27.38 16.53'%3E%3Cpath fill='%2396a500' d='M13.87,0S0,16.53,0,16.53c3.37,0,10.14,0,13.51,0,0,0,13.87-16.53,13.87-16.53'/%3E%3C/svg%3E") !important;
+      background-color:#788391 !important;
+      // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27.38 16.53'%3E%3Cpath fill='%2396a500' d='M13.87,0S0,16.53,0,16.53c3.37,0,10.14,0,13.51,0,0,0,13.87-16.53,13.87-16.53'/%3E%3C/svg%3E") !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
       background-size: 100% 100% !important;
       position: relative;
-      padding: 10px 18px !important;
-      border-radius: 0 !important;
+
+      border-radius: 5 !important;
 
       
       span {
@@ -661,6 +667,21 @@
 
 
     }
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Adjust as needed */
+  }
+
+  .menu-image {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 100%;
+    max-width: 100%;
   }
 
   /* Style dla bestseller dropdown */
