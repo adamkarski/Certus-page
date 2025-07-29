@@ -5,7 +5,17 @@
   import Section_Maszyny_Image02 from "./sections/Section_Maszyny_Image02.svelte";
 
   import Maszyny_table_frezarki from "./tables/Maszyny_table_frezarki.svelte";
+  import Maszyny_table_plotery from "./tables/Maszyny_table_plotery.svelte";
+  import Maszyny_table_zabudowa from "./tables/Maszyny_table_zabudowa.svelte";
+  import Maszyny_table_grawerki from "./tables/Maszyny_table_grawerki.svelte";
+  import Maszyny_table_frezarki5osiowe from "./tables/Maszyny_table_frezarki5osiowe.svelte";
+  import Maszyny_table_ploteryLinearne from "./tables/Maszyny_table_ploteryLinearne.svelte";
+  import Maszyny_table_specjalistyczne from "./tables/Maszyny_table_specjalistyczne.svelte";
   
+
+  // import css styles
+  import './tables/table.css';
+
   const maszyny = [];
 
   function scrollToSection(id: string) {
@@ -15,6 +25,65 @@
     }
   }
 </script>
+
+
+
+<style lang="scss">
+ 
+
+
+ .first-container-back {
+  background-image: url(/assets/first-block-polyline.svg);
+  position: absolute;
+  top: 209px;
+  width: 100%;
+  height: 44px;
+  background-repeat: no-repeat;
+  background-position-x: -1500px;
+  background-size: cover;
+}
+
+
+
+
+  :global(.oferta-grid) {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+ 
+   .oferta-card {
+     padding: 40px 30px;
+     border-radius: 10px;
+     text-align: center;
+     transition: all 0.3s ease;
+     display: grid;
+     align-items: end;
+     justify-content: center;
+     align-content: center;
+   }
+ 
+   .oferta-card:hover {
+     transform: translateY(-10px);
+   }
+ 
+   .oferta-icon {
+     font-size: 60px;
+     margin-bottom: 25px;
+     display: block;
+     width: 4em;
+ 
+     img {
+       margin-left: 0.6em;
+     }
+   }
+ }
+  
+  
+  </style>
+
+
+
+
+
 
 <section class="maszyny_page gradientHero">
   <div class="first-container-back"></div>
@@ -87,7 +156,7 @@
       <div class="oferta-card">
         <div class="oferta-icon">
           <img
-            src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
+            src="/assets/ikony/maszyny/grawerki.svg"
             alt="Grawerki CNC"
           />
         </div>
@@ -430,112 +499,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <table class="maszyny-dane-tabela zabudowa">
-          <thead>
-            <tr>
-              <th>Parametr</th>
-              <th>Dostępne opcje</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
-              <td class="highlight-options">
-                <ul class="options-list">
-                  <li>1400×1000</li>
-                  <li>1400×1200</li>
-                  <li>1400×1600</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczym (mm)</div></td>
-              <td class="highlight-options">
-                <ul class="options-list">
-                  <li>270</li>
-                  <li>300</li>
-                  <li>350</li>
-                  <li>400</li>
-                  <li>500</li>
-                  <li>600</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/rodzajewzeciona.svg" alt="Wrzeciona" /><div class="text">Rodzaje wrzeciona</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>24k obrotów (2,2kW-16kW)</li>
-                  <li>40k obrotów (5kW)</li>
-                  <li>50k obrotów (3kW)</li>
-                  <li>Wolnoobrotowe z wysokim momentem (serwonapęd 5/7,5kW)</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/oswietlenie.svg" alt="Oświetlenie" /><div class="text">Oświetlenie obszaru roboczego</div></td>
-              <td class="standard-feature"><span class="check-mark">✓</span>W standardzie</td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>Bez wymiany</li>
-                  <li>Magazyn rewolwerowy</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
-              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
-            </tr>
-            <tr>
-
-              <td><img src="/assets/ikony/table/zbiornik.svg" alt="oprozniany zbiornik na wióry" /><div class="text">Opróżniany zbiornik na wióry</div></td>
-
-              
-              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
-            </tr>
-            <tr>
-
-
-              <td><img src="/assets/ikony/table/oslonyboczne.svg" alt="osłony boczne" /><div class="text">Osłony boczne</div></td>
-
-              
-              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół roboczy" /><div class="text">Stół roboczy poziomo-pionowy T-rowkowy</div></td>
-              <td class="standard-feature"><span class="check-mark">✓</span>Do 1000mm wysokości</td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje dodatkowe" /><div class="text">Opcje dodatkowe</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>Chłodzenie (ciągłe cieczą)</li>
-                  <li>Chłodzenie (mgła olejowa)</li>
-                  <li>Pomiar wysokości narzędzia</li>
-                  <li>Sonda 3D</li>
-                  <li>Centralne smarowanie</li>
-                  <li>Kamera</li>
-                  <li>4. oś obrotowa</li>
-                  <li>5. oś obrotowa</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>T-rowkowy</li>
-                  <li>Podciśnieniowy</li>
-                  <li>Próżniowy</li>
-                  <li>Hybrydowy</li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <Maszyny_table_zabudowa />
       </div>
     </div>
 
@@ -566,7 +530,7 @@
 <section id="grawerki" class="maszyny-dane">
   <div class="maszyny-dane-header no-sel">
     <img
-      src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
+      src="/assets/ikony/maszyny/grawerki.svg"
       alt="Grawerki CNC"
       class="maszyny-dane-ikona"
     />
@@ -618,59 +582,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <table class="maszyny-dane-tabela grawerka">
-          <thead>
-            <tr>
-              <th>Parametr</th>
-              <th>Dostępne opcje</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
-              <td class="highlight-options"><ul class="options-list"><li>375×400</li></ul></td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>Bez wymiany</li>
-                  <li>Magazyn rewolwerowy</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
-              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>Chłodzenie (ciągłe cieczą)</li>
-                  <li>Chłodzenie (mgła olejowa)</li>
-                  <li>Pomiar wysokości narzędzia</li>
-                  <li>Sonda 3D</li>
-                  <li>Centralne smarowanie</li>
-                  <li>Kamera</li>
-                  <li>4. oś obrotowa</li>
-                  <li>5. oś obrotowa</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>T-rowkowy</li>
-                  <li>Podciśnieniowy</li>
-                  <li>Próżniowy</li>
-                  <li>Hybrydowy</li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <Maszyny_table_grawerki />
       </div>
     </div>
 
@@ -751,67 +663,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <table class="maszyny-dane-tabela piecosie">
-          <thead>
-            <tr>
-              <th>Parametr</th>
-              <th>Dostępne opcje</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiar obszaru roboczego (mm)</div></td>
-              <td class="highlight-options">⌀ 350</td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/atc.svg" alt="ATC" /><div class="text">Automatyczny magazyn narzędzi ATC</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>Bez wymiany</li>
-                  <li>Magazyn rewolwerowy</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
-              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>Chłodzenie (ciągłe cieczą)</li>
-                  <li>Chłodzenie (mgła olejowa)</li>
-                  <li>Pomiar wysokości narzędzia</li>
-                  <li>Sonda 3D</li>
-                  <li>Centralne smarowanie</li>
-                  <li>Kamera</li>
-                  <li>4. oś obrotowa</li>
-                  <li>5. oś obrotowa</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>T-rowkowy</li>
-                  <li>Podciśnieniowy</li>
-                  <li>Próżniowy</li>
-                  <li>Hybrydowy</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><div class="text">Zakres pracy osi A</div></td>
-              <td class="highlight-options"><ul class="options-list"><li>0-360°</li></ul></td>
-            </tr>
-            <tr>
-              <td><div class="text">Zakres pracy osi B</div></td>
-              <td class="highlight-options"><ul class="options-list"><li>0-210°</li></ul></td>
-            </tr>
-          </tbody>
-        </table>
+        <Maszyny_table_frezarki5osiowe />
       </div>
     </div>
 
@@ -894,61 +746,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <table class="maszyny-dane-tabela tnace">
-          <thead>
-            <tr>
-              <th>Parametr</th>
-              <th>Dostępne opcje</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
-              <td class="highlight-options">
-                <ul class="options-list">
-                  <li>1500×2000</li>
-                  <li>2000×2500</li>
-                  <li>2000×3000</li>
-                  <li>2000×4000</li>
-                  <li>700×1600</li>
-                  <li>1000×1200</li>
-                  <li>1000×1400</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczym (mm)</div></td>
-              <td class="highlight-options">270</td>
-            </tr>
-            <tr>
-              <td><div class="text">Nóż oscylacyjny</div></td>
-              <td class="standard-feature"><span class="check-mark">✓</span>Pneumatyczny</td>
-            </tr>
-            <tr>
-              <td><div class="text">Głowica tnąca</div></td>
-              <td class="specs-text">
-                <ul class="options-list">
-                  <li>Frezująca</li>
-                  <li>Bigująca</li>
-                  <li>Znakująca</li>
-                  <li>Pisząca</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/pulpit.svg" alt="Pulpit" /><div class="text">Niezależny pulpit operatorski</div></td>
-              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
-            </tr>
-            <tr>
-              <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
-              <td class="standard-feature"><span class="check-mark">✓</span>Próżniowy</td>
-            </tr>
-            <tr>
-              <td><div class="text">Taśmowy, bezkońcowy stół transportowy</div></td>
-              <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
-            </tr>
-          </tbody>
-        </table>
+        <Maszyny_table_ploteryLinearne />
       </div>
     </div>
 
@@ -975,508 +773,71 @@
   </div>
 </section>
 
-<style lang="scss">
+<!-- Maszyny specjalistyczne -->
+<section id="specjalistyczne" class="maszyny-dane">
+  <div class="maszyny-dane-header no-sel">
+    <img
+      src="/assets/ikony/maszyny/specjalistyczne.svg"
+      alt="Maszyny specjalistyczne"
+      class="maszyny-dane-ikona"
+    />
+    <h2>Maszyny specjalistyczne</h2>
+  </div>
+  <hr class="maszyny-dane-hr" />
+  <div class="maszyny-dane-text-image">
+    <div class="left">
+      <ul class="maszyny-dane-lista">
+        <li>
+          Przeznaczone do obróbki materiałów wymagających specjalistycznych rozwiązań.
+        </li>
+        <li>
+          Dostosowane do indywidualnych potrzeb klienta i specyfiki produkcji.
+        </li>
+        <li>Wysoka precyzja i niezawodność w trudnych warunkach.</li>
+        <li>Możliwość integracji z istniejącymi systemami produkcyjnymi.</li>
+        <li>Wsparcie techniczne i serwisowe na każdym etapie.</li>
+      </ul>
+      <div class="maszyny-dane-podtytul">Przykładowe zastosowania:</div>
+      <ul class="maszyny-dane-lista-small">
+        <li>Produkcja prototypów i małych serii.</li>
+        <li>Obróbka materiałów egzotycznych.</li>
+        <li>Zastosowania w przemyśle lotniczym i medycznym.</li>
+        <li>Automatyzacja procesów produkcyjnych.</li>
+      </ul>
+    </div>
+    <div class="right">
+      <img
+        src="/assets/maszyny/certus_7111_temp.png"
+        alt="Maszyny specjalistyczne"
+      />
+    </div>
+  </div>
 
-  table thead th{
+  <div class="maszyny-dane-content">
+    <div class="maszyny-dane-table-column">
+      <div class="maszyny-dane-tabela-wrap">
+        <Maszyny_table_specjalistyczne />
+      </div>
+    </div>
 
+    <div class="maszyny-dane-gallery-column">
+      <Section_Maszyny_Image01
+        sectionId="specjalistyczne-image"
+        imgSrc="/assets/maszyny/certus_7111_temp.png"
+        title="Maszyny specjalistyczne"
+        subtitle="Rozwiązania na miarę"
+      />
 
-    background-color: #788391;
+      <Section_Maszyny_Video
+        sectionId="specjalistyczne-video"
+        videoSrc="/assets/video/video.m4v"
+        title="Maszyny specjalistyczne w akcji"
+        subtitle="Zobacz możliwości"
+      />
+    </div>
+  </div>
+  <div class="maszyny-dane-cta">
+    <CtaButton text="Zamów konsultację" />
+  </div>
+</section>
 
-  }
-.check-mark{
-
-
-
-margin-right: 10px;
-
-}
-  .maszyny-dane .maszyny-dane-tabela {
-    .text {
-      color: var(--color-text-primary);
-    }
-    img {
-      width: 30px;
-    }
-  }
-
-  .maszyny-dane-header {
-    display: flex !important;
-    align-items: flex-end !important;
-    gap: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    margin-bottom: -10px !important;
-
-    img {
-      width: 120px;
-      margin-left: calc(-2px);
-      margin-right: calc(-32px);
-      height: 120px;
-      background: none;
-      border-radius: 0px;
-      padding: 0px;
-      box-shadow: none;
-    }
-    h2 {
-      position: relative;
-      background-color: #eeeeee !important;
-      height: 30px;
-      font-size: 1.3em !important;
-      font-weight: 500 !important;
-      padding-top: 3px;
-      margin-bottom: 10px !important;
-    }
-  }
-  .maszyny-dane-hr {
-    margin-bottom: 4em !important;
-  }
-  .maszyny-dane-podtytul {
-    font-weight: 700;
-    font-size: 21px;
-    color: #000000;
-    padding-left: 1.1em;
-    padding-top: 2em;
-    padding-bottom: 1em;
-  }
-  .maszyny-dane-text-image {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap; /* Zmieniono na wrap */
-
-    .left {
-      flex: 1; /* Pozwól lewej kolumnie rosnąć */
-      min-width: 50%; /* Minimalna szerokość, aby nie było zbyt wąsko na większych ekranach */
-    }
-
-    .right {
-      width: 32%; /* Zachowaj oryginalną szerokość na większych ekranach */
-      text-align: right;
-
-      img {
-        max-width: 100%; /* Upewnij się, że obrazki nie wychodzą poza kontener */
-        height: auto;
-      }
-    }
-  }
-
-  @media (max-width: 900px) {
-    .maszyny-dane-text-image {
-      flex-direction: column; /* Ułóż elementy w kolumnie na małych ekranach */
-
-      .left,
-      .right {
-        width: 100%; /* Zajmij całą szerokość */
-        text-align: left; /* Wyrównaj tekst do lewej */
-      }
-
-      .right {
-        margin-top: 20px; /* Dodaj odstęp między sekcjami */
-      }
-    }
-  }
-  .maszyny-dane-lista-small li {
-    padding-left: 1em;
-    font-size: 15px !important;
-    border-left: 5px solid var(--color-primary);
-    margin-bottom: 0.3em;
-    margin-left: 30px;
-    color: var(--color-text-secondary);
-  }
-  li {
-    color: var(--color-text-secondary);
-  }
-  h1 {
-    font-size: 21px;
-    font-weight: 400;
-  }
-  hr,
-  .maszyny-dane hr {
-    margin-top: 1em;
-    border: 1px solid rgba($color: #000000, $alpha: 0.2);
-  }
-
-  .oferta-container {
-    overflow: hidden;
-    width: 100%;
-    padding: 0 9rem;
-  }
-
-  .pattern-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 20%;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.3;
-
-    .pattern.two {
-      transform: scale(1.2) skew(-15deg, 0deg);
-      background-image: url(/assets/images/pattern-image1-2.png);
-      position: absolute;
-      width: 100%;
-      height: 63px;
-      z-index: 11;
-      left: 0;
-      bottom: -10px;
-      pointer-events: auto;
-    }
-  }
-
-  .maszyny_page {
-    min-width: 100vw;
-    margin: 0 auto;
-
-    min-height: 20vh;
-
-    background-color: red;
-  }
-
-  .first-container-back {
-    background-image: url(/assets/first-block-polyline.svg);
-    position: absolute;
-    top: 209px;
-    width: 100%;
-    height: 44px;
-    background-repeat: no-repeat;
-    background-position-x: -1500px;
-    background-size: cover;
-  }
-  .maszyny {
-    width: 100%;
-    padding: 100px 0;
-    background: #f7f7f7;
-  }
-
-  .maszyny-container {
-    overflow: hidden;
-    width: 100%;
-    padding: 0 9rem;
-  }
-
-  .section-header {
-    margin-bottom: 80px;
-  }
-
-  :global(.oferta-grid) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-    .oferta-card {
-      padding: 40px 30px;
-      border-radius: 10px;
-      text-align: center;
-      transition: all 0.3s ease;
-      display: grid;
-      align-items: end;
-      justify-content: center;
-      align-content: center;
-    }
-
-    .oferta-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .oferta-icon {
-      font-size: 60px;
-      margin-bottom: 25px;
-      display: block;
-      width: 4em;
-
-      img {
-        margin-left: 0.6em;
-      }
-    }
-  }
-
-  /* --- UNIFIKOWANE STYLE DLA BLOKU MASZYNY --- */
-  .maszyny-dane {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-    padding: 3rem 9rem 2.5rem 9rem; /* Zmieniono padding, aby odpowiadał szerokości kontenera */
-    margin-bottom: 3rem;
-    /* Usunięto max-width i margin: auto */
-  }
-  .maszyny-dane-header {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .maszyny-dane-ikona {
-    width: 60px;
-    height: 60px;
-    background: #f7f7f7;
-    border-radius: 12px;
-    padding: 8px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
-  }
-  .maszyny-dane h2 {
-    font-size: 2rem;
-    font-weight: 500;
-    margin: 0;
-  }
-  .maszyny-dane-lista {
-    margin: 0 0 1.2rem 0;
-    padding-left: 1.2em;
-    font-size: 1.08rem;
-    color: #222;
-  }
-  .maszyny-dane-lista li {
-    margin-bottom: 0.3em;
-    line-height: 1.5;
-  }
-  .maszyny-dane-podtytul {
-    font-weight: 600;
-    margin: 1.2em 0 0.5em 0;
-    font-size: 1.1rem;
-  }
-  .maszyny-dane-tabela-wrap {
-    overflow-x: auto;
-    margin: 0em 0 1.5em 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Nowy layout flex dla sekcji z tabelą */
-  .maszyny-dane-content {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    margin-bottom: 40px;
-    align-items: flex-start;
-    margin-top: 4em;
-  }
-
-  .maszyny-dane-table-column {
-    flex: 2;
-    min-width: 0; /* Pozwala na shrinking */
-  }
-
-  .maszyny-dane-gallery-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    min-width: 300px;
-  }
-
-  .maszyny-dane-tabela {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fafbfc;
-    border-radius: 10px;
-    overflow: hidden;
-    font-size: 1rem;
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);
-  }
-  .maszyny-dane-tabela th,
-  .maszyny-dane-tabela td {
-    padding: 0.8em 1em;
-    border-bottom: 1px solid #e5e7eb;
-    text-align: left;
-  }
-  .maszyny-dane-tabela th {
-    background: #f1f3f6;
-    font-weight: 600;
-    font-size: 1.05em;
-  }
-  .maszyny-dane-tabela tr:last-child td {
-    border-bottom: none;
-  }
-  .maszyny-dane-cta {
-    margin-top: 2.2em;
-    text-align: right;
-  }
-  @media (max-width: 900px) {
-    .maszyny-dane {
-      padding: 2rem 1rem;
-    }
-    .maszyny-dane-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.7rem;
-    }
-    .maszyny-dane-cta {
-      text-align: center;
-    }
-  }
-  /* --- KONIEC UNIFIKOWANYCH STYLI --- */
-
-  /* --- STYLE DLA NOWYCH TABEL --- */
-  tbody tr td img {
-    float: left;
-    margin-right: 20px;
-  }
-
-  tbody tr td .text {
-    width: auto;
-    display: flow-root;
-  }
-
-  .options-list {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    list-style-type: none;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
-    flex-wrap: wrap;
-  }
-
-  .options-list li {
-    padding: 6px;
-    position: relative;
-    list-style-type: none;
-    border: 1px solid rgba(128, 128, 128, 0.366);
-    border-radius: 5px;
-    width: auto;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.04);
-    margin-bottom: 4px;
-    margin-right: 12px;
-    padding-left: 12px;
-    padding-right: 12px;
-    transition: all ease 0.3s;
-  }
-
-  .options-list li:hover {
-    background-color: white;
-  }
-
-  .standard-feature {
-    color: var(--color-primary-dark);
-    font-weight: 600;
-  }
-
-  .specs-text {
-    line-height: 1.5;
-  }
-
-  .highlight-options {
-    /* Dodatkowe style dla wyróżnionych opcji */
-  }
-
-  /* Ujednolicone kolory nagłówków dla wszystkich tabel */
-  .frezarki th,
-  .plotery th,
-  .zabudowa th,
-  .grawerka th,
-  .piecosie th,
-  .tnace th {
-    color: #5d636b;
-  }
-
-  /* Dodatkowe style dla pierwszej kolumny tabel */
-  .maszyny-dane-tabela td:first-child {
-    font-weight: 600;
-    background-color: #f8f9fa;
-    border-right: 2px solid #3498db;
-    min-width: 250px;
-    flex-direction: row;
-    align-items: start;
-    flex-wrap: nowrap;
-    align-content: stretch;
-    justify-content: start;
-    height: auto;
-    min-height: 36px;
-    justify-items: stretch;
-  }
-
-  .maszyny-dane-tabela td:last-child {
-    width: 65%;
-  }
-
-  .maszyny-dane-tabela tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-  .maszyny-dane-tabela tr:hover {
-    background-color: #e3f2fd;
-    transition: background-color 0.3s ease;
-  }
-  /* --- KONIEC STYLI DLA NOWYCH TABEL --- */
-
-  /* Tablet i mniejsze laptopy */
-  @media (max-width: 1200px) {
-    .maszyny-dane .maszyny-dane-content {
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .maszyny-dane .maszyny-dane-table-column,
-    .maszyny-dane .maszyny-dane-gallery-column {
-      flex: none;
-      width: 100%;
-      min-width: auto;
-    }
-
-    .maszyny-dane .maszyny-dane-gallery-column {
-      order: 2;
-    }
-
-    .maszyny-dane .maszyny-dane-table-column {
-      order: 1;
-    }
-  }
-
-  /* Średnie tablety */
-  @media (max-width: 1024px) {
-    .maszyny-dane .maszyny-dane-content {
-      gap: 25px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .maszyny {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      font-size: 32px;
-    }
-
-    .oferta-grid {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-
-    .oferta-card {
-      padding: 30px 20px;
-    }
-
-    /* Dodatkowe style dla małych ekranów */
-    .maszyny-dane .maszyny-dane-content {
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .maszyny-dane .maszyny-dane-table-column,
-    .maszyny-dane .maszyny-dane-gallery-column {
-      flex: none;
-      width: 100%;
-      min-width: auto;
-    }
-
-    .options-list li {
-      font-size: 0.8rem;
-      padding: 4px 8px;
-    }
-
-    .maszyny-dane-tabela-wrap {
-      overflow-x: auto;
-    }
-
-    .maszyny-dane-tabela {
-      min-width: 500px;
-    }
-  }
-</style>

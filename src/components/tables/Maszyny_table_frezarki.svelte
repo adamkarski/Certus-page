@@ -1,3 +1,8 @@
+
+<style lang="scss">
+    @import './table.css';
+</style>
+
 <table class="maszyny-dane-tabela frezarki">
     <thead>
       <tr>

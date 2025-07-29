@@ -14,11 +14,13 @@
   import { typoFix } from "$lib/utils/typography";
   import list from "$lib/data/maszyny.json";
 
-
   //tables dla maszyn
   import Maszyny_table_frezarki from "../../components/tables/Maszyny_table_frezarki.svelte";
-  
-
+  import Maszyny_table_plotery from "../../components/tables/Maszyny_table_plotery.svelte";
+  import Maszyny_table_grawerki from "../../components/tables/Maszyny_table_grawerki.svelte";
+  import Maszyny_table_frezarki5osiowe from "../../components/tables/Maszyny_table_frezarki5osiowe.svelte";
+  import Maszyny_table_ploteryLinearne from "../../components/tables/Maszyny_table_ploteryLinearne.svelte";
+  import Maszyny_table_zabudowa from "../../components/tables/Maszyny_table_zabudowa.svelte";
 
   register();
 
@@ -48,19 +50,25 @@
           const index = list.findIndex((item) => item.id === slideId);
           if (index !== -1 && swiperElement && swiperElement.swiper) {
             swiperElement.swiper.slideTo(index);
-            setTimeout(() => updateNavigationButtons(swiperElement.swiper), 100);
+            setTimeout(
+              () => updateNavigationButtons(swiperElement.swiper),
+              100
+            );
           }
         } else if (!activeCategory && swiperElement && swiperElement.swiper) {
           setTimeout(() => {
             swiperElement.swiper.slideTo(0);
-            setTimeout(() => updateNavigationButtons(swiperElement.swiper), 100);
+            setTimeout(
+              () => updateNavigationButtons(swiperElement.swiper),
+              100
+            );
           }, 0);
         }
-        
+
         // Always update navigation buttons on mount
         if (swiperElement && swiperElement.swiper) {
           setTimeout(() => {
-            console.log('Updating buttons on mount');
+            console.log("Updating buttons on mount");
             updateNavigationButtons(swiperElement.swiper);
           }, 200);
         }
@@ -75,23 +83,28 @@
   function handleSwiperInit(event) {
     const swiper = event.detail[0];
     swiperReady = true;
-    
-    console.log('Swiper initialized, updating buttons');
-    
+
+    console.log("Swiper initialized, updating buttons");
+
     // Update navigation buttons state
     updateNavigationButtons(swiper);
-    
+
     // Listen for slide changes to update navigation
-    swiper.on('slideChange', () => {
-      console.log('Slide changed, updating buttons');
+    swiper.on("slideChange", () => {
+      console.log("Slide changed, updating buttons");
       updateNavigationButtons(swiper);
     });
   }
 
   // Reactive function to update buttons when view changes
-  $: if (browser && swiperElement && swiperElement.swiper && (activeCategory !== undefined || expandedView !== undefined)) {
+  $: if (
+    browser &&
+    swiperElement &&
+    swiperElement.swiper &&
+    (activeCategory !== undefined || expandedView !== undefined)
+  ) {
     setTimeout(() => {
-      console.log('View changed, updating buttons');
+      console.log("View changed, updating buttons");
       updateNavigationButtons(swiperElement.swiper);
     }, 100);
   }
@@ -99,48 +112,48 @@
   // Function to update navigation buttons based on current slide
   function updateNavigationButtons(swiper) {
     if (!swiper) return;
-    
-    const prevButton = document.getElementById('swiper-button-prev-hero');
-    const nextButton = document.getElementById('swiper-button-next-hero');
-    
+
+    const prevButton = document.getElementById("swiper-button-prev-hero");
+    const nextButton = document.getElementById("swiper-button-next-hero");
+
     if (prevButton && nextButton) {
       // Without loop mode, we can use isBeginning and isEnd
       const currentIndex = swiper.activeIndex;
       const totalSlides = list.length;
       const slidesPerView = 2; // slides-per-view="2"
-      
-      console.log('Navigation update:', { 
-        currentIndex, 
-        totalSlides, 
-        slidesPerView, 
-        isBeginning: swiper.isBeginning, 
+
+      console.log("Navigation update:", {
+        currentIndex,
+        totalSlides,
+        slidesPerView,
+        isBeginning: swiper.isBeginning,
         isEnd: swiper.isEnd,
         containerWidth: swiper.width,
         slideWidth: swiper.slidesSizesGrid?.[0],
-        allSlides: swiper.slides?.length
+        allSlides: swiper.slides?.length,
       });
-      
+
       // Remove existing disabled classes
-      prevButton.classList.remove('swiper-button-disabled');
-      nextButton.classList.remove('swiper-button-disabled');
-      
+      prevButton.classList.remove("swiper-button-disabled");
+      nextButton.classList.remove("swiper-button-disabled");
+
       // Alternative logic for slides-per-group="2"
       const slidesPerGroup = 2;
       const maxGroups = Math.ceil(totalSlides / slidesPerGroup);
       const currentGroup = Math.floor(currentIndex / slidesPerGroup);
-      
-      console.log('Group info:', { currentGroup, maxGroups, slidesPerGroup });
-      
+
+      console.log("Group info:", { currentGroup, maxGroups, slidesPerGroup });
+
       // Check if we're at the beginning (group 0)
       if (currentGroup === 0) {
-        console.log('Disabling prev button - at first group');
-        prevButton.classList.add('swiper-button-disabled');
+        console.log("Disabling prev button - at first group");
+        prevButton.classList.add("swiper-button-disabled");
       }
-      
+
       // Check if we're at the end (last group)
       if (currentGroup >= maxGroups - 1) {
-        console.log('Disabling next button - at last group');
-        nextButton.classList.add('swiper-button-disabled');
+        console.log("Disabling next button - at last group");
+        nextButton.classList.add("swiper-button-disabled");
       }
     }
   }
@@ -150,8 +163,8 @@
     if (swiperElement && swiperElement.swiper) {
       const currentIndex = swiperElement.swiper.activeIndex;
       const currentGroup = Math.floor(currentIndex / 2);
-      
-      console.log('Prev click - currentGroup:', currentGroup);
+
+      console.log("Prev click - currentGroup:", currentGroup);
       if (currentGroup > 0) {
         swiperElement.swiper.slidePrev();
         // Update buttons after slide change
@@ -165,8 +178,13 @@
       const currentIndex = swiperElement.swiper.activeIndex;
       const maxGroups = Math.ceil(list.length / 2);
       const currentGroup = Math.floor(currentIndex / 2);
-      
-      console.log('Next click - currentGroup:', currentGroup, 'maxGroups:', maxGroups);
+
+      console.log(
+        "Next click - currentGroup:",
+        currentGroup,
+        "maxGroups:",
+        maxGroups
+      );
       if (currentGroup < maxGroups - 1) {
         swiperElement.swiper.slideNext();
         // Update buttons after slide change
@@ -183,7 +201,7 @@
       const url = new URL(window.location.href);
       url.searchParams.set("slide", currentSlideId);
       history.replaceState({ slide: currentSlideId }, "", url.toString());
-      
+
       // Update navigation buttons
       updateNavigationButtons(swiper);
     }
@@ -254,7 +272,7 @@
           history.pushState(
             { category: c, machine: category.machine },
             "",
-            url.toString(),
+            url.toString()
           );
         } else {
           // Otherwise, go to category view (even if startExpanded and multiple machines)
@@ -289,7 +307,7 @@
       history.pushState(
         { category: activeCategory, machine: x },
         "",
-        url.toString(),
+        url.toString()
       );
     }
     setTimeout(() => {
@@ -327,26 +345,26 @@
     else document.body.classList.remove("no-scroll-hero");
 
     // Zarządzanie widocznością przycisków nawigacyjnych
-    const prevButton = document.getElementById('swiper-button-prev-hero');
-    const nextButton = document.getElementById('swiper-button-next-hero');
+    const prevButton = document.getElementById("swiper-button-prev-hero");
+    const nextButton = document.getElementById("swiper-button-next-hero");
     if (prevButton && nextButton) {
       if (activeCategory && !activeMachine) {
         // Hide navigation in intermediate view (category selected but no machine)
-        prevButton.classList.add('hide-navigation');
-        nextButton.classList.add('hide-navigation');
+        prevButton.classList.add("hide-navigation");
+        nextButton.classList.add("hide-navigation");
       } else if (!activeCategory) {
         // Show navigation in main slider view and update button states
-        prevButton.classList.remove('hide-navigation');
-        nextButton.classList.remove('hide-navigation');
-        
+        prevButton.classList.remove("hide-navigation");
+        nextButton.classList.remove("hide-navigation");
+
         // Update navigation buttons if swiper is ready
         if (swiperElement && swiperElement.swiper) {
           updateNavigationButtons(swiperElement.swiper);
         }
       } else {
         // Hide navigation in expanded machine view
-        prevButton.classList.add('hide-navigation');
-        nextButton.classList.add('hide-navigation');
+        prevButton.classList.add("hide-navigation");
+        nextButton.classList.add("hide-navigation");
       }
     }
   }
@@ -382,25 +400,49 @@
             out:fade={fadeConfig}
           >
             <!-- Custom Navigation Buttons -->
-            <button 
-              id="swiper-button-prev-hero" 
+            <button
+              id="swiper-button-prev-hero"
               class="swiper-nav-button swiper-nav-prev"
               on:click={handlePrevClick}
               aria-label="Previous slide"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15 18L9 12L15 6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </button>
-            
-            <button 
-              id="swiper-button-next-hero" 
+
+            <button
+              id="swiper-button-next-hero"
               class="swiper-nav-button swiper-nav-next"
               on:click={handleNextClick}
               aria-label="Next slide"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 18L15 12L9 6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </button>
 
@@ -629,11 +671,8 @@
               od opcji) pozwalające maszynie zachować wysoką jakość i dokładność
               obróbki.
             </p>
-           
 
-         
-
-            <div class="right_menu">
+            <!--      <div class="right_menu">
               <nav>
                 <ul>
                   <li>
@@ -646,11 +685,14 @@
                   <li><MenuEmail text="Kontakt" href="#" /></li>
                 </ul>
               </nav>
-            </div>
-
+            </div> -->
 
             <Maszyny_table_frezarki />
-
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
 
           {#if expandedView}
@@ -668,14 +710,14 @@
                   alt="Schemat techniczny frezarki Certus 7111 - widok 2"
                 />
 
-                <h2>Parametry techniczne</h2>
+                <!--  <h2>Parametry techniczne</h2>
                 <ul>
                   <li>Wymiary: 1200 x 1200 x 350 mm</li>
                   <li>Silniki: Serwo AC</li>
                   <li>Chłodzenie: Automatyczne</li>
                   <li>Oprogramowanie: Polskojęzyczne</li>
                   <li>Panel sterujący: Wolnostojący</li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           {/if}
@@ -723,7 +765,7 @@
               zastosowaniach.
             </p>
 
-            <div class="right_menu">
+            <!--  <div class="right_menu">
               <nav>
                 <ul>
                   <li>
@@ -737,6 +779,14 @@
                 </ul>
               </nav>
             </div>
+            -->
+
+            <Maszyny_table_plotery />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
 
           {#if expandedView}
@@ -753,7 +803,7 @@
                   src="/assets/maszyny/certus_7111_temp_schemat02.png"
                   alt="Schemat techniczny plotera przemysłowego m_ploter - widok 2"
                 />
-
+                <!-- 
                 <h2>Parametry techniczne</h2>
                 <ul>
                   <li>Wymiary: XXXX x YYYY x ZZZZ mm</li>
@@ -761,7 +811,7 @@
                   <li>Chłodzenie: Automatyczne</li>
                   <li>Oprogramowanie: Polskojęzyczne</li>
                   <li>Panel sterujący: Wolnostojący</li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           {/if}
@@ -809,7 +859,7 @@
               zastosowaniach.
             </p>
 
-            <div class="right_menu">
+            <!--   <div class="right_menu">
               <nav>
                 <ul>
                   <li>
@@ -822,7 +872,15 @@
                   <li><MenuEmail text="Kontakt" href="#" /></li>
                 </ul>
               </nav>
-            </div>
+            </div> -->
+
+            <Maszyny_table_zabudowa />
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
 
           {#if expandedView}
@@ -840,14 +898,14 @@
                   alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 2"
                 />
 
-                <h2>Parametry techniczne</h2>
+                <!--  <h2>Parametry techniczne</h2>
                 <ul>
                   <li>Wymiary: XXXX x YYYY x ZZZZ mm</li>
                   <li>Silniki: Serwo AC</li>
                   <li>Chłodzenie: Automatyczne</li>
                   <li>Oprogramowanie: Polskojęzyczne</li>
                   <li>Panel sterujący: Wolnostojący</li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           {/if}
@@ -859,7 +917,7 @@
           in:fade={{ duration: 300, delay: 200 }}
           out:fade={{ duration: 300, delay: 100 }}
         >
-          <h1>Frezarka Certus</h1>
+          <h1>Frezarka 5osi</h1>
 
           <div class="left_image no-sel">
             <img
@@ -898,7 +956,7 @@
               Łatwa w obsłudze, z intuicyjnym oprogramowaniem.
             </p>
 
-            <div class="right_menu">
+            <!--  <div class="right_menu">
               <nav>
                 <ul>
                   <li>
@@ -911,7 +969,15 @@
                   <li><MenuEmail text="Kontakt" href="#" /></li>
                 </ul>
               </nav>
-            </div>
+            </div> -->
+
+            <Maszyny_table_frezarki5osiowe />
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
 
           {#if expandedView}
@@ -929,14 +995,14 @@
                   alt="Schemat techniczny grawerki Certus 6040 - widok 2"
                 />
 
-                <h2>Parametry techniczne</h2>
+                <!--  <h2>Parametry techniczne</h2>
                 <ul>
                   <li>Wymiary: 600 x 400 x 150 mm</li>
                   <li>Silniki: Krokowe</li>
                   <li>Chłodzenie: Powietrzne</li>
                   <li>Oprogramowanie: Polskojęzyczne</li>
                   <li>Panel sterujący: Zintegrowany</li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           {/if}
@@ -987,7 +1053,7 @@
               Solidna konstrukcja zapewniająca stabilność.
             </p>
 
-            <div class="right_menu">
+            <!--  <div class="right_menu">
               <nav>
                 <ul>
                   <li>
@@ -1000,7 +1066,15 @@
                   <li><MenuEmail text="Kontakt" href="#" /></li>
                 </ul>
               </nav>
-            </div>
+            </div> -->
+
+            <Maszyny_table_grawerki />
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
 
           {#if expandedView}
@@ -1018,14 +1092,14 @@
                   alt="Schemat techniczny grawerki Certus 3030 - widok 2"
                 />
 
-                <h2>Parametry techniczne</h2>
+                <!--  <h2>Parametry techniczne</h2>
                 <ul>
                   <li>Wymiary: 300 x 300 x 100 mm</li>
                   <li>Silniki: Krokowe</li>
                   <li>Chłodzenie: Powietrzne</li>
                   <li>Oprogramowanie: Polskojęzyczne</li>
                   <li>Panel sterujący: Zintegrowany</li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           {/if}
@@ -1063,19 +1137,9 @@
           out:fly={{ x: 400, duration: 500, delay: 400 }}
         >
           <div class="right_content">
-            <h1>
-              <!-- Content for Tokarka Certus 200 (Tokarki) -->
-              Wysokowydajna tokarka CNC do obróbki metalu.
-            </h1>
-            <p>
-              Idealna do produkcji seryjnej i precyzyjnych elementów.
-              <br />
-              Wyposażona w zaawansowane systemy sterowania i automatyzacji.
-              <br />
-              Solidna konstrukcja zapewniająca długotrwałą pracę.
-            </p>
+            
 
-            <div class="right_menu">
+            <!--   <div class="right_menu">
               <nav>
                 <ul>
                   <li>
@@ -1088,7 +1152,45 @@
                   <li><MenuEmail text="Kontakt" href="#" /></li>
                 </ul>
               </nav>
-            </div>
+            </div> -->
+
+
+
+            <h1>
+              Wielkoformatowa platforma bramowa, która łączy funkcje frezarki,
+              tokarki, wiertarki i urządzenia tnącego w jednej maszynie
+            </h1>
+            <p>Zalety:</p>
+            
+            <ul class="">
+              <li>
+                Sztywna konstrukcja bramowa z obustronnym serwonapędem i
+                kompensacją kąta bramy
+              </li>
+            
+              <li>
+                Modułowa konfiguracja 3 – 5 osi pozwala dobrać głowice do zadań
+                mieszanych
+              </li>
+            
+              <li>
+                Stół rastrowy próżniowy z pompą Becker 250 m³/h dla pewnego
+                mocowania arkuszy
+              </li>
+            
+              <li>Wrzeciona do 20 kW z liniowym lub rewolwerowym ATC</li>
+            </ul>
+
+
+
+
+            <Maszyny_table_ploteryLinearne />
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
 
           {#if expandedView}
@@ -1106,14 +1208,14 @@
                   alt="Schemat techniczny tokarki Certus 200 - widok 2"
                 />
 
-                <h2>Parametry techniczne</h2>
+                <!--  <h2>Parametry techniczne</h2>
                 <ul>
                   <li>Wymiary: 2000 x 1000 x 1500 mm</li>
                   <li>Silniki: Serwo AC</li>
                   <li>Chłodzenie: Cieczą</li>
                   <li>Oprogramowanie: Polskojęzyczne</li>
                   <li>Panel sterujący: Wolnostojący</li>
-                </ul>
+                </ul> -->
               </div>
             </div>
           {/if}
@@ -1393,31 +1495,95 @@
 </section>
 
 <style lang="scss">
+  :global(.activeMachine .right_content) {
+    color: #595959;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 35vw;
+    h1 {
+      text-align: left;
+      margin-top: 4rem;
+      border-left: solid 0.4em #96a500;
+      margin-left: -21.6px;
+      padding-left: 1.5em;
+      color: var(--color-text-primary);
+      font-size: x-large;
+    }
 
+    p {
+      padding-top: 2em;
+      text-align: left;
+      padding-left: 1.5em;
+      width: 35vw;
+    }
 
-:global(.swiper-nav-button.swiper-button-disabled){
+    ul {
+      list-style: none;
+      text-align: left;
 
-opacity: 0.1 !important;
-cursor: not-allowed !important;
-pointer-events: none !important;
-transition: all;
+      margin-top: 1em;
+      padding-left: 1.5em;
+      li {
+        border-left: solid 0.1em #96a500;
+        padding-left: 12px;
+        margin-bottom: 5px;
+      }
+    }
 
+    .right_menu {
+      width: 100%;
+      margin-top: 4em;
 
-}
+      nav {
+        width: 100%;
 
-.subListMachines{
+        ul {
+          list-style-type: none;
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-around;
+          border-top: 1px solid gray;
+          border-bottom: 1px solid gray;
+          margin-top: 2rem;
+          padding-top: 3rem;
+          padding-bottom: 3rem;
 
-  display: flex;
-  .image{
-
-    cursor: pointer;
+          li {
+            display: flex;
+          }
+          li img {
+            width: 1.7em;
+            margin-right: 20px;
+          }
+        }
+      }
+    }
   }
-  button{
+  :global(.activeMachine .maszyny-dane-tabela) {
+    margin-top: 4em;
+    padding-bottom: 24em;
+    font-size: 0.95rem;
+  }
+  :global(.swiper-nav-button.swiper-button-disabled) {
+    opacity: 0.1 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    transition: all;
+  }
 
-cursor: pointer;
-}
-}
-
+  .subListMachines {
+    display: flex;
+    .image {
+      cursor: pointer;
+    }
+    button {
+      cursor: pointer;
+    }
+  }
 
   .pattern-overlay {
     position: absolute;
@@ -1494,6 +1660,8 @@ cursor: pointer;
   }
 
   .activeMachine .left {
+    position: relative;
+    z-index: 10000010;
     width: 60%;
     display: flex;
     height: 100%;
@@ -1517,6 +1685,8 @@ cursor: pointer;
     flex-direction: row;
     justify-content: flex-start;
     transition: width 0.3s ease-in-out;
+    position: relative;
+    z-index: 10000020;
   }
 
   .activeMachine .right.expanded {
@@ -1550,61 +1720,7 @@ cursor: pointer;
       padding-left: 2rem;
     }
   }
-  .activeMachine .right_content {
-    color: #595959;
-    display: flex;
-    flex-direction: column;
-    align-content: flex-start;
-    align-items: flex-start;
-    justify-content: flex-start;
-    max-width: 35vw;
-    h1 {
-      text-align: left;
-      margin-top: 4rem;
-      border-left: solid 0.4em #96a500;
-      margin-left: -21.6px;
-      padding-left: 1.5em;
-      color: var(--color-text-primary);
-      font-size: x-large;
-    }
-
-    p {
-      padding-top: 2em;
-      text-align: left;
-      padding-left: 1.5em;
-      width: 35vw;
-    }
-
-    .right_menu {
-      width: 100%;
-      margin-top: 4em;
-
-      nav {
-        width: 100%;
-
-        ul {
-          list-style-type: none;
-          display: flex;
-          flex-direction: row;
-          align-items: flex-start;
-          justify-content: space-around;
-          border-top: 1px solid gray;
-          border-bottom: 1px solid gray;
-          margin-top: 2rem;
-          padding-top: 3rem;
-          padding-bottom: 3rem;
-
-          li {
-            display: flex;
-          }
-          li img {
-            width: 1.7em;
-            margin-right: 20px;
-          }
-        }
-      }
-    }
-  }
+  
 
   .activeMachine .left_image {
     width: 100%;
@@ -1802,11 +1918,11 @@ cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    button{
+    button {
       transform: scale(0.85);
       transition: transform 0.3s ease;
-    
-      .headlines{
+
+      .headlines {
         transform: translateY(90px);
       }
     }
@@ -2000,11 +2116,11 @@ cursor: pointer;
       width: 40px;
       height: 40px;
     }
-    
+
     .swiper-nav-prev {
       left: 1rem;
     }
-    
+
     .swiper-nav-next {
       right: 1rem;
     }

@@ -8,6 +8,17 @@
       "_internal.js"
     ]
   },
+  "_Maszyny_table_zabudowa.js": {
+    "file": "chunks/Maszyny_table_zabudowa.js",
+    "name": "Maszyny_table_zabudowa",
+    "imports": [
+      "_ssr.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Maszyny_table_zabudowa.JOqPW4la.css",
+      "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css"
+    ]
+  },
   "_Section_Image01.js": {
     "file": "chunks/Section_Image01.js",
     "name": "Section_Image01",
@@ -51,7 +62,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/Section_Referencje.Bx5Z1Tj-.css"
+      "_app/immutable/assets/Section_Referencje.8haTYXHV.css"
     ]
   },
   "_Serwis.js": {
@@ -63,16 +74,6 @@
     ],
     "css": [
       "_app/immutable/assets/Serwis.5zoTaRFN.css"
-    ]
-  },
-  "_cta-button-kategory.js": {
-    "file": "chunks/cta-button-kategory.js",
-    "name": "cta-button-kategory",
-    "imports": [
-      "_ssr.js"
-    ],
-    "css": [
-      "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css"
     ]
   },
   "_cta-button-kategory.svelte_svelte_type_style_lang.js": {
@@ -166,7 +167,7 @@
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.nTBQv2fY.css"
+      "_app/immutable/assets/_layout.CAWWBlCI.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -183,14 +184,14 @@
     "imports": [
       "_ssr.js",
       "_Section_Referencje.js",
-      "_cta-button-kategory.js",
+      "_Maszyny_table_zabudowa.js",
       "_Section_Kontakt.js",
       "_Section_Image01.js",
       "_Section_Image02.js",
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.B7lotsyF.css"
+      "_app/immutable/assets/_page.CCCiDkKO.css"
     ]
   },
   "src/routes/dokumentacja/+page.svelte": {
@@ -261,12 +262,12 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_cta-button-kategory.js",
+      "_Maszyny_table_zabudowa.js",
       "_Section_Referencje.js",
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.BccLbHUJ.css"
+      "_app/immutable/assets/_page.ByBtA2PN.css"
     ]
   },
   "src/routes/onas/+layout.ts": {
