@@ -14,6 +14,12 @@
   import { typoFix } from "$lib/utils/typography";
   import list from "$lib/data/maszyny.json";
 
+
+  //tables dla maszyn
+  import Maszyny_table_frezarki from "../../components/tables/Maszyny_table_frezarki.svelte";
+  
+
+
   register();
 
   let activeCategory = null;
@@ -568,7 +574,7 @@
           in:fade={{ duration: 300, delay: 0 }}
           out:fade={{ duration: 300, delay: 0 }}
         >
-          <h1>Certus 1212 m_frezarka</h1>
+          <h1>Frezarki CNC HMM</h1>
 
           <div class="left_image no-sel">
             <img
@@ -623,6 +629,9 @@
               od opcji) pozwalające maszynie zachować wysoką jakość i dokładność
               obróbki.
             </p>
+           
+
+         
 
             <div class="right_menu">
               <nav>
@@ -638,6 +647,10 @@
                 </ul>
               </nav>
             </div>
+
+
+            <Maszyny_table_frezarki />
+
           </div>
 
           {#if expandedView}
@@ -1789,6 +1802,14 @@ cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    button{
+      transform: scale(0.85);
+      transition: transform 0.3s ease;
+    
+      .headlines{
+        transform: translateY(90px);
+      }
+    }
   }
 
   @keyframes fadeInSlider {
@@ -1853,9 +1874,10 @@ cursor: pointer;
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
+    transform: scale(0.75);
   }
   .items:hover .item .image {
-    transform: scale(1.02);
+    transform: scale(0.8);
   }
   .item .image img {
     display: block;

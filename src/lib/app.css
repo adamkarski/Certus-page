@@ -22,11 +22,6 @@ body {
   /* padding-top: 160px; Przestrzeń dla fixed navbar */
 }
 
-/* Styles for active menu items */
-.nav-link.active {
-  background: #96a500 !important;
-  color: white !important;
-}
 
 .no-sel {
   -webkit-user-select: none; /* Safari */
