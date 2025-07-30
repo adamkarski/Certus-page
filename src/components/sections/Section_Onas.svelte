@@ -6,7 +6,7 @@
 <section id="o-nas" class="o-nas">
   <div class="o-nas-container container">
     <div class="o-nas-content">
-      <div class="o-nas-text">
+      <div class="o-nas-text no-sel">
         <h2 class="section-title " use:typoFixAction>Nasze maszyny CNC łączą polską inżynierię</h2>
 
         <p class=" section-subtitle" use:typoFixAction>z najnowocześniejszymi technologiami obróbki.</p>

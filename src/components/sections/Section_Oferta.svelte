@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CtaButton from "../cta-button-kategory.svelte";
+  import OfertaGrid from "../OfertaGrid.svelte";
   import { typoFixAction } from '$lib/utils/typography';
   const oferta = [
    
@@ -10,56 +10,17 @@
 
 
   <div class="oferta-container container">
-    <div class="section-header">
+    <div class="section-header no-sel">
       <h2 class="section-title" use:typoFixAction>Polski producent maszyn CNC</h2>
 
       <p class="section-subtitle" use:typoFixAction>
-        10 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów CNC.<br />
+        10 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów CNC.<br /><br />
         Kompleksowa obsługa od projektu po serwis.<br /><br />
         — wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy
       </p>
     </div>
 
-    <div class="oferta-grid">
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img src="assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
-        </div>
-
-        <CtaButton text="Frezarki CNC" />
-      </div>
-
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img src="assets/ikony/maszyny/tokarki.svg" alt="Tokarki CNC" />
-        </div>
-
-        <CtaButton text="Plotery przemysłowe CNC" />
-      </div>
-
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img src="assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
-        </div>
-
-        <CtaButton text="Frezarki pięcioosiowe" />
-      </div>
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img src="assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
-        </div>
-
-        <CtaButton text="Grawerki CNC" />
-      </div>
-
-     <!--  <div class="oferta-card">
-        <div class="oferta-icon">
-          <img src="assets/ikony/maszyny/plotery.svg" alt="Plotery CNC" />
-        </div>
-
-        <CtaButton text="Plotery CNC" />
-      </div> -->
-    </div>
+    <OfertaGrid variant="homepage" />
   </div>
   <div class="first-container-back">
     
@@ -104,39 +65,6 @@
     margin-bottom: 80px;
   }
 
-  :global(.oferta-grid){
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    .oferta-card {
-    padding: 40px 30px;
-    border-radius: 10px;
-    text-align: center;
-   
-    transition: all 0.3s ease;
-    display: grid;
-    align-items: end;
-    justify-content: center;
-    align-content: center;
-  }
-  .oferta-card:hover {
-    transform: translateY(-10px);
- 
-    
-  }
-
-  .oferta-icon {
-    font-size: 60px;
-    margin-bottom: 25px;
-    display: block;
-    width: 4em;
-
-    img{
-      margin-left: 0.6em;
-    }
-  }
-
-  }
-
   
 
   
@@ -150,17 +78,12 @@
       padding: 80px 0;
     }
 
+    .oferta-container {
+      padding: 0 2rem;
+    }
+
     .section-title {
       font-size: 32px;
-    }
-
-    .oferta-grid {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-
-    .oferta-card {
-      padding: 30px 20px;
     }
   }
 </style>

@@ -74,9 +74,9 @@
   <div class="contact-flex">
     <div class="contact-left">
       <h2>Potrzebujesz pomocy serwisowej?</h2>
-      <ul class="contact-bullets no-sel">
+      <ul  use:typoFixAction  class="contact-bullets no-sel">
         <li>
-          <span class="bullet"></span>
+          <span  use:typoFixAction  class="bullet"></span>
           Doświadczony zespół techników z ponad 10-letnim stażem w branży CNC
         </li>
         <li>
@@ -360,6 +360,7 @@
     margin-bottom: 18px;
     font-size: 1rem;
     line-height: 1.5;
+    color: var(--color-gray-200);
   }
 
   .bullet {

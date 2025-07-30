@@ -10,14 +10,26 @@
 
   // Reaktywne zmienne dla aktywnych linków
   $: currentPath = $page.url.pathname;
-  $: isMaszynyActive = currentPath === '/maszyny' || currentPath.startsWith('/maszyny/');
-  $: isSerwisActive = currentPath === '/serwis' || currentPath.startsWith('/serwis/');
-  $: isOnasActive = currentPath === '/onas' || currentPath.startsWith('/onas/');
-  $: isKontaktActive = currentPath === '/kontakt' || currentPath.startsWith('/kontakt/');
+  $: isMaszynyActive =
+    currentPath === "/maszyny" || currentPath.startsWith("/maszyny/");
+  $: isSerwisActive =
+    currentPath === "/serwis" || currentPath.startsWith("/serwis/");
+  $: isOnasActive = currentPath === "/onas" || currentPath.startsWith("/onas/");
+  $: isKontaktActive =
+    currentPath === "/kontakt" || currentPath.startsWith("/kontakt/");
 
+  // Reaktywna zmienna dla źródła Lottie w zależności od szerokości ekranu
+  $: lottieSource = windowWidth < 900 
+    ? "https://cdn.lottielab.com/l/82wmUWPKg24DUr.json"
+    : "https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json";
+
+  $: logoMini = windowWidth < 900
+    ? "logomini"
+    : "logofull";
   let LottiePlayer;
   let scrolled = false;
   let showLottie = false;
+  let windowWidth = 0;
 
   let isFocused = false;
   let isMaszynyDropdownOpen = false;
@@ -51,6 +63,13 @@
     window.addEventListener("scroll", handleScroll);
     handleScroll();
 
+    // Obsługa zmiany rozmiaru okna
+    const handleResize = () => {
+      windowWidth = window.innerWidth;
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Ustaw początkową wartość
+
     // Nasłuchuj na zmianę preloadera
     const unsubscribe = preloaderVisible.subscribe((visible) => {
       if (!visible) {
@@ -75,6 +94,7 @@
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
       unsubscribe();
     };
   });
@@ -102,12 +122,10 @@
 
   function handleMouseEnter() {
     clearTimeout(dropdownTimeout);
-   
   }
 
   function handleMouseLeave() {
-    dropdownTimeout = setTimeout(() => {
-    }, 150);
+    dropdownTimeout = setTimeout(() => {}, 150);
   }
 
   function handleLogoClick() {
@@ -118,11 +136,11 @@
   function handleMaszynyNavigation(event: MouseEvent, categoryId: string) {
     event.preventDefault();
     isMaszynyDropdownOpen = false; // Close dropdown on click
-    if (currentPath.startsWith('/maszyny')) {
+    if (currentPath.startsWith("/maszyny")) {
       // Already on /maszyny page, scroll to section
       const element = document.getElementById(categoryId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     } else {
       // Navigate to /maszyny page with hash
@@ -131,13 +149,16 @@
   }
 </script>
 
-<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-sel" class:scrolled>
+<nav
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-sel"
+  class:scrolled
+>
   <!-- Główna ramka navbar -->
   <div class="px-4 sm:px-6 lg:px-8 ramka">
     <div class="relative menubar">
       <div class="flex items-center px-8 py-4 contenerNav">
         <!-- Logo -->
-        <div class="flex items-center logoCertus">
+        <div class="flex items-center logoCertus {logoMini}">
           <a
             href="/"
             class="flex items-center space-x-2 group"
@@ -146,7 +167,7 @@
             {#if showLottie && LottiePlayer}
               <svelte:component
                 this={LottiePlayer}
-                src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"
+                src={lottieSource}
                 autoplay={true}
                 loop={false}
                 controls={false}
@@ -161,16 +182,18 @@
 
         <!-- Menu główne -->
         <div class="md:flex items-center space-x-1 menuItems">
-     
-
           <!-- Maszyny z dropdown -->
           <div
             class="relative dropDownMenu"
-            on:mouseenter={() => isMaszynyDropdownOpen = true}
-            on:mouseleave={() => isMaszynyDropdownOpen = false}
+            on:mouseenter={() => (isMaszynyDropdownOpen = true)}
+            on:mouseleave={() => (isMaszynyDropdownOpen = false)}
             role="group"
           >
-            <a href="/maszyny" class="nav-link flex items-center space-x-1" class:active={isMaszynyActive}>
+            <a
+              href="/maszyny"
+              class="nav-link flex items-center space-x-1"
+              class:active={isMaszynyActive}
+            >
               <span>Maszyny</span>
               <svg
                 class="w-4 h-4 transition-transform duration-300"
@@ -200,25 +223,30 @@
                       {#each kategorieMaszyn as kategoria, i}
                         <li>
                           <a
-                            on:click={(e) => handleMaszynyNavigation(e, kategoria.id)}
+                            on:click={(e) =>
+                              handleMaszynyNavigation(e, kategoria.id)}
                             class="submenu-item block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500 flex items-center"
-                            on:mouseenter={() => hoveredCategory = kategoria}
+                            on:mouseenter={() => (hoveredCategory = kategoria)}
                             in:fade={{ delay: i * 50, duration: 200 }}
                           >
-                         
                             {kategoria.title}
                           </a>
                         </li>
                       {/each}
-
-
-                     
                     </ul>
                   </div>
-                  <div class="w-2/3 bg-gray-50 flex flex-col items-center justify-center p-4 image-container">
+                  <div
+                    class="w-2/3 bg-gray-50 flex flex-col items-center justify-center p-4 image-container"
+                  >
                     {#if hoveredCategory}
                       {#key hoveredCategory.id}
-                        <img src={hoveredCategory.img} alt={hoveredCategory.title} class="max-h-48 mx-auto mb-4 rounded-lg menu-image" in:fade={{ delay: 150, duration: 150 }} out:fade={{ duration: 150 }}>
+                        <img
+                          src={hoveredCategory.img}
+                          alt={hoveredCategory.title}
+                          class="max-h-48 mx-auto mb-4 rounded-lg menu-image"
+                          in:fade={{ delay: 150, duration: 150 }}
+                          out:fade={{ duration: 150 }}
+                        />
                       {/key}
                     {/if}
                   </div>
@@ -227,12 +255,11 @@
             {/if}
           </div>
 
-
           <!-- Bestseller z dropdown -->
           <div
             class="relative dropDownMenu bestsellerDropDown"
-            on:mouseenter={() => isBestsellerDropdownOpen = true}
-            on:mouseleave={() => isBestsellerDropdownOpen = false}
+            on:mouseenter={() => (isBestsellerDropdownOpen = true)}
+            on:mouseleave={() => (isBestsellerDropdownOpen = false)}
             role="group"
           >
             <a href="#" class="nav-link flex items-center space-x-1">
@@ -265,17 +292,19 @@
                       <span class="badge-text"> BESTSELLER</span>
                     </div> -->
                     <h3 class="bestseller-title">Plotery przemysłowe CNC</h3>
-                    <p class="bestseller-subtitle">Najchętniej wybierane przez naszych klientów</p>
+                    <p class="bestseller-subtitle">
+                      Najchętniej wybierane przez naszych klientów
+                    </p>
                   </div>
-                  
+
                   <div class="bestseller-image mb-4">
-                    <img 
-                      src="/assets/maszyny/combined_88930d1c.png" 
-                      alt="Plotery przemysłowe CNC - Bestseller" 
+                    <img
+                      src="/assets/maszyny/combined_88930d1c.png"
+                      alt="Plotery przemysłowe CNC - Bestseller"
                       class="bestseller-img"
                     />
                   </div>
-                  
+
                   <div class="bestseller-features mb-4">
                     <ul class="features-list">
                       <li>✓ Najwyższa precyzja cięcia</li>
@@ -283,13 +312,13 @@
                       <li>✓ Kompleksowa obsługa serwisowa</li>
                     </ul>
                   </div>
-                  
+
                   <div class="bestseller-cta">
-                    <CtaButton 
-                      text="Zobacz dlaczego wybierają nas" 
+                    <CtaButton
+                      text="Zobacz dlaczego wybierają nas"
                       on:click={() => {
                         isBestsellerDropdownOpen = false;
-                        window.location.href = '/maszyny/#ploteryPrzemyslowe';
+                        window.location.href = "/maszyny/#ploteryPrzemyslowe";
                       }}
                     />
                   </div>
@@ -297,7 +326,6 @@
               </div>
             {/if}
           </div>
-
 
           <!-- Serwis -->
           <a href="/serwis" class="nav-link" class:active={isSerwisActive}>
@@ -310,7 +338,11 @@
           </a>
 
           <!-- Kontakt -->
-          <a href="/kontakt" class="nav-link kontakt-nav" class:active={isKontaktActive}>
+          <a
+            href="/kontakt"
+            class="nav-link kontakt-nav"
+            class:active={isKontaktActive}
+          >
             <span>Kontakt</span>
           </a>
 
@@ -420,9 +452,6 @@
               </svg>
             </button>
           </div>
-       
-       
-       
         </div>
 
         <!-- Spacer to push search and phone to the right -->
@@ -435,31 +464,25 @@
 </nav>
 
 <style lang="scss">
-
-
-
-.bestsellerDropDown{
-
-  margin-left: 0px !important;
-  padding-left: 0px;
-
-}
-
+  .bestsellerDropDown {
+    margin-left: 0px !important;
+    padding-left: 0px;
+  }
 
   .menubar {
     width: 100%;
   }
 
-.nav-link.kontakt-nav{
-  margin-right: 20px;
-}
+  .nav-link.kontakt-nav {
+    margin-right: 20px;
+  }
 
   .searchBox {
     display: none;
     align-content: center;
     align-items: center;
     width: auto;
-    #search-input{
+    #search-input {
       width: 100px;
     }
   }
@@ -478,10 +501,8 @@
     height: 76px;
     margin-top: 2px;
 
-    .dropDownMenu{
-
+    .dropDownMenu {
       margin-left: 25px;
-
     }
     a {
       padding-left: 20px;
@@ -559,14 +580,13 @@
 
     &:hover {
       color: var(--color-text-primary);
-    background-color: var(--color-gray-100);
-    border-color: var(--color-primary-dark);
+      background-color: var(--color-gray-100);
+      border-color: var(--color-primary-dark);
     }
 
     &.active {
-      
       color: white !important;
-      background-color:#788391 !important;
+      background-color: #788391 !important;
       // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27.38 16.53'%3E%3Cpath fill='%2396a500' d='M13.87,0S0,16.53,0,16.53c3.37,0,10.14,0,13.51,0,0,0,13.87-16.53,13.87-16.53'/%3E%3C/svg%3E") !important;
       background-repeat: no-repeat !important;
       background-position: center center !important;
@@ -575,7 +595,6 @@
 
       border-radius: 5 !important;
 
-      
       span {
         position: relative;
         z-index: 2;
@@ -658,8 +677,7 @@
 
     &:hover {
       color: var(--color-text-primary);
-    background-color: var(--color-gray-100);
-   
+      background-color: var(--color-gray-100);
     }
   }
 
@@ -668,19 +686,16 @@
     padding: 24px;
     margin-top: 0px;
     margin-left: 210px;
-  
-    ul li{
 
+    ul li {
       padding: 10px;
       border-bottom: 1px solid #ccc;
       cursor: pointer;
     }
-    .submenu-item:hover{
+    .submenu-item:hover {
       color: var(--color-text-primary);
-    background-color: var(--color-gray-100);
-    border-color: var(--color-primary-dark);
-
-
+      background-color: var(--color-gray-100);
+      border-color: var(--color-primary-dark);
     }
   }
 
@@ -797,5 +812,12 @@
     margin-left: -60px;
   }
 
-
+  /* Responsywność - dostosowanie menu poniżej 1160px */
+  @media (max-width: 1160px) {
+    .nav-link{
+      font-size: 12px;
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+  }
 </style>

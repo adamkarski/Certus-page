@@ -1903,6 +1903,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 50%; /* Zapewnia równomierne rozmiary dla slides-per-view="2" */
+    flex-shrink: 0; /* Zapobiega kurczeniu się slajdów */
     button {
       transform: scale(0.85);
       transition: transform 0.3s ease;
@@ -1928,6 +1930,7 @@
   .items {
     flex: 1;
     max-width: 100vw;
+    min-width: 0; /* Zapobiega problemom z flex shrinking */
     padding: 8rem;
     width: auto;
     cursor: pointer;
@@ -1965,6 +1968,9 @@
     margin-left: 0.2em;
     padding-bottom: 2rem;
     transition: all 0.3s ease;
+    position: absolute;
+    margin-top: -180px;
+    text-align: left;
   }
   .items:hover .headlines .topline {
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);

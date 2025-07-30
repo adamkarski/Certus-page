@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import CtaButton from "../cta-button.svelte";
     import { fade } from "svelte/transition";
+  import { typoFixAction } from "$lib/utils/typography";
   export let isKontaktPage = false; // Dodano deklarację propsa
   let formData = {
     firstName: "",
@@ -151,7 +152,7 @@
 <section class="contact-flex">
   <div class="contact-left no-sel" class:is-kontakt-page={isKontaktPage}>
     <h2>Masz pytania? Skontaktuj się z nami!</h2>
-    <ul class="contact-bullets no-sel">
+    <ul use:typoFixAction class="contact-bullets no-sel">
       <li>
         <span class="bullet"></span>
         Wypełnij formularz, a nasz doradca skontaktuje się z Tobą, by omówić szczegóły
@@ -462,6 +463,7 @@
     margin-bottom: 18px;
     font-size: 1rem;
     line-height: 1.5;
+    color: var(--color-gray-200);
   }
   .bullet {
     width: 11px;

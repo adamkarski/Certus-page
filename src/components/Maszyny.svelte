@@ -1,5 +1,6 @@
 <script lang="ts">
   import CtaButton from "./cta-button-kategory.svelte";
+  import OfertaGrid from "./OfertaGrid.svelte";
   import Section_Maszyny_Image01 from "./sections/Section_Maszyny_Image01.svelte";
   import Section_Maszyny_Video from "./sections/Section_Maszyny_Video.svelte";
   import Section_Maszyny_Image02 from "./sections/Section_Maszyny_Image02.svelte";
@@ -16,13 +17,6 @@
   import "./tables/table.css";
 
   const maszyny = [];
-
-  function scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  }
 </script>
 
 <section class="maszyny_page gradientHero">
@@ -38,87 +32,7 @@
       <hr />
     </div>
   </div>
-  <div class="oferta-container container">
-    <div class="oferta-grid">
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
-        </div>
-
-        <CtaButton
-          text="Frezarki CNC HMM"
-          on:click={() => scrollToSection("frezarki")}
-        />
-      </div>
-
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img
-            src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
-            alt="Przemysłowe plotery CNC"
-          />
-        </div>
-
-        <CtaButton
-          text="Plotery CNC"
-          on:click={() => scrollToSection("ploteryPrzemyslowe")}
-        />
-      </div>
-
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img
-            src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg"
-            alt="Przemysłowe plotery CNC"
-          />
-        </div>
-
-        <CtaButton
-          text="Plotery CNC w zabudowie"
-          on:click={() => scrollToSection("ploteryPrzemysloweZabudowa")}
-        />
-      </div>
-
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img
-            src="/assets/ikony/maszyny/frezarki5osiowe.svg"
-            alt="Frezarki pięcioosiowe"
-          />
-        </div>
-
-        <CtaButton
-          text="Frezarki pięcioosiowe"
-          on:click={() => scrollToSection("frezarki5osiowe")}
-        />
-      </div>
-
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
-        </div>
-
-        <CtaButton
-          text="Grawerki CNC"
-          on:click={() => scrollToSection("grawerki")}
-        />
-      </div>
-
-      <div class="oferta-card">
-        <div class="oferta-icon">
-          <img
-            src="/assets/ikony/maszyny/ploteryLinearne.svg"
-            alt="Plotery tnące linearne CNC"
-          />
-        </div>
-
-        <CtaButton
-          text="Plotery tnące linearne CNC"
-          on:click={() => scrollToSection("ploteryLinearne")}
-        />
-      </div>
-    </div>
-  </div>
+  <OfertaGrid variant="maszyny" />
 </section>
 
 <!-- Frezarki CNC HMM -->
@@ -432,16 +346,18 @@
     <div class="maszyny-dane-gallery-column">
       <Section_Maszyny_Image01
         sectionId="grawerki-image"
-        imgSrc="/assets/maszyny/80f5ea646ec.png"
+        imgSrc="/assets/maszyny/certus_7111_temp_schemat01.png"
         title="Grawerki CNC"
         subtitle="Precyzyjne grawerowanie"
       />
 
-      <Section_Maszyny_Video
-        sectionId="grawerki-video"
-        videoSrc="/assets/video/video.m4v"
-        title="Przykłady prac"
-        subtitle="Zobacz realizacje na grawerkach"
+      <Section_Maszyny_Image02
+        sectionId="grawerki-gallery"
+        imgSrc="/assets/maszyny/certus_7111_temp.png"
+        title="Galeria grawerek"
+        subtitle="Zobacz nasze realizacje"
+        ctaText="Przejdź do galerii"
+        ctaAction={() => console.log("Galeria grawerek")}
       />
     </div>
   </div>
@@ -511,20 +427,20 @@
     </div>
 
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image02
-        sectionId="frezarki5-gallery"
-        imgSrc="/assets/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg"
-        title="Frezarki 5-osiowe"
-        subtitle="Skomplikowane kształty 3D"
-        ctaText="Zobacz możliwości"
-        ctaAction={() => console.log("Galeria 5-osiowe")}
+      <Section_Maszyny_Image01
+        sectionId="frezarki5osiowe-image"
+        imgSrc="/assets/maszyny/certus_7111_temp_schemat01.png"
+        title="Frezarki pięcioosiowe"
+        subtitle="Zaawansowana obróbka"
       />
 
-      <Section_Maszyny_Image01
-        sectionId="frezarki5-details"
-        imgSrc="/assets/maszyny/certus_7111_temp_schemat02.png"
-        title="Przykłady detali"
-        subtitle="Precyzyjne obróbki wieloosiowe"
+      <Section_Maszyny_Image02
+        sectionId="frezarki5osiowe-gallery"
+        imgSrc="/assets/maszyny/certus_7111_temp.png"
+        title="Galeria frezarek 5-osiowych"
+        subtitle="Zobacz możliwości"
+        ctaText="Przejdź do galerii"
+        ctaAction={() => console.log("Galeria frezarek 5-osiowych")}
       />
     </div>
   </div>
@@ -594,89 +510,20 @@
     </div>
 
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Video
-        sectionId="plotery-tnace-video"
-        videoSrc="/assets/video/video.m4v"
-        title="Plotery tnące w akcji"
-        subtitle="Zobacz proces cięcia materiałów"
+      <Section_Maszyny_Image01
+        sectionId="ploteryLinearne-image"
+        imgSrc="/assets/maszyny/88930d1c.png"
+        title="Plotery tnące linearne"
+        subtitle="Precyzyjne cięcie"
       />
 
       <Section_Maszyny_Image02
-        sectionId="plotery-materials"
-        imgSrc="/assets/certus-serwis-pogwarancyjny.png"
-        title="Materiały do cięcia"
-        subtitle="Szeroka gama możliwości"
-        ctaText="Zobacz materiały"
-        ctaAction={() => console.log("Materiały do cięcia")}
-      />
-    </div>
-  </div>
-  <div class="maszyny-dane-cta">
-    <CtaButton text="Zamów konsultację" />
-  </div>
-</section>
-
-<!-- Maszyny specjalistyczne -->
-<section id="specjalistyczne" class="maszyny-dane">
-  <div class="maszyny-dane-header no-sel">
-    <img
-      src="/assets/ikony/maszyny/specjalistyczne.svg"
-      alt="Maszyny specjalistyczne"
-      class="maszyny-dane-ikona"
-    />
-    <h2>Maszyny specjalistyczne</h2>
-  </div>
-  <hr class="maszyny-dane-hr" />
-  <div class="maszyny-dane-text-image">
-    <div class="left">
-      <ul class="maszyny-dane-lista">
-        <li>
-          Przeznaczone do obróbki materiałów wymagających specjalistycznych
-          rozwiązań.
-        </li>
-        <li>
-          Dostosowane do indywidualnych potrzeb klienta i specyfiki produkcji.
-        </li>
-        <li>Wysoka precyzja i niezawodność w trudnych warunkach.</li>
-        <li>Możliwość integracji z istniejącymi systemami produkcyjnymi.</li>
-        <li>Wsparcie techniczne i serwisowe na każdym etapie.</li>
-      </ul>
-      <div class="maszyny-dane-podtytul">Przykładowe zastosowania:</div>
-      <ul class="maszyny-dane-lista-small">
-        <li>Produkcja prototypów i małych serii.</li>
-        <li>Obróbka materiałów egzotycznych.</li>
-        <li>Zastosowania w przemyśle lotniczym i medycznym.</li>
-        <li>Automatyzacja procesów produkcyjnych.</li>
-      </ul>
-    </div>
-    <div class="right">
-      <img
-        src="/assets/maszyny/certus_7111_temp.png"
-        alt="Maszyny specjalistyczne"
-      />
-    </div>
-  </div>
-
-  <div class="maszyny-dane-content">
-    <div class="maszyny-dane-table-column">
-      <div class="maszyny-dane-tabela-wrap">
-        <Maszyny_table_specjalistyczne />
-      </div>
-    </div>
-
-    <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image01
-        sectionId="specjalistyczne-image"
-        imgSrc="/assets/maszyny/certus_7111_temp.png"
-        title="Maszyny specjalistyczne"
-        subtitle="Rozwiązania na miarę"
-      />
-
-      <Section_Maszyny_Video
-        sectionId="specjalistyczne-video"
-        videoSrc="/assets/video/video.m4v"
-        title="Maszyny specjalistyczne w akcji"
-        subtitle="Zobacz możliwości"
+        sectionId="ploteryLinearne-gallery"
+        imgSrc="/assets/maszyny/combined_88930d1c.png"
+        title="Galeria ploterów linearnych"
+        subtitle="Zobacz w akcji"
+        ctaText="Przejdź do galerii"
+        ctaAction={() => console.log("Galeria ploterów linearnych")}
       />
     </div>
   </div>
@@ -695,51 +542,5 @@
     background-repeat: no-repeat;
     background-position-x: -1500px;
     background-size: cover;
-  }
-
-  .oferta-container {
-    overflow: hidden;
-    width: 100%;
-    padding: 0 9rem;
-  }
-
-  :global(.oferta-grid) {
-
-
-
-
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
-    .oferta-card {
-      padding: 10px 0px;
-      border-radius: 0px;
-      text-align: center;
-      transition: all 0.3s ease;
-      display: grid;
-      align-items: end;
-      justify-content: center;
-      align-content: center;
-   
-   
-
-    }
-   
-
-    .oferta-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .oferta-icon {
-      font-size: 60px;
-      margin-bottom: 25px;
-      display: block;
-      width: 4em;
-
-      img {
-        margin-left: 0.6em;
-      }
-    }
   }
 </style>
