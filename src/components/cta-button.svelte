@@ -31,8 +31,13 @@
   :global(.oferta-card .cta-button:hover .maszyny_span) {
     font-size: 14px;
   }
+:global(.oferta-card .cta-button .cta-svg) {
+  margin-left: -43px;
+  }
 
-
+:global(.oferta-card){
+  transform: scale(0.85);
+}
 
   .cta-button {
     background-color: #eeeeee;

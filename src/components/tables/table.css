@@ -121,11 +121,7 @@ hr,
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.oferta-container {
-  overflow: hidden;
-  width: 100%;
-  padding: 0 9rem;
-}
+
 
 .pattern-overlay {
   position: absolute;
@@ -433,14 +429,14 @@ tbody tr td .text {
     font-size: 32px;
   }
 
-  .oferta-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
+  /* .oferta-grid { */
+    /* grid-template-columns: 1fr; */
+    /* gap: 30px; */
+  /* } */
 
-  .oferta-card {
-    padding: 30px 20px;
-  }
+  /* .oferta-card { */
+    /* padding: 30px 20px; */
+  /* } */
 
   /* Dodatkowe style dla małych ekranów */
   .maszyny-dane .maszyny-dane-content {

@@ -11,10 +11,9 @@
   import Maszyny_table_frezarki5osiowe from "./tables/Maszyny_table_frezarki5osiowe.svelte";
   import Maszyny_table_ploteryLinearne from "./tables/Maszyny_table_ploteryLinearne.svelte";
   import Maszyny_table_specjalistyczne from "./tables/Maszyny_table_specjalistyczne.svelte";
-  
 
   // import css styles
-  import './tables/table.css';
+  import "./tables/table.css";
 
   const maszyny = [];
 
@@ -25,65 +24,6 @@
     }
   }
 </script>
-
-
-
-<style lang="scss">
- 
-
-
- .first-container-back {
-  background-image: url(/assets/first-block-polyline.svg);
-  position: absolute;
-  top: 209px;
-  width: 100%;
-  height: 44px;
-  background-repeat: no-repeat;
-  background-position-x: -1500px;
-  background-size: cover;
-}
-
-
-
-
-  :global(.oferta-grid) {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
- 
-   .oferta-card {
-     padding: 40px 30px;
-     border-radius: 10px;
-     text-align: center;
-     transition: all 0.3s ease;
-     display: grid;
-     align-items: end;
-     justify-content: center;
-     align-content: center;
-   }
- 
-   .oferta-card:hover {
-     transform: translateY(-10px);
-   }
- 
-   .oferta-icon {
-     font-size: 60px;
-     margin-bottom: 25px;
-     display: block;
-     width: 4em;
- 
-     img {
-       margin-left: 0.6em;
-     }
-   }
- }
-  
-  
-  </style>
-
-
-
-
-
 
 <section class="maszyny_page gradientHero">
   <div class="first-container-back"></div>
@@ -107,7 +47,7 @@
 
         <CtaButton
           text="Frezarki CNC HMM"
-          on:click={() => scrollToSection('frezarki')}
+          on:click={() => scrollToSection("frezarki")}
         />
       </div>
 
@@ -121,7 +61,7 @@
 
         <CtaButton
           text="Plotery CNC"
-          on:click={() => scrollToSection('ploteryPrzemyslowe')}
+          on:click={() => scrollToSection("ploteryPrzemyslowe")}
         />
       </div>
 
@@ -149,21 +89,18 @@
 
         <CtaButton
           text="Frezarki pięcioosiowe"
-          on:click={() => scrollToSection('frezarki5osiowe')}
+          on:click={() => scrollToSection("frezarki5osiowe")}
         />
       </div>
 
       <div class="oferta-card">
         <div class="oferta-icon">
-          <img
-            src="/assets/ikony/maszyny/grawerki.svg"
-            alt="Grawerki CNC"
-          />
+          <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
         </div>
 
         <CtaButton
           text="Grawerki CNC"
-          on:click={() => scrollToSection('grawerki')}
+          on:click={() => scrollToSection("grawerki")}
         />
       </div>
 
@@ -177,7 +114,7 @@
 
         <CtaButton
           text="Plotery tnące linearne CNC"
-          on:click={() => scrollToSection('ploteryLinearne')}
+          on:click={() => scrollToSection("ploteryLinearne")}
         />
       </div>
     </div>
@@ -241,11 +178,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-      
-
         <Maszyny_table_frezarki />
-
-
       </div>
     </div>
 
@@ -283,7 +216,7 @@
     <h2>Przemysłowe plotery CNC</h2>
   </div>
   <hr class="maszyny-dane-hr" />
-    <div class="maszyny-dane-text-image">
+  <div class="maszyny-dane-text-image">
     <div class="left">
       <ul class="maszyny-dane-lista">
         <li>
@@ -328,14 +261,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-      
-
-
-        <Maszyny_table_plotery/>
-
-
-
-
+        <Maszyny_table_plotery />
       </div>
     </div>
 
@@ -371,7 +297,7 @@
     <h2>Przemysłowe plotery CNC w zabudowie</h2>
   </div>
   <hr class="maszyny-dane-hr" />
-    <div class="maszyny-dane-text-image">
+  <div class="maszyny-dane-text-image">
     <div class="left">
       <ul class="maszyny-dane-lista">
         <li>
@@ -454,7 +380,7 @@
     <h2>Grawerki CNC</h2>
   </div>
   <hr class="maszyny-dane-hr" />
-    <div class="maszyny-dane-text-image">
+  <div class="maszyny-dane-text-image">
     <div class="left">
       <ul class="maszyny-dane-lista">
         <li>
@@ -535,7 +461,7 @@
     <h2>Frezarki pięcioosiowe</h2>
   </div>
   <hr class="maszyny-dane-hr" />
-    <div class="maszyny-dane-text-image">
+  <div class="maszyny-dane-text-image">
     <div class="left">
       <ul class="maszyny-dane-lista">
         <li>
@@ -618,7 +544,7 @@
     <h2>Plotery tnące linearne CNC</h2>
   </div>
   <hr class="maszyny-dane-hr" />
-    <div class="maszyny-dane-text-image">
+  <div class="maszyny-dane-text-image">
     <div class="left">
       <ul class="maszyny-dane-lista">
         <li>
@@ -705,7 +631,8 @@
     <div class="left">
       <ul class="maszyny-dane-lista">
         <li>
-          Przeznaczone do obróbki materiałów wymagających specjalistycznych rozwiązań.
+          Przeznaczone do obróbki materiałów wymagających specjalistycznych
+          rozwiązań.
         </li>
         <li>
           Dostosowane do indywidualnych potrzeb klienta i specyfiki produkcji.
@@ -758,3 +685,61 @@
   </div>
 </section>
 
+<style lang="scss">
+  .first-container-back {
+    background-image: url(/assets/first-block-polyline.svg);
+    position: absolute;
+    top: 209px;
+    width: 100%;
+    height: 44px;
+    background-repeat: no-repeat;
+    background-position-x: -1500px;
+    background-size: cover;
+  }
+
+  .oferta-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 0 9rem;
+  }
+
+  :global(.oferta-grid) {
+
+
+
+
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    .oferta-card {
+      padding: 10px 0px;
+      border-radius: 0px;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: grid;
+      align-items: end;
+      justify-content: center;
+      align-content: center;
+   
+   
+
+    }
+   
+
+    .oferta-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .oferta-icon {
+      font-size: 60px;
+      margin-bottom: 25px;
+      display: block;
+      width: 4em;
+
+      img {
+        margin-left: 0.6em;
+      }
+    }
+  }
+</style>
