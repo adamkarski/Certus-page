@@ -6,70 +6,53 @@
   import { page } from "$app/stores";
   import { resetHeroSwiper } from "../lib/resetHeroSwiperStore";
   import kategorieMaszyn from "$lib/data/maszyny.json";
-  import CtaButton from "./cta-button.svelte";
   import { cubicOut } from "svelte/easing";
 
-  // State for mobile menu
+  // --- STATE ---
   let isMobileMenuOpen = false;
   let isMobileMaszynyOpen = false;
+  let autoExpandTimeout: number | undefined;
 
-  function toggleMobileMenu() {
-    isMobileMenuOpen = !isMobileMenuOpen;
-    if (!isMobileMenuOpen) {
-      isMobileMaszynyOpen = false; // Close sub-menu when main menu closes
-    }
-  }
+  let isMaszynyDropdownOpen = false;
+  let isBestsellerDropdownOpen = false;
+  let dropdownTimeout: number;
 
-  function closeMobileMenu() {
-    isMobileMenuOpen = false;
-    isMobileMaszynyOpen = false;
-  }
+  let LottiePlayer: any;
+  let scrolled = false;
+  let showLottie = false;
+  let windowWidth = 0;
+  
+  let hoveredCategory = kategorieMaszyn[0];
 
-  // Reactive variables for active links
+  // --- REACTIVE COMPUTED STATE ---
   $: currentPath = $page.url.pathname;
   $: isMaszynyActive = currentPath.startsWith("/maszyny");
   $: isSerwisActive = currentPath.startsWith("/serwis");
   $: isOnasActive = currentPath.startsWith("/onas");
   $: isKontaktActive = currentPath.startsWith("/kontakt");
 
-  // Lottie player setup
-  let LottiePlayer;
-  let scrolled = false;
-  let showLottie = false;
-  let windowWidth = 0;
-  $: lottieSource = windowWidth < 900 
+  $: lottieSource = (windowWidth > 757 && windowWidth < 900)
     ? "https://cdn.lottielab.com/l/82wmUWPKg24DUr.json"
     : "https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json";
-  $: logoMini = windowWidth < 900 ? "logomini" : "logofull";
 
-  // Dropdown state
-  let isMaszynyDropdownOpen = false;
-  let isBestsellerDropdownOpen = false;
-  let hoveredCategory = kategorieMaszyn[0];
-
+  // --- LIFECYCLE ---
   onMount(async () => {
     const module = await import("@lottiefiles/svelte-lottie-player");
     LottiePlayer = module.LottiePlayer;
 
-    const handleScroll = () => {
-      scrolled = window.scrollY > 50;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
+    const handleScroll = () => { scrolled = window.scrollY > 50; };
     const handleResize = () => {
       windowWidth = window.innerWidth;
-      if (window.innerWidth > 757 && isMobileMenuOpen) {
-        closeMobileMenu();
-      }
+      if (window.innerWidth > 757 && isMobileMenuOpen) closeMobileMenu();
     };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
+    handleScroll();
     handleResize();
 
     const unsubscribe = preloaderVisible.subscribe((visible) => {
-      if (!visible) {
-        showLottie = true;
-      }
+      if (!visible) showLottie = true;
     });
     showLottie = true;
 
@@ -77,8 +60,45 @@
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
       unsubscribe();
+      clearTimeout(dropdownTimeout);
+      clearTimeout(autoExpandTimeout);
     };
   });
+
+  // --- METHODS ---
+  function openMenu(menu: 'maszyny' | 'bestseller') {
+    clearTimeout(dropdownTimeout);
+    if (menu === 'maszyny') isMaszynyDropdownOpen = true;
+    if (menu === 'bestseller') isBestsellerDropdownOpen = true;
+  }
+
+  function closeMenu(menu: 'maszyny' | 'bestseller') {
+    dropdownTimeout = setTimeout(() => {
+      if (menu === 'maszyny') isMaszynyDropdownOpen = false;
+      if (menu === 'bestseller') isBestsellerDropdownOpen = false;
+    }, 200);
+  }
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      autoExpandTimeout = setTimeout(() => { isMobileMaszynyOpen = true; }, 2500);
+    } else {
+      clearTimeout(autoExpandTimeout);
+      isMobileMaszynyOpen = false;
+    }
+  }
+
+  function handleMaszynyToggle() {
+    isMobileMaszynyOpen = !isMobileMaszynyOpen;
+    clearTimeout(autoExpandTimeout);
+  }
+
+  function closeMobileMenu() {
+    isMobileMenuOpen = false;
+    isMobileMaszynyOpen = false;
+    clearTimeout(autoExpandTimeout);
+  }
 
   function handleLogoClick() {
     resetHeroSwiper.set(true);
@@ -86,19 +106,11 @@
     goto("/");
   }
 
-  async function handleMaszynyNavigation(categoryId: string) {
-    isMaszynyDropdownOpen = false;
+  async function handleNavigation(path: string, categoryId?: string) {
     closeMobileMenu();
-    await tick(); 
-
-    if (currentPath.startsWith("/maszyny")) {
-      const element = document.getElementById(categoryId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      goto(`/maszyny/#${categoryId}`);
-    }
+    await tick();
+    const finalPath = categoryId ? `${path}#${categoryId}` : path;
+    goto(finalPath);
   }
 </script>
 
@@ -106,7 +118,7 @@
   <div class="px-4 sm:px-6 lg:px-8 ramka">
     <div class="relative menubar">
       <div class="flex items-center justify-between px-8 py-4 contenerNav">
-        <div class="flex items-center logoCertus {logoMini}">
+        <div class="flex items-center logoCertus">
           <a href="/" class="flex items-center space-x-2 group" on:click|preventDefault={handleLogoClick}>
             {#if showLottie && LottiePlayer}
               <svelte:component this={LottiePlayer} src={lottieSource} autoplay loop={false} controls={false} height="auto" width="auto" background="transparent" controlsLayout="none" />
@@ -115,7 +127,7 @@
         </div>
 
         <div class="desktop-menu-items">
-          <div class="relative dropDownMenu" on:mouseenter={() => isMaszynyDropdownOpen = true} on:mouseleave={() => isMaszynyDropdownOpen = false}>
+          <div class="relative" on:mouseenter={() => openMenu('maszyny')} on:mouseleave={() => closeMenu('maszyny')}>
             <a href="/maszyny" class="nav-link flex items-center space-x-1" class:active={isMaszynyActive}>
               <span>Maszyny</span>
               <svg class="w-4 h-4 transition-transform duration-300" class:rotate-180={isMaszynyDropdownOpen} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -127,7 +139,7 @@
                     <ul>
                       {#each kategorieMaszyn as kategoria, i}
                         <li>
-                          <a href="#" role="button" on:click|preventDefault={() => handleMaszynyNavigation(kategoria.id)} class="submenu-item" on:mouseenter={() => hoveredCategory = kategoria} in:fade={{ delay: i * 50, duration: 200 }}>
+                          <a href="#" role="button" on:click|preventDefault={() => handleNavigation('/maszyny', kategoria.id)} class="submenu-item" on:mouseenter={() => hoveredCategory = kategoria} in:fade={{ delay: i * 50, duration: 200 }}>
                             {kategoria.title}
                           </a>
                         </li>
@@ -173,21 +185,21 @@
           {/if}
         </div>
         <div class="mobile-links-container">
-          <button class="mobile-nav-link expandable" on:click={() => isMobileMaszynyOpen = !isMobileMaszynyOpen}>
+          <button class="mobile-nav-link expandable" on:click={handleMaszynyToggle}>
             Maszyny
             <svg class="w-6 h-6 transition-transform duration-300" class:rotate-180={isMobileMaszynyOpen} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           {#if isMobileMaszynyOpen}
             <div class="mobile-submenu">
-              {#each kategorieMaszyn as kategoria}
-                <a href="#" on:click|preventDefault={() => handleMaszynyNavigation(kategoria.id)} class="mobile-submenu-link">{kategoria.title}</a>
+              {#each kategorieMaszyn as kategoria, i}
+                <a href="#" on:click|preventDefault={() => handleNavigation('/maszyny', kategoria.id)} class="mobile-submenu-link" transition:fly={{ x: -20, delay: i * 50, duration: 200 }}>{kategoria.title}</a>
               {/each}
             </div>
           {/if}
-          <a href="/maszyny/#ploteryPrzemyslowe" class="mobile-nav-link" on:click={closeMobileMenu}>Bestseller</a>
-          <a href="/serwis" class="mobile-nav-link" on:click={closeMobileMenu}>Serwis</a>
-          <a href="/onas" class="mobile-nav-link" on:click={closeMobileMenu}>O nas</a>
-          <a href="/kontakt" class="mobile-nav-link" on:click={closeMobileMenu}>Kontakt</a>
+          <a href="/maszyny/#ploteryPrzemyslowe" class="mobile-nav-link" on:click={() => handleNavigation('/maszyny', 'ploteryPrzemyslowe')}>Bestseller</a>
+          <a href="/serwis" class="mobile-nav-link" on:click={() => handleNavigation('/serwis')}>Serwis</a>
+          <a href="/onas" class="mobile-nav-link" on:click={() => handleNavigation('/onas')}>O nas</a>
+          <a href="/kontakt" class="mobile-nav-link" on:click={() => handleNavigation('/kontakt')}>Kontakt</a>
         </div>
       </div>
     </div>
@@ -368,11 +380,6 @@
   }
 
   // Existing styles from the original file
-  .bestsellerDropDown {
-    margin-left: 0px !important;
-    padding-left: 0px;
-  }
-
   .menubar {
     width: 100%;
   }
@@ -386,10 +393,6 @@
     outline-offset: 0px;
   }
 
-  .menuItems a:focus {
-    outline: 0px solid #788391;
-    outline-offset: 0px;
-  }
   nav {
     width: 100%;
     margin-top: 0;
