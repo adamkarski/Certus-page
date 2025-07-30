@@ -304,7 +304,7 @@
         </div>
       {:else if messageInputMode === "record"}
         <div class="form-group">
-          <label>Wiadomość głosowa</label>
+          <label for="message-voice">Wiadomość głosowa</label>
           {#if !isRecording && !recordedFileName}
             <CtaButton text="Rozpocznij nagrywanie" on:click={startRecording} />
           {:else if isRecording}

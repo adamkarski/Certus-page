@@ -11,6 +11,62 @@
 /* ========================================
    HERO SECTION - ACTIVE MACHINE VIEW
    ======================================== */
+.logomini .lottie-player .animation  svg > g > g:nth-child(4){
+  
+  opacity: 0;
+
+
+}
+
+.menuItems{
+  width: 700px;
+
+  a{
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+
+
+@media (min-width: 1260px) {
+.menuItems{
+  width:600px;
+}
+
+
+}
+  @media (max-width: 772px) {
+
+
+
+
+
+
+
+  
+
+}
+
+
+
+
+@media (max-width: 927px) {
+
+  .logomini{
+    
+    min-width: 62px !important;
+        width: 30px;
+  
+  }
+
+
+
+}
+
+
+
 
 @media (max-width: 1200px) {
   .activeMachine {

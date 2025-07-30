@@ -10,7 +10,6 @@
   import Section_Referencje from '../components/sections/Section_Referencje.svelte';
   import LocalBusiness from '../components/LocalBusiness.svelte';
   import Section_Hero from '../components/sections/Section_Hero.svelte';
-  export let params; // Dodano deklarację params
 </script>
 
 <svelte:head>

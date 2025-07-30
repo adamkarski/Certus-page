@@ -5,7 +5,6 @@
   import '../lib/app.css';
   import { onMount } from 'svelte';
   import { preloaderVisible } from '$lib/preloaderStore';
-  export let params; // Dodano deklarację params
   let loading = true;
   onMount(() => {
     // Sprawdź czy strona już się załadowała

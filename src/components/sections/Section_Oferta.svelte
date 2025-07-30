@@ -43,10 +43,6 @@
     background-repeat: no-repeat;
     background-position-x: -1500px;
     background-size: cover;
-    img{
-      height: 37px;
-
-    }
 
   }
   .oferta {

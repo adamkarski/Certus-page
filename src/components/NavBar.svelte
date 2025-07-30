@@ -30,6 +30,7 @@
   let scrolled = false;
   let showLottie = false;
   let windowWidth = 0;
+  let active = false;
 
   let isFocused = false;
   let isMaszynyDropdownOpen = false;
@@ -223,6 +224,8 @@
                       {#each kategorieMaszyn as kategoria, i}
                         <li>
                           <a
+                            href="#"
+                            role="button"
                             on:click={(e) =>
                               handleMaszynyNavigation(e, kategoria.id)}
                             class="submenu-item block px-4 py-3 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-200 border-l-4 border-transparent hover:border-green-500 flex items-center"
@@ -262,7 +265,7 @@
             on:mouseleave={() => (isBestsellerDropdownOpen = false)}
             role="group"
           >
-            <a href="#" class="nav-link flex items-center space-x-1">
+            <a href="javascript:void(0);" class="nav-link flex items-center space-x-1">
               <span>Bestseller</span>
               <svg
                 class="w-4 h-4 transition-transform duration-300"

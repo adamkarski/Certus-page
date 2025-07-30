@@ -120,6 +120,7 @@
   }
   .video-header h1 {
     margin: 0;
+    width: 80%;
     font-size: 2.5rem;
     color: white;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
