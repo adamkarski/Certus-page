@@ -11,13 +11,18 @@
 
   // State for mobile menu
   let isMobileMenuOpen = false;
+  let isMobileMaszynyOpen = false;
 
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
+    if (!isMobileMenuOpen) {
+      isMobileMaszynyOpen = false; // Close sub-menu when main menu closes
+    }
   }
 
   function closeMobileMenu() {
     isMobileMenuOpen = false;
+    isMobileMaszynyOpen = false;
   }
 
   // Reactive variables for active links
@@ -55,7 +60,7 @@
     const handleResize = () => {
       windowWidth = window.innerWidth;
       if (window.innerWidth > 757 && isMobileMenuOpen) {
-        isMobileMenuOpen = false;
+        closeMobileMenu();
       }
     };
     window.addEventListener("resize", handleResize);
@@ -77,6 +82,7 @@
 
   function handleLogoClick() {
     resetHeroSwiper.set(true);
+    closeMobileMenu();
     goto("/");
   }
 
@@ -139,6 +145,7 @@
               </div>
             {/if}
           </div>
+          <a href="/maszyny/#ploteryPrzemyslowe" class="nav-link">Bestseller</a>
           <a href="/serwis" class="nav-link" class:active={isSerwisActive}>Serwis</a>
           <a href="/onas" class="nav-link" class:active={isOnasActive}>O nas</a>
           <a href="/kontakt" class="nav-link kontakt-nav" class:active={isKontaktActive}>Kontakt</a>
@@ -160,10 +167,28 @@
   {#if isMobileMenuOpen}
     <div class="mobile-menu-overlay" on:click={closeMobileMenu} transition:fade={{duration: 200}}>
       <div class="mobile-menu-content" on:click|stopPropagation transition:fly={{ x: '-100%', duration: 300, easing: cubicOut }}>
-        <a href="/maszyny" class="mobile-nav-link" on:click={closeMobileMenu}>Maszyny</a>
-        <a href="/serwis" class="mobile-nav-link" on:click={closeMobileMenu}>Serwis</a>
-        <a href="/onas" class="mobile-nav-link" on:click={closeMobileMenu}>O nas</a>
-        <a href="/kontakt" class="mobile-nav-link" on:click={closeMobileMenu}>Kontakt</a>
+        <div class="mobile-menu-header">
+          {#if LottiePlayer}
+            <svelte:component this={LottiePlayer} src={"https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"} autoplay loop={false} controls={false} height="auto" width="180px" background="transparent" controlsLayout="none" />
+          {/if}
+        </div>
+        <div class="mobile-links-container">
+          <button class="mobile-nav-link expandable" on:click={() => isMobileMaszynyOpen = !isMobileMaszynyOpen}>
+            Maszyny
+            <svg class="w-6 h-6 transition-transform duration-300" class:rotate-180={isMobileMaszynyOpen} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          {#if isMobileMaszynyOpen}
+            <div class="mobile-submenu">
+              {#each kategorieMaszyn as kategoria}
+                <a href="#" on:click|preventDefault={() => handleMaszynyNavigation(kategoria.id)} class="mobile-submenu-link">{kategoria.title}</a>
+              {/each}
+            </div>
+          {/if}
+          <a href="/maszyny/#ploteryPrzemyslowe" class="mobile-nav-link" on:click={closeMobileMenu}>Bestseller</a>
+          <a href="/serwis" class="mobile-nav-link" on:click={closeMobileMenu}>Serwis</a>
+          <a href="/onas" class="mobile-nav-link" on:click={closeMobileMenu}>O nas</a>
+          <a href="/kontakt" class="mobile-nav-link" on:click={closeMobileMenu}>Kontakt</a>
+        </div>
       </div>
     </div>
   {/if}
@@ -258,23 +283,70 @@
 
   .mobile-menu-content {
     background: #232c32;
-    width: 80%;
-    max-width: 350px;
+    width: 85%;
+    max-width: 400px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.5rem;
     padding: 2rem;
     transform-origin: left center;
     box-shadow: 5px 0px 25px rgba(0,0,0,0.5);
+    overflow-y: auto;
+  }
+
+  .mobile-menu-header {
+    width: 100%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 1rem;
+  }
+
+  .mobile-links-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
   }
 
   .mobile-nav-link {
     color: white;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0.5rem 0;
+    cursor: pointer;
+
+    &.expandable {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &:hover {
+      color: #96a500;
+    }
+  }
+
+  .mobile-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid #96a500;
+    margin: 0.5rem 0;
+  }
+
+  .mobile-submenu-link {
+    color: #e0e0e0;
+    font-size: 1.2rem;
     text-decoration: none;
     transition: color 0.2s;
     &:hover {
