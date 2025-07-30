@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
-  import { typoFix } from '$lib/utils/typography';
+  import { typoFixAction } from '$lib/utils/typography';
   
   let sectionEl: HTMLElement;
   let visible = false;
@@ -31,7 +31,7 @@
     </div>
     
     <div class="content-intro">
-      <p class="intro-text">{@html typoFix("Rola naszego przedsiębiorstwa nie kończy się zaraz po dostarczeniu Ci maszyn. Oferujemy bowiem także profesjonalny serwis gwarancyjny oraz pogwarancyjny. W ten sposób możemy zapewnić naszym Klientom pełen zakres wsparcia technicznego.")}</p>
+      <p class="intro-text" use:typoFixAction>Rola naszego przedsiębiorstwa nie kończy się zaraz po dostarczeniu Ci maszyn. Oferujemy bowiem także profesjonalny serwis gwarancyjny oraz pogwarancyjny. W ten sposób możemy zapewnić naszym Klientom pełen zakres wsparcia technicznego.</p>
     </div>
   </div>
 </section>
@@ -42,19 +42,19 @@
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 0 : 9999 }}>
       <div class="info-card-header">
         <img src="/assets/green-arrow.svg" alt="Serwis gwarancyjny" class="info-icon" />
-        <span class="info-title">{@html typoFix('Serwis<br>gwarancyjny:')}</span>
+        <span class="info-title" use:typoFixAction>Serwis<br>gwarancyjny:</span>
       </div>
-      <p class="info-desc">
-        {@html typoFix('Zapewniamy pełen serwis gwarancyjny dla wszystkich naszych maszyn CNC. Nasz zespół techników jest dostępny, aby szybko rozwiązać wszelkie problemy.')}
+      <p class="info-desc" use:typoFixAction>
+        Zapewniamy pełen serwis gwarancyjny dla wszystkich naszych maszyn CNC. Nasz zespół techników jest dostępny, aby szybko rozwiązać wszelkie problemy.
       </p>
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 300 : 9999 }}>
       <div class="info-card-header">
         <img src="/assets/green-arrow.svg" alt="Serwis pogwarancyjny" class="info-icon" />
-        <span class="info-title">{@html typoFix('Serwis<br>pogwarancyjny:')}</span>
+        <span class="info-title" use:typoFixAction>Serwis<br>pogwarancyjny:</span>
       </div>
-      <p class="info-desc">
-        {@html typoFix('Nawet po zakończeniu okresu gwarancji, nadal świadczymy profesjonalne usługi serwisowe. Dbamy o długotrwałą współpracę z naszymi Klientami.')}
+      <p class="info-desc" use:typoFixAction>
+        Nawet po zakończeniu okresu gwarancji, nadal świadczymy profesjonalne usługi serwisowe. Dbamy o długotrwałą współpracę z naszymi Klientami.
       </p>
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 600 : 9999 }}>
@@ -62,8 +62,8 @@
         <img src="/assets/green-arrow.svg" alt="Przeróbki i modernizacje" class="info-icon" />
         <span class="info-title">Przeróbki<br>i modernizacje</span>
       </div>
-      <p class="info-desc">
-        {@html typoFix('Oferujemy przeróbki maszyn innych producentów oraz modernizacje istniejących urządzeń, dostosowując je do aktualnych potrzeb.')}
+      <p class="info-desc" use:typoFixAction>
+        Oferujemy przeróbki maszyn innych producentów oraz modernizacje istniejących urządzeń, dostosowując je do aktualnych potrzeb.
       </p>
     </div>
   </div>
@@ -121,12 +121,12 @@
       <div class="service-benefits">
         <h3>Dlaczego warto wybrać nasz serwis?</h3>
         <ul class="benefits-list">
-          <li>{@html typoFix("Kompleksowe wsparcie techniczne")}</li>
-          <li>{@html typoFix("Możliwość modernizacji i rozbudowy maszyn")}</li>
-          <li>{@html typoFix("Serwis na miejscu u klienta")}</li>
-          <li>{@html typoFix("Pomoc w konfiguracji i ustawieniu maszyn")}</li>
-          <li>{@html typoFix("Ciągłość pracy urządzeń")}</li>
-          <li>{@html typoFix("Profesjonalne doradztwo techniczne")}</li>
+          <li use:typoFixAction>Kompleksowe wsparcie techniczne</li>
+          <li use:typoFixAction>Możliwość modernizacji i rozbudowy maszyn</li>
+          <li use:typoFixAction>Serwis na miejscu u klienta</li>
+          <li use:typoFixAction>Pomoc w konfiguracji i ustawieniu maszyn</li>
+          <li use:typoFixAction>Ciągłość pracy urządzeń</li>
+          <li use:typoFixAction>Profesjonalne doradztwo techniczne</li>
         </ul>
       </div>
     </div>
@@ -138,7 +138,7 @@
   <div class="serwis-container container">
     <div class="content-section">
       <h2 class="section-title">Wsparcie techniczne na najwyższym poziomie</h2>
-      <p>{@html typoFix("Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Jako zespół wsparcia jesteśmy zawsze dostępni, aby rozwiązać wszelkie problemy i udzielić profesjonalnej pomocy w każdej sytuacji.")}</p>
+      <p use:typoFixAction>Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Jako zespół wsparcia jesteśmy zawsze dostępni, aby rozwiązać wszelkie problemy i udzielić profesjonalnej pomocy w każdej sytuacji.</p>
     </div>
   </div>
 </section>

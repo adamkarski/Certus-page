@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Section_Kontakt from './sections/Section_Kontakt.svelte';
-  import { typoFix } from '$lib/utils/typography';
+
   export let isKontaktPage = false;
 </script>
 

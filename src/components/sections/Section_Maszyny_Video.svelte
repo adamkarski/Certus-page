@@ -2,7 +2,7 @@
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   import { visibilityStore, setSectionVisible } from "../../lib/visibilityStore";
-  import { typoFix } from '$lib/utils/typography';
+  import { typoFixAction } from '$lib/utils/typography';
 
   export let sectionId: string = "maszyny-video";
   export let videoSrc: string = "/assets/video/placeholder-machine.mp4";
@@ -41,10 +41,10 @@
 
     <div class="maszyny-video-header" bind:this={headerEl} class:visible>
       {#if visible}
-        <h3 class="no-sel" in:fade={{ duration: 600, delay: 400 }}>
-          {@html typoFix(title)}
+        <h3 class="no-sel" in:fade={{ duration: 600, delay: 400 }} use:typoFixAction>
+          {title}
         </h3>
-        <p class="no-sel">{@html typoFix(subtitle)}</p>
+        <p class="no-sel" use:typoFixAction>{subtitle}</p>
       {/if}
     </div>
   </div>

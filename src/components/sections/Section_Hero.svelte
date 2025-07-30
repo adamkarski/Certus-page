@@ -11,7 +11,7 @@
   import { browser } from "$app/environment";
   import { writable } from "svelte/store";
   import { resetHeroSwiper } from "../../lib/resetHeroSwiperStore";
-  import { typoFix } from "$lib/utils/typography";
+  import { typoFixAction } from "$lib/utils/typography";
   import list from "$lib/data/maszyny.json";
 
   //tables dla maszyn
@@ -577,7 +577,7 @@
                       type="button"
                       on:click={() => openMachine("m-ploter")}
                     >
-                      <img class="image" src="/assets/maszyny/88930d1c.png" />
+                      <img class="image" src="/assets/maszyny/88930d1c.png" alt="Ploter przemysłowy" />
                     </button>
                   </div>
 
@@ -588,7 +588,7 @@
                       on:click={() => openMachine("m-ploter1")}
                     >
                       <img
-                        class="image"
+                        class="image" alt="Ploter przemysłowy bez zabudowy"
                         src="/assets/maszyny/80f5ea646ec.png"
                       />
                     </button>
@@ -642,18 +642,18 @@
           out:fly={{ x: 400, duration: 500, delay: 400 }}
         >
           <div class="right_content">
-            <h1>
-              Do szybkiego i wydajnego frezowania w materiałach takich jak stal,
-              aluminium, drewno, plastik itp.
+            <h1 use:typoFixAction>
+              Do szybkiego i wydajnego frezowania w materiałach takich jak stal, aluminium, drewno, plastik itp.
+              
             </h1>
-            <p>
+            <p use:typoFixAction>
               Przykłady zastosowań: wykonanie form wtryskowych, tłoczników,
               obróbkę modeli odlewniczych, do termo formowania, stempli, matryc
-              wykrojników ze stali i aluminium, grawerowania elementów itp.
-              <br />
-              Panel sterujący nie jest zintegrowany z maszyną, co pozwala na lepsze
-              zagospodarowanie stanowiska pracy. Oprogramowanie sterujące jest w
-              języku polskim.
+              wykrojników ze stali i aluminium, grawerowania elementów itp. <br
+              />
+              Panel sterujący nie jest zintegrowany z maszyną, co pozwala na
+              lepsze zagospodarowanie stanowiska pracy. Oprogramowanie sterujące
+              jest w języku polskim.
               <br />
               Niewątpliwym atutem urządzeń jest kompletna zabudowa maszyny co umożliwia
               ciągłe chłodzenie narzędzi jak i obrabianego materiału. Odstojnik,
@@ -755,11 +755,11 @@
           out:fly={{ x: 400, duration: 500, delay: 400 }}
         >
           <div class="right_content">
-            <h1>
+            <h1 use:typoFixAction>
               <!-- Content for m_ploter (Plotery Przemysłowe) -->
               Szczegóły dla plotera przemysłowego m_ploter.
             </h1>
-            <p>
+            <p use:typoFixAction>
               To jest przykładowy opis dla plotera przemysłowego m_ploter.
               Możesz tutaj dodać więcej informacji o jego funkcjach i
               zastosowaniach.
@@ -849,11 +849,11 @@
           out:fly={{ x: 400, duration: 500, delay: 400 }}
         >
           <div class="right_content">
-            <h1>
+            <h1 use:typoFixAction>
               <!-- Content for m_ploter1 (Plotery Przemysłowe) -->
               Szczegóły dla plotera przemysłowego m_ploter1.
             </h1>
-            <p>
+            <p use:typoFixAction> 
               To jest przykładowy opis dla plotera przemysłowego m_ploter1.
               Możesz tutaj dodać więcej informacji o jego funkcjach i
               zastosowaniach.
@@ -943,11 +943,11 @@
           out:fly={{ x: 400, duration: 500, delay: 400 }}
         >
           <div class="right_content">
-            <h1>
+            <h1 use:typoFixAction>
               <!-- Content for Grawerka Certus 6040 (Grawerki) -->
               Precyzyjne frezarki5osiowe w różnych materiałach.
             </h1>
-            <p>
+            <p use:typoFixAction>
               Idealna do tworzenia detali, tabliczek znamionowych, biżuterii i
               innych precyzyjnych zastosowań.
               <br />
@@ -1040,11 +1040,11 @@
           out:fly={{ x: 400, duration: 500, delay: 400 }}
         >
           <div class="right_content">
-            <h1>
+            <h1 use:typoFixAction>
               <!-- Content for Grawerka Certus 3030 (Grawerki) -->
               Kompaktowa grawerka do małych i średnich projektów.
             </h1>
-            <p>
+            <p use:typoFixAction>
               Idealna do personalizacji przedmiotów, tworzenia prototypów i prac
               hobbystycznych.
               <br />
@@ -1092,14 +1092,7 @@
                   alt="Schemat techniczny grawerki Certus 3030 - widok 2"
                 />
 
-                <!--  <h2>Parametry techniczne</h2>
-                <ul>
-                  <li>Wymiary: 300 x 300 x 100 mm</li>
-                  <li>Silniki: Krokowe</li>
-                  <li>Chłodzenie: Powietrzne</li>
-                  <li>Oprogramowanie: Polskojęzyczne</li>
-                  <li>Panel sterujący: Zintegrowany</li>
-                </ul> -->
+               
               </div>
             </div>
           {/if}
@@ -1137,8 +1130,6 @@
           out:fly={{ x: 400, duration: 500, delay: 400 }}
         >
           <div class="right_content">
-            
-
             <!--   <div class="right_menu">
               <nav>
                 <ul>
@@ -1154,35 +1145,30 @@
               </nav>
             </div> -->
 
-
-
-            <h1>
+            <h1 use:typoFixAction>
               Wielkoformatowa platforma bramowa, która łączy funkcje frezarki,
               tokarki, wiertarki i urządzenia tnącego w jednej maszynie
             </h1>
             <p>Zalety:</p>
-            
-            <ul class="">
+
+            <ul class="" use:typoFixAction>
               <li>
                 Sztywna konstrukcja bramowa z obustronnym serwonapędem i
                 kompensacją kąta bramy
               </li>
-            
+
               <li>
                 Modułowa konfiguracja 3 – 5 osi pozwala dobrać głowice do zadań
                 mieszanych
               </li>
-            
+
               <li>
                 Stół rastrowy próżniowy z pompą Becker 250 m³/h dla pewnego
                 mocowania arkuszy
               </li>
-            
+
               <li>Wrzeciona do 20 kW z liniowym lub rewolwerowym ATC</li>
             </ul>
-
-
-
 
             <Maszyny_table_ploteryLinearne />
 
@@ -1515,7 +1501,7 @@
 
     p {
       padding-top: 2em;
-      text-align: left;
+      text-align: justify;
       padding-left: 1.5em;
       width: 35vw;
     }
@@ -1720,7 +1706,6 @@
       padding-left: 2rem;
     }
   }
-  
 
   .activeMachine .left_image {
     width: 100%;

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
-  import { typoFix } from '$lib/utils/typography';
+  import { typoFixAction } from '$lib/utils/typography';
   
   let sectionEl: HTMLElement;
   let visible = false;
@@ -31,7 +31,7 @@
     </div>
     
     <div class="content-intro">
-      <p class="intro-text">{@html typoFix("Jesteśmy bardzo dumni z naszej ponad 10-letniej historii w branży nowoczesnych maszyn CNC. Nasze doświadczenie to oczywiście nie tylko liczby! Nasz sukces liczymy bowiem w ilości udanych projektów oraz w pełni zadowolonych Klientów.")}</p>
+      <p class="intro-text" use:typoFixAction>Jesteśmy bardzo dumni z naszej ponad 10-letniej historii w branży nowoczesnych maszyn CNC. Nasze doświadczenie to oczywiście nie tylko liczby! Nasz sukces liczymy bowiem w ilości udanych projektów oraz w pełni zadowolonych Klientów.</p>
     </div>
   </div>
 </section>
@@ -42,19 +42,19 @@
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 0 : 9999 }}>
       <div class="info-card-header">
         <img src="/assets/green-arrow.svg" alt="Doświadczony zespół" class="info-icon" />
-        <span class="info-title">{@html typoFix('Doskonale zgrani<br>inżynierowie:')}</span>
+        <span class="info-title" use:typoFixAction>Doskonale zgrani<br>inżynierowie:</span>
       </div>
-      <p class="info-desc">
-        {@html typoFix('Nasz zespół inżynierów to klucz do Twojego sukcesu. Ich wieloletnie doświadczenie, kreatywność, a także zgranie pozwalają nam kreować maszyny o nietypowej budowie i funkcjonalności.')}
+      <p class="info-desc" use:typoFixAction>
+        Nasz zespół inżynierów to klucz do Twojego sukcesu. Ich wieloletnie doświadczenie, kreatywność, a także zgranie pozwalają nam kreować maszyny o nietypowej budowie i funkcjonalności.
       </p>
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 300 : 9999 }}>
       <div class="info-card-header">
         <img src="/assets/green-arrow.svg" alt="Bogata oferta" class="info-icon" />
-        <span class="info-title">{@html typoFix('Bogata oferta<br>maszyn CNC:')}</span>
+        <span class="info-title" use:typoFixAction>Bogata oferta<br>maszyn CNC:</span>
       </div>
-      <p class="info-desc">
-        {@html typoFix('W naszej ofercie znajdziesz frezarki CNC do aluminium, plotery, grawerki do drewna, tokarki oraz centra obróbcze. Wszystkie urządzenia spełniają najwyższe standardy przemysłowe.')}
+      <p class="info-desc" use:typoFixAction>
+        W naszej ofercie znajdziesz frezarki CNC do aluminium, plotery, grawerki do drewna, tokarki oraz centra obróbcze. Wszystkie urządzenia spełniają najwyższe standardy przemysłowe.
       </p>
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 600 : 9999 }}>
@@ -62,8 +62,8 @@
         <img src="/assets/green-arrow.svg" alt="Jakość bez kompromisów" class="info-icon" />
         <span class="info-title">Jakość, która<br>nie lubi<br>kompromisów</span>
       </div>
-      <p class="info-desc">
-        {@html typoFix('Do produkcji naszych maszyn używamy tylko komponentów najwyższej jakości. To zapewnia nie tylko ich niezawodność, ale także precyzję i efektywność.')}
+      <p class="info-desc" use:typoFixAction>
+        Do produkcji naszych maszyn używamy tylko komponentów najwyższej jakości. To zapewnia nie tylko ich niezawodność, ale także precyzję i efektywność.
       </p>
     </div>
   </div>
@@ -74,12 +74,12 @@
   <div class="onas-container container">
     <div class="content-section">
       <h2 class="section-title">Nietypowe projekty dla wymagających Klientów</h2>
-      <p>{@html typoFix("Jednym z naszych atutów jest zdolność do tworzenia maszyn o nietypowej budowie i funkcjonalności. Pracowaliśmy dla Klientów z różnych branż, takich jak <strong>złotnictwo, produkcja okularów, przemysł tekstylny czy obróbka kamienia</strong>. Dostarczane przez nas urządzenia są nie tylko niezawodne, ale także dostosowane do specyficznych potrzeb.")}</p>
+      <p use:typoFixAction>Jednym z naszych atutów jest zdolność do tworzenia maszyn o nietypowej budowie i funkcjonalności. Pracowaliśmy dla Klientów z różnych branż, takich jak <strong>złotnictwo, produkcja okularów, przemysł tekstylny czy obróbka kamienia</strong>. Dostarczane przez nas urządzenia są nie tylko niezawodne, ale także dostosowane do specyficznych potrzeb.</p>
     </div>
 
     <div class="content-section">
       <h2 class="section-title">Zaufaj profesjonalistom</h2>
-      <p>{@html typoFix("Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Dodatkowo oferujemy własny serwis gwarancyjny i pogwarancyjny oraz przeróbki maszyn innych producentów.")}</p>
+      <p use:typoFixAction>Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Dodatkowo oferujemy własny serwis gwarancyjny i pogwarancyjny oraz przeróbki maszyn innych producentów.</p>
     </div>
   </div>
 </section>

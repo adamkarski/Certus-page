@@ -7,4 +7,17 @@ export function typoFix(text: string): string {
     new RegExp(`\\b(${sierotki.join('|')})\\s`, 'g'),
     (_, s) => `${s}\u00A0` // niełamliwa spacja
   );
+}
+
+// Akcja Svelte dla dyrektywy typoFix
+export function typoFixAction(node: HTMLElement) {
+  const originalText = node.textContent || '';
+  const fixedText = typoFix(originalText);
+  node.innerHTML = fixedText;
+  
+  return {
+    destroy() {
+      // Cleanup jeśli potrzebny
+    }
+  };
 } 

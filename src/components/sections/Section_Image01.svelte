@@ -2,7 +2,7 @@
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   import { visibilityStore, setSectionVisible } from "../../lib/visibilityStore";
-  import { typoFix } from '$lib/utils/typography';
+  import { typoFixAction } from '$lib/utils/typography';
 
   const sectionId = "video-header";
   let headerEl: HTMLDivElement;
@@ -36,10 +36,10 @@
     />
     <div class="image-header" bind:this={headerEl} class:visible>
       {#if visible}
-        <h1 class="no-sel" in:fade={{ duration: 600, delay: 800 }}>
-          {@html typoFix('Tworzone z pasją i precyzją')}
+        <h1 class="no-sel" in:fade={{ duration: 600, delay: 800 }} use:typoFixAction>
+          Tworzone z pasją i precyzją
         </h1>
-        <h3 class="no-sel">{@html typoFix('Optymalne do wykonywanych zadań.')}</h3>
+        <h3 class="no-sel" use:typoFixAction>Optymalne do wykonywanych zadań.</h3>
       {/if}
     </div>
 

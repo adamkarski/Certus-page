@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { typoFix } from '$lib/utils/typography';
+  import { typoFixAction } from '$lib/utils/typography';
 </script>
 
 <section class="reklamacje_page gradientHero">
@@ -13,7 +13,7 @@
       <h1 class="no-sel">Reklamacje</h1>
       <hr />
     </div>
-    <p>{@html typoFix("Reklamacje i zwroty w firmie Certus.")}</p>
+    <p use:typoFixAction>Reklamacje i zwroty w firmie Certus.</p>
   </div>
 </section>
 

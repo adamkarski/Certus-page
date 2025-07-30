@@ -90,9 +90,7 @@
     /* background: #222; */
     background-color: #7e8c00;
   }
-  .cta-button:hover .cta-svg .cls-1 {
-    /*  fill: #95a500; */
-  }
+ 
   .cta-button:hover .cta-svg .cls-2 {
     fill: #7e8c00;
   }
@@ -102,9 +100,7 @@
       /* background: #222; */
       background-color: #7e8c00;
     }
-    .cta-button:hover .cta-svg .cls-1 {
-      /*  fill: #95a500; */
-    }
+   
     .cta-button:hover .cta-svg .cls-2 {
       fill: #7e8c00;
     }
