@@ -13,6 +13,7 @@
   import { resetHeroSwiper } from "../../lib/resetHeroSwiperStore";
   import { typoFixAction } from "$lib/utils/typography";
   import list from "$lib/data/maszyny.json";
+  import { windowWidth } from "../../lib/visibilityStore";
 
   //tables dla maszyn
   import Maszyny_table_frezarki from "../../components/tables/Maszyny_table_frezarki.svelte";
@@ -75,7 +76,21 @@
       }
     }, 0); // Upewnij się, że swiperElement jest dostępny
     if (browser) {
+      // Initialize windowWidth
+      windowWidth.set(window.innerWidth);
+      
+      // Add resize listener
+      const handleResize = () => {
+        windowWidth.set(window.innerWidth);
+      };
+      window.addEventListener("resize", handleResize);
       window.addEventListener("popstate", handlePopstate);
+      
+      // Cleanup function
+      return () => {
+        window.removeEventListener("resize", handleResize);
+        window.removeEventListener("popstate", handlePopstate);
+      };
     }
     preloadImages(); // Preload images on mount
   });
@@ -86,18 +101,7 @@
 
     console.log("Swiper initialized, updating buttons");
 
-    // Configure breakpoints for responsive behavior
-    swiper.params.breakpoints = {
-      1024: {
-        slidesPerView: 2,
-        slidesPerGroup: 2,
-      },
-      0: {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-      }
-    };
-
+  
     // Set consistent speed for all transitions
     swiper.params.speed = 300; // 300ms for all transitions
 
@@ -126,6 +130,11 @@
       updateNavigationButtons(swiperElement.swiper);
     }, 100);
   }
+  $: slidesPerView = $windowWidth < 1024 ?  1 : 2;
+  
+  $: slidesPerGroup = $windowWidth > 1024 ? 1 : 2;
+
+ 
 
   // Function to update navigation buttons based on current slide
   function updateNavigationButtons(swiper) {
@@ -485,8 +494,9 @@
             <swiper-container
               pagination
               space-between="0"
-              slides-per-view="2"
-              slides-per-group="2"
+              slides-per-view={slidesPerView}
+              slides-per-group={slidesPerGroup}
+             
               mousewheel
               autoplay
               bind:this={swiperElement}
@@ -2110,7 +2120,6 @@
     width: 100%;
     height: 100%;
     min-height: 200px; /* Minimalna wysokość, żeby loader był widoczny */
-    background-color: #f0f0f0;
   }
 
   /* ————————————————  INNE  ———————————————— */
