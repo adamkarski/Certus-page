@@ -86,6 +86,24 @@
 
     console.log("Swiper initialized, updating buttons");
 
+    // Configure breakpoints for responsive behavior
+    swiper.params.breakpoints = {
+      1024: {
+        slidesPerView: 2,
+        slidesPerGroup: 2,
+      },
+      0: {
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+      }
+    };
+
+    // Set consistent speed for all transitions
+    swiper.params.speed = 300; // 300ms for all transitions
+
+    // Update swiper with new breakpoints
+    swiper.update();
+
     // Update navigation buttons state
     updateNavigationButtons(swiper);
 
@@ -161,34 +179,52 @@
   // Navigation button click handlers
   function handlePrevClick() {
     if (swiperElement && swiperElement.swiper) {
-      const currentIndex = swiperElement.swiper.activeIndex;
-      const currentGroup = Math.floor(currentIndex / 2);
+      const swiper = swiperElement.swiper;
+      const currentIndex = swiper.activeIndex;
+      const slidesPerGroup = swiper.params.slidesPerGroup || 2;
+      const currentGroup = Math.floor(currentIndex / slidesPerGroup);
 
-      console.log("Prev click - currentGroup:", currentGroup);
+      console.log("Prev click - currentGroup:", currentGroup, "slidesPerGroup:", slidesPerGroup);
+      console.time("Prev transition");
       if (currentGroup > 0) {
-        swiperElement.swiper.slidePrev();
+        const targetIndex = (currentGroup - 1) * slidesPerGroup;
+        console.log("Sliding to index:", targetIndex);
+        swiper.slideTo(targetIndex, 300); // 300ms transition
         // Update buttons after slide change
-        setTimeout(() => updateNavigationButtons(swiperElement.swiper), 100);
+        setTimeout(() => {
+          console.timeEnd("Prev transition");
+          updateNavigationButtons(swiper);
+        }, 350); // Slightly longer than transition
       }
     }
   }
 
   function handleNextClick() {
     if (swiperElement && swiperElement.swiper) {
-      const currentIndex = swiperElement.swiper.activeIndex;
-      const maxGroups = Math.ceil(list.length / 2);
-      const currentGroup = Math.floor(currentIndex / 2);
+      const swiper = swiperElement.swiper;
+      const currentIndex = swiper.activeIndex;
+      const slidesPerGroup = swiper.params.slidesPerGroup || 2;
+      const maxGroups = Math.ceil(list.length / slidesPerGroup);
+      const currentGroup = Math.floor(currentIndex / slidesPerGroup);
 
       console.log(
         "Next click - currentGroup:",
         currentGroup,
         "maxGroups:",
-        maxGroups
+        maxGroups,
+        "slidesPerGroup:",
+        slidesPerGroup
       );
+      console.time("Next transition");
       if (currentGroup < maxGroups - 1) {
-        swiperElement.swiper.slideNext();
+        const targetIndex = (currentGroup + 1) * slidesPerGroup;
+        console.log("Sliding to index:", targetIndex);
+        swiper.slideTo(targetIndex, 300); // 300ms transition
         // Update buttons after slide change
-        setTimeout(() => updateNavigationButtons(swiperElement.swiper), 100);
+        setTimeout(() => {
+          console.timeEnd("Next transition");
+          updateNavigationButtons(swiper);
+        }, 350); // Slightly longer than transition
       }
     }
   }
