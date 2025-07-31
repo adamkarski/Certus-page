@@ -35,6 +35,9 @@
   let imageLoadingStates = writable({});
 
   onMount(() => {
+    // Start preloading images immediately
+    preloadImages();
+    
     setTimeout(() => {
       swiperReady = true;
       if (browser) {
@@ -92,7 +95,6 @@
         window.removeEventListener("popstate", handlePopstate);
       };
     }
-    preloadImages(); // Preload images on mount
   });
 
   function handleSwiperInit(event) {
@@ -130,9 +132,30 @@
       updateNavigationButtons(swiperElement.swiper);
     }, 100);
   }
-  $: slidesPerView = $windowWidth < 1024 ?  1 : 2;
+  $: slidesPerView = $windowWidth < 1024 ? 1 : 2;
   
-  $: slidesPerGroup = $windowWidth > 1024 ? 1 : 2;
+  $: slidesPerGroup = $windowWidth < 1024 ? 1 : 2;
+
+  // Update swiper when window width changes
+  $: if (browser && swiperElement && swiperElement.swiper && $windowWidth) {
+    setTimeout(() => {
+      console.log("Window width changed, updating swiper:", $windowWidth);
+      const swiper = swiperElement.swiper;
+      
+      // Update swiper parameters
+      swiper.params.slidesPerView = slidesPerView;
+      swiper.params.slidesPerGroup = slidesPerGroup;
+      
+      // Update swiper
+      swiper.update();
+      
+      // Update navigation buttons
+      updateNavigationButtons(swiper);
+    }, 100);
+  }
+
+  // Debug image loading states
+  $: console.log("Image loading states:", $imageLoadingStates);
 
  
 
@@ -147,12 +170,15 @@
       // Without loop mode, we can use isBeginning and isEnd
       const currentIndex = swiper.activeIndex;
       const totalSlides = list.length;
-      const slidesPerView = 2; // slides-per-view="2"
+      const currentSlidesPerView = $windowWidth < 1024 ? 1 : 2; // Use reactive value
+      const currentSlidesPerGroup = $windowWidth < 1024 ? 1 : 2; // Use reactive value
 
       console.log("Navigation update:", {
         currentIndex,
         totalSlides,
-        slidesPerView,
+        slidesPerView: currentSlidesPerView,
+        slidesPerGroup: currentSlidesPerGroup,
+        windowWidth: $windowWidth,
         isBeginning: swiper.isBeginning,
         isEnd: swiper.isEnd,
         containerWidth: swiper.width,
@@ -164,12 +190,11 @@
       prevButton.classList.remove("swiper-button-disabled");
       nextButton.classList.remove("swiper-button-disabled");
 
-      // Alternative logic for slides-per-group="2"
-      const slidesPerGroup = 2;
-      const maxGroups = Math.ceil(totalSlides / slidesPerGroup);
-      const currentGroup = Math.floor(currentIndex / slidesPerGroup);
+      // Use reactive slidesPerGroup value
+      const maxGroups = Math.ceil(totalSlides / currentSlidesPerGroup);
+      const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
 
-      console.log("Group info:", { currentGroup, maxGroups, slidesPerGroup });
+      console.log("Group info:", { currentGroup, maxGroups, slidesPerGroup: currentSlidesPerGroup });
 
       // Check if we're at the beginning (group 0)
       if (currentGroup === 0) {
@@ -278,7 +303,9 @@
 
   // Funkcja do preloadingu obrazków
   function preloadImages() {
+    console.log("Starting preload images for", list.length, "items");
     list.forEach((item) => {
+      console.log("Preloading image for:", item.id, item.img);
       imageLoadingStates.update((current) => ({
         ...current,
         [item.id]: false,
@@ -286,6 +313,7 @@
       const img = new Image();
       img.src = item.img;
       img.onload = () => {
+        console.log("Image loaded successfully:", item.id);
         imageLoadingStates.update((current) => ({
           ...current,
           [item.id]: true,
