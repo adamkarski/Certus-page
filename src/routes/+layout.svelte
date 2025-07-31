@@ -5,6 +5,7 @@
   import '../lib/app.css';
   import { onMount } from 'svelte';
   import { preloaderVisible } from '$lib/preloaderStore';
+  import { activePage } from "$lib/visibilityStore";
   let loading = true;
   onMount(() => {
     // Sprawdź czy strona już się załadowała
@@ -19,6 +20,14 @@
     setTimeout(() => loading = false, 1000);
   });
   $: preloaderVisible.set(loading);
+
+  // Add active page class to body
+  $: if (typeof document !== 'undefined') {
+    // Remove all page classes
+    document.body.classList.remove('home', 'maszyny', 'serwis', 'onas', 'kontakt');
+    // Add current page class
+    document.body.classList.add($activePage);
+  }
 </script>
 
 {#if loading}

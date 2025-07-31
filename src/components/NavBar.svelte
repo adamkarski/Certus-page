@@ -6,86 +6,24 @@
   import { page } from "$app/stores";
   import { resetHeroSwiper } from "../lib/resetHeroSwiperStore";
   import kategorieMaszyn from "$lib/data/maszyny.json";
+  import CtaButton from "./cta-button.svelte";
   import { cubicOut } from "svelte/easing";
+  import { activePage } from "$lib/visibilityStore";
 
-  // --- STATE ---
+  // State for mobile menu
   let isMobileMenuOpen = false;
   let isMobileMaszynyOpen = false;
   let autoExpandTimeout: number | undefined;
 
-  let isMaszynyDropdownOpen = false;
-  let isBestsellerDropdownOpen = false;
-  let dropdownTimeout: number;
-
-  let LottiePlayer: any;
-  let scrolled = false;
-  let showLottie = false;
-  let windowWidth = 0;
-  
-  let hoveredCategory = kategorieMaszyn[0];
-
-  // --- REACTIVE COMPUTED STATE ---
-  $: currentPath = $page.url.pathname;
-  $: isMaszynyActive = currentPath.startsWith("/maszyny");
-  $: isSerwisActive = currentPath.startsWith("/serwis");
-  $: isOnasActive = currentPath.startsWith("/onas");
-  $: isKontaktActive = currentPath.startsWith("/kontakt");
-
-  $: lottieSource = (windowWidth > 757 && windowWidth < 900)
-    ? "https://cdn.lottielab.com/l/82wmUWPKg24DUr.json"
-    : "https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json";
-
-  // --- LIFECYCLE ---
-  onMount(async () => {
-    const module = await import("@lottiefiles/svelte-lottie-player");
-    LottiePlayer = module.LottiePlayer;
-
-    const handleScroll = () => { scrolled = window.scrollY > 50; };
-    const handleResize = () => {
-      windowWidth = window.innerWidth;
-      if (window.innerWidth > 757 && isMobileMenuOpen) closeMobileMenu();
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleResize);
-    handleScroll();
-    handleResize();
-
-    const unsubscribe = preloaderVisible.subscribe((visible) => {
-      if (!visible) showLottie = true;
-    });
-    showLottie = true;
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-      unsubscribe();
-      clearTimeout(dropdownTimeout);
-      clearTimeout(autoExpandTimeout);
-    };
-  });
-
-  // --- METHODS ---
-  function openMenu(menu: 'maszyny' | 'bestseller') {
-    clearTimeout(dropdownTimeout);
-    if (menu === 'maszyny') isMaszynyDropdownOpen = true;
-    if (menu === 'bestseller') isBestsellerDropdownOpen = true;
-  }
-
-  function closeMenu(menu: 'maszyny' | 'bestseller') {
-    dropdownTimeout = setTimeout(() => {
-      if (menu === 'maszyny') isMaszynyDropdownOpen = false;
-      if (menu === 'bestseller') isBestsellerDropdownOpen = false;
-    }, 200);
-  }
-
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
     if (isMobileMenuOpen) {
-      autoExpandTimeout = setTimeout(() => { isMobileMaszynyOpen = true; }, 2500);
+      autoExpandTimeout = setTimeout(() => {
+        isMobileMaszynyOpen = true;
+      }, 2500);
     } else {
       clearTimeout(autoExpandTimeout);
-      isMobileMaszynyOpen = false;
+      isMobileMaszynyOpen = false; // Close sub-menu when main menu closes
     }
   }
 
@@ -97,8 +35,82 @@
   function closeMobileMenu() {
     isMobileMenuOpen = false;
     isMobileMaszynyOpen = false;
-    clearTimeout(autoExpandTimeout);
   }
+
+  // Reactive variables for active links
+  $: currentPath = $page.url.pathname;
+  $: isMaszynyActive = currentPath.startsWith("/maszyny");
+  $: isSerwisActive = currentPath.startsWith("/serwis");
+  $: isOnasActive = currentPath.startsWith("/onas");
+  $: isKontaktActive = currentPath.startsWith("/kontakt");
+  $: isHomeActive = currentPath === "/";
+
+  // Update active page store
+  $: {
+    if (isHomeActive) {
+      activePage.set('home');
+    } else if (isMaszynyActive) {
+      activePage.set('maszyny');
+    } else if (isSerwisActive) {
+      activePage.set('serwis');
+    } else if (isOnasActive) {
+      activePage.set('onas');
+    } else if (isKontaktActive) {
+      activePage.set('kontakt');
+    }
+  }
+
+  
+
+  // Lottie player setup
+  let LottiePlayer;
+  let scrolled = false;
+  let showLottie = false;
+  let windowWidth = 0;
+  $: lottieSource =
+    windowWidth > 757 && windowWidth < 900
+      ? "https://cdn.lottielab.com/l/82wmUWPKg24DUr.json"
+      : "https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json";
+  $: logoMini =
+    windowWidth > 757 && windowWidth < 900 ? "logomini" : "logofull";
+
+  // Dropdown state
+  let isMaszynyDropdownOpen = false;
+  let isBestsellerDropdownOpen = false;
+  let hoveredCategory = kategorieMaszyn[0];
+
+  onMount(async () => {
+    const module = await import("@lottiefiles/svelte-lottie-player");
+    LottiePlayer = module.LottiePlayer;
+
+    const handleScroll = () => {
+      scrolled = window.scrollY > 50;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    const handleResize = () => {
+      windowWidth = window.innerWidth;
+      if (window.innerWidth > 757 && isMobileMenuOpen) {
+        closeMobileMenu();
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    const unsubscribe = preloaderVisible.subscribe((visible) => {
+      if (!visible) {
+        showLottie = true;
+      }
+    });
+    showLottie = true;
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+      unsubscribe();
+    };
+  });
 
   function handleLogoClick() {
     resetHeroSwiper.set(true);
@@ -106,31 +118,76 @@
     goto("/");
   }
 
-  async function handleNavigation(path: string, categoryId?: string) {
+  async function handleMaszynyNavigation(categoryId: string) {
+    isMaszynyDropdownOpen = false;
     closeMobileMenu();
     await tick();
-    const finalPath = categoryId ? `${path}#${categoryId}` : path;
-    goto(finalPath);
+
+    if (currentPath.startsWith("/maszyny")) {
+      const element = document.getElementById(categoryId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      goto(`/maszyny/#${categoryId}`);
+    }
   }
 </script>
 
-<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-sel" class:scrolled>
+<nav
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-sel"
+  class:scrolled
+>
   <div class="px-4 sm:px-6 lg:px-8 ramka">
     <div class="relative menubar">
       <div class="flex items-center justify-between px-8 py-4 contenerNav">
-        <div class="flex items-center logoCertus">
-          <a href="/" class="flex items-center space-x-2 group" on:click|preventDefault={handleLogoClick}>
+        <div class="flex items-center logoCertus {logoMini}">
+          <a
+            href="/"
+            class="flex items-center space-x-2 group"
+            on:click|preventDefault={handleLogoClick}
+          >
             {#if showLottie && LottiePlayer}
-              <svelte:component this={LottiePlayer} src={lottieSource} autoplay loop={false} controls={false} height="auto" width="auto" background="transparent" controlsLayout="none" />
+              <svelte:component
+                this={LottiePlayer}
+                src={lottieSource}
+                autoplay
+                loop={false}
+                controls={false}
+                height="auto"
+                width="auto"
+                background="transparent"
+                controlsLayout="none"
+              />
             {/if}
           </a>
         </div>
 
         <div class="desktop-menu-items">
-          <div class="relative" on:mouseenter={() => openMenu('maszyny')} on:mouseleave={() => closeMenu('maszyny')}>
-            <a href="/maszyny" class="nav-link flex items-center space-x-1" class:active={isMaszynyActive}>
+          <div
+            class="relative dropDownMenu"
+            on:mouseenter={() => (isMaszynyDropdownOpen = true)}
+            on:mouseleave={() => (isMaszynyDropdownOpen = false)}
+          >
+            <a
+              href="/maszyny"
+              class="nav-link flex items-center space-x-1"
+              class:active={isMaszynyActive}
+            >
               <span>Maszyny</span>
-              <svg class="w-4 h-4 transition-transform duration-300" class:rotate-180={isMaszynyDropdownOpen} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              <svg
+                class="w-4 h-4 transition-transform duration-300"
+                class:rotate-180={isMaszynyDropdownOpen}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path></svg
+              >
             </a>
             {#if isMaszynyDropdownOpen}
               <div class="mega-menu" transition:fly={{ y: -10, duration: 200 }}>
@@ -139,17 +196,33 @@
                     <ul>
                       {#each kategorieMaszyn as kategoria, i}
                         <li>
-                          <a href="#" role="button" on:click|preventDefault={() => handleNavigation('/maszyny', kategoria.id)} class="submenu-item" on:mouseenter={() => hoveredCategory = kategoria} in:fade={{ delay: i * 50, duration: 200 }}>
+                          <a
+                            href="#"
+                            role="button"
+                            on:click|preventDefault={() =>
+                              handleMaszynyNavigation(kategoria.id)}
+                            class="submenu-item"
+                            on:mouseenter={() => (hoveredCategory = kategoria)}
+                            in:fade={{ delay: i * 50, duration: 200 }}
+                          >
                             {kategoria.title}
                           </a>
                         </li>
                       {/each}
                     </ul>
                   </div>
-                  <div class="w-2/3 bg-gray-50 flex flex-col items-center justify-center p-4 image-container">
+                  <div
+                    class="w-2/3 bg-gray-50 flex flex-col items-center justify-center p-4 image-container"
+                  >
                     {#if hoveredCategory}
                       {#key hoveredCategory.id}
-                        <img src={hoveredCategory.img} alt={hoveredCategory.title} class="max-h-48 mx-auto mb-4 rounded-lg menu-image" in:fade={{ delay: 150, duration: 150 }} out:fade={{ duration: 150 }} />
+                        <img
+                          src={hoveredCategory.img}
+                          alt={hoveredCategory.title}
+                          class="max-h-48 mx-auto mb-4 rounded-lg menu-image"
+                          in:fade={{ delay: 150, duration: 150 }}
+                          out:fade={{ duration: 150 }}
+                        />
                       {/key}
                     {/if}
                   </div>
@@ -157,14 +230,100 @@
               </div>
             {/if}
           </div>
-          <a href="/maszyny/#ploteryPrzemyslowe" class="nav-link">Bestseller</a>
-          <a href="/serwis" class="nav-link" class:active={isSerwisActive}>Serwis</a>
+
+          <!-- Bestseller z dropdown -->
+          <div
+            class="relative dropDownMenu bestsellerDropDown"
+            on:mouseenter={() => (isBestsellerDropdownOpen = true)}
+            on:mouseleave={() => (isBestsellerDropdownOpen = false)}
+            role="group"
+          >
+            <a
+              href="javascript:void(0);"
+              class="nav-link flex items-center space-x-1"
+            >
+              <span>Bestseller</span>
+              <svg
+                class="w-4 h-4 transition-transform duration-300"
+                class:rotate-180={isBestsellerDropdownOpen}
+                fill="none"
+                stroke="#cbcbcb"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </a>
+
+            <!-- Bestseller Dropdown menu -->
+            {#if isBestsellerDropdownOpen}
+              <div
+                class="bestseller-dropdown absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
+                transition:fly={{ y: -10, duration: 200 }}
+              >
+                <div class="bestseller-content p-6">
+                  <div class="bestseller-header mb-4">
+                    <!-- <div class="bestseller-badge">
+           <span class="badge-text"> BESTSELLER</span>
+         </div> -->
+                    <h3 class="bestseller-title">Plotery przemysłowe CNC</h3>
+                    <p class="bestseller-subtitle">
+                      Najchętniej wybierane przez naszych klientów
+                    </p>
+                  </div>
+
+                  <div class="bestseller-image mb-4">
+                    <img
+                      src="/assets/maszyny/combined_88930d1c.png"
+                      alt="Plotery przemysłowe CNC - Bestseller"
+                      class="bestseller-img"
+                    />
+                  </div>
+
+                  <div class="bestseller-features mb-4">
+                    <ul class="features-list">
+                      <li>✓ Najwyższa precyzja cięcia</li>
+                      <li>✓ Sprawdzone w tysiącach firm</li>
+                      <li>✓ Kompleksowa obsługa serwisowa</li>
+                    </ul>
+                  </div>
+
+                  <div class="bestseller-cta">
+                    <CtaButton
+                      text="Zobacz dlaczego wybierają nas"
+                      on:click={() => {
+                        isBestsellerDropdownOpen = false;
+                        window.location.href = "/maszyny/#ploteryPrzemyslowe";
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            {/if}
+          </div>
+
+          <a href="/serwis" class="nav-link" class:active={isSerwisActive}
+            >Serwis</a
+          >
           <a href="/onas" class="nav-link" class:active={isOnasActive}>O nas</a>
-          <a href="/kontakt" class="nav-link kontakt-nav" class:active={isKontaktActive}>Kontakt</a>
+          <a
+            href="/kontakt"
+            class="nav-link kontakt-nav"
+            class:active={isKontaktActive}>Kontakt</a
+          >
         </div>
 
         <div class="mobile-menu-button-container">
-          <button class="mobile-menu-button" on:click={toggleMobileMenu} aria-label="Otwórz menu" class:is-open={isMobileMenuOpen}>
+          <button
+            class="mobile-menu-button"
+            on:click={toggleMobileMenu}
+            aria-label="Otwórz menu"
+            class:is-open={isMobileMenuOpen}
+          >
             <div class="hamburger-icon">
               <span></span>
               <span></span>
@@ -177,29 +336,77 @@
   </div>
 
   {#if isMobileMenuOpen}
-    <div class="mobile-menu-overlay" on:click={closeMobileMenu} transition:fade={{duration: 200}}>
-      <div class="mobile-menu-content" on:click|stopPropagation transition:fly={{ x: '-100%', duration: 300, easing: cubicOut }}>
+    <div
+      class="mobile-menu-overlay"
+      on:click={closeMobileMenu}
+      transition:fade={{ duration: 200 }}
+    >
+      <div
+        class="mobile-menu-content"
+        on:click|stopPropagation
+        transition:fly={{ x: "-100%", duration: 300, easing: cubicOut }}
+      >
         <div class="mobile-menu-header">
           {#if LottiePlayer}
-            <svelte:component this={LottiePlayer} src={"https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"} autoplay loop={false} controls={false} height="auto" width="180px" background="transparent" controlsLayout="none" />
+            <svelte:component
+              this={LottiePlayer}
+              src={"https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"}
+              autoplay
+              loop={false}
+              controls={false}
+              height="auto"
+              width="180px"
+              background="transparent"
+              controlsLayout="none"
+            />
           {/if}
         </div>
         <div class="mobile-links-container">
-          <button class="mobile-nav-link expandable" on:click={handleMaszynyToggle}>
+          <button
+            class="mobile-nav-link expandable"
+            on:click={() => (isMobileMaszynyOpen = !isMobileMaszynyOpen)}
+          >
             Maszyny
-            <svg class="w-6 h-6 transition-transform duration-300" class:rotate-180={isMobileMaszynyOpen} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg
+              class="w-6 h-6 transition-transform duration-300"
+              class:rotate-180={isMobileMaszynyOpen}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path></svg
+            >
           </button>
           {#if isMobileMaszynyOpen}
             <div class="mobile-submenu">
-              {#each kategorieMaszyn as kategoria, i}
-                <a href="#" on:click|preventDefault={() => handleNavigation('/maszyny', kategoria.id)} class="mobile-submenu-link" transition:fly={{ x: -20, delay: i * 50, duration: 200 }}>{kategoria.title}</a>
+              {#each kategorieMaszyn as kategoria}
+                <a
+                  href="#"
+                  on:click|preventDefault={() =>
+                    handleMaszynyNavigation(kategoria.id)}
+                  class="mobile-submenu-link">{kategoria.title}</a
+                >
               {/each}
             </div>
           {/if}
-          <a href="/maszyny/#ploteryPrzemyslowe" class="mobile-nav-link" on:click={() => handleNavigation('/maszyny', 'ploteryPrzemyslowe')}>Bestseller</a>
-          <a href="/serwis" class="mobile-nav-link" on:click={() => handleNavigation('/serwis')}>Serwis</a>
-          <a href="/onas" class="mobile-nav-link" on:click={() => handleNavigation('/onas')}>O nas</a>
-          <a href="/kontakt" class="mobile-nav-link" on:click={() => handleNavigation('/kontakt')}>Kontakt</a>
+          <a
+            href="/maszyny/#ploteryPrzemyslowe"
+            class="mobile-nav-link"
+            on:click={closeMobileMenu}>Bestseller</a
+          >
+          <a href="/serwis" class="mobile-nav-link" on:click={closeMobileMenu}
+            >Serwis</a
+          >
+          <a href="/onas" class="mobile-nav-link" on:click={closeMobileMenu}
+            >O nas</a
+          >
+          <a href="/kontakt" class="mobile-nav-link" on:click={closeMobileMenu}
+            >Kontakt</a
+          >
         </div>
       </div>
     </div>
@@ -207,6 +414,104 @@
 </nav>
 
 <style lang="scss">
+  /* Style dla bestseller dropdown */
+  .bestseller-dropdown {
+    width: 380px;
+    z-index: 1000;
+    padding: 24px;
+    margin-top: 0px;
+    // margin-left: 210px;
+  }
+
+  .bestseller-content {
+    text-align: center;
+  }
+
+  .bestseller-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700, #ffb347);
+    color: #8b4513;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  }
+
+  .bestseller-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .bestseller-subtitle {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0;
+    line-height: 1.4;
+  }
+
+  .bestseller-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 16px 0;
+  }
+
+  .bestseller-img {
+    max-width: 100%;
+    max-height: 160px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+  }
+
+  .features-list li {
+    font-size: 0.875rem;
+    color: #374151;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .bestseller-cta {
+    margin-top: 16px;
+  }
+
+  /* Dostosowanie CTA button w dropdown */
+  .bestseller-dropdown :global(.cta-button) {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    font-size: 1rem;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bestseller-dropdown :global(.cta-button .maszyny_span) {
+    text-align: center;
+    width: 100%;
+  }
+
+  .bestseller-dropdown :global(.cta-svg) {
+    margin-left: -60px;
+  }
+
   .desktop-menu-items {
     display: flex;
     align-items: center;
@@ -224,6 +529,8 @@
 
   .mobile-menu-button-container {
     display: none;
+   
+   
   }
 
   .mobile-menu-button {
@@ -243,13 +550,14 @@
     width: 28px;
     height: 20px;
     position: relative;
-    
+    transition: all 0.8s ease-in-out !important;
+
     span {
       display: block;
       position: absolute;
       height: 4px;
       width: 100%;
-      background: #333;
+      background: #f3f3f3;
       border-radius: 9px;
       opacity: 1;
       left: 0;
@@ -257,9 +565,15 @@
       transition: all 0.25s ease-in-out;
     }
 
-    span:nth-child(1) { top: 0px; }
-    span:nth-child(2) { top: 8px; }
-    span:nth-child(3) { top: 16px; }
+    span:nth-child(1) {
+      top: 0px;
+    }
+    span:nth-child(2) {
+      top: 8px;
+    }
+    span:nth-child(3) {
+      top: 16px;
+    }
   }
 
   .mobile-menu-button.is-open .hamburger-icon {
@@ -279,7 +593,7 @@
       transform: rotate(-135deg);
     }
   }
-  
+
   .mobile-menu-overlay {
     position: fixed;
     top: 0;
@@ -295,24 +609,24 @@
 
   .mobile-menu-content {
     background: #232c32;
-    width: 85%;
-    max-width: 400px;
+    min-width: 84vw;
     height: 100%;
     display: flex;
+    padding-top: 42px !important;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 1.5rem;
     padding: 2rem;
     transform-origin: left center;
-    box-shadow: 5px 0px 25px rgba(0,0,0,0.5);
+    box-shadow: 5px 0px 25px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
   }
 
   .mobile-menu-header {
     width: 100%;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 1rem;
   }
 
@@ -372,20 +686,36 @@
     }
     .mobile-menu-button-container {
       display: block;
+      
+    
     }
     .ramka {
-        margin-left: 1em;
-        margin-right: 1em;
+      margin-left: 1em !important;
+      margin-right: 1em !important;
+    }
+
+    .contenerNav {
+      margin-top: 8px;
+    }
+    .mobile-menu-button-container {
+    
+      margin-right: 36px !important;
+
     }
   }
 
   // Existing styles from the original file
+  .bestsellerDropDown {
+    margin-left: 0px !important;
+    padding-left: 0px;
+  }
+
   .menubar {
     width: 100%;
   }
 
   .nav-link.kontakt-nav {
-    margin-right: 20px;
+    /*  margin-right: 20px; */
   }
 
   *:focus {
@@ -393,6 +723,10 @@
     outline-offset: 0px;
   }
 
+  .menuItems a:focus {
+    outline: 0px solid #788391;
+    outline-offset: 0px;
+  }
   nav {
     width: 100%;
     margin-top: 0;
@@ -443,19 +777,20 @@
   }
 
   .submenu-item {
-      display: block;
-      padding: 0.75rem 1rem;
-      color: #374151;
-      transition: all 0.2s;
-      border-left: 4px solid transparent;
-      &:hover {
-        color: #16a34a;
-        background-color: #f0fdf4;
-        border-color: #22c55e;
-      }
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #374151;
+    transition: all 0.2s;
+    border-left: 4px solid transparent;
+    &:hover {
+      color: #16a34a;
+      background-color: #f0fdf4;
+      border-color: #22c55e;
+    }
   }
 
   .nav-link {
+    min-width: 75px;
     padding: 8px 16px;
     color: #4b5563;
     transition: all 300ms ease-in-out;
@@ -494,25 +829,36 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 0.5rem;
+    margin-top: 0rem;
     background-color: white;
     border-radius: 1rem;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border: 1px solid #f3f4f6;
     overflow: hidden;
     width: 600px;
     padding: 1rem;
+
+    ul li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .submenu-item:hover {
+      color: var(--color-text-primary);
+      background-color: var(--color-gray-100);
+      border-color: var(--color-primary-dark);
+    }
   }
 
   .image-container {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 200px; /* Adjust as needed */
   }
 
   .menu-image {
     position: absolute;
-    top: 50%;
+    top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-height: 100%;

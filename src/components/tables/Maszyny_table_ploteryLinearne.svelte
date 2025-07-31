@@ -1,8 +1,6 @@
-<style lang="scss">
-    @import './table.css';
-</style>
-
-
+<script lang="ts">
+  import '$lib/table.scss';
+ </script>
 
 
 

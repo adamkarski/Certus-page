@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 
+export const activePage = writable<string>('home');
 // Store: { [sectionId: string]: boolean }
 export const visibilityStore = writable<Record<string, boolean>>({});
 

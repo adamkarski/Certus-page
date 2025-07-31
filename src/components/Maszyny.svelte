@@ -14,7 +14,7 @@
   import Maszyny_table_specjalistyczne from "./tables/Maszyny_table_specjalistyczne.svelte";
 
   // import css styles
-  import "./tables/table.css";
+  import '$lib/table.scss';
 
   const maszyny = [];
 </script>

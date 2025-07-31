@@ -1481,6 +1481,77 @@
 </section>
 
 <style lang="scss">
+
+
+ /* Mobile layout for activeMachine */
+ .activeMachine {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .activeMachine .left {
+      width: 100% !important;
+      height: 50%;
+      order: 1;
+    }
+
+    .activeMachine .left.short {
+      width: 100% !important;
+      height: 40%;
+    }
+
+    .activeMachine .right {
+      width: 100% !important;
+      height: auto;
+      flex-direction: column;
+      order: 2;
+      padding: 10px;
+      overflow-y: auto;
+      max-height: 50vh;
+    }
+
+    .activeMachine .right.expanded {
+      width: 100% !important;
+      max-height: 60vh;
+    }
+
+    /* Mobile layout for right_content and right_params */
+    :global(.activeMachine .right_content) {
+      max-width: 100% !important;
+      order: 1;
+      
+      h1 {
+        font-size: large !important;
+        margin-top: 2rem !important;
+      }
+      
+      p {
+        width: 100% !important;
+        padding-left: 1rem !important;
+        font-size: 0.9rem;
+      }
+      
+      ul {
+        padding-left: 1rem !important;
+      }
+    }
+
+    .right_params {
+      order: 2;
+      margin-top: 1rem;
+      max-height: none !important;
+    }
+
+    .activeMachine .right_params_content {
+      padding-top: 1rem !important;
+      padding-left: 1rem !important;
+      
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
   :global(.activeMachine .right_content) {
     color: #595959;
     display: flex;
@@ -1627,7 +1698,7 @@
   }
 
   .activeMachine {
-    display: flex;
+
     z-index: 1000;
     position: fixed;
     top: 0;
@@ -1828,7 +1899,7 @@
   /* ————————————————  LAYOUT  ———————————————— */
   .hero {
     width: 100%;
-    height: 81vh;
+    height: 800px;
     position: relative;
   }
   .hero-bg {
@@ -1894,8 +1965,10 @@
 
   /* ————————————————  SWIPER  ———————————————— */
   swiper-container {
-    width: 100%;
-    height: 100%;
+    width: 1100px;
+    height: 569px;
+    opacity: 0;
+    margin-top: 152px;
     opacity: 0;
     animation: fadeInSlider 0.6s ease-out 0.2s forwards;
   }
@@ -2031,6 +2104,75 @@
     .headlines .topline {
       font-size: 28px;
     }
+
+    /* Mobile layout for activeMachine */
+    .activeMachine {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .activeMachine .left {
+      width: 100% !important;
+      height: 50%;
+      order: 1;
+    }
+
+    .activeMachine .left.short {
+      width: 100% !important;
+      height: 40%;
+    }
+
+    .activeMachine .right {
+      width: 100% !important;
+      height: auto;
+      flex-direction: column;
+      order: 2;
+      padding: 10px;
+      overflow-y: auto;
+      max-height: 50vh;
+    }
+
+    .activeMachine .right.expanded {
+      width: 100% !important;
+      max-height: 60vh;
+    }
+
+    /* Mobile layout for right_content and right_params */
+    :global(.activeMachine .right_content) {
+      max-width: 100% !important;
+      order: 1;
+      
+      h1 {
+        font-size: large !important;
+        margin-top: 2rem !important;
+      }
+      
+      p {
+        width: 100% !important;
+        padding-left: 1rem !important;
+        font-size: 0.9rem;
+      }
+      
+      ul {
+        padding-left: 1rem !important;
+      }
+    }
+
+    .right_params {
+      order: 2;
+      margin-top: 1rem;
+      max-height: none !important;
+    }
+
+    .activeMachine .right_params_content {
+      padding-top: 1rem !important;
+      padding-left: 1rem !important;
+      
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
   }
 
   /* --- BLOKADA SCROLLA BODY DLA expandedView --- */
@@ -2039,9 +2181,11 @@
     position: fixed;
     width: 100vw;
     .activeMachine .right {
-      overflow-x: auto;
+      /* overflow-x: none; */
+      overflow-y: auto;
       .right_params {
         overflow: hidden;
+       
       }
     }
   }
@@ -2050,7 +2194,7 @@
   /* --- SCROLL TYLKO W OBRĘBIE PARAMS --- */
   .right_params {
     max-height: 100vh;
-    overflow-y: auto;
+    
   }
   /* --- KONIEC SCROLLA PARAMS --- */
 
@@ -2114,6 +2258,74 @@
 
     .swiper-nav-next {
       right: 1rem;
+    }
+  }
+
+  /* Additional mobile styles for smaller */
+  @media (max-width: 1200px) {
+
+    body.no-scroll-hero .activeMachine .right .right_params{
+
+      overflow: initial;
+      
+    }
+
+
+    .activeMachine{
+
+      margin: 0px 0px 0px 0px !important;
+      padding: 0px !important;
+      
+    }
+    .activeMachine .right_content p{
+      width: 100% !important;
+    }
+
+  }
+
+
+
+
+
+  @media (max-width: 480px) {
+    .activeMachine {
+      padding: 0.5rem;
+    }
+
+    .activeMachine .left {
+      height: 45%;
+    }
+
+    .activeMachine .right {
+      max-height: 55vh;
+      padding: 5px;
+    }
+
+    .activeMachine .right.expanded {
+      max-height: 65vh;
+    }
+
+    :global(.activeMachine .right_content) {
+      h1 {
+        font-size: medium !important;
+        margin-top: 1rem !important;
+        padding-left: 1rem !important;
+      }
+      
+      p {
+        padding-left: 0.5rem !important;
+        font-size: 0.85rem;
+        padding-top: 1rem !important;
+      }
+      
+      ul {
+        padding-left: 0.5rem !important;
+      }
+    }
+
+    .activeMachine .right_params_content {
+      padding-top: 0.5rem !important;
+      padding-left: 0.5rem !important;
     }
   }
   /* --- KONIEC NAVIGATION BUTTONS --- */

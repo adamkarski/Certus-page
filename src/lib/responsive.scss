@@ -11,62 +11,144 @@
 /* ========================================
    HERO SECTION - ACTIVE MACHINE VIEW
    ======================================== */
-.logomini .lottie-player .animation  svg > g > g:nth-child(4){
+
+   @media (min-width: 2560px) {
+
+  }
+   @media (min-width: 1440px) {
+
+  }
+   @media (min-width: 1024px) {
+
+    .activeMachine .left.short{
+
+min-height: 600px !important;
+
+    }
+
+
+  }
+   @media (min-width: 768px) {
+
+  }
+   @media (min-width: 425px) {
+
+  }
+   @media (min-width: 375px) {
+
+  }
+
   
+
+    
+
+
+
+
+
+   .logomini .lottie-player .animation svg > g > g:nth-child(4) {
   opacity: 0;
-
-
 }
 
-.menuItems{
+
+
+
+
+tbody tr td .text {
+  font-size: 0.7rem !important;
+  width: 100% !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+.menuItems {
   width: 700px;
 
-  a{
+  a {
     width: 100%;
     text-align: center;
   }
-
 }
 
+body.home {
+  .first-container-back{
 
 
-@media (min-width: 1260px) {
-.menuItems{
-  width:600px;
-}
+    top: 759px;
 
-
-}
-  @media (max-width: 772px) {
-
-
-
-
-
-
-
-  
-
-}
-
-
-
-
-@media (max-width: 927px) {
-
-  .logomini{
-    
-    min-width: 62px !important;
-        width: 30px;
-  
+  }
+  .oferta .first-container-back{
+    display: none !important;
   }
 
+}
 
+
+
+@media (min-width: 932px )and (max-width: 1014px) {
+
+  body{
+
+    border: 1px solid gold;
+  } 
+  .nav-link{
+    min-width: 65px !important;
+    padding: 0px !important;
+  }
+.desktop-menu-items{
+font-size: 10px;
+}
+.dropDownMenu{
+  padding: 5px;
+}
 
 }
 
 
 
+@media (min-width: 757px )and (max-width: 932px) {
+  .desktop-menu-items{
+    font-size: 12px !important;
+    }
+    .nav-link{
+      padding: 0px !important;
+      min-width: 51px !important;
+    }
+    .dropDownMenu{
+      padding: 8px;
+    }
+    body{
+
+      border: 1px solid rgb(163, 8, 83);
+    } 
+}
+@media (min-width: 1200px) {
+  .menuItems {
+    width: 600px;
+  }
+  tbody tr td:first-child {
+    width: 10% !important;
+    min-width: 20px !important;
+  }
+
+  .activeMachine .right_params_content {
+    padding-top: 2rem !important;
+    padding-left: 0rem !important;
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+}
+@media (max-width: 772px) {
+}
+
+@media (max-width: 927px) {
+  .logomini {
+    min-width: 62px !important;
+    width: 30px;
+  }
+}
 
 @media (max-width: 1200px) {
   .activeMachine {
@@ -114,7 +196,7 @@
 
   .activeMachine .right_content {
     max-width: 100% !important;
-    
+
     h1 {
       margin-top: 2rem !important;
       font-size: 1.4rem !important;
@@ -128,7 +210,7 @@
 
   .activeMachine .right_params_content {
     padding-top: 2rem !important;
-    padding-left: 1rem !important;
+    padding-left: 0rem !important;
 
     img {
       max-width: 100% !important;
@@ -241,6 +323,9 @@
    ======================================== */
 
 @media (max-width: 480px) {
+  :global(.maszyny-dane-tabela img) {
+    width: 30px !important;
+  }
   .activeMachine {
     padding: 0.5rem !important;
   }

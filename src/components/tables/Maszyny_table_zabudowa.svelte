@@ -1,6 +1,6 @@
-<style lang="scss">
-    @import './table.css';
-</style>
+<script lang="ts">
+  import '$lib/table.scss';
+ </script>
 
 <table class="maszyny-dane-tabela zabudowa">
     <thead>
