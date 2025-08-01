@@ -4,16 +4,16 @@
   import { preloaderVisible } from "$lib/preloaderStore";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
-  import { resetHeroSwiper } from "../lib/resetHeroSwiperStore";
+ 
   import kategorieMaszyn from "$lib/data/maszyny.json";
   import CtaButton from "./cta-button.svelte";
   import { cubicOut } from "svelte/easing";
-  import { activePage } from "$lib/visibilityStore";
+  import { activePage, resetHeroSwiper } from "$lib/visibilityStore";
 
   // State for mobile menu
   let isMobileMenuOpen = false;
   let isMobileMaszynyOpen = false;
-  let autoExpandTimeout: number | undefined;
+  let autoExpandTimeout;
 
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
@@ -79,38 +79,44 @@
   let isBestsellerDropdownOpen = false;
   let hoveredCategory = kategorieMaszyn[0];
 
-  onMount(async () => {
-    const module = await import("@lottiefiles/svelte-lottie-player");
-    LottiePlayer = module.LottiePlayer;
-
-    const handleScroll = () => {
-      scrolled = window.scrollY > 50;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
-    const handleResize = () => {
-      windowWidth = window.innerWidth;
-      if (window.innerWidth > 757 && isMobileMenuOpen) {
-        closeMobileMenu();
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    const unsubscribe = preloaderVisible.subscribe((visible) => {
-      if (!visible) {
+  onMount(() => {
+      let cleanup: () => void;
+  
+      (async () => {
+        const module = await import("@lottiefiles/svelte-lottie-player");
+        LottiePlayer = module.LottiePlayer;
+  
+        const handleScroll = () => {
+          scrolled = window.scrollY > 50;
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+  
+        const handleResize = () => {
+          windowWidth = window.innerWidth;
+          if (window.innerWidth > 757 && isMobileMenuOpen) {
+            closeMobileMenu();
+          }
+        };
+        window.addEventListener("resize", handleResize);
+        handleResize();
+  
+        const unsubscribe = preloaderVisible.subscribe((visible) => {
+          if (!visible) {
+            showLottie = true;
+          }
+        });
         showLottie = true;
-      }
+  
+        cleanup = () => {
+          window.removeEventListener("scroll", handleScroll);
+          window.removeEventListener("resize", handleResize);
+          unsubscribe();
+        };
+      })();
+  
+      return () => cleanup && cleanup();
     });
-    showLottie = true;
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-      unsubscribe();
-    };
-  });
 
   function handleLogoClick() {
     resetHeroSwiper.set(true);

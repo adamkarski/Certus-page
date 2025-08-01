@@ -26,3 +26,4 @@ dist-ssr
 /.svelte-kit/output
 /build
 /.svelte-kit
+src/components/Maszyny_fullView.svelte

@@ -150,6 +150,11 @@
 </script>
 
 <section class="contact-flex">
+ 
+  <div class="background">
+
+<div class="contact">
+
   <div class="contact-left no-sel" class:is-kontakt-page={isKontaktPage}>
     <h2>Masz pytania? Skontaktuj się z nami!</h2>
     <ul use:typoFixAction class="contact-bullets no-sel">
@@ -338,6 +343,12 @@
       {/if}
     </form>
   </div>
+
+
+</div>
+
+
+</div>
 </section>
 
 <style lang="scss">
@@ -385,7 +396,19 @@
       font-size: 12px;
     }
   }
-  .contact-flex {
+  .contact-flex{
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 60%,
+      rgba(235, 235, 235, 1) 100%
+    );
+    height: auto;
+    position: relative;
+    top: 0px;
+    padding-top: 5px;
+    padding-bottom: 4px;
+  }
+  .contact-flex .background .contact{  
     display: flex;
     gap: 0px;
     box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
@@ -393,6 +416,14 @@
     max-width: 1060px;
     margin: 126px auto;
     align-items: stretch;
+    position: relative;
+    background-color: white;
+  }
+  .contact-flex .background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
   }
   .text-left {
     display: flex;
