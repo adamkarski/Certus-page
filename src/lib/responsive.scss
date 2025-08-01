@@ -76,8 +76,10 @@ body.home {
     top: 759px;
 
   }
-  .oferta .first-container-back{
-    display: none !important;
+  .oferta   .first-container-back {
+    position: relative;
+    display: block !important;
+    margin-top: -896px;
   }
 
 }
@@ -89,7 +91,7 @@ body.home {
   body{
 
     border: 1px solid gold;
-  } 
+  }
   .nav-link{
     min-width: 65px !important;
     padding: 0px !important;

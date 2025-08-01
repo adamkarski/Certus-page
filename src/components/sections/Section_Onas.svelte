@@ -88,6 +88,7 @@
     width: 100%;
     padding: 100px 0;
     background: white;
+    position: relative
   }
 
   .o-nas-container {

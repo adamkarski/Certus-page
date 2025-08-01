@@ -309,6 +309,7 @@
     max-width: 1060px;
     margin: 0 auto;
     align-items: stretch;
+    background: #fff;
   }
 
   .contact-left:before {

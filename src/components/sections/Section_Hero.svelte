@@ -533,52 +533,14 @@
             >
               {#each list as cat}
                 <swiper-slide>
-                  {#if cat.url}
-                    <a href={cat.url} class="items items-left lift">
-                      <div class="headlines">
-                        <div class="topline">{cat.title}</div>
-                      </div>
-                      <div class="item">
-                        <div class="image">
-                          {#if $imageLoadingStates[cat.id]}
-                            <img
-                              src={cat.img}
-                              alt={cat.title}
-                              draggable="false"
-                            />
-                          {:else}
-                            <div class="image-loader">
-                              <svg width="50" height="50" viewBox="0 0 50 50">
-                                <circle
-                                  cx="25"
-                                  cy="25"
-                                  r="20"
-                                  fill="none"
-                                  stroke-width="5"
-                                  stroke="#96a500"
-                                  stroke-dasharray="31.4 31.4"
-                                  stroke-linecap="round"
-                                >
-                                  <animateTransform
-                                    attributeName="transform"
-                                    type="rotate"
-                                    from="0 25 25"
-                                    to="360 25 25"
-                                    dur="1s"
-                                    repeatCount="indefinite"
-                                  />
-                                </circle>
-                              </svg>
-                            </div>
-                          {/if}
-                        </div>
-                      </div>
-                    </a>
-                  {:else}
+                 
                     <button
                       type="button"
                       class="items items-left lift"
-                      on:click={() => openCategory(cat.id)}
+                      on:click={() => cat.url 
+                        ? window.location.href = cat.url
+                        : openCategory(cat.id)
+                      }
                     >
                       <div class="headlines">
                         <div class="topline">{cat.title}</div>
@@ -619,7 +581,7 @@
                         </div>
                       </div>
                     </button>
-                  {/if}
+                
                 </swiper-slide>
               {/each}
             </swiper-container>
@@ -1558,10 +1520,8 @@
     </div>
   {/if}
 
-  <div class="pattern-overlay no-sel">
-    <div class="pattern two"></div>
-  </div>
-  <div class="first-container-back"></div>
+
+
 </section>
 
 <style lang="scss">
@@ -1726,28 +1686,7 @@
     }
   }
 
-  .pattern-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.3;
-
-    .pattern.two {
-      transform: scale(1.2) skew(-15deg, 0deg);
-      background-image: url(/assets/images/pattern-image1-2.png);
-      position: absolute;
-      width: 100%;
-      height: 63px;
-      z-index: 11;
-      left: 0;
-      bottom: -10px;
-      pointer-events: auto;
-    }
-  }
+ 
 
   .right_params_content img:hover {
     cursor:
@@ -1988,8 +1927,10 @@
   /* ————————————————  LAYOUT  ———————————————— */
   .hero {
     width: 100%;
-    height: 800px;
-    position: relative;
+    height: 90vh;
+    position: fixed;
+    z-index: 0;
+    top: 0px;
   }
   .hero-bg {
     width: 100%;
@@ -2054,10 +1995,10 @@
 
   /* ————————————————  SWIPER  ———————————————— */
   swiper-container {
-    width: 1100px;
-    height: 569px;
+    width: 90%;
+    height: 678px;
     opacity: 0;
-    margin-top: 152px;
+    margin-top: -10px;
     opacity: 0;
     animation: fadeInSlider 0.6s ease-out 0.2s forwards;
   }
@@ -2072,7 +2013,7 @@
       transition: transform 0.3s ease;
 
       .headlines {
-        transform: translateY(90px);
+       /*  transform: translateY(90px); */
       }
     }
   }
@@ -2093,17 +2034,29 @@
     flex: 1;
     max-width: 100vw;
     min-width: 0; /* Zapobiega problemom z flex shrinking */
-    padding: 8rem;
-    width: auto;
+    
+    height: 117%;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     border-radius: 16px;
     position: relative;
     overflow: hidden;
   }
-  .items:hover {
-    transform: scale(1.05) translateY(-5px);
+  .headlines{
+    transition: all 0.2s ease;
+    transform: translateX(100px) translateY(20px);
   }
+  .items:hover {
+    transform: scale(1.0) translateY(5px);
+  
+    .headlines{
+     
+      transform: translateY(50px) translateX(20px) scale(0.8);
+
+    }
+  
+  }
+
   .items::before {
     content: "";
     position: absolute;
@@ -2126,31 +2079,32 @@
     font-size: 38px;
     font-weight: 700;
     line-height: 1;
-    margin-bottom: 0.25em;
-    margin-left: 0.2em;
-    padding-bottom: 2rem;
+   /*  margin-bottom: 0.25em;
+    margin-left: 0.2em; */
+    // padding-bottom: 2rem;
     transition: all 0.3s ease;
     position: absolute;
-    margin-top: -180px;
+    // margin-top: -180px;
     text-align: left;
   }
   .items:hover .headlines .topline {
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-    transform: translateY(-2px);
+    // transform: translateY(-2px);
   }
 
+  .items:hover{
+    // transform: scale(1);
+  }
   .item .image {
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
     transform: scale(0.75);
   }
-  .items:hover .item .image {
-    transform: scale(0.8);
-  }
+
   .item .image img {
     display: block;
-    width: 100%;
+ 
     height: 100%;
     object-fit: cover;
     transition: all 0.3s ease;

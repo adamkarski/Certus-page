@@ -162,6 +162,8 @@
     padding: 0;
     margin: 0;
     padding-bottom: 10em;
+    position: relative;
+    background: white;
   }
   
   .info-cards-wrapper {
