@@ -678,13 +678,18 @@
   </div>
 
   {#if activeMachine}
-    <div
+   
+  
+  <div
       class="activeMachine no-sel"
       in:fade={{ duration: 300, delay: 0 }}
       out:fade={{ duration: 300, delay: 0 }}
     >
       {#if activeCategory === "frezarki" && activeMachine === "m_frezarka"}
-        <div
+      
+      <div class="active_flex">
+      
+      <div
           class="left gradientHero"
           class:short={expandedView}
           in:fade={{ duration: 300, delay: 0 }}
@@ -796,7 +801,12 @@
             </div>
           {/if}
         </div>
-      {:else if activeCategory === "ploteryPrzemyslowe" && activeMachine === "m-ploter"}
+  
+      </div>
+  
+  
+  
+        {:else if activeCategory === "ploteryPrzemyslowe" && activeMachine === "m-ploter"}
         <div
           class="left gradientHero"
           class:short={expandedView}
@@ -1881,6 +1891,11 @@
     padding-top: 2em;
   }
 
+  .active_flex{
+
+    position: relative;
+
+  }
   .category-content .container {
     position: relative;
     background-image: url(/assets/Background_Hero_swipe.jpg);
