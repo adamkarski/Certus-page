@@ -1,58 +1,58 @@
-
 <script lang="ts">
-    import CtaButtonHero from "../components/cta-button-hero.svelte";
-    import { activeCategoryStore, activeMachineStore, expandedViewStore } from "../lib/visibilityStore";
-    import { typoFixAction } from '$lib/utils/typography';
-    import { browser } from "$app/environment";
-    import { fade } from 'svelte/transition';
-  
-    //tables dla maszyn
-    import Maszyny_table_frezarki from '$lib/../components/tables/Maszyny_table_frezarki.svelte';
-    import Maszyny_table_plotery from "$lib/../components/tables/Maszyny_table_plotery.svelte";
-    import Maszyny_table_grawerki from "$lib/../components/tables/Maszyny_table_grawerki.svelte";
-    import Maszyny_table_frezarki5osiowe from "$lib/../components/tables/Maszyny_table_frezarki5osiowe.svelte";
-    import Maszyny_table_ploteryLinearne from "$lib/../components/tables/Maszyny_table_ploteryLinearne.svelte";
-    import Maszyny_table_zabudowa from "$lib/../components/tables/Maszyny_table_zabudowa.svelte";
-  
-    // Dodanie funkcji closeFW
-    const closeFW = () => {
-      activeCategoryStore.set(null);
-      activeMachineStore.set(null);
-      expandedViewStore.set(false);
-  
-      if (browser) {
-        const url = new URL(window.location.href);
-        url.searchParams.delete("category");
-        url.searchParams.delete("machine");
-        window.history.pushState({}, "", url);
-        document.body.classList.remove("no-scroll-hero");
-      }
-    };
-  
-    let windowWidth;
-    $: isMobile = windowWidth <= 900;
-  </script>
-  
-  <svelte:window bind:innerWidth={windowWidth} />
+  import CtaButtonHero from "../components/cta-button-hero.svelte";
+  import {
+    activeCategoryStore,
+    activeMachineStore,
+    expandedViewStore,
+  } from "../lib/visibilityStore";
+  import { typoFixAction } from "$lib/utils/typography";
+  import { browser } from "$app/environment";
+  import { fade } from "svelte/transition";
 
-  {#if $activeMachineStore}
-    <div class="activeMachine"
-      in:fade={{ duration: 300, delay: 0 }}
-      out:fade={{ duration: 300, delay: 0 }}
-    >
-      <div class="machine-content">
-        <CtaButtonHero on:click={closeFW}>Zamknij</CtaButtonHero>
-        <!-- Your machine content goes here -->
-        {#if $activeCategoryStore === "frezarki" && $activeMachineStore === "m_frezarka"}
-          <p>Zawartość frezarki</p>
-        {/if}
-      </div>
+  //tables dla maszyn
+  import Maszyny_table_frezarki from "$lib/../components/tables/Maszyny_table_frezarki.svelte";
+  import Maszyny_table_plotery from "$lib/../components/tables/Maszyny_table_plotery.svelte";
+  import Maszyny_table_grawerki from "$lib/../components/tables/Maszyny_table_grawerki.svelte";
+  import Maszyny_table_frezarki5osiowe from "$lib/../components/tables/Maszyny_table_frezarki5osiowe.svelte";
+  import Maszyny_table_ploteryLinearne from "$lib/../components/tables/Maszyny_table_ploteryLinearne.svelte";
+  import Maszyny_table_zabudowa from "$lib/../components/tables/Maszyny_table_zabudowa.svelte";
+
+  // Dodanie funkcji closeFW
+  const closeFW = () => {
+    activeCategoryStore.set(null);
+    activeMachineStore.set(null);
+    expandedViewStore.set(false);
+
+    if (browser) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("category");
+      url.searchParams.delete("machine");
+      window.history.pushState({}, "", url);
+      document.body.classList.remove("no-scroll-hero");
+    }
+  };
+
+  let windowWidth;
+  $: isMobile = windowWidth <= 900;
+</script>
+
+<svelte:window bind:innerWidth={windowWidth} />
+
+{#if $activeMachineStore}
+  <div
+    class="activeMachine"
+    in:fade={{ duration: 300, delay: 0 }}
+    out:fade={{ duration: 300, delay: 0 }}
+  >
+    <div class="machine-content">
+      <CtaButtonHero on:click={closeFW}>Zamknij</CtaButtonHero>
+      <!-- Your machine content goes here -->
+      {#if $activeCategoryStore === "frezarki" && $activeMachineStore === "m_frezarka"}
+        <p>Zawartość frezarki</p>
+      {/if}
     </div>
-  {/if}
-
-
-
-
+  </div>
+{/if}
 
 {#if $activeMachineStore}
   <div
@@ -923,6 +923,31 @@
   </div>
 {/if}
 
+<!--  <style lang="scss">
+    .activeMachine {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      overflow: hidden; // Prevent scrolling on the activeMachine itself
+  
+      @media (max-width: 900px) {
+        flex-direction: column;
+      }
+  
+      .machine-content {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto; // Enable vertical scrolling within the content
+        -webkit-overflow-scrolling: touch; // For smooth scrolling on iOS
+      }
+    }
+  </style> -->
+
 <style lang="scss">
   /* Mobile layout for $activeMachineStore */
   .activeMachine {
@@ -1279,7 +1304,60 @@
     max-height: 100vh;
   }
   /* --- KONIEC SCROLLA PARAMS --- */
+
+
+
+  @media (max-width: 800px) {
+    :global(.activeMachine) {
+      border: 6px solid #96a500 !important;
+    }
+    .active_flex {
+      display: flex;
+      position:  relative !important;
+      flex-direction: column;
+      height: 100%;
+      overflow: auto;
+    }
+    .activeMachine .left {
+      width: 100% !important;
+      position: relative;
+      height: auto;
+      // height: 100% !important;
+    }
+    .activeMachine .right {
+      position: relative;
+      width: 100% !important;
+      height: auto !important;
+      overflow: hidden !important;
+      // min-height: 100vh !important;
+    }
+  }
+
+
   /* Additional mobile styles for smaller */
+  @media (min-width: 800px) {
+    :global(.activeMachine) {
+      border: 6px solid #96a500 !important;
+    }
+    .active_flex {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+    }
+
+    .activeMachine .left {
+      width: 50% !important;
+      height: 100% !important;
+    }
+    .activeMachine .right {
+      height: 100% !important;
+
+      min-height: 100vh !important;
+    }
+    .right_params {
+      min-width: 40%;
+    }
+  }
   @media (max-width: 1200px) {
     body.no-scroll-hero .activeMachine .right .right_params {
       overflow: initial;
@@ -1336,33 +1414,3 @@
     }
   }
 </style>
-
-
-
-  
- <!--  <style lang="scss">
-    .activeMachine {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: 999;
-      background: rgba(255, 255, 255, 0.95);
-      display: flex;
-      overflow: hidden; // Prevent scrolling on the activeMachine itself
-  
-      @media (max-width: 900px) {
-        flex-direction: column;
-      }
-  
-      .machine-content {
-        width: 100%;
-        height: 100%;
-        overflow-y: auto; // Enable vertical scrolling within the content
-        -webkit-overflow-scrolling: touch; // For smooth scrolling on iOS
-      }
-    }
-  </style> -->
-  
-
