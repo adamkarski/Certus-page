@@ -38,21 +38,7 @@
 
 <svelte:window bind:innerWidth={windowWidth} />
 
-{#if $activeMachineStore}
-  <div
-    class="activeMachine"
-    in:fade={{ duration: 300, delay: 0 }}
-    out:fade={{ duration: 300, delay: 0 }}
-  >
-    <div class="machine-content">
-      <CtaButtonHero on:click={closeFW}>Zamknij</CtaButtonHero>
-      <!-- Your machine content goes here -->
-      {#if $activeCategoryStore === "frezarki" && $activeMachineStore === "m_frezarka"}
-        <p>Zawartość frezarki</p>
-      {/if}
-    </div>
-  </div>
-{/if}
+
 
 {#if $activeMachineStore}
   <div
@@ -1307,32 +1293,39 @@
 
 
 
+  
   @media (max-width: 800px) {
+    :global(html), :global(body) {
+      height: auto; /* Reset wysokości */
+      overflow: visible; /* Umożliw przewijanie */
+    }
+
     :global(.activeMachine) {
       border: 6px solid #96a500 !important;
+      position: relative; /* Change from fixed to relative */
+      height: auto; /* Dynamiczna wysokość */
+      overflow: visible; /* Umożliw przewijanie */
     }
-    .active_flex {
-      display: flex;
-      position:  relative !important;
-      flex-direction: column;
-      height: 100%;
-      overflow: auto;
-    }
-    .activeMachine .left {
-      width: 100% !important;
-      position: relative;
-      height: auto;
-      // height: 100% !important;
-    }
-    .activeMachine .right {
-      position: relative;
-      width: 100% !important;
-      height: auto !important;
-      overflow: hidden !important;
-      // min-height: 100vh !important;
-    }
-  }
 
+    .active_flex {
+      height: auto; /* Dynamiczna wysokość */
+      overflow-y: visible; /* Umożliw przewijanie */
+    }
+
+    .activeMachine .left {
+      width: 100%;
+      position: relative;
+      height: auto; /* Dynamiczna wysokość */
+      overflow: visible; /* Usuń scroll */
+    }
+
+    .activeMachine .right {
+      width: 100%;
+      position: relative;
+      height: auto; /* Dynamiczna wysokość */
+      overflow: visible; /* Usuń scroll */
+    }
+}
 
   /* Additional mobile styles for smaller */
   @media (min-width: 800px) {
