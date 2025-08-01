@@ -1,41 +1,58 @@
 
-<script>
-
-  import CtaButtonHero from "../components/cta-button-hero.svelte";
-  import { activeCategoryStore, activeMachineStore , expandedViewStore} from "../lib/visibilityStore";
-
-  import { typoFixAction } from '$lib/utils/typography';
-  import { browser } from "$app/environment";
-  import { fade } from 'svelte/transition';
-
+<script lang="ts">
+    import CtaButtonHero from "../components/cta-button-hero.svelte";
+    import { activeCategoryStore, activeMachineStore, expandedViewStore } from "../lib/visibilityStore";
+    import { typoFixAction } from '$lib/utils/typography';
+    import { browser } from "$app/environment";
+    import { fade } from 'svelte/transition';
+  
     //tables dla maszyn
-  import Maszyny_table_frezarki from '$lib/../components/tables/Maszyny_table_frezarki.svelte';
-  import Maszyny_table_plotery from "$lib/../components/tables/Maszyny_table_plotery.svelte";
-  import Maszyny_table_grawerki from "$lib/../components/tables/Maszyny_table_grawerki.svelte";
-  import Maszyny_table_frezarki5osiowe from "$lib/../components/tables/Maszyny_table_frezarki5osiowe.svelte";
-  import Maszyny_table_ploteryLinearne from "$lib/../components/tables/Maszyny_table_ploteryLinearne.svelte";
-  import Maszyny_table_zabudowa from "$lib/../components/tables/Maszyny_table_zabudowa.svelte";
+    import Maszyny_table_frezarki from '$lib/../components/tables/Maszyny_table_frezarki.svelte';
+    import Maszyny_table_plotery from "$lib/../components/tables/Maszyny_table_plotery.svelte";
+    import Maszyny_table_grawerki from "$lib/../components/tables/Maszyny_table_grawerki.svelte";
+    import Maszyny_table_frezarki5osiowe from "$lib/../components/tables/Maszyny_table_frezarki5osiowe.svelte";
+    import Maszyny_table_ploteryLinearne from "$lib/../components/tables/Maszyny_table_ploteryLinearne.svelte";
+    import Maszyny_table_zabudowa from "$lib/../components/tables/Maszyny_table_zabudowa.svelte";
+  
+    // Dodanie funkcji closeFW
+    const closeFW = () => {
+      activeCategoryStore.set(null);
+      activeMachineStore.set(null);
+      expandedViewStore.set(false);
+  
+      if (browser) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("category");
+        url.searchParams.delete("machine");
+        window.history.pushState({}, "", url);
+        document.body.classList.remove("no-scroll-hero");
+      }
+    };
+  
+    let windowWidth;
+    $: isMobile = windowWidth <= 900;
+  </script>
+  
+  <svelte:window bind:innerWidth={windowWidth} />
+
+  {#if $activeMachineStore}
+    <div class="activeMachine"
+      in:fade={{ duration: 300, delay: 0 }}
+      out:fade={{ duration: 300, delay: 0 }}
+    >
+      <div class="machine-content">
+        <CtaButtonHero on:click={closeFW}>Zamknij</CtaButtonHero>
+        <!-- Your machine content goes here -->
+        {#if $activeCategoryStore === "frezarki" && $activeMachineStore === "m_frezarka"}
+          <p>Zawartość frezarki</p>
+        {/if}
+      </div>
+    </div>
+  {/if}
 
 
 
 
-
-  // Dodanie funkcji closeFW
-  const closeFW = () => {
-    activeCategoryStore.set(null);
-    activeMachineStore.set(null);
-    expandedViewStore.set(false);
-    
-    if (browser) {
-      const url = new URL(window.location.href);
-      url.searchParams.delete("category");
-      url.searchParams.delete("machine");
-      window.history.pushState({}, "", url);
-      document.body.classList.remove("no-scroll-hero");
-    }
-  };
-
-</script>
 
 {#if $activeMachineStore}
   <div
@@ -1319,3 +1336,33 @@
     }
   }
 </style>
+
+
+
+  
+ <!--  <style lang="scss">
+    .activeMachine {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      overflow: hidden; // Prevent scrolling on the activeMachine itself
+  
+      @media (max-width: 900px) {
+        flex-direction: column;
+      }
+  
+      .machine-content {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto; // Enable vertical scrolling within the content
+        -webkit-overflow-scrolling: touch; // For smooth scrolling on iOS
+      }
+    }
+  </style> -->
+  
+
