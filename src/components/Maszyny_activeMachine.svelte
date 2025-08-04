@@ -182,12 +182,6 @@
             <div class="right_menu">
               <nav>
                 <ul>
-                  <!-- <li>
-                  <DaneTechniczne
-                    text="Dane techniczne"
-                    on:click={expandRightInfo}
-                  />
-                </li> -->
                   <li>
                     <MenuDownload
                       text="Do pobrania"
@@ -283,57 +277,55 @@
           </p>
 
           <hr />
-          <h3  use:typoFixAction>Przewagi konstrukcyjne</h3>
+          <h3 use:typoFixAction>Przewagi konstrukcyjne</h3>
 
-          <p use:typoFixAction>W porównaniu do wersji otwartej, zabudowa chroni operatora przed odpryskami,
-            pyłem i mgłą olejową, znacząco poprawiając bezpieczeństwo oraz komfort pracy.
-            W pełni zamknięta przestrzeń robocza ułatwia również utrzymanie czystości w
-            miejscu pracy oraz ogranicza emisję hałasu i zanieczyszczeń do otoczenia.
-            Zamknięta konstrukcja pozwala na skuteczniejsze chłodzenie narzędzi i materiału
-            obrabianego – możliwa jest praca z układami chłodzenia mgłą olejową lub cieczą
-            w obiegu zamkniętym. W wielu przypadkach zabudowa umożliwia też
-            efektywniejsze odciąganie wiórów i pyłu, co przekłada się na lepszą jakość obróbki
-            i dłuższą żywotność komponentów.</p>
+          <p use:typoFixAction>
+            W porównaniu do wersji otwartej, zabudowa chroni operatora przed
+            odpryskami, pyłem i mgłą olejową, znacząco poprawiając
+            bezpieczeństwo oraz komfort pracy. W pełni zamknięta przestrzeń
+            robocza ułatwia również utrzymanie czystości w miejscu pracy oraz
+            ogranicza emisję hałasu i zanieczyszczeń do otoczenia. Zamknięta
+            konstrukcja pozwala na skuteczniejsze chłodzenie narzędzi i
+            materiału obrabianego – możliwa jest praca z układami chłodzenia
+            mgłą olejową lub cieczą w obiegu zamkniętym. W wielu przypadkach
+            zabudowa umożliwia też efektywniejsze odciąganie wiórów i pyłu, co
+            przekłada się na lepszą jakość obróbki i dłuższą żywotność
+            komponentów.
+          </p>
 
+          <hr />
+          <h3 use:typoFixAction>Stabilność i precyzja</h3>
 
+          <p use:typoFixAction>
+            Obudowane maszyny są projektowane z myślą o jeszcze większej
+            sztywności konstrukcyjnej. Zwiększona masa i zamknięty układ
+            wspomagają tłumienie drgań, co przekłada się na wyższą precyzję
+            pracy, zwłaszcza przy obróbce metali i materiałów trudnoskrawalnych.
+          </p>
 
+          <hr />
+          <h3 use:typoFixAction>Zastosowania i elastyczność</h3>
 
-            <hr />
-            <h3  use:typoFixAction>Stabilność i precyzja</h3>
-  
-            <p use:typoFixAction>Obudowane maszyny są projektowane z myślą o jeszcze większej sztywności
-              konstrukcyjnej. Zwiększona masa i zamknięty układ wspomagają tłumienie drgań,
-              co przekłada się na wyższą precyzję pracy, zwłaszcza przy obróbce metali i
-              materiałów trudnoskrawalnych.</p>
-  
+          <p use:typoFixAction>
+            Zabudowane plotery CNC znajdują zastosowanie w aplikacjach
+            wymagających powtarzalności i kontroli środowiska obróbki – m.in. w
+            przemyśle motoryzacyjnym, lotniczym, formierskim i technice
+            medycznej. Mogą pracować z szeroką gamą materiałów, od tworzyw
+            sztucznych i kompozytów, po aluminium i stal, z możliwością
+            rozbudowy o osie obrotowe oraz automatyczne systemy wymiany
+            narzędzi.
+          </p>
 
+          <hr />
+          <h3 use:typoFixAction>Opcje mocowania materiału</h3>
 
-            <hr />
-            <h3  use:typoFixAction>Zastosowania i elastyczność</h3>
-  
-            <p use:typoFixAction>Zabudowane plotery CNC znajdują zastosowanie w aplikacjach wymagających
-              powtarzalności i kontroli środowiska obróbki – m.in. w przemyśle
-              motoryzacyjnym, lotniczym, formierskim i technice medycznej. Mogą pracować z
-              szeroką gamą materiałów, od tworzyw sztucznych i kompozytów, po aluminium i
-              stal, z możliwością rozbudowy o osie obrotowe oraz automatyczne systemy
-              wymiany narzędzi.</p>
-  
+          <p use:typoFixAction>
+            Podobnie jak modele otwarte, urządzenia mogą być wyposażone w stół
+            podciśnieniowy, T-rowkowy lub hybrydowy, co pozwala na szybkie i
+            elastyczne mocowanie elementów o różnych kształtach i rozmiarach.
+          </p>
 
-
-            <hr />
-            <h3  use:typoFixAction>Opcje mocowania materiału</h3>
-  
-            <p use:typoFixAction>Podobnie jak modele otwarte, urządzenia mogą być wyposażone w stół
-              podciśnieniowy, T-rowkowy lub hybrydowy, co pozwala na szybkie i elastyczne
-              mocowanie elementów o różnych kształtach i rozmiarach.</p>
-  
-
-
-
-
-
-
-            <div class="right_menu">
+          <div class="right_menu">
             <nav>
               <ul>
                 <li>
@@ -369,15 +361,6 @@
                 src="/assets/maszyny/certus_7111_temp_schemat02.png"
                 alt="Schemat techniczny plotera przemysłowego m_ploter - widok 2"
               />
-              <!-- 
-              <h2>Parametry techniczne</h2>
-              <ul>
-                <li>Wymiary: XXXX x YYYY x ZZZZ mm</li>
-                <li>Silniki: Serwo AC</li>
-                <li>Chłodzenie: Automatyczne</li>
-                <li>Oprogramowanie: Polskojęzyczne</li>
-                <li>Panel sterujący: Wolnostojący</li>
-              </ul> -->
             </div>
           </div>
         {/if}
@@ -389,7 +372,7 @@
         in:fade={{ duration: 300, delay: 200 }}
         out:fade={{ duration: 300, delay: 100 }}
       >
-        <h1>Ploter Przemysłowy m_ploter1</h1>
+        <h1>Plotery przemysłowe CNC bez zabudowy</h1>
 
         <div class="left_image no-sel">
           <img
@@ -416,28 +399,91 @@
       >
         <div class="right_content">
           <h1 use:typoFixAction>
-            <!-- Content for m_ploter1 (Plotery Przemysłowe) -->
-            Szczegóły dla plotera przemysłowego m_ploter1.
+            <b>
+              Wielkoformatowe centra obróbcze CNC stanowią wysokowydajne
+              platformy przeznaczone do skrawania w co najmniej trzech osiach
+            </b>
           </h1>
           <p use:typoFixAction>
-            To jest przykładowy opis dla plotera przemysłowego m_ploter1. Możesz
-            tutaj dodać więcej informacji o jego funkcjach i zastosowaniach.
+            Z możliwością rozbudowy o dodatkowe osie sterowane. Dzięki temu
+            łączą funkcje frezowania, wiercenia, gwintowania, toczenia, cięcia,
+            bigowania, a nawet dozowania materiałów.
           </p>
 
-          <!--   <div class="right_menu">
+          <hr />
+          <br/><br/>
+          <h3 use:typoFixAction>Konstrukcja i precyzja</h3>
+
+          <ul>
+            <li use:typoFixAction>
+              <b>Bazują na sprawdzonych rozwiązaniach ploterów przemysłowych</b>
+
+              
+            </li>
+          <br/>
+            <span use:typoFixAction>
+              oferując
+              m.in. konstrukcję bramową z obustronnym napędem serwonapędami oraz
+              elektroniczną kompensację odchyłek bramy, co przekłada się na wyjątkową
+              dokładność i stabilność pracy.
+                        </span>
+
+
+                        <br/><br/>
+
+            <li use:typoFixAction>
+              <b> Wzmocniona, zwarta konstrukcja</b>
+            </li> <br/>
+            <span use:typoFixAction>
+              zapewnia znacznie wyższą sztywność niż
+klasyczne plotery, umożliwiając obróbkę trudniejszych materiałów z
+zachowaniem wysokiej precyzji.
+                        </span>
+          </ul>
+
+
+          <hr />
+
+          <h3 use:typoFixAction>Zakres zastosowań</h3>
+          <p use:typoFixAction>
+            W zależności od konfiguracji i wyposażenia, urządzenia te mogą obrabiać
+szeroką gamę materiałów – od tworzyw sztucznych i kompozytów, przez
+metale nieżelazne (aluminium, mosiądz), aż po blachy stalowe.
+          </p>
+
+          <p use:typoFixAction>
+            Do cięższych zastosowań przewidziano możliwość zastosowania wrzecion
+o mocy do 16 kW, z automatycznym systemem wymiany narzędzi –
+liniowym lub obrotowym.
+
+          </p>
+
+
+
+
+          Opcje mocowania materiału
+          Standardowo centra wyposażone są w stół próżniowy rastrowy z pompą
+          próżniową o dużej wydajności, co umożliwia szybkie i pewne mocowanie
+          materiałów w arkuszach oraz elementów o nieregularnym kształcie (przy
+          użyciu bloków próżniowych).
+          Alternatywnie dostępny jest stół T-rowkowy, pozwalający na tradycyjne
+          mocowanie detali – bezpośrednio do stołu, przy użyciu imadeł lub
+          dedykowanych uchwytów.
+
+
+          <div class="right_menu">
             <nav>
               <ul>
                 <li>
-                  <DaneTechniczne
-                    text="Dane techniczne"
-                    on:click={expandRightInfo}
+                  <MenuDownload
+                    text="Do pobrania"
+                    href="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
                   />
                 </li>
-                <li><MenuDownload text="Do pobrania" href="#" /></li>
                 <li><MenuEmail text="Kontakt" href="#" /></li>
               </ul>
             </nav>
-          </div> -->
+          </div>
 
           <Maszyny_table_zabudowa />
 
@@ -1184,7 +1230,7 @@
     padding-bottom: 24em;
     font-size: 0.95rem;
   }
-  
+
   .right_params_content img:hover {
     cursor:
       url("data:image/svg+xml;base64,CjxzdmcgaWQ9IkxheWVyXzEiIGRhdGEtbmFtZT0iTGF5ZXIgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTQwLjA0IDE0MC4wNCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLmNscy0yIHsKICAgICAgICBmaWxsOiAjOTZhNTAwOwogICAgICAgIHN0cm9rZTogIzk2YTUwMDsKICAgICAgfQoKICAgICAgLmNscy0yLCAuY2xzLTMgewogICAgICAgIHN0cm9rZS1taXRlcmxpbWl0OiAxMDsKICAgICAgICBzdHJva2Utd2lkdGg6IDZweDsKICAgICAgfQoKICAgICAgLmNscy0zIHsKICAgICAgICBmaWxsOiAjYzVkNDE4OwogICAgICAgIHN0cm9rZTogI2M1ZDQxODsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iMTQwLjA0IiBoZWlnaHQ9IjE0MC4wNCIvPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNjEuMDIsMjAuODZjLTIyLjkyLDAtNDEuNTEsMTguNTgtNDEuNTEsNDEuNTFzMTguNTgsNDEuNTEsNDEuNTEsNDEuNTEsNDEuNTEtMTguNTgsNDEuNTEtNDEuNTEtMTguNTgtNDEuNTEtNDEuNTEtNDEuNTEFaTTYxLjAyLDk4LjU1Yy0xOS45OCwwLTM2LjE4LTE2LjItMzYuMTgtMzYuMThTNDEuMDMsMjYuMTksNjEuMDIsMjYuMTlzMzYuMTgsMTYuMiwzNi4xOCwzNi4xOC0xNi4yLDM2LjE4LTM2LjE4LDM2LjE4WiIvPgogICAgPHBvbHlnb24gY2xhc3M9ImNscy0zIiBwb2ludHM9Ijk4LjM4IDk2LjkxIDk0LjY2IDEwMC42MyAxMTMuMzkgMTE5LjE4IDEyMC41MyAxMTguODUgOTguMzggOTYuOTEiLz4KICA8L2c+Cjwvc3ZnPg==")
