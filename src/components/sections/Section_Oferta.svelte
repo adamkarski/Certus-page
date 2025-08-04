@@ -66,17 +66,6 @@
       background: #f7f7f7;
     }
 
-    .first-container-back {
-      background-image: url(/assets/first-block-polyline.svg);
-    position: absolute;
-    top: 871px;
-    width: 100%;
-    height: 27px;
-    background-repeat: no-repeat;
-    background-position-x: -823px;
-    z-index: 3;
-    transform: scaleY(0.9);
-  }
   }
 
   
@@ -102,11 +91,14 @@
     }
 
     .oferta-container {
-      padding: 0 2rem;
+      padding: 0 2rem !important;
     }
 
     .section-title {
       font-size: 20px;
+    }
+    .section-subtitle {
+      font-size: 14px;
     }
   }
 </style>

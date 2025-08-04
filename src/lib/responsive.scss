@@ -8,51 +8,11 @@
    - 480px: Mobile portrait
 */
 
-/* ========================================
-   HERO SECTION - ACTIVE MACHINE VIEW
-   ======================================== */
-
-   @media (min-width: 2560px) {
-
+@media (min-width: 1024px) {
+  .activeMachine .left.short {
+    min-height: 600px !important;
   }
-   @media (min-width: 1440px) {
-
-  }
-   @media (min-width: 1024px) {
-
-    .activeMachine .left.short{
-
-min-height: 600px !important;
-
-    }
-
-
-  }
-   @media (min-width: 768px) {
-
-  }
-   @media (min-width: 425px) {
-
-  }
-   @media (min-width: 375px) {
-
-  }
-
-  
-
-    
-
-
-
-
-
-   .logomini .lottie-player .animation svg > g > g:nth-child(4) {
-  opacity: 0;
 }
-
-
-
-
 
 tbody tr td .text {
   font-size: 0.7rem !important;
@@ -70,59 +30,82 @@ tbody tr td .text {
 }
 
 body.home {
-  .first-container-back{
-
-
-    top: 759px;
-
+  .first-container-back {
+    background-image: url(../../../assets/first-block-polyline.svg);
+    position: absolute;
+    top: -24px;
+    width: 1600px;
+    height: 27px;
+    background-repeat: no-repeat;
+    background-position-x: -823px;
+    z-index: 3;
+    margin-left: -13%;
+    transform: scaleY(1);
   }
-  .oferta   .first-container-back {
-    position: relative;
-    display: block !important;
-    margin-top: -896px;
+}
+
+@media (max-width: 500px) and (height: 500px) {
+
+  body {
+    border: 13px solid red !important;
   }
 
 }
 
 
 
-@media (min-width: 932px )and (max-width: 1014px) {
 
-  body{
-
-    border: 1px solid gold;
-  }
-  .nav-link{
+@media (min-width: 932px) and (max-width: 1014px) {
+  .nav-link {
     min-width: 65px !important;
     padding: 0px !important;
   }
-.desktop-menu-items{
-font-size: 10px;
+  .desktop-menu-items {
+    font-size: 10px;
+  }
+  .dropDownMenu {
+    padding: 5px;
+  }
 }
-.dropDownMenu{
-  padding: 5px;
-}
 
-}
-
-
-
-@media (min-width: 757px )and (max-width: 932px) {
-  .desktop-menu-items{
+@media (min-width: 757px) and (max-width: 932px) {
+  .oferta-container {
+    padding: 0 1rem !important;
+  }
+  .desktop-menu-items {
     font-size: 12px !important;
-    }
-    .nav-link{
-      padding: 0px !important;
-      min-width: 51px !important;
-    }
-    .dropDownMenu{
-      padding: 8px;
-    }
-    body{
+  }
+  .nav-link {
+    padding: 0px !important;
+    min-width: 51px !important;
+  }
+  .dropDownMenu {
+    padding: 8px;
+  }
+  body {
+  }
 
-      border: 1px solid rgb(163, 8, 83);
-    } 
+  .oferta-container {
+    padding: 0 2rem !important;
+
+    p {
+      font-size: 10px !important;
+    }
+  }
+  .o-nas-container {
+    padding: 0 2rem !important;
+  }
 }
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .activeMachine .right {
+    flex-direction: column !important;
+  }
+}
+.activeMachine .right_params {
+  min-width: 30% !important;
+}
+
 @media (min-width: 1200px) {
   .menuItems {
     width: 600px;
@@ -131,7 +114,20 @@ font-size: 10px;
     width: 10% !important;
     min-width: 20px !important;
   }
-
+  .active_flex {
+    width: 100%;
+    display: flex;
+    height: 100%;
+  }
+  .activeMachine .left {
+    max-width: 60% !important;
+    height: 100% !important;
+  }
+  .activeMachine .right {
+    max-width: 40% !important;
+    height: 100% !important;
+    min-height: 100%;
+  }
   .activeMachine .right_params_content {
     padding-top: 2rem !important;
     padding-left: 0rem !important;
@@ -140,9 +136,6 @@ font-size: 10px;
       height: auto !important;
     }
   }
-
-}
-@media (max-width: 772px) {
 }
 
 @media (max-width: 927px) {
@@ -180,8 +173,8 @@ font-size: 10px;
   }
 
   .activeMachine .left_image img {
-    max-width: 50vw !important;
-    min-width: 30vw !important;
+    max-width: 45vw;
+    min-width: 45vw;
   }
 
   .activeMachine .right {
@@ -189,6 +182,9 @@ font-size: 10px;
     height: 50vh !important;
     overflow-y: auto !important;
     padding: 10px 15px !important;
+    h1 {
+      margin-left: -16px !important;
+    }
   }
 
   .activeMachine .right.expanded {
@@ -265,7 +261,9 @@ font-size: 10px;
     font-size: 1.8em !important;
     padding-left: 0.5em !important;
   }
-
+  .section-title::before {
+    transform: scale(0.8) !important;
+  }
   .activeMachine .left_image img {
     max-width: 70vw !important;
     min-width: 50vw !important;
@@ -349,7 +347,7 @@ font-size: 10px;
   }
 
   .activeMachine .left_image img {
-    max-width: 80vw !important;
+    max-width: 75vw !important;
     min-width: 60vw !important;
   }
 

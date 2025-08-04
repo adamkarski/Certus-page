@@ -1,8 +1,4 @@
 <script lang="ts">
-  import IconDoc from "../IconDoc.svelte";
-  import DaneTechniczne from "../../assets/menu/dane_techniczne.svelte";
-  import MenuEmail from "../../assets/menu/menu_email.svelte";
-  import MenuDownload from "../../assets/menu/menu_download.svelte";
   import CtaButtonHero from "../cta-button-hero.svelte";
   import { register } from "swiper/element/bundle";
   import { fade, fly } from "svelte/transition";
@@ -14,14 +10,16 @@
   import { typoFixAction } from "$lib/utils/typography";
   import list from "$lib/data/maszyny.json";
   import { windowWidth, resetHeroSwiper } from "../../lib/visibilityStore";
-  import { activeCategoryStore, activeMachineStore, expandedViewStore } from "../../lib/visibilityStore";
-  
+  import {
+    activeCategoryStore,
+    activeMachineStore,
+    expandedViewStore,
+  } from "../../lib/visibilityStore";
+
   import MaszynyActiveMachine from "../Maszyny_activeMachine.svelte";
 
   register();
 
- 
- 
   let swiperReady = false;
   let swiperElement; // Declare swiperElement
 
@@ -31,7 +29,7 @@
   onMount(() => {
     // Start preloading images immediately
     preloadImages();
-    
+
     setTimeout(() => {
       swiperReady = true;
       if (browser) {
@@ -53,7 +51,11 @@
               100
             );
           }
-        } else if (!$activeCategoryStore && swiperElement && swiperElement.swiper) {
+        } else if (
+          !$activeCategoryStore &&
+          swiperElement &&
+          swiperElement.swiper
+        ) {
           setTimeout(() => {
             swiperElement.swiper.slideTo(0);
             setTimeout(
@@ -75,29 +77,26 @@
     if (browser) {
       // Initialize windowWidth
       windowWidth.set(window.innerWidth);
-      
+
       // Add resize listener
       const handleResize = () => {
         windowWidth.set(window.innerWidth);
       };
       window.addEventListener("resize", handleResize);
       window.addEventListener("popstate", handlePopstate);
-      
+
       // Cleanup function
       return () => {
         window.removeEventListener("resize", handleResize);
         window.removeEventListener("popstate", handlePopstate);
       };
     }
-
-
   });
 
   function handleSwiperInit(event) {
     const swiper = event.detail[0];
     swiperReady = true;
 
- 
     // Set consistent speed for all transitions
     swiper.params.speed = 300; // 300ms for all transitions
 
@@ -125,7 +124,7 @@
     }, 100);
   }
   $: slidesPerView = $windowWidth < 1024 ? 1 : 2;
-  
+
   $: slidesPerGroup = $windowWidth < 1024 ? 1 : 2;
 
   // Update swiper when window width changes
@@ -133,14 +132,14 @@
     setTimeout(() => {
       console.log("Window width changed, updating swiper:", $windowWidth);
       const swiper = swiperElement.swiper;
-      
+
       // Update swiper parameters
       swiper.params.slidesPerView = slidesPerView;
       swiper.params.slidesPerGroup = slidesPerGroup;
-      
+
       // Update swiper
       swiper.update();
-      
+
       // Update navigation buttons
       updateNavigationButtons(swiper);
     }, 100);
@@ -148,14 +147,12 @@
 
   $: if (browser) {
     if ($windowWidth <= 800) {
-        document.body.classList.add("r800");
-       /*  document.body.classList.remove("no-scroll-hero"); */
+      document.body.classList.add("r800");
+      /*  document.body.classList.remove("no-scroll-hero"); */
     } else {
-        document.body.classList.remove("r800");
-    } 
+      document.body.classList.remove("r800");
+    }
   }
-
-
 
   // Function to update navigation buttons based on current slide
   function updateNavigationButtons(swiper) {
@@ -171,7 +168,6 @@
       const currentSlidesPerView = $windowWidth < 1024 ? 1 : 2; // Use reactive value
       const currentSlidesPerGroup = $windowWidth < 1024 ? 1 : 2; // Use reactive value
 
-      
       // Remove existing disabled classes
       prevButton.classList.remove("swiper-button-disabled");
       nextButton.classList.remove("swiper-button-disabled");
@@ -179,7 +175,6 @@
       // Use reactive slidesPerGroup value
       const maxGroups = Math.ceil(totalSlides / currentSlidesPerGroup);
       const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
-
 
       // Check if we're at the beginning (group 0)
       if (currentGroup === 0) {
@@ -203,7 +198,6 @@
       const slidesPerGroup = swiper.params.slidesPerGroup || 2;
       const currentGroup = Math.floor(currentIndex / slidesPerGroup);
 
- 
       if (currentGroup > 0) {
         const targetIndex = (currentGroup - 1) * slidesPerGroup;
         swiper.slideTo(targetIndex, 300); // 300ms transition
@@ -275,7 +269,11 @@
         if (index !== -1 && swiperElement && swiperElement.swiper) {
           swiperElement.swiper.slideToLoop(index);
         }
-      } else if (!$activeCategoryStore && swiperElement && swiperElement.swiper) {
+      } else if (
+        !$activeCategoryStore &&
+        swiperElement &&
+        swiperElement.swiper
+      ) {
         setTimeout(() => {
           swiperElement.swiper.slideToLoop(0);
         }, 0);
@@ -372,9 +370,9 @@
       $expandedViewStore = true;
     }, 800);
   };
- const closeFW = () => {
+  const closeFW = () => {
     document.body.classList.remove("active_machine_view");
-    
+
     $activeCategoryStore = null;
     $activeMachineStore = null;
     $expandedViewStore = false;
@@ -511,7 +509,6 @@
               space-between="0"
               slides-per-view={slidesPerView}
               slides-per-group={slidesPerGroup}
-             
               mousewheel
               autoplay
               bind:this={swiperElement}
@@ -520,55 +517,53 @@
             >
               {#each list as cat}
                 <swiper-slide>
-                 
-                    <button
-                      type="button"
-                      class="items items-left lift"
-                      on:click={() => cat.url 
-                        ? window.location.href = cat.url
-                        : openCategory(cat.id)
-                      }
-                    >
-                      <div class="headlines">
-                        <div class="topline">{cat.title}</div>
+                  <button
+                    type="button"
+                    class="items items-left lift"
+                    on:click={() =>
+                      cat.url
+                        ? (window.location.href = cat.url)
+                        : openCategory(cat.id)}
+                  >
+                    <div class="headlines">
+                      <div class="topline">{cat.title}</div>
+                    </div>
+                    <div class="item">
+                      <div class="image">
+                        {#if $imageLoadingStates[cat.id]}
+                          <img
+                            src={cat.img}
+                            alt={cat.title}
+                            draggable="false"
+                          />
+                        {:else}
+                          <div class="image-loader">
+                            <svg width="50" height="50" viewBox="0 0 50 50">
+                              <circle
+                                cx="25"
+                                cy="25"
+                                r="20"
+                                fill="none"
+                                stroke-width="5"
+                                stroke="#96a500"
+                                stroke-dasharray="31.4 31.4"
+                                stroke-linecap="round"
+                              >
+                                <animateTransform
+                                  attributeName="transform"
+                                  type="rotate"
+                                  from="0 25 25"
+                                  to="360 25 25"
+                                  dur="1s"
+                                  repeatCount="indefinite"
+                                />
+                              </circle>
+                            </svg>
+                          </div>
+                        {/if}
                       </div>
-                      <div class="item">
-                        <div class="image">
-                          {#if $imageLoadingStates[cat.id]}
-                            <img
-                              src={cat.img}
-                              alt={cat.title}
-                              draggable="false"
-                            />
-                          {:else}
-                            <div class="image-loader">
-                              <svg width="50" height="50" viewBox="0 0 50 50">
-                                <circle
-                                  cx="25"
-                                  cy="25"
-                                  r="20"
-                                  fill="none"
-                                  stroke-width="5"
-                                  stroke="#96a500"
-                                  stroke-dasharray="31.4 31.4"
-                                  stroke-linecap="round"
-                                >
-                                  <animateTransform
-                                    attributeName="transform"
-                                    type="rotate"
-                                    from="0 25 25"
-                                    to="360 25 25"
-                                    dur="1s"
-                                    repeatCount="indefinite"
-                                  />
-                                </circle>
-                              </svg>
-                            </div>
-                          {/if}
-                        </div>
-                      </div>
-                    </button>
-                
+                    </div>
+                  </button>
                 </swiper-slide>
               {/each}
             </swiper-container>
@@ -594,24 +589,29 @@
                 </h1>
 
                 <div class="subListMachines">
-                  <div>
+                  <div class="item__category">
                     <h2>W zabudowie</h2>
                     <button
                       type="button"
                       on:click={() => openMachine("m-ploter")}
                     >
-                      <img class="image" src="/assets/maszyny/88930d1c.png" alt="Ploter przemysłowy" />
+                      <img
+                        class="image"
+                        src="/assets/maszyny/88930d1c.png"
+                        alt="Ploter przemysłowy"
+                      />
                     </button>
                   </div>
 
-                  <div>
+                  <div class="item__category">
                     <h2>Bez zabudowy</h2>
                     <button
                       type="button"
                       on:click={() => openMachine("m-ploter1")}
                     >
                       <img
-                        class="image" alt="Ploter przemysłowy bez zabudowy"
+                        class="image"
+                        alt="Ploter przemysłowy bez zabudowy"
                         src="/assets/maszyny/80f5ea646ec.png"
                       />
                     </button>
@@ -625,21 +625,11 @@
       {/if}
     </div>
   </div>
-
-
-  
-
-
 </section>
 
-<MaszynyActiveMachine/>
+<MaszynyActiveMachine />
 
 <style lang="scss">
-
-
-
-
-
   :global(.swiper-nav-button.swiper-button-disabled) {
     opacity: 0.1 !important;
     cursor: not-allowed !important;
@@ -647,26 +637,42 @@
     transition: all;
   }
 
-
-
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 0px;
   }
 
-
-
   :global(.gradientHero) {
     background: linear-gradient(180deg, #7c8897 0%, #3e4042 100%);
   }
 
-
-  .active_flex{
-
+  .active_flex {
     position: relative;
-
   }
+  .subListMachines {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: -100px;
+    .image {
+      cursor: pointer;
+    }
+    button {
+      cursor: pointer;
+    }
+    .item__category {
+      display: flex;
+      width: 30vw;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+
   .category-content .container {
     position: relative;
     background-image: url(/assets/Background_Hero_swipe.jpg);
@@ -845,7 +851,7 @@
       transition: transform 0.3s ease;
 
       .headlines {
-       /*  transform: translateY(90px); */
+        /*  transform: translateY(90px); */
       }
     }
   }
@@ -866,7 +872,7 @@
     flex: 1;
     max-width: 100vw;
     min-width: 0; /* Zapobiega problemom z flex shrinking */
-    
+
     height: 117%;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -874,19 +880,16 @@
     position: relative;
     overflow: hidden;
   }
-  .headlines{
+  .headlines {
     transition: all 0.2s ease;
     transform: translateX(100px) translateY(20px);
   }
   .items:hover {
-    transform: scale(1.0) translateY(5px);
-  
-    .headlines{
-     
-      transform: translateY(50px) translateX(20px) scale(0.8);
+    transform: scale(1) translateY(5px);
 
+    .headlines {
+      transform: translateY(50px) translateX(20px) scale(0.8);
     }
-  
   }
 
   .items::before {
@@ -911,7 +914,7 @@
     font-size: 38px;
     font-weight: 700;
     line-height: 1;
-   /*  margin-bottom: 0.25em;
+    /*  margin-bottom: 0.25em;
     margin-left: 0.2em; */
     // padding-bottom: 2rem;
     transition: all 0.3s ease;
@@ -924,7 +927,7 @@
     // transform: translateY(-2px);
   }
 
-  .items:hover{
+  .items:hover {
     // transform: scale(1);
   }
   .item .image {
@@ -936,7 +939,7 @@
 
   .item .image img {
     display: block;
- 
+
     height: 100%;
     object-fit: cover;
     transition: all 0.3s ease;
@@ -978,8 +981,6 @@
     .headlines .topline {
       font-size: 28px;
     }
-
-   
   }
 
   /* --- BLOKADA SCROLLA BODY DLA expandedView --- */
@@ -992,7 +993,6 @@
       overflow-y: auto;
       .right_params {
         overflow: hidden;
-       
       }
     }
   }
@@ -1058,7 +1058,4 @@
       right: 1rem;
     }
   }
-
-
-
 </style>

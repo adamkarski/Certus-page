@@ -9,6 +9,11 @@
   import { browser } from "$app/environment";
   import { fade } from "svelte/transition";
 
+  import IconDoc from "$lib/../components/IconDoc.svelte";
+  import DaneTechniczne from "$lib/../assets/menu/dane_techniczne.svelte";
+  import MenuEmail from "$lib/../assets/menu/menu_email.svelte";
+  import MenuDownload from "$lib/../assets/menu/menu_download.svelte";
+
   //tables dla maszyn
   import Maszyny_table_frezarki from "$lib/../components/tables/Maszyny_table_frezarki.svelte";
   import Maszyny_table_plotery from "$lib/../components/tables/Maszyny_table_plotery.svelte";
@@ -53,7 +58,7 @@
           in:fade={{ duration: 300, delay: 0 }}
           out:fade={{ duration: 300, delay: 0 }}
         >
-          <h1>Frezarki CNC HMM</h1>
+          <h1>Seria Frezarek CNC<br />CERTUS HMM</h1>
 
           <div class="left_image no-sel">
             <img
@@ -80,49 +85,119 @@
         >
           <div class="right_content">
             <h1 use:typoFixAction>
-              Do szybkiego i wydajnego frezowania w materiałach takich jak stal,
-              aluminium, drewno, plastik itp.
+              <b>Nowa linia frezarek CERTUS HMM </b><br /><br />została
+              zaprojektowana z myślą o szybkim i precyzyjnym frezowaniu
+              materiałów takich jak stal, aluminium, drewno, tworzywa sztuczne i
+              inne.
             </h1>
-            <p use:typoFixAction>
-              Przykłady zastosowań: wykonanie form wtryskowych, tłoczników,
-              obróbkę modeli odlewniczych, do termo formowania, stempli, matryc
-              wykrojników ze stali i aluminium, grawerowania elementów itp. <br
-              />
-              Panel sterujący nie jest zintegrowany z maszyną, co pozwala na lepsze
-              zagospodarowanie stanowiska pracy. Oprogramowanie sterujące jest w
-              języku polskim.
-              <br />
-              Niewątpliwym atutem urządzeń jest kompletna zabudowa maszyny co umożliwia
-              ciągłe chłodzenie narzędzi jak i obrabianego materiału. Odstojnik,
-              zbiornik na chłodziwo oraz pompa stanowi integralną część urządzenia.
-              Dodatkowo technika liniowa – prowadnice i śruby kulowe posiadają trwałe
-              osłony stalowe. Maszyny te są wyposażone w standardowo w automatyczną
-              wymianę narzędzi z magazynem.
-              <br />
-              Komfort obsługi i pracy z urządzeniem podnosi wolno stojący panel sterujący.
-              Panel ten zawiera przyciski sterujące – Start, Stop, Pauza, Reset,
-              komputer, monitor, klawiaturę oraz mysz.
-              <br />
-              Urządzenie zostało wyposażone w polskojęzyczne oprogramowanie z transferem
-              danych przez port LAN oraz Serwonapędy Hybrydowe lub Serwa AC (w zależności
-              od opcji) pozwalające maszynie zachować wysoką jakość i dokładność
-              obróbki.
-            </p>
+            <br /><br />
 
-            <!--      <div class="right_menu">
-            <nav>
-              <ul>
-                <li>
+            <h3>Zastosowanie maszyn obejmuje m.in.:</h3>
+
+            <ul class="">
+              <li use:typoFixAction>produkcję form wtryskowych i tłoczników</li>
+              <li use:typoFixAction>
+                obróbkę modeli odlewniczych i termoformowanych
+              </li>
+              <li use:typoFixAction>
+                wykonywanie stempli, matryc oraz wykrojników ze stali i
+                aluminium
+              </li>
+              <li use:typoFixAction>
+                precyzyjne grawerowanie i wiele innych procesów przemysłowych
+              </li>
+            </ul>
+            <hr />
+
+            <h3>Konstrukcja i ergonomia</h3>
+
+            <ul class="">
+              <li use:typoFixAction>
+                Panel sterujący w formie wolnostojącej konsoli pozwala na
+                elastyczne rozmieszczenie stanowiska pracy, zwiększając komfort
+                obsługi i bezpieczeństwo operatora
+              </li>
+              <li use:typoFixAction>
+                Konsola zawiera m.in.: przyciski sterujące (Start, Stop, Pauza,
+                Reset), komputer przemysłowy, monitor, klawiaturę i mysz
+              </li>
+              <li use:typoFixAction>
+                Interfejs użytkownika oraz oprogramowanie dostępne są w języku
+                polskim
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3>Chłodzenie i bezpieczeństwo pracy</h3>
+
+            <ul class="">
+              <li use:typoFixAction>
+                Zamknięta, w pełni zabudowana konstrukcja maszyny umożliwia
+                efektywne chłodzenie narzędzi oraz obrabianego materiału
+              </li>
+              <li use:typoFixAction>
+                Wbudowany układ chłodzenia składa się ze zbiornika, odstojnika
+                oraz pompy, co zapewnia stabilną pracę i ochronę komponentów
+              </li>
+              <li use:typoFixAction>
+                Elementy prowadzące, takie jak prowadnice liniowe oraz śruby
+                kulowe, są zabezpieczone trwałymi osłonami stalowymi, chroniąc
+                je przed zanieczyszczeniami i wydłużając ich żywotność
+              </li>
+            </ul>
+
+            <hr />
+            <h3>Wyposażenie i napęd</h3>
+
+            <ul class="">
+              <li use:typoFixAction>
+                Maszyny standardowo wyposażone są w automatyczny system wymiany
+                narzędzi z magazynem
+              </li>
+              <li use:typoFixAction>
+                Napęd realizowany jest przez Serwonapędy Hybrydowe lub Serwa AC
+                (w zależności od konfiguracji), zapewniając wysoką precyzję i
+                jakość obróbki
+              </li>
+              <li use:typoFixAction>
+                Komunikacja z maszyną odbywa się poprzez złącze LAN, co ułatwia
+                integrację z siecią zakładową
+              </li>
+            </ul>
+            <hr />
+            <h3>Cechy charakterystyczne serii HMM</h3>
+
+            <ul class="">
+              <li use:typoFixAction>Wysoka sztywność konstrukcji</li>
+              <li use:typoFixAction>
+                Dokładność i powtarzalność pracy w swojej klasie
+              </li>
+              <li use:typoFixAction>Nowoczesne rozwiązania technologiczne</li>
+              <li use:typoFixAction>
+                Intuicyjna obsługa i wsparcie w języku polskim
+              </li>
+            </ul>
+
+            <div class="right_menu">
+              <nav>
+                <ul>
+                  <!-- <li>
                   <DaneTechniczne
                     text="Dane techniczne"
                     on:click={expandRightInfo}
                   />
-                </li>
-                <li><MenuDownload text="Do pobrania" href="#" /></li>
-                <li><MenuEmail text="Kontakt" href="#" /></li>
-              </ul>
-            </nav>
-          </div> -->
+                </li> -->
+                  <li>
+                    <MenuDownload
+                      text="Do pobrania"
+                      href="do_pobrania/Frezarki CNC HMM.pdf"
+                    />
+                  </li>
+                  <li><MenuEmail text="Kontakt" href="#" /></li>
+                </ul>
+              </nav>
+            </div>
 
             <Maszyny_table_frezarki />
             <br />
@@ -167,7 +242,7 @@
         in:fade={{ duration: 300, delay: 200 }}
         out:fade={{ duration: 300, delay: 100 }}
       >
-        <h1>Ploter Przemysłowy m_ploter</h1>
+        <h1>Plotery przemysłowe CNC w zabudowie</h1>
 
         <div class="left_image no-sel">
           <img
@@ -194,29 +269,83 @@
       >
         <div class="right_content">
           <h1 use:typoFixAction>
-            <!-- Content for m_ploter (Plotery Przemysłowe) -->
-            Szczegóły dla plotera przemysłowego m_ploter.
+            <b>Zaawansowane wieloosiowe centra obróbcze</b>
+
+            zaprojektowane z myślą o pracy w środowisku przemysłowym, gdzie
+            kluczowe znaczenie mają bezpieczeństwo, czystość procesu oraz
+            stabilność parametrów pracy.
           </h1>
+
           <p use:typoFixAction>
-            To jest przykładowy opis dla plotera przemysłowego m_ploter. Możesz
-            tutaj dodać więcej informacji o jego funkcjach i zastosowaniach.
+            Podobnie jak modele otwarte, pozwalają na frezowanie, wiercenie,
+            cięcie, gwintowanie czy bigowanie, jednak dzięki pełnej zabudowie
+            oferują dodatkowe korzyści operacyjne i eksploatacyjne.
           </p>
 
-          <!--  <div class="right_menu">
+          <hr />
+          <h3  use:typoFixAction>Przewagi konstrukcyjne</h3>
+
+          <p use:typoFixAction>W porównaniu do wersji otwartej, zabudowa chroni operatora przed odpryskami,
+            pyłem i mgłą olejową, znacząco poprawiając bezpieczeństwo oraz komfort pracy.
+            W pełni zamknięta przestrzeń robocza ułatwia również utrzymanie czystości w
+            miejscu pracy oraz ogranicza emisję hałasu i zanieczyszczeń do otoczenia.
+            Zamknięta konstrukcja pozwala na skuteczniejsze chłodzenie narzędzi i materiału
+            obrabianego – możliwa jest praca z układami chłodzenia mgłą olejową lub cieczą
+            w obiegu zamkniętym. W wielu przypadkach zabudowa umożliwia też
+            efektywniejsze odciąganie wiórów i pyłu, co przekłada się na lepszą jakość obróbki
+            i dłuższą żywotność komponentów.</p>
+
+
+
+
+            <hr />
+            <h3  use:typoFixAction>Stabilność i precyzja</h3>
+  
+            <p use:typoFixAction>Obudowane maszyny są projektowane z myślą o jeszcze większej sztywności
+              konstrukcyjnej. Zwiększona masa i zamknięty układ wspomagają tłumienie drgań,
+              co przekłada się na wyższą precyzję pracy, zwłaszcza przy obróbce metali i
+              materiałów trudnoskrawalnych.</p>
+  
+
+
+            <hr />
+            <h3  use:typoFixAction>Zastosowania i elastyczność</h3>
+  
+            <p use:typoFixAction>Zabudowane plotery CNC znajdują zastosowanie w aplikacjach wymagających
+              powtarzalności i kontroli środowiska obróbki – m.in. w przemyśle
+              motoryzacyjnym, lotniczym, formierskim i technice medycznej. Mogą pracować z
+              szeroką gamą materiałów, od tworzyw sztucznych i kompozytów, po aluminium i
+              stal, z możliwością rozbudowy o osie obrotowe oraz automatyczne systemy
+              wymiany narzędzi.</p>
+  
+
+
+            <hr />
+            <h3  use:typoFixAction>Opcje mocowania materiału</h3>
+  
+            <p use:typoFixAction>Podobnie jak modele otwarte, urządzenia mogą być wyposażone w stół
+              podciśnieniowy, T-rowkowy lub hybrydowy, co pozwala na szybkie i elastyczne
+              mocowanie elementów o różnych kształtach i rozmiarach.</p>
+  
+
+
+
+
+
+
+            <div class="right_menu">
             <nav>
               <ul>
                 <li>
-                  <DaneTechniczne
-                    text="Dane techniczne"
-                    on:click={expandRightInfo}
+                  <MenuDownload
+                    text="Do pobrania"
+                    href="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
                   />
                 </li>
-                <li><MenuDownload text="Do pobrania" href="#" /></li>
                 <li><MenuEmail text="Kontakt" href="#" /></li>
               </ul>
             </nav>
           </div>
-          -->
 
           <Maszyny_table_plotery />
           <br />
@@ -908,31 +1037,6 @@
   </div>
 {/if}
 
-<!--  <style lang="scss">
-    .activeMachine {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: 999;
-      background: rgba(255, 255, 255, 0.95);
-      display: flex;
-      overflow: hidden; // Prevent scrolling on the activeMachine itself
-  
-      @media (max-width: 900px) {
-        flex-direction: column;
-      }
-  
-      .machine-content {
-        width: 100%;
-        height: 100%;
-        overflow-y: auto; // Enable vertical scrolling within the content
-        -webkit-overflow-scrolling: touch; // For smooth scrolling on iOS
-      }
-    }
-  </style> -->
-
 <style lang="scss">
   /* Mobile layout for $activeMachineStore */
   .activeMachine {
@@ -985,6 +1089,9 @@
     ul {
       padding-left: 1rem !important;
     }
+    h3 {
+      padding-left: 1rem !important;
+    }
   }
 
   .right_params {
@@ -1035,7 +1142,7 @@
       margin-top: 1em;
       padding-left: 1.5em;
       li {
-        border-left: solid 0.1em #96a500;
+        border-left: solid 0.2em #96a500;
         padding-left: 12px;
         margin-bottom: 5px;
       }
@@ -1062,6 +1169,7 @@
 
           li {
             display: flex;
+            border: none;
           }
           li img {
             width: 1.7em;
@@ -1076,16 +1184,7 @@
     padding-bottom: 24em;
     font-size: 0.95rem;
   }
-  .subListMachines {
-    display: flex;
-    .image {
-      cursor: pointer;
-    }
-    button {
-      cursor: pointer;
-    }
-  }
-
+  
   .right_params_content img:hover {
     cursor:
       url("data:image/svg+xml;base64,CjxzdmcgaWQ9IkxheWVyXzEiIGRhdGEtbmFtZT0iTGF5ZXIgMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTQwLjA0IDE0MC4wNCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLmNscy0yIHsKICAgICAgICBmaWxsOiAjOTZhNTAwOwogICAgICAgIHN0cm9rZTogIzk2YTUwMDsKICAgICAgfQoKICAgICAgLmNscy0yLCAuY2xzLTMgewogICAgICAgIHN0cm9rZS1taXRlcmxpbWl0OiAxMDsKICAgICAgICBzdHJva2Utd2lkdGg6IDZweDsKICAgICAgfQoKICAgICAgLmNscy0zIHsKICAgICAgICBmaWxsOiAjYzVkNDE4OwogICAgICAgIHN0cm9rZTogI2M1ZDQxODsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iMTQwLjA0IiBoZWlnaHQ9IjE0MC4wNCIvPgogIDxnPgogICAgPHBhdGggY2xhc3M9ImNscy0yIiBkPSJNNjEuMDIsMjAuODZjLTIyLjkyLDAtNDEuNTEsMTguNTgtNDEuNTEsNDEuNTFzMTguNTgsNDEuNTEsNDEuNTEsNDEuNTEsNDEuNTEtMTguNTgsNDEuNTEtNDEuNTEtMTguNTgtNDEuNTEtNDEuNTEtNDEuNTEFaTTYxLjAyLDk4LjU1Yy0xOS45OCwwLTM2LjE4LTE2LjItMzYuMTgtMzYuMThTNDEuMDMsMjYuMTksNjEuMDIsMjYuMTlzMzYuMTgsMTYuMiwzNi4xOCwzNi4xOC0xNi4yLDM2LjE4LTM2LjE4LDM2LjE4WiIvPgogICAgPHBvbHlnb24gY2xhc3M9ImNscy0zIiBwb2ludHM9Ijk4LjM4IDk2LjkxIDk0LjY2IDEwMC42MyAxMTMuMzkgMTE5LjE4IDEyMC41MyAxMTguODUgOTguMzggOTYuOTEiLz4KICA8L2c+Cjwvc3ZnPg==")
@@ -1292,15 +1391,11 @@
 
   @media (min-width: 768px) and (max-width: 1950px) {
     body.active_machine_view .activeMachine .right_content {
-      max-width: 70% !important;
+      max-width: 100% !important;
     }
   }
 
   @media (max-width: 800px) {
-    section .section-title {
-          font-size: 10px !important;
-     }
-
     :global(body.r800) {
       all: unset !important;
       /*   overflow: unset !important; */
