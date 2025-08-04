@@ -149,6 +149,7 @@
   $: if (browser) {
     if ($windowWidth <= 800) {
         document.body.classList.add("r800");
+       /*  document.body.classList.remove("no-scroll-hero"); */
     } else {
         document.body.classList.remove("r800");
     } 
@@ -355,6 +356,7 @@
   const openMachine = (x) => {
     $activeMachineStore = x;
     if (browser) {
+      document.body.classList.add("active_machine_view");
       const url = new URL(window.location.href);
       url.searchParams.set("machine", x);
       if ($activeCategoryStore) {
@@ -371,6 +373,8 @@
     }, 800);
   };
  const closeFW = () => {
+    document.body.classList.remove("active_machine_view");
+    
     $activeCategoryStore = null;
     $activeMachineStore = null;
     $expandedViewStore = false;
@@ -980,7 +984,7 @@
 
   /* --- BLOKADA SCROLLA BODY DLA expandedView --- */
   :global(body.no-scroll-hero) {
-    overflow: hidden !important;
+    overflow: hidden;
     position: fixed;
     width: 100vw;
     .activeMachine .right {

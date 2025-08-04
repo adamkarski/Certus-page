@@ -106,7 +106,7 @@
     }
 
     .section-title {
-      font-size: 32px;
+      font-size: 20px;
     }
   }
 </style>

@@ -29,6 +29,7 @@
       url.searchParams.delete("machine");
       window.history.pushState({}, "", url);
       document.body.classList.remove("no-scroll-hero");
+      document.body.classList.remove("active_machine_view");
     }
   };
 
@@ -37,8 +38,6 @@
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
-
-
 
 {#if $activeMachineStore}
   <div
@@ -1291,43 +1290,38 @@
   }
   /* --- KONIEC SCROLLA PARAMS --- */
 
-  @media (max-width: 800px) {
-    :global(.activeMachine.r800) {
-      all: unset;
+  @media (min-width: 768px) and (max-width: 1950px) {
+    body.active_machine_view .activeMachine .right_content {
+      max-width: 70% !important;
     }
+  }
+
+  @media (max-width: 800px) {
+    section .section-title {
+          font-size: 10px !important;
+     }
+
     :global(body.r800) {
       all: unset !important;
-      overflow: unset !important;
+      /*   overflow: unset !important; */
       position: relative !important;
+      overflow: auto !important;
       overflow-x: hidden !important;
-
     }
-    :global(body.r800 .app){
+    :global(body.active_machine_view.r800 .app) {
       overflow: unset !important;
     }
-    :global(.r800 section.hero){
-      width:10px;
-display: none !important;
-   
-
+    :global(body.active_machine_view section.hero) {
+      width: 10px;
+      display: none !important;
     }
-    :global(body.r800 section#oferta){
+    :global(body.active_machine_view section#oferta) {
       margin-top: 10px !important;
-   
-
     }
-
-  
-
-      
-    
-    
-
 
     .activeMachine {
       position: relative;
-        height: auto !important;
-
+      height: auto !important;
     }
     .active_flex {
       display: block !important;
@@ -1347,6 +1341,9 @@ display: none !important;
       height: auto !important;
       overflow: hidden !important;
       max-height: unset !important;
+    }
+
+    #oferta {
     }
   }
 
