@@ -97,9 +97,7 @@
     const swiper = event.detail[0];
     swiperReady = true;
 
-    console.log("Swiper initialized, updating buttons");
-
-  
+ 
     // Set consistent speed for all transitions
     swiper.params.speed = 300; // 300ms for all transitions
 
@@ -111,7 +109,6 @@
 
     // Listen for slide changes to update navigation
     swiper.on("slideChange", () => {
-      console.log("Slide changed, updating buttons");
       updateNavigationButtons(swiper);
     });
   }
@@ -124,7 +121,6 @@
     ($activeCategoryStore !== undefined || $expandedViewStore !== undefined)
   ) {
     setTimeout(() => {
-      console.log("View changed, updating buttons");
       updateNavigationButtons(swiperElement.swiper);
     }, 100);
   }
@@ -150,10 +146,15 @@
     }, 100);
   }
 
-  // Debug image loading states
-  $: console.log("Image loading states:", $imageLoadingStates);
+  $: if (browser) {
+    if ($windowWidth <= 800) {
+        document.body.classList.add("r800");
+    } else {
+        document.body.classList.remove("r800");
+    } 
+  }
 
- 
+
 
   // Function to update navigation buttons based on current slide
   function updateNavigationButtons(swiper) {
@@ -169,19 +170,7 @@
       const currentSlidesPerView = $windowWidth < 1024 ? 1 : 2; // Use reactive value
       const currentSlidesPerGroup = $windowWidth < 1024 ? 1 : 2; // Use reactive value
 
-      console.log("Navigation update:", {
-        currentIndex,
-        totalSlides,
-        slidesPerView: currentSlidesPerView,
-        slidesPerGroup: currentSlidesPerGroup,
-        windowWidth: $windowWidth,
-        isBeginning: swiper.isBeginning,
-        isEnd: swiper.isEnd,
-        containerWidth: swiper.width,
-        slideWidth: swiper.slidesSizesGrid?.[0],
-        allSlides: swiper.slides?.length,
-      });
-
+      
       // Remove existing disabled classes
       prevButton.classList.remove("swiper-button-disabled");
       nextButton.classList.remove("swiper-button-disabled");
@@ -190,7 +179,6 @@
       const maxGroups = Math.ceil(totalSlides / currentSlidesPerGroup);
       const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
 
-      console.log("Group info:", { currentGroup, maxGroups, slidesPerGroup: currentSlidesPerGroup });
 
       // Check if we're at the beginning (group 0)
       if (currentGroup === 0) {
@@ -214,15 +202,12 @@
       const slidesPerGroup = swiper.params.slidesPerGroup || 2;
       const currentGroup = Math.floor(currentIndex / slidesPerGroup);
 
-      console.log("Prev click - currentGroup:", currentGroup, "slidesPerGroup:", slidesPerGroup);
-      console.time("Prev transition");
+ 
       if (currentGroup > 0) {
         const targetIndex = (currentGroup - 1) * slidesPerGroup;
-        console.log("Sliding to index:", targetIndex);
         swiper.slideTo(targetIndex, 300); // 300ms transition
         // Update buttons after slide change
         setTimeout(() => {
-          console.timeEnd("Prev transition");
           updateNavigationButtons(swiper);
         }, 350); // Slightly longer than transition
       }
@@ -343,8 +328,10 @@
             "",
             url.toString()
           );
+          document.body.classList.add("active_machine_view"); // Add class for active machine view
         } else {
           // Otherwise, go to category view (even if startExpanded and multiple machines)
+          document.body.classList.remove("active_machine_view"); // Remove class for active machine view
           $activeMachineStore = null;
           $expandedViewStore = false;
           url.searchParams.delete("machine");

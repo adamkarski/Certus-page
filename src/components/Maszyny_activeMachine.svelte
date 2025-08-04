@@ -1291,66 +1291,89 @@
   }
   /* --- KONIEC SCROLLA PARAMS --- */
 
+  @media (max-width: 800px) {
+    :global(.activeMachine.r800) {
+      all: unset;
+    }
+    :global(body.r800) {
+      all: unset !important;
+      overflow: unset !important;
+      position: relative !important;
+      overflow-x: hidden !important;
 
+    }
+    :global(body.r800 .app){
+      overflow: unset !important;
+    }
+    :global(.r800 section.hero){
+      width:10px;
+display: none !important;
+   
+
+    }
+    :global(body.r800 section#oferta){
+      margin-top: 10px !important;
+   
+
+    }
 
   
-  @media (max-width: 800px) {
-    :global(html), :global(body) {
-      height: auto; /* Reset wysokości */
-      overflow: visible; /* Umożliw przewijanie */
-    }
 
-    :global(.activeMachine) {
-      border: 6px solid #96a500 !important;
-      position: relative; /* Change from fixed to relative */
-      height: auto; /* Dynamiczna wysokość */
-      overflow: visible; /* Umożliw przewijanie */
-    }
+      
+    
+    
 
-    .active_flex {
-      height: auto; /* Dynamiczna wysokość */
-      overflow-y: visible; /* Umożliw przewijanie */
-    }
 
-    .activeMachine .left {
-      width: 100%;
+    .activeMachine {
       position: relative;
-      height: auto; /* Dynamiczna wysokość */
-      overflow: visible; /* Usuń scroll */
-    }
+        height: auto !important;
 
-    .activeMachine .right {
-      width: 100%;
-      position: relative;
-      height: auto; /* Dynamiczna wysokość */
-      overflow: visible; /* Usuń scroll */
-    }
-}
-
-  /* Additional mobile styles for smaller */
-  @media (min-width: 800px) {
-    :global(.activeMachine) {
-      border: 6px solid #96a500 !important;
     }
     .active_flex {
-      display: flex;
-      flex-direction: row;
+      display: block !important;
+      position: relative !important;
+      flex-direction: column;
       height: 100%;
+      overflow: auto;
     }
-
     .activeMachine .left {
-      width: 50% !important;
-      height: 100% !important;
+      width: 100% !important;
+      position: relative;
+      height: auto !important;
     }
     .activeMachine .right {
-      height: 100% !important;
-
-      min-height: 100vh !important;
-    }
-    .right_params {
-      min-width: 40%;
+      position: relative;
+      width: 100% 661px !important;
+      height: auto !important;
+      overflow: hidden !important;
+      max-height: unset !important;
     }
   }
+
+  /* Additional mobile styles for smaller */
+  // @media (min-width: 800px) {
+  //   :global(.activeMachine) {
+  //     border: 6px solid #96a500 !important;
+  //   }
+  //   .active_flex {
+  //     display: flex;
+  //     flex-direction: row;
+  //     height: 100%;
+  //   }
+
+  //   .activeMachine .left {
+  //     width: 50% !important;
+  //     height: 100% !important;
+  //   }
+  //   .activeMachine .right {
+  //     height: 100% !important;
+
+  //     min-height: 100vh !important;
+  //   }
+  //   .right_params {
+  //     min-width: 40%;
+  //   }
+  // }
   @media (max-width: 1200px) {
     body.no-scroll-hero .activeMachine .right .right_params {
       overflow: initial;
