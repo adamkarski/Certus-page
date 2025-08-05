@@ -157,6 +157,7 @@
   // Function to update navigation buttons based on current slide
   function updateNavigationButtons(swiper) {
     if (!swiper) return;
+    if (!swiper) return;
 
     const prevButton = document.getElementById("swiper-button-prev-hero");
     const nextButton = document.getElementById("swiper-button-next-hero");

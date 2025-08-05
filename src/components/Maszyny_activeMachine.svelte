@@ -230,286 +230,283 @@
         </div>
       </div>
     {:else if $activeCategoryStore === "ploteryPrzemyslowe" && $activeMachineStore === "m-ploter"}
-      <div
-        class="left gradientHero"
-        class:short={$expandedViewStore}
-        in:fade={{ duration: 300, delay: 200 }}
-        out:fade={{ duration: 300, delay: 100 }}
-      >
-        <h1>Plotery przemysłowe CNC w zabudowie</h1>
+      <div class="active_flex">
+        <div
+          class="left gradientHero"
+          class:short={$expandedViewStore}
+          in:fade={{ duration: 300, delay: 200 }}
+          out:fade={{ duration: 300, delay: 100 }}
+        >
+          <h1>Plotery przemysłowe CNC w zabudowie</h1>
 
-        <div class="left_image no-sel">
-          <img
-            style="filter: blur(120px);"
-            draggable="false"
-            src="/assets/maszyny/88930d1c.png"
-            alt="Ploter Przemysłowy"
-          />
-          <img
-            class="back_image"
-            draggable="false"
-            src="/assets/maszyny/88930d1c.png"
-            alt="Ploter Przemysłowy"
-          />
-        </div>
-        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
-      </div>
-
-      <div
-        class="right"
-        class:expanded={$expandedViewStore}
-        in:fly={{ x: 200, duration: 500, delay: 0 }}
-        out:fly={{ x: 400, duration: 500, delay: 400 }}
-      >
-        <div class="right_content">
-          <h1 use:typoFixAction>
-            <b>Zaawansowane wieloosiowe centra obróbcze</b>
-
-            zaprojektowane z myślą o pracy w środowisku przemysłowym, gdzie
-            kluczowe znaczenie mają bezpieczeństwo, czystość procesu oraz
-            stabilność parametrów pracy.
-          </h1>
-
-          <p use:typoFixAction>
-            Podobnie jak modele otwarte, pozwalają na frezowanie, wiercenie,
-            cięcie, gwintowanie czy bigowanie, jednak dzięki pełnej zabudowie
-            oferują dodatkowe korzyści operacyjne i eksploatacyjne.
-          </p>
-
-          <hr />
-          <h3 use:typoFixAction>Przewagi konstrukcyjne</h3>
-
-          <p use:typoFixAction>
-            W porównaniu do wersji otwartej, zabudowa chroni operatora przed
-            odpryskami, pyłem i mgłą olejową, znacząco poprawiając
-            bezpieczeństwo oraz komfort pracy. W pełni zamknięta przestrzeń
-            robocza ułatwia również utrzymanie czystości w miejscu pracy oraz
-            ogranicza emisję hałasu i zanieczyszczeń do otoczenia. Zamknięta
-            konstrukcja pozwala na skuteczniejsze chłodzenie narzędzi i
-            materiału obrabianego – możliwa jest praca z układami chłodzenia
-            mgłą olejową lub cieczą w obiegu zamkniętym. W wielu przypadkach
-            zabudowa umożliwia też efektywniejsze odciąganie wiórów i pyłu, co
-            przekłada się na lepszą jakość obróbki i dłuższą żywotność
-            komponentów.
-          </p>
-
-          <hr />
-          <h3 use:typoFixAction>Stabilność i precyzja</h3>
-
-          <p use:typoFixAction>
-            Obudowane maszyny są projektowane z myślą o jeszcze większej
-            sztywności konstrukcyjnej. Zwiększona masa i zamknięty układ
-            wspomagają tłumienie drgań, co przekłada się na wyższą precyzję
-            pracy, zwłaszcza przy obróbce metali i materiałów trudnoskrawalnych.
-          </p>
-
-          <hr />
-          <h3 use:typoFixAction>Zastosowania i elastyczność</h3>
-
-          <p use:typoFixAction>
-            Zabudowane plotery CNC znajdują zastosowanie w aplikacjach
-            wymagających powtarzalności i kontroli środowiska obróbki – m.in. w
-            przemyśle motoryzacyjnym, lotniczym, formierskim i technice
-            medycznej. Mogą pracować z szeroką gamą materiałów, od tworzyw
-            sztucznych i kompozytów, po aluminium i stal, z możliwością
-            rozbudowy o osie obrotowe oraz automatyczne systemy wymiany
-            narzędzi.
-          </p>
-
-          <hr />
-          <h3 use:typoFixAction>Opcje mocowania materiału</h3>
-
-          <p use:typoFixAction>
-            Podobnie jak modele otwarte, urządzenia mogą być wyposażone w stół
-            podciśnieniowy, T-rowkowy lub hybrydowy, co pozwala na szybkie i
-            elastyczne mocowanie elementów o różnych kształtach i rozmiarach.
-          </p>
-
-          <div class="right_menu">
-            <nav>
-              <ul>
-                <li>
-                  <MenuDownload
-                    text="Do pobrania"
-                    href="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
-                  />
-                </li>
-                <li><MenuEmail text="Kontakt" href="#" /></li>
-              </ul>
-            </nav>
+          <div class="left_image no-sel">
+            <img
+              style="filter: blur(120px);"
+              draggable="false"
+              src="/assets/maszyny/88930d1c.png"
+              alt="Ploter Przemysłowy"
+            />
+            <img
+              class="back_image"
+              draggable="false"
+              src="/assets/maszyny/88930d1c.png"
+              alt="Ploter Przemysłowy"
+            />
           </div>
-
-          <Maszyny_table_plotery />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
         </div>
 
-        {#if $expandedViewStore}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny plotera przemysłowego m_ploter - widok 1"
-              />
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny plotera przemysłowego m_ploter - widok 2"
-              />
+        <div
+          class="right"
+          class:expanded={$expandedViewStore}
+          in:fly={{ x: 200, duration: 500, delay: 0 }}
+          out:fly={{ x: 400, duration: 500, delay: 400 }}
+        >
+          <div class="right_content">
+            <h1 use:typoFixAction>
+              <b>Zaawansowane wieloosiowe centra obróbcze</b>
+
+              zaprojektowane z myślą o pracy w środowisku przemysłowym, gdzie
+              kluczowe znaczenie mają bezpieczeństwo, czystość procesu oraz
+              stabilność parametrów pracy.
+            </h1>
+
+            <p use:typoFixAction>
+              Podobnie jak modele otwarte, pozwalają na frezowanie, wiercenie,
+              cięcie, gwintowanie czy bigowanie, jednak dzięki pełnej zabudowie
+              oferują dodatkowe korzyści operacyjne i eksploatacyjne.
+            </p>
+
+            <hr />
+            <h3 use:typoFixAction>Przewagi konstrukcyjne</h3>
+
+            <p use:typoFixAction>
+              W porównaniu do wersji otwartej, zabudowa chroni operatora przed
+              odpryskami, pyłem i mgłą olejową, znacząco poprawiając
+              bezpieczeństwo oraz komfort pracy. W pełni zamknięta przestrzeń
+              robocza ułatwia również utrzymanie czystości w miejscu pracy oraz
+              ogranicza emisję hałasu i zanieczyszczeń do otoczenia. Zamknięta
+              konstrukcja pozwala na skuteczniejsze chłodzenie narzędzi i
+              materiału obrabianego – możliwa jest praca z układami chłodzenia
+              mgłą olejową lub cieczą w obiegu zamkniętym. W wielu przypadkach
+              zabudowa umożliwia też efektywniejsze odciąganie wiórów i pyłu, co
+              przekłada się na lepszą jakość obróbki i dłuższą żywotność
+              komponentów.
+            </p>
+
+            <hr />
+            <h3 use:typoFixAction>Stabilność i precyzja</h3>
+
+            <p use:typoFixAction>
+              Obudowane maszyny są projektowane z myślą o jeszcze większej
+              sztywności konstrukcyjnej. Zwiększona masa i zamknięty układ
+              wspomagają tłumienie drgań, co przekłada się na wyższą precyzję
+              pracy, zwłaszcza przy obróbce metali i materiałów
+              trudnoskrawalnych.
+            </p>
+
+            <hr />
+            <h3 use:typoFixAction>Zastosowania i elastyczność</h3>
+
+            <p use:typoFixAction>
+              Zabudowane plotery CNC znajdują zastosowanie w aplikacjach
+              wymagających powtarzalności i kontroli środowiska obróbki – m.in.
+              w przemyśle motoryzacyjnym, lotniczym, formierskim i technice
+              medycznej. Mogą pracować z szeroką gamą materiałów, od tworzyw
+              sztucznych i kompozytów, po aluminium i stal, z możliwością
+              rozbudowy o osie obrotowe oraz automatyczne systemy wymiany
+              narzędzi.
+            </p>
+
+            <hr />
+            <h3 use:typoFixAction>Opcje mocowania materiału</h3>
+
+            <p use:typoFixAction>
+              Podobnie jak modele otwarte, urządzenia mogą być wyposażone w stół
+              podciśnieniowy, T-rowkowy lub hybrydowy, co pozwala na szybkie i
+              elastyczne mocowanie elementów o różnych kształtach i rozmiarach.
+            </p>
+
+            <div class="right_menu">
+              <nav>
+                <ul>
+                  <li>
+                    <MenuDownload
+                      text="Do pobrania"
+                      href="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
+                    />
+                  </li>
+                  <li><MenuEmail text="Kontakt" href="#" /></li>
+                </ul>
+              </nav>
             </div>
+
+            <Maszyny_table_plotery />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
-        {/if}
+
+          {#if $expandedViewStore}
+            <div class="right_params">
+              <div
+                class="right_params_content"
+                in:fade={{ duration: 300, delay: 200 }}
+              >
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                  alt="Schemat techniczny plotera przemysłowego m_ploter - widok 1"
+                />
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                  alt="Schemat techniczny plotera przemysłowego m_ploter - widok 2"
+                />
+              </div>
+            </div>
+          {/if}
+        </div>
       </div>
     {:else if $activeCategoryStore === "ploteryPrzemyslowe" && $activeMachineStore === "m-ploter1"}
-      <div
-        class="left gradientHero"
-        class:short={$expandedViewStore}
-        in:fade={{ duration: 300, delay: 200 }}
-        out:fade={{ duration: 300, delay: 100 }}
-      >
-        <h1>Plotery przemysłowe CNC bez zabudowy</h1>
+      <div class="active_flex">
+        <div
+          class="left gradientHero"
+          class:short={$expandedViewStore}
+          in:fade={{ duration: 300, delay: 200 }}
+          out:fade={{ duration: 300, delay: 100 }}
+        >
+          <h1>Plotery przemysłowe CNC bez zabudowy</h1>
 
-        <div class="left_image no-sel">
-          <img
-            style="filter: blur(120px);"
-            draggable="false"
-            src="/assets/maszyny/80f5ea646ec.png"
-            alt="Ploter Przemysłowy"
-          />
-          <img
-            class="back_image"
-            draggable="false"
-            src="/assets/maszyny/80f5ea646ec.png"
-            alt="Ploter Przemysłowy"
-          />
+          <div class="left_image no-sel">
+            <img
+              style="filter: blur(120px);"
+              draggable="false"
+              src="/assets/maszyny/80f5ea646ec.png"
+              alt="Ploter Przemysłowy"
+            />
+            <img
+              class="back_image"
+              draggable="false"
+              src="/assets/maszyny/80f5ea646ec.png"
+              alt="Ploter Przemysłowy"
+            />
+          </div>
+          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
         </div>
-        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
-      </div>
 
-      <div
-        class="right"
-        class:expanded={$expandedViewStore}
-        in:fly={{ x: 200, duration: 500, delay: 0 }}
-        out:fly={{ x: 400, duration: 500, delay: 400 }}
-      >
-        <div class="right_content">
-          <h1 use:typoFixAction>
-            <b>
-              Wielkoformatowe centra obróbcze CNC stanowią wysokowydajne
-              platformy przeznaczone do skrawania w co najmniej trzech osiach
-            </b>
-          </h1>
-          <p use:typoFixAction>
-            Z możliwością rozbudowy o dodatkowe osie sterowane. Dzięki temu
-            łączą funkcje frezowania, wiercenia, gwintowania, toczenia, cięcia,
-            bigowania, a nawet dozowania materiałów.
-          </p>
+        <div
+          class="right"
+          class:expanded={$expandedViewStore}
+          in:fly={{ x: 200, duration: 500, delay: 0 }}
+          out:fly={{ x: 400, duration: 500, delay: 400 }}
+        >
+          <div class="right_content">
+            <h1 use:typoFixAction>
+              <b>
+                Wielkoformatowe centra obróbcze CNC stanowią wysokowydajne
+                platformy przeznaczone do skrawania w co najmniej trzech osiach
+              </b>
+            </h1>
+            <p use:typoFixAction>
+              Z możliwością rozbudowy o dodatkowe osie sterowane. Dzięki temu
+              łączą funkcje frezowania, wiercenia, gwintowania, toczenia,
+              cięcia, bigowania, a nawet dozowania materiałów.
+            </p>
 
-          <hr />
-          <br/><br/>
-          <h3 use:typoFixAction>Konstrukcja i precyzja</h3>
+            <hr />
+            <br /><br />
+            <h3 use:typoFixAction>Konstrukcja i precyzja</h3>
 
-          <ul>
-            <li use:typoFixAction>
-              <b>Bazują na sprawdzonych rozwiązaniach ploterów przemysłowych</b>
+            <ul>
+              <li use:typoFixAction>
+                <b
+                  >Bazują na sprawdzonych rozwiązaniach ploterów przemysłowych</b
+                >
+              </li>
+              <br />
+              <span use:typoFixAction>
+                oferując m.in. konstrukcję bramową z obustronnym napędem
+                serwonapędami oraz elektroniczną kompensację odchyłek bramy, co
+                przekłada się na wyjątkową dokładność i stabilność pracy.
+              </span>
 
-              
-            </li>
-          <br/>
-            <span use:typoFixAction>
-              oferując
-              m.in. konstrukcję bramową z obustronnym napędem serwonapędami oraz
-              elektroniczną kompensację odchyłek bramy, co przekłada się na wyjątkową
-              dokładność i stabilność pracy.
-                        </span>
+              <br /><br />
 
+              <li use:typoFixAction>
+                <b> Wzmocniona, zwarta konstrukcja</b>
+              </li>
+              <br />
+              <span use:typoFixAction>
+                zapewnia znacznie wyższą sztywność niż klasyczne plotery,
+                umożliwiając obróbkę trudniejszych materiałów z zachowaniem
+                wysokiej precyzji.
+              </span>
+            </ul>
 
-                        <br/><br/>
+            <hr />
 
-            <li use:typoFixAction>
-              <b> Wzmocniona, zwarta konstrukcja</b>
-            </li> <br/>
-            <span use:typoFixAction>
-              zapewnia znacznie wyższą sztywność niż
-klasyczne plotery, umożliwiając obróbkę trudniejszych materiałów z
-zachowaniem wysokiej precyzji.
-                        </span>
-          </ul>
+            <h3 use:typoFixAction>Zakres zastosowań</h3>
+            <p use:typoFixAction>
+              W zależności od konfiguracji i wyposażenia, urządzenia te mogą
+              obrabiać szeroką gamę materiałów – od tworzyw sztucznych i
+              kompozytów, przez metale nieżelazne (aluminium, mosiądz), aż po
+              blachy stalowe.
+            </p>
 
+            <p use:typoFixAction>
+              Do cięższych zastosowań przewidziano możliwość zastosowania
+              wrzecion o mocy do 16 kW, z automatycznym systemem wymiany
+              narzędzi – liniowym lub obrotowym.
+            </p>
 
-          <hr />
+            Opcje mocowania materiału Standardowo centra wyposażone są w stół
+            próżniowy rastrowy z pompą próżniową o dużej wydajności, co
+            umożliwia szybkie i pewne mocowanie materiałów w arkuszach oraz
+            elementów o nieregularnym kształcie (przy użyciu bloków
+            próżniowych). Alternatywnie dostępny jest stół T-rowkowy,
+            pozwalający na tradycyjne mocowanie detali – bezpośrednio do stołu,
+            przy użyciu imadeł lub dedykowanych uchwytów.
 
-          <h3 use:typoFixAction>Zakres zastosowań</h3>
-          <p use:typoFixAction>
-            W zależności od konfiguracji i wyposażenia, urządzenia te mogą obrabiać
-szeroką gamę materiałów – od tworzyw sztucznych i kompozytów, przez
-metale nieżelazne (aluminium, mosiądz), aż po blachy stalowe.
-          </p>
+            <div class="right_menu">
+              <nav>
+                <ul>
+                  <li>
+                    <MenuDownload
+                      text="Do pobrania"
+                      href="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
+                    />
+                  </li>
+                  <li><MenuEmail text="Kontakt" href="#" /></li>
+                </ul>
+              </nav>
+            </div>
 
-          <p use:typoFixAction>
-            Do cięższych zastosowań przewidziano możliwość zastosowania wrzecion
-o mocy do 16 kW, z automatycznym systemem wymiany narzędzi –
-liniowym lub obrotowym.
+            <Maszyny_table_zabudowa />
 
-          </p>
-
-
-
-
-          Opcje mocowania materiału
-          Standardowo centra wyposażone są w stół próżniowy rastrowy z pompą
-          próżniową o dużej wydajności, co umożliwia szybkie i pewne mocowanie
-          materiałów w arkuszach oraz elementów o nieregularnym kształcie (przy
-          użyciu bloków próżniowych).
-          Alternatywnie dostępny jest stół T-rowkowy, pozwalający na tradycyjne
-          mocowanie detali – bezpośrednio do stołu, przy użyciu imadeł lub
-          dedykowanych uchwytów.
-
-
-          <div class="right_menu">
-            <nav>
-              <ul>
-                <li>
-                  <MenuDownload
-                    text="Do pobrania"
-                    href="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
-                  />
-                </li>
-                <li><MenuEmail text="Kontakt" href="#" /></li>
-              </ul>
-            </nav>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
 
-          <Maszyny_table_zabudowa />
+          {#if $expandedViewStore}
+            <div class="right_params">
+              <div
+                class="right_params_content"
+                in:fade={{ duration: 300, delay: 200 }}
+              >
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                  alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 1"
+                />
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                  alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 2"
+                />
 
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
-
-        {#if $expandedViewStore}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 1"
-              />
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 2"
-              />
-
-              <!--  <h2>Parametry techniczne</h2>
+                <!--  <h2>Parametry techniczne</h2>
               <ul>
                 <li>Wymiary: XXXX x YYYY x ZZZZ mm</li>
                 <li>Silniki: Serwo AC</li>
@@ -517,57 +514,59 @@ liniowym lub obrotowym.
                 <li>Oprogramowanie: Polskojęzyczne</li>
                 <li>Panel sterujący: Wolnostojący</li>
               </ul> -->
+              </div>
             </div>
-          </div>
-        {/if}
+          {/if}
+        </div>
       </div>
     {:else if $activeCategoryStore === "frezarki5osiowe" && $activeMachineStore === "m_frezarka5osi"}
-      <div
-        class="left gradientHero"
-        class:short={$expandedViewStore}
-        in:fade={{ duration: 300, delay: 200 }}
-        out:fade={{ duration: 300, delay: 100 }}
-      >
-        <h1>Frezarka 5osi</h1>
+      <div class="active_flex">
+        <div
+          class="left gradientHero"
+          class:short={$expandedViewStore}
+          in:fade={{ duration: 300, delay: 200 }}
+          out:fade={{ duration: 300, delay: 100 }}
+        >
+          <h1>Frezarka 5osi</h1>
 
-        <div class="left_image no-sel">
-          <img
-            style="filter: blur(120px);"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Grawerki CNC"
-          />
-          <img
-            class="back_image"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Grawerki CNC"
-          />
+          <div class="left_image no-sel">
+            <img
+              style="filter: blur(120px);"
+              draggable="false"
+              src="/assets/maszyny/certus_7111_temp.png"
+              alt="Grawerki CNC"
+            />
+            <img
+              class="back_image"
+              draggable="false"
+              src="/assets/maszyny/certus_7111_temp.png"
+              alt="Grawerki CNC"
+            />
+          </div>
+          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
         </div>
-        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
-      </div>
 
-      <div
-        class="right"
-        class:expanded={$expandedViewStore}
-        in:fly={{ x: 200, duration: 500, delay: 0 }}
-        out:fly={{ x: 400, duration: 500, delay: 400 }}
-      >
-        <div class="right_content">
-          <h1 use:typoFixAction>
-            <!-- Content for Grawerka Certus 6040 (Grawerki) -->
-            Precyzyjne frezarki5osiowe w różnych materiałach.
-          </h1>
-          <p use:typoFixAction>
-            Idealna do tworzenia detali, tabliczek znamionowych, biżuterii i
-            innych precyzyjnych zastosowań.
-            <br />
-            Wyposażona w wysokiej jakości wrzeciono i precyzyjne prowadnice.
-            <br />
-            Łatwa w obsłudze, z intuicyjnym oprogramowaniem.
-          </p>
+        <div
+          class="right"
+          class:expanded={$expandedViewStore}
+          in:fly={{ x: 200, duration: 500, delay: 0 }}
+          out:fly={{ x: 400, duration: 500, delay: 400 }}
+        >
+          <div class="right_content">
+            <h1 use:typoFixAction>
+              <!-- Content for Grawerka Certus 6040 (Grawerki) -->
+              Precyzyjne frezarki5osiowe w różnych materiałach.
+            </h1>
+            <p use:typoFixAction>
+              Idealna do tworzenia detali, tabliczek znamionowych, biżuterii i
+              innych precyzyjnych zastosowań.
+              <br />
+              Wyposażona w wysokiej jakości wrzeciono i precyzyjne prowadnice.
+              <br />
+              Łatwa w obsłudze, z intuicyjnym oprogramowaniem.
+            </p>
 
-          <!--  <div class="right_menu">
+            <!--  <div class="right_menu">
             <nav>
               <ul>
                 <li>
@@ -582,31 +581,31 @@ liniowym lub obrotowym.
             </nav>
           </div> -->
 
-          <Maszyny_table_frezarki5osiowe />
+            <Maszyny_table_frezarki5osiowe />
 
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
 
-        {#if $expandedViewStore}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny grawerki Certus 6040 - widok 1"
-              />
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny grawerki Certus 6040 - widok 2"
-              />
+          {#if $expandedViewStore}
+            <div class="right_params">
+              <div
+                class="right_params_content"
+                in:fade={{ duration: 300, delay: 200 }}
+              >
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                  alt="Schemat techniczny grawerki Certus 6040 - widok 1"
+                />
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                  alt="Schemat techniczny grawerki Certus 6040 - widok 2"
+                />
 
-              <!--  <h2>Parametry techniczne</h2>
+                <!--  <h2>Parametry techniczne</h2>
               <ul>
                 <li>Wymiary: 600 x 400 x 150 mm</li>
                 <li>Silniki: Krokowe</li>
@@ -614,57 +613,59 @@ liniowym lub obrotowym.
                 <li>Oprogramowanie: Polskojęzyczne</li>
                 <li>Panel sterujący: Zintegrowany</li>
               </ul> -->
+              </div>
             </div>
-          </div>
-        {/if}
+          {/if}
+        </div>
       </div>
     {:else if $activeCategoryStore === "grawerki" && $activeMachineStore === "m_grawerka"}
-      <div
-        class="left gradientHero"
-        class:short={$expandedViewStore}
-        in:fade={{ duration: 300, delay: 200 }}
-        out:fade={{ duration: 300, delay: 100 }}
-      >
-        <h1>Grawerka Certus 3030</h1>
+      <div class="active_flex">
+        <div
+          class="left gradientHero"
+          class:short={$expandedViewStore}
+          in:fade={{ duration: 300, delay: 200 }}
+          out:fade={{ duration: 300, delay: 100 }}
+        >
+          <h1>Grawerka Certus 3030</h1>
 
-        <div class="left_image no-sel">
-          <img
-            style="filter: blur(120px);"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Grawerki CNC"
-          />
-          <img
-            class="back_image"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Grawerki CNC"
-          />
+          <div class="left_image no-sel">
+            <img
+              style="filter: blur(120px);"
+              draggable="false"
+              src="/assets/maszyny/certus_7111_temp.png"
+              alt="Grawerki CNC"
+            />
+            <img
+              class="back_image"
+              draggable="false"
+              src="/assets/maszyny/certus_7111_temp.png"
+              alt="Grawerki CNC"
+            />
+          </div>
+          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
         </div>
-        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
-      </div>
 
-      <div
-        class="right"
-        class:expanded={$expandedViewStore}
-        in:fly={{ x: 200, duration: 500, delay: 0 }}
-        out:fly={{ x: 400, duration: 500, delay: 400 }}
-      >
-        <div class="right_content">
-          <h1 use:typoFixAction>
-            <!-- Content for Grawerka Certus 3030 (Grawerki) -->
-            Kompaktowa grawerka do małych i średnich projektów.
-          </h1>
-          <p use:typoFixAction>
-            Idealna do personalizacji przedmiotów, tworzenia prototypów i prac
-            hobbystycznych.
-            <br />
-            Wysoka precyzja i łatwość obsługi.
-            <br />
-            Solidna konstrukcja zapewniająca stabilność.
-          </p>
+        <div
+          class="right"
+          class:expanded={$expandedViewStore}
+          in:fly={{ x: 200, duration: 500, delay: 0 }}
+          out:fly={{ x: 400, duration: 500, delay: 400 }}
+        >
+          <div class="right_content">
+            <h1 use:typoFixAction>
+              <!-- Content for Grawerka Certus 3030 (Grawerki) -->
+              Kompaktowa grawerka do małych i średnich projektów.
+            </h1>
+            <p use:typoFixAction>
+              Idealna do personalizacji przedmiotów, tworzenia prototypów i prac
+              hobbystycznych.
+              <br />
+              Wysoka precyzja i łatwość obsługi.
+              <br />
+              Solidna konstrukcja zapewniająca stabilność.
+            </p>
 
-          <!--  <div class="right_menu">
+            <!--  <div class="right_menu">
             <nav>
               <ul>
                 <li>
@@ -679,67 +680,69 @@ liniowym lub obrotowym.
             </nav>
           </div> -->
 
-          <Maszyny_table_grawerki />
+            <Maszyny_table_grawerki />
 
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
-
-        {#if $expandedViewStore}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny grawerki Certus 3030 - widok 1"
-              />
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny grawerki Certus 3030 - widok 2"
-              />
-            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
-        {/if}
+
+          {#if $expandedViewStore}
+            <div class="right_params">
+              <div
+                class="right_params_content"
+                in:fade={{ duration: 300, delay: 200 }}
+              >
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                  alt="Schemat techniczny grawerki Certus 3030 - widok 1"
+                />
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                  alt="Schemat techniczny grawerki Certus 3030 - widok 2"
+                />
+              </div>
+            </div>
+          {/if}
+        </div>
       </div>
     {:else if $activeCategoryStore === "ploteryLinearne" && $activeMachineStore === "m_ploterLinear"}
-      <div
-        class="left gradientHero"
-        class:short={$expandedViewStore}
-        in:fade={{ duration: 300, delay: 200 }}
-        out:fade={{ duration: 300, delay: 100 }}
-      >
-        <h1>Ploter Linearny Certus 200</h1>
+      <div class="active_flex">
+        <div
+          class="left gradientHero"
+          class:short={$expandedViewStore}
+          in:fade={{ duration: 300, delay: 200 }}
+          out:fade={{ duration: 300, delay: 100 }}
+        >
+          <h1>Ploter Linearny Certus 200</h1>
 
-        <div class="left_image no-sel">
-          <img
-            style="filter: blur(120px);"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Tokarki CNC"
-          />
-          <img
-            class="back_image"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Tokarki CNC"
-          />
+          <div class="left_image no-sel">
+            <img
+              style="filter: blur(120px);"
+              draggable="false"
+              src="/assets/maszyny/certus_7111_temp.png"
+              alt="Tokarki CNC"
+            />
+            <img
+              class="back_image"
+              draggable="false"
+              src="/assets/maszyny/certus_7111_temp.png"
+              alt="Tokarki CNC"
+            />
+          </div>
+          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
         </div>
-        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
-      </div>
 
-      <div
-        class="right"
-        class:expanded={$expandedViewStore}
-        in:fly={{ x: 200, duration: 500, delay: 0 }}
-        out:fly={{ x: 400, duration: 500, delay: 400 }}
-      >
-        <div class="right_content">
-          <!--   <div class="right_menu">
+        <div
+          class="right"
+          class:expanded={$expandedViewStore}
+          in:fly={{ x: 200, duration: 500, delay: 0 }}
+          out:fly={{ x: 400, duration: 500, delay: 400 }}
+        >
+          <div class="right_content">
+            <!--   <div class="right_menu">
             <nav>
               <ul>
                 <li>
@@ -754,56 +757,56 @@ liniowym lub obrotowym.
             </nav>
           </div> -->
 
-          <h1 use:typoFixAction>
-            Wielkoformatowa platforma bramowa, która łączy funkcje frezarki,
-            tokarki, wiertarki i urządzenia tnącego w jednej maszynie
-          </h1>
-          <p>Zalety:</p>
+            <h1 use:typoFixAction>
+              Wielkoformatowa platforma bramowa, która łączy funkcje frezarki,
+              tokarki, wiertarki i urządzenia tnącego w jednej maszynie
+            </h1>
+            <p>Zalety:</p>
 
-          <ul class="" use:typoFixAction>
-            <li>
-              Sztywna konstrukcja bramowa z obustronnym serwonapędem i
-              kompensacją kąta bramy
-            </li>
+            <ul class="" use:typoFixAction>
+              <li>
+                Sztywna konstrukcja bramowa z obustronnym serwonapędem i
+                kompensacją kąta bramy
+              </li>
 
-            <li>
-              Modułowa konfiguracja 3 – 5 osi pozwala dobrać głowice do zadań
-              mieszanych
-            </li>
+              <li>
+                Modułowa konfiguracja 3 – 5 osi pozwala dobrać głowice do zadań
+                mieszanych
+              </li>
 
-            <li>
-              Stół rastrowy próżniowy z pompą Becker 250 m³/h dla pewnego
-              mocowania arkuszy
-            </li>
+              <li>
+                Stół rastrowy próżniowy z pompą Becker 250 m³/h dla pewnego
+                mocowania arkuszy
+              </li>
 
-            <li>Wrzeciona do 20 kW z liniowym lub rewolwerowym ATC</li>
-          </ul>
+              <li>Wrzeciona do 20 kW z liniowym lub rewolwerowym ATC</li>
+            </ul>
 
-          <Maszyny_table_ploteryLinearne />
+            <Maszyny_table_ploteryLinearne />
 
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
 
-        {#if $expandedViewStore}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny tokarki Certus 200 - widok 1"
-              />
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny tokarki Certus 200 - widok 2"
-              />
+          {#if $expandedViewStore}
+            <div class="right_params">
+              <div
+                class="right_params_content"
+                in:fade={{ duration: 300, delay: 200 }}
+              >
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                  alt="Schemat techniczny tokarki Certus 200 - widok 1"
+                />
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                  alt="Schemat techniczny tokarki Certus 200 - widok 2"
+                />
 
-              <!--  <h2>Parametry techniczne</h2>
+                <!--  <h2>Parametry techniczne</h2>
               <ul>
                 <li>Wymiary: 2000 x 1000 x 1500 mm</li>
                 <li>Silniki: Serwo AC</li>
@@ -811,100 +814,102 @@ liniowym lub obrotowym.
                 <li>Oprogramowanie: Polskojęzyczne</li>
                 <li>Panel sterujący: Wolnostojący</li>
               </ul> -->
+              </div>
             </div>
-          </div>
-        {/if}
+          {/if}
+        </div>
       </div>
     {:else if $activeCategoryStore === "specjalistyczne" && $activeMachineStore === "m_special"}
-      <div
-        class="left gradientHero"
-        class:short={$expandedViewStore}
-        in:fade={{ duration: 300, delay: 200 }}
-        out:fade={{ duration: 300, delay: 100 }}
-      >
-        <h1>Ploter specjalistyczne Certus Laser 1</h1>
+      <div class="active_flex">
+        <div
+          class="left gradientHero"
+          class:short={$expandedViewStore}
+          in:fade={{ duration: 300, delay: 200 }}
+          out:fade={{ duration: 300, delay: 100 }}
+        >
+          <h1>Ploter specjalistyczne Certus Laser 1</h1>
 
-        <div class="left_image no-sel">
-          <img
-            style="filter: blur(120px);"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Plotery CNC"
-          />
-          <img
-            class="back_image"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Plotery CNC"
-          />
-        </div>
-        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
-      </div>
-
-      <div
-        class="right"
-        class:expanded={$expandedViewStore}
-        in:fly={{ x: 200, duration: 500, delay: 0 }}
-        out:fly={{ x: 400, duration: 500, delay: 400 }}
-      >
-        <div class="right_content">
-          <h1>
-            <!-- Content for Ploter Certus Laser 1 (Plotery) -->
-            Precyzyjny ploter specjalistyczny do cięcia i grawerowania.
-          </h1>
-          <p>
-            Idealny do obróbki drewna, akrylu, skóry i innych materiałów.
-            <br />
-            Wysoka prędkość i dokładność cięcia.
-            <br />
-            Łatwa integracja z oprogramowaniem CAD/CAM.
-          </p>
-
-          <div class="right_menu">
-            <nav>
-              <ul>
-                <li>
-                  <DaneTechniczne
-                    text="Dane techniczne"
-                    on:click={expandRightInfo}
-                  />
-                </li>
-                <li><MenuDownload text="Do pobrania" href="#" /></li>
-                <li><MenuEmail text="Kontakt" href="#" /></li>
-              </ul>
-            </nav>
+          <div class="left_image no-sel">
+            <img
+              style="filter: blur(120px);"
+              draggable="false"
+              src="/assets/maszyny/certus_7111_temp.png"
+              alt="Plotery CNC"
+            />
+            <img
+              class="back_image"
+              draggable="false"
+              src="/assets/maszyny/certus_7111_temp.png"
+              alt="Plotery CNC"
+            />
           </div>
+          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
         </div>
 
-        {#if $expandedViewStore}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny plotera Certus Laser 1 - widok 1"
-              />
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny plotera Certus Laser 1 - widok 2"
-              />
+        <div
+          class="right"
+          class:expanded={$expandedViewStore}
+          in:fly={{ x: 200, duration: 500, delay: 0 }}
+          out:fly={{ x: 400, duration: 500, delay: 400 }}
+        >
+          <div class="right_content">
+            <h1>
+              <!-- Content for Ploter Certus Laser 1 (Plotery) -->
+              Precyzyjny ploter specjalistyczny do cięcia i grawerowania.
+            </h1>
+            <p>
+              Idealny do obróbki drewna, akrylu, skóry i innych materiałów.
+              <br />
+              Wysoka prędkość i dokładność cięcia.
+              <br />
+              Łatwa integracja z oprogramowaniem CAD/CAM.
+            </p>
 
-              <h2>Parametry techniczne</h2>
-              <ul>
-                <li>Wymiary: 1500 x 900 x 800 mm</li>
-                <li>Moc lasera: 100W</li>
-                <li>Obszar roboczy: 1300 x 900 mm</li>
-                <li>Oprogramowanie: Polskojęzyczne</li>
-                <li>Panel sterujący: Zintegrowany</li>
-              </ul>
+            <div class="right_menu">
+              <nav>
+                <ul>
+                  <li>
+                    <DaneTechniczne
+                      text="Dane techniczne"
+                      on:click={expandRightInfo}
+                    />
+                  </li>
+                  <li><MenuDownload text="Do pobrania" href="#" /></li>
+                  <li><MenuEmail text="Kontakt" href="#" /></li>
+                </ul>
+              </nav>
             </div>
           </div>
-        {/if}
-      </div>
 
-      <div
+          {#if $expandedViewStore}
+            <div class="right_params">
+              <div
+                class="right_params_content"
+                in:fade={{ duration: 300, delay: 200 }}
+              >
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                  alt="Schemat techniczny plotera Certus Laser 1 - widok 1"
+                />
+                <img
+                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                  alt="Schemat techniczny plotera Certus Laser 1 - widok 2"
+                />
+
+                <h2>Parametry techniczne</h2>
+                <ul>
+                  <li>Wymiary: 1500 x 900 x 800 mm</li>
+                  <li>Moc lasera: 100W</li>
+                  <li>Obszar roboczy: 1300 x 900 mm</li>
+                  <li>Oprogramowanie: Polskojęzyczne</li>
+                  <li>Panel sterujący: Zintegrowany</li>
+                </ul>
+              </div>
+            </div>
+          {/if}
+        </div>
+      </div>
+      <!-- <div
         class="left gradientHero"
         class:short={$expandedViewStore}
         in:fade={{ duration: 300, delay: 200 }}
@@ -937,7 +942,7 @@ liniowym lub obrotowym.
       >
         <div class="right_content">
           <h1>
-            <!-- Content for Ploter Certus Tnący 1 (Plotery) -->
+            
             Wysokowydajny ploter tnący do folii i innych materiałów.
           </h1>
           <p>
@@ -1025,7 +1030,7 @@ liniowym lub obrotowym.
       >
         <div class="right_content">
           <h1>
-            <!-- Content for Frezarka 5-osiowa Certus 1 (Frezarki 5-osiowe) -->
+            
             Zaawansowana frezarka 5-osiowa do skomplikowanych kształtów.
           </h1>
           <p>
@@ -1078,7 +1083,7 @@ liniowym lub obrotowym.
             </div>
           </div>
         {/if}
-      </div>
+      </div> -->
     {/if}
   </div>
 {/if}
