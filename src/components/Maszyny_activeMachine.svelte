@@ -216,14 +216,7 @@
                   alt="Schemat techniczny frezarki Certus 7111 - widok 2"
                 />
 
-                <!--  <h2>Parametry techniczne</h2>
-              <ul>
-                <li>Wymiary: 1200 x 1200 x 350 mm</li>
-                <li>Silniki: Serwo AC</li>
-                <li>Chłodzenie: Automatyczne</li>
-                <li>Oprogramowanie: Polskojęzyczne</li>
-                <li>Panel sterujący: Wolnostojący</li>
-              </ul> -->
+             
               </div>
             </div>
           {/if}
@@ -501,14 +494,7 @@
                   alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 2"
                 />
 
-                <!--  <h2>Parametry techniczne</h2>
-              <ul>
-                <li>Wymiary: XXXX x YYYY x ZZZZ mm</li>
-                <li>Silniki: Serwo AC</li>
-                <li>Chłodzenie: Automatyczne</li>
-                <li>Oprogramowanie: Polskojęzyczne</li>
-                <li>Panel sterujący: Wolnostojący</li>
-              </ul> -->
+
               </div>
             </div>
           {/if}
@@ -645,20 +631,7 @@
               </nav>
             </div>
 
-            <!--  <div class="right_menu">
-            <nav>
-              <ul>
-                <li>
-                  <DaneTechniczne
-                    text="Dane techniczne"
-                    on:click={expandRightInfo}
-                  />
-                </li>
-                <li><MenuDownload text="Do pobrania" href="#" /></li>
-                <li><MenuEmail text="Kontakt" href="#" /></li>
-              </ul>
-            </nav>
-          </div> -->
+       
 
             <Maszyny_table_frezarki5osiowe />
 
@@ -684,14 +657,7 @@
                   alt="Schemat techniczny grawerki Certus 6040 - widok 2"
                 />
 
-                <!--  <h2>Parametry techniczne</h2>
-              <ul>
-                <li>Wymiary: 600 x 400 x 150 mm</li>
-                <li>Silniki: Krokowe</li>
-                <li>Chłodzenie: Powietrzne</li>
-                <li>Oprogramowanie: Polskojęzyczne</li>
-                <li>Panel sterujący: Zintegrowany</li>
-              </ul> -->
+         
               </div>
             </div>
           {/if}
@@ -827,20 +793,7 @@
               </nav>
             </div>
 
-            <!--  <div class="right_menu">
-            <nav>
-              <ul>
-                <li>
-                  <DaneTechniczne
-                    text="Dane techniczne"
-                    on:click={expandRightInfo}
-                  />
-                </li>
-                <li><MenuDownload text="Do pobrania" href="#" /></li>
-                <li><MenuEmail text="Kontakt" href="#" /></li>
-              </ul>
-            </nav>
-          </div> -->
+       
 
             <Maszyny_table_grawerki />
 
@@ -904,20 +857,7 @@
           out:fly={{ x: 400, duration: 500, delay: 400 }}
         >
           <div class="right_content">
-            <!--   <div class="right_menu">
-            <nav>
-              <ul>
-                <li>
-                  <DaneTechniczne
-                    text="Dane techniczne"
-                    on:click={expandRightInfo}
-                  />
-                </li>
-                <li><MenuDownload text="Do pobrania" href="#" /></li>
-                <li><MenuEmail text="Kontakt" href="#" /></li>
-              </ul>
-            </nav>
-          </div> -->
+     
 
             <h1 use:typoFixAction>
               <b>Plotery liniowe CNC, znane również jako cuttery przemysłowe</b><br /><br />to precyzyjne i
@@ -1034,14 +974,7 @@
                   alt="Schemat techniczny tokarki Certus 200 - widok 2"
                 />
 
-                <!--  <h2>Parametry techniczne</h2>
-              <ul>
-                <li>Wymiary: 2000 x 1000 x 1500 mm</li>
-                <li>Silniki: Serwo AC</li>
-                <li>Chłodzenie: Cieczą</li>
-                <li>Oprogramowanie: Polskojęzyczne</li>
-                <li>Panel sterujący: Wolnostojący</li>
-              </ul> -->
+              
               </div>
             </div>
           {/if}
@@ -1082,7 +1015,6 @@
         >
           <div class="right_content">
             <h1>
-              <!-- Content for Ploter Certus Laser 1 (Plotery) -->
               Precyzyjny ploter specjalistyczny do cięcia i grawerowania.
             </h1>
             <p>
@@ -1137,181 +1069,7 @@
           {/if}
         </div>
       </div>
-      <!-- <div
-        class="left gradientHero"
-        class:short={$expandedViewStore}
-        in:fade={{ duration: 300, delay: 200 }}
-        out:fade={{ duration: 300, delay: 100 }}
-      >
-        <h1>Ploter Certus Tnący 1</h1>
-
-        <div class="left_image no-sel">
-          <img
-            style="filter: blur(120px);"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Plotery CNC"
-          />
-          <img
-            class="back_image"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Plotery CNC"
-          />
-        </div>
-        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
-      </div>
-
-      <div
-        class="right"
-        class:expanded={$expandedViewStore}
-        in:fly={{ x: 200, duration: 500, delay: 0 }}
-        out:fly={{ x: 400, duration: 500, delay: 400 }}
-      >
-        <div class="right_content">
-          <h1>
-            
-            Wysokowydajny ploter tnący do folii i innych materiałów.
-          </h1>
-          <p>
-            Idealny do produkcji reklam, naklejek i odzieży.
-            <br />
-            Szybkie i precyzyjne cięcie.
-            <br />
-            Łatwa obsługa i konserwacja.
-          </p>
-
-          <div class="right_menu">
-            <nav>
-              <ul>
-                <li>
-                  <DaneTechniczne
-                    text="Dane techniczne"
-                    on:click={expandRightInfo}
-                  />
-                </li>
-                <li><MenuDownload text="Do pobrania" href="#" /></li>
-                <li><MenuEmail text="Kontakt" href="#" /></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-
-        {#if $expandedViewStore}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny plotera Certus Tnący 1 - widok 1"
-              />
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny plotera Certus Tnący 1 - widok 2"
-              />
-
-              <h2>Parametry techniczne</h2>
-              <ul>
-                <li>Wymiary: 1200 x 600 x 500 mm</li>
-                <li>Szerokość cięcia: 1100 mm</li>
-                <li>Prędkość cięcia: 800 mm/s</li>
-                <li>Oprogramowanie: Polskojęzyczne</li>
-                <li>Panel sterujący: Zintegrowany</li>
-              </ul>
-            </div>
-          </div>
-        {/if}
-      </div>
-
-      <div
-        class="left gradientHero"
-        class:short={$expandedViewStore}
-        in:fade={{ duration: 300, delay: 200 }}
-        out:fade={{ duration: 300, delay: 100 }}
-      >
-        <h1>Frezarka 5-osiowa Certus 1</h1>
-
-        <div class="left_image no-sel">
-          <img
-            style="filter: blur(120px);"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Frezarki 5-osiowe CNC"
-          />
-          <img
-            class="back_image"
-            draggable="false"
-            src="/assets/maszyny/certus_7111_temp.png"
-            alt="Frezarki 5-osiowe CNC"
-          />
-        </div>
-        <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
-      </div>
-
-      <div
-        class="right"
-        class:expanded={$expandedViewStore}
-        in:fly={{ x: 200, duration: 500, delay: 0 }}
-        out:fly={{ x: 400, duration: 500, delay: 400 }}
-      >
-        <div class="right_content">
-          <h1>
-            
-            Zaawansowana frezarka 5-osiowa do skomplikowanych kształtów.
-          </h1>
-          <p>
-            Idealna do produkcji form, prototypów i elementów lotniczych.
-            <br />
-            Wysoka precyzja i elastyczność obróbki.
-            <br />
-            Zintegrowane oprogramowanie CAM.
-          </p>
-
-          <div class="right_menu">
-            <nav>
-              <ul>
-                <li>
-                  <DaneTechniczne
-                    text="Dane techniczne"
-                    on:click={expandRightInfo}
-                  />
-                </li>
-                <li><MenuDownload text="Do pobrania" href="#" /></li>
-                <li><MenuEmail text="Kontakt" href="#" /></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-
-        {#if $expandedViewStore}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny frezarki 5-osiowej Certus 1 - widok 1"
-              />
-              <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny frezarki 5-osiowej Certus 1 - widok 2"
-              />
-
-              <h2>Parametry techniczne</h2>
-              <ul>
-                <li>Wymiary: 2500 x 1500 x 1800 mm</li>
-                <li>Liczba osi: 5</li>
-                <li>Wrzeciono: 24000 RPM</li>
-                <li>Oprogramowanie: Polskojęzyczne</li>
-                <li>Panel sterujący: Wolnostojący</li>
-              </ul>
-            </div>
-          </div>
-        {/if}
-      </div> -->
+  
     {/if}
   </div>
 {/if}
