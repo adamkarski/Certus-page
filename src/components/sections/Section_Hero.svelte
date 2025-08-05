@@ -3,7 +3,7 @@
   import { register } from "swiper/element/bundle";
   import { fade, fly } from "svelte/transition";
   import { cubicOut } from "svelte/easing";
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
   import { browser } from "$app/environment";
   import { writable } from "svelte/store";
 
@@ -20,60 +20,66 @@
 
   register();
 
-  let swiperReady = false;
+  let swiperReady = true; // Start as true so element renders immediately
   let swiperElement; // Declare swiperElement
 
   // Zmienna do śledzenia stanów ładowania obrazków
   let imageLoadingStates = writable({});
 
-  onMount(() => {
+  onMount(async () => {
     // Start preloading images immediately
     preloadImages();
 
+    // Wait for DOM to update
+    await tick();
+
     setTimeout(() => {
-      swiperReady = true;
-      if (browser) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const slideId = urlParams.get("slide");
-        const categoryId = urlParams.get("category");
-        let machineId = urlParams.get("machine");
+      if (browser && swiperElement) {
+        // Wait for swiper to be ready
+        const checkSwiper = () => {
+          if (swiperElement.swiper) {
+            setupSwiperEvents(swiperElement.swiper);
 
-        $activeCategoryStore = categoryId;
-        $activeMachineStore = machineId;
-        $expandedViewStore = !!machineId;
+            const urlParams = new URLSearchParams(window.location.search);
+            const slideId = urlParams.get("slide");
+            const categoryId = urlParams.get("category");
+            let machineId = urlParams.get("machine");
 
-        if (slideId) {
-          const index = list.findIndex((item) => item.id === slideId);
-          if (index !== -1 && swiperElement && swiperElement.swiper) {
-            swiperElement.swiper.slideTo(index);
-            setTimeout(
-              () => updateNavigationButtons(swiperElement.swiper),
-              100
-            );
+            $activeCategoryStore = categoryId;
+            $activeMachineStore = machineId;
+            $expandedViewStore = !!machineId;
+
+            if (slideId) {
+              const index = list.findIndex((item) => item.id === slideId);
+              if (index !== -1) {
+                swiperElement.swiper.slideTo(index);
+                setTimeout(
+                  () => updateNavigationButtons(swiperElement.swiper),
+                  100
+                );
+              }
+            } else if (!$activeCategoryStore) {
+              setTimeout(() => {
+                swiperElement.swiper.slideTo(0);
+                setTimeout(
+                  () => updateNavigationButtons(swiperElement.swiper),
+                  100
+                );
+              }, 0);
+            }
+
+            // Always update navigation buttons on mount
+            setTimeout(() => {
+              updateNavigationButtons(swiperElement.swiper);
+            }, 200);
+          } else {
+            setTimeout(checkSwiper, 100);
           }
-        } else if (
-          !$activeCategoryStore &&
-          swiperElement &&
-          swiperElement.swiper
-        ) {
-          setTimeout(() => {
-            swiperElement.swiper.slideTo(0);
-            setTimeout(
-              () => updateNavigationButtons(swiperElement.swiper),
-              100
-            );
-          }, 0);
-        }
+        };
 
-        // Always update navigation buttons on mount
-        if (swiperElement && swiperElement.swiper) {
-          setTimeout(() => {
-            console.log("Updating buttons on mount");
-            updateNavigationButtons(swiperElement.swiper);
-          }, 200);
-        }
+        checkSwiper();
       }
-    }, 0); // Upewnij się, że swiperElement jest dostępny
+    }, 0);
     if (browser) {
       // Initialize windowWidth
       windowWidth.set(window.innerWidth);
@@ -93,22 +99,49 @@
     }
   });
 
-  function handleSwiperInit(event) {
-    const swiper = event.detail[0];
-    swiperReady = true;
-
-    // Set consistent speed for all transitions
-    swiper.params.speed = 300; // 300ms for all transitions
-
-    // Update swiper with new breakpoints
-    swiper.update();
-
+  function setupSwiperEvents(swiper) {
     // Update navigation buttons state
     updateNavigationButtons(swiper);
 
-    // Listen for slide changes to update navigation
+    // Listen for slide changes (works with buttons)
     swiper.on("slideChange", () => {
       updateNavigationButtons(swiper);
+    });
+
+    // Add mouse event listeners directly to swiper element
+    let isMouseDown = false;
+    let startX = 0;
+    let currentSlideIndex = swiper.activeIndex;
+
+    swiperElement.addEventListener("mousedown", (e) => {
+      isMouseDown = true;
+      startX = e.clientX;
+      currentSlideIndex = swiper.activeIndex;
+    });
+
+    swiperElement.addEventListener("mouseup", (e) => {
+      if (isMouseDown) {
+        isMouseDown = false;
+
+        // Check if slide actually changed after mouse interaction
+        setTimeout(() => {
+          if (swiper.activeIndex !== currentSlideIndex) {
+            updateNavigationButtons(swiper);
+          }
+        }, 100);
+      }
+    });
+
+    swiperElement.addEventListener("mouseleave", () => {
+      if (isMouseDown) {
+        isMouseDown = false;
+
+        setTimeout(() => {
+          if (swiper.activeIndex !== currentSlideIndex) {
+            updateNavigationButtons(swiper);
+          }
+        }, 100);
+      }
     });
   }
 
@@ -130,7 +163,6 @@
   // Update swiper when window width changes
   $: if (browser && swiperElement && swiperElement.swiper && $windowWidth) {
     setTimeout(() => {
-      console.log("Window width changed, updating swiper:", $windowWidth);
       const swiper = swiperElement.swiper;
 
       // Update swiper parameters
@@ -157,7 +189,6 @@
   // Function to update navigation buttons based on current slide
   function updateNavigationButtons(swiper) {
     if (!swiper) return;
-    if (!swiper) return;
 
     const prevButton = document.getElementById("swiper-button-prev-hero");
     const nextButton = document.getElementById("swiper-button-next-hero");
@@ -179,13 +210,11 @@
 
       // Check if we're at the beginning (group 0)
       if (currentGroup === 0) {
-        console.log("Disabling prev button - at first group");
         prevButton.classList.add("swiper-button-disabled");
       }
 
       // Check if we're at the end (last group)
       if (currentGroup >= maxGroups - 1) {
-        console.log("Disabling next button - at last group");
         nextButton.classList.add("swiper-button-disabled");
       }
     }
@@ -218,22 +247,11 @@
       const maxGroups = Math.ceil(list.length / slidesPerGroup);
       const currentGroup = Math.floor(currentIndex / slidesPerGroup);
 
-      console.log(
-        "Next click - currentGroup:",
-        currentGroup,
-        "maxGroups:",
-        maxGroups,
-        "slidesPerGroup:",
-        slidesPerGroup
-      );
-      console.time("Next transition");
       if (currentGroup < maxGroups - 1) {
         const targetIndex = (currentGroup + 1) * slidesPerGroup;
-        console.log("Sliding to index:", targetIndex);
         swiper.slideTo(targetIndex, 300); // 300ms transition
         // Update buttons after slide change
         setTimeout(() => {
-          console.timeEnd("Next transition");
           updateNavigationButtons(swiper);
         }, 350); // Slightly longer than transition
       }
@@ -284,9 +302,7 @@
 
   // Funkcja do preloadingu obrazków
   function preloadImages() {
-    console.log("Starting preload images for", list.length, "items");
     list.forEach((item) => {
-      console.log("Preloading image for:", item.id, item.img);
       imageLoadingStates.update((current) => ({
         ...current,
         [item.id]: false,
@@ -294,14 +310,12 @@
       const img = new Image();
       img.src = item.img;
       img.onload = () => {
-        console.log("Image loaded successfully:", item.id);
         imageLoadingStates.update((current) => ({
           ...current,
           [item.id]: true,
         })); // Ustaw stan ładowania na true po załadowaniu
       };
       img.onerror = () => {
-        console.error(`Błąd ładowania obrazka: ${item.img}`);
         imageLoadingStates.update((current) => ({
           ...current,
           [item.id]: true,
@@ -511,10 +525,9 @@
               slides-per-view={slidesPerView}
               slides-per-group={slidesPerGroup}
               mousewheel
-              autoplay
+              simulate-touch="true"
+              allow-touch-move="true"
               bind:this={swiperElement}
-              on:slidechange={handleSlideChange}
-              on:swiperinit={handleSwiperInit}
             >
               {#each list as cat}
                 <swiper-slide>

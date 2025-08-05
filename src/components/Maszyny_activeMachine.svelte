@@ -215,8 +215,6 @@
                   src="/assets/maszyny/certus_7111_temp_schemat02.png"
                   alt="Schemat techniczny frezarki Certus 7111 - widok 2"
                 />
-
-             
               </div>
             </div>
           {/if}
@@ -396,11 +394,11 @@
         >
           <div class="right_content">
             <h1 use:typoFixAction>
-              <b>Wielkoformatowe centra obróbcze CNC</b><br /><br />stanowią wysokowydajne
-              platformy przeznaczone do skrawania w co najmniej trzech osiach,
-              z możliwością rozbudowy o dodatkowe osie sterowane. Dzięki temu
-              łączą funkcje frezowania, wiercenia, gwintowania, toczenia,
-              cięcia, bigowania, a nawet dozowania materiałów.
+              <b>Wielkoformatowe centra obróbcze CNC</b><br /><br />stanowią
+              wysokowydajne platformy przeznaczone do skrawania w co najmniej
+              trzech osiach, z możliwością rozbudowy o dodatkowe osie sterowane.
+              Dzięki temu łączą funkcje frezowania, wiercenia, gwintowania,
+              toczenia, cięcia, bigowania, a nawet dozowania materiałów.
             </h1>
             <br /><br />
 
@@ -414,9 +412,9 @@
                 przekłada się na wyjątkową dokładność i stabilność pracy
               </li>
               <li use:typoFixAction>
-                Wzmocniona, zwarta konstrukcja zapewnia znacznie wyższą sztywność niż
-                klasyczne plotery, umożliwiając obróbkę trudniejszych materiałów z
-                zachowaniem wysokiej precyzji
+                Wzmocniona, zwarta konstrukcja zapewnia znacznie wyższą
+                sztywność niż klasyczne plotery, umożliwiając obróbkę
+                trudniejszych materiałów z zachowaniem wysokiej precyzji
               </li>
             </ul>
 
@@ -444,15 +442,15 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Standardowo centra wyposażone są w stół próżniowy rastrowy z pompą
-                próżniową o dużej wydajności, co umożliwia szybkie i pewne mocowanie
-                materiałów w arkuszach oraz elementów o nieregularnym kształcie (przy
-                użyciu bloków próżniowych)
+                Standardowo centra wyposażone są w stół próżniowy rastrowy z
+                pompą próżniową o dużej wydajności, co umożliwia szybkie i pewne
+                mocowanie materiałów w arkuszach oraz elementów o nieregularnym
+                kształcie (przy użyciu bloków próżniowych)
               </li>
               <li use:typoFixAction>
-                Alternatywnie dostępny jest stół T-rowkowy, pozwalający na tradycyjne
-                mocowanie detali – bezpośrednio do stołu, przy użyciu imadeł lub
-                dedykowanych uchwytów
+                Alternatywnie dostępny jest stół T-rowkowy, pozwalający na
+                tradycyjne mocowanie detali – bezpośrednio do stołu, przy użyciu
+                imadeł lub dedykowanych uchwytów
               </li>
             </ul>
 
@@ -493,8 +491,6 @@
                   src="/assets/maszyny/certus_7111_temp_schemat02.png"
                   alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 2"
                 />
-
-
               </div>
             </div>
           {/if}
@@ -535,10 +531,11 @@
         >
           <div class="right_content">
             <h1 use:typoFixAction>
-              <b>Pięcioosiowe centra frezarskie CNC</b><br /><br />to zaawansowane urządzenia przeznaczone
-              do precyzyjnej obróbki detali o złożonej geometrii. Znajdują zastosowanie
-              przede wszystkim w produkcji wielkogabarytowych form odlewniczych, matryc
-              do termoformowania, modeli kompozytowych oraz elementów wymagających
+              <b>Pięcioosiowe centra frezarskie CNC</b><br /><br />to
+              zaawansowane urządzenia przeznaczone do precyzyjnej obróbki detali
+              o złożonej geometrii. Znajdują zastosowanie przede wszystkim w
+              produkcji wielkogabarytowych form odlewniczych, matryc do
+              termoformowania, modeli kompozytowych oraz elementów wymagających
               wielostronnej obróbki w jednym mocowaniu.
             </h1>
             <br /><br />
@@ -547,18 +544,18 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Maszyny wyposażone są w nowoczesny system sterowania umożliwiający
-                jednoczesną interpolację wszystkich osi roboczych z projekcją prędkości na
-                czoło narzędzia
+                Maszyny wyposażone są w nowoczesny system sterowania
+                umożliwiający jednoczesną interpolację wszystkich osi roboczych
+                z projekcją prędkości na czoło narzędzia
               </li>
               <li use:typoFixAction>
                 Pozwala to na płynną i szybką obróbkę nawet najbardziej
                 złożonych powierzchni 3D
               </li>
               <li use:typoFixAction>
-                Rozwiązanie to szczególnie sprawdza się w
-                wykańczaniu elementów po laminowaniu lub termoformowaniu, gdzie
-                niezbędna jest wysoka dokładność i powtarzalność ruchu
+                Rozwiązanie to szczególnie sprawdza się w wykańczaniu elementów
+                po laminowaniu lub termoformowaniu, gdzie niezbędna jest wysoka
+                dokładność i powtarzalność ruchu
               </li>
             </ul>
 
@@ -568,14 +565,14 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Frezarki pięcioosiowe umożliwiają wykonywanie obróbek korekcyjnych i
-                wykańczających bez konieczności stosowania specjalistycznego
-                oprogramowania CAM
+                Frezarki pięcioosiowe umożliwiają wykonywanie obróbek
+                korekcyjnych i wykańczających bez konieczności stosowania
+                specjalistycznego oprogramowania CAM
               </li>
               <li use:typoFixAction>
-                Dzięki współpracy z głowicą pomiarową 3D i makrami
-                pomiarowymi, maszyna może automatycznie skanować i obrabiać powierzchnie
-                na podstawie danych rzeczywistych
+                Dzięki współpracy z głowicą pomiarową 3D i makrami pomiarowymi,
+                maszyna może automatycznie skanować i obrabiać powierzchnie na
+                podstawie danych rzeczywistych
               </li>
             </ul>
 
@@ -585,18 +582,19 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Głowice obrotowo-uchylne stosowane w tego typu urządzeniach projektowane
-                są z wykorzystaniem bezluzowych przekładni harmonicznych, co zapewnia
-                dużą sztywność przy zachowaniu wysokiej dynamiki ruchów
+                Głowice obrotowo-uchylne stosowane w tego typu urządzeniach
+                projektowane są z wykorzystaniem bezluzowych przekładni
+                harmonicznych, co zapewnia dużą sztywność przy zachowaniu
+                wysokiej dynamiki ruchów
               </li>
               <li use:typoFixAction>
-                Dzięki takiej konstrukcji urządzenia osiągają bardzo wysoką wydajność i jakość obróbki w
-                swojej klasie
+                Dzięki takiej konstrukcji urządzenia osiągają bardzo wysoką
+                wydajność i jakość obróbki w swojej klasie
               </li>
               <li use:typoFixAction>
-                Urządzenia zaprojektowane są z myślą o intensywnej, wielozmianowej pracy w
-                warunkach produkcyjnych, gdzie kluczowa jest precyzja, szybkość oraz
-                niezawodność
+                Urządzenia zaprojektowane są z myślą o intensywnej,
+                wielozmianowej pracy w warunkach produkcyjnych, gdzie kluczowa
+                jest precyzja, szybkość oraz niezawodność
               </li>
             </ul>
 
@@ -606,14 +604,16 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Pięcioosiowe frezarki CNC mogą być rozbudowane o dodatkowe opcje takie jak
-                chłodzenie narzędzi mgłą olejową
+                Pięcioosiowe frezarki CNC mogą być rozbudowane o dodatkowe opcje
+                takie jak chłodzenie narzędzi mgłą olejową
               </li>
               <li use:typoFixAction>
-                Automatyczne systemy wymiany narzędzi, sondy pomiarowe, kamery wizyjne
+                Automatyczne systemy wymiany narzędzi, sondy pomiarowe, kamery
+                wizyjne
               </li>
               <li use:typoFixAction>
-                Stoły hybrydowe umożliwiające elastyczne mocowanie materiału – zarówno podciśnieniowe, jak i mechaniczne
+                Stoły hybrydowe umożliwiające elastyczne mocowanie materiału –
+                zarówno podciśnieniowe, jak i mechaniczne
               </li>
             </ul>
 
@@ -630,8 +630,6 @@
                 </ul>
               </nav>
             </div>
-
-       
 
             <Maszyny_table_frezarki5osiowe />
 
@@ -656,8 +654,6 @@
                   src="/assets/maszyny/certus_7111_temp_schemat02.png"
                   alt="Schemat techniczny grawerki Certus 6040 - widok 2"
                 />
-
-         
               </div>
             </div>
           {/if}
@@ -698,11 +694,12 @@
         >
           <div class="right_content">
             <h1 use:typoFixAction>
-              <b>Grawerki CNC</b><br /><br />to kompaktowe, precyzyjne urządzenia dedykowane do obróbki materiałów
-              wymagających bardzo dużej dokładności przy niewielkich wymiarach obszaru roboczego.
-              Znajdą zastosowanie m.in. w produkcji form wtryskowych, stempli, narzędzi precyzyjnych,
-              tabliczek znamionowych, paneli frontowych, biżuterii oraz w mikroobróbce komponentów
-              technicznych.
+              <b>Grawerki CNC</b><br /><br />to kompaktowe, precyzyjne
+              urządzenia dedykowane do obróbki materiałów wymagających bardzo
+              dużej dokładności przy niewielkich wymiarach obszaru roboczego.
+              Znajdą zastosowanie m.in. w produkcji form wtryskowych, stempli,
+              narzędzi precyzyjnych, tabliczek znamionowych, paneli frontowych,
+              biżuterii oraz w mikroobróbce komponentów technicznych.
             </h1>
             <br /><br />
 
@@ -710,13 +707,15 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Maszyny wyposażone są w wysokobrotowe wrzeciona (do 60 000 obr./min) o mocach od 0,8
-                do 2,1 kW, co umożliwia obróbkę materiałów takich jak stal, aluminium, mosiądz, tworzywa
-                sztuczne czy laminaty techniczne z wyjątkową dokładnością i czystością krawędzi
+                Maszyny wyposażone są w wysokobrotowe wrzeciona (do 60 000
+                obr./min) o mocach od 0,8 do 2,1 kW, co umożliwia obróbkę
+                materiałów takich jak stal, aluminium, mosiądz, tworzywa
+                sztuczne czy laminaty techniczne z wyjątkową dokładnością i
+                czystością krawędzi
               </li>
               <li use:typoFixAction>
-                Zależnie od potrzeb, możliwy jest dobór wrzeciona pod kątem mocy i prędkości, dopasowany do
-                konkretnej aplikacji
+                Zależnie od potrzeb, możliwy jest dobór wrzeciona pod kątem mocy
+                i prędkości, dopasowany do konkretnej aplikacji
               </li>
             </ul>
 
@@ -726,18 +725,19 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Grawerkę wyposażono w niezależny pulpit operatorski, co ułatwia ergonomiczne
-                rozmieszczenie stanowiska pracy
+                Grawerkę wyposażono w niezależny pulpit operatorski, co ułatwia
+                ergonomiczne rozmieszczenie stanowiska pracy
               </li>
               <li use:typoFixAction>
-                Kompaktowa konstrukcja oraz wysokość robocza 200 mm
-                czyni ją idealnym wyborem zarówno do warsztatów narzędziowych, jak i precyzyjnej
-                produkcji seryjnej
+                Kompaktowa konstrukcja oraz wysokość robocza 200 mm czyni ją
+                idealnym wyborem zarówno do warsztatów narzędziowych, jak i
+                precyzyjnej produkcji seryjnej
               </li>
               <li use:typoFixAction>
-                Urządzenie może być skonfigurowane z magazynem narzędzi w wersji rewolwerowej,
-                umożliwiającym szybką zmianę narzędzi podczas złożonych procesów obróbczych, lub w
-                wersji podstawowej – bez wymiany narzędzi
+                Urządzenie może być skonfigurowane z magazynem narzędzi w wersji
+                rewolwerowej, umożliwiającym szybką zmianę narzędzi podczas
+                złożonych procesów obróbczych, lub w wersji podstawowej – bez
+                wymiany narzędzi
               </li>
             </ul>
 
@@ -746,18 +746,12 @@
             <h3>Opcje i rozbudowa</h3>
 
             <ul class="">
-              <li use:typoFixAction>
-                Pomiar wysokości narzędzia
-              </li>
+              <li use:typoFixAction>Pomiar wysokości narzędzia</li>
               <li use:typoFixAction>
                 Sonda 3D współpracująca z makrami pomiarowymi
               </li>
-              <li use:typoFixAction>
-                Centralny układ smarowania
-              </li>
-              <li use:typoFixAction>
-                Kamera wizyjna do monitorowania procesu
-              </li>
+              <li use:typoFixAction>Centralny układ smarowania</li>
+              <li use:typoFixAction>Kamera wizyjna do monitorowania procesu</li>
               <li use:typoFixAction>
                 Dodatkowa 4. i 5. oś obrotowa montowana na stole roboczym
               </li>
@@ -769,13 +763,14 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Do efektywnego chłodzenia podczas obróbki przewidziano system mgły olejowej lub
-                chłodzenia cieczą w obiegu zamkniętym
+                Do efektywnego chłodzenia podczas obróbki przewidziano system
+                mgły olejowej lub chłodzenia cieczą w obiegu zamkniętym
               </li>
               <li use:typoFixAction>
-                W zależności od potrzeb możliwe jest zastosowanie
-                stołu T-rowkowego, podciśnieniowego, próżniowego lub hybrydowego – co daje dużą
-                elastyczność w mocowaniu detali, zarówno w produkcji jednostkowej, jak i seryjnej
+                W zależności od potrzeb możliwe jest zastosowanie stołu
+                T-rowkowego, podciśnieniowego, próżniowego lub hybrydowego – co
+                daje dużą elastyczność w mocowaniu detali, zarówno w produkcji
+                jednostkowej, jak i seryjnej
               </li>
             </ul>
 
@@ -792,8 +787,6 @@
                 </ul>
               </nav>
             </div>
-
-       
 
             <Maszyny_table_grawerki />
 
@@ -857,15 +850,14 @@
           out:fly={{ x: 400, duration: 500, delay: 400 }}
         >
           <div class="right_content">
-     
-
             <h1 use:typoFixAction>
-              <b>Plotery liniowe CNC, znane również jako cuttery przemysłowe</b><br /><br />to precyzyjne i
-              wydajne urządzenia zaprojektowane do cięcia, bigowania, znakowania i opisywania
-              szerokiej gamy materiałów płaskich. Idealnie sprawdzają się w przemyśle
+              <b>Plotery liniowe CNC, znane również jako cuttery przemysłowe</b
+              ><br /><br />to precyzyjne i wydajne urządzenia zaprojektowane do
+              cięcia, bigowania, znakowania i opisywania szerokiej gamy
+              materiałów płaskich. Idealnie sprawdzają się w przemyśle
               opakowaniowym, reklamowym, tekstylnym, kompozytowym i wielu innych
-              branżach, gdzie wymagana jest wysoka jakość krawędzi oraz powtarzalność
-              obróbki.
+              branżach, gdzie wymagana jest wysoka jakość krawędzi oraz
+              powtarzalność obróbki.
             </h1>
             <br /><br />
 
@@ -873,12 +865,14 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Maszyny mogą być wyposażone w różne głowice robocze – frezującą, bigującą,
-                znakującą i piszącą – co pozwala na kompleksową obróbkę w jednym cyklu
+                Maszyny mogą być wyposażone w różne głowice robocze – frezującą,
+                bigującą, znakującą i piszącą – co pozwala na kompleksową
+                obróbkę w jednym cyklu
               </li>
               <li use:typoFixAction>
-                Opcjonalny pneumatyczny nóż oscylacyjny umożliwia cięcie miękkich i elastycznych
-                materiałów, takich jak pianki, gumy, tkaniny techniczne czy karton
+                Opcjonalny pneumatyczny nóż oscylacyjny umożliwia cięcie
+                miękkich i elastycznych materiałów, takich jak pianki, gumy,
+                tkaniny techniczne czy karton
               </li>
             </ul>
 
@@ -888,18 +882,19 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Plotery dostępne są w różnych wariantach wymiarów obszaru roboczego – od
-                kompaktowych (700×1600 mm) po wielkoformatowe (do 2000×4000 mm), co
-                pozwala dopasować urządzenie do specyfiki produkcji i dostępnej przestrzeni
+                Plotery dostępne są w różnych wariantach wymiarów obszaru
+                roboczego – od kompaktowych (700×1600 mm) po wielkoformatowe (do
+                2000×4000 mm), co pozwala dopasować urządzenie do specyfiki
+                produkcji i dostępnej przestrzeni
               </li>
               <li use:typoFixAction>
-                Standardowa wysokość robocza 270 mm pozwala na obróbkę materiałów o
-                znacznej grubości
+                Standardowa wysokość robocza 270 mm pozwala na obróbkę
+                materiałów o znacznej grubości
               </li>
               <li use:typoFixAction>
-                Konstrukcja opiera się na stabilnym stole próżniowym, zapewniającym pewne i
-                szybkie mocowanie obrabianego materiału bez konieczności stosowania zacisków
-                mechanicznych
+                Konstrukcja opiera się na stabilnym stole próżniowym,
+                zapewniającym pewne i szybkie mocowanie obrabianego materiału
+                bez konieczności stosowania zacisków mechanicznych
               </li>
             </ul>
 
@@ -909,14 +904,13 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Plotery liniowe mogą być opcjonalnie wyposażone w taśmowy lub bezkońcowy stół
-                transportowy, co znacząco zwiększa wydajność przy obróbce długich serii
-                materiałów z roli lub arkuszy
+                Plotery liniowe mogą być opcjonalnie wyposażone w taśmowy lub
+                bezkońcowy stół transportowy, co znacząco zwiększa wydajność
+                przy obróbce długich serii materiałów z roli lub arkuszy
               </li>
               <li use:typoFixAction>
-                Tego typu rozwiązania pozwalają na
-                zautomatyzowaną pracę ciągłą, minimalizując przestoje i zwiększając efektywność
-                operacyjną
+                Tego typu rozwiązania pozwalają na zautomatyzowaną pracę ciągłą,
+                minimalizując przestoje i zwiększając efektywność operacyjną
               </li>
             </ul>
 
@@ -926,13 +920,13 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Sterowanie odbywa się z poziomu niezależnego pulpitu operatorskiego, co
-                zapewnia wygodę i bezpieczeństwo obsługi, a także ułatwia organizację przestrzeni
-                roboczej
+                Sterowanie odbywa się z poziomu niezależnego pulpitu
+                operatorskiego, co zapewnia wygodę i bezpieczeństwo obsługi, a
+                także ułatwia organizację przestrzeni roboczej
               </li>
               <li use:typoFixAction>
-                Intuicyjne oprogramowanie umożliwia szybkie przezbrojenie maszyny i
-                optymalizację ścieżek cięcia
+                Intuicyjne oprogramowanie umożliwia szybkie przezbrojenie
+                maszyny i optymalizację ścieżek cięcia
               </li>
             </ul>
 
@@ -973,103 +967,13 @@
                   src="/assets/maszyny/certus_7111_temp_schemat02.png"
                   alt="Schemat techniczny tokarki Certus 200 - widok 2"
                 />
-
-              
               </div>
             </div>
           {/if}
         </div>
       </div>
     {:else if $activeCategoryStore === "specjalistyczne" && $activeMachineStore === "m_special"}
-      <div class="active_flex">
-        <div
-          class="left gradientHero"
-          class:short={$expandedViewStore}
-          in:fade={{ duration: 300, delay: 200 }}
-          out:fade={{ duration: 300, delay: 100 }}
-        >
-          <h1>Ploter specjalistyczne Certus Laser 1</h1>
-
-          <div class="left_image no-sel">
-            <img
-              style="filter: blur(120px);"
-              draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
-              alt="Plotery CNC"
-            />
-            <img
-              class="back_image"
-              draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
-              alt="Plotery CNC"
-            />
-          </div>
-          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
-        </div>
-
-        <div
-          class="right"
-          class:expanded={$expandedViewStore}
-          in:fly={{ x: 200, duration: 500, delay: 0 }}
-          out:fly={{ x: 400, duration: 500, delay: 400 }}
-        >
-          <div class="right_content">
-            <h1>
-              Precyzyjny ploter specjalistyczny do cięcia i grawerowania.
-            </h1>
-            <p>
-              Idealny do obróbki drewna, akrylu, skóry i innych materiałów.
-              <br />
-              Wysoka prędkość i dokładność cięcia.
-              <br />
-              Łatwa integracja z oprogramowaniem CAD/CAM.
-            </p>
-
-            <div class="right_menu">
-              <nav>
-                <ul>
-                  <li>
-                    <DaneTechniczne
-                      text="Dane techniczne"
-                      on:click={expandRightInfo}
-                    />
-                  </li>
-                  <li><MenuDownload text="Do pobrania" href="#" /></li>
-                  <li><MenuEmail text="Kontakt" href="#" /></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          {#if $expandedViewStore}
-            <div class="right_params">
-              <div
-                class="right_params_content"
-                in:fade={{ duration: 300, delay: 200 }}
-              >
-                <img
-                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                  alt="Schemat techniczny plotera Certus Laser 1 - widok 1"
-                />
-                <img
-                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                  alt="Schemat techniczny plotera Certus Laser 1 - widok 2"
-                />
-
-                <h2>Parametry techniczne</h2>
-                <ul>
-                  <li>Wymiary: 1500 x 900 x 800 mm</li>
-                  <li>Moc lasera: 100W</li>
-                  <li>Obszar roboczy: 1300 x 900 mm</li>
-                  <li>Oprogramowanie: Polskojęzyczne</li>
-                  <li>Panel sterujący: Zintegrowany</li>
-                </ul>
-              </div>
-            </div>
-          {/if}
-        </div>
-      </div>
-  
+      <div class="active_flex"></div>
     {/if}
   </div>
 {/if}
