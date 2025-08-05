@@ -3,7 +3,7 @@
   import { register } from "swiper/element/bundle";
   import { fade, fly } from "svelte/transition";
   import { cubicOut } from "svelte/easing";
-  import { onMount, tick } from "svelte";
+  import { onMount, tick, afterUpdate } from "svelte";
   import { browser } from "$app/environment";
   import { writable } from "svelte/store";
 
@@ -22,6 +22,8 @@
 
   let swiperReady = true; // Start as true so element renders immediately
   let swiperElement; // Declare swiperElement
+  let swiperKey = 0; // Klucz do wymuszania re-renderu swipera
+  let lastActiveSlideIndex = 0; // Zapamięta ostatni aktywny slajd
 
   // Zmienna do śledzenia stanów ładowania obrazków
   let imageLoadingStates = writable({});
@@ -32,6 +34,45 @@
 
     // Wait for DOM to update
     await tick();
+
+    // Subscribe to activeCategoryStore changes
+    const unsubscribe = activeCategoryStore.subscribe((value) => {
+      console.log('🔄 activeCategoryStore changed:', value);
+      
+      // Jeśli wracamy do głównego widoku (value === null)
+      if (value === null && browser) {
+        console.log('🏠 Powrót do głównego widoku - wymuszam re-render swipera');
+        swiperKey++; // Wymusza re-render swipera
+        
+        // Reset atrybutów dla nowego elementu
+        if (swiperElement) {
+          swiperElement.removeAttribute('data-init-listener-added');
+          swiperElement.removeAttribute('data-events-added');
+        }
+        
+        setTimeout(() => {
+          console.log('⏳ Czekam na nowy swiper po re-renderze');
+          // Po re-renderze swiper powinien być automatycznie zainicjalizowany
+          const checkNewSwiper = () => {
+            if (swiperElement && swiperElement.swiper) {
+              console.log('✅ Nowy swiper gotowy');
+              setupSwiperEvents(swiperElement.swiper);
+              updateNavigationButtons(swiperElement.swiper);
+              
+              // Wróć do zapisanego slajdu po re-renderze
+              setTimeout(() => {
+                console.log('🔙 Wracam do zapisanego slajdu po re-renderze:', lastActiveSlideIndex);
+                swiperElement.swiper.slideTo(lastActiveSlideIndex);
+                updateNavigationButtons(swiperElement.swiper);
+              }, 200);
+            } else {
+              setTimeout(checkNewSwiper, 100);
+            }
+          };
+          checkNewSwiper();
+        }, 100);
+      }
+    });
 
     setTimeout(() => {
       if (browser && swiperElement) {
@@ -52,6 +93,7 @@
             if (slideId) {
               const index = list.findIndex((item) => item.id === slideId);
               if (index !== -1) {
+                lastActiveSlideIndex = index; // Zapisz indeks z URL
                 swiperElement.swiper.slideTo(index);
                 setTimeout(
                   () => updateNavigationButtons(swiperElement.swiper),
@@ -60,6 +102,7 @@
               }
             } else if (!$activeCategoryStore) {
               setTimeout(() => {
+                lastActiveSlideIndex = 0; // Zapisz początkowy indeks
                 swiperElement.swiper.slideTo(0);
                 setTimeout(
                   () => updateNavigationButtons(swiperElement.swiper),
@@ -95,54 +138,139 @@
       return () => {
         window.removeEventListener("resize", handleResize);
         window.removeEventListener("popstate", handlePopstate);
+        unsubscribe(); // Cleanup subscription
       };
     }
   });
 
+  afterUpdate(() => {
+    console.log('🔄 afterUpdate - sprawdzam swiper');
+    console.log('🔍 afterUpdate check:', { 
+      browser, 
+      activeCategoryStore: $activeCategoryStore, 
+      swiperElement: !!swiperElement,
+      swiperReady 
+    });
+    
+    // Jeśli jesteśmy w głównym widoku i swiper istnieje
+    if (browser && !$activeCategoryStore && swiperElement) {
+      // Dodaj event listener na inicjalizację swipera
+      if (!swiperElement.hasAttribute('data-init-listener-added')) {
+        console.log('🔧 Dodaję event listener na inicjalizację swipera');
+        
+        swiperElement.addEventListener('swiperinit', () => {
+          console.log('✅ Swiper zainicjalizowany - event swiperinit');
+          if (swiperElement.swiper) {
+            setupSwiperEvents(swiperElement.swiper);
+            updateNavigationButtons(swiperElement.swiper);
+          }
+        });
+        
+        swiperElement.setAttribute('data-init-listener-added', 'true');
+        
+        // Jeśli swiper już istnieje, uruchom setup od razu
+        if (swiperElement.swiper) {
+          console.log('🔧 afterUpdate: setupSwiperEvents (swiper już gotowy)');
+          setupSwiperEvents(swiperElement.swiper);
+        }
+      }
+    }
+  });
+
   function setupSwiperEvents(swiper) {
+    console.log('🔧 setupSwiperEvents - rozpoczęcie');
     // Update navigation buttons state
     updateNavigationButtons(swiper);
 
+    // Usuń poprzednie event listenery jeśli istnieją
+    swiper.off("slideChange");
+    
     // Listen for slide changes (works with buttons)
     swiper.on("slideChange", () => {
+      lastActiveSlideIndex = swiper.activeIndex; // Zapisz ostatni aktywny slajd
       updateNavigationButtons(swiper);
     });
 
-    // Add mouse event listeners directly to swiper element
-    let isMouseDown = false;
-    let startX = 0;
-    let currentSlideIndex = swiper.activeIndex;
-
-    swiperElement.addEventListener("mousedown", (e) => {
-      isMouseDown = true;
-      startX = e.clientX;
-      currentSlideIndex = swiper.activeIndex;
-    });
-
-    swiperElement.addEventListener("mouseup", (e) => {
-      if (isMouseDown) {
-        isMouseDown = false;
-
-        // Check if slide actually changed after mouse interaction
-        setTimeout(() => {
-          if (swiper.activeIndex !== currentSlideIndex) {
-            updateNavigationButtons(swiper);
-          }
-        }, 100);
+    // Reinicjalizuj pagination
+    console.log('📍 Sprawdzanie pagination:', !!swiper.pagination);
+    if (swiper.pagination) {
+      console.log('🔄 Reinicjalizacja istniejącej pagination');
+      swiper.pagination.destroy();
+      swiper.pagination.init();
+      swiper.pagination.render();
+      swiper.pagination.update();
+    } else {
+      console.log('🆕 Tworzenie nowej pagination');
+      // Jeśli pagination nie istnieje, spróbuj ją utworzyć
+      try {
+        // Inicjalizuj pagination bezpośrednio na swiperze
+        if (swiper.modules && swiper.modules.includes('pagination')) {
+          swiper.pagination.init();
+          swiper.pagination.render();
+          swiper.pagination.update();
+        }
+      } catch (error) {
+        console.log('❌ Błąd podczas tworzenia pagination:', error);
       }
-    });
-
-    swiperElement.addEventListener("mouseleave", () => {
-      if (isMouseDown) {
-        isMouseDown = false;
-
-        setTimeout(() => {
-          if (swiper.activeIndex !== currentSlideIndex) {
-            updateNavigationButtons(swiper);
-          }
-        }, 100);
+    }
+    
+    // Sprawdź czy pagination została utworzona
+    setTimeout(() => {
+      const paginationEl = document.querySelector('.swiper-pagination');
+      console.log('📍 Pagination element po reinicjalizacji:', !!paginationEl);
+      if (paginationEl) {
+        console.log('📍 Liczba bullets:', paginationEl.children.length);
+        console.log('📍 Pagination HTML:', paginationEl.innerHTML);
+      } else {
+        console.log('❌ Nie znaleziono elementu .swiper-pagination');
+        // Sprawdź czy istnieje w swiperElement
+        const swiperPagination = swiperElement.querySelector('.swiper-pagination');
+        console.log('📍 Pagination w swiperElement:', !!swiperPagination);
       }
-    });
+    }, 500);
+    
+
+    // Add mouse event listeners directly to swiper element (sprawdź czy już nie istnieją)
+    if (!swiperElement.hasAttribute('data-events-added')) {
+      let isMouseDown = false;
+      let startX = 0;
+      let currentSlideIndex = swiper.activeIndex;
+
+      swiperElement.addEventListener("mousedown", (e) => {
+        isMouseDown = true;
+        startX = e.clientX;
+        currentSlideIndex = swiper.activeIndex;
+      });
+
+      swiperElement.addEventListener("mouseup", (e) => {
+        if (isMouseDown) {
+          isMouseDown = false;
+
+          // Check if slide actually changed after mouse interaction
+          setTimeout(() => {
+            if (swiper.activeIndex !== currentSlideIndex) {
+              lastActiveSlideIndex = swiper.activeIndex; // Zapisz ostatni aktywny slajd
+              updateNavigationButtons(swiper);
+            }
+          }, 100);
+        }
+      });
+
+      swiperElement.addEventListener("mouseleave", () => {
+        if (isMouseDown) {
+          isMouseDown = false;
+
+          setTimeout(() => {
+            if (swiper.activeIndex !== currentSlideIndex) {
+              lastActiveSlideIndex = swiper.activeIndex; // Zapisz ostatni aktywny slajd
+              updateNavigationButtons(swiper);
+            }
+          }, 100);
+        }
+      });
+
+      swiperElement.setAttribute('data-events-added', 'true');
+    }
   }
 
   // Reactive function to update buttons when view changes
@@ -156,6 +284,17 @@
       updateNavigationButtons(swiperElement.swiper);
     }, 100);
   }
+
+  // Prostsza reaktywna funkcja - tylko do debugowania
+  $: {
+    console.log('🔍 Reactive check:', { 
+      browser, 
+      activeCategoryStore: $activeCategoryStore, 
+      swiperElement: !!swiperElement,
+      swiperReady,
+      swiperKey
+    });
+  }
   $: slidesPerView = $windowWidth < 1024 ? 1 : 2;
 
   $: slidesPerGroup = $windowWidth < 1024 ? 1 : 2;
@@ -165,12 +304,22 @@
     setTimeout(() => {
       const swiper = swiperElement.swiper;
 
-      // Update swiper parameters
-      swiper.params.slidesPerView = slidesPerView;
-      swiper.params.slidesPerGroup = slidesPerGroup;
+      // Update swiper parameters safely
+      try {
+        if (swiper.params) {
+          swiper.params.slidesPerView = slidesPerView;
+          swiper.params.slidesPerGroup = slidesPerGroup;
+        }
+        
+        // Update swiper element attributes
+        swiperElement.setAttribute('slides-per-view', slidesPerView);
+        swiperElement.setAttribute('slides-per-group', slidesPerGroup);
 
-      // Update swiper
-      swiper.update();
+        // Update swiper
+        swiper.update();
+      } catch (error) {
+        console.log('❌ Błąd podczas aktualizacji swiper:', error);
+      }
 
       // Update navigation buttons
       updateNavigationButtons(swiper);
@@ -225,14 +374,15 @@
     if (swiperElement && swiperElement.swiper) {
       const swiper = swiperElement.swiper;
       const currentIndex = swiper.activeIndex;
-      const slidesPerGroup = swiper.params.slidesPerGroup || 2;
-      const currentGroup = Math.floor(currentIndex / slidesPerGroup);
+      const currentSlidesPerGroup = (swiper.params && swiper.params.slidesPerGroup) || ($windowWidth < 1024 ? 1 : 2);
+      const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
 
       if (currentGroup > 0) {
-        const targetIndex = (currentGroup - 1) * slidesPerGroup;
+        const targetIndex = (currentGroup - 1) * currentSlidesPerGroup;
         swiper.slideTo(targetIndex, 300); // 300ms transition
         // Update buttons after slide change
         setTimeout(() => {
+          lastActiveSlideIndex = swiper.activeIndex; // Zapisz ostatni aktywny slajd
           updateNavigationButtons(swiper);
         }, 350); // Slightly longer than transition
       }
@@ -243,15 +393,16 @@
     if (swiperElement && swiperElement.swiper) {
       const swiper = swiperElement.swiper;
       const currentIndex = swiper.activeIndex;
-      const slidesPerGroup = swiper.params.slidesPerGroup || 2;
-      const maxGroups = Math.ceil(list.length / slidesPerGroup);
-      const currentGroup = Math.floor(currentIndex / slidesPerGroup);
+      const currentSlidesPerGroup = (swiper.params && swiper.params.slidesPerGroup) || ($windowWidth < 1024 ? 1 : 2);
+      const maxGroups = Math.ceil(list.length / currentSlidesPerGroup);
+      const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
 
       if (currentGroup < maxGroups - 1) {
-        const targetIndex = (currentGroup + 1) * slidesPerGroup;
+        const targetIndex = (currentGroup + 1) * currentSlidesPerGroup;
         swiper.slideTo(targetIndex, 300); // 300ms transition
         // Update buttons after slide change
         setTimeout(() => {
+          lastActiveSlideIndex = swiper.activeIndex; // Zapisz ostatni aktywny slajd
           updateNavigationButtons(swiper);
         }, 350); // Slightly longer than transition
       }
@@ -262,6 +413,7 @@
     if (browser) {
       const swiper = event.detail[0];
       const currentSlideIndex = swiper.activeIndex;
+      lastActiveSlideIndex = currentSlideIndex; // Zapisz ostatni aktywny slajd
       const currentSlideId = list[currentSlideIndex].id;
       const url = new URL(window.location.href);
       url.searchParams.set("slide", currentSlideId);
@@ -325,6 +477,12 @@
   }
 
   const openCategory = (c) => {
+    // Zapisz aktualny indeks slajdu przed otwarciem kategorii
+    if (swiperElement && swiperElement.swiper) {
+      lastActiveSlideIndex = swiperElement.swiper.activeIndex;
+      console.log('💾 Zapisuję aktualny indeks slajdu:', lastActiveSlideIndex);
+    }
+    
     const category = list.find((item) => item.id === c);
     if (category) {
       $activeCategoryStore = c;
@@ -364,6 +522,15 @@
       url.searchParams.delete("machine"); // Also clear machine param
       history.pushState({ category: null, machine: null }, "", url.toString());
     }
+    
+    // Po zamknięciu kategorii, wróć do zapisanego slajdu
+    setTimeout(() => {
+      if (swiperElement && swiperElement.swiper) {
+        console.log('🔙 Wracam do zapisanego slajdu:', lastActiveSlideIndex);
+        swiperElement.swiper.slideTo(lastActiveSlideIndex);
+        updateNavigationButtons(swiperElement.swiper);
+      }
+    }, 100);
   };
 
   const openMachine = (x) => {
@@ -397,6 +564,15 @@
       url.searchParams.delete("machine");
       history.pushState({ category: null, machine: null }, "", url.toString());
     }
+    
+    // Po zamknięciu widoku maszyny, wróć do zapisanego slajdu
+    setTimeout(() => {
+      if (swiperElement && swiperElement.swiper) {
+        console.log('🔙 Wracam do zapisanego slajdu (closeFW):', lastActiveSlideIndex);
+        swiperElement.swiper.slideTo(lastActiveSlideIndex);
+        updateNavigationButtons(swiperElement.swiper);
+      }
+    }, 100);
   };
 
   const expandRightInfo = () => ($expandedViewStore = !$expandedViewStore);
@@ -417,29 +593,36 @@
     if ($activeMachineStore) document.body.classList.add("no-scroll-hero");
     else document.body.classList.remove("no-scroll-hero");
 
-    // Zarządzanie widocznością przycisków nawigacyjnych
-    const prevButton = document.getElementById("swiper-button-prev-hero");
-    const nextButton = document.getElementById("swiper-button-next-hero");
-    if (prevButton && nextButton) {
-      if ($activeCategoryStore && !$activeMachineStore) {
-        // Hide navigation in intermediate view (category selected but no machine)
-        prevButton.classList.add("hide-navigation");
-        nextButton.classList.add("hide-navigation");
-      } else if (!$activeCategoryStore) {
-        // Show navigation in main slider view and update button states
-        prevButton.classList.remove("hide-navigation");
-        nextButton.classList.remove("hide-navigation");
+    // Zarządzanie widocznością przycisków nawigacyjnych i pagination z opóźnieniem
+    setTimeout(() => {
+      const prevButton = document.getElementById("swiper-button-prev-hero");
+      const nextButton = document.getElementById("swiper-button-next-hero");
+      const pagination = document.querySelector(".swiper-pagination");
+      
+      if (prevButton && nextButton) {
+        if ($activeCategoryStore && !$activeMachineStore) {
+          // Hide navigation in intermediate view (category selected but no machine)
+          prevButton.classList.add("hide-navigation");
+          nextButton.classList.add("hide-navigation");
+          if (pagination) pagination.classList.add("hide-pagination");
+        } else if (!$activeCategoryStore) {
+          // Show navigation in main slider view and update button states
+          prevButton.classList.remove("hide-navigation");
+          nextButton.classList.remove("hide-navigation");
+          if (pagination) pagination.classList.remove("hide-pagination");
 
-        // Update navigation buttons if swiper is ready
-        if (swiperElement && swiperElement.swiper) {
-          updateNavigationButtons(swiperElement.swiper);
+          // Update navigation buttons if swiper is ready
+          if (swiperElement && swiperElement.swiper) {
+            updateNavigationButtons(swiperElement.swiper);
+          }
+        } else {
+          // Hide navigation in expanded machine view
+          prevButton.classList.add("hide-navigation");
+          nextButton.classList.add("hide-navigation");
+          if (pagination) pagination.classList.add("hide-pagination");
         }
-      } else {
-        // Hide navigation in expanded machine view
-        prevButton.classList.add("hide-navigation");
-        nextButton.classList.add("hide-navigation");
       }
-    }
+    }, 50);
   }
 
   // --- KONIEC BLOKADY SCROLLA ---
@@ -447,7 +630,9 @@
   $: if ($resetHeroSwiper) {
     if (swiperElement && swiperElement.swiper) {
       setTimeout(() => {
-        swiperElement.swiper.slideToLoop(0);
+        // Wróć do ostatniego aktywnego slajdu zamiast zawsze do pierwszego
+        swiperElement.swiper.slideTo(lastActiveSlideIndex);
+        updateNavigationButtons(swiperElement.swiper);
       }, 100); // Zwiększone opóźnienie dla pewności
     }
     $activeCategoryStore = null;
@@ -519,16 +704,21 @@
               </svg>
             </button>
 
-            <swiper-container
-              pagination
-              space-between="0"
-              slides-per-view={slidesPerView}
-              slides-per-group={slidesPerGroup}
-              mousewheel
-              simulate-touch="true"
-              allow-touch-move="true"
-              bind:this={swiperElement}
-            >
+            {#key swiperKey}
+              <swiper-container
+                pagination
+                space-between="0"
+                slides-per-view={slidesPerView}
+                slides-per-group={slidesPerGroup}
+                mousewheel
+                bind:this={swiperElement}
+                on:swiperslidechange={(event) => {
+                  if (swiperElement && swiperElement.swiper) {
+                    lastActiveSlideIndex = swiperElement.swiper.activeIndex; // Zapisz ostatni aktywny slajd
+                    updateNavigationButtons(swiperElement.swiper);
+                  }
+                }}
+              >
               {#each list as cat}
                 <swiper-slide>
                   <button
@@ -580,7 +770,11 @@
                   </button>
                 </swiper-slide>
               {/each}
+              
+              <!-- Dodaj pagination element bezpośrednio -->
+             <!--  <div class="swiper-pagination" slot="pagination"></div> -->
             </swiper-container>
+            {/key}
           </div>
         {:else}
           <div class="view slider-view" style="min-height: 400px;"></div>
@@ -1059,6 +1253,47 @@
     transform: translateY(-50%) scale(0.8);
   }
 
+  /* Pagination (dots) styles */
+  // :global(.swiper-pagination) {
+  //   position: absolute !important;
+  //   bottom: 20px !important;
+  //   left: 50% !important;
+  //   transform: translateX(-50%) !important;
+  //   z-index: 10 !important;
+  //   display: flex !important;
+  //   justify-content: center !important;
+  //   align-items: center !important;
+  //   gap: 8px !important;
+  // }
+
+  // :global(.swiper-pagination-bullet) {
+  //   width: 12px !important;
+  //   height: 12px !important;
+  //   border-radius: 50% !important;
+  //   background: rgba(255, 255, 255, 0.4) !important;
+  //   border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  //   cursor: pointer !important;
+  //   transition: all 0.3s ease !important;
+  //   opacity: 1 !important;
+  // }
+
+  // :global(.swiper-pagination-bullet-active) {
+  //   background: #3b82f6 !important; /* Niebieski kolor dla aktywnego */
+  //   border-color: #1d4ed8 !important; /* Ciemniejszy niebieski dla obramowania */
+  //   transform: scale(1.2) !important;
+  // }
+
+  // :global(.swiper-pagination-bullet:hover) {
+  //   background: #60a5fa !important; /* Jasny niebieski przy hover */
+  //   border-color: #3b82f6 !important;
+  // }
+
+  // /* Hide pagination when not in main slider view */
+  // :global(.swiper-pagination.hide-pagination) {
+  //   opacity: 0 !important;
+  //   pointer-events: none !important;
+  // }
+
   /* Mobile responsive */
   @media (max-width: 768px) {
     .swiper-nav-button {
@@ -1073,5 +1308,14 @@
     .swiper-nav-next {
       right: 1rem;
     }
+
+    // :global(.swiper-pagination) {
+    //   bottom: 15px !important;
+    // }
+
+    // :global(.swiper-pagination-bullet) {
+    //   width: 10px !important;
+    //   height: 10px !important;
+    // }
   }
 </style>
