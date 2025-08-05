@@ -17,7 +17,11 @@
   });
 </script>
 
+<div class="section-wrapper">
 <section class="info-cards-section no-sel" bind:this={sectionEl}>
+
+
+
   <div class="info-cards-wrapper">
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 0 : 9999 }}>
       <div class="info-card-header">
@@ -47,9 +51,20 @@
       </p>
     </div>
   </div>
+
 </section>
+</div>
 
 <style lang="scss">
+
+.section-wrapper {
+  display: block;
+    position: relative;
+    /* width: 100%; */
+    /* height: 100%; */
+    background-color: white;
+}
+
 .info-cards-section {
   width: 100%;
   display: flex;
@@ -59,6 +74,8 @@
   padding: 0;
   margin: 0;
   padding-bottom: 10em;
+
+
 }
 .info-cards-wrapper {
   display: flex;
@@ -68,6 +85,7 @@
   justify-content: center;
   margin: 0 auto;
   padding: 40px 0 0 0;
+  margin-top: 80px;
 }
 .info-card {
   background: #f7f7f7;

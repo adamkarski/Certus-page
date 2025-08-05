@@ -4,7 +4,7 @@
   import { preloaderVisible } from "$lib/preloaderStore";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
- 
+
   import kategorieMaszyn from "$lib/data/maszyny.json";
   import CtaButton from "./cta-button.svelte";
   import { cubicOut } from "svelte/easing";
@@ -48,19 +48,17 @@
   // Update active page store
   $: {
     if (isHomeActive) {
-      activePage.set('home');
+      activePage.set("home");
     } else if (isMaszynyActive) {
-      activePage.set('maszyny');
+      activePage.set("maszyny");
     } else if (isSerwisActive) {
-      activePage.set('serwis');
+      activePage.set("serwis");
     } else if (isOnasActive) {
-      activePage.set('onas');
+      activePage.set("onas");
     } else if (isKontaktActive) {
-      activePage.set('kontakt');
+      activePage.set("kontakt");
     }
   }
-
-  
 
   // Lottie player setup
   let LottiePlayer;
@@ -80,43 +78,43 @@
   let hoveredCategory = kategorieMaszyn[0];
 
   onMount(() => {
-      let cleanup: () => void;
-  
-      (async () => {
-        const module = await import("@lottiefiles/svelte-lottie-player");
-        LottiePlayer = module.LottiePlayer;
-  
-        const handleScroll = () => {
-          scrolled = window.scrollY > 50;
-        };
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll();
-  
-        const handleResize = () => {
-          windowWidth = window.innerWidth;
-          if (window.innerWidth > 757 && isMobileMenuOpen) {
-            closeMobileMenu();
-          }
-        };
-        window.addEventListener("resize", handleResize);
-        handleResize();
-  
-        const unsubscribe = preloaderVisible.subscribe((visible) => {
-          if (!visible) {
-            showLottie = true;
-          }
-        });
-        showLottie = true;
-  
-        cleanup = () => {
-          window.removeEventListener("scroll", handleScroll);
-          window.removeEventListener("resize", handleResize);
-          unsubscribe();
-        };
-      })();
-  
-      return () => cleanup && cleanup();
-    });
+    let cleanup: () => void;
+
+    (async () => {
+      const module = await import("@lottiefiles/svelte-lottie-player");
+      LottiePlayer = module.LottiePlayer;
+
+      const handleScroll = () => {
+        scrolled = window.scrollY > 50;
+      };
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll();
+
+      const handleResize = () => {
+        windowWidth = window.innerWidth;
+        if (window.innerWidth > 757 && isMobileMenuOpen) {
+          closeMobileMenu();
+        }
+      };
+      window.addEventListener("resize", handleResize);
+      handleResize();
+
+      const unsubscribe = preloaderVisible.subscribe((visible) => {
+        if (!visible) {
+          showLottie = true;
+        }
+      });
+      showLottie = true;
+
+      cleanup = () => {
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleResize);
+        unsubscribe();
+      };
+    })();
+
+    return () => cleanup && cleanup();
+  });
 
   function handleLogoClick() {
     resetHeroSwiper.set(true);
@@ -535,8 +533,6 @@
 
   .mobile-menu-button-container {
     display: none;
-   
-   
   }
 
   .mobile-menu-button {
@@ -692,8 +688,6 @@
     }
     .mobile-menu-button-container {
       display: block;
-      
-    
     }
     .ramka {
       margin-left: 1em !important;
@@ -704,9 +698,7 @@
       margin-top: 8px;
     }
     .mobile-menu-button-container {
-    
       margin-right: 36px !important;
-
     }
   }
 
@@ -806,6 +798,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: space-around;
 
     &:hover {
       color: var(--color-text-primary);
@@ -815,7 +808,7 @@
     &.active {
       color: white !important;
       background-color: #788391 !important;
-      border-radius: 5px !important;
+      border-radius: 20px !important;
 
       span {
         position: relative;

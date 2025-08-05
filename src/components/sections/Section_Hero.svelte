@@ -680,16 +680,18 @@
     .item__category {
       display: flex;
       width: 30vw;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
+      flex-direction: column-reverse;
+      align-items: flex-end;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      align-content: flex-start;
+      flex-wrap: nowrap;
     }
   }
 
   .category-content .container {
     position: relative;
-    background-image: url(/assets/Background_Hero_swipe.jpg);
+    /*  background-image: url(/assets/Background_Hero_swipe.jpg); */
     width: 135rem;
     height: 400px;
     border-radius: 1rem;
@@ -699,13 +701,13 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(
+      /*  background: linear-gradient(
         180deg,
         rgb(208 201 201 / 81%) 0%,
         rgb(136 126 126 / 85%) 100%
-      );
+      ); */
       border-radius: 1rem;
-      border-left: 11px solid rgb(150, 165, 0);
+      // border-left: 11px solid rgb(150, 165, 0);
       z-index: 1;
       opacity: 0.8;
     }

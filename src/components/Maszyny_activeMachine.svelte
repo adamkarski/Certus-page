@@ -11,8 +11,7 @@
 
   import IconDoc from "$lib/../components/IconDoc.svelte";
   import DaneTechniczne from "$lib/../assets/menu/dane_techniczne.svelte";
-  import MenuEmail from "$lib/../assets/menu/menu_email.svelte";
-  import MenuDownload from "$lib/../assets/menu/menu_download.svelte";
+  import MachineMenu from "./MachineMenu.svelte";
 
   //tables dla maszyn
   import Maszyny_table_frezarki from "$lib/../components/tables/Maszyny_table_frezarki.svelte";
@@ -85,7 +84,7 @@
         >
           <div class="right_content">
             <h1 use:typoFixAction>
-              <b>Nowa linia frezarek CERTUS HMM </b><br /><br />została
+              <b>Nowa linia frezarek CERTUS HMM</b><br /><br />została
               zaprojektowana z myślą o szybkim i precyzyjnym frezowaniu
               materiałów takich jak stal, aluminium, drewno, tworzywa sztuczne i
               inne.
@@ -179,19 +178,12 @@
               </li>
             </ul>
 
-            <div class="right_menu">
-              <nav>
-                <ul>
-                  <li>
-                    <MenuDownload
-                      text="Do pobrania"
-                      href="/do_pobrania/Frezarki CNC HMM.pdf"
-                    />
-                  </li>
-                  <li><MenuEmail text="Kontakt" href="#" /></li>
-                </ul>
-              </nav>
-            </div>
+            <MachineMenu 
+              downloadText="Do pobrania"
+              downloadHref="/do_pobrania/Frezarki CNC HMM.pdf"
+              contactText="Kontakt"
+              contactHref="#"
+            />
 
             <Maszyny_table_frezarki />
             <br />
@@ -318,19 +310,12 @@
               elastyczne mocowanie elementów o różnych kształtach i rozmiarach.
             </p>
 
-            <div class="right_menu">
-              <nav>
-                <ul>
-                  <li>
-                    <MenuDownload
-                      text="Do pobrania"
-                      href="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
-                    />
-                  </li>
-                  <li><MenuEmail text="Kontakt" href="#" /></li>
-                </ul>
-              </nav>
-            </div>
+            <MachineMenu 
+              downloadText="Do pobrania"
+              downloadHref="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
+              contactText="Kontakt"
+              contactHref="#"
+            />
 
             <Maszyny_table_plotery />
             <br />
@@ -454,19 +439,12 @@
               </li>
             </ul>
 
-            <div class="right_menu">
-              <nav>
-                <ul>
-                  <li>
-                    <MenuDownload
-                      text="Do pobrania"
-                      href="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
-                    />
-                  </li>
-                  <li><MenuEmail text="Kontakt" href="#" /></li>
-                </ul>
-              </nav>
-            </div>
+            <MachineMenu 
+              downloadText="Do pobrania"
+              downloadHref="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
+              contactText="Kontakt"
+              contactHref="#"
+            />
 
             <Maszyny_table_zabudowa />
 
@@ -617,19 +595,12 @@
               </li>
             </ul>
 
-            <div class="right_menu">
-              <nav>
-                <ul>
-                  <li>
-                    <MenuDownload
-                      text="Do pobrania"
-                      href="/do_pobrania/Frezarki 5osiowe.pdf"
-                    />
-                  </li>
-                  <li><MenuEmail text="Kontakt" href="#" /></li>
-                </ul>
-              </nav>
-            </div>
+            <MachineMenu 
+              downloadText="Do pobrania"
+              downloadHref="/do_pobrania/Frezarki 5osiowe.pdf"
+              contactText="Kontakt"
+              contactHref="#"
+            />
 
             <Maszyny_table_frezarki5osiowe />
 
@@ -774,19 +745,12 @@
               </li>
             </ul>
 
-            <div class="right_menu">
-              <nav>
-                <ul>
-                  <li>
-                    <MenuDownload
-                      text="Do pobrania"
-                      href="/do_pobrania/Grawerki CNC.pdf"
-                    />
-                  </li>
-                  <li><MenuEmail text="Kontakt" href="#" /></li>
-                </ul>
-              </nav>
-            </div>
+            <MachineMenu 
+              downloadText="Do pobrania"
+              downloadHref="/do_pobrania/Grawerki CNC.pdf"
+              contactText="Kontakt"
+              contactHref="#"
+            />
 
             <Maszyny_table_grawerki />
 
@@ -930,19 +894,12 @@
               </li>
             </ul>
 
-            <div class="right_menu">
-              <nav>
-                <ul>
-                  <li>
-                    <MenuDownload
-                      text="Do pobrania"
-                      href="/do_pobrania/Plotery linearne CNC.pdf"
-                    />
-                  </li>
-                  <li><MenuEmail text="Kontakt" href="#" /></li>
-                </ul>
-              </nav>
-            </div>
+            <MachineMenu 
+              downloadText="Do pobrania"
+              downloadHref="/do_pobrania/Plotery linearne CNC.pdf"
+              contactText="Kontakt"
+              contactHref="#"
+            />
 
             <Maszyny_table_ploteryLinearne />
 
