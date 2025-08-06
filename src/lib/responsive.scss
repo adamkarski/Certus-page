@@ -7,6 +7,60 @@
    - 768px: Mobile landscape
    - 480px: Mobile portrait
 */
+@media (min-width: 1920px) {
+  body.home {
+    section.hero{
+      height: 110vh !important;
+    }
+
+  }
+}
+
+/* Styl dla średnich ekranów, np. 1600x900 */
+@media (min-width: 1600px) and (max-width: 1919px) {
+  body.home {
+   
+    section.hero{
+      height: 90vh !important;
+      top: 80px !important;
+    }
+
+  }
+}
+
+/* Styl dla mniejszych ekranów, np. 1280x720 */
+@media (min-width: 1280px) and (max-width: 1599px) {
+  body {
+    background-color: lightcoral;
+  }
+}
+
+/* Opcjonalnie można dodać styl dla jeszcze mniejszych ekranów poniżej 1280px */
+@media (max-width: 1279px) {
+  body {
+    background-color: lightyellow;
+  }
+}
+
+@media (min-height: 720px) {
+  body {
+
+  }
+}
+
+/* przykładowy styl dla maksymalnej wysokości 900px */
+@media (max-height: 900px) {
+  body {
+    border: 5px solid red;
+  }
+}
+
+/* styl dla wysokości w zakresie od 720px do 900px */
+@media (min-height: 720px) and (max-height: 900px) {
+  body {
+    background-color: lightgray;
+  }
+}
 
 @media (min-width: 1024px) {
   .activeMachine .left.short {
@@ -45,15 +99,10 @@ body.home {
 }
 
 @media (max-width: 500px) and (height: 500px) {
-
   body {
     border: 13px solid red !important;
   }
-
 }
-
-
-
 
 @media (min-width: 932px) and (max-width: 1014px) {
   .nav-link {

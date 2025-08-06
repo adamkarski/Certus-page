@@ -287,11 +287,11 @@
             {#if messageInputMode === null}
               <div class="message-mode-selection">
                 <button type="button" on:click={selectTextInputMode}>
-                  <img src="assets/ikony/text-message.svg" alt="Wiadomość tekstowa" />
+                  <img src="/assets/ikony/message.svg" alt="Wiadomość tekstowa" />
                   <span>Napisz wiadomość</span>
                 </button>
                 <button type="button" on:click={selectRecordInputMode}>
-                  <img src="assets/ikony/voice-message.svg" alt="Wiadomość głosowa" />
+                  <img src="/assets/ikony/record.svg" alt="Wiadomość głosowa" />
                   <span>Nagraj wiadomość</span>
                 </button>
               </div>

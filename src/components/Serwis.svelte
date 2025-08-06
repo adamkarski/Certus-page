@@ -1,25 +1,22 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
-  import { onMount } from 'svelte';
-  import { typoFixAction } from '$lib/utils/typography';
-  
+  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+  import { typoFixAction } from "$lib/utils/typography";
+
   // Import komponentów serwisu
-  import ServiceModal from './serwis/ServiceModal.svelte';
-  import BenefitsSection from './serwis/BenefitsSection.svelte';
-  import SerwisKontakt from './serwis/SerwisKontakt.svelte';
+  import ServiceModal from "./serwis/ServiceModal.svelte";
+  import BenefitsSection from "./serwis/BenefitsSection.svelte";
+  import SerwisKontakt from "./serwis/SerwisKontakt.svelte";
 
-
-  
   // Import istniejących komponentów
-  import CtaButton from './cta-button.svelte';
-  
+  import CtaButton from "./cta-button.svelte";
+
   let sectionEl: HTMLElement;
+  let benefitsSectionEl: HTMLElement;
   let visible = false;
+  let benefitsVisible = false;
   let modalOpen = false;
   let selectedService: any = null;
-
-
-
 
   onMount(() => {
     const observer = new IntersectionObserver(
@@ -28,40 +25,52 @@
       },
       { threshold: 0.1 }
     );
+
+    const benefitsObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) benefitsVisible = true;
+      },
+      { threshold: 0.1 }
+    );
+
     if (sectionEl) observer.observe(sectionEl);
-    return () => observer.disconnect();
+    if (benefitsSectionEl) benefitsObserver.observe(benefitsSectionEl);
+
+    return () => {
+      observer.disconnect();
+      benefitsObserver.disconnect();
+    };
   });
 
   function handleOpenModal(event: CustomEvent) {
     selectedService = event.detail;
     modalOpen = true;
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   }
 
   function handleCloseModal() {
     modalOpen = false;
     selectedService = null;
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = "auto";
   }
 
-
-
   function scrollToServices() {
-    const servicesSection = document.getElementById('serwis-services');
+    const servicesSection = document.getElementById("serwis-services");
     if (servicesSection) {
       const headerOffset = 100;
       const elementPosition = servicesSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   }
 
   function makePhoneCall() {
-    window.open('tel:+48606324406', '_self');
+    window.open("tel:+48606324406", "_self");
   }
 </script>
 
@@ -70,27 +79,36 @@
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
 </section>
 
-
 <section id="serwis" class="serwis">
-<section id="serwis-details" class="serwis-details">
-  <div class="serwis-container container">
-    <div class="content-section">
-      <h2 class="section-title">Wsparcie techniczne na najwyższym poziomie</h2>
-      <p use:typoFixAction>Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Jako zespół wsparcia jesteśmy zawsze dostępni, aby rozwiązać wszelkie problemy i udzielić profesjonalnej pomocy w każdej sytuacji.</p>
-   
-      <br/>
-   
-      <p class="intro-text" use:typoFixAction>Rola naszego przedsiębiorstwa nie kończy się zaraz po dostarczeniu Ci maszyn. Oferujemy bowiem także profesjonalny <b>serwis gwarancyjny oraz pogwarancyjny</b>. W ten sposób możemy zapewnić naszym Klientom pełen zakres wsparcia technicznego.</p>
+  <section id="serwis-details" class="serwis-details">
+    <div class="serwis-container container">
+      <div class="content-section">
+        <h2 class="section-title">
+          Wsparcie techniczne na najwyższym poziomie
+        </h2>
+        <p use:typoFixAction>
+          Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość
+          udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się
+          na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Jako
+          zespół wsparcia jesteśmy zawsze dostępni, aby rozwiązać wszelkie
+          problemy i udzielić profesjonalnej pomocy w każdej sytuacji.
+        </p>
 
+        <br />
+
+        <p class="intro-text" use:typoFixAction>
+          Rola naszego przedsiębiorstwa nie kończy się zaraz po dostarczeniu Ci
+          maszyn. Oferujemy bowiem także profesjonalny <b
+            >serwis gwarancyjny oraz pogwarancyjny</b
+          >. W ten sposób możemy zapewnić naszym Klientom pełen zakres wsparcia
+          technicznego.
+        </p>
+      </div>
     </div>
-  </div>
+  </section>
 </section>
 
-
-</section>
-
-
-<section class="cta_serwis">
+<!-- <section class="cta_serwis">
   <div class="serwis-cta-wrapper">
     <div class="serwis-hero-actions">
       <CtaButton 
@@ -103,247 +121,372 @@
   </div>
 
   
-</section>
+</section> -->
 
 <!-- Sekcja z kartami usług serwisowych używająca istniejących stylów -->
-<section id="serwis-services" class="info-cards-section no-sel" bind:this={sectionEl}>
+<section
+  id="serwis-services"
+  class="info-cards-section no-sel"
+  bind:this={sectionEl}
+>
   <div class="serwis-services-header">
     <h2 use:typoFixAction>Nasze Usługi Serwisowe</h2>
-    <p use:typoFixAction>Kompleksowa opieka serwisowa dla wszystkich maszyn CNC</p>
+    <p use:typoFixAction>
+      Kompleksowa opieka serwisowa dla wszystkich maszyn CNC
+    </p>
   </div>
-  
+
   <div class="info-cards-wrapper">
     <!-- Serwis Gwarancyjny -->
-    <div 
+    <div
       class="info-card serwis-service-card warranty-card"
       class:visible
-      on:click={() => handleOpenModal({detail: {
-        type: 'warranty',
-        title: "Serwis Gwarancyjny",
-        description: "Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12 miesięcy od daty dostawy",
-        highlights: ["BEZPŁATNE", "Do 5 dni"],
-        details: [
-          { label: "Okres gwarancji", value: "12 miesięcy od dostawy" },
-          { label: "Koszt serwisu", value: "BEZPŁATNE", highlight: true },
-          { label: "Koszt dojazdu", value: "Bezpłatne do 200 km" },
-          { label: "Czas reakcji", value: "Do 5 dni roboczych" }
-        ],
-        includes: [
-          "Wady materiałowe",
-          "Błędy produkcyjne", 
-          "Awarie z normalnego użytkowania",
-          "Oryginalne części zamienne",
-          "Raport z wykonanych prac"
-        ],
-        excludes: [
-          "Błędy użytkownika",
-          "Zaniedbania konserwacyjne",
-          "Eksploatacja niezgodna z przeznaczeniem",
-          "Uszkodzenia mechaniczne"
-        ]
-      }})}
-      on:keydown={(e) => e.key === 'Enter' && handleOpenModal({detail: {type: 'warranty'}})}
+      on:click={() =>
+        handleOpenModal({
+          detail: {
+            type: "warranty",
+            title: "Serwis Gwarancyjny",
+            description:
+              "Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12 miesięcy od daty dostawy",
+            highlights: ["BEZPŁATNE", "Do 5 dni"],
+            details: [
+              { label: "Okres gwarancji", value: "12 miesięcy od dostawy" },
+              { label: "Koszt serwisu", value: "BEZPŁATNE", highlight: true },
+              { label: "Koszt dojazdu", value: "Bezpłatne do 200 km" },
+              { label: "Czas reakcji", value: "Do 5 dni roboczych" },
+            ],
+            includes: [
+              "Wady materiałowe",
+              "Błędy produkcyjne",
+              "Awarie z normalnego użytkowania",
+              "Oryginalne części zamienne",
+              "Raport z wykonanych prac",
+            ],
+            excludes: [
+              "Błędy użytkownika",
+              "Zaniedbania konserwacyjne",
+              "Eksploatacja niezgodna z przeznaczeniem",
+              "Uszkodzenia mechaniczne",
+            ],
+          },
+        })}
+      on:keydown={(e) =>
+        e.key === "Enter" && handleOpenModal({ detail: { type: "warranty" } })}
       role="button"
       tabindex="0"
       aria-label="Otwórz szczegóły usługi Serwis Gwarancyjny"
     >
       <div class="info-card-header">
         <div class="serwis-service-icon warranty-icon info-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
           </svg>
         </div>
         <span class="info-title" use:typoFixAction>Serwis Gwarancyjny</span>
       </div>
-      
-      <p class="info-desc" use:typoFixAction>Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12 miesięcy od daty dostawy</p>
-      
+
+      <p class="info-desc" use:typoFixAction>
+        Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12
+        miesięcy od daty dostawy
+      </p>
+
       <div class="serwis-service-highlight">
         <span class="serwis-highlight-item" use:typoFixAction>BEZPŁATNE</span>
         <span class="serwis-highlight-item" use:typoFixAction>Do 5 dni</span>
       </div>
-      
+
       <button class="serwis-service-btn" aria-label="Zobacz szczegóły">
         <span use:typoFixAction>Szczegóły</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
     </div>
 
     <!-- Serwis Pogwarancyjny -->
-    <div 
+    <div
       class="info-card serwis-service-card post-warranty-card"
       class:visible
-      on:click={() => handleOpenModal({detail: {
-        type: 'post-warranty',
-        title: "Serwis Pogwarancyjny",
-        description: "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym",
-        highlights: ["240 zł/h", "Do 7 dni"],
-        details: [
-          { label: "Stawka godzinowa", value: "240 zł netto/h", highlight: true },
-          { label: "Minimalne rozliczenie", value: "1 godzina" },
-          { label: "Czas reakcji", value: "Do 7 dni roboczych" },
-          { label: "Koszt dojazdu", value: "2,50 zł netto/km" }
-        ],
-        includes: [
-          "Diagnostyka awarii",
-          "Naprawa podzespołów",
-          "Wymiana części zamiennych",
-          "Testowanie po naprawie",
-          "Szczegółowy raport serwisowy",
-          "Instrukcja eksploatacji"
-        ],
-        note: "Koszt dojazdu liczony w obie strony. Części zamienne dodatkowo według cennika."
-      }})}
-      on:keydown={(e) => e.key === 'Enter' && handleOpenModal({detail: {type: 'post-warranty'}})}
+      on:click={() =>
+        handleOpenModal({
+          detail: {
+            type: "post-warranty",
+            title: "Serwis Pogwarancyjny",
+            description:
+              "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym",
+            highlights: ["240 zł/h", "Do 7 dni"],
+            details: [
+              {
+                label: "Stawka godzinowa",
+                value: "240 zł netto/h",
+                highlight: true,
+              },
+              { label: "Minimalne rozliczenie", value: "1 godzina" },
+              { label: "Czas reakcji", value: "Do 7 dni roboczych" },
+              { label: "Koszt dojazdu", value: "2,50 zł netto/km" },
+            ],
+            includes: [
+              "Diagnostyka awarii",
+              "Naprawa podzespołów",
+              "Wymiana części zamiennych",
+              "Testowanie po naprawie",
+              "Szczegółowy raport serwisowy",
+              "Instrukcja eksploatacji",
+            ],
+            note: "Koszt dojazdu liczony w obie strony. Części zamienne dodatkowo według cennika.",
+          },
+        })}
+      on:keydown={(e) =>
+        e.key === "Enter" &&
+        handleOpenModal({ detail: { type: "post-warranty" } })}
       role="button"
       tabindex="0"
       aria-label="Otwórz szczegóły usługi Serwis Pogwarancyjny"
     >
       <div class="info-card-header">
         <div class="serwis-service-icon post-warranty-icon info-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+            ></path>
           </svg>
         </div>
         <span class="info-title" use:typoFixAction>Serwis Pogwarancyjny</span>
       </div>
-      
-      <p class="info-desc" use:typoFixAction>Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym</p>
-      
+
+      <p class="info-desc" use:typoFixAction>
+        Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem
+        technicznym
+      </p>
+
       <div class="serwis-service-highlight">
         <span class="serwis-highlight-item" use:typoFixAction>240 zł/h</span>
         <span class="serwis-highlight-item" use:typoFixAction>Do 7 dni</span>
       </div>
-      
+
       <button class="serwis-service-btn" aria-label="Zobacz szczegóły">
         <span use:typoFixAction>Szczegóły</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
     </div>
 
     <!-- Przeglądy Okresowe -->
-    <div 
+    <div
       class="info-card serwis-service-card inspections-card"
       class:visible
-      on:click={() => handleOpenModal({detail: {
-        type: 'inspections',
-        title: "Przeglądy Okresowe",
-        description: "Regularne przeglądy zapewniające optymalną pracę maszyn i przedłużające ich żywotność",
-        highlights: ["Od 1000 zł", "Co 6 mies."],
-        details: [
-          { label: "Częstotliwość", value: "Co 6 miesięcy lub 1000 roboczogodzin" },
-          { label: "Maszyny 3-osiowe standard", value: "1000 zł netto", highlight: true },
-          { label: "Maszyny 3-osiowe rozszerzony", value: "1600 zł netto", highlight: true },
-          { label: "Maszyny 5-osiowe standard", value: "1400 zł netto", highlight: true },
-          { label: "Maszyny 5-osiowe rozszerzony", value: "2200 zł netto", highlight: true }
-        ],
-        includes: [
-          "Diagnostyka wszystkich podzespołów",
-          "Kontrola dokładności osi",
-          "Sprawdzenie systemów chłodzenia",
-          "Kontrola układów smarowania",
-          "Kalibracja narzędzi",
-          "Raport z rekomendacjami",
-          "Plan konserwacji"
-        ],
-        note: "Przegląd rozszerzony obejmuje dodatkowo wymianę płynów eksploatacyjnych i drobnych części zużywalnych."
-      }})}
-      on:keydown={(e) => e.key === 'Enter' && handleOpenModal({detail: {type: 'inspections'}})}
+      on:click={() =>
+        handleOpenModal({
+          detail: {
+            type: "inspections",
+            title: "Przeglądy Okresowe",
+            description:
+              "Regularne przeglądy zapewniające optymalną pracę maszyn i przedłużające ich żywotność",
+            highlights: ["Od 1000 zł", "Co 6 mies."],
+            details: [
+              {
+                label: "Częstotliwość",
+                value: "Co 6 miesięcy lub 1000 roboczogodzin",
+              },
+              {
+                label: "Maszyny 3-osiowe standard",
+                value: "1000 zł netto",
+                highlight: true,
+              },
+              {
+                label: "Maszyny 3-osiowe rozszerzony",
+                value: "1600 zł netto",
+                highlight: true,
+              },
+              {
+                label: "Maszyny 5-osiowe standard",
+                value: "1400 zł netto",
+                highlight: true,
+              },
+              {
+                label: "Maszyny 5-osiowe rozszerzony",
+                value: "2200 zł netto",
+                highlight: true,
+              },
+            ],
+            includes: [
+              "Diagnostyka wszystkich podzespołów",
+              "Kontrola dokładności osi",
+              "Sprawdzenie systemów chłodzenia",
+              "Kontrola układów smarowania",
+              "Kalibracja narzędzi",
+              "Raport z rekomendacjami",
+              "Plan konserwacji",
+            ],
+            note: "Przegląd rozszerzony obejmuje dodatkowo wymianę płynów eksploatacyjnych i drobnych części zużywalnych.",
+          },
+        })}
+      on:keydown={(e) =>
+        e.key === "Enter" &&
+        handleOpenModal({ detail: { type: "inspections" } })}
       role="button"
       tabindex="0"
       aria-label="Otwórz szczegóły usługi Przeglądy Okresowe"
     >
       <div class="info-card-header">
         <div class="serwis-service-icon inspections-icon info-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
             <path d="M9 11l3 3l8-8"></path>
-            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.51 0 2.93.37 4.18 1.03"></path>
+            <path
+              d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.51 0 2.93.37 4.18 1.03"
+            ></path>
           </svg>
         </div>
         <span class="info-title" use:typoFixAction>Przeglądy Okresowe</span>
       </div>
-      
-      <p class="info-desc" use:typoFixAction>Regularne przeglądy zapewniające optymalną pracę maszyn i przedłużające ich żywotność</p>
-      
+
+      <p class="info-desc" use:typoFixAction>
+        Regularne przeglądy zapewniające optymalną pracę maszyn i przedłużające
+        ich żywotność
+      </p>
+
       <div class="serwis-service-highlight">
         <span class="serwis-highlight-item" use:typoFixAction>Od 1000 zł</span>
         <span class="serwis-highlight-item" use:typoFixAction>Co 6 mies.</span>
       </div>
-      
+
       <button class="serwis-service-btn" aria-label="Zobacz szczegóły">
         <span use:typoFixAction>Szczegóły</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
     </div>
 
     <!-- Usługi Dodatkowe -->
-    <div 
+    <div
       class="info-card serwis-service-card additional-card"
       class:visible
-      on:click={() => handleOpenModal({detail: {
-        type: 'additional',
-        title: "Usługi Dodatkowe",
-        description: "Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu",
-        highlights: ["Priorytet 48h", "Szkolenia"],
-        services: [
-          {
-            name: "Serwis priorytetowy",
-            price: "400 zł netto",
-            description: "Reakcja do 48 godzin",
-            details: "Priorytetowe traktowanie zgłoszenia serwisowego"
+      on:click={() =>
+        handleOpenModal({
+          detail: {
+            type: "additional",
+            title: "Usługi Dodatkowe",
+            description:
+              "Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu",
+            highlights: ["Priorytet 48h", "Szkolenia"],
+            services: [
+              {
+                name: "Serwis priorytetowy",
+                price: "400 zł netto",
+                description: "Reakcja do 48 godzin",
+                details: "Priorytetowe traktowanie zgłoszenia serwisowego",
+              },
+              {
+                name: "Diagnostyka zdalna",
+                price: "100 zł netto",
+                description: "Każde rozpoczęte 30 minut",
+                details: "Zdalna pomoc techniczna przez internet",
+              },
+              {
+                name: "Szkolenie operatora",
+                price: "1200 zł netto/dzień",
+                description: "Na miejscu u klienta",
+                details: "Kompleksowe szkolenie z obsługi maszyny",
+              },
+              {
+                name: "Instalacja maszyny",
+                price: "1500-2500 zł netto",
+                description: "Według umowy",
+                details: "Profesjonalna instalacja i uruchomienie",
+              },
+            ],
           },
-          {
-            name: "Diagnostyka zdalna",
-            price: "100 zł netto",
-            description: "Każde rozpoczęte 30 minut",
-            details: "Zdalna pomoc techniczna przez internet"
-          },
-          {
-            name: "Szkolenie operatora",
-            price: "1200 zł netto/dzień",
-            description: "Na miejscu u klienta",
-            details: "Kompleksowe szkolenie z obsługi maszyny"
-          },
-          {
-            name: "Instalacja maszyny",
-            price: "1500-2500 zł netto",
-            description: "Według umowy",
-            details: "Profesjonalna instalacja i uruchomienie"
-          }
-        ]
-      }})}
-      on:keydown={(e) => e.key === 'Enter' && handleOpenModal({detail: {type: 'additional'}})}
+        })}
+      on:keydown={(e) =>
+        e.key === "Enter" &&
+        handleOpenModal({ detail: { type: "additional" } })}
       role="button"
       tabindex="0"
       aria-label="Otwórz szczegóły usługi Usługi Dodatkowe"
     >
       <div class="info-card-header">
         <div class="serwis-service-icon additional-icon info-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="8" x2="12" y2="16"></line>
             <line x1="8" y1="12" x2="16" y2="12"></line>
           </svg>
         </div>
-        <span class="info-title" use:typoFixAction>Usługi <br/>Dodatkowe</span>
+        <span class="info-title" use:typoFixAction>Usługi <br />Dodatkowe</span>
       </div>
-      
-      <p class="info-desc" use:typoFixAction>Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu</p>
-      
+
+      <p class="info-desc" use:typoFixAction>
+        Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu
+      </p>
+
       <div class="serwis-service-highlight">
-        <span class="serwis-highlight-item" use:typoFixAction>Priorytet 48h</span>
+        <span class="serwis-highlight-item" use:typoFixAction
+          >Priorytet 48h</span
+        >
         <span class="serwis-highlight-item" use:typoFixAction>Szkolenia</span>
       </div>
-      
+
       <button class="serwis-service-btn" aria-label="Zobacz szczegóły">
         <span use:typoFixAction>Szczegóły</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
@@ -351,46 +494,76 @@
   </div>
 </section>
 
-<section class="benefits">
-  <div class="container">
-      <div class="section-header">
-          <h2>Dlaczego CERTUS?</h2>
-          <p>Zaufało nam już ponad 500 firm w całej Polsce</p>
+<section class="serwis-benefits" bind:this={benefitsSectionEl}>
+  <div class="serwis-benefits-container">
+    <div class="serwis-section-header">
+      <h2 use:typoFixAction>Dlaczego CERTUS?</h2>
+      <p use:typoFixAction>Zaufało nam już ponad 500 firm w całej Polsce</p>
+    </div>
+
+    <div class="serwis-benefits-grid">
+      <div
+        class="serwis-benefit-item"
+        class:visible={benefitsVisible}
+        style="transition-delay: 0ms"
+      >
+        <div class="serwis-benefit-icon">
+          <img
+            src="/assets/ikony/onas-analiza-potrzeb.svg"
+            alt="Analiza potrzeb"
+          />
+        </div>
+        <h4 use:typoFixAction>Doświadczony zespół</h4>
+        <p use:typoFixAction>
+          10+ lat stażu w branży CNC i setki zadowolonych klientów
+        </p>
       </div>
-      
-      <div class="benefits-grid">
-          <div class="benefit-item">
-              <div class="benefit-icon">
-                  <i class="fas fa-users"></i>
-              </div>
-              <h4>Doświadczony zespół</h4>
-              <p>10+ lat stażu w branży CNC</p>
-          </div>
-          
-          <div class="benefit-item">
-              <div class="benefit-icon">
-                  <i class="fas fa-clock"></i>
-              </div>
-              <h4>Szybka reakcja</h4>
-              <p>Zazwyczaj w ciągu 24 godzin</p>
-          </div>
-          
-          <div class="benefit-item">
-              <div class="benefit-icon">
-                  <i class="fas fa-cogs"></i>
-              </div>
-              <h4>Oryginalne części</h4>
-              <p>Najwyższa jakość komponentów</p>
-          </div>
-          
-          <div class="benefit-item">
-              <div class="benefit-icon">
-                  <i class="fas fa-tools"></i>
-              </div>
-              <h4>Serwis na miejscu</h4>
-              <p>Przyjazd do klienta</p>
-          </div>
+
+      <div
+        class="serwis-benefit-item"
+        class:visible={benefitsVisible}
+        style="transition-delay: 100ms"
+      >
+        <div class="serwis-benefit-icon">
+          <img
+            src="/assets/ikony/onas-dobor-rozwiazan.svg"
+            alt="Dobór rozwiązań"
+          />
+        </div>
+        <h4 use:typoFixAction>Szybka reakcja</h4>
+        <p use:typoFixAction>
+          Zazwyczaj w ciągu 24 godzin, priorytetowo do 48h
+        </p>
       </div>
+
+      <div
+        class="serwis-benefit-item"
+        class:visible={benefitsVisible}
+        style="transition-delay: 200ms"
+      >
+        <div class="serwis-benefit-icon">
+          <img src="/assets/ikony/onas-wdrozenie.svg" alt="Wdrożenie" />
+        </div>
+        <h4 use:typoFixAction>Oryginalne części</h4>
+        <p use:typoFixAction>
+          Najwyższa jakość komponentów bezpośrednio od producenta
+        </p>
+      </div>
+
+      <div
+        class="serwis-benefit-item"
+        class:visible={benefitsVisible}
+        style="transition-delay: 300ms"
+      >
+        <div class="serwis-benefit-icon">
+          <img src="/assets/ikony/onas-wsparcie.svg" alt="Wsparcie" />
+        </div>
+        <h4 use:typoFixAction>Serwis na miejscu</h4>
+        <p use:typoFixAction>
+          Przyjazd do klienta w całej Polsce z pełnym wyposażeniem
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -399,26 +572,14 @@
 
 <!-- Dodatkowa sekcja z treścią -->
 
-
 <!-- Modal dla szczegółów usług -->
-<ServiceModal 
-  isOpen={modalOpen} 
-  service={selectedService} 
-  on:close={handleCloseModal} 
+<ServiceModal
+  isOpen={modalOpen}
+  service={selectedService}
+  on:close={handleCloseModal}
 />
 
-
-
 <style lang="scss">
-
-
-
-
-
-
-
-
-
   .serwis-container {
     overflow: hidden;
     width: 100%;
@@ -491,7 +652,7 @@
 
   .content-intro {
     margin-bottom: 40px;
-    
+
     .intro-text {
       font-size: 1.2rem;
       line-height: 1.8;
@@ -516,11 +677,11 @@
       &::before {
         content: "";
         position: absolute;
-        left: 50%;
+        left: -10%;
         transform: translateX(-50%);
-        top: -20px;
-        width: 60px;
-        height: 4px;
+        /* top: -20px; */
+        width: 4px;
+        height: 95px;
         background: var(--color-primary);
         border-radius: 2px;
       }
@@ -535,8 +696,6 @@
     }
   }
 
-
-
   // Style dla dodatkowej sekcji
   .serwis-details {
     width: 100%;
@@ -547,7 +706,7 @@
 
   .content-section {
     margin-bottom: 60px;
-    
+
     .section-title {
       position: relative;
       color: var(--color-text-secondary);
@@ -556,7 +715,7 @@
       font-size: 38px;
       text-align: left;
       margin-bottom: 30px;
-      
+
       &::before {
         content: "";
         position: absolute;
@@ -566,7 +725,7 @@
         background-image: url(/assets/red-arrow.svg);
       }
     }
-    
+
     p {
       line-height: 1.8;
       font-size: 1.1rem;
@@ -598,8 +757,6 @@
         font-size: 1.1rem;
       }
     }
-
-
   }
 
   @media (max-width: 480px) {
@@ -634,31 +791,36 @@
     padding: 40px 0 0 0;
   }
 
-//   .info-card {
-//   // position: relative;
-//   // z-index: 1;
-//   // background: #fff;
-//   // filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
-//   // background-image: url('/assets/kontakt-background.jpg');
-//   //   background-size: cover;
-//   // background-position: center;
-  
-// }
+  //   .info-card {
+  //   // position: relative;
+  //   // z-index: 1;
+  //   // background: #fff;
+  //   // filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
+  //   // background-image: url('/assets/kontakt-background.jpg');
+  //   //   background-size: cover;
+  //   // background-position: center;
 
-.info-card::before {
-  // content: '';
-  // position: absolute;
-  // z-index: 0;
-  // inset: 0;
-  // background: transparent;
-  // // clip-path: inherit;  
-  // pointer-events: none;
-  
-}
+  // }
+
+  .info-card::before {
+    // content: '';
+    // position: absolute;
+    // z-index: 0;
+    // inset: 0;
+    // background: transparent;
+    // // clip-path: inherit;
+    // pointer-events: none;
+  }
 
   .info-card {
-    filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), calc(100% - 50px) 100%, 0 100%);
+    filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 50px),
+      calc(100% - 50px) 100%,
+      0 100%
+    );
 
     background: #f7f7f7;
     border-radius: 0;
@@ -675,16 +837,6 @@
     justify-content: flex-start;
     position: relative;
   }
-
-  /* .info-card::before {
-    content: url(/assets/images/triangle.svg);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 119px;
-    height: 68px;
-    pointer-events: none;
-  } */
 
   .info-card-header {
     display: flex;
@@ -754,8 +906,10 @@
 
     &:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
     }
 
     &:focus {
@@ -791,8 +945,7 @@
     height: 44px;
     margin-right: 2px;
     margin-top: 2px;
-    display: flex
-;
+    display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -800,7 +953,7 @@
     left: 80%;
     margin-top: -1%;
     opacity: 0.2;
-   :global(svg) {
+    :global(svg) {
       width: 24px;
       height: 24px;
     }
@@ -897,21 +1050,19 @@
     .serwis {
       padding: 80px 0;
     }
-    
+
     .serwis-container {
       padding: 0 2rem;
     }
-    
+
     .content-intro .intro-text {
       font-size: 1rem;
     }
-    
 
-    
     .content-section .section-title {
       font-size: 28px;
     }
-    
+
     .serwis-details {
       padding: 80px 0;
     }
@@ -923,6 +1074,190 @@
     .serwis-service-btn {
       padding: 6px 12px;
       font-size: 0.85rem;
+    }
+  }
+
+  // Style dla sekcji benefits
+  .serwis-benefits {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .serwis-benefits-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .serwis-section-header {
+    text-align: center;
+    margin-bottom: 80px;
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      margin-bottom: 16px;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -20px;
+        width: 60px;
+        height: 4px;
+        background: var(--color-primary);
+        border-radius: 2px;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: var(--color-text-secondary);
+      opacity: 0.8;
+    }
+  }
+
+  .serwis-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    justify-items: center;
+  }
+
+  .serwis-benefit-item {
+    text-align: center;
+    max-width: 320px;
+    padding: 40px 32px;
+    background: white;
+    border-radius: 16px;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    transform: translateY(30px);
+
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  .serwis-benefit-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, var(--color-primary), #a8b400);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    box-shadow: 0 10px 15px -3px rgba(150, 165, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+      );
+      transform: rotate(45deg);
+      transition: all 0.6s;
+    }
+
+    img {
+      width: 45px;
+      height: 45px;
+      filter: brightness(0) invert(1);
+      z-index: 1;
+      position: relative;
+    }
+  }
+
+  .serwis-benefit-item:hover .serwis-benefit-icon::before {
+    left: 100%;
+  }
+
+  .serwis-benefit-item h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .serwis-benefit-item p {
+    color: var(--color-text-secondary);
+    opacity: 0.8;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .serwis-benefits {
+      padding: 60px 0;
+    }
+
+    .serwis-benefits-container {
+      padding: 0 16px;
+    }
+
+    .serwis-section-header {
+      margin-bottom: 60px;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    .serwis-benefits-grid {
+      gap: 32px;
+      grid-template-columns: 1fr;
+    }
+
+    .serwis-benefit-item {
+      padding: 32px 24px;
+      max-width: 100%;
+    }
+
+    .serwis-benefit-icon {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 20px;
+
+      img {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    .serwis-benefit-item h4 {
+      font-size: 1.2rem;
+    }
+
+    .serwis-benefit-item p {
+      font-size: 0.95rem;
     }
   }
 </style>

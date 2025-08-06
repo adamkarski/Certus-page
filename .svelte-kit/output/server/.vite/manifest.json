@@ -15,7 +15,7 @@
       "_ssr.js"
     ],
     "css": [
-      "_app/immutable/assets/Maszyny_table_zabudowa.BV1RIzYL.css",
+      "_app/immutable/assets/Maszyny_table_zabudowa.Cx9iLtQg.css",
       "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css"
     ]
   },
@@ -46,7 +46,7 @@
     "name": "Section_Kontakt",
     "imports": [
       "_ssr.js",
-      "_Section_Referencje.js"
+      "_cta-button.js"
     ],
     "css": [
       "_app/immutable/assets/Section_Kontakt.D08XN_PQ.css"
@@ -62,26 +62,40 @@
       "_visibilityStore.js"
     ],
     "css": [
-      "_app/immutable/assets/Section_Referencje.BZ82tM-j.css"
+      "_app/immutable/assets/Section_Referencje.BRq2q39b.css"
     ]
   },
   "_Serwis.js": {
     "file": "chunks/Serwis.js",
     "name": "Serwis",
     "imports": [
-      "_ssr.js"
+      "_ssr.js",
+      "_cta-button.js",
+      "_Section_Referencje.js"
     ],
     "css": [
-      "_app/immutable/assets/Serwis.rOn2mv1p.css"
+      "_app/immutable/assets/Serwis.CUj33ftY.css"
     ]
   },
   "_cta-button-kategory.svelte_svelte_type_style_lang.js": {
     "file": "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css",
     "src": "_cta-button-kategory.svelte_svelte_type_style_lang.js"
   },
+  "_cta-button.js": {
+    "file": "chunks/cta-button.js",
+    "name": "cta-button",
+    "imports": [
+      "_ssr.js",
+      "_Section_Referencje.js"
+    ]
+  },
   "_exports.js": {
     "file": "chunks/exports.js",
     "name": "exports"
+  },
+  "_false.js": {
+    "file": "chunks/false.js",
+    "name": "false"
   },
   "_index.js": {
     "file": "chunks/index.js",
@@ -137,6 +151,7 @@
     "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
     "isEntry": true,
     "imports": [
+      "_false.js",
       "_internal.js",
       "_exports.js",
       "_index.js"
@@ -174,7 +189,7 @@
       "_visibilityStore.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.H1831ukz.css"
+      "_app/immutable/assets/_layout.CvucC-mV.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -194,12 +209,14 @@
       "_Maszyny_table_zabudowa.js",
       "_Section_Kontakt.js",
       "_visibilityStore.js",
+      "_cta-button.js",
       "_Section_Image01.js",
       "_Section_Image02.js",
+      "_false.js",
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.Dsc0VDZs.css"
+      "_app/immutable/assets/_page.bxdT_z8B.css"
     ]
   },
   "src/routes/dokumentacja/+page.svelte": {
@@ -234,7 +251,7 @@
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CQYhN58e.css"
+      "_app/immutable/assets/_page.w-C6vAVC.css"
     ]
   },
   "src/routes/mapa-witryny/+layout.ts": {
@@ -254,7 +271,7 @@
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.BdbZY6Rq.css"
+      "_app/immutable/assets/_page.DcF2macR.css"
     ]
   },
   "src/routes/maszyny/+layout.ts": {
@@ -276,7 +293,7 @@
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CxvEzhuj.css"
+      "_app/immutable/assets/_page.vf4k6QXK.css"
     ]
   },
   "src/routes/onas/+layout.ts": {
@@ -296,7 +313,7 @@
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.C3MWS9-_.css"
+      "_app/immutable/assets/_page.mTH648vj.css"
     ]
   },
   "src/routes/polityka-prywatnosci/+layout.ts": {
@@ -337,7 +354,7 @@
       "_Section_Image02.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.Dy_JpW2c.css"
+      "_app/immutable/assets/_page.DKlLFQvm.css"
     ]
   },
   "src/routes/serwis/+layout.ts": {
