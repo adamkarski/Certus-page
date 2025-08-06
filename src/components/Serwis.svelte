@@ -331,7 +331,7 @@
             <line x1="8" y1="12" x2="16" y2="12"></line>
           </svg>
         </div>
-        <span class="info-title" use:typoFixAction>Usługi Dodatkowe</span>
+        <span class="info-title" use:typoFixAction>Usługi <br/>Dodatkowe</span>
       </div>
       
       <p class="info-desc" use:typoFixAction>Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu</p>
@@ -413,25 +413,7 @@
 
 
 
-.info-card {
-  position: relative;
-  z-index: 1;
-  background: #fff;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
-  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
-}
 
-.info-card::before {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  background: transparent; /* Przezroczystość, nie inherit */
-  clip-path: inherit;      /* Ten sam kształt, by cień był wygięty */
-  box-shadow: 0 8px 15px 14px rgba(0, 0, 0, 0.15);
-  pointer-events: none;
-  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
-}
 
 
 
@@ -652,7 +634,32 @@
     padding: 40px 0 0 0;
   }
 
+//   .info-card {
+//   // position: relative;
+//   // z-index: 1;
+//   // background: #fff;
+//   // filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
+//   // background-image: url('/assets/kontakt-background.jpg');
+//   //   background-size: cover;
+//   // background-position: center;
+  
+// }
+
+.info-card::before {
+  // content: '';
+  // position: absolute;
+  // z-index: 0;
+  // inset: 0;
+  // background: transparent;
+  // // clip-path: inherit;  
+  // pointer-events: none;
+  
+}
+
   .info-card {
+    filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), calc(100% - 50px) 100%, 0 100%);
+
     background: #f7f7f7;
     border-radius: 0;
     box-shadow: none;
@@ -698,9 +705,9 @@
   }
 
   .info-title {
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 700;
-    color: #555a5e;
+    color: var(--color-text-secondary);
     line-height: 1.1;
     margin-top: 6px;
   }
@@ -748,6 +755,7 @@
     &:hover {
       transform: translateY(-4px);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
     }
 
     &:focus {
@@ -758,19 +766,23 @@
 
   // Kolorowe obramowania dla różnych typów usług
   .warranty-card {
-    border-top-color: #10b981; // Zielony
+    /* border-top-color: #10b981; // Zielony */
+    border-top: 4px solid #555a5e;
   }
 
   .post-warranty-card {
-    border-top-color: #3b82f6; // Niebieski
+    // border-top-color: #3b82f6; // Niebieski
+    border-top: 4px solid #555a5e;
   }
 
   .inspections-card {
-    border-top-color: #f59e0b; // Pomarańczowy
+    // border-top-color: #f59e0b; // Pomarańczowy
+    border-top: 4px solid #555a5e;
   }
 
   .additional-card {
-    border-top-color: #8b5cf6; // Fioletowy
+    // border-top-color: #8b5cf6; // Fioletowy
+    border-top: 4px solid #555a5e;
   }
 
   // Ikony serwisowe - używamy dokładnie tych samych wymiarów co info-icon
@@ -779,11 +791,16 @@
     height: 44px;
     margin-right: 2px;
     margin-top: 2px;
-    display: flex;
+    display: flex
+;
     align-items: center;
     justify-content: center;
-
-    :global(svg) {
+    position: absolute;
+    transform: scale(3.5);
+    left: 80%;
+    margin-top: -1%;
+    opacity: 0.2;
+   :global(svg) {
       width: 24px;
       height: 24px;
     }
