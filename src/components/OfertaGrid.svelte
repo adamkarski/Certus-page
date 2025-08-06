@@ -108,7 +108,7 @@
 
   :global(.oferta-grid) {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
 
     .oferta-card {
       padding: 10px 0px;
@@ -138,6 +138,12 @@
   }
 
   // Responsive styles
+  @media (min-width: 1617px) {
+    :global(.oferta-grid) {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
     .oferta-container {
       padding: 0 2rem;

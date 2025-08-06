@@ -1042,7 +1042,7 @@
       li {
         border-left: solid 0.2em #96a500;
         padding-left: 12px;
-        margin-bottom: 5px;
+        margin-bottom: 16px;
       }
     }
 
@@ -1336,34 +1336,10 @@
       max-height: unset !important;
     }
 
-    #oferta {
-    }
+  
   }
 
-  /* Additional mobile styles for smaller */
-  // @media (min-width: 800px) {
-  //   :global(.activeMachine) {
-  //     border: 6px solid #96a500 !important;
-  //   }
-  //   .active_flex {
-  //     display: flex;
-  //     flex-direction: row;
-  //     height: 100%;
-  //   }
-
-  //   .activeMachine .left {
-  //     width: 50% !important;
-  //     height: 100% !important;
-  //   }
-  //   .activeMachine .right {
-  //     height: 100% !important;
-
-  //     min-height: 100vh !important;
-  //   }
-  //   .right_params {
-  //     min-width: 40%;
-  //   }
-  // }
+  
   @media (max-width: 1200px) {
     body.no-scroll-hero .activeMachine .right .right_params {
       overflow: initial;

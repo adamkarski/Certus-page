@@ -3,7 +3,7 @@
   export let text: string = 'Do pobrania';
 </script>
 
-<a {href} class="icon-link" title={text}>
+<a {href} target="_blank" rel="noopener noreferrer nofollow" class="icon-link" title={text}>
   <svg
     id="Layer_1"
     data-name="Layer 1"
