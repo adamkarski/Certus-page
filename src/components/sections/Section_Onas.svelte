@@ -1,5 +1,5 @@
 <script>
-  import CtaButton from "../cta-button.svelte";
+  import CtaButton from "../CtaButton.svelte";
   import { typoFixAction } from '$lib/utils/typography';
 </script>
 

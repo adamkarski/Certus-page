@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CtaButtonHero from "../components/cta-button-hero.svelte";
+  import CtaButton from "../components/CtaButton.svelte";
   import {
     activeCategoryStore,
     activeMachineStore,
@@ -73,7 +73,7 @@
               alt="Frezarki CNC"
             />
           </div>
-          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -236,7 +236,7 @@
               alt="Ploter Przemysłowy"
             />
           </div>
-          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -368,7 +368,7 @@
               alt="Ploter Przemysłowy"
             />
           </div>
-          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -498,7 +498,7 @@
               alt="Grawerki CNC"
             />
           </div>
-          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -654,7 +654,7 @@
               alt="Grawerki CNC"
             />
           </div>
-          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -804,7 +804,7 @@
               alt="Tokarki CNC"
             />
           </div>
-          <CtaButtonHero on:click={closeFW} text="Zamknij szczegóły" />
+          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div

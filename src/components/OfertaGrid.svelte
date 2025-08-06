@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CtaButton from "./cta-button-kategory.svelte";
+  import CtaButton from "./CtaButton.svelte";
 
   export let variant: 'homepage' | 'maszyny' = 'homepage';
 

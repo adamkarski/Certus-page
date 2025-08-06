@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import CtaButton from "../cta-button.svelte";
+  import CtaButton from "../CtaButton.svelte";
     import { fade } from "svelte/transition";
   import { typoFixAction } from "$lib/utils/typography";
   export let isKontaktPage = false; // Dodano deklarację propsa

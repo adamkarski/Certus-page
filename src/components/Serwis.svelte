@@ -9,7 +9,7 @@
   import SerwisKontakt from "./serwis/SerwisKontakt.svelte";
 
   // Import istniejących komponentów
-  import CtaButton from "./cta-button.svelte";
+  import CtaButton from "./CtaButton.svelte";
 
   let sectionEl: HTMLElement;
   let benefitsSectionEl: HTMLElement;

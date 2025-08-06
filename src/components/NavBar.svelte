@@ -6,7 +6,7 @@
   import { page } from "$app/stores";
 
   import kategorieMaszyn from "$lib/data/maszyny.json";
-  import CtaButton from "./cta-button.svelte";
+  import CtaButton from "./CtaButton.svelte";
   import { cubicOut } from "svelte/easing";
   import { activePage, resetHeroSwiper } from "$lib/visibilityStore";
 

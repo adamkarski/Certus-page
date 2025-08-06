@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CtaButton from "./cta-button-kategory.svelte";
+  import CtaButton from "./CtaButton.svelte";
   import OfertaGrid from "./OfertaGrid.svelte";
   import Section_Maszyny_Image01 from "./sections/Section_Maszyny_Image01.svelte";
   import Section_Maszyny_Video from "./sections/Section_Maszyny_Video.svelte";

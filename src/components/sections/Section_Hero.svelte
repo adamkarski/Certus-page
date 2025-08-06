@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CtaButtonHero from "../cta-button-hero.svelte";
+  import CtaButton from "../CtaButton.svelte";
   import { register } from "swiper/element/bundle";
   import { fade, fly } from "svelte/transition";
   import { cubicOut } from "svelte/easing";
@@ -825,7 +825,7 @@
                     </button>
                   </div>
                 </div>
-                <CtaButtonHero on:click={close} text="Wróć" />
+                <CtaButton on:click={close} text="Wróć" />
               </div>
             </div>
           </div>

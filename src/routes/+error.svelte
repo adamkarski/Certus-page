@@ -3,7 +3,7 @@
   import LogoCertus from '../assets/logo_certus.svelte';
   import { fade, fly } from 'svelte/transition';
   import { onMount } from 'svelte';
-  import CtaButtonKategory from '../components/cta-button-kategory.svelte';
+  import CtaButton from '../components/CtaButton.svelte';
 
   let mounted = false;
 
