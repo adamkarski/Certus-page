@@ -202,19 +202,16 @@
         <span class="serwis-highlight-item" use:typoFixAction>Do 5 dni</span>
       </div>
 
-      <button class="serwis-service-btn" aria-label="Zobacz szczegóły">
-        <span use:typoFixAction>Szczegóły</span>
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
+      <CtaButton
+        text="Szczegóły"
+        class="serwis-service-btn"
+        on:click={() =>
+          handleOpenModal({
+            detail: { type: "warranty" },
+          })}
+        aria-label="Zobacz szczegóły Serwisu Gwarancyjnego"
+      ></CtaButton>
+    
     </div>
 
     <!-- Serwis Pogwarancyjny -->
@@ -285,19 +282,17 @@
         <span class="serwis-highlight-item" use:typoFixAction>Do 7 dni</span>
       </div>
 
-      <button class="serwis-service-btn" aria-label="Zobacz szczegóły">
-        <span use:typoFixAction>Szczegóły</span>
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
+      
+      <CtaButton
+        text="Szczegóły"
+        class="serwis-service-btn"
+        on:click={() =>
+          handleOpenModal({
+            detail: { type: "post-warranty" },
+          })}
+        aria-label="Zobacz szczegóły Serwisu Pogwarancyjnego"
+      ></CtaButton>
+
     </div>
 
     <!-- Przeglądy Okresowe -->
@@ -386,19 +381,12 @@
         <span class="serwis-highlight-item" use:typoFixAction>Co 6 mies.</span>
       </div>
 
-      <button class="serwis-service-btn" aria-label="Zobacz szczegóły">
-        <span use:typoFixAction>Szczegóły</span>
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
+      <CtaButton
+        text="Szczegóły"
+        class="serwis-service-btn"
+on:click={() => handleOpenModal({ detail: { type: "inspections" } })}
+        aria-label="Zobacz szczegóły Przeglądów Okresowych"
+      ></CtaButton> 
     </div>
 
     <!-- Usługi Dodatkowe -->
@@ -477,19 +465,12 @@
         <span class="serwis-highlight-item" use:typoFixAction>Szkolenia</span>
       </div>
 
-      <button class="serwis-service-btn" aria-label="Zobacz szczegóły">
-        <span use:typoFixAction>Szczegóły</span>
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
+      <CtaButton
+        text="Szczegóły"
+        class="serwis-service-btn"
+on:click={() => handleOpenModal({ detail: { type: "additional" } })}
+        aria-label="Zobacz szczegóły Usług Dodatkowych"
+      ></CtaButton> 
     </div>
   </div>
 </section>

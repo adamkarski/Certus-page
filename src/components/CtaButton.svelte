@@ -4,11 +4,18 @@
   export let type: string = "button";
   export let disabled: boolean = false;
   export let hero: boolean = false; // Dodajemy propsa do wariantu hero
+  export let classs: string = "";
 
   const dispatch = createEventDispatcher();
 </script>
 
-<button class:hero on:click={() => dispatch("click")} {type} {disabled}>
+<button
+  class:hero
+  class={classs}
+  on:click={() => dispatch("click")}
+  {type}
+  {disabled}
+>
   <span class="text-container">
     <span class="maszyny_span">{text}</span>
   </span>
@@ -29,8 +36,8 @@
 
 <style lang="scss">
   button {
-    clip-path: polygon(0% 1%, 100% 0, 100% 100%, 0% 100%);
-    border-radius: 20px;
+    clip-path: polygon(0% 1%, 100% 0, 80% 100%, 0% 100%);
+
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -84,7 +91,6 @@
     &:hover {
       background-color: #7e8c00;
       color: white;
-      clip-path: polygon(0% 1%, 100% 0, 86% 100%, 0% 100%);
       border-radius: 0px;
       .text-container {
         transform: translateX(-25px); // Przesuwamy tekst w lewo
@@ -106,6 +112,9 @@
   button.hero {
     background-color: #96a500;
     color: white;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
 
     .svg-container {
       background-color: #7e8c00;
@@ -113,6 +122,39 @@
 
     &:hover {
       background-color: #7e8c00;
+    }
+  }
+  button.bestseller {
+    background-color: #7e8c00;
+    clip-path: polygon(0% 1%, 100% 0, 83% 100%, 0% 100%);
+    padding: 10px;
+    color: white;
+    position: relative;
+    bottom: 10%;
+    right: 10%;
+    width: 315px;
+    left: 0px;
+
+    .svg-container {
+      // background-color: #96a500;
+    }
+    .cta-svg {
+      width: 1.3em;
+      height: 1em;
+      left: 126px;
+      position: relative;
+    }
+    &:hover {
+      background-color: rgba(150, 165, 0, 1);
+      .cta-svg {
+        width: 1.3em;
+        height: 1em;
+        left: 26px;
+        position: relative;
+      }
+      .text-container {
+        transform: translateX(-6px); // Przesuwamy tekst w lewo
+      }
     }
   }
 </style>

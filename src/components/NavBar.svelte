@@ -74,7 +74,7 @@
 
   // Dropdown state
   let isMaszynyDropdownOpen = false;
-  let isBestsellerDropdownOpen = false;
+  let isBestsellerDropdownOpen = true;
   let hoveredCategory = kategorieMaszyn[0];
 
   onMount(() => {
@@ -297,7 +297,7 @@
                   </div>
 
                   <div class="bestseller-cta">
-                    <CtaButton
+                    <CtaButton classs="bestseller"
                       text="Zobacz dlaczego wybierają nas"
                       on:click={() => {
                         isBestsellerDropdownOpen = false;
