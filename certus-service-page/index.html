@@ -1,0 +1,227 @@
+
+<script src="app.js"></script>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nasze Usługi</h2>
+                <p>Kompleksowa opieka serwisowa dla wszystkich maszyn CNC</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Warranty Service -->
+                <div class="service-card warranty-card" data-service="warranty">
+                    <div class="service-icon warranty-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Serwis Gwarancyjny</h3>
+                    <p>Kompleksowa opieka serwisowa dla wszystkich maszyn CNC</p>
+                    <div class="service-highlight">
+                        <span class="highlight-item">BEZPŁATNE</span>
+                        <span class="highlight-item">Do 5 dni</span>
+                    </div>
+                    <button class="btn btn--outline service-btn">Szczegóły <i class="fas fa-chevron-down"></i></button>
+                </div>
+
+                <!-- Post-Warranty Service -->
+                <div class="service-card post-warranty-card" data-service="post-warranty">
+                    <div class="service-icon post-warranty-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Serwis Pogwarancyjny</h3>
+                    <p>Profesjonalne usługi serwisowe po okresie gwarancji</p>
+                    <div class="service-highlight">
+                        <span class="highlight-item">240 zł/h</span>
+                        <span class="highlight-item">Do 7 dni</span>
+                    </div>
+                    <button class="btn btn--outline service-btn">Szczegóły <i class="fas fa-chevron-down"></i></button>
+                </div>
+
+                <!-- Periodic Inspections -->
+                <div class="service-card inspections-card" data-service="inspections">
+                    <div class="service-icon inspections-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Przeglądy Okresowe</h3>
+                    <p>Regularne przeglądy zapewniające optymalną pracę maszyn</p>
+                    <div class="service-highlight">
+                        <span class="highlight-item">Od 1000 zł</span>
+                        <span class="highlight-item">Co 6 mies.</span>
+                    </div>
+                    <button class="btn btn--outline service-btn">Szczegóły <i class="fas fa-chevron-down"></i></button>
+                </div>
+
+                <!-- Additional Services -->
+                <div class="service-card additional-card" data-service="additional">
+                    <div class="service-icon additional-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h3>Usługi Dodatkowe</h3>
+                    <p>Dodatkowe usługi wspierające eksploatację maszyn</p>
+                    <div class="service-highlight">
+                        <span class="highlight-item">Priorytet 48h</span>
+                        <span class="highlight-item">Szkolenia</span>
+                    </div>
+                    <button class="btn btn--outline service-btn">Szczegóły <i class="fas fa-chevron-down"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Details Modal -->
+    <div class="modal hidden" id="serviceModal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"></h3>
+                <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Dlaczego CERTUS?</h2>
+                <p>Zaufało nam już ponad 500 firm w całej Polsce</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Doświadczony zespół</h4>
+                    <p>10+ lat stażu w branży CNC</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>Szybka reakcja</h4>
+                    <p>Zazwyczaj w ciągu 24 godzin</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Oryginalne części</h4>
+                    <p>Najwyższa jakość komponentów</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4>Serwis na miejscu</h4>
+                    <p>Przyjazd do klienta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Skontaktuj się z nami</h2>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Telefon serwisowy</h4>
+                                <p>+48 606 324 406</p>
+                                <small>Dostępny 24/7</small>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>biuro@mg-certus.pl</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Adres</h4>
+                                <p>ul. Biała Droga 177<br>34-123 Chocznia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Zgłoś serwis</h3>
+                    <form id="serviceForm">
+                        <div class="form-group">
+                            <label class="form-label">Nazwa firmy</label>
+                            <input type="text" class="form-control" name="company" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Imię i nazwisko</label>
+                                <input type="text" class="form-control" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Telefon</label>
+                                <input type="tel" class="form-control" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Typ usługi</label>
+                            <select class="form-control" name="serviceType" required>
+                                <option value="">Wybierz typ usługi</option>
+                                <option value="warranty">Serwis gwarancyjny</option>
+                                <option value="post-warranty">Serwis pogwarancyjny</option>
+                                <option value="inspection">Przegląd okresowy</option>
+                                <option value="additional">Usługi dodatkowe</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Opis problemu</label>
+                            <textarea class="form-control" name="description" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--full-width">
+                            <i class="fas fa-paper-plane"></i> Wyślij zgłoszenie
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>P.P.H.U. MG-CERTUS</h3>
+                    <p>Górecki Mariusz</p>
+                    <p>www.mg-certus.pl</p>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone"></i> +48 606 324 406</p>
+                    <p><i class="fas fa-envelope"></i> biuro@mg-certus.pl</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CERTUS. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+   
