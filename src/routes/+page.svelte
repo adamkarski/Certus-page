@@ -21,7 +21,7 @@
   <Section_Header />
   <LocalBusiness/>
   <main>
-    <Section_Header />
+    
     <Section_Hero />
     <Section_Oferta />
     <Section_Video />

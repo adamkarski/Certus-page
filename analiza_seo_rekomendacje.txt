@@ -1,0 +1,65 @@
+
+Analiza SEO, Designu i Dobrych Praktyk - Rekomendacje
+=====================================================
+
+Data analizy: 2025-08-06
+
+Poniżej znajduje się lista rekomendacji dotyczących optymalizacji strony internetowej Certus pod kątem SEO, użyteczności, responsywności i ogólnych dobrych praktyk.
+
+**1. SEO i Dane Strukturalne (Schema.org)**
+--------------------------------------------
+
+*   **1.1. Aktualizacja URL-i w `LocalBusiness.svelte`:**
+    *   **Problem:** Skrypt `ld+json` w `src/components/LocalBusiness.svelte` używa linków do logo i obrazu z domeny `mg-certus.pl`.
+    *   **Rekomendacja:** Zaktualizować atrybuty `logo` i `image`, aby wskazywały na zasoby w aktualnej domenie (`certus.pl`). To zapewni spójność i poprawne indeksowanie przez wyszukiwarki.
+    *   **Plik do modyfikacji:** `src/components/LocalBusiness.svelte`
+
+*   **1.2. Unikalne i precyzyjne metadane (tytuły i opisy):**
+    *   **Problem:** Niektóre podstrony mają zduplikowane lub zbyt ogólne metadane.
+    *   **Rekomendacje:**
+        *   `mapa-witryny/+page.svelte`: Zmienić `<title>` na "Mapa witryny - Certus".
+        *   `polityka-prywatnosci/+page.svelte`: Zmienić `<title>` na "Polityka prywatności - Certus".
+        *   Rozważyć rozbudowanie opisów (`meta description`) na wszystkich podstronach, aby były bardziej szczegółowe i zawierały trafne słowa kluczowe.
+    *   **Pliki do modyfikacji:** `src/routes/mapa-witryny/+page.svelte`, `src/routes/polityka-prywatnosci/+page.svelte` i inne pliki stron.
+
+*   **1.3. Atrybuty `alt` dla obrazów:**
+    *   **Problem:** Należy upewnić się, że wszystkie znaczniki `<img>` na stronie posiadają opisowe atrybuty `alt`. Jest to kluczowe dla SEO i dostępności.
+    *   **Rekomendacja:** Przeprowadzić audyt wszystkich komponentów zawierających obrazy (np. `Section_Image01.svelte`, `Section_Image02.svelte`, `Onas.svelte`) i dodać brakujące atrybuty `alt`.
+
+**2. Struktura HTML i Treść**
+-----------------------------
+
+*   **2.1. Usunięcie zduplikowanego komponentu `Section_Header`:**
+    *   **Problem:** W `src/routes/+page.svelte` komponent `Section_Header` jest wywołany dwukrotnie.
+    *   **Rekomendacja:** Usunąć jedno z wywołań, aby uniknąć duplikacji treści i zachować poprawną strukturę dokumentu.
+    *   **Plik do modyfikacji:** `src/routes/+page.svelte`
+
+*   **2.2. Hierarchia nagłówków (H1, H2, H3):**
+    *   **Problem:** Należy zweryfikować, czy każda podstrona ma dokładnie jeden nagłówek `<h1>`, a pozostałe nagłówki (`<h2>`, `<h3>`, itd.) tworzą logiczną strukturę.
+    *   **Rekomendacja:** Przeprowadzić audyt wszystkich stron i komponentów pod kątem poprawnej hierarchii nagłówków.
+
+**3. Responsywność i Style (CSS/SCSS)**
+---------------------------------------
+
+*   **3.1. Ujednolicenie i uproszczenie Media Queries:**
+    *   **Problem:** Plik `responsive.scss` zawiera bardzo specyficzne i częściowo nakładające się na siebie reguły `@media`.
+    *   **Rekomendacja:** Uprościć strukturę media queries, bazując na standardowych breakpointach (np. 480px, 768px, 1024px, 1200px). To ułatwi zarządzanie stylami i poprawi ich czytelność.
+    *   **Plik do modyfikacji:** `src/lib/responsive.scss`
+
+*   **3.2. Usunięcie tymczasowych stylów:**
+    *   **Problem:** W `responsive.scss` znajdują się style testowe (np. `border: 5px solid red;`, `background-color: lightcoral;`).
+    *   **Rekomendacja:** Usunąć wszystkie tymczasowe reguły CSS, które nie są potrzebne w wersji produkcyjnej.
+    *   **Plik do modyfikacji:** `src/lib/responsive.scss`
+
+**4. Kod i Dobre Praktyki**
+---------------------------
+
+*   **4.1. Usunięcie nieużywanych zmiennych:**
+    *   **Problem:** W kilku plikach (`mapa-witryny`, `onas`, `polityka-prywatnosci`, `serwis`) zadeklarowana jest nieużywana zmienna `params`.
+    *   **Rekomendacja:** Usunąć deklarację `export let params;` z tych plików, aby kod był czystszy.
+    *   **Pliki do modyfikacji:** `src/routes/mapa-witryny/+page.svelte`, `src/routes/onas/+page.svelte`, `src/routes/polityka-prywatnosci/+page.svelte`, `src/routes/serwis/+page.svelte`
+
+*   **4.2. Optymalizacja preloadera:**
+    *   **Problem:** W `+layout.svelte` używany jest `setTimeout` o wartości 1 sekundy jako fallback dla preloadera.
+    *   **Rekomendacja:** Zbadać możliwość skrócenia tego czasu lub oparcia ukrywania preloadera wyłącznie na zdarzeniu `window.load`, aby strona ładowała się szybciej.
+

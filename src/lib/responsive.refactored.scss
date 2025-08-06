@@ -1,0 +1,285 @@
+/* ========================================
+   GLOBAL RESPONSIVE STYLES (Mobile First) - REFACTORED
+   ======================================== */
+
+// 1. Definicja breakpointów
+$bp-small: 480px;  // Telefony w orientacji poziomej
+$bp-medium: 768px; // Tablety
+$bp-large: 1024px; // Małe laptopy
+$bp-xlarge: 1200px; // Duże desktopy
+$bp-xxlarge: 1600px; // Bardzo duże desktopy
+
+/* ========================================
+   Struktura Mobile First
+   ======================================== */
+
+// Domyślne style (poza @media) są dla mobile
+
+.activeMachine {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  align-items: stretch;
+  justify-content: flex-start;
+
+  .left {
+    width: 100%;
+    height: 45vh;
+    min-height: 250px;
+
+    h1 {
+      font-size: 1.5em;
+      padding: 0.5em 0.3em;
+      text-align: center;
+    }
+
+    &.short {
+      height: 35vh;
+      min-height: 200px;
+    }
+
+    &_image img {
+      max-width: 75vw;
+      min-width: 60vw;
+    }
+  }
+
+  .right {
+    width: 100%;
+    height: 55vh;
+    overflow-y: auto;
+    padding: 5px;
+
+    &.expanded {
+      height: 65vh;
+    }
+
+    &_content {
+      max-width: 100%;
+
+      h1 {
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+      }
+    }
+
+    &_params_content {
+      padding-top: 0.5rem;
+
+      h2, p, li {
+        padding-left: 0.25rem;
+      }
+
+      h2 {
+        font-size: small;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  // CTA Button na mobilnych
+  :global(.cta-button-hero) {
+    position: fixed;
+    left: 50%;
+    bottom: 1em;
+    transform: translateX(-50%);
+    width: 160px;
+    font-size: 0.9rem;
+    height: 18px;
+    padding-left: 20px;
+    margin-left: 0;
+    z-index: 10000030;
+  }
+}
+
+:global(.maszyny-dane-tabela) {
+  font-size: 0.7rem;
+  margin-top: 1em;
+
+  img {
+    width: 30px;
+  }
+}
+
+tbody tr td .text {
+  font-size: 0.7rem;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* ========================================
+   Tablety (Landscape) i większe
+   ======================================== */
+@media (min-width: $bp-medium) {
+  .activeMachine {
+    .left {
+      h1 {
+        font-size: 1.8em;
+        padding-left: 0.5em;
+      }
+
+      &_image img {
+        max-width: 70vw;
+        min-width: 50vw;
+      }
+    }
+
+    .right {
+      padding: 5px 10px;
+
+      &_content h1 {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+      }
+
+      &_content p {
+        font-size: 0.85rem;
+      }
+
+      &_params_content {
+        padding-top: 1rem;
+
+        h2, p, li {
+          padding-left: 0.5rem;
+        }
+
+        h2 {
+          font-size: medium;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    :global(.cta-button-hero) {
+      width: 180px;
+      font-size: 1rem;
+      height: 20px;
+      padding-left: 25px;
+      bottom: 1.5em;
+    }
+  }
+
+  :global(.maszyny-dane-tabela) {
+    font-size: 0.75rem;
+  }
+
+  .section-title::before {
+    transform: scale(0.8);
+  }
+}
+
+/* ========================================
+   Małe laptopy i większe
+   ======================================== */
+@media (min-width: $bp-large) {
+  .activeMachine .left.short {
+    min-height: 600px;
+  }
+}
+
+/* ========================================
+   Duże laptopy i desktopy
+   ======================================== */
+@media (min-width: $bp-xlarge) {
+  .activeMachine {
+    flex-direction: row;
+    padding: 1rem;
+
+    .left {
+      max-width: 60%;
+      height: 100%;
+      min-height: 100%;
+
+      h1 {
+        font-size: 2.2em;
+        padding: 1em;
+        text-align: left;
+      }
+
+      &.short {
+        height: 40vh;
+        min-height: 300px;
+      }
+    }
+
+    .right {
+      max-width: 40%;
+      height: 100%;
+      min-height: 100%;
+      padding: 10px 15px;
+
+      &.expanded {
+        height: 100%;
+      }
+
+      &_content h1 {
+        margin-left: -16px;
+      }
+
+      &_params_content {
+        padding-top: 2rem;
+        padding-left: 0;
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    :global(.cta-button-hero) {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      transform: none;
+      // Można dostosować inne style, jeśli są potrzebne
+    }
+  }
+
+  :global(.maszyny-dane-tabela) {
+    font-size: 0.85rem;
+    margin-top: 2em;
+    padding-bottom: 2em;
+  }
+
+  tbody tr td:first-child {
+    width: 10%;
+    min-width: 20px;
+  }
+}
+
+/* ========================================
+   Bardzo duże desktopy
+   ======================================== */
+@media (min-width: $bp-xxlarge) {
+  body.home section.hero {
+    height: 90vh;
+    top: 80px;
+  }
+}
+
+/* Specyficzne poprawki, które warto zrefaktoryzować w przyszłości */
+.menuItems {
+  width: 100%; // Domyślnie pełna szerokość na mobilnych
+  a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (min-width: $bp-medium) {
+  .menuItems {
+    width: 700px;
+  }
+}
+
+@media (min-width: $bp-xlarge) {
+  .menuItems {
+    width: 600px;
+  }
+}

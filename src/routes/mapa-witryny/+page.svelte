@@ -5,12 +5,12 @@
   import Section_Footer from "../../components/sections/Section_Footer.svelte";
   import Section_Image02 from "../../components/sections/Section_Image02.svelte";
   import Section_Referencje from "../../components/sections/Section_Referencje.svelte";
-  export let params; // Dodano deklarację params
+  
 </script>
 
 <svelte:head>
-  <title>O nas - Certus</title>
-  <meta name="description" content="O naszej firmie, poznaj naszą historię i zespół" />
+  <title>Mapa witryny - Certus</title>
+  <meta name="description" content="Znajdź wszystko, czego szukasz na naszej stronie. Pełna mapa witryny Certus." />
 </svelte:head>
 
 <div class="app">

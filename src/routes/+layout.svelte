@@ -17,7 +17,7 @@
       });
     }
     // Fallback - wyłącz preloader po 1 sekundzie
-    setTimeout(() => loading = false, 1000);
+    setTimeout(() => loading = false, 500);
   });
   $: preloaderVisible.set(loading);
 
