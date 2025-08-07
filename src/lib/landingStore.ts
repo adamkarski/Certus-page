@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
 // Zmienna dev - ustaw na true żeby zawsze pokazywać landing
-const dev = true;
+const dev = false;
 
 // Funkcja do obsługi ciasteczek
 function getCookie(name: string): string | null {

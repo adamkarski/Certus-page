@@ -25,11 +25,31 @@ function analyzeImageColors(img) {
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
   const data = imageData.data;
   
-  // Pobierz kolory z krawędzi - więcej punktów próbkowania
+  // Oblicz gdzie będą widoczne krawędzie obrazka na ekranie
+  // Obrazek jest wyśrodkowany i ma height: 100vh, więc width będzie proporcjonalny
+  const aspectRatio = canvas.width / canvas.height;
+  const screenHeight = window.innerHeight;
+  const screenWidth = window.innerWidth;
+  const imageDisplayWidth = screenHeight * aspectRatio;
+  
+  // Jeśli obrazek jest szerszy niż ekran, będzie widoczna tylko środkowa część
+  let leftEdgeX, rightEdgeX;
+  if (imageDisplayWidth > screenWidth) {
+    // Obrazek jest szerszy - oblicz które części będą widoczne
+    const visibleWidth = screenWidth / imageDisplayWidth; // procent szerokości obrazka widoczny na ekranie
+    const centerOffset = (1 - visibleWidth) / 2; // offset od środka
+    leftEdgeX = Math.floor(canvas.width * centerOffset);
+    rightEdgeX = Math.floor(canvas.width * (1 - centerOffset));
+  } else {
+    // Obrazek jest węższy - będą widoczne boki
+    leftEdgeX = 0;
+    rightEdgeX = canvas.width;
+  }
+  
   const leftColorSections = [];
   const rightColorSections = [];
-  const sampleWidth = Math.floor(canvas.width * 0.05); // Węższa próbka
-  const sections = 5; // 5 sekcji: góra, góra-środek, środek, środek-dół, dół
+  const sampleWidth = Math.floor(canvas.width * 0.03); // Jeszcze węższa próbka
+  const sections = 5;
   
   for (let section = 0; section < sections; section++) {
     const startY = Math.floor((canvas.height / sections) * section);
@@ -38,11 +58,11 @@ function analyzeImageColors(img) {
     const rightSectionColors = [];
     
     // Próbkuj kolory w tej sekcji
-    for (let y = startY; y < endY; y += Math.max(1, Math.floor((endY - startY) / 10))) {
-      // Lewa strona
-      for (let x = 0; x < sampleWidth; x += 3) {
+    for (let y = startY; y < endY; y += Math.max(1, Math.floor((endY - startY) / 8))) {
+      // Lewa strona - próbkuj od lewej krawędzi widocznej części
+      for (let x = leftEdgeX; x < leftEdgeX + sampleWidth && x < canvas.width; x += 2) {
         const index = (y * canvas.width + x) * 4;
-        if (data[index + 3] > 0) { // Sprawdź czy piksel nie jest przezroczysty
+        if (data[index + 3] > 128) { // Sprawdź czy piksel nie jest przezroczysty
           leftSectionColors.push({
             r: data[index],
             g: data[index + 1],
@@ -51,10 +71,10 @@ function analyzeImageColors(img) {
         }
       }
       
-      // Prawa strona
-      for (let x = canvas.width - sampleWidth; x < canvas.width; x += 3) {
+      // Prawa strona - próbkuj od prawej krawędzi widocznej części
+      for (let x = rightEdgeX - sampleWidth; x < rightEdgeX && x >= 0; x += 2) {
         const index = (y * canvas.width + x) * 4;
-        if (data[index + 3] > 0) { // Sprawdź czy piksel nie jest przezroczysty
+        if (data[index + 3] > 128) { // Sprawdź czy piksel nie jest przezroczysty
           rightSectionColors.push({
             r: data[index],
             g: data[index + 1],
@@ -71,6 +91,14 @@ function analyzeImageColors(img) {
       rightColorSections.push(averageColors(rightSectionColors));
     }
   }
+  
+  // Debug info
+  console.log('Image dimensions:', canvas.width, 'x', canvas.height);
+  console.log('Screen dimensions:', screenWidth, 'x', screenHeight);
+  console.log('Image display width:', imageDisplayWidth);
+  console.log('Left edge X:', leftEdgeX, 'Right edge X:', rightEdgeX);
+  console.log('Left colors:', leftColorSections);
+  console.log('Right colors:', rightColorSections);
   
   // Stwórz osobne gradienty dla każdej sekcji
   leftGradients = leftColorSections.map((color, index) => ({
