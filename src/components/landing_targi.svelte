@@ -8,12 +8,46 @@ let rightGradient = '';
 let leftGradients = []; // Tablica gradientów dla lewej strony
 let rightGradients = []; // Tablica gradientów dla prawej strony
 let machineImg;
+let isMobile = false;
+let imageSource = '/assets/landing_targi2025/MACHINE.jpg';
 
 function handleClick() {
   landingVisible.hide();
 }
 
+function checkMobile() {
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+  const aspectRatio = screenWidth / screenHeight;
+  
+  // Sprawdź czy to urządzenie mobilne (szerokość < 768px lub aspect ratio < 1)
+  const wasMobile = isMobile;
+  isMobile = screenWidth < 768 || aspectRatio < 1;
+  
+  // Zaktualizuj źródło obrazka jeśli się zmieniło
+  const newImageSource = isMobile 
+    ? '/assets/landing_targi2025/MACHINE-mobile.jpg'
+    : '/assets/landing_targi2025/MACHINE.jpg';
+    
+  if (newImageSource !== imageSource) {
+    imageSource = newImageSource;
+    // Przeładuj analizę kolorów po zmianie obrazka
+    if (machineImg && machineImg.complete) {
+      setTimeout(() => analyzeImageColors(machineImg), 100);
+    }
+  }
+}
+
 function analyzeImageColors(img) {
+  // Na mobile nie analizujemy kolorów - nie ma blur efektów
+  if (isMobile) {
+    leftGradients = [];
+    rightGradients = [];
+    leftGradient = '';
+    rightGradient = '';
+    return;
+  }
+  
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   
@@ -152,6 +186,17 @@ function averageColors(colors) {
 }
 
 onMount(() => {
+  // Sprawdź czy to mobile przy pierwszym załadowaniu
+  checkMobile();
+  
+  // Dodaj listener na zmianę rozmiaru okna
+  const handleResize = () => {
+    checkMobile();
+  };
+  
+  window.addEventListener('resize', handleResize);
+  
+  // Analizuj kolory gdy obrazek się załaduje
   if (machineImg) {
     if (machineImg.complete) {
       analyzeImageColors(machineImg);
@@ -159,47 +204,55 @@ onMount(() => {
       machineImg.onload = () => analyzeImageColors(machineImg);
     }
   }
+  
+  // Cleanup
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
 });
 </script>
 
 <div in:fade out:fade class="container targi-container" on:click={handleClick} on:keydown={handleClick} role="button" tabindex="0">
     
     <!-- Główny obrazek -->
-    <img class="machine" bind:this={machineImg} src="/assets/landing_targi2025/MACHINE.jpg" alt="Machine">
+    <img class="machine" bind:this={machineImg} src={imageSource} alt="Machine" 
+         on:load={() => analyzeImageColors(machineImg)}>
     
-    <!-- Blur w tle -->
-    <img class="machine2" src="/assets/landing_targi2025/MACHINE.jpg" alt="Machine blur">
-    
-    <!-- Rozciągnięte i rozmyte krawędzie -->
-    <div class="edge-blur-left">
-      <img src="/assets/landing_targi2025/MACHINE.jpg" alt="Left edge blur">
-    </div>
-    
-    <div class="edge-blur-right">
-      <img src="/assets/landing_targi2025/MACHINE.jpg" alt="Right edge blur">
-    </div>
+    {#if !isMobile}
+      <!-- Blur w tle - tylko na desktop -->
+      <img class="machine2" src={imageSource} alt="Machine blur">
+      
+      <!-- Rozciągnięte i rozmyte krawędzie - tylko na desktop -->
+      <div class="edge-blur-left">
+        <img src={imageSource} alt="Left edge blur">
+      </div>
+      
+      <div class="edge-blur-right">
+        <img src={imageSource} alt="Right edge blur">
+      </div>
+      
+      <!-- Dynamiczne gradienty po bokach - tylko na desktop -->
+      {#each leftGradients as leftGrad, index}
+        <div class="left-gradient-section" 
+             style="background: {leftGrad.gradient}; top: {leftGrad.top}; height: {leftGrad.height}"></div>
+      {/each}
+      
+      {#each rightGradients as rightGrad, index}
+        <div class="right-gradient-section" 
+             style="background: {rightGrad.gradient}; top: {rightGrad.top}; height: {rightGrad.height}"></div>
+      {/each}
+      
+      <!-- Zapasowe główne gradienty - tylko na desktop -->
+      {#if leftGradient && leftGradients.length === 0}
+        <div class="left-gradient" style="background: {leftGradient}"></div>
+      {/if}
+      
+      {#if rightGradient && rightGradients.length === 0}
+        <div class="right-gradient" style="background: {rightGradient}"></div>
+      {/if}
+    {/if}
     
     <img class="gradient" src="/assets/landing_targi2025/background1.png" alt="Background">
-    
-    <!-- Dynamiczne gradienty po bokach - sekcyjne -->
-    {#each leftGradients as leftGrad, index}
-      <div class="left-gradient-section" 
-           style="background: {leftGrad.gradient}; top: {leftGrad.top}; height: {leftGrad.height}"></div>
-    {/each}
-    
-    {#each rightGradients as rightGrad, index}
-      <div class="right-gradient-section" 
-           style="background: {rightGrad.gradient}; top: {rightGrad.top}; height: {rightGrad.height}"></div>
-    {/each}
-    
-    <!-- Zapasowe główne gradienty -->
-    {#if leftGradient && leftGradients.length === 0}
-      <div class="left-gradient" style="background: {leftGradient}"></div>
-    {/if}
-    
-    {#if rightGradient && rightGradients.length === 0}
-      <div class="right-gradient" style="background: {rightGradient}"></div>
-    {/if}
           
   
  
@@ -346,5 +399,30 @@ onMount(() => {
     object-fit: cover;
     /* Pokazuj tylko prawą część obrazka */
     clip-path: inset(0 0 0 70%);
+}
+
+/* Responsywność dla urządzeń mobilnych */
+@media (max-width: 768px), (max-aspect-ratio: 1/1) {
+    .machine {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        height: 100vh;
+        max-height: 100vh;
+        object-fit: contain;
+        object-position: center;
+    }
+    
+    .targi-container {
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .gradient {
+        /* Na mobile gradient może być bardziej przezroczysty */
+        filter: opacity(0.7) brightness(0.8);
+    }
 }
 </style>
