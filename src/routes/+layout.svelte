@@ -6,6 +6,8 @@
   import { onMount } from 'svelte';
   import { preloaderVisible } from '$lib/preloaderStore';
   import { activePage } from "$lib/visibilityStore";
+  import { landingVisible } from '$lib/landingStore';
+  import LandingTargi from '../components/landing_targi.svelte';
   let loading = true;
   onMount(() => {
     // Sprawdź czy strona już się załadowała
@@ -24,9 +26,13 @@
   // Add active page class to body
   $: if (typeof document !== 'undefined') {
     // Remove all page classes
-    document.body.classList.remove('home', 'maszyny', 'serwis', 'onas', 'kontakt');
+    document.body.classList.remove('home', 'maszyny', 'serwis', 'onas', 'kontakt', 'landing');
     // Add current page class
     document.body.classList.add($activePage);
+    // Add landing class if landing is visible
+    if ($landingVisible) {
+      document.body.classList.add('landing');
+    }
   }
 </script>
 
@@ -41,6 +47,16 @@
     <slot />
   </div>
 {/key}
+
+
+
+{#if $landingVisible}
+  <LandingTargi />
+{/if}
+
+
+
+
 
 <style lang="scss">
 
