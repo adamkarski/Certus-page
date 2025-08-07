@@ -8,15 +8,23 @@
       "_internal.js"
     ]
   },
+  "_CtaButton.js": {
+    "file": "chunks/CtaButton.js",
+    "name": "CtaButton",
+    "imports": [
+      "_ssr.js",
+      "_Section_Referencje.js"
+    ]
+  },
   "_Maszyny_table_zabudowa.js": {
     "file": "chunks/Maszyny_table_zabudowa.js",
     "name": "Maszyny_table_zabudowa",
     "imports": [
-      "_ssr.js"
+      "_ssr.js",
+      "_CtaButton.js"
     ],
     "css": [
-      "_app/immutable/assets/Maszyny_table_zabudowa.Cx9iLtQg.css",
-      "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css"
+      "_app/immutable/assets/Maszyny_table_zabudowa.Cx9iLtQg.css"
     ]
   },
   "_Section_Image01.js": {
@@ -46,7 +54,7 @@
     "name": "Section_Kontakt",
     "imports": [
       "_ssr.js",
-      "_cta-button.js"
+      "_CtaButton.js"
     ],
     "css": [
       "_app/immutable/assets/Section_Kontakt.D08XN_PQ.css"
@@ -62,7 +70,7 @@
       "_visibilityStore.js"
     ],
     "css": [
-      "_app/immutable/assets/Section_Referencje.BRq2q39b.css"
+      "_app/immutable/assets/Section_Referencje.CXjmBuwv.css"
     ]
   },
   "_Serwis.js": {
@@ -70,23 +78,10 @@
     "name": "Serwis",
     "imports": [
       "_ssr.js",
-      "_cta-button.js",
-      "_Section_Referencje.js"
+      "_CtaButton.js"
     ],
     "css": [
-      "_app/immutable/assets/Serwis.CUj33ftY.css"
-    ]
-  },
-  "_cta-button-kategory.svelte_svelte_type_style_lang.js": {
-    "file": "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css",
-    "src": "_cta-button-kategory.svelte_svelte_type_style_lang.js"
-  },
-  "_cta-button.js": {
-    "file": "chunks/cta-button.js",
-    "name": "cta-button",
-    "imports": [
-      "_ssr.js",
-      "_Section_Referencje.js"
+      "_app/immutable/assets/Serwis.CBGBUrrs.css"
     ]
   },
   "_exports.js": {
@@ -167,8 +162,7 @@
       "_stores.js"
     ],
     "css": [
-      "_app/immutable/assets/_error.6rzje1C_.css",
-      "_app/immutable/assets/cta-button-kategory.B6Qt5vqS.css"
+      "_app/immutable/assets/_error.CwjDd-yi.css"
     ]
   },
   "src/routes/+layout.server.ts": {
@@ -189,7 +183,7 @@
       "_visibilityStore.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CvucC-mV.css"
+      "_app/immutable/assets/_layout.Dj6YVFuO.css"
     ]
   },
   "src/routes/+layout.ts": {
@@ -209,14 +203,14 @@
       "_Maszyny_table_zabudowa.js",
       "_Section_Kontakt.js",
       "_visibilityStore.js",
-      "_cta-button.js",
+      "_CtaButton.js",
       "_Section_Image01.js",
       "_Section_Image02.js",
       "_false.js",
       "_index.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.bxdT_z8B.css"
+      "_app/immutable/assets/_page.DmLmb-UR.css"
     ]
   },
   "src/routes/dokumentacja/+page.svelte": {
@@ -287,6 +281,7 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
+      "_CtaButton.js",
       "_Maszyny_table_zabudowa.js",
       "_visibilityStore.js",
       "_Section_Referencje.js",

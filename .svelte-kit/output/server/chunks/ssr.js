@@ -22,6 +22,9 @@ function subscribe(store, ...callbacks) {
   const unsub = store.subscribe(...callbacks);
   return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
 }
+function null_to_empty(value) {
+  return value == null ? "" : value;
+}
 function set_store_value(store, ret, value) {
   store.set(value);
   return ret;
@@ -145,17 +148,18 @@ function add_attribute(name, value, boolean) {
   return ` ${name}${assignment}`;
 }
 export {
-  subscribe as a,
-  add_attribute as b,
+  add_attribute as a,
+  escape as b,
   create_ssr_component as c,
-  createEventDispatcher as d,
-  escape as e,
+  subscribe as d,
+  each as e,
   set_store_value as f,
-  each as g,
-  safe_not_equal as h,
-  getContext as i,
+  createEventDispatcher as g,
+  noop as h,
+  safe_not_equal as i,
+  getContext as j,
   missing_component as m,
-  noop as n,
+  null_to_empty as n,
   setContext as s,
   validate_component as v
 };
