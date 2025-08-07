@@ -186,6 +186,9 @@ function averageColors(colors) {
 }
 
 onMount(() => {
+  // Dodaj klasę do body gdy landing jest aktywny
+  document.body.classList.add('landing-active');
+  
   // Sprawdź czy to mobile przy pierwszym załadowaniu
   checkMobile();
   
@@ -207,6 +210,7 @@ onMount(() => {
   
   // Cleanup
   return () => {
+    document.body.classList.remove('landing-active');
     window.removeEventListener('resize', handleResize);
   };
 });
@@ -399,6 +403,34 @@ onMount(() => {
     object-fit: cover;
     /* Pokazuj tylko prawą część obrazka */
     clip-path: inset(0 0 0 70%);
+}
+
+/* Nadpisanie klasy r800 dla landing page */
+:global(body.r800) .targi-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999 !important;
+    overflow: hidden !important;
+}
+
+/* Zapewnienie że body nie interferuje z landing page */
+:global(body.r800.landing-active) {
+    position: static !important;
+    overflow: hidden !important;
+    all: revert !important;
+}
+
+/* Dodatkowe nadpisanie dla app container */
+:global(body.r800.landing-active .app) {
+    overflow: hidden !important;
+}
+
+/* Ogólne style dla aktywnego landing */
+:global(body.landing-active) {
+    overflow: hidden !important;
 }
 
 /* Responsywność dla urządzeń mobilnych */
