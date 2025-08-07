@@ -74,7 +74,7 @@
 
   // Dropdown state
   let isMaszynyDropdownOpen = false;
-  let isBestsellerDropdownOpen = true;
+  let isBestsellerDropdownOpen = false;
   let hoveredCategory = kategorieMaszyn[0];
 
   onMount(() => {

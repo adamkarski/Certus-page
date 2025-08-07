@@ -60,7 +60,7 @@
     margin-top: 1000px;
 
     .oferta-container {
-      overflow: hidden;
+  /*     overflow: hidden; */
       width: 100%;
       padding: 0 9rem;
       background: #f7f7f7;
@@ -76,7 +76,7 @@
   }
 
   .oferta-container {
-    overflow: hidden;
+   /*  overflow: hidden; */
     width: 100%;
     padding: 0 9rem;
   }

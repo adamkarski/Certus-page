@@ -124,6 +124,33 @@
       background-color: #7e8c00;
     }
   }
+  button.oferta-cta{
+
+    background-color: transparent;
+    color: var(--color-text-primary);
+    position: relative;
+    border-left: 0px solid #7e8c00;
+    
+    .svg-container {
+      // background-color: #7e8c00;
+    }
+    .cta-svg {
+     
+    }
+    .text-container {
+     text-align: left;
+      transition: transform 0.4s ease;
+    }
+    &:hover {
+      background-color: rgba(150, 165, 0, 1);
+      border-left: 4px solid #7e8c00;
+      .text-container {
+        transform: translateX(-6px); // Przesuwamy tekst w lewo
+        color : var(--color-text-white);
+      }
+    }
+
+  }
   button.bestseller {
     background-color: #7e8c00;
     clip-path: polygon(0% 1%, 100% 0, 83% 100%, 0% 100%);

@@ -24,7 +24,7 @@
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
       </div>
 
-      <CtaButton
+      <CtaButton classs="oferta-cta"
         text="Frezarki CNC HMM"
         on:click={() => navigateToMachine("frezarki")}
       />
@@ -38,7 +38,7 @@
         />
       </div>
 
-      <CtaButton
+      <CtaButton classs="oferta-cta"
         text="Plotery CNC"
         on:click={() => navigateToMachine("ploteryPrzemyslowe")}
       />
@@ -52,7 +52,7 @@
         />
       </div>
 
-      <CtaButton
+      <CtaButton classs="oferta-cta"
         text="Plotery CNC w zabudowie"
         on:click={() => navigateToMachine("ploteryPrzemysloweZabudowa")}
       />
@@ -66,7 +66,7 @@
         />
       </div>
 
-      <CtaButton
+      <CtaButton classs="oferta-cta"
         text="Frezarki pięcioosiowe"
         on:click={() => navigateToMachine("frezarki5osiowe")}
       />
@@ -77,7 +77,7 @@
         <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
       </div>
 
-      <CtaButton
+      <CtaButton classs="oferta-cta"
         text="Grawerki CNC"
         on:click={() => navigateToMachine("grawerki")}
       />
@@ -91,7 +91,7 @@
         />
       </div>
 
-      <CtaButton
+      <CtaButton classs="oferta-cta"
         text="Plotery tnące linearne CNC"
         on:click={() => navigateToMachine("ploteryLinearne")}
       />

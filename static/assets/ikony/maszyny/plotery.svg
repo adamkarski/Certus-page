@@ -12,26 +12,34 @@
       }
 
       .st2 {
-        fill: none;
-        stroke: #a2a3a2;
-        stroke-miterlimit: 10;
-        stroke-width: 1.81px;
-      }
-
-      .st3 {
         fill: #c5d417;
       }
 
+      .st3 {
+        fill: none;
+      }
+
+      .st3, .st4 {
+        stroke: #a2a3a2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.81px;
+      }
+
       .st4 {
+        fill: #fff;
+      }
+
+      .st5 {
         fill: #6b6b6b;
       }
     </style>
   </defs>
-  <path class="st0" d="M81.94,103.53v26.67h8.19v-26.67h-8.19Z"/>
-  <path class="st2" d="M113.08,139.31H28.39v17.68h.07v24.33h10.99l9.5-7.83v-16.5h93.82v16.78l9.93,7.56h10.55v-42.01h-50.18Z"/>
-  <path class="st2" d="M118.56,156.99h20.49H48.94"/>
-  <path class="st2" d="M165.53,97.39H26.47v17.38h16.11v24.54h6.13v-24.54h96.12v24.54h6.13v-24.54h14.57v-17.38Z"/>
-  <path class="st4" d="M151.99,103.52H39.98v4.19h112.01v-4.19Z"/>
-  <path class="st1" d="M78.93,96.56h-1.5v18.14h1.5v-18.14Z"/>
-  <path class="st3" d="M78.52,73.96v48.99h15.04v-48.99h-15.04Z"/>
+  <path class="st0" d="M57.04,105.15v26.67h8.19v-26.67h-8.19Z"/>
+  <path class="st4" d="M88.18,140.93H3.49v17.68h.07v24.33h10.99l9.5-7.83v-16.5h93.82v16.78l9.93,7.56h10.55v-42.01h-50.18.01Z"/>
+  <path class="st3" d="M93.66,158.61h20.49H24.04"/>
+  <path class="st4" d="M140.63,99.01H1.57v17.38h16.11v24.54h6.13v-24.54h96.12v24.54h6.13v-24.54h14.57v-17.38Z"/>
+  <path class="st5" d="M127.09,105.14H15.08v4.19h112.01v-4.19Z"/>
+  <path class="st1" d="M54.03,98.18h-1.5v18.14h1.5v-18.14Z"/>
+  <path class="st2" d="M53.62,75.58v48.99h15.04v-48.99s-15.04,0-15.04,0Z"/>
 </svg>
