@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
 // Zmienna dev - ustaw na true żeby zawsze pokazywać landing
-const dev = true;
+const dev = false;
 
 // Funkcja do obsługi ciasteczek
 function getCookie(name: string): string | null {
@@ -23,24 +23,39 @@ function setCookie(name: string, value: string, hours: number): void {
 
 // Sprawdź czy landing page był już pokazany
 function wasLandingShown(): boolean {
-  if (dev) return false; // W trybie dev zawsze pokazuj
-  return getCookie('landingShown') === 'true';
+  if (dev) {
+    console.log('🔧 DEV MODE: Landing zawsze pokazywany');
+    return false; // W trybie dev zawsze pokazuj
+  }
+  const wasShown = getCookie('landingShown') === 'true';
+  console.log('🍪 Ciasteczko landingShown:', getCookie('landingShown'), '→ wasShown:', wasShown);
+  return wasShown;
 }
 
 // Utwórz store z początkową wartością
 const createLandingStore = () => {
-  const { subscribe, set, update } = writable(!wasLandingShown());
+  const initialValue = !wasLandingShown();
+  console.log('🏪 Inicjalizacja landingStore:', initialValue);
+  const { subscribe, set, update } = writable(initialValue);
 
   return {
     subscribe,
     hide: () => {
+      console.log('🙈 Ukrywam landing');
       if (!dev) { // W trybie dev nie zapisuj ciasteczka
         setCookie('landingShown', 'true', 1); // 1 godzina
+        console.log('🍪 Zapisuję ciasteczko landingShown=true');
       }
       set(false);
     },
-    reset: () => set(!wasLandingShown()), // dla testów
-    show: () => set(true) // dodatkowa funkcja do pokazania
+    reset: () => {
+      console.log('🔄 Reset landing store');
+      set(!wasLandingShown());
+    },
+    show: () => {
+      console.log('👁️ Pokazuję landing');
+      set(true);
+    }
   };
 };
 

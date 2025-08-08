@@ -185,10 +185,9 @@ function averageColors(colors) {
   };
 }
 
+// Nie potrzebujemy dodatkowej klasy - layout.svelte już dodaje 'landing'
+
 onMount(() => {
-  // Dodaj klasę do body gdy landing jest aktywny
-  document.body.classList.add('landing-active');
-  
   // Sprawdź czy to mobile przy pierwszym załadowaniu
   checkMobile();
   
@@ -210,7 +209,6 @@ onMount(() => {
   
   // Cleanup
   return () => {
-    document.body.classList.remove('landing-active');
     window.removeEventListener('resize', handleResize);
   };
 });
@@ -279,6 +277,7 @@ onMount(() => {
     transform: translate(-50%, -50%);
     width: auto;
     height: 100vh;
+ 
     z-index: 2;
 }
 .machine2 {
@@ -405,8 +404,8 @@ onMount(() => {
     clip-path: inset(0 0 0 70%);
 }
 
-/* Nadpisanie klasy r800 dla landing page */
-:global(body.r800) .targi-container {
+/* Nadpisanie klasy r800 TYLKO gdy landing jest aktywny */
+:global(body.r800.landing) .targi-container {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -416,20 +415,20 @@ onMount(() => {
     overflow: hidden !important;
 }
 
-/* Zapewnienie że body nie interferuje z landing page */
-:global(body.r800.landing-active) {
+/* Zapewnienie że body nie interferuje z landing page - TYLKO gdy landing jest aktywny */
+:global(body.r800.landing) {
     position: static !important;
     overflow: hidden !important;
     all: revert !important;
 }
 
-/* Dodatkowe nadpisanie dla app container */
-:global(body.r800.landing-active .app) {
+/* Dodatkowe nadpisanie dla app container - TYLKO gdy landing jest aktywny */
+:global(body.r800.landing .app) {
     overflow: hidden !important;
 }
 
-/* Ogólne style dla aktywnego landing */
-:global(body.landing-active) {
+/* Ogólne style dla aktywnego landing - TYLKO gdy landing jest aktywny */
+:global(body.landing) {
     overflow: hidden !important;
 }
 
