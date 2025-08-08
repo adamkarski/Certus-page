@@ -130,9 +130,13 @@
       margin-bottom: 25px;
       display: block;
       width: 4em;
+      display: block;
+    width: 4em;
+    min-width: 112px;
+    max-width: 17vw !important;
 
       img {
-        margin-left: 0.6em;
+        margin-left: 0.3em;
       }
     }
   }

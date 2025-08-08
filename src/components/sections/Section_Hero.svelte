@@ -984,7 +984,7 @@
     .hero {
       height: 95vh;
     }
-    
+  
     .hero-bg {
       padding-top: 170px; /* Safe area na średnich ekranach */
     }
@@ -998,6 +998,15 @@
     
     .hero-bg {
       padding-top: 180px; /* Zwiększony safe area dla niskich ekranów */
+    }
+    swiper-slide button .headlines .topline{
+      font-size: 1.8rem !important;
+    }
+  }
+
+  @media (min-width: 1024px)  {
+    swiper-slide button .headlines .topline{
+      font-size: 1.6rem !important;
     }
   }
 
@@ -1073,9 +1082,7 @@
   /* 1280x720, 1366x768 - niskie ekrany laptop */
   @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
    
-    .app nav.fixed {
-      transform: scale(0.5) !important; /* Zmniejszenie na bardzo niskich ekranach */
-    }
+ 
 
     .hero {
       height: 100vh; /* Pełna wysokość dla niskich ekranów */
