@@ -972,20 +972,250 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
-  /* ————————————————  LAYOUT  ———————————————— */
+  /* ————————————————  LAYOUT - CLEAN RESPONSIVE  ———————————————— */
   .hero {
     width: 100%;
-    height: 90vh;
+    height: 100vh; /* Bazowa wysokość - będzie nadpisana przez media queries */
     position: fixed;
     z-index: 0;
     top: 0px;
+    transition: height 0.3s ease-in-out; /* Smooth transitions */
+  }
+
+  /* RESPONSIVE BREAKPOINTS - UPORZĄDKOWANE */
+  
+  /* Desktop - Duże ekrany (1920px+) */
+  @media (min-width: 1920px) {
+    .hero {
+      height: 100vh;
+    }
+    
+    .hero-bg {
+      padding-top: 180px; /* Większy safe area na dużych ekranach */
+    }
+  }
+
+  /* Desktop - Średnie ekrany (1600px - 1919px) */
+  @media (min-width: 1600px) and (max-width: 1919px) {
+    .hero {
+      height: 95vh;
+    }
+    
+    .hero-bg {
+      padding-top: 170px; /* Safe area na średnich ekranach */
+    }
+  }
+
+  /* Desktop - Małe ekrany (1280px - 1599px) */
+  @media (min-width: 1280px) and (max-width: 1599px) {
+    .hero {
+      height: 90vh;
+    }
+  }
+
+  /* Laptop - Średnie (1024px - 1279px) */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .hero {
+      height: 85vh;
+    }
+  }
+
+  /* Tablet - Landscape (768px - 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero {
+      height: 80vh;
+    }
+  }
+
+  /* Mobile - Landscape (481px - 767px) */
+  @media (min-width: 481px) and (max-width: 767px) {
+    .hero {
+      height: 75vh;
+    }
+    
+    .hero-bg {
+      padding-top: 140px; /* Dostosowane safe area na mobile landscape */
+    }
+  }
+
+  /* Mobile - Portrait (max 480px) */
+  @media (max-width: 480px) {
+    .hero {
+      height: 70vh;
+    }
+    
+    .hero-bg {
+      padding-top: 130px; /* Dostosowane safe area na mobile */
+    }
+  }
+
+  /* SPECJALNE PRZYPADKI */
+  
+  /* Pionowe rozdzielczości (aspect ratio < 1.2) */
+  @media (min-width: 1024px) and (max-aspect-ratio: 6/5) {
+    .hero {
+      height: 60vh;
+    }
+  }
+
+  /* Bardzo szerokie ekrany (aspect ratio > 2.5) */
+  @media (min-width: 1024px) and (min-aspect-ratio: 5/2) {
+    .hero {
+      height: 100vh;
+    }
+  }
+
+  /* Fix dla bardzo niskich ekranów laptop */
+  @media (min-width: 1024px) and (max-height: 700px) {
+    .hero {
+      height: 100vh; /* Usuń display: none - hero zawsze widoczne */
+    }
+  }
+
+  /* ————————————————  GLOBAL STYLES - OFERTA POSITIONING  ———————————————— */
+  
+  /* Reset #oferta - zawsze pod hero */
+  :global(.home #oferta) {
+    position: relative !important;
+    z-index: 516 !important;
+    margin-top: 100vh !important; /* Bazowa wartość */
+    transition: margin-top 0.3s ease-in-out !important; /* Smooth transitions */
+  }
+
+  /* RESPONSIVE OFERTA POSITIONING */
+  
+  /* Desktop - Duże ekrany (1920px+) */
+  @media (min-width: 1920px) {
+    :global(.home #oferta) {
+      margin-top: 100vh !important;
+    }
+  }
+
+  /* Desktop - Średnie ekrany (1600px - 1919px) */
+  @media (min-width: 1600px) and (max-width: 1919px) {
+    :global(.home #oferta) {
+      margin-top: 95vh !important;
+    }
+  }
+
+  /* Desktop - Małe ekrany (1280px - 1599px) */
+  @media (min-width: 1280px) and (max-width: 1599px) {
+    :global(.home #oferta) {
+      margin-top: 90vh !important;
+    }
+  }
+
+  /* Laptop - Średnie (1024px - 1279px) */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    :global(.home #oferta) {
+      margin-top: 85vh !important;
+    }
+  }
+
+  /* Tablet - Landscape (768px - 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    :global(.home #oferta) {
+      margin-top: 80vh !important;
+    }
+  }
+
+  /* Mobile - Landscape (481px - 767px) */
+  @media (min-width: 481px) and (max-width: 767px) {
+    :global(.home #oferta) {
+      margin-top: 75vh !important;
+    }
+  }
+
+  /* Mobile - Portrait (max 480px) */
+  @media (max-width: 480px) {
+    :global(.home #oferta) {
+      margin-top: 70vh !important;
+    }
+  }
+
+  /* SPECJALNE PRZYPADKI - OFERTA */
+  
+  /* Pionowe rozdzielczości (aspect ratio < 1.2) */
+  @media (min-width: 1024px) and (max-aspect-ratio: 6/5) {
+    :global(.home #oferta) {
+      margin-top: 60vh !important;
+    }
+  }
+
+  /* Bardzo szerokie ekrany (aspect ratio > 2.5) */
+  @media (min-width: 1024px) and (min-aspect-ratio: 5/2) {
+    :global(.home #oferta) {
+      margin-top: 100vh !important;
+    }
+  }
+
+  /* ————————————————  GLOBAL STYLES - ONAS POSITIONING  ———————————————— */
+  
+  /* Sekcja O-NAS - lekko wystaje z dołu hero na stronie głównej */
+  :global(.home #o-nas) {
+    position: relative !important;
+    z-index: 10 !important; /* Wyższy niż hero (z-index: 0) ale niższy niż navbar (z-index: 50) */
+    margin-top: -100px !important; /* Lekko wystaje z dołu hero */
+  }
+
+  /* RESPONSIVE ONAS POSITIONING */
+  
+  /* Desktop - Duże ekrany (1920px+) */
+  @media (min-width: 1920px) {
+    :global(.home #o-nas) {
+      margin-top: -120px !important; /* Więcej wystawania na dużych ekranach */
+    }
+  }
+
+  /* Desktop - Średnie ekrany (1600px - 1919px) */
+  @media (min-width: 1600px) and (max-width: 1919px) {
+    :global(.home #o-nas) {
+      margin-top: -110px !important;
+    }
+  }
+
+  /* Desktop - Małe ekrany (1280px - 1599px) */
+  @media (min-width: 1280px) and (max-width: 1599px) {
+    :global(.home #o-nas) {
+      margin-top: -100px !important;
+    }
+  }
+
+  /* Laptop - Średnie (1024px - 1279px) */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    :global(.home #o-nas) {
+      margin-top: -90px !important;
+    }
+  }
+
+  /* Tablet - Landscape (768px - 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    :global(.home #o-nas) {
+      margin-top: -80px !important;
+    }
+  }
+
+  /* Mobile - Landscape (481px - 767px) */
+  @media (min-width: 481px) and (max-width: 767px) {
+    :global(.home #o-nas) {
+      margin-top: -70px !important;
+    }
+  }
+
+  /* Mobile - Portrait (max 480px) */
+  @media (max-width: 480px) {
+    :global(.home #o-nas) {
+      margin-top: -60px !important;
+    }
   }
   .hero-bg {
     width: 100%;
     height: 100%;
     position: relative;
     overflow: hidden;
-    padding-top: 80px;
+    /* NAVBAR SAFE AREA - zapobiega nakładaniu się navbar na teksty hero */
+    /* Swiper musi być między navbar a sekcją onas */
+    padding-top: 160px; /* Dostosowane dla lepszego pozycjonowania między navbar a onas */
     margin-top: -80px;
   }
 
@@ -1041,14 +1271,86 @@
     display: block;
   }
 
-  /* ————————————————  SWIPER  ———————————————— */
+  /* ————————————————  SWIPER - CLEAN RESPONSIVE  ———————————————— */
   swiper-container {
     width: 90%;
     height: 678px;
     opacity: 0;
-    margin-top: -10px;
-    opacity: 0;
+    margin-top: 0; /* Reset margin-top */
     animation: fadeInSlider 0.6s ease-out 0.2s forwards;
+    
+    .topline {
+      transition: font-size 0.3s ease-in-out; /* Smooth font size transitions */
+    }
+  }
+
+  /* RESPONSIVE SWIPER STYLES */
+  
+  /* Desktop - Duże ekrany (1920px+) */
+  @media (min-width: 1920px) {
+    swiper-container {
+      .topline {
+        font-size: 2.6em;
+      }
+    }
+  }
+
+  /* Desktop - Średnie ekrany (1600px - 1919px) */
+  @media (min-width: 1600px) and (max-width: 1919px) {
+    swiper-container {
+      .topline {
+        font-size: 2.4em;
+      }
+    }
+  }
+
+  /* Desktop - Małe ekrany (1280px - 1599px) */
+  @media (min-width: 1280px) and (max-width: 1599px) {
+    swiper-container {
+      .topline {
+        font-size: 2.2em;
+      }
+    }
+  }
+
+  /* Laptop - Średnie (1024px - 1279px) */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    swiper-container {
+      .topline {
+        font-size: 2.0em;
+      }
+    }
+  }
+
+  /* Tablet - Landscape (768px - 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    swiper-container {
+      .topline {
+        font-size: 1.8em;
+      }
+    }
+  }
+
+  /* Mobile - Landscape (481px - 767px) */
+  @media (min-width: 481px) and (max-width: 767px) {
+    swiper-container {
+      .topline {
+        font-size: 1.6em;
+        top: 15px; /* Średni margines na mobile landscape */
+        min-height: 50px;
+      }
+    }
+  }
+
+  /* Mobile - Portrait (max 480px) */
+  @media (max-width: 480px) {
+    swiper-container {
+      .topline {
+        font-size: 1.4em;
+        top: 10px; /* Mniejszy margines na mobile */
+        min-height: 40px;
+      }
+    }
   }
   swiper-slide {
     display: flex;
@@ -1124,13 +1426,12 @@
     font-size: 38px;
     font-weight: 700;
     line-height: 1;
-    /*  margin-bottom: 0.25em;
-    margin-left: 0.2em; */
-    // padding-bottom: 2rem;
     transition: all 0.3s ease;
     position: absolute;
-    // margin-top: -180px;
     text-align: left;
+    /* Safe area - teksty nigdy nie będą przykryte przez navbar */
+    top: 20px; /* Dodatkowy margines od góry */
+    min-height: 60px; /* Minimalna wysokość dla lepszego pozycjonowania */
   }
   .items:hover .headlines .topline {
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);

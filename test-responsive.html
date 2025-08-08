@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Responsive Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .current-size {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 9999;
+        }
+        .debug-info {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="current-size" id="sizeDisplay"></div>
+    
+    <div class="container">
+        <h1>🧪 Hero Section - Responsive Tester</h1>
+        <p>Narzędzie do testowania nowego systemu responsywności sekcji hero.</p>
+        
+        <div class="section">
+            <h2>📱 Szybkie Testy - Mobile</h2>
+            <a href="javascript:resizeWindow(360, 640)" class="test-button">360x640 (Mobile S)</a>
+            <a href="javascript:resizeWindow(375, 667)" class="test-button">375x667 (iPhone SE)</a>
+            <a href="javascript:resizeWindow(414, 896)" class="test-button">414x896 (iPhone 11)</a>
+            <a href="javascript:resizeWindow(390, 844)" class="test-button">390x844 (iPhone 12)</a>
+        </div>
+
+        <div class="section">
+            <h2>📱 Szybkie Testy - Tablet</h2>
+            <a href="javascript:resizeWindow(768, 1024)" class="test-button">768x1024 (iPad Portrait)</a>
+            <a href="javascript:resizeWindow(1024, 768)" class="test-button">1024x768 (iPad Landscape)</a>
+            <a href="javascript:resizeWindow(820, 1180)" class="test-button">820x1180 (iPad Air)</a>
+        </div>
+
+        <div class="section">
+            <h2>💻 Szybkie Testy - Desktop</h2>
+            <a href="javascript:resizeWindow(1024, 768)" class="test-button">1024x768 (Small Laptop)</a>
+            <a href="javascript:resizeWindow(1280, 720)" class="test-button">1280x720 (HD)</a>
+            <a href="javascript:resizeWindow(1366, 768)" class="test-button">1366x768 (Laptop)</a>
+            <a href="javascript:resizeWindow(1440, 900)" class="test-button">1440x900 (MacBook)</a>
+            <a href="javascript:resizeWindow(1600, 900)" class="test-button">1600x900 (Large)</a>
+            <a href="javascript:resizeWindow(1920, 1080)" class="test-button">1920x1080 (Full HD)</a>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Problematyczne Rozdzielczości</h2>
+            <a href="javascript:resizeWindow(1024, 600)" class="test-button">1024x600 (Niski laptop)</a>
+            <a href="javascript:resizeWindow(1200, 1600)" class="test-button">1200x1600 (Pionowy)</a>
+            <a href="javascript:resizeWindow(2560, 1080)" class="test-button">2560x1080 (Ultrawide)</a>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Akcje</h2>
+            <a href="javascript:openApp()" class="test-button">🚀 Otwórz Aplikację</a>
+            <a href="javascript:openAppNewTab()" class="test-button">🆕 Otwórz w Nowej Karcie</a>
+            <a href="javascript:enableDebug()" class="test-button">🐛 Włącz Debug</a>
+            <a href="javascript:disableDebug()" class="test-button">❌ Wyłącz Debug</a>
+            <a href="javascript:resetWindow()" class="test-button">🔄 Reset Okna</a>
+            <a href="javascript:showDevToolsInstructions()" class="test-button">📱 Instrukcje DevTools</a>
+        </div>
+
+        <div class="section">
+            <h2>� Bookmarklety - Przeciągnij do Paska Zakładek</h2>
+            <p style="font-size: 12px; color: #666; margin-bottom: 10px;">
+                Przeciągnij poniższe linki do paska zakładek, a potem klikaj je na stronie aplikacji:
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                <a href="javascript:(function(){document.body.classList.add('hero-debug');document.body.setAttribute('data-viewport-info',window.innerWidth+'x'+window.innerHeight+' | '+(window.innerWidth/window.innerHeight>2.5?'wide':window.innerWidth/window.innerHeight<1.2?'tall':'normal'));})();" 
+                   class="test-button" style="font-size: 11px;">📊 Debug ON</a>
+                <a href="javascript:(function(){document.body.classList.remove('hero-debug');})();" 
+                   class="test-button" style="font-size: 11px;">❌ Debug OFF</a>
+                <a href="javascript:(function(){alert('Hero height: '+getComputedStyle(document.querySelector('section.hero')).height+'\nViewport: '+window.innerWidth+'x'+window.innerHeight);})();" 
+                   class="test-button" style="font-size: 11px;">📏 Info</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>�📊 Aktualne Informacje</h2>
+            <div class="debug-info" id="debugInfo">
+                Kliknij "Odśwież Info" żeby zobaczyć aktualne dane
+            </div>
+            <a href="javascript:updateDebugInfo()" class="test-button">🔄 Odśwież Info</a>
+        </div>
+
+        <div class="section">
+            <h2>📋 Instrukcje</h2>
+            <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
+                <strong>⚠️ UWAGA:</strong> Nowoczesne przeglądarki blokują automatyczne zmiany rozmiaru okien ze względów bezpieczeństwa.
+            </div>
+            <ol>
+                <li><strong>Otwórz aplikację:</strong> Kliknij "Otwórz w Nowej Karcie" (zalecane) lub "Otwórz Aplikację"</li>
+                <li><strong>Testuj responsywność:</strong>
+                    <ul>
+                        <li>Naciśnij <code>F12</code> w oknie aplikacji</li>
+                        <li>Kliknij ikonę urządzenia mobilnego 📱</li>
+                        <li>Wybierz "Responsive" i wpisz wymiary</li>
+                        <li>Lub przeciągnij za róg okna przeglądarki</li>
+                    </ul>
+                </li>
+                <li><strong>Włącz Debug:</strong> Żeby zobaczyć aktualne wymiary na stronie</li>
+                <li><strong>Sprawdź:</strong>
+                    <ul>
+                        <li>Czy sekcja hero ma odpowiednią wysokość</li>
+                        <li>Czy sekcja #oferta nie nakłada się na hero</li>
+                        <li>Czy tekst ma odpowiedni rozmiar</li>
+                    </ul>
+                </li>
+                <li><strong>Kliknij "Instrukcje DevTools"</strong> po szczegółowe instrukcje</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let appWindow = null;
+
+        function updateSizeDisplay() {
+            const display = document.getElementById('sizeDisplay');
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const ratio = (width / height).toFixed(2);
+            
+            let type = 'normal';
+            if (ratio > 2.5) type = 'ultrawide';
+            else if (ratio < 1.2) type = 'tall';
+            
+            display.textContent = `${width}x${height} (${ratio}) [${type}]`;
+        }
+
+        function resizeWindow(width, height) {
+            if (appWindow && !appWindow.closed) {
+                try {
+                    // Próbuj resizeTo (może nie działać w niektórych przeglądarkach)
+                    appWindow.resizeTo(width + 16, height + 39);
+                    appWindow.focus();
+                    
+                    // Sprawdź czy resize się udał po 100ms
+                    setTimeout(() => {
+                        const actualWidth = appWindow.innerWidth;
+                        const actualHeight = appWindow.innerHeight;
+                        
+                        if (Math.abs(actualWidth - width) > 50 || Math.abs(actualHeight - height) > 50) {
+                            // Resize się nie udał - pokaż instrukcje
+                            showResizeInstructions(width, height);
+                        } else {
+                            updateAppDebugInfo();
+                        }
+                    }, 100);
+                    
+                } catch (error) {
+                    showResizeInstructions(width, height);
+                }
+            } else {
+                alert('Najpierw otwórz aplikację klikając "Otwórz Aplikację"');
+            }
+        }
+
+        function showResizeInstructions(width, height) {
+            const instructions = `
+🔧 INSTRUKCJE RĘCZNEGO RESIZE:
+
+Przeglądarka blokuje automatyczne zmiany rozmiaru okna.
+Proszę ręcznie zmień rozmiar okna aplikacji na:
+
+📐 Docelowy rozmiar: ${width} x ${height}px
+
+🖱️ Jak to zrobić:
+1. Przejdź do okna aplikacji (Certus)
+2. Otwórz Developer Tools (F12)
+3. Kliknij ikonę urządzenia mobilnego (📱)
+4. Wybierz "Responsive" z listy
+5. Wpisz wymiary: ${width} x ${height}
+6. Lub przeciągnij za róg okna przeglądarki
+
+💡 Alternatywnie:
+- Chrome: F12 → Device Toolbar → Responsive
+- Firefox: F12 → Responsive Design Mode
+- Safari: Develop → Responsive Design Mode
+
+Kliknij OK i przejdź do okna aplikacji.
+            `;
+            
+            alert(instructions);
+            
+            // Spróbuj otworzyć DevTools w oknie aplikacji
+            if (appWindow && !appWindow.closed) {
+                try {
+                    appWindow.focus();
+                    // Niektóre przeglądarki pozwalają na otwarcie DevTools
+                    appWindow.console?.log(`Target size: ${width}x${height}`);
+                } catch (e) {
+                    // Ignore errors
+                }
+            }
+        }
+
+        function openApp() {
+            // Otwórz okno z większymi uprawnieniami
+            const features = [
+                'width=1280',
+                'height=720',
+                'scrollbars=yes',
+                'resizable=yes',
+                'toolbar=no',
+                'menubar=no',
+                'location=yes',
+                'status=no'
+            ].join(',');
+            
+            appWindow = window.open('http://localhost:5173', 'certus-app', features);
+            
+            if (appWindow) {
+                appWindow.focus();
+                
+                // Sprawdź po 2 sekundach czy okno się otworzyło
+                setTimeout(() => {
+                    if (appWindow && !appWindow.closed) {
+                        updateAppDebugInfo();
+                        console.log('✅ Okno aplikacji otwarte pomyślnie');
+                    }
+                }, 2000);
+            } else {
+                alert('❌ Nie można otworzyć okna.\n\n🔧 Możliwe przyczyny:\n1. Popup blocker blokuje okno\n2. Aplikacja nie działa na localhost:5173\n3. Przeglądarka blokuje popup\n\n💡 Rozwiązanie:\n1. Sprawdź czy aplikacja działa: http://localhost:5173\n2. Wyłącz popup blocker dla tej strony\n3. Lub otwórz aplikację ręcznie w nowej karcie');
+            }
+        }
+
+        function enableDebug() {
+            if (appWindow && !appWindow.closed) {
+                appWindow.document.body.classList.add('hero-debug');
+                updateAppDebugInfo();
+                alert('Debug włączony! Sprawdź prawą górną część strony aplikacji.');
+            } else {
+                alert('Najpierw otwórz aplikację');
+            }
+        }
+
+        function disableDebug() {
+            if (appWindow && !appWindow.closed) {
+                appWindow.document.body.classList.remove('hero-debug');
+                alert('Debug wyłączony');
+            } else {
+                alert('Najpierw otwórz aplikację');
+            }
+        }
+
+        function updateAppDebugInfo() {
+            if (appWindow && !appWindow.closed) {
+                const w = appWindow.innerWidth;
+                const h = appWindow.innerHeight;
+                const ratio = w / h;
+                let type = 'normal';
+                if (ratio > 2.5) type = 'wide';
+                else if (ratio < 1.2) type = 'tall';
+                
+                appWindow.document.body.setAttribute('data-viewport-info', 
+                    `${w}x${h} | ratio: ${ratio.toFixed(2)} | ${type}`);
+            }
+        }
+
+        function resetWindow() {
+            if (appWindow && !appWindow.closed) {
+                appWindow.resizeTo(1280, 720);
+                appWindow.focus();
+            }
+        }
+
+        function openAppNewTab() {
+            window.open('http://localhost:5173', '_blank');
+            alert('✅ Aplikacja otwarta w nowej karcie!\n\n📱 Jak testować responsywność:\n1. Przejdź do nowej karty z aplikacją\n2. Naciśnij F12 (Developer Tools)\n3. Kliknij ikonę urządzenia mobilnego 📱\n4. Wybierz "Responsive" i wpisz wymiary\n5. Lub wybierz gotowe urządzenie z listy');
+        }
+
+        function showDevToolsInstructions() {
+            const instructions = `
+📱 TESTOWANIE RESPONSYWNOŚCI - INSTRUKCJE
+
+🔧 METODA 1 - Chrome DevTools:
+1. Otwórz aplikację: http://localhost:5173
+2. Naciśnij F12 lub Ctrl+Shift+I
+3. Kliknij ikonę urządzenia mobilnego 📱 (Device Toolbar)
+4. Wybierz "Responsive" z listy urządzeń
+5. Wpisz wymiary ręcznie (np. 1024x768)
+6. Lub wybierz gotowe urządzenie (iPhone, iPad, etc.)
+
+🔧 METODA 2 - Firefox:
+1. Otwórz aplikację: http://localhost:5173  
+2. Naciśnij F12
+3. Kliknij ikonę "Responsive Design Mode" 📱
+4. Wpisz wymiary w polach na górze
+
+🔧 METODA 3 - Ręczne zmiany:
+1. Otwórz aplikację w nowym oknie
+2. Przeciągnij za róg okna przeglądarki
+3. Obserwuj zmiany w sekcji hero
+
+📐 ROZDZIELCZOŚCI DO TESTOWANIA:
+• Mobile: 360x640, 375x667, 414x896
+• Tablet: 768x1024, 1024x768
+• Desktop: 1280x720, 1440x900, 1920x1080
+• Problematyczne: 1024x600, 2560x1080
+
+🐛 DEBUG MODE:
+Włącz debug w testerze żeby zobaczyć aktualne wymiary na stronie.
+            `;
+            
+            alert(instructions);
+        }
+
+        function updateDebugInfo() {
+            const debugDiv = document.getElementById('debugInfo');
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const ratio = (width / height).toFixed(2);
+            
+            let expectedHeroHeight = '100vh';
+            if (width >= 1920) expectedHeroHeight = '100vh';
+            else if (width >= 1600) expectedHeroHeight = '95vh';
+            else if (width >= 1280) expectedHeroHeight = '90vh';
+            else if (width >= 1024) expectedHeroHeight = '85vh';
+            else if (width >= 768) expectedHeroHeight = '80vh';
+            else if (width >= 481) expectedHeroHeight = '75vh';
+            else expectedHeroHeight = '70vh';
+
+            // Specjalne przypadki
+            if (width >= 1024 && ratio < 1.2) expectedHeroHeight = '60vh';
+            if (width >= 1024 && ratio > 2.5) expectedHeroHeight = '100vh';
+            
+            debugDiv.innerHTML = `
+                <strong>Aktualne okno testera:</strong><br>
+                Szerokość: ${width}px<br>
+                Wysokość: ${height}px<br>
+                Ratio: ${ratio}<br>
+                <strong>Oczekiwana wysokość hero:</strong> ${expectedHeroHeight}<br>
+                <strong>Status aplikacji:</strong> ${appWindow && !appWindow.closed ? 'Otwarta' : 'Zamknięta'}<br>
+                <strong>URL aplikacji:</strong> http://localhost:5173
+            `;
+        }
+
+        // Aktualizuj rozmiar na starcie i przy zmianie rozmiaru
+        updateSizeDisplay();
+        updateDebugInfo();
+        window.addEventListener('resize', () => {
+            updateSizeDisplay();
+            updateDebugInfo();
+        });
+
+        // Aktualizuj debug info w aplikacji przy zmianie rozmiaru
+        window.addEventListener('resize', () => {
+            if (appWindow && !appWindow.closed && appWindow.document.body.classList.contains('hero-debug')) {
+                updateAppDebugInfo();
+            }
+        });
+    </script>
+</body>
+</html>

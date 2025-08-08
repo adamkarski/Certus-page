@@ -38,17 +38,18 @@ body.home {
   }
 }
 
-@media (min-width: 1920px) {
+/* HERO RESPONSYWNOŚĆ PRZENIESIONA DO hero-responsive.scss */
+/* @media (min-width: 1920px) {
   body.home {
     section.hero{
       height: 110vh !important;
     }
 
   }
-}
+} */
 
-/* Styl dla średnich ekranów, np. 1600x900 */
-@media (min-width: 1600px) and (max-width: 1919px) {
+
+/* @media (min-width: 1600px) and (max-width: 1919px) {
   body.home {
    
     section.hero{
@@ -57,9 +58,79 @@ body.home {
     }
 
   }
+  body.home swiper-container{
+
+    margin-top: 120px !important;
+
+  }
+  body.home #oferta {
+    position: relative;
+    z-index: 516;
+    margin-top: 807px;
+}
+} */
+/* @media (min-width: 1024px) and (max-height: 700px) {
+
+  body.home swiper-container{
+
+  }
+  body.home {
+   display: none !important;
+   
+  }
+} */
+/* @media (min-width: 1024px) and (max-width: 1279px) {
+
+  body.home swiper-container{
+
+    // margin-top: 40px !important;
+    .topline{
+      font-size: 1.4em !important;
+    }
+
+  }
+
+  body.home {
+   
+    section.hero{
+      height: 100vh !important;
+      top: 80px !important;
+    }
+
+  }
+  body.home #oferta {
+    position: relative;
+    z-index: 516;
+    margin-top: 550px;
+}
+
+} */
+/* @media (min-width: 1280px) and (max-width: 1599px) {
+
+  body.home swiper-container{
+
+    margin-top: 40px !important;
+    .topline{
+      font-size: 1.4em !important;
+    }
+
+  }
+  body.home {
+   
+    section.hero{
+      height: 95vh !important;
+      top: 80px !important;
+    }
+
+  }
+  body.home #oferta {
+    position: relative;
+    z-index: 516;
+    margin-top: 650px;
 }
 
 
+} */
 
 @media (min-width: 932px) and (max-width: 1014px) {
   .nav-link {
