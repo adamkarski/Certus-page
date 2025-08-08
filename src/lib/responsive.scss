@@ -8,6 +8,32 @@
    - 480px: Mobile portrait
 */
 
+
+#video{
+  position: relative;
+  z-index: 1;
+}
+#o-nas {
+  position: relative;
+  z-index: 1;
+}
+#image-section-01 {
+  position: relative;
+  z-index: 1;
+}
+#image-section-02 {
+  position: relative;
+  z-index: 1;
+}
+.contact-flex {
+  position: relative;
+  z-index: 1;
+}
+.section-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
 tbody tr td .text {
   font-size: 0.7rem !important;
   width: 100% !important;

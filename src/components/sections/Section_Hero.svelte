@@ -37,11 +37,11 @@
 
     // Subscribe to activeCategoryStore changes
     const unsubscribe = activeCategoryStore.subscribe((value) => {
-      console.log('🔄 activeCategoryStore changed:', value);
+    
       
       // Jeśli wracamy do głównego widoku (value === null)
       if (value === null && browser) {
-        console.log('🏠 Powrót do głównego widoku - wymuszam re-render swipera');
+        
         swiperKey++; // Wymusza re-render swipera
         
         // Reset atrybutów dla nowego elementu
@@ -51,17 +51,17 @@
         }
         
         setTimeout(() => {
-          console.log('⏳ Czekam na nowy swiper po re-renderze');
+          
           // Po re-renderze swiper powinien być automatycznie zainicjalizowany
           const checkNewSwiper = () => {
             if (swiperElement && swiperElement.swiper) {
-              console.log('✅ Nowy swiper gotowy');
+             
               setupSwiperEvents(swiperElement.swiper);
               updateNavigationButtons(swiperElement.swiper);
               
               // Wróć do zapisanego slajdu po re-renderze
               setTimeout(() => {
-                console.log('🔙 Wracam do zapisanego slajdu po re-renderze:', lastActiveSlideIndex);
+              
                 swiperElement.swiper.slideTo(lastActiveSlideIndex);
                 updateNavigationButtons(swiperElement.swiper);
               }, 200);
@@ -144,22 +144,16 @@
   });
 
   afterUpdate(() => {
-    console.log('🔄 afterUpdate - sprawdzam swiper');
-    console.log('🔍 afterUpdate check:', { 
-      browser, 
-      activeCategoryStore: $activeCategoryStore, 
-      swiperElement: !!swiperElement,
-      swiperReady 
-    });
+  
     
     // Jeśli jesteśmy w głównym widoku i swiper istnieje
     if (browser && !$activeCategoryStore && swiperElement) {
       // Dodaj event listener na inicjalizację swipera
       if (!swiperElement.hasAttribute('data-init-listener-added')) {
-        console.log('🔧 Dodaję event listener na inicjalizację swipera');
+      
         
         swiperElement.addEventListener('swiperinit', () => {
-          console.log('✅ Swiper zainicjalizowany - event swiperinit');
+         
           if (swiperElement.swiper) {
             setupSwiperEvents(swiperElement.swiper);
             updateNavigationButtons(swiperElement.swiper);
@@ -170,7 +164,7 @@
         
         // Jeśli swiper już istnieje, uruchom setup od razu
         if (swiperElement.swiper) {
-          console.log('🔧 afterUpdate: setupSwiperEvents (swiper już gotowy)');
+         
           setupSwiperEvents(swiperElement.swiper);
         }
       }
@@ -178,7 +172,7 @@
   });
 
   function setupSwiperEvents(swiper) {
-    console.log('🔧 setupSwiperEvents - rozpoczęcie');
+ 
     // Update navigation buttons state
     updateNavigationButtons(swiper);
 
@@ -192,15 +186,15 @@
     });
 
     // Reinicjalizuj pagination
-    console.log('📍 Sprawdzanie pagination:', !!swiper.pagination);
+   
     if (swiper.pagination) {
-      console.log('🔄 Reinicjalizacja istniejącej pagination');
+      
       swiper.pagination.destroy();
       swiper.pagination.init();
       swiper.pagination.render();
       swiper.pagination.update();
     } else {
-      console.log('🆕 Tworzenie nowej pagination');
+    
       // Jeśli pagination nie istnieje, spróbuj ją utworzyć
       try {
         // Inicjalizuj pagination bezpośrednio na swiperze
@@ -210,22 +204,21 @@
           swiper.pagination.update();
         }
       } catch (error) {
-        console.log('❌ Błąd podczas tworzenia pagination:', error);
+       
       }
     }
     
     // Sprawdź czy pagination została utworzona
     setTimeout(() => {
       const paginationEl = document.querySelector('.swiper-pagination');
-      console.log('📍 Pagination element po reinicjalizacji:', !!paginationEl);
+   
       if (paginationEl) {
-        console.log('📍 Liczba bullets:', paginationEl.children.length);
-        console.log('📍 Pagination HTML:', paginationEl.innerHTML);
+   
       } else {
-        console.log('❌ Nie znaleziono elementu .swiper-pagination');
+       
         // Sprawdź czy istnieje w swiperElement
         const swiperPagination = swiperElement.querySelector('.swiper-pagination');
-        console.log('📍 Pagination w swiperElement:', !!swiperPagination);
+       
       }
     }, 500);
     
@@ -285,16 +278,7 @@
     }, 100);
   }
 
-  // Prostsza reaktywna funkcja - tylko do debugowania
-  $: {
-    console.log('🔍 Reactive check:', { 
-      browser, 
-      activeCategoryStore: $activeCategoryStore, 
-      swiperElement: !!swiperElement,
-      swiperReady,
-      swiperKey
-    });
-  }
+
   $: slidesPerView = $windowWidth < 1024 ? 1 : 2;
 
   $: slidesPerGroup = $windowWidth < 1024 ? 1 : 2;
@@ -1119,14 +1103,14 @@
   /* Desktop - Duże ekrany (1920px+) */
   @media (min-width: 1920px) {
     :global(.home #oferta) {
-      margin-top: 100vh !important;
+      margin-top: 90vh !important;
     }
   }
 
   /* Desktop - Średnie ekrany (1600px - 1919px) */
   @media (min-width: 1600px) and (max-width: 1919px) {
     :global(.home #oferta) {
-      margin-top: 95vh !important;
+      margin-top: 85vh !important;
     }
   }
 
@@ -1147,14 +1131,14 @@
   /* Tablet - Landscape (768px - 1023px) */
   @media (min-width: 768px) and (max-width: 1023px) {
     :global(.home #oferta) {
-      margin-top: 80vh !important;
+      margin-top: 70vh !important;
     }
   }
 
   /* Mobile - Landscape (481px - 767px) */
   @media (min-width: 481px) and (max-width: 767px) {
     :global(.home #oferta) {
-      margin-top: 75vh !important;
+      margin-top: 65vh !important;
     }
   }
 
@@ -1170,7 +1154,7 @@
   /* Pionowe rozdzielczości (aspect ratio < 1.2) */
   @media (min-width: 1024px) and (max-aspect-ratio: 6/5) {
     :global(.home #oferta) {
-      margin-top: 60vh !important;
+      margin-top: 50vh !important;
     }
   }
 
@@ -1329,7 +1313,7 @@
   /* ————————————————  SWIPER - CLEAN RESPONSIVE  ———————————————— */
   swiper-container {
     width: 90%;
-    height: 678px; /* Bazowa wysokość */
+    height: 778px; /* Bazowa wysokość */
     opacity: 0;
     margin-top: 0; /* Reset margin-top */
     animation: fadeInSlider 0.6s ease-out 0.2s forwards;
@@ -1344,7 +1328,8 @@
   /* 1280x720, 1366x768 - niskie ekrany laptop */
   @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
     swiper-container {
-      height: 400px; /* Mniejsza wysokość dla niskich ekranów */
+      margin-top: 80px;
+      height: 500px; /* Mniejsza wysokość dla niskich ekranów */
       width: 95%; /* Szerszy swiper */
       
       .topline {
@@ -1357,7 +1342,8 @@
   /* 1600x900 - szerokie ale niskie ekrany */
   @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
     swiper-container {
-      height: 450px; /* Dostosowana wysokość */
+      height: 750px; /* Dostosowana wysokość */
+      margin-top: 100px; /* Dostosowany margines */
       width: 95%; /* Szerszy swiper */
       
       .topline {

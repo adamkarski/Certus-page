@@ -28,14 +28,14 @@ function wasLandingShown(): boolean {
     return false; // W trybie dev zawsze pokazuj
   }
   const wasShown = getCookie('landingShown') === 'true';
-  console.log('🍪 Ciasteczko landingShown:', getCookie('landingShown'), '→ wasShown:', wasShown);
+
   return wasShown;
 }
 
 // Utwórz store z początkową wartością
 const createLandingStore = () => {
   const initialValue = !wasLandingShown();
-  console.log('🏪 Inicjalizacja landingStore:', initialValue);
+
   const { subscribe, set, update } = writable(initialValue);
 
   return {

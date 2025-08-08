@@ -108,7 +108,7 @@
     position: absolute;
     z-index: 2;
     margin-left: 11em;
-    margin-top: -15em;
+    margin-top: -22em;
     :before {
       content: "";
       position: absolute;
