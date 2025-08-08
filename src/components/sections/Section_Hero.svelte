@@ -1055,6 +1055,10 @@
 
   /* Fix dla bardzo niskich ekranów laptop */
   @media (min-width: 1024px) and (max-height: 700px) {
+    
+ 
+
+
     .hero {
       height: 100vh; /* Usuń display: none - hero zawsze widoczne */
     }
@@ -1068,6 +1072,11 @@
   
   /* 1280x720, 1366x768 - niskie ekrany laptop */
   @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
+   
+    .app nav.fixed {
+      transform: scale(0.5) !important; /* Zmniejszenie na bardzo niskich ekranach */
+    }
+
     .hero {
       height: 100vh; /* Pełna wysokość dla niskich ekranów */
     }
@@ -1105,14 +1114,29 @@
     :global(.home #oferta) {
       margin-top: 90vh !important;
     }
+    .hero {
+      margin-top: 30px; /* Duży safe area dla bardzo niskich ekranów */
+    }
   }
 
   /* Desktop - Średnie ekrany (1600px - 1919px) */
   @media (min-width: 1600px) and (max-width: 1919px) {
     :global(.home #oferta) {
-      margin-top: 85vh !important;
-    }
+      margin-top: 90vh !important;
+      }
+  
+     
+      /* swiper-container swiper-slide.swiper-slide-active button{
+        transform: scale(0.85) !important;
+    }*/
+      swiper-container swiper-slide {
+        transform: scale(0.8);
+      }
+
+
+  
   }
+
 
   /* Desktop - Małe ekrany (1280px - 1599px) */
   @media (min-width: 1280px) and (max-width: 1599px) {
