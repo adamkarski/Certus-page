@@ -1009,7 +1009,11 @@
   /* Desktop - Małe ekrany (1280px - 1599px) */
   @media (min-width: 1280px) and (max-width: 1599px) {
     .hero {
-      height: 90vh;
+      height: 95vh; /* Zwiększone z 90vh - swiper rozciągnięty w dół */
+    }
+    
+    .hero-bg {
+      padding-top: 180px; /* Zwiększony safe area dla niskich ekranów */
     }
   }
 
@@ -1069,6 +1073,34 @@
   @media (min-width: 1024px) and (max-height: 700px) {
     .hero {
       height: 100vh; /* Usuń display: none - hero zawsze widoczne */
+    }
+    
+    .hero-bg {
+      padding-top: 200px; /* Duży safe area dla bardzo niskich ekranów */
+    }
+  }
+
+  /* SPECJALNE REGUŁY DLA PROBLEMATYCZNYCH ROZDZIELCZOŚCI */
+  
+  /* 1280x720, 1366x768 - niskie ekrany laptop */
+  @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
+    .hero {
+      height: 100vh; /* Pełna wysokość dla niskich ekranów */
+    }
+    
+    .hero-bg {
+      padding-top: 200px; /* Duży safe area - teksty bezpieczne */
+    }
+  }
+
+  /* 1600x900 - szerokie ale niskie ekrany */
+  @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
+    .hero {
+      height: 100vh; /* Pełna wysokość */
+    }
+    
+    .hero-bg {
+      padding-top: 190px; /* Duży safe area */
     }
   }
 
@@ -1208,6 +1240,29 @@
       margin-top: -60px !important;
     }
   }
+
+  /* SPECJALNE PRZYPADKI - ONAS POSITIONING DLA PROBLEMATYCZNYCH ROZDZIELCZOŚCI */
+  
+  /* 1280x720, 1366x768 - niskie ekrany laptop */
+  @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
+    :global(.home #o-nas) {
+      margin-top: -80px !important; /* Mniejsze wystawanie dla niskich ekranów */
+    }
+  }
+
+  /* 1600x900 - szerokie ale niskie ekrany */
+  @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
+    :global(.home #o-nas) {
+      margin-top: -90px !important; /* Dostosowane wystawanie */
+    }
+  }
+
+  /* Bardzo niskie ekrany laptop (height < 700px) */
+  @media (min-width: 1024px) and (max-height: 700px) {
+    :global(.home #o-nas) {
+      margin-top: -60px !important; /* Minimalne wystawanie */
+    }
+  }
   .hero-bg {
     width: 100%;
     height: 100%;
@@ -1274,13 +1329,54 @@
   /* ————————————————  SWIPER - CLEAN RESPONSIVE  ———————————————— */
   swiper-container {
     width: 90%;
-    height: 678px;
+    height: 678px; /* Bazowa wysokość */
     opacity: 0;
     margin-top: 0; /* Reset margin-top */
     animation: fadeInSlider 0.6s ease-out 0.2s forwards;
     
     .topline {
       transition: font-size 0.3s ease-in-out; /* Smooth font size transitions */
+    }
+  }
+
+  /* SPECJALNE REGUŁY SWIPER DLA PROBLEMATYCZNYCH ROZDZIELCZOŚCI */
+  
+  /* 1280x720, 1366x768 - niskie ekrany laptop */
+  @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
+    swiper-container {
+      height: 400px; /* Mniejsza wysokość dla niskich ekranów */
+      width: 95%; /* Szerszy swiper */
+      
+      .topline {
+        font-size: 1.8em; /* Mniejszy tekst */
+        top: 5px; /* Bliżej góry */
+      }
+    }
+  }
+
+  /* 1600x900 - szerokie ale niskie ekrany */
+  @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
+    swiper-container {
+      height: 450px; /* Dostosowana wysokość */
+      width: 95%; /* Szerszy swiper */
+      
+      .topline {
+        font-size: 2.0em; /* Dostosowany tekst */
+        top: 8px;
+      }
+    }
+  }
+
+  /* Bardzo niskie ekrany laptop (height < 700px) */
+  @media (min-width: 1024px) and (max-height: 700px) {
+    swiper-container {
+      height: 350px; /* Bardzo mała wysokość */
+      width: 98%; /* Maksymalnie szeroki */
+      
+      .topline {
+        font-size: 1.6em; /* Mały tekst */
+        top: 3px; /* Bardzo blisko góry */
+      }
     }
   }
 
