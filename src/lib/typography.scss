@@ -1,0 +1,413 @@
+/* ========================================
+   TYPOGRAPHY SYSTEM - SPÓJNY I RESPONSYWNY
+   ======================================== */
+
+/* Importy fontów */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* ========================================
+   GLOBALNE STYLE BAZOWE
+   ======================================== */
+
+/* Wszystkie elementy domyślnie używają Poppins */
+:global(*) {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Body i html */
+:global(html), :global(body) {
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+
+/* Przyciski */
+:global(button) {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Inputy i formularze */
+:global(input), :global(textarea), :global(select) {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Linki */
+:global(a) {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Listy */
+:global(ul), :global(ol), :global(li) {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Tabele */
+:global(table), :global(td), :global(th) {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Span i div */
+:global(span), :global(div) {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Bardzo specyficzne selektory dla kolorów */
+:global(*[class*="section-subtitle"]) {
+  color: var(--color-text-secondary, #666) !important;
+}
+
+:global(*[class*="section-title"]) {
+  color: var(--color-text-secondary, #666) !important;
+}
+
+/* ========================================
+   ZMIENNE TYPOGRAFICZNE
+   ======================================== */
+
+:root {
+  /* ===== KOLORY TEKSTU ===== */
+  --color-text-primary: #333 !important; /* Główny kolor tekstu */
+  --color-text-secondary: #666 !important; /* Drugorzędny kolor tekstu */
+  --color-text-light: #ccc !important; /* Jasny tekst */
+  --color-text-white: #fff !important; /* Biały tekst */
+
+  /* Rodziny fontów */
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+  
+  /* Wagi fontów */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Rozmiary bazowe - Desktop */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  --text-5xl: 3rem;      /* 48px */
+  --text-6xl: 3.75rem;   /* 60px */
+  
+  /* Wysokości linii */
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+}
+
+/* ========================================
+   NAGŁÓWKI - HIERARCHIA - GLOBALNE
+   ======================================== */
+
+:global(h1), :global(.h1) {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--font-weight-bold) !important;
+  font-size: var(--text-5xl) !important;
+  line-height: var(--leading-tight) !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+:global(h2), :global(.h2) {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  font-size: var(--text-4xl) !important;
+  line-height: var(--leading-tight) !important;
+  color: var(--color-text-secondary, #666) !important;
+  margin: 0 0 0.75rem 0 !important;
+  position: relative !important;
+  padding-left: 30px !important;
+}
+
+/* Dodatkowe selektory dla h2 */
+:global(section h2), :global(section .section-title) {
+  color: var(--color-text-secondary, #666) !important;
+}
+
+:global(h2::before), :global(.h2::before) {
+  content: "" !important;
+  position: absolute !important;
+  left: -14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 28px !important;
+  height: 43px !important;
+  background-image: url(/assets/red-arrow.svg) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+:global(h3), :global(.h3) {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  font-size: var(--text-2xl) !important;
+  line-height: var(--leading-snug) !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+:global(h4), :global(.h4) {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+  font-size: var(--text-xl) !important;
+  line-height: var(--leading-snug) !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 0 0.5rem 0 !important;
+}
+
+:global(h5), :global(.h5) {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+  font-size: var(--text-lg) !important;
+  line-height: var(--leading-normal) !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 0 0.25rem 0 !important;
+}
+
+:global(h6), :global(.h6) {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--font-weight-medium) !important;
+  font-size: var(--text-base) !important;
+  line-height: var(--leading-normal) !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 0 0.25rem 0 !important;
+}
+
+/* ========================================
+   TEKST PODSTAWOWY - GLOBALNE
+   ======================================== */
+
+:global(p), :global(.text-body) {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--font-weight-regular) !important;
+  font-size: var(--text-base) !important;
+  line-height: var(--leading-relaxed) !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+:global(.text-lead) {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--font-weight-regular) !important;
+  font-size: var(--text-lg) !important;
+  line-height: var(--leading-relaxed) !important;
+  color: var(--color-text-secondary) !important;
+  margin: 0 0 1.5rem 0 !important;
+}
+
+:global(.text-small) {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--font-weight-regular) !important;
+  font-size: var(--text-sm) !important;
+  line-height: var(--leading-normal) !important;
+  color: var(--color-text-secondary) !important;
+}
+
+:global(.text-xs) {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--font-weight-regular) !important;
+  font-size: var(--text-xs) !important;
+  line-height: var(--leading-normal) !important;
+  color: var(--color-text-secondary) !important;
+}
+
+/* ========================================
+   SPECJALNE KLASY TEKSTOWE - GLOBALNE
+   ======================================== */
+
+:global(.section-title) {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  font-size: var(--text-4xl) !important;
+  line-height: var(--leading-tight) !important;
+  color: var(--color-text-secondary) !important;
+  text-align: left !important;
+  position: relative !important;
+  padding-left: 30px !important;
+  margin: 0 0 1rem 0 !important;
+}
+
+:global(.section-title::before) {
+  content: "" !important;
+  position: absolute !important;
+  left: -14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 28px !important;
+  height: 43px !important;
+  background-image: url(/assets/red-arrow.svg) !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
+:global(.section-subtitle) {
+  font-family: var(--font-secondary) !important;
+  font-weight: var(--font-weight-regular) !important;
+  font-size: var(--text-lg) !important;
+  line-height: var(--leading-relaxed) !important;
+  color: var(--color-text-secondary, #666) !important;
+  margin-left: 1.4em !important;
+  margin-top: 0.5em !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Dodatkowe selektory dla pewności */
+:global(section .section-subtitle) {
+  color: var(--color-text-secondary, #666) !important;
+}
+
+:global(.section-header .section-subtitle) {
+  color: var(--color-text-secondary, #666) !important;
+}
+
+:global(.hero-title) {
+  font-family: var(--font-primary) !important;
+  font-weight: var(--font-weight-bold) !important;
+  font-size: var(--text-5xl) !important;
+  line-height: var(--leading-tight) !important;
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+/* ========================================
+   RESPONSYWNOŚĆ TYPOGRAFII
+   ======================================== */
+
+/* Tablet - 768px - 1199px */
+@media (min-width: 768px) and (max-width: 1199px) {
+  :root {
+    --text-xs: 0.7rem;     /* 11px */
+    --text-sm: 0.8rem;     /* 13px */
+    --text-base: 0.9rem;   /* 14px */
+    --text-lg: 1rem;       /* 16px */
+    --text-xl: 1.1rem;     /* 18px */
+    --text-2xl: 1.3rem;    /* 21px */
+    --text-3xl: 1.6rem;    /* 26px */
+    --text-4xl: 2rem;      /* 32px */
+    --text-5xl: 2.5rem;    /* 40px */
+    --text-6xl: 3rem;      /* 48px */
+  }
+  
+  :global(.section-title::before) {
+    transform: translateY(-50%) scale(0.9) !important;
+  }
+}
+
+/* Mobile - max 767px */
+@media (max-width: 767px) {
+  :root {
+    --text-xs: 0.65rem;    /* 10px */
+    --text-sm: 0.75rem;    /* 12px */
+    --text-base: 0.85rem;  /* 14px */
+    --text-lg: 0.95rem;    /* 15px */
+    --text-xl: 1rem;       /* 16px */
+    --text-2xl: 1.2rem;    /* 19px */
+    --text-3xl: 1.4rem;    /* 22px */
+    --text-4xl: 1.8rem;    /* 29px */
+    --text-5xl: 2.2rem;    /* 35px */
+    --text-6xl: 2.5rem;    /* 40px */
+  }
+  
+  :global(.section-title::before) {
+    transform: translateY(-50%) scale(0.8) !important;
+  }
+  
+  :global(.section-subtitle) {
+    margin-left: 1em !important;
+    color: var(--color-text-secondary, #666) !important;
+  }
+}
+
+/* Bardzo małe ekrany - max 480px */
+@media (max-width: 480px) {
+  :root {
+    --text-xs: 0.6rem;     /* 10px */
+    --text-sm: 0.7rem;     /* 11px */
+    --text-base: 0.8rem;   /* 13px */
+    --text-lg: 0.9rem;     /* 14px */
+    --text-xl: 0.95rem;    /* 15px */
+    --text-2xl: 1.1rem;    /* 18px */
+    --text-3xl: 1.3rem;    /* 21px */
+    --text-4xl: 1.6rem;    /* 26px */
+    --text-5xl: 2rem;      /* 32px */
+    --text-6xl: 2.2rem;    /* 35px */
+  }
+  
+  :global(.section-title::before) {
+    transform: translateY(-50%) scale(0.7) !important;
+  }
+}
+
+/* ========================================
+   HERO SWIPER TYPOGRAPHY - GLOBALNE
+   ======================================== */
+
+/* Responsywne rozmiary dla hero swiper */
+@media (min-width: 1200px) {
+  :global(swiper-slide button .headlines .topline) {
+    font-size: 2.2rem !important;
+    font-weight: var(--font-weight-bold) !important;
+    font-family: var(--font-primary) !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  :global(swiper-slide button .headlines .topline) {
+    font-size: 1.8rem !important;
+    font-weight: var(--font-weight-bold) !important;
+    font-family: var(--font-primary) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  :global(swiper-slide button .headlines .topline) {
+    font-size: 1.4rem !important;
+    font-weight: var(--font-weight-bold) !important;
+    font-family: var(--font-primary) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :global(swiper-slide button .headlines .topline) {
+    font-size: 1.2rem !important;
+    font-weight: var(--font-weight-bold) !important;
+    font-family: var(--font-primary) !important;
+  }
+}
+
+/* ========================================
+   FORCE COLORS - NAJWYŻSZY PRIORYTET
+   ======================================== */
+
+/* Wymuszenie kolorów na końcu pliku dla najwyższego priorytetu */
+:global(.section-title),
+:global(h2.section-title),
+:global(section h2),
+:global(section .section-title) {
+  color: #666 !important;
+}
+
+:global(.section-subtitle),
+:global(section .section-subtitle),
+:global(.section-header .section-subtitle) {
+  color: #666 !important;
+}
+
+/* Fallback dla wszystkich elementów z tymi klasami */
+:global([class*="section-title"]) {
+  color: #666 !important;
+}
+
+:global([class*="section-subtitle"]) {
+  color: #666 !important;
+}

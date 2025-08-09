@@ -682,7 +682,18 @@
     }
   }
 
-  @media (max-width: 757px) {
+  /* Responsywność nawigacji - uporządkowana */
+  
+  /* Średnie ekrany - lekkie zmniejszenie */
+  @media (min-width: 758px) and (max-width: 1024px) {
+    .ramka {
+      transform: scale(0.85);
+      transform-origin: center;
+    }
+  }
+  
+  /* Małe ekrany - większe zmniejszenie */
+  @media (min-width: 481px) and (max-width: 757px) {
     .desktop-menu-items {
       display: none;
     }
@@ -692,13 +703,36 @@
     .ramka {
       margin-left: 1em !important;
       margin-right: 1em !important;
+      transform: scale(0.7);
+      transform-origin: center;
     }
-
     .contenerNav {
       margin-top: 8px;
     }
     .mobile-menu-button-container {
       margin-right: 36px !important;
+    }
+  }
+
+  /* Bardzo małe ekrany - największe zmniejszenie */
+  @media (max-width: 480px) {
+    .desktop-menu-items {
+      display: none;
+    }
+    .mobile-menu-button-container {
+      display: block;
+    }
+    .ramka {
+      margin-left: 0.5em !important;
+      margin-right: 0.5em !important;
+      transform: scale(0.6);
+      transform-origin: center;
+    }
+    .contenerNav {
+      margin-top: 8px;
+    }
+    .mobile-menu-button-container {
+      margin-right: 20px !important;
     }
   }
 

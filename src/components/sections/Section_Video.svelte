@@ -124,6 +124,7 @@
     font-size: 2.5rem;
     color: white;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
   }
   .video-container {
     position: relative;

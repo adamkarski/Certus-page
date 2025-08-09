@@ -158,9 +158,11 @@ h3 {
   .image-header-02 h2 {
     margin: 0;
     font-size: 2.5rem;
-    color: white;
+    color: white !important; 
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     margin-left: -0.8em;
+    font-size: 2.5rem;
+    font-weight: 700;
   }
   .image-header-02 h2:before {
       content: "";

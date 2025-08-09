@@ -136,7 +136,7 @@
     max-width: 17vw !important;
 
       img {
-        margin-left: 0.3em;
+        margin-left: 0.5em;
       }
     }
   }

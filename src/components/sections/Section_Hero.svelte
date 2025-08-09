@@ -829,6 +829,11 @@
     transition: all;
   }
 
+section.hero .hero-bg{
+
+  height: 100%;
+}
+
   .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -923,14 +928,14 @@
 
     h1 {
       padding-left: 2rem;
-      font-family: "Poppins", sans-serif;
-      font-size: 48px;
-      font-weight: 700;
       color: #fff;
       text-align: left;
       margin-bottom: 1rem;
       position: absolute;
       top: -70px;
+      font-family: "Poppins", sans-serif;
+      font-size: 48px;
+      font-weight: 700;
     }
   }
 
@@ -960,334 +965,79 @@
   .hero {
     width: 100%;
     height: 100vh; /* Bazowa wysokość - będzie nadpisana przez media queries */
-    position: fixed;
+    position: relative;
     z-index: 0;
     top: 0px;
     transition: height 0.3s ease-in-out; /* Smooth transitions */
   }
 
-  /* RESPONSIVE BREAKPOINTS - UPORZĄDKOWANE */
+  /* RESPONSIVE BREAKPOINTS - UPORZĄDKOWANE I UPROSZCZONE */
   
-  /* Desktop - Duże ekrany (1920px+) */
-  @media (min-width: 1920px) {
+  /* Desktop - Duże ekrany (1200px+) */
+  @media (min-width: 1200px) {
     .hero {
       height: 100vh;
     }
     
     .hero-bg {
-      padding-top: 180px; /* Większy safe area na dużych ekranach */
+      padding-top: 120px;
     }
   }
 
-  /* Desktop - Średnie ekrany (1600px - 1919px) */
-  @media (min-width: 1600px) and (max-width: 1919px) {
+  /* Tablet - Landscape (768px - 1199px) */
+  @media (min-width: 768px) and (max-width: 1199px) {
     .hero {
-      height: 95vh;
-    }
-  
-    .hero-bg {
-      padding-top: 170px; /* Safe area na średnich ekranach */
-    }
-  }
-
-  /* Desktop - Małe ekrany (1280px - 1599px) */
-  @media (min-width: 1280px) and (max-width: 1599px) {
-    .hero {
-      height: 95vh; /* Zwiększone z 90vh - swiper rozciągnięty w dół */
+      height: 90vh;
     }
     
     .hero-bg {
-      padding-top: 180px; /* Zwiększony safe area dla niskich ekranów */
-    }
-    swiper-slide button .headlines .topline{
-      font-size: 1.8rem !important;
+      padding-top: 100px;
     }
   }
 
-  @media (min-width: 1024px)  {
-    swiper-slide button .headlines .topline{
-      font-size: 1.6rem !important;
-    }
-  }
-
-  /* Laptop - Średnie (1024px - 1279px) */
-  @media (min-width: 1024px) and (max-width: 1279px) {
-    .hero {
-      height: 85vh;
-    }
-  }
-
-  /* Tablet - Landscape (768px - 1023px) */
-  @media (min-width: 768px) and (max-width: 1023px) {
+  /* Mobile - (max 767px) */
+  @media (max-width: 767px) {
     .hero {
       height: 80vh;
     }
+    
+    .hero-bg {
+      padding-top: 80px;
+    }
   }
 
-  /* Mobile - Landscape (481px - 767px) */
-  @media (min-width: 481px) and (max-width: 767px) {
+  /* Bardzo małe ekrany */
+  @media (max-width: 480px) {
     .hero {
       height: 75vh;
     }
     
     .hero-bg {
-      padding-top: 140px; /* Dostosowane safe area na mobile landscape */
-    }
-  }
-
-  /* Mobile - Portrait (max 480px) */
-  @media (max-width: 480px) {
-    .hero {
-      height: 70vh;
-    }
-    
-    .hero-bg {
-      padding-top: 130px; /* Dostosowane safe area na mobile */
-    }
-  }
-
-  /* SPECJALNE PRZYPADKI */
-  
-  /* Pionowe rozdzielczości (aspect ratio < 1.2) */
-  @media (min-width: 1024px) and (max-aspect-ratio: 6/5) {
-    .hero {
-      height: 60vh;
-    }
-  }
-
-  /* Bardzo szerokie ekrany (aspect ratio > 2.5) */
-  @media (min-width: 1024px) and (min-aspect-ratio: 5/2) {
-    .hero {
-      height: 100vh;
-    }
-  }
-
-  /* Fix dla bardzo niskich ekranów laptop */
-  @media (min-width: 1024px) and (max-height: 700px) {
-    
- 
-
-
-    .hero {
-      height: 100vh; /* Usuń display: none - hero zawsze widoczne */
-    }
-    
-    .hero-bg {
-      padding-top: 200px; /* Duży safe area dla bardzo niskich ekranów */
-    }
-  }
-
-  /* SPECJALNE REGUŁY DLA PROBLEMATYCZNYCH ROZDZIELCZOŚCI */
-  
-  /* 1280x720, 1366x768 - niskie ekrany laptop */
-  @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
-   
- 
-
-    .hero {
-      height: 100vh; /* Pełna wysokość dla niskich ekranów */
-    }
-    
-    .hero-bg {
-      padding-top: 200px; /* Duży safe area - teksty bezpieczne */
-    }
-  }
-
-  /* 1600x900 - szerokie ale niskie ekrany */
-  @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
-    .hero {
-      height: 100vh; /* Pełna wysokość */
-    }
-    
-    .hero-bg {
-      padding-top: 190px; /* Duży safe area */
+      padding-top: 60px;
     }
   }
 
   /* ————————————————  GLOBAL STYLES - OFERTA POSITIONING  ———————————————— */
   
-  /* Reset #oferta - zawsze pod hero */
+  /* Reset #oferta - teraz normalny flow, ponieważ hero nie jest fixed */
   :global(.home #oferta) {
     position: relative !important;
-    z-index: 516 !important;
-    margin-top: 100vh !important; /* Bazowa wartość */
-    transition: margin-top 0.3s ease-in-out !important; /* Smooth transitions */
+    z-index: 1 !important;
+    margin-top: 0px !important; /* Normalny flow */
   }
 
-  /* RESPONSIVE OFERTA POSITIONING */
-  
-  /* Desktop - Duże ekrany (1920px+) */
-  @media (min-width: 1920px) {
-    :global(.home #oferta) {
-      margin-top: 90vh !important;
-    }
-    .hero {
-      margin-top: 30px; /* Duży safe area dla bardzo niskich ekranów */
-    }
-  }
-
-  /* Desktop - Średnie ekrany (1600px - 1919px) */
-  @media (min-width: 1600px) and (max-width: 1919px) {
-    :global(.home #oferta) {
-      margin-top: 90vh !important;
-      }
-  
-     
-      /* swiper-container swiper-slide.swiper-slide-active button{
-        transform: scale(0.85) !important;
-    }*/
-      swiper-container swiper-slide {
-        transform: scale(0.8);
-      }
-
-
-  
-  }
-
-
-  /* Desktop - Małe ekrany (1280px - 1599px) */
-  @media (min-width: 1280px) and (max-width: 1599px) {
-    :global(.home #oferta) {
-      margin-top: 90vh !important;
-    }
-  }
-
-  /* Laptop - Średnie (1024px - 1279px) */
-  @media (min-width: 1024px) and (max-width: 1279px) {
-    :global(.home #oferta) {
-      margin-top: 85vh !important;
-    }
-  }
-
-  /* Tablet - Landscape (768px - 1023px) */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    :global(.home #oferta) {
-      margin-top: 70vh !important;
-    }
-  }
-
-  /* Mobile - Landscape (481px - 767px) */
-  @media (min-width: 481px) and (max-width: 767px) {
-    :global(.home #oferta) {
-      margin-top: 65vh !important;
-    }
-  }
-
-  /* Mobile - Portrait (max 480px) */
-  @media (max-width: 480px) {
-    :global(.home #oferta) {
-      margin-top: 70vh !important;
-    }
-  }
-
-  /* SPECJALNE PRZYPADKI - OFERTA */
-  
-  /* Pionowe rozdzielczości (aspect ratio < 1.2) */
-  @media (min-width: 1024px) and (max-aspect-ratio: 6/5) {
-    :global(.home #oferta) {
-      margin-top: 50vh !important;
-    }
-  }
-
-  /* Bardzo szerokie ekrany (aspect ratio > 2.5) */
-  @media (min-width: 1024px) and (min-aspect-ratio: 5/2) {
-    :global(.home #oferta) {
-      margin-top: 100vh !important;
-    }
-  }
+  /* Usunieto skomplikowane pozycjonowanie - teraz normalny flow */
 
   /* ————————————————  GLOBAL STYLES - ONAS POSITIONING  ———————————————— */
   
-  /* Sekcja O-NAS - lekko wystaje z dołu hero na stronie głównej */
+  /* Sekcja O-NAS - normalny flow, bez nakładania */
   :global(.home #o-nas) {
     position: relative !important;
-    z-index: 10 !important; /* Wyższy niż hero (z-index: 0) ale niższy niż navbar (z-index: 50) */
-    margin-top: -100px !important; /* Lekko wystaje z dołu hero */
+    z-index: 1 !important;
+    margin-top: 0px !important; /* Normalny flow */
   }
 
-  /* RESPONSIVE ONAS POSITIONING */
-  
-  /* Desktop - Duże ekrany (1920px+) */
-  @media (min-width: 1920px) {
-    :global(.home #o-nas) {
-      margin-top: -120px !important; /* Więcej wystawania na dużych ekranach */
-    }
-  }
-
-  /* Desktop - Średnie ekrany (1600px - 1919px) */
-  @media (min-width: 1600px) and (max-width: 1919px) {
-    :global(.home #o-nas) {
-      margin-top: -110px !important;
-    }
-  }
-
-  /* Desktop - Małe ekrany (1280px - 1599px) */
-  @media (min-width: 1280px) and (max-width: 1599px) {
-    :global(.home #o-nas) {
-      margin-top: -100px !important;
-    }
-  }
-
-  /* Laptop - Średnie (1024px - 1279px) */
-  @media (min-width: 1024px) and (max-width: 1279px) {
-    :global(.home #o-nas) {
-      margin-top: -90px !important;
-    }
-  }
-
-  /* Tablet - Landscape (768px - 1023px) */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    :global(.home #o-nas) {
-      margin-top: -80px !important;
-    }
-  }
-
-  /* Mobile - Landscape (481px - 767px) */
-  @media (min-width: 481px) and (max-width: 767px) {
-    :global(.home #o-nas) {
-      margin-top: -70px !important;
-    }
-  }
-
-  /* Mobile - Portrait (max 480px) */
-  @media (max-width: 480px) {
-    :global(.home #o-nas) {
-      margin-top: -60px !important;
-    }
-  }
-
-  /* SPECJALNE PRZYPADKI - ONAS POSITIONING DLA PROBLEMATYCZNYCH ROZDZIELCZOŚCI */
-  
-  /* 1280x720, 1366x768 - niskie ekrany laptop */
-  @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
-    :global(.home #o-nas) {
-      margin-top: -80px !important; /* Mniejsze wystawanie dla niskich ekranów */
-    }
-  }
-
-  /* 1600x900 - szerokie ale niskie ekrany */
-  @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
-    :global(.home #o-nas) {
-      margin-top: -90px !important; /* Dostosowane wystawanie */
-    }
-  }
-
-  /* Bardzo niskie ekrany laptop (height < 700px) */
-  @media (min-width: 1024px) and (max-height: 700px) {
-    :global(.home #o-nas) {
-      margin-top: -60px !important; /* Minimalne wystawanie */
-    }
-  }
-  .hero-bg {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    /* NAVBAR SAFE AREA - zapobiega nakładaniu się navbar na teksty hero */
-    /* Swiper musi być między navbar a sekcją onas */
-    padding-top: 160px; /* Dostosowane dla lepszego pozycjonowania między navbar a onas */
-    margin-top: -80px;
-  }
+  /* Usunieto skomplikowane media queries - teraz normalny flow */
 
   .hero-content {
     position: relative;
@@ -1318,12 +1068,12 @@
   }
   .category-content h1 {
     color: #fff;
-    font-family: "Poppins", sans-serif;
-    font-size: 48px;
-    font-weight: 700;
     text-align: center;
     margin: 0;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-family: "Poppins", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
   }
   .category-image {
     max-width: 600px;
@@ -1535,9 +1285,6 @@
   .headlines .topline {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     color: #fff;
-    font-family: "Poppins", sans-serif;
-    font-size: 38px;
-    font-weight: 700;
     line-height: 1;
     transition: all 0.3s ease;
     position: absolute;
@@ -1545,6 +1292,9 @@
     /* Safe area - teksty nigdy nie będą przykryte przez navbar */
     top: 20px; /* Dodatkowy margines od góry */
     min-height: 60px; /* Minimalna wysokość dla lepszego pozycjonowania */
+    font-family: "Poppins", sans-serif;
+    font-size: 38px;
+    font-weight: 700;
   }
   .items:hover .headlines .topline {
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);

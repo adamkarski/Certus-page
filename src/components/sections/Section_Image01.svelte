@@ -94,6 +94,7 @@
     z-index: 2;
     margin-left: 11em;
     margin-top: -15em;
+    
 
     h1:before {
       content: "";
@@ -105,6 +106,10 @@
     }
     h1 {
     margin: 0;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
     font-size: 2.5rem;
     color: white;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);

@@ -77,6 +77,9 @@
 
 <style lang="scss">
 
+
+
+
 :global(#o-nas button )
    {
     width: auto;
@@ -103,13 +106,7 @@
     align-items: start;
   }
 
-  .section-title {
-    color: var(--color-text-secondary);
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 38px;
-    text-align: left;
-  }
+  /* Lokalny styl usunięty - używamy globalnego z typography.scss */
 
   .o-nas-description {
     color: #666;
@@ -181,9 +178,7 @@
       gap: 50px;
     }
 
-    .section-title {
-      font-size: 32px;
-    }
+    /* Lokalny styl usunięty - używamy globalnego z typography.scss */
 
     .o-nas-right {
       order: -1;

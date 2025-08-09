@@ -85,6 +85,7 @@
 </section>
 
 <style lang="scss">
+  
   .onas-container {
     overflow: hidden;
     width: 100%;
@@ -249,6 +250,7 @@
   .content-section {
     margin-bottom: 60px;
     
+  
     .section-title {
       position: relative;
       color: var(--color-text-secondary);
@@ -267,7 +269,6 @@
         background-image: url(/assets/red-arrow.svg);
       }
     }
-    
     p {
       line-height: 1.8;
       font-size: 1.1rem;
@@ -312,10 +313,10 @@
       font-size: 0.98rem;
     }
     
+   
     .content-section .section-title {
       font-size: 28px;
     }
-    
     .onas-details {
       padding: 80px 0;
     }

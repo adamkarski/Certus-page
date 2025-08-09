@@ -99,6 +99,7 @@
     }
     .section-subtitle {
       font-size: 14px;
+      color: var(--color-text-secondary);
     }
   }
 </style>
