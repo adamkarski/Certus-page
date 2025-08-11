@@ -108,19 +108,12 @@
     overflow: hidden;
     width: 100%;
     padding: 0 0rem;
-    .text-container {
-        margin-left: -30px !important;
-      }
   }
 
   :global(body.maszyny .oferta-container) {
     padding-left: 6em !important;
     padding-right: 6em !important;
   }
-
-
-
-
 
   :global(.oferta-grid) {
     display: grid;
@@ -135,13 +128,14 @@
       align-items: end;
       justify-content: start;
       align-content: center;
-  
 
       span {
         text-align: left;
       }
     }
-
+    .oferta-card {
+      width: min-content;
+    }
     .oferta-card:hover {
       transform: translateY(-5px);
     }

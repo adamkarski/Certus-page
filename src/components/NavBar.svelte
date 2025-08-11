@@ -365,6 +365,14 @@
           {/if}
         </div>
         <div class="mobile-links-container">
+          <a
+            href="/"
+            class="mobile-nav-link"
+            class:active={isHomeActive}
+            on:click={closeMobileMenu}
+          >
+            Strona główna
+          </a>
           <button
             class="mobile-nav-link expandable"
             on:click={() => (isMobileMaszynyOpen = !isMobileMaszynyOpen)}

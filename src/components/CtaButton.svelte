@@ -5,7 +5,7 @@
   export let disabled: boolean = false;
   export let hero: boolean = false; // Dodajemy propsa do wariantu hero
   export let classs: string = "";
-
+  import { typoFixAction } from "$lib/utils/typography"; // Importujemy akcję do poprawy typografii
   const dispatch = createEventDispatcher();
 </script>
 
@@ -17,7 +17,7 @@
   {disabled}
 >
   <span class="text-container">
-    <span class="maszyny_span">{text}</span>
+    <span use:typoFixAction class="maszyny_span">{text}</span>
   </span>
   <span class="svg-container">
     <svg

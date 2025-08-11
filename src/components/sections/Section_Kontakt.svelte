@@ -478,9 +478,11 @@
     font-weight: 400;
     margin-bottom: 32px;
     line-height: 1.2;
-    color: white;
+    color: white !important;
+    font-weight: 600;
     max-width: 300px;
     left: -31px;
+    
   }
 
   .contact-bullets {
@@ -644,10 +646,22 @@
     .contact-flex .background .contact {
       flex-direction: column !important;
       margin: 60px auto;
+      
       max-width: 100%;
       gap: 0px;
     }
+    .contact-flex .background{
+      padding: 0px 2em;
+      padding-bottom: 3em;
+      
+      
+      button{
+img{    width: 3rem;
+}
     
+      }
+
+    }
     .contact-left {
       border-radius: 20px 20px 0px 0px !important;
       min-width: 100% !important;

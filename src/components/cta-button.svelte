@@ -37,6 +37,7 @@
 
 :global(.oferta-card){
   transform: scale(0.85);
+
 }
 
   .cta-button {
