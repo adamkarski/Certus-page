@@ -760,7 +760,7 @@
     outline-offset: 0px;
   }
   nav {
-    width: 100%;
+    width: 100vw;
     margin-top: 0;
     padding-top: 2.3em;
     background: transparent;

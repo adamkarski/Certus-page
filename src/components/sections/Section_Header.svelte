@@ -45,7 +45,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    height: 80px;
+
   }
   
   .header-container {

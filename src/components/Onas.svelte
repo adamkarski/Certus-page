@@ -1,8 +1,10 @@
 <script lang="ts">
+	import DiagonalSliceReveal from './DiagonalSliceReveal.svelte';
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import { typoFixAction } from '$lib/utils/typography';
   
+
   let sectionEl: HTMLElement;
   let visible = false;
 
@@ -30,8 +32,14 @@
       <hr />
     </div>
     
-    <div class="content-intro">
-      <p class="intro-text" use:typoFixAction>Jesteśmy bardzo dumni z naszej ponad 10-letniej historii w branży nowoczesnych maszyn CNC. Nasze doświadczenie to oczywiście nie tylko liczby! Nasz sukces liczymy bowiem w ilości udanych projektów oraz w pełni zadowolonych Klientów.</p>
+    <div class="content-layout">
+      <div class="content-intro">
+        <p class="intro-text" use:typoFixAction>Jesteśmy bardzo dumni z naszej ponad 20-letniej historii w branży nowoczesnych maszyn CNC. Nasze doświadczenie to oczywiście nie tylko liczby! Nasz sukces liczymy bowiem w ilości udanych projektów oraz w pełni zadowolonych Klientów.</p>
+      </div>
+      <div class="content-image">
+        <DiagonalSliceReveal  src="/assets/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg" alt="O nas - maszyny CNC"/>
+       
+      </div>
     </div>
   </div>
 </section>
@@ -112,6 +120,7 @@
       left: 0;
       bottom: -10px;
       pointer-events: auto;
+      overflow: hidden;
     }
   }
 
@@ -142,14 +151,36 @@
     margin-bottom: 80px;
   }
 
-  .content-intro {
+  .content-layout {
+    display: flex;
+    align-items: center;
+    gap: 60px;
     margin-bottom: 40px;
+  }
+
+  .content-intro {
+    flex: 1;
     
     .intro-text {
       font-size: 1.2rem;
       line-height: 1.8;
       color: var(--color-text-secondary);
       margin: 0;
+    }
+  }
+
+  .content-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .about-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -296,6 +327,11 @@
     
     .onas-container {
       padding: 0 2rem;
+    }
+    
+    .content-layout {
+      flex-direction: column;
+      gap: 40px;
     }
     
     .content-intro .intro-text {

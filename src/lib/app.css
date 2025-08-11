@@ -313,15 +313,17 @@ h2 {
   color: #666 !important;
 }
 
-/* DEBUG - tymczasowy test kolorów */
+
 .section-title {
-  background: rgba(255, 0, 0, 0.1) !important; /* Czerwone tło dla debugowania */
-  border: 1px solid red !important;
-  color: #666 !important;
+  color: var(--color-text-secondary);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 38px;
+  text-align: left;
+  margin-bottom: 30px;
 }
 
 .section-subtitle {
-  background: rgba(0, 255, 0, 0.1) !important; /* Zielone tło dla debugowania */
-  border: 1px solid green !important;
-  color: #666 !important;
+  font-size: 20px;
+  color: var(--color-text-secondary);
 }

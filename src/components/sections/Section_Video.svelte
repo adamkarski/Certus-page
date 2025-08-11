@@ -116,6 +116,7 @@
       height: 46px;
       margin-left: -40px;
       background-image: url(assets/red-arrow.svg);
+      margin-top: 4px;;
     }
   }
   .video-header h1 {

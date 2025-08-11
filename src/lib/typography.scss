@@ -131,6 +131,11 @@
 :global(section h2), :global(section .section-title) {
   color: var(--color-text-secondary, #666) !important;
 }
+:global(section .section-title) {
+  color: var(--color-text-secondary, #666) !important;
+  font-weight: 500;
+  font-size: var(--text-4xl) !important;
+}
 
 :global(h2::before), :global(.h2::before) {
   content: "" !important;
@@ -247,6 +252,10 @@
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
+
+
+
+
 
 :global(.section-subtitle) {
   font-family: var(--font-secondary) !important;
@@ -402,6 +411,7 @@
 :global(.section-header .section-subtitle) {
   color: #666 !important;
 }
+
 
 /* Fallback dla wszystkich elementów z tymi klasami */
 :global([class*="section-title"]) {

@@ -78,6 +78,9 @@ body.home {
   .dropDownMenu {
     padding: 5px;
   }
+
+
+
 }
 
 @media (min-width: 757px) and (max-width: 932px) {
@@ -150,10 +153,16 @@ body.home {
   }
 }
 
+
 @media (max-width: 927px) {
   .logomini {
     min-width: 62px !important;
     width: 30px;
+  }
+  body.maszyny .topImage{
+
+    width: 16rem !important;
+    padding-right: 1em !important;
   }
 }
 
@@ -328,6 +337,15 @@ body.home {
     padding-left: 25px !important;
     bottom: 1.5em !important;
   }
+
+  body.maszyny .topImage{
+
+    width: 12rem !important;
+    padding-right: 1em !important;
+  }
+  body.maszyny .maszyny-dane-hr{
+    width: 100% !important;
+  }
 }
 
 /* ========================================
@@ -335,6 +353,11 @@ body.home {
    ======================================== */
 
 @media (max-width: 480px) {
+  body.maszyny .topImage{
+
+    width: 8rem !important;
+    padding-right: 1em !important;
+  }
   :global(.maszyny-dane-tabela img) {
     width: 30px !important;
   }
