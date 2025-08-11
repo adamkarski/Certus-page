@@ -641,19 +641,78 @@
   }
 
   @media (max-width: 900px) {
-    .contact-flex {
-      flex-direction: column;
-      padding: 24px 6px;
-      gap: 24px;
-    }
-    .contact-left,
-    .contact-right {
+    .contact-flex .background .contact {
+      flex-direction: column !important;
+      margin: 60px auto;
       max-width: 100%;
-      min-width: 0;
-      padding: 24px 12px;
+      gap: 0px;
     }
+    
+    .contact-left {
+      border-radius: 20px 20px 0px 0px !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+      padding: 30px 24px;
+    }
+    
+    .contact-right {
+      min-width: 100% !important;
+      max-width: 100% !important;
+      flex: 1;
+    }
+    
     .contact-form {
-      padding: 24px 10px;
+      padding: 30px 24px;
+      border-radius: 0px 0px 20px 20px !important;
+    }
+    
+    .contact-left:before {
+      display: none; // Ukrywa trójkąt na małych ekranach
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .contact-flex {
+      padding: 0px 15px;
+    }
+    
+    .contact-flex .background .contact {
+      margin: 40px auto;
+      border-radius: 12px;
+    }
+    
+    .contact-left {
+      border-radius: 12px 12px 0px 0px !important;
+      padding: 24px 20px;
+    }
+    
+    .contact-left h2 {
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+    }
+    
+    .contact-bullets li {
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+    
+    .contact-form {
+      padding: 24px 20px;
+      border-radius: 0px 0px 12px 12px !important;
+    }
+    
+    .form-row {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .message-mode-selection {
+      flex-direction: column;
+      
+      button {
+        width: 100%;
+        height: 80px;
+      }
     }
   }
 </style>

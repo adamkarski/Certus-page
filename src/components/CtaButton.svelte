@@ -63,6 +63,14 @@
       transition: transform 0.4s ease;
     }
 
+
+    :global(.oferta-card .oferta-cta .svg-container)
+    {
+
+      display: none !important;
+
+    }
+
     .svg-container {
       position: absolute;
       right: 0;
@@ -128,9 +136,9 @@
 
     background-color: transparent;
     color: var(--color-text-primary);
-    position: relative;
+    position: relative; 
     border-left: 0px solid #7e8c00;
-    
+    padding: 14px;
     .svg-container {
       // background-color: #7e8c00;
     }

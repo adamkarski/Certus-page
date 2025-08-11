@@ -35,7 +35,7 @@
         <h5 class="footer-description" use:typoFixAction>Możesz nam zaufać!</h5>
 
         <h5 class="footer-description-secondary" use:typoFixAction>
-          Jesteśmy polskim producentem z ponad 10 letnim doświadczeniem w branży maszyn CNC.
+          Jesteśmy polskim producentem z ponad 20 letnim doświadczeniem w branży maszyn CNC.
         </h5>
        
 

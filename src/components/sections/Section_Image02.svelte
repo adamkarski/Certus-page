@@ -154,6 +154,12 @@ h3 {
     left: 0;
     top: 0;
     padding-left: 11em;
+    h3{
+
+      font-weight: 500 !important;
+      margin-left: -27px;
+      font-size: 1.2rem;
+    }
   }
   .image-header-02 h2 {
     margin: 0;

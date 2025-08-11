@@ -9,6 +9,7 @@
   import CtaButton from "./CtaButton.svelte";
   import { cubicOut } from "svelte/easing";
   import { activePage, resetHeroSwiper } from "$lib/visibilityStore";
+  import { scrollToElement } from "$lib/utils/smoothScroll";
 
   // State for mobile menu
   let isMobileMenuOpen = false;
@@ -103,7 +104,7 @@
         if (!visible) {
           showLottie = true;
         }
-      });
+      });Ļ
       showLottie = true;
 
       cleanup = () => {
@@ -128,10 +129,8 @@
     await tick();
 
     if (currentPath.startsWith("/maszyny")) {
-      const element = document.getElementById(categoryId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      // Używamy wspólnej funkcji scrollowania z smooth easing
+      scrollToElement(categoryId, 1000, 140); // 1 sekunda animacji, 140px offset
     } else {
       goto(`/maszyny/#${categoryId}`);
     }

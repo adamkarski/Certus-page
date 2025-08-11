@@ -1,5 +1,6 @@
 <script lang="ts">
   import CtaButton from "./CtaButton.svelte";
+  import { scrollToElement } from "$lib/utils/smoothScroll";
 
   export let variant: 'homepage' | 'maszyny' = 'homepage';
 
@@ -8,11 +9,8 @@
       // For homepage - navigate to maszyny page with hash
       window.location.href = `/maszyny#${sectionId}`;
     } else {
-      // For maszyny page - scroll to section
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      // For maszyny page - scroll to section with smooth animation
+      scrollToElement(sectionId, 1200, 140); // 1.2 sekundy animacji, 140px offset
     }
   }
 </script>
@@ -109,6 +107,8 @@
   :global(.oferta-grid) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+  
+
 
     .oferta-card {
       padding: 10px 0px;
@@ -119,6 +119,11 @@
       align-items: end;
       justify-content: center;
       align-content: center;
+    
+
+    span{
+      text-align: left;
+    }
     }
 
     .oferta-card:hover {
@@ -126,17 +131,17 @@
     }
 
     .oferta-icon {
-      font-size: 60px;
+      font-size: 50px;
       margin-bottom: 25px;
       display: block;
-      width: 4em;
-      display: block;
-    width: 4em;
-    min-width: 112px;
-    max-width: 17vw !important;
+      width: 3.5em;
+      min-width: 100px;
+      max-width: 140px !important;
 
       img {
-        margin-left: 0.5em;
+        margin-left: 0.3em;
+        width: 100%;
+        height: auto;
       }
     }
   }
@@ -145,7 +150,68 @@
   @media (min-width: 1617px) {
     :global(.oferta-grid) {
       grid-template-columns: repeat(6, 1fr);
+      
+      .oferta-icon {
+        font-size: 45px;
+        width: 3.2em;
+        max-width: 120px !important;
+      }
     }
+  }
+
+  // Układ pionowy poniżej 600px
+  @media (max-width: 600px) {
+    :global(.oferta-grid) {
+      grid-template-columns: 1fr;
+      gap: 25px;
+      
+      .oferta-card {
+        padding: 20px 15px;
+        max-width: 320px;
+        margin: 0 auto;
+        
+        // Dostosowanie ikon
+        .oferta-icon {
+          font-size: 45px;
+          margin-bottom: 20px;
+          width: 3.5em;
+          min-width: 90px;
+          max-width: 120px !important;
+          
+          img {
+            margin-left: 0.3em;
+            width: 100%;
+            height: auto;
+          }
+        }
+        
+        // Dostosowanie przycisków CTA
+        :global(.oferta-cta) {
+          width: 100% !important;
+          max-width: 100% !important;
+          font-size: 0.9rem !important;
+          height: auto !important;
+          min-height: 50px !important;
+          padding: 12px 15px !important;
+        }
+      }
+    }
+  }
+
+  // Style dla przycisków CTA - pozwalamy na łamanie tekstu
+  :global(.oferta-cta) {
+    width: 100% !important;
+    min-width: 180px !important;
+    max-width: 100% !important;
+    clip-path:none !important;
+  }
+
+  :global(.oferta-cta .text-container .maszyny_span) {
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.3 !important;
+    text-align: left !important;
+    display: block !important;
   }
 
   @media (max-width: 768px) {

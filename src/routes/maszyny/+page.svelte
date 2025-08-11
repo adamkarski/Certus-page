@@ -6,14 +6,16 @@
   import Section_Referencje from "../../components/sections/Section_Referencje.svelte";
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
+  import { scrollToElement } from "$lib/utils/smoothScroll";
 
   onMount(() => {
     if (browser && window.location.hash) {
       const id = window.location.hash.substring(1); // Remove the #
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      
+      // Krótkie opóźnienie, żeby strona się załadowała
+      setTimeout(() => {
+        scrollToElement(id, 1200, 140); // 1.2 sekundy animacji, 140px offset
+      }, 300);
     }
   });
 </script>

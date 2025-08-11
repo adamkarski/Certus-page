@@ -10,6 +10,7 @@
 
   // Import istniejących komponentów
   import CtaButton from "./CtaButton.svelte";
+  import { smoothScrollTo } from "$lib/utils/smoothScroll";
 
   let sectionEl: HTMLElement;
   let benefitsSectionEl: HTMLElement;
@@ -57,15 +58,10 @@
   function scrollToServices() {
     const servicesSection = document.getElementById("serwis-services");
     if (servicesSection) {
-      const headerOffset = 100;
-      const elementPosition = servicesSection.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      const elementPosition = servicesSection.getBoundingClientRect().top + window.pageYOffset;
+      
+      // Używamy wspólnej funkcji scrollowania
+      smoothScrollTo(elementPosition, 1000, 140); // 1 sekunda animacji, 140px offset
     }
   }
 

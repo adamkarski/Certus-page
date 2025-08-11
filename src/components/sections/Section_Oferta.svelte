@@ -12,9 +12,9 @@
       </h2>
 
       <p class="section-subtitle" use:typoFixAction>
-        10 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów
-        CNC.<br /><br />
-        Kompleksowa obsługa od projektu po serwis.<br /><br />
+       20 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów
+        CNC.<br />
+        Kompleksowa obsługa od projektu po serwis.<br />
         — wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy
       </p>
     </div>

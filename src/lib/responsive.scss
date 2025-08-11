@@ -8,8 +8,7 @@
    - 480px: Mobile portrait
 */
 
-
-#video{
+#video {
   position: relative;
   z-index: 1;
 }
@@ -65,7 +64,37 @@ body.home {
 }
 
 /* Stare skomplikowane media queries usunięte - teraz używamy prostszego systemu */
-
+@media (max-width: 1200px) {
+  .video-header,
+  .image-header {
+    margin-left: 4em !important;
+    margin-top: -13em !important;
+    h1 {
+      font-size: 2rem !important;
+    }
+    h1:before {
+      margin-top: 0px !important;
+      transform: scale(0.9) !important;
+    }
+  }
+  
+  .image-header-02 {
+    h3 {
+      font-weight: 500 !important;
+      margin-left: -23px !important;
+      font-size: 1rem !important;
+    }
+    margin-left: -5em !important;
+    margin-top: -0.5em !important;
+    h2 {
+      font-size: 2rem !important;
+    }
+    h2:before {
+      margin-top: 0px !important;
+      transform: scale(0.9) !important;
+    }
+  }
+}
 @media (min-width: 932px) and (max-width: 1014px) {
   .nav-link {
     text-align: center;
@@ -78,12 +107,31 @@ body.home {
   .dropDownMenu {
     padding: 5px;
   }
+}
 
+
+@media (max-width: 932px) {
+
+  .image-container-02 {
+    
+    .phone-holder{
+
+      right:1em !important;
+      margin-top: -50px !important;
+    }
+    
+    a {
+      font-size: 1.4rem !important;
+      margin-left: 0px !important;
+    }
+  }
 
 
 }
-
 @media (min-width: 757px) and (max-width: 932px) {
+ 
+
+
   .oferta-container {
     padding: 0 1rem !important;
   }
@@ -153,20 +201,21 @@ body.home {
   }
 }
 
-
 @media (max-width: 927px) {
   .logomini {
     min-width: 62px !important;
     width: 30px;
   }
-  body.maszyny .topImage{
-
+  body.maszyny .topImage {
     width: 16rem !important;
     padding-right: 1em !important;
   }
 }
 
 @media (max-width: 1200px) {
+  body.maszyny .maszyny-dane-cta {
+    padding-bottom: 5em;
+  }
   .activeMachine {
     flex-direction: column !important;
     padding: 1rem !important;
@@ -338,12 +387,11 @@ body.home {
     bottom: 1.5em !important;
   }
 
-  body.maszyny .topImage{
-
+  body.maszyny .topImage {
     width: 12rem !important;
     padding-right: 1em !important;
   }
-  body.maszyny .maszyny-dane-hr{
+  body.maszyny .maszyny-dane-hr {
     width: 100% !important;
   }
 }
@@ -353,8 +401,7 @@ body.home {
    ======================================== */
 
 @media (max-width: 480px) {
-  body.maszyny .topImage{
-
+  body.maszyny .topImage {
     width: 8rem !important;
     padding-right: 1em !important;
   }
