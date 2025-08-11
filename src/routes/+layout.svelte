@@ -8,6 +8,7 @@
   import { activePage } from "$lib/visibilityStore";
   import { landingVisible } from '$lib/landingStore';
   import LandingTargi from '../components/landing_targi.svelte';
+  import DevResolutionDisplay from '../components/DevResolutionDisplay.svelte';
   let loading = true;
   onMount(() => {
     // Sprawdź czy strona już się załadowała
@@ -54,8 +55,8 @@
   <LandingTargi />
 {/if}
 
-
-
+<!-- Dev Resolution Display - only visible during development -->
+<!-- <DevResolutionDisplay /> -->
 
 
 <style lang="scss">

@@ -35,6 +35,10 @@
 </button>
 
 <style lang="scss">
+  :global(.oferta-card .oferta-cta:hover .svg-container) {
+    display: none !important;
+  }
+
   button {
     clip-path: polygon(0% 1%, 100% 0, 80% 100%, 0% 100%);
 
@@ -61,15 +65,10 @@
 
     .text-container {
       transition: transform 0.4s ease;
+      width: 81%; 
     }
 
-
-    :global(.oferta-card .oferta-cta .svg-container)
-    {
-
-      display: none !important;
-
-    }
+    
 
     .svg-container {
       position: absolute;
@@ -100,7 +99,9 @@
       background-color: #7e8c00;
       color: white;
       border-radius: 0px;
+      
       .text-container {
+        // width: 50%; // Ustawiamy szerokość na auto, aby tekst mógł się rozciągać
         transform: translateX(-25px); // Przesuwamy tekst w lewo
       }
 
@@ -132,21 +133,19 @@
       background-color: #7e8c00;
     }
   }
-  button.oferta-cta{
-
+  button.oferta-cta {
     background-color: transparent;
     color: var(--color-text-primary);
-    position: relative; 
+    position: relative;
     border-left: 0px solid #7e8c00;
     padding: 14px;
     .svg-container {
       // background-color: #7e8c00;
     }
     .cta-svg {
-     
     }
     .text-container {
-     text-align: left;
+      text-align: left;
       transition: transform 0.4s ease;
     }
     &:hover {
@@ -154,10 +153,9 @@
       border-left: 4px solid #7e8c00;
       .text-container {
         transform: translateX(-6px); // Przesuwamy tekst w lewo
-        color : var(--color-text-white);
+        color: var(--color-text-white);
       }
     }
-
   }
   button.bestseller {
     background-color: #7e8c00;
