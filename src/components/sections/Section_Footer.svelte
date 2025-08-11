@@ -344,6 +344,18 @@
       grid-template-columns: 1fr 1fr;
       gap: 40px;
     }
+
+    .footer-logo {
+      width: 18em;
+    }
+
+    .footer-logo div {
+      width: 18em !important;
+    }
+
+    .footer-description-secondary {
+      max-width: 20vh;
+    }
   }
 
   @media (max-width: 768px) {
@@ -359,6 +371,18 @@
     .footer-content {
       grid-template-columns: 1fr;
       gap: 40px;
+    }
+
+    .footer-logo {
+      width: 15em;
+    }
+
+    .footer-logo div {
+      width: 15em !important;
+    }
+
+    .footer-description-secondary {
+      max-width: 100%;
     }
 
     .footer-bottom-content {
