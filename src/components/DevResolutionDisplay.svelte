@@ -54,7 +54,7 @@
 
 <style>
   .resolution-display {
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
     background: rgba(0, 0, 0, 0.7);

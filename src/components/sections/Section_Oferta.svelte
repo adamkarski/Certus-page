@@ -58,17 +58,8 @@
     position: relative;
     z-index: 516;
     margin-top: 1000px;
-
-    .oferta-container {
-  /*     overflow: hidden; */
-      width: 100%;
-      padding: 0 9rem;
-      background: #f7f7f7;
-    }
-
   }
 
-  
   .oferta {
     width: 100%;
     padding: 100px 0;
@@ -76,7 +67,7 @@
   }
 
   .oferta-container {
-   /*  overflow: hidden; */
+    /* overflow: hidden; */
     width: 100%;
     padding: 0 9rem;
   }
@@ -92,6 +83,10 @@
 
     .oferta-container {
       padding: 0 2rem !important;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
     }
 
     .section-title {

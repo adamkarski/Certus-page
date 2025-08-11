@@ -2,10 +2,10 @@
   import CtaButton from "./CtaButton.svelte";
   import { scrollToElement } from "$lib/utils/smoothScroll";
 
-  export let variant: 'homepage' | 'maszyny' = 'homepage';
+  export let variant: "homepage" | "maszyny" = "homepage";
 
   function navigateToMachine(sectionId: string) {
-    if (variant === 'homepage') {
+    if (variant === "homepage") {
       // For homepage - navigate to maszyny page with hash
       window.location.href = `/maszyny#${sectionId}`;
     } else {
@@ -22,7 +22,8 @@
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
       </div>
 
-      <CtaButton classs="oferta-cta"
+      <CtaButton
+        classs="oferta-cta"
         text="Frezarki CNC HMM"
         on:click={() => navigateToMachine("frezarki")}
       />
@@ -36,7 +37,8 @@
         />
       </div>
 
-      <CtaButton classs="oferta-cta"
+      <CtaButton
+        classs="oferta-cta"
         text="Plotery CNC"
         on:click={() => navigateToMachine("ploteryPrzemyslowe")}
       />
@@ -50,7 +52,8 @@
         />
       </div>
 
-      <CtaButton classs="oferta-cta"
+      <CtaButton
+        classs="oferta-cta"
         text="Plotery CNC w zabudowie"
         on:click={() => navigateToMachine("ploteryPrzemysloweZabudowa")}
       />
@@ -64,7 +67,8 @@
         />
       </div>
 
-      <CtaButton classs="oferta-cta"
+      <CtaButton
+        classs="oferta-cta"
         text="Frezarki pięcioosiowe"
         on:click={() => navigateToMachine("frezarki5osiowe")}
       />
@@ -75,7 +79,8 @@
         <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
       </div>
 
-      <CtaButton classs="oferta-cta"
+      <CtaButton
+        classs="oferta-cta"
         text="Grawerki CNC"
         on:click={() => navigateToMachine("grawerki")}
       />
@@ -89,7 +94,8 @@
         />
       </div>
 
-      <CtaButton classs="oferta-cta"
+      <CtaButton
+        classs="oferta-cta"
         text="Plotery tnące linearne CNC"
         on:click={() => navigateToMachine("ploteryLinearne")}
       />
@@ -102,13 +108,23 @@
     overflow: hidden;
     width: 100%;
     padding: 0 0rem;
+    .text-container {
+        margin-left: -30px !important;
+      }
   }
+
+  :global(body.maszyny .oferta-container) {
+    padding-left: 6em !important;
+    padding-right: 6em !important;
+  }
+
+
+
+
 
   :global(.oferta-grid) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-  
-
 
     .oferta-card {
       padding: 10px 0px;
@@ -117,13 +133,13 @@
       transition: all 0.3s ease;
       display: grid;
       align-items: end;
-      justify-content: center;
+      justify-content: start;
       align-content: center;
-    
+  
 
-    span{
-      text-align: left;
-    }
+      span {
+        text-align: left;
+      }
     }
 
     .oferta-card:hover {
@@ -139,7 +155,7 @@
       max-width: 140px !important;
 
       img {
-        margin-left: 0.3em;
+        // margin-left: 0.3em;
         width: 100%;
         height: auto;
       }
@@ -150,7 +166,7 @@
   @media (min-width: 1617px) {
     :global(.oferta-grid) {
       grid-template-columns: repeat(6, 1fr);
-      
+
       .oferta-icon {
         font-size: 45px;
         width: 3.2em;
@@ -164,12 +180,12 @@
     :global(.oferta-grid) {
       grid-template-columns: 1fr;
       gap: 25px;
-      
+
       .oferta-card {
         padding: 20px 15px;
         max-width: 320px;
         margin: 0 auto;
-        
+
         // Dostosowanie ikon
         .oferta-icon {
           font-size: 45px;
@@ -177,14 +193,14 @@
           width: 3.5em;
           min-width: 90px;
           max-width: 120px !important;
-          
+
           img {
             margin-left: 0.3em;
             width: 100%;
             height: auto;
           }
         }
-        
+
         // Dostosowanie przycisków CTA
         :global(.oferta-cta) {
           width: 100% !important;
@@ -203,7 +219,7 @@
     width: 100% !important;
     min-width: 180px !important;
     max-width: 100% !important;
-    clip-path:none !important;
+    clip-path: none !important;
   }
 
   :global(.oferta-cta .text-container .maszyny_span) {
