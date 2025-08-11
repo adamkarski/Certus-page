@@ -334,9 +334,26 @@
     gap: 30px;
   }
 
+  @media (max-width: 1100px) {
+    .footer-container {
+      padding-left: 4em;
+      padding-right: 4em;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+  }
+
   @media (max-width: 768px) {
     .footer {
       padding: 60px 0 0;
+    }
+
+    .footer-container {
+      padding-left: 2em;
+      padding-right: 2em;
     }
 
     .footer-content {
