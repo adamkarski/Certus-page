@@ -1313,7 +1313,7 @@ section.hero .hero-bg{
 
   .item .image img {
     display: block;
-
+    width: auto;
     height: 100%;
     object-fit: cover;
     transition: all 0.3s ease;
