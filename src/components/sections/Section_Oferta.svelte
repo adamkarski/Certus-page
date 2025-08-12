@@ -8,7 +8,7 @@
   <div class="oferta-container container">
     <div class="section-header no-sel">
       <h2 class="section-title" use:typoFixAction>
-        Polski producent maszyn CNC
+       <span class="highlight-polish">Polski </span> producent maszyn CNC
       </h2>
 
       <p class="section-subtitle" use:typoFixAction>
