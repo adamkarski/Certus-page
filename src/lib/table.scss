@@ -427,10 +427,23 @@ tbody tr td .text {
   }
 }
 
+/* Dodatkowy override dla wrapper'a tabeli na średnich ekranach */
+@media (max-width: 900px) {
+  .maszyny-dane-tabela-wrap {
+    overflow-x: visible !important;
+  }
+}
+
+
+
+
 @media (max-width: 768px) {
   // .maszyny {
   //   padding: 80px 0;
   // }
+
+  
+
 
   .section-title {
     font-size: 32px;
@@ -458,16 +471,27 @@ tbody tr td .text {
     min-width: auto;
   }
 
+  .options-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  }
+
   .options-list li {
     font-size: 0.8rem;
     padding: 4px 8px;
+    display: inline-block !important;
+    margin-right: 8px;
+    margin-bottom: 4px;
   }
 
 
 
 
   .maszyny-dane-tabela-wrap {
-    overflow-x: auto;
+    overflow-x: visible; /* Usuwamy horizontal scroll */
   }
 
 
@@ -480,6 +504,130 @@ tbody tr td .text {
 
 
   .maszyny-dane-tabela {
-    min-width: 500px;
+    min-width: 100%; /* Tabela zajmuje całą dostępną szerokość */
+    width: 100%;
+    font-size: 0.85rem; /* Mniejszy font na mobile */
+  }
+
+  .maszyny-dane-tabela th,
+  .maszyny-dane-tabela td {
+    padding: 0.5em 0.3em; /* Mniejsze paddingi na mobile */
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  /* Responsive first column - usuwa sztywną szerokość */
+  :global(.maszyny-dane-tabela td:first-child) {
+    min-width: auto !important; /* Usuwa sztywną szerokość */
+    width: 35% !important; /* Elastyczna szerokość */
+  }
+
+ 
+}
+
+/* Dodatkowy fix dla średnich ekranów */
+@media (min-width: 481px) and (max-width: 768px) {
+  .maszyny-dane-tabela .options-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .maszyny-dane-tabela .options-list li {
+    display: inline-block !important;
+    font-size: 0.8rem;
+  }
+
+}
+
+/* Card-like layout dla bardzo małych ekranów (telefony) */
+@media (max-width: 480px) {
+  
+  
+   /* Responsive last column */
+   .maszyny-dane-tabela td:last-child {
+    width: 100% !important;
+  }
+  .maszyny-dane-tabela,
+  .maszyny-dane-tabela thead,
+  .maszyny-dane-tabela tbody,
+  .maszyny-dane-tabela th,
+  .maszyny-dane-tabela td,
+  .maszyny-dane-tabela tr {
+    display: block;
+  }
+
+  .maszyny-dane-tabela thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .maszyny-dane-tabela tr {
+    border: 1px solid #e5e7eb;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .maszyny-dane-tabela td {
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+    padding-left: 50% !important;
+    padding-right: 10px !important;
+    text-align: left;
+    white-space: normal;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    min-width: auto !important;
+    width: auto !important;
+  }
+
+  .maszyny-dane-tabela td:last-child {
+    border-bottom: none;
+  }
+
+  /* Dodanie labeli dla każdego wiersza */
+  .maszyny-dane-tabela td:before {
+    content: attr(data-label) ": ";
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    font-size: 0.9rem;
+  }
+
+  :global(.maszyny-dane-tabela td:first-child) {
+    background-color: transparent !important;
+    border-right: none !important;
+    width: auto !important;
+    font-weight: 600 !important;
+  }
+
+  /* Zachowanie poziomego układu dla options-list w card layout */
+  .maszyny-dane-tabela .options-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+
+  .maszyny-dane-tabela .options-list li {
+    display: inline-block !important;
+    font-size: 0.75rem !important;
+    padding: 3px 6px !important;
+    margin-right: 8px !important;
+    margin-bottom: 4px !important;
   }
 }

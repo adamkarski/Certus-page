@@ -644,7 +644,7 @@
             <!-- Custom Navigation Buttons -->
             <button
               id="swiper-button-prev-hero"
-              class="swiper-nav-button swiper-nav-prev"
+              class="swiper-nav-button swiper-nav-prev  no-sel"
               on:click={handlePrevClick}
               aria-label="Previous slide"
             >
@@ -667,7 +667,7 @@
 
             <button
               id="swiper-button-next-hero"
-              class="swiper-nav-button swiper-nav-next"
+              class="swiper-nav-button swiper-nav-next no-sel"
               on:click={handleNextClick}
               aria-label="Next slide"
             >
@@ -707,7 +707,7 @@
                 <swiper-slide>
                   <button
                     type="button"
-                    class="items items-left lift"
+                    class="items items-left lift  no-sel"
                     on:click={() =>
                       cat.url
                         ? (window.location.href = cat.url)
@@ -1263,7 +1263,7 @@ section.hero .hero-bg{
     transform: scale(1) translateY(5px);
 
     .headlines {
-      transform: translateY(50px) translateX(20px) scale(0.8);
+      // transform: translateY(50px) translateX(20px) scale(0.8);
     }
   }
 
@@ -1314,7 +1314,7 @@ section.hero .hero-bg{
   .item .image img {
     display: block;
     width: auto;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     transition: all 0.3s ease;
   }
@@ -1361,6 +1361,7 @@ section.hero .hero-bg{
   :global(body.no-scroll-hero) {
     overflow: hidden;
     position: fixed;
+    overflow-x: hidden !important;
     width: 100vw;
     .activeMachine .right {
       /* overflow-x: none; */

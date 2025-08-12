@@ -1030,7 +1030,7 @@
       padding-top: 2em;
       text-align: justify;
       padding-left: 1.5em;
-      width: 35vw;
+      width: auto;
     }
 
     ul {
@@ -1297,7 +1297,7 @@
     :global(body.r800) {
       all: unset !important;
       /*   overflow: unset !important; */
-      position: relative !important;
+      position: absolute !important;
       overflow: auto !important;
       overflow-x: hidden !important;
     }
@@ -1313,8 +1313,10 @@
     }
 
     .activeMachine {
-      position: relative;
+      position: absolute;
       height: auto !important;
+      width: 100vw !important;
+      margin: 0px 0px 0px 0px !important;
     }
     .active_flex {
       display: block !important;
@@ -1330,7 +1332,7 @@
     }
     .activeMachine .right {
       position: relative;
-      width: 100% 661px !important;
+      width: 100% !important;
       height: auto !important;
       overflow: hidden !important;
       max-height: unset !important;

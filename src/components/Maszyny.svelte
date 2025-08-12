@@ -949,7 +949,7 @@
   .maszyny_page {
     min-width: 100vw;
     margin: 0 auto;
-    min-height: 12vh;
+    min-height: 45vw;
   }
 
   .section-header h1 {

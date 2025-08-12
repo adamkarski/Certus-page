@@ -21,6 +21,54 @@
     }
     // Fallback - wyłącz preloader po 1 sekundzie
     setTimeout(() => loading = false, 500);
+
+    // Automatyczne dodanie data-label dla responsive tabel
+    const addResponsiveTableLabels = () => {
+      const tables = document.querySelectorAll('.maszyny-dane-tabela');
+      tables.forEach(table => {
+        const headers = table.querySelectorAll('thead th');
+        const rows = table.querySelectorAll('tbody tr');
+        
+        rows.forEach(row => {
+          const cells = row.querySelectorAll('td');
+          cells.forEach((cell, index) => {
+            if (headers[index] && !cell.hasAttribute('data-label')) {
+              cell.setAttribute('data-label', headers[index].textContent?.trim() || '');
+            }
+          });
+        });
+      });
+    };
+
+    // Uruchom po załadowaniu strony
+    setTimeout(addResponsiveTableLabels, 100);
+    
+    // Uruchom też po każdej zmianie DOM (np. przy dynamicznym ładowaniu tabel)
+    const observer = new MutationObserver((mutations) => {
+      let shouldUpdate = false;
+      mutations.forEach(mutation => {
+        if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeType === 1 && (node.querySelector?.('.maszyny-dane-tabela') || node.classList?.contains('maszyny-dane-tabela'))) {
+              shouldUpdate = true;
+            }
+          });
+        }
+      });
+      if (shouldUpdate) {
+        setTimeout(addResponsiveTableLabels, 50);
+      }
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    // Cleanup na unmount
+    return () => {
+      observer.disconnect();
+    };
   });
   $: preloaderVisible.set(loading);
 
