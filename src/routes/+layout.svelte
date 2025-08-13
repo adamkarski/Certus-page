@@ -104,7 +104,7 @@
 {/if}
 
 <!-- Dev Resolution Display - only visible during development -->
-<!-- <DevResolutionDisplay /> -->
+<DevResolutionDisplay />
 
 
 <style lang="scss">

@@ -37,31 +37,25 @@
 
     // Subscribe to activeCategoryStore changes
     const unsubscribe = activeCategoryStore.subscribe((value) => {
-    
-      
       // Jeśli wracamy do głównego widoku (value === null)
       if (value === null && browser) {
-        
         swiperKey++; // Wymusza re-render swipera
-        
+
         // Reset atrybutów dla nowego elementu
         if (swiperElement) {
-          swiperElement.removeAttribute('data-init-listener-added');
-          swiperElement.removeAttribute('data-events-added');
+          swiperElement.removeAttribute("data-init-listener-added");
+          swiperElement.removeAttribute("data-events-added");
         }
-        
+
         setTimeout(() => {
-          
           // Po re-renderze swiper powinien być automatycznie zainicjalizowany
           const checkNewSwiper = () => {
             if (swiperElement && swiperElement.swiper) {
-             
               setupSwiperEvents(swiperElement.swiper);
               updateNavigationButtons(swiperElement.swiper);
-              
+
               // Wróć do zapisanego slajdu po re-renderze
               setTimeout(() => {
-              
                 swiperElement.swiper.slideTo(lastActiveSlideIndex);
                 updateNavigationButtons(swiperElement.swiper);
               }, 200);
@@ -144,27 +138,21 @@
   });
 
   afterUpdate(() => {
-  
-    
     // Jeśli jesteśmy w głównym widoku i swiper istnieje
     if (browser && !$activeCategoryStore && swiperElement) {
       // Dodaj event listener na inicjalizację swipera
-      if (!swiperElement.hasAttribute('data-init-listener-added')) {
-      
-        
-        swiperElement.addEventListener('swiperinit', () => {
-         
+      if (!swiperElement.hasAttribute("data-init-listener-added")) {
+        swiperElement.addEventListener("swiperinit", () => {
           if (swiperElement.swiper) {
             setupSwiperEvents(swiperElement.swiper);
             updateNavigationButtons(swiperElement.swiper);
           }
         });
-        
-        swiperElement.setAttribute('data-init-listener-added', 'true');
-        
+
+        swiperElement.setAttribute("data-init-listener-added", "true");
+
         // Jeśli swiper już istnieje, uruchom setup od razu
         if (swiperElement.swiper) {
-         
           setupSwiperEvents(swiperElement.swiper);
         }
       }
@@ -172,13 +160,12 @@
   });
 
   function setupSwiperEvents(swiper) {
- 
     // Update navigation buttons state
     updateNavigationButtons(swiper);
 
     // Usuń poprzednie event listenery jeśli istnieją
     swiper.off("slideChange");
-    
+
     // Listen for slide changes (works with buttons)
     swiper.on("slideChange", () => {
       lastActiveSlideIndex = swiper.activeIndex; // Zapisz ostatni aktywny slajd
@@ -186,45 +173,38 @@
     });
 
     // Reinicjalizuj pagination
-   
+
     if (swiper.pagination) {
-      
       swiper.pagination.destroy();
       swiper.pagination.init();
       swiper.pagination.render();
       swiper.pagination.update();
     } else {
-    
       // Jeśli pagination nie istnieje, spróbuj ją utworzyć
       try {
         // Inicjalizuj pagination bezpośrednio na swiperze
-        if (swiper.modules && swiper.modules.includes('pagination')) {
+        if (swiper.modules && swiper.modules.includes("pagination")) {
           swiper.pagination.init();
           swiper.pagination.render();
           swiper.pagination.update();
         }
-      } catch (error) {
-       
-      }
+      } catch (error) {}
     }
-    
+
     // Sprawdź czy pagination została utworzona
     setTimeout(() => {
-      const paginationEl = document.querySelector('.swiper-pagination');
-   
+      const paginationEl = document.querySelector(".swiper-pagination");
+
       if (paginationEl) {
-   
       } else {
-       
         // Sprawdź czy istnieje w swiperElement
-        const swiperPagination = swiperElement.querySelector('.swiper-pagination');
-       
+        const swiperPagination =
+          swiperElement.querySelector(".swiper-pagination");
       }
     }, 500);
-    
 
     // Add mouse event listeners directly to swiper element (sprawdź czy już nie istnieją)
-    if (!swiperElement.hasAttribute('data-events-added')) {
+    if (!swiperElement.hasAttribute("data-events-added")) {
       let isMouseDown = false;
       let startX = 0;
       let currentSlideIndex = swiper.activeIndex;
@@ -262,7 +242,7 @@
         }
       });
 
-      swiperElement.setAttribute('data-events-added', 'true');
+      swiperElement.setAttribute("data-events-added", "true");
     }
   }
 
@@ -277,7 +257,6 @@
       updateNavigationButtons(swiperElement.swiper);
     }, 100);
   }
-
 
   $: slidesPerView = $windowWidth < 1024 ? 1 : 2;
 
@@ -294,16 +273,14 @@
           swiper.params.slidesPerView = slidesPerView;
           swiper.params.slidesPerGroup = slidesPerGroup;
         }
-        
+
         // Update swiper element attributes
-        swiperElement.setAttribute('slides-per-view', slidesPerView);
-        swiperElement.setAttribute('slides-per-group', slidesPerGroup);
+        swiperElement.setAttribute("slides-per-view", slidesPerView);
+        swiperElement.setAttribute("slides-per-group", slidesPerGroup);
 
         // Update swiper
         swiper.update();
-      } catch (error) {
-        console.log('❌ Błąd podczas aktualizacji swiper:', error);
-      }
+      } catch (error) {}
 
       // Update navigation buttons
       updateNavigationButtons(swiper);
@@ -358,7 +335,9 @@
     if (swiperElement && swiperElement.swiper) {
       const swiper = swiperElement.swiper;
       const currentIndex = swiper.activeIndex;
-      const currentSlidesPerGroup = (swiper.params && swiper.params.slidesPerGroup) || ($windowWidth < 1024 ? 1 : 2);
+      const currentSlidesPerGroup =
+        (swiper.params && swiper.params.slidesPerGroup) ||
+        ($windowWidth < 1024 ? 1 : 2);
       const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
 
       if (currentGroup > 0) {
@@ -377,7 +356,9 @@
     if (swiperElement && swiperElement.swiper) {
       const swiper = swiperElement.swiper;
       const currentIndex = swiper.activeIndex;
-      const currentSlidesPerGroup = (swiper.params && swiper.params.slidesPerGroup) || ($windowWidth < 1024 ? 1 : 2);
+      const currentSlidesPerGroup =
+        (swiper.params && swiper.params.slidesPerGroup) ||
+        ($windowWidth < 1024 ? 1 : 2);
       const maxGroups = Math.ceil(list.length / currentSlidesPerGroup);
       const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
 
@@ -464,9 +445,9 @@
     // Zapisz aktualny indeks slajdu przed otwarciem kategorii
     if (swiperElement && swiperElement.swiper) {
       lastActiveSlideIndex = swiperElement.swiper.activeIndex;
-      console.log('💾 Zapisuję aktualny indeks slajdu:', lastActiveSlideIndex);
+      console.log("💾 Zapisuję aktualny indeks slajdu:", lastActiveSlideIndex);
     }
-    
+
     const category = list.find((item) => item.id === c);
     if (category) {
       $activeCategoryStore = c;
@@ -506,11 +487,11 @@
       url.searchParams.delete("machine"); // Also clear machine param
       history.pushState({ category: null, machine: null }, "", url.toString());
     }
-    
+
     // Po zamknięciu kategorii, wróć do zapisanego slajdu
     setTimeout(() => {
       if (swiperElement && swiperElement.swiper) {
-        console.log('🔙 Wracam do zapisanego slajdu:', lastActiveSlideIndex);
+        console.log("🔙 Wracam do zapisanego slajdu:", lastActiveSlideIndex);
         swiperElement.swiper.slideTo(lastActiveSlideIndex);
         updateNavigationButtons(swiperElement.swiper);
       }
@@ -548,11 +529,14 @@
       url.searchParams.delete("machine");
       history.pushState({ category: null, machine: null }, "", url.toString());
     }
-    
+
     // Po zamknięciu widoku maszyny, wróć do zapisanego slajdu
     setTimeout(() => {
       if (swiperElement && swiperElement.swiper) {
-        console.log('🔙 Wracam do zapisanego slajdu (closeFW):', lastActiveSlideIndex);
+        console.log(
+          "🔙 Wracam do zapisanego slajdu (closeFW):",
+          lastActiveSlideIndex
+        );
         swiperElement.swiper.slideTo(lastActiveSlideIndex);
         updateNavigationButtons(swiperElement.swiper);
       }
@@ -582,7 +566,7 @@
       const prevButton = document.getElementById("swiper-button-prev-hero");
       const nextButton = document.getElementById("swiper-button-next-hero");
       const pagination = document.querySelector(".swiper-pagination");
-      
+
       if (prevButton && nextButton) {
         if ($activeCategoryStore && !$activeMachineStore) {
           // Hide navigation in intermediate view (category selected but no machine)
@@ -644,7 +628,7 @@
             <!-- Custom Navigation Buttons -->
             <button
               id="swiper-button-prev-hero"
-              class="swiper-nav-button swiper-nav-prev  no-sel"
+              class="swiper-nav-button swiper-nav-prev no-sel"
               on:click={handlePrevClick}
               aria-label="Previous slide"
             >
@@ -703,61 +687,61 @@
                   }
                 }}
               >
-              {#each list as cat}
-                <swiper-slide>
-                  <button
-                    type="button"
-                    class="items items-left lift  no-sel"
-                    on:click={() =>
-                      cat.url
-                        ? (window.location.href = cat.url)
-                        : openCategory(cat.id)}
-                  >
-                    <div class="headlines">
-                      <div class="topline">{cat.title}</div>
-                    </div>
-                    <div class="item">
-                      <div class="image">
-                        {#if $imageLoadingStates[cat.id]}
-                          <img
-                            src={cat.img}
-                            alt={cat.title}
-                            draggable="false"
-                          />
-                        {:else}
-                          <div class="image-loader">
-                            <svg width="50" height="50" viewBox="0 0 50 50">
-                              <circle
-                                cx="25"
-                                cy="25"
-                                r="20"
-                                fill="none"
-                                stroke-width="5"
-                                stroke="#96a500"
-                                stroke-dasharray="31.4 31.4"
-                                stroke-linecap="round"
-                              >
-                                <animateTransform
-                                  attributeName="transform"
-                                  type="rotate"
-                                  from="0 25 25"
-                                  to="360 25 25"
-                                  dur="1s"
-                                  repeatCount="indefinite"
-                                />
-                              </circle>
-                            </svg>
-                          </div>
-                        {/if}
+                {#each list as cat}
+                  <swiper-slide>
+                    <button
+                      type="button"
+                      class="items items-left lift no-sel"
+                      on:click={() =>
+                        cat.url
+                          ? (window.location.href = cat.url)
+                          : openCategory(cat.id)}
+                    >
+                      <div class="headlines">
+                        <div class="topline">{cat.title}</div>
                       </div>
-                    </div>
-                  </button>
-                </swiper-slide>
-              {/each}
-              
-              <!-- Dodaj pagination element bezpośrednio -->
-             <!--  <div class="swiper-pagination" slot="pagination"></div> -->
-            </swiper-container>
+                      <div class="item">
+                        <div class="image">
+                          {#if $imageLoadingStates[cat.id]}
+                            <img
+                              src={cat.img}
+                              alt={cat.title}
+                              draggable="false"
+                            />
+                          {:else}
+                            <div class="image-loader">
+                              <svg width="50" height="50" viewBox="0 0 50 50">
+                                <circle
+                                  cx="25"
+                                  cy="25"
+                                  r="20"
+                                  fill="none"
+                                  stroke-width="5"
+                                  stroke="#96a500"
+                                  stroke-dasharray="31.4 31.4"
+                                  stroke-linecap="round"
+                                >
+                                  <animateTransform
+                                    attributeName="transform"
+                                    type="rotate"
+                                    from="0 25 25"
+                                    to="360 25 25"
+                                    dur="1s"
+                                    repeatCount="indefinite"
+                                  />
+                                </circle>
+                              </svg>
+                            </div>
+                          {/if}
+                        </div>
+                      </div>
+                    </button>
+                  </swiper-slide>
+                {/each}
+
+                <!-- Dodaj pagination element bezpośrednio -->
+                <!--  <div class="swiper-pagination" slot="pagination"></div> -->
+              </swiper-container>
             {/key}
           </div>
         {:else}
@@ -809,7 +793,16 @@
                     </button>
                   </div>
                 </div>
-                <CtaButton on:click={close} text="Wróć" />
+                <div
+                  in:fade={{ duration: 400, delay: 800 }}
+                  out:fade={{ duration: 300 }}
+                >
+                  <CtaButton
+                    on:click={close}
+                    text="Wróć"
+                    classs="backFromCategory"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -829,10 +822,9 @@
     transition: all;
   }
 
-section.hero .hero-bg{
-
-  height: 100%;
-}
+  section.hero .hero-bg {
+    height: 100%;
+  }
 
   .container {
     max-width: 1200px;
@@ -854,6 +846,7 @@ section.hero .hero-bg{
     justify-content: space-around;
     align-items: flex-start;
     margin-top: -100px;
+    gap: 13%;
     .image {
       cursor: pointer;
     }
@@ -874,10 +867,21 @@ section.hero .hero-bg{
 
   .category-content .container {
     position: relative;
-    /*  background-image: url(/assets/Background_Hero_swipe.jpg); */
-    width: 135rem;
+    width: 100%;
     height: 400px;
     border-radius: 1rem;
+
+    :global(button.backFromCategory) {
+      position: fixed !important;
+      display: block;
+      top: 58vh;
+      left: 0px;
+      z-index: 5;
+      transition: all ease 0.4s;
+      background-color: var(--color-primary);
+      color: white;
+    }
+
     .back_category {
       position: absolute;
       top: 0;
@@ -888,8 +892,8 @@ section.hero .hero-bg{
         180deg,
         rgb(208 201 201 / 81%) 0%,
         rgb(136 126 126 / 85%) 100%
-      ); */
-      border-radius: 1rem;
+      );  */
+      // border-radius: 1rem;
       // border-left: 11px solid rgb(150, 165, 0);
       z-index: 1;
       opacity: 0.8;
@@ -929,12 +933,12 @@ section.hero .hero-bg{
     h1 {
       padding-left: 2rem;
       color: #fff;
-      text-align: left;
+      text-align: center;
       margin-bottom: 1rem;
-      position: absolute;
-      top: -70px;
+      position: relative;
+      top: -114px;
       font-family: "Poppins", sans-serif;
-      font-size: 48px;
+      font-size: 2rem;
       font-weight: 700;
     }
   }
@@ -972,13 +976,13 @@ section.hero .hero-bg{
   }
 
   /* RESPONSIVE BREAKPOINTS - UPORZĄDKOWANE I UPROSZCZONE */
-  
+
   /* Desktop - Duże ekrany (1200px+) */
   @media (min-width: 1200px) {
     .hero {
       height: 100vh;
     }
-    
+
     .hero-bg {
       padding-top: 120px;
     }
@@ -989,7 +993,7 @@ section.hero .hero-bg{
     .hero {
       height: 90vh;
     }
-    
+
     .hero-bg {
       padding-top: 100px;
     }
@@ -1000,7 +1004,7 @@ section.hero .hero-bg{
     .hero {
       height: 80vh;
     }
-    
+
     .hero-bg {
       padding-top: 80px;
     }
@@ -1011,14 +1015,14 @@ section.hero .hero-bg{
     .hero {
       height: 75vh;
     }
-    
+
     .hero-bg {
       padding-top: 60px;
     }
   }
 
   /* ————————————————  GLOBAL STYLES - OFERTA POSITIONING  ———————————————— */
-  
+
   /* Reset #oferta - teraz normalny flow, ponieważ hero nie jest fixed */
   :global(.home #oferta) {
     position: relative !important;
@@ -1029,7 +1033,7 @@ section.hero .hero-bg{
   /* Usunieto skomplikowane pozycjonowanie - teraz normalny flow */
 
   /* ————————————————  GLOBAL STYLES - ONAS POSITIONING  ———————————————— */
-  
+
   /* Sekcja O-NAS - normalny flow, bez nakładania */
   :global(.home #o-nas) {
     position: relative !important;
@@ -1055,6 +1059,57 @@ section.hero .hero-bg{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+
+  .view.category-view {
+    padding: 2rem;
+    max-height: calc(100vh - 100px); /* Limit height to avoid overflow */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 18%;
+
+    .item__category {
+      h2 {
+        color: white !important;
+        background-color: #7c8897;
+        font-weight: 500;
+        padding: 0.5rem;
+        border-radius: 23px;
+        position: relative;
+        top: -60px;
+        left: -10px;
+        font-size: 1.3rem;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .category-content .container h1{
+      padding-left:0px;
+      font-size: 1.2rem;
+    }
+    .view.category-view {
+
+      margin-top: 20rem;
+      .item__category h2{
+
+        font-size: 0.7rem;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        margin-top:   3.5rem !important;
+      }
+
+    }
+
+
   }
 
   /* ————————————————  KATEGORIE  ———————————————— */
@@ -1098,21 +1153,21 @@ section.hero .hero-bg{
     opacity: 0;
     margin-top: 0; /* Reset margin-top */
     animation: fadeInSlider 0.6s ease-out 0.2s forwards;
-    
+
     .topline {
       transition: font-size 0.3s ease-in-out; /* Smooth font size transitions */
     }
   }
 
   /* SPECJALNE REGUŁY SWIPER DLA PROBLEMATYCZNYCH ROZDZIELCZOŚCI */
-  
+
   /* 1280x720, 1366x768 - niskie ekrany laptop */
   @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
     swiper-container {
       margin-top: 80px;
       height: 500px; /* Mniejsza wysokość dla niskich ekranów */
       width: 95%; /* Szerszy swiper */
-      
+
       .topline {
         font-size: 1.8em; /* Mniejszy tekst */
         top: 5px; /* Bliżej góry */
@@ -1126,9 +1181,9 @@ section.hero .hero-bg{
       height: 750px; /* Dostosowana wysokość */
       margin-top: 100px; /* Dostosowany margines */
       width: 95%; /* Szerszy swiper */
-      
+
       .topline {
-        font-size: 2.0em; /* Dostosowany tekst */
+        font-size: 2em; /* Dostosowany tekst */
         top: 8px;
       }
     }
@@ -1139,7 +1194,7 @@ section.hero .hero-bg{
     swiper-container {
       height: 350px; /* Bardzo mała wysokość */
       width: 98%; /* Maksymalnie szeroki */
-      
+
       .topline {
         font-size: 1.6em; /* Mały tekst */
         top: 3px; /* Bardzo blisko góry */
@@ -1148,7 +1203,7 @@ section.hero .hero-bg{
   }
 
   /* RESPONSIVE SWIPER STYLES */
-  
+
   /* Desktop - Duże ekrany (1920px+) */
   @media (min-width: 1920px) {
     swiper-container {
@@ -1180,7 +1235,7 @@ section.hero .hero-bg{
   @media (min-width: 1024px) and (max-width: 1279px) {
     swiper-container {
       .topline {
-        font-size: 2.0em;
+        font-size: 2em;
       }
     }
   }
@@ -1260,7 +1315,7 @@ section.hero .hero-bg{
     transform: translateX(100px) translateY(20px);
   }
   .items:hover {
-    transform: scale(1) translateY(5px);
+    transform: scale(0.9) translateY(-3px);
 
     .headlines {
       // transform: translateY(50px) translateX(20px) scale(0.8);
@@ -1418,47 +1473,6 @@ section.hero .hero-bg{
     transform: translateY(-50%) scale(0.8);
   }
 
-  /* Pagination (dots) styles */
-  // :global(.swiper-pagination) {
-  //   position: absolute !important;
-  //   bottom: 20px !important;
-  //   left: 50% !important;
-  //   transform: translateX(-50%) !important;
-  //   z-index: 10 !important;
-  //   display: flex !important;
-  //   justify-content: center !important;
-  //   align-items: center !important;
-  //   gap: 8px !important;
-  // }
-
-  // :global(.swiper-pagination-bullet) {
-  //   width: 12px !important;
-  //   height: 12px !important;
-  //   border-radius: 50% !important;
-  //   background: rgba(255, 255, 255, 0.4) !important;
-  //   border: 2px solid rgba(255, 255, 255, 0.6) !important;
-  //   cursor: pointer !important;
-  //   transition: all 0.3s ease !important;
-  //   opacity: 1 !important;
-  // }
-
-  // :global(.swiper-pagination-bullet-active) {
-  //   background: #3b82f6 !important; /* Niebieski kolor dla aktywnego */
-  //   border-color: #1d4ed8 !important; /* Ciemniejszy niebieski dla obramowania */
-  //   transform: scale(1.2) !important;
-  // }
-
-  // :global(.swiper-pagination-bullet:hover) {
-  //   background: #60a5fa !important; /* Jasny niebieski przy hover */
-  //   border-color: #3b82f6 !important;
-  // }
-
-  // /* Hide pagination when not in main slider view */
-  // :global(.swiper-pagination.hide-pagination) {
-  //   opacity: 0 !important;
-  //   pointer-events: none !important;
-  // }
-
   /* Mobile responsive */
   @media (max-width: 768px) {
     .swiper-nav-button {
@@ -1473,14 +1487,5 @@ section.hero .hero-bg{
     .swiper-nav-next {
       right: 1rem;
     }
-
-    // :global(.swiper-pagination) {
-    //   bottom: 15px !important;
-    // }
-
-    // :global(.swiper-pagination-bullet) {
-    //   width: 10px !important;
-    //   height: 10px !important;
-    // }
   }
 </style>

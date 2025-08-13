@@ -79,8 +79,7 @@
         <div
           class="right"
           class:expanded={$expandedViewStore}
-          in:fly={{ x: 200, duration: 500, delay: 0 }}
-          out:fly={{ x: 400, duration: 500, delay: 400 }}
+          
         >
           <div class="right_content">
             <h1 use:typoFixAction>
@@ -1030,7 +1029,7 @@
       padding-top: 2em;
       text-align: justify;
       padding-left: 1.5em;
-      width: auto;
+      width: 35vw;
     }
 
     ul {
@@ -1297,7 +1296,7 @@
     :global(body.r800) {
       all: unset !important;
       /*   overflow: unset !important; */
-      position: absolute !important;
+      position: relative !important;
       overflow: auto !important;
       overflow-x: hidden !important;
     }
@@ -1313,13 +1312,11 @@
     }
 
     .activeMachine {
-      position: absolute;
+      position: absolute !important;
       height: auto !important;
-      width: 100vw !important;
-      margin: 0px 0px 0px 0px !important;
     }
     .active_flex {
-      display: block !important;
+      display: flex !important;
       position: relative !important;
       flex-direction: column;
       height: 100%;
