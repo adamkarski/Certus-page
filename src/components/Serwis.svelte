@@ -75,49 +75,6 @@
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
 </section>
 
-<section id="serwis" class="serwis">
-  <section id="serwis-details" class="serwis-details">
-    <div class="serwis-container container">
-      <div class="content-section">
-        <h2 class="section-title">
-          Wsparcie techniczne na najwyższym poziomie
-        </h2>
-        <p use:typoFixAction>
-          Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość
-          udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się
-          na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Jako
-          zespół wsparcia jesteśmy zawsze dostępni, aby rozwiązać wszelkie
-          problemy i udzielić profesjonalnej pomocy w każdej sytuacji.
-        </p>
-
-        <br />
-
-        <p class="intro-text" use:typoFixAction>
-          Rola naszego przedsiębiorstwa nie kończy się zaraz po dostarczeniu Ci
-          maszyn. Oferujemy bowiem także profesjonalny <b
-            >serwis gwarancyjny oraz pogwarancyjny</b
-          >. W ten sposób możemy zapewnić naszym Klientom pełen zakres wsparcia
-          technicznego.
-        </p>
-      </div>
-    </div>
-  </section>
-</section>
-
-<!-- <section class="cta_serwis">
-  <div class="serwis-cta-wrapper">
-    <div class="serwis-hero-actions">
-      <CtaButton 
-        text="Skontaktuj się z nami" 
-        on:click={makePhoneCall} 
-        class="primary-button"
-        aria-label="Zadzwoń do nas"
-      />
-    </div>
-  </div>
-
-  
-</section> -->
 
 <!-- Sekcja z kartami usług serwisowych używająca istniejących stylów -->
 <section
@@ -471,6 +428,55 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
   </div>
 </section>
 
+
+
+
+
+<section id="serwis" class="serwis">
+  <section id="serwis-details" class="serwis-details">
+    <div class="serwis-container container">
+      <div class="content-section">
+        <h2 class="section-title">
+          Wsparcie techniczne na najwyższym poziomie
+        </h2>
+        <p use:typoFixAction>
+          Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość
+          udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się
+          na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Jako
+          zespół wsparcia jesteśmy zawsze dostępni, aby rozwiązać wszelkie
+          problemy i udzielić profesjonalnej pomocy w każdej sytuacji.
+        </p>
+
+        <br />
+
+        <p class="intro-text" use:typoFixAction>
+          Rola naszego przedsiębiorstwa nie kończy się zaraz po dostarczeniu Ci
+          maszyn. Oferujemy bowiem także profesjonalny <b
+            >serwis gwarancyjny oraz pogwarancyjny</b
+          >. W ten sposób możemy zapewnić naszym Klientom pełen zakres wsparcia
+          technicznego.
+        </p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- <section class="cta_serwis">
+  <div class="serwis-cta-wrapper">
+    <div class="serwis-hero-actions">
+      <CtaButton 
+        text="Skontaktuj się z nami" 
+        on:click={makePhoneCall} 
+        class="primary-button"
+        aria-label="Zadzwoń do nas"
+      />
+    </div>
+  </div>
+
+  
+</section> -->
+
+
 <section class="serwis-benefits" bind:this={benefitsSectionEl}>
   <div class="serwis-benefits-container">
     <div class="serwis-section-header">
@@ -601,6 +607,7 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
     background-repeat: no-repeat;
     background-position-x: -1500px;
     background-size: cover;
+    filter : contrast(8.5);
   }
   .serwis {
     width: 100%;
@@ -651,17 +658,16 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
       margin-bottom: 16px;
       position: relative;
 
-      &::before {
+     /*  &::before {
         content: "";
         position: absolute;
         left: -10%;
         transform: translateX(-50%);
-        /* top: -20px; */
         width: 4px;
         height: 95px;
         background: var(--color-primary);
         border-radius: 2px;
-      }
+      } */
     }
 
     p {

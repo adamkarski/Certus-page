@@ -947,9 +947,10 @@
     font-size: 1.08rem;
   }
   .maszyny_page {
-    min-width: 100vw;
+    // min-width: 100vw;
     margin: 0 auto;
-    min-height: 45vw;
+    // height: 0px;
+    min-height: 170px;
   }
 
   .section-header h1 {

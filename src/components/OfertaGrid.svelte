@@ -118,7 +118,8 @@
   :global(.oferta-grid) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
+    justify-content: end;
+    justify-items: center;
     .oferta-card {
       padding: 10px 0px;
       border-radius: 0px;

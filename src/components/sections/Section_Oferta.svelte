@@ -70,8 +70,22 @@
     /* overflow: hidden; */
     width: 100%;
     padding: 0 9rem;
+    
   }
+  // .oferta-container:before{
 
+  //   content: "";
+  //   position: absolute;
+  //   background-image: url(/assets/pl.png);
+  //   width: 128px;
+  //   height: 179px;
+  //   right: -6px;
+  //   margin-top: -152px;
+  //   filter: blur(0.3px);
+  //   z-index: -1;
+  //   transform: scale(0.7) rotate(-4deg) matrix(0.9, 1, 143, 7.9, 60, 119);
+  //   overflow: hidden;
+  // }
   .section-header {
     margin-bottom: 80px;
   }
