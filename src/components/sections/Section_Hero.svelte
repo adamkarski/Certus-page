@@ -874,7 +874,7 @@
     :global(button.backFromCategory) {
       position: fixed !important;
       display: block;
-      top: 58vh;
+         top: 58vh;
       left: 0px;
       z-index: 5;
       transition: all ease 0.4s;
@@ -1238,6 +1238,10 @@
         font-size: 2em;
       }
     }
+    .headlines .topline {
+      font-size: 1.4rem !important;
+     
+    }
   }
 
   /* Tablet - Landscape (768px - 1023px) */
@@ -1348,7 +1352,7 @@
     top: 20px; /* Dodatkowy margines od góry */
     min-height: 60px; /* Minimalna wysokość dla lepszego pozycjonowania */
     font-family: "Poppins", sans-serif;
-    font-size: 38px;
+    font-size: 1.8rem;
     font-weight: 700;
   }
   .items:hover .headlines .topline {
@@ -1398,18 +1402,7 @@
 
   /* ————————————————  RESPONSYWNOŚĆ  ———————————————— */
   @media (max-width: 768px) {
-    .category-content h1 {
-      font-size: 36px;
-    }
-    .category-image {
-      max-width: 90%;
-    }
-    .items {
-      padding: 4rem;
-    }
-    .headlines .topline {
-      font-size: 28px;
-    }
+   
   }
 
   /* --- BLOKADA SCROLLA BODY DLA expandedView --- */
@@ -1486,6 +1479,10 @@
 
     .swiper-nav-next {
       right: 1rem;
+    }
+    .headlines .topline {
+      font-size: 1.4rem !important;
+     
     }
   }
 </style>

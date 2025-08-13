@@ -375,20 +375,22 @@
    ======================================== */
 
 /* Responsywne rozmiary dla hero swiper */
+
+
 @media (min-width: 1200px) {
-  :global(swiper-slide button .headlines .topline) {
-    font-size: 2.2rem !important;
-    font-weight: var(--font-weight-bold) !important;
-    font-family: var(--font-primary) !important;
-  }
+  // :global(swiper-slide button .headlines .topline) {
+  //   font-size: 1rem !important;
+  //   font-weight: var(--font-weight-bold) !important;
+  //   font-family: var(--font-primary) !important;
+  // }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-  :global(swiper-slide button .headlines .topline) {
-    font-size: 1.8rem !important;
-    font-weight: var(--font-weight-bold) !important;
-    font-family: var(--font-primary) !important;
-  }
+  // :global(swiper-slide button .headlines .topline) {
+  //   font-size: 1.8rem !important;
+  //   font-weight: var(--font-weight-bold) !important;
+  //   font-family: var(--font-primary) !important;
+  // }
 }
 
 @media (max-width: 767px) {
