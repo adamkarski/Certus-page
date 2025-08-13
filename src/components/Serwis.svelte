@@ -227,7 +227,7 @@
   bind:this={sectionEl}
 >
   <div class="serwis-services-header">
-    <h2 use:typoFixAction>Nasze Usługi Serwisowe</h2>
+    <h2 use:typoFixAction>Usługi Serwisowe</h2>
     <p use:typoFixAction>
       Kompleksowa opieka serwisowa dla wszystkich maszyn CNC
     </p>
@@ -912,12 +912,13 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
 
   .info-cards-wrapper {
     display: flex;
-    gap: 3vw;
+    flex-wrap: wrap;
+    gap: 2.5vw;
     width: 100%;
     max-width: 1400px;
     justify-content: center;
     margin: 0 auto;
-    padding: 40px 0 0 0;
+    padding: 40px 20px 0 20px;
   }
 
   //   .info-card {
@@ -1000,6 +1001,7 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
     color: var(--color-text-secondary);
     line-height: 1.1;
     margin-top: 6px;
+    width: 50%;
   }
 
   .info-desc {
@@ -1011,11 +1013,40 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
     flex-grow: 1;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1440px) {
+    .info-cards-wrapper {
+      gap: 2vw;
+      padding: 40px 30px 0 30px;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .info-cards-wrapper {
+      gap: 1.5vw;
+      padding: 40px 20px 0 20px;
+    }
+  }
+
+  // Złamanie na dwa rzędy - 2 karty per rząd
+  @media (max-width: 1000px) {
+    .info-cards-wrapper {
+      gap: 24px;
+      padding: 40px 20px 0 20px;
+    }
+    .info-card {
+      width: calc(50% - 12px);
+      min-width: 280px;
+      max-width: 350px;
+    }
+  }
+
+  // Przejście na jedną kolumnę
+  @media (max-width: 700px) {
     .info-cards-wrapper {
       flex-direction: column;
       align-items: center;
       gap: 32px;
+      padding: 40px 20px 0 20px;
     }
     .info-card {
       max-width: 600px;
@@ -1025,12 +1056,16 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
   }
 
   @media (max-width: 600px) {
+    .info-cards-wrapper {
+      padding: 40px 16px 0 16px;
+    }
     .info-title {
       font-size: 1.2rem;
     }
     .info-card {
       padding: 20px 10px 20px 10px;
       min-height: 280px;
+      width: 95vw;
     }
     .info-desc {
       font-size: 0.98rem;
