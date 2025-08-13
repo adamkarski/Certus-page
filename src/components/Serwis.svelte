@@ -181,14 +181,14 @@
 
   function handleOpenModal(event: CustomEvent | { detail: { type: string } }) {
     const data = event.detail;
-    
+
     // Jeśli przekazano tylko typ, pobierz pełne dane
     if (data.type && !data.title) {
       selectedService = getServiceData(data.type);
     } else {
       selectedService = data;
     }
-    
+
     modalOpen = true;
     document.body.style.overflow = "hidden";
   }
@@ -202,8 +202,9 @@
   function scrollToServices() {
     const servicesSection = document.getElementById("serwis-services");
     if (servicesSection) {
-      const elementPosition = servicesSection.getBoundingClientRect().top + window.pageYOffset;
-      
+      const elementPosition =
+        servicesSection.getBoundingClientRect().top + window.pageYOffset;
+
       // Używamy wspólnej funkcji scrollowania
       smoothScrollTo(elementPosition, 1000, 140); // 1 sekunda animacji, 140px offset
     }
@@ -218,7 +219,6 @@
   <div class="first-container-back"></div>
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
 </section>
-
 
 <!-- Sekcja z kartami usług serwisowych używająca istniejących stylów -->
 <section
@@ -291,25 +291,19 @@
 
       <p class="info-desc" use:typoFixAction>
         Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12
-        miesięcy od daty dostawy <span class="add">(24 miesiące w
-          opcji rozszerzonej)</span>
+        miesięcy od daty dostawy <span class="add"
+          >(24 miesiące w opcji rozszerzonej)</span
+        >
       </p>
 
       <div class="serwis-service-highlight">
-        <span class="serwis-highlight-item" use:typoFixAction>Koszt BEZPŁATNY</span>
-        <span class="serwis-highlight-item" use:typoFixAction>Czas reakcji do 5 dni</span>
+        <span class="serwis-highlight-item" use:typoFixAction
+          >Koszt BEZPŁATNY</span
+        >
+        <span class="serwis-highlight-item" use:typoFixAction
+          >Czas reakcji do 5 dni</span
+        >
       </div>
-
-      <CtaButton
-        text="Szczegóły"
-        classs="serwis-service-btn"
-        on:click={() =>
-          handleOpenModal({
-            detail: { type: "warranty" },
-          })}
-        aria-label="Zobacz szczegóły Serwisu Gwarancyjnego"
-      ></CtaButton>
-    
     </div>
 
     <!-- Serwis Pogwarancyjny -->
@@ -376,21 +370,13 @@
       </p>
 
       <div class="serwis-service-highlight">
-        <span class="serwis-highlight-item" use:typoFixAction>Koszt 240 zł/h</span>
-        <span class="serwis-highlight-item" use:typoFixAction>Czas reakcji do 7 dni</span>
+        <span class="serwis-highlight-item" use:typoFixAction
+          >Koszt 240 zł/h</span
+        >
+        <span class="serwis-highlight-item" use:typoFixAction
+          >Czas reakcji do 7 dni</span
+        >
       </div>
-
-      
-      <CtaButton
-        text="Szczegóły"
-        class="serwis-service-btn"
-        on:click={() =>
-          handleOpenModal({
-            detail: { type: "post-warranty" },
-          })}
-        aria-label="Zobacz szczegóły Serwisu Pogwarancyjnego"
-      ></CtaButton>
-
     </div>
 
     <!-- Przeglądy Okresowe -->
@@ -475,16 +461,11 @@
       </p>
 
       <div class="serwis-service-highlight">
-        <span class="serwis-highlight-item" use:typoFixAction>Koszt od 1000 zł</span>
+        <span class="serwis-highlight-item" use:typoFixAction
+          >Koszt od 1000 zł</span
+        >
         <span class="serwis-highlight-item" use:typoFixAction>Co 6 mies.</span>
       </div>
-
-      <CtaButton
-        text="Szczegóły"
-        class="serwis-service-btn"
-on:click={() => handleOpenModal({ detail: { type: "inspections" } })}
-        aria-label="Zobacz szczegóły Przeglądów Okresowych"
-      ></CtaButton> 
     </div>
 
     <!-- Usługi Dodatkowe -->
@@ -562,20 +543,9 @@ on:click={() => handleOpenModal({ detail: { type: "inspections" } })}
         >
         <span class="serwis-highlight-item" use:typoFixAction>Szkolenia</span>
       </div>
-
-      <CtaButton
-        text="Szczegóły"
-        class="serwis-service-btn"
-on:click={() => handleOpenModal({ detail: { type: "additional" } })}
-        aria-label="Zobacz szczegóły Usług Dodatkowych"
-      ></CtaButton> 
     </div>
   </div>
 </section>
-
-
-
-
 
 <section id="serwis" class="serwis">
   <section id="serwis-details" class="serwis-details">
@@ -621,7 +591,6 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
   
 </section> -->
 
-
 <section class="serwis-benefits" bind:this={benefitsSectionEl}>
   <div class="serwis-benefits-container">
     <div class="serwis-section-header">
@@ -637,7 +606,7 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
       >
         <div class="serwis-benefit-icon">
           <img
-            src="/assets/ikony/onas-analiza-potrzeb.svg"
+            src="/assets/ikony/doswiadczony-zespol.svg"
             alt="Analiza potrzeb"
           />
         </div>
@@ -654,7 +623,7 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
       >
         <div class="serwis-benefit-icon">
           <img
-            src="/assets/ikony/onas-dobor-rozwiazan.svg"
+            src="/assets/ikony/szybka-reakcja.svg"
             alt="Dobór rozwiązań"
           />
         </div>
@@ -670,7 +639,7 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
         style="transition-delay: 200ms"
       >
         <div class="serwis-benefit-icon">
-          <img src="/assets/ikony/onas-wdrozenie.svg" alt="Wdrożenie" />
+          <img src="/assets/ikony/onas-wsparcie.svg" alt="Wdrożenie" />
         </div>
         <h4 use:typoFixAction>Oryginalne części</h4>
         <p use:typoFixAction>
@@ -684,7 +653,7 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
         style="transition-delay: 300ms"
       >
         <div class="serwis-benefit-icon">
-          <img src="/assets/ikony/onas-wsparcie.svg" alt="Wsparcie" />
+          <img src="/assets/ikony/polski-serwis.svg" alt="Wsparcie" />
         </div>
         <h4 use:typoFixAction>Serwis na miejscu</h4>
         <p use:typoFixAction>
@@ -752,7 +721,7 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
     background-repeat: no-repeat;
     background-position-x: -1500px;
     background-size: cover;
-    filter : contrast(8.5);
+    filter: contrast(8.5);
   }
   .serwis {
     width: 100%;
@@ -798,12 +767,12 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
 
     h2 {
       font-size: 2.5rem;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--color-text-secondary);
       margin-bottom: 16px;
       position: relative;
 
-     /*  &::before {
+      /*  &::before {
         content: "";
         position: absolute;
         left: -10%;
@@ -847,13 +816,13 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
       &::before {
         content: "";
         position: absolute;
-        left: -14px;
+        left: -38px;
+        margin-top: 5px;
         width: 28px;
         height: 43px;
         background-image: url(/assets/red-arrow.svg);
       }
     }
-
 
     p {
       line-height: 1.8;
@@ -915,7 +884,7 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
     flex-wrap: wrap;
     gap: 2.5vw;
     width: 100%;
-    max-width: 1400px;
+   
     justify-content: center;
     margin: 0 auto;
     padding: 40px 20px 0 20px;
@@ -952,15 +921,16 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
       0 100%
     );
 
-    span.add{
-
+    span.add {
       font-size: 0.7rem;
       background-color: #b2b2b2;
       color: white;
       padding: 2px 4px;
       border-radius: 5px;
+      float: left;
+      margin-top: 10px;
     }
-    
+
     background: #f7f7f7;
     border-radius: 0;
     box-shadow: none;
@@ -1253,11 +1223,11 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
   // Style dla sekcji benefits
   .serwis-benefits {
     padding: 100px 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: #f7f7f7;
   }
 
   .serwis-benefits-container {
-    max-width: 1200px;
+  
     margin: 0 auto;
     padding: 0 20px;
   }
@@ -1327,13 +1297,13 @@ on:click={() => handleOpenModal({ detail: { type: "additional" } })}
   .serwis-benefit-icon {
     width: 90px;
     height: 90px;
-    background: linear-gradient(135deg, var(--color-primary), #a8b400);
+    background:  var(--color-text-secondary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 24px;
-    box-shadow: 0 10px 15px -3px rgba(150, 165, 0, 0.3);
+    box-shadow: 0 10px 15px -3px rgba(45, 45, 45, 0.3);
     position: relative;
     overflow: hidden;
 

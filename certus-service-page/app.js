@@ -41,7 +41,7 @@ const serviceData = {
       "Szczegółowy raport serwisowy",
       "Instrukcja eksploatacji"
     ],
-    note: "Koszt dojazdu liczony w obie strony. Części zamienne dodatkowo według cennika."
+    note: "Koszt dojazdu liczony w obie strony.<br/> Części zamienne dodatkowo według cennika."
   },
   
   inspections: {
@@ -183,7 +183,7 @@ function openModal(serviceType) {
   if (service.excludes) {
     modalContent += `
       <div class="detail-section">
-        <h4>Nie obejmuje gwarancja</h4>
+        <h4>Gwarancja nie obejmuje</h4>
         <ul style="list-style: none; padding: 0; margin: 0;">
     `;
     

@@ -202,7 +202,7 @@
     display: flex;
     gap: 3vw;
     width: 100%;
-    max-width: 1400px;
+
     justify-content: center;
     margin: 0 auto;
     padding: 40px 0 0 0;

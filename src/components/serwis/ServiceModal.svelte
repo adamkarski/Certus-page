@@ -134,7 +134,7 @@
 
         {#if service.excludes}
           <div class="serwis-detail-section">
-            <h4>Nie obejmuje gwarancja</h4>
+            <h4>Gwarancja nie obejmuje</h4>
             <ul class="serwis-excludes-list">
               {#each service.excludes as item}
                 <li use:typoFixAction>
@@ -206,8 +206,8 @@
 
     h3 {
       margin: 0;
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: 1.8rem;
+      font-weight: 700;
       color: var(--color-text-secondary);
     }
   }
