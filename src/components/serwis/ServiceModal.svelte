@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-  import { fade, scale } from 'svelte/transition';
-  import { typoFixAction } from '$lib/utils/typography';
+  import { createEventDispatcher } from "svelte";
+  import { fade, scale } from "svelte/transition";
+  import { typoFixAction } from "$lib/utils/typography";
 
   const dispatch = createEventDispatcher();
 
@@ -9,7 +9,7 @@
   export let service: any = null;
 
   function closeModal() {
-    dispatch('close');
+    dispatch("close");
   }
 
   function handleBackdropClick(event: MouseEvent) {
@@ -19,7 +19,7 @@
   }
 
   function handleKeydown(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
+    if (event.key === "Escape") {
       closeModal();
     }
   }
@@ -28,28 +28,44 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if isOpen && service}
-  <div 
-    class="serwis-modal-backdrop" 
+  <div
+    class="serwis-modal-backdrop"
     transition:fade={{ duration: 200 }}
     on:click={handleBackdropClick}
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-title"
   >
-    <div class="serwis-modal-content" transition:scale={{ duration: 300, start: 0.9 }}>
+    <div
+      class="serwis-modal-content"
+      transition:scale={{ duration: 300, start: 0.9 }}
+    >
       <div class="serwis-modal-header">
         <h3 id="modal-title" use:typoFixAction>{service.title}</h3>
-        <button class="serwis-modal-close" on:click={closeModal} aria-label="Zamknij modal">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button
+          class="serwis-modal-close"
+          on:click={closeModal}
+          aria-label="Zamknij modal"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
       </div>
-      
+
       <div class="serwis-modal-body">
-        <p class="serwis-modal-description" use:typoFixAction>{service.description}</p>
-        
+        <p class="serwis-modal-description" use:typoFixAction>
+          {service.description}
+        </p>
+
         {#if service.details}
           <div class="serwis-detail-section">
             <h4>Szczegóły usługi</h4>
@@ -57,7 +73,11 @@
               {#each service.details as detail}
                 <li>
                   <span use:typoFixAction>{detail.label}</span>
-                  <span class="serwis-detail-value" class:highlight={detail.highlight} use:typoFixAction>
+                  <span
+                    class="serwis-detail-value"
+                    class:highlight={detail.highlight}
+                    use:typoFixAction
+                  >
                     {detail.value}
                   </span>
                 </li>
@@ -73,10 +93,16 @@
               <div class="serwis-service-item">
                 <div class="serwis-service-header">
                   <strong use:typoFixAction>{item.name}</strong>
-                  <span class="serwis-price-highlight" use:typoFixAction>{item.price}</span>
+                  <span class="serwis-price-highlight" use:typoFixAction
+                    >{item.price}</span
+                  >
                 </div>
-                <div class="serwis-service-description" use:typoFixAction>{item.description}</div>
-                <div class="serwis-service-details" use:typoFixAction>{item.details}</div>
+                <div class="serwis-service-description" use:typoFixAction>
+                  {item.description}
+                </div>
+                <div class="serwis-service-details" use:typoFixAction>
+                  {item.details}
+                </div>
               </div>
             {/each}
           </div>
@@ -88,7 +114,15 @@
             <ul class="serwis-includes-list">
               {#each service.includes as item}
                 <li use:typoFixAction>
-                  <svg class="serwis-check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg
+                    class="serwis-check-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   {item}
@@ -104,7 +138,15 @@
             <ul class="serwis-excludes-list">
               {#each service.excludes as item}
                 <li use:typoFixAction>
-                  <svg class="serwis-times-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg
+                    class="serwis-times-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
@@ -118,7 +160,8 @@
         {#if service.note}
           <div class="serwis-detail-section">
             <div class="serwis-note">
-              <strong>Uwaga:</strong> <span use:typoFixAction>{service.note}</span>
+              <strong>Uwaga:</strong><br />
+              <span use:typoFixAction>{service.note}</span>
             </div>
           </div>
         {/if}
@@ -149,7 +192,9 @@
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
   .serwis-modal-header {
@@ -215,13 +260,16 @@
       align-items: center;
       padding: 12px 0;
       border-bottom: 1px solid #f3f4f6;
-
+      color: var(--color-text-secondary);
       &:last-child {
         border-bottom: none;
       }
     }
   }
+.serwis-includes-list li, .serwis-excludes-list li{
 
+  color: var(--color-text-secondary);
+}
   .serwis-detail-value {
     font-weight: 500;
     color: var(--color-text-secondary);
@@ -246,6 +294,11 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
+    strong{
+
+      color: var(--color-text-secondary);
+      font-weight: 600;
+    }
   }
 
   .serwis-price-highlight {
@@ -295,10 +348,10 @@
 
   .serwis-note {
     padding: 16px;
-    background: #fef3c7;
+    background: #f1f0ee;
     border-radius: 8px;
     border-left: 4px solid #f59e0b;
-    
+    color: #374151;
     strong {
       color: #d97706;
     }
