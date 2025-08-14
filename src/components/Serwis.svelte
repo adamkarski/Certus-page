@@ -11,6 +11,7 @@
   // Import istniejących komponentów
   import CtaButton from "./CtaButton.svelte";
   import { smoothScrollTo } from "$lib/utils/smoothScroll";
+  import SectionImage03 from "./sections/Section_Image03.svelte";
 
   let sectionEl: HTMLElement;
   let benefitsSectionEl: HTMLElement;
@@ -576,20 +577,7 @@
   </section>
 </section>
 
-<!-- <section class="cta_serwis">
-  <div class="serwis-cta-wrapper">
-    <div class="serwis-hero-actions">
-      <CtaButton 
-        text="Skontaktuj się z nami" 
-        on:click={makePhoneCall} 
-        class="primary-button"
-        aria-label="Zadzwoń do nas"
-      />
-    </div>
-  </div>
 
-  
-</section> -->
 
 <section class="serwis-benefits" bind:this={benefitsSectionEl}>
   <div class="serwis-benefits-container">
@@ -684,8 +672,8 @@
   }
 
   .pattern-overlay {
-    position: absolute;
-    top: 90px;
+    position: relative;
+    top: 210px;
     left: 0;
     width: 100%;
     height: 20%;
@@ -715,7 +703,7 @@
   .first-container-back {
     background-image: url(/assets/first-block-polyline.svg);
     position: absolute;
-    top: 218px;
+    top: 147px;
     width: 100%;
     height: 44px;
     background-repeat: no-repeat;
@@ -1265,7 +1253,7 @@
 
   .serwis-benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     gap: 40px;
     justify-items: center;
   }

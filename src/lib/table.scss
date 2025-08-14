@@ -430,7 +430,8 @@ tbody tr td .text {
 /* Dodatkowy override dla wrapper'a tabeli na średnich ekranach */
 @media (max-width: 900px) {
   .maszyny-dane-tabela-wrap {
-   /*  overflow-x: visible !important; */
+    overflow-x: auto; /* Pozwól na przewijanie poziome dla tabel */
+    max-width: 100vw; /* Ogranicz szerokość do viewport */
   }
 }
 

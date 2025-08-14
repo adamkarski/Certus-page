@@ -173,6 +173,7 @@
 :global(.error-page .cta-button){
 
   width: 390px !important;
+  max-width: 90vw !important;
     padding-right: 30px;
     align-items: center !important;
     text-align: left !important;

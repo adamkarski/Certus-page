@@ -85,6 +85,15 @@ body {
   overflow-x: hidden;
 }
 
+/* Zapewnienie że wszystkie sekcje nie powodują overflow */
+section {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 100vw;
+}
+
 header {
   position: fixed;
   top: 0px;

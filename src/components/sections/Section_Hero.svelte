@@ -69,54 +69,41 @@
     });
 
     setTimeout(() => {
-      if (browser && swiperElement) {
-        // Wait for swiper to be ready
-        const checkSwiper = () => {
-          if (swiperElement.swiper) {
-            setupSwiperEvents(swiperElement.swiper);
+      if (browser) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryId = urlParams.get("category");
+        const machineId = urlParams.get("machine");
+        const slideId = urlParams.get("slide");
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const slideId = urlParams.get("slide");
-            const categoryId = urlParams.get("category");
-            let machineId = urlParams.get("machine");
-
-            $activeCategoryStore = categoryId;
-            $activeMachineStore = machineId;
-            $expandedViewStore = !!machineId;
-
-            if (slideId) {
-              const index = list.findIndex((item) => item.id === slideId);
-              if (index !== -1) {
-                lastActiveSlideIndex = index; // Zapisz indeks z URL
-                swiperElement.swiper.slideTo(index);
-                setTimeout(
-                  () => updateNavigationButtons(swiperElement.swiper),
-                  100
-                );
+        if (categoryId) {
+          // If category in URL, don't init swiper, just set stores
+          $activeCategoryStore = categoryId;
+          $activeMachineStore = machineId;
+          $expandedViewStore = !!machineId;
+        } else {
+          // No category, so init swiper
+          if (swiperElement) {
+            const checkSwiper = () => {
+              if (swiperElement.swiper) {
+                setupSwiperEvents(swiperElement.swiper);
+                if (slideId) {
+                  const index = list.findIndex((item) => item.id === slideId);
+                  if (index !== -1) {
+                    lastActiveSlideIndex = index;
+                    swiperElement.swiper.slideTo(index);
+                  }
+                }
+                setTimeout(() => updateNavigationButtons(swiperElement.swiper), 200);
+              } else {
+                setTimeout(checkSwiper, 100);
               }
-            } else if (!$activeCategoryStore) {
-              setTimeout(() => {
-                lastActiveSlideIndex = 0; // Zapisz początkowy indeks
-                swiperElement.swiper.slideTo(0);
-                setTimeout(
-                  () => updateNavigationButtons(swiperElement.swiper),
-                  100
-                );
-              }, 0);
-            }
-
-            // Always update navigation buttons on mount
-            setTimeout(() => {
-              updateNavigationButtons(swiperElement.swiper);
-            }, 200);
-          } else {
-            setTimeout(checkSwiper, 100);
+            };
+            checkSwiper();
           }
-        };
-
-        checkSwiper();
+        }
       }
-    }, 0);
+    }, 10);
+
     if (browser) {
       // Initialize windowWidth
       windowWidth.set(window.innerWidth);
@@ -249,6 +236,7 @@
   // Reactive function to update buttons when view changes
   $: if (
     browser &&
+    !$activeCategoryStore &&
     swiperElement &&
     swiperElement.swiper &&
     ($activeCategoryStore !== undefined || $expandedViewStore !== undefined)
@@ -263,7 +251,7 @@
   $: slidesPerGroup = $windowWidth < 1024 ? 1 : 2;
 
   // Update swiper when window width changes
-  $: if (browser && swiperElement && swiperElement.swiper && $windowWidth) {
+  $: if (browser && !$activeCategoryStore && swiperElement && swiperElement.swiper && $windowWidth) {
     setTimeout(() => {
       const swiper = swiperElement.swiper;
 

@@ -104,7 +104,7 @@
         if (!visible) {
           showLottie = true;
         }
-      });Ļ
+      });
       showLottie = true;
 
       cleanup = () => {
@@ -876,6 +876,7 @@
     border: 1px solid #f3f4f6;
     overflow: hidden;
     width: 600px;
+    max-width: 100vw;
     padding: 1rem;
 
     ul li {
