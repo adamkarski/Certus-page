@@ -29,6 +29,16 @@
 .contact-flex {
   position: relative;
   z-index: 1;
+  input {
+
+    color: var(--color-text-secondary);
+
+  }
+  textarea {
+
+    color: var(--color-text-secondary);
+
+  }
 }
 .section-wrapper {
   position: relative;

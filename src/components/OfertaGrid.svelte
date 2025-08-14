@@ -17,7 +17,7 @@
 
 <div class="oferta-container container">
   <div class="oferta-grid">
-    <div class="oferta-card">
+    <div class="oferta-card" on:click={() => navigateToMachine("frezarki")}>
       <div class="oferta-icon">
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
       </div>
@@ -25,11 +25,11 @@
       <CtaButton
         classs="oferta-cta"
         text="Frezarki CNC HMM"
-        on:click={() => navigateToMachine("frezarki")}
+        
       />
     </div>
 
-    <div class="oferta-card">
+    <div class="oferta-card" on:click={() => navigateToMachine("ploteryPrzemyslowe")}>
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
@@ -40,11 +40,11 @@
       <CtaButton
         classs="oferta-cta"
         text="Plotery CNC"
-        on:click={() => navigateToMachine("ploteryPrzemyslowe")}
+        
       />
     </div>
 
-    <div class="oferta-card">
+    <div class="oferta-card" on:click={() => navigateToMachine("ploteryPrzemysloweZabudowa")}>
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg"
@@ -55,11 +55,11 @@
       <CtaButton
         classs="oferta-cta"
         text="Plotery CNC w zabudowie"
-        on:click={() => navigateToMachine("ploteryPrzemysloweZabudowa")}
+        
       />
     </div>
 
-    <div class="oferta-card">
+    <div class="oferta-card" on:click={() => navigateToMachine("frezarki5osiowe")}>
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/frezarki5osiowe.svg"
@@ -70,11 +70,11 @@
       <CtaButton
         classs="oferta-cta"
         text="Frezarki pięcioosiowe"
-        on:click={() => navigateToMachine("frezarki5osiowe")}
+        
       />
     </div>
 
-    <div class="oferta-card">
+    <div class="oferta-card" on:click={() => navigateToMachine("grawerki")}>
       <div class="oferta-icon">
         <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
       </div>
@@ -82,11 +82,11 @@
       <CtaButton
         classs="oferta-cta"
         text="Grawerki CNC"
-        on:click={() => navigateToMachine("grawerki")}
+        
       />
     </div>
 
-    <div class="oferta-card">
+    <div class="oferta-card" on:click={() => navigateToMachine("ploteryLinearne")}>
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/ploteryLinearne.svg"
@@ -97,7 +97,7 @@
       <CtaButton
         classs="oferta-cta"
         text="Plotery tnące linearne CNC"
-        on:click={() => navigateToMachine("ploteryLinearne")}
+        
       />
     </div>
   </div>
@@ -129,6 +129,7 @@
       align-items: end;
       justify-content: start;
       align-content: center;
+      cursor: pointer;
 
       span {
         text-align: left;

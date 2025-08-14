@@ -935,6 +935,12 @@
 {/if}
 
 <style lang="scss">
+  /* --- DEBUGGING BORDERS --- */
+ /*  .activeMachine { border: 2px solid red !important; display: block !important; }
+  .active_flex { border: 2px solid blue !important; display: flex !important; }
+  .activeMachine .left { border: 2px solid green !important; display: flex !important; }
+  .activeMachine .right { border: 2px solid orange !important; display: flex !important; } */
+  /* --- END DEBUGGING BORDERS --- */
   /* Mobile layout for $activeMachineStore */
   .activeMachine {
     flex-direction: column;
@@ -1314,6 +1320,7 @@
     .activeMachine {
       position: absolute !important;
       height: auto !important;
+      width: 100vw ;
     }
     .active_flex {
       display: flex !important;
@@ -1331,7 +1338,7 @@
       position: relative;
       width: 100% !important;
       height: auto !important;
-      overflow: hidden !important;
+      /* overflow: hidden !important; */ /* -- REMOVED TO FIX SCROLLING -- */
       max-height: unset !important;
     }
 
@@ -1356,6 +1363,7 @@
   @media (max-width: 480px) {
     .activeMachine {
       padding: 0.5rem;
+      width: 100vw;
     }
 
     .activeMachine .left {

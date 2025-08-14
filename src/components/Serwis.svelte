@@ -665,6 +665,18 @@
 />
 
 <style lang="scss">
+
+
+  .contact-form{
+    input{
+
+      color: var(--color-text-secondary);
+    }
+ 
+
+
+
+  }
   .serwis-container {
     overflow: hidden;
     width: 100%;
@@ -673,10 +685,11 @@
 
   .pattern-overlay {
     position: relative;
-    top: 210px;
+    top: 148px;
+    overflow: hidden;
     left: 0;
     width: 100%;
-    height: 20%;
+    height: 20px;
     z-index: 2;
     pointer-events: none;
     opacity: 0.3;
@@ -1192,6 +1205,13 @@
 
     .content-section .section-title {
       font-size: 28px;
+      padding-left: 10px;
+    
+      &::before{
+
+        left: -25px;
+        margin-top: -2px;
+      }
     }
 
     .serwis-details {

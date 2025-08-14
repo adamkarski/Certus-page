@@ -129,6 +129,7 @@
         id="serviceType"
         class="serwis-form-control" 
         class:error={errors.serviceType}
+        class:placeholder-visible={formData.serviceType === ''}
         bind:value={formData.serviceType}
       >
         <option value="">Wybierz typ usługi</option>
@@ -325,5 +326,9 @@
     .serwis-submit-btn {
       padding: 14px 20px;
     }
+  }
+
+  #serviceType {
+    color: var(--color-text-secondary) !important;
   }
 </style>

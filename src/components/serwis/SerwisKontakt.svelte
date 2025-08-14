@@ -3,7 +3,7 @@
   import CtaButton from "../CtaButton.svelte";
   import { fade } from "svelte/transition";
   import { typoFixAction } from "$lib/utils/typography";
-  
+
   let formData = {
     firstName: "",
     lastName: "",
@@ -64,7 +64,9 @@
   ];
 
   function updatePhonePrefix() {
-    const selectedCountry = countryPrefixes.find(c => c.code === formData.country);
+    const selectedCountry = countryPrefixes.find(
+      (c) => c.code === formData.country
+    );
     if (selectedCountry) {
       phonePrefix = selectedCountry.prefix;
     }
@@ -77,10 +79,11 @@
 
     try {
       // Symulacja wysyłania formularza
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      submitMessage = "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą w ciągu 24 godzin.";
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      submitMessage =
+        "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą w ciągu 24 godzin.";
+
       // Reset formularza
       formData = {
         firstName: "",
@@ -93,9 +96,9 @@
         serviceType: "warranty",
       };
       messageInputMode = null;
-      
     } catch (error) {
-      submitMessage = "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.";
+      submitMessage =
+        "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.";
     } finally {
       isSubmitting = false;
     }
@@ -118,18 +121,18 @@
         <ul use:typoFixAction class="contact-bullets no-sel">
           <li>
             <span class="bullet"></span>
-            Wypełnij formularz, a nasz serwisant skontaktuje się z Tobą w ciągu 24 godzin
-            i umówi wizytę lub udzieli pomocy zdalnej.
+            Wypełnij formularz, a nasz serwisant skontaktuje się z Tobą w ciągu 24
+            godzin i umówi wizytę lub udzieli pomocy zdalnej.
           </li>
           <li>
             <span class="bullet"></span>
-            Nasz zespół serwisowy pracuje 7 dni w tygodniu<br /> 
+            Nasz zespół serwisowy pracuje 7 dni w tygodniu<br />
             i jest gotowy pomóc w każdej sytuacji awaryjnej.
           </li>
           <li>
             <span class="bullet"></span>
-            Oferujemy bezpłatną diagnostykę<br /> 
-            oraz szybką wycenę naprawy<br /> 
+            Oferujemy bezpłatną diagnostykę<br />
+            oraz szybką wycenę naprawy<br />
             dla wszystkich maszyn CNC.
           </li>
         </ul>
@@ -153,7 +156,10 @@
             </span>
             <div>
               <b>
-                <a href="mailto:serwis@mg-certus.pl" title="Wyślij e-mail do serwisu">
+                <a
+                  href="mailto:serwis@mg-certus.pl"
+                  title="Wyślij e-mail do serwisu"
+                >
                   serwis@mg-certus.pl
                 </a>
               </b>
@@ -162,7 +168,10 @@
           </div>
           <div class="info-row">
             <span class="info-icon">
-              <img src="assets/ikony/lokalizacja.svg" alt="Lokalizacja serwisu" />
+              <img
+                src="assets/ikony/lokalizacja.svg"
+                alt="Lokalizacja serwisu"
+              />
             </span>
             <div>
               <b>
@@ -198,11 +207,11 @@
           </a>
         </div>
       </div>
-      
+
       <div class="contact-right">
         <form class="contact-form" on:submit={handleSubmit} autocomplete="off">
           <h3>Zgłoszenie serwisowe</h3>
-          
+
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">Imię</label>
@@ -239,11 +248,7 @@
 
           <div class="form-group">
             <label for="serviceType">Typ usługi serwisowej</label>
-            <select
-              id="serviceType"
-              bind:value={formData.serviceType}
-              required
-            >
+            <select id="serviceType" bind:value={formData.serviceType} required>
               <option value="warranty">Serwis gwarancyjny</option>
               <option value="post-warranty">Serwis pogwarancyjny</option>
               <option value="inspection">Przegląd techniczny</option>
@@ -287,7 +292,10 @@
             {#if messageInputMode === null}
               <div class="message-mode-selection">
                 <button type="button" on:click={selectTextInputMode}>
-                  <img src="/assets/ikony/message.svg" alt="Wiadomość tekstowa" />
+                  <img
+                    src="/assets/ikony/message.svg"
+                    alt="Wiadomość tekstowa"
+                  />
                   <span>Napisz wiadomość</span>
                 </button>
                 <button type="button" on:click={selectRecordInputMode}>
@@ -303,13 +311,21 @@
                 rows="4"
                 required
               ></textarea>
-              <button type="button" class="mode-switch" on:click={() => messageInputMode = null}>
+              <button
+                type="button"
+                class="mode-switch"
+                on:click={() => (messageInputMode = null)}
+              >
                 Zmień na nagranie głosowe
               </button>
             {:else if messageInputMode === "record"}
               <div class="voice-recording">
                 {#if !isRecording && !recordedFileName}
-                  <button type="button" class="record-btn" on:click={startRecording}>
+                  <button
+                    type="button"
+                    class="record-btn"
+                    on:click={startRecording}
+                  >
                     <img src="assets/ikony/microphone.svg" alt="Mikrofon" />
                     Rozpocznij nagrywanie
                   </button>
@@ -322,13 +338,23 @@
                   <div class="recorded-file">
                     <img src="assets/ikony/audio-file.svg" alt="Plik audio" />
                     <span>{recordedFileName}</span>
-                    <button type="button" on:click={() => { recordedFileName = ""; formData.message = ""; }}>
+                    <button
+                      type="button"
+                      on:click={() => {
+                        recordedFileName = "";
+                        formData.message = "";
+                      }}
+                    >
                       Usuń
                     </button>
                   </div>
                 {/if}
               </div>
-              <button type="button" class="mode-switch" on:click={() => messageInputMode = null}>
+              <button
+                type="button"
+                class="mode-switch"
+                on:click={() => (messageInputMode = null)}
+              >
                 Zmień na wiadomość tekstową
               </button>
             {/if}
@@ -342,20 +368,29 @@
               required
             />
             <label for="privacy">
-              Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zgłoszenia serwisowego zgodnie z 
-              <a href="/polityka-prywatnosci" target="_blank">polityką prywatności</a>.
+              Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
+              obsługi zgłoszenia serwisowego zgodnie z
+              <a href="/polityka-prywatnosci" target="_blank"
+                >polityką prywatności</a
+              >.
             </label>
           </div>
 
           {#if submitMessage}
-            <div class="submit-message" class:success={submitMessage.includes('Dziękujemy')} class:error={submitMessage.includes('błąd')}>
+            <div
+              class="submit-message"
+              class:success={submitMessage.includes("Dziękujemy")}
+              class:error={submitMessage.includes("błąd")}
+            >
               {submitMessage}
             </div>
           {/if}
 
-          <div class="text-left">
-            <CtaButton 
-              text={isSubmitting ? "Wysyłanie..." : "Wyślij zgłoszenie serwisowe"} 
+          <div class="text-left ctaButton">
+            <CtaButton
+              text={isSubmitting
+                ? "Wysyłanie..."
+                : "Wyślij zgłoszenie serwisowe"}
               disabled={isSubmitting}
             />
           </div>
@@ -366,8 +401,46 @@
 </section>
 
 <style lang="scss">
-  // Używamy wszystkich istniejących stylów z Section_Kontakt i dodajemy specyficzne dla serwisu
+
+:global(.recorded-file){
+
+  color: var(--color-text-secondary) !important;
+  font-size: 0.8rem;
   
+}
+:global(.ctaButton button span.text-container){
+
+  text-align: left;
+  span{
+    text-align: left;
+    
+  }
+}
+#serviceType {
+    color: var(--color-text-secondary) !important;
+  }
+
+  #phone{
+    width: auto;
+    max-width: 77%;
+  }
+
+  .country-select input{
+    color: var(--color-text-secondary) !important;
+  }
+
+  .message-mode-selection button {
+    
+    img{
+
+      padding: 10px;
+    }
+    
+    span {
+      color: var(--color-text-secondary);
+      font-size: 0.8rem;
+    }
+  }
   .message-mode-selection {
     display: flex;
     transition: all ease 0.5s;
@@ -389,19 +462,19 @@
       }
     }
   }
-  
+
   .message-mode-selection button:hover {
     border: 1px solid var(--color-primary-dark);
   }
-  
+
   .country-select {
     max-width: 120px;
   }
-  
+
   a:hover {
     color: var(--color-primary);
   }
-  
+
   .form-group.privacy-group.checkbox-row {
     display: flex;
     flex-direction: row;
@@ -412,7 +485,7 @@
       font-size: 12px;
     }
   }
-  
+
   .contact-flex {
     background: linear-gradient(
       180deg,
@@ -425,8 +498,8 @@
     padding-top: 5px;
     padding-bottom: 4px;
   }
-  
-  .contact-flex .background .contact {  
+
+  .contact-flex .background .contact {
     display: flex;
     gap: 0px;
     box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
@@ -437,13 +510,13 @@
     position: relative;
     background-color: white;
   }
-  
+
   .contact-flex .background {
     width: 100%;
     height: 100%;
     position: relative;
   }
-  
+
   .text-left {
     display: flex;
     text-align: left;
@@ -452,18 +525,18 @@
     flex-direction: row;
     justify-content: flex-end;
   }
-  
+
   // Specyficzne style dla serwisu
   .serwis-contact-left {
     background-image: url(/assets/serwis-background.jpg); // Można dodać dedykowane tło
-    
+
     h2 {
       color: white;
       font-size: 1.6rem;
       margin-bottom: 32px;
     }
   }
-  
+
   .contact-left:before {
     content: "";
     position: absolute;
@@ -497,13 +570,13 @@
     background-image: url(/assets/kontakt-background.jpg);
     background-size: cover;
   }
-  
+
   .contact-left h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
     margin-bottom: 32px;
     line-height: 1.2;
-    color: white;
+    color: white !important;
     max-width: 300px;
     left: -31px;
   }
@@ -513,7 +586,7 @@
     padding: 0;
     margin: 0 0 32px 0;
   }
-  
+
   .contact-bullets li {
     display: flex;
     align-items: flex-start;
@@ -522,7 +595,7 @@
     line-height: 1.5;
     color: var(--color-gray-200);
   }
-  
+
   .bullet {
     width: 11px;
     height: 63px;
@@ -533,22 +606,22 @@
     flex-shrink: 0;
     position: relative;
   }
-  
+
   .contact-info-block {
     margin: 32px 0 18px 0;
   }
-  
+
   .info-row {
     display: flex;
     align-items: flex-start;
     font-size: 1rem;
     margin-bottom: 16px;
     gap: 10px;
-    
+
     div {
       display: flex;
       flex-direction: column;
-      
+
       small {
         color: #ccc;
         font-size: 0.85rem;
@@ -556,19 +629,19 @@
       }
     }
   }
-  
+
   .info-icon {
     font-size: 1.2rem;
     margin-right: 6px;
     margin-top: 4px;
   }
-  
+
   .contact-social {
     display: flex;
     gap: 16px;
     margin-top: 18px;
   }
-  
+
   .social-icon {
     display: flex;
     align-items: center;
@@ -580,18 +653,18 @@
     transition: background 0.2s;
     box-shadow: 0 2px 8px rgba(44, 90, 160, 0.08);
   }
-  
+
   .social-icon:hover {
     background: #fff;
   }
-  
+
   .contact-right {
     flex: 1.5;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .contact-form {
     width: 100%;
     max-width: 480px;
@@ -601,7 +674,7 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
-    
+
     h3 {
       color: var(--color-text-secondary);
       font-size: 1.5rem;
@@ -610,25 +683,25 @@
       text-align: center;
     }
   }
-  
+
   .form-row {
     display: flex;
     gap: 18px;
   }
-  
+
   .form-group {
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: 6px;
   }
-  
+
   .form-group label {
     font-size: 0.98rem;
     color: #232c32;
     font-weight: 500;
   }
-  
+
   .form-group input,
   .form-group textarea,
   .form-group select {
@@ -640,19 +713,19 @@
     background: #f8f9fa;
     transition: border 0.2s;
   }
-  
+
   .form-group input:focus,
   .form-group textarea:focus,
   .form-group select:focus {
     outline: none;
     border: 1.5px solid #cddc39;
   }
-  
+
   .phone-row {
     display: flex;
     gap: 8px;
     align-items: center;
-    
+
     .phone-prefix {
       background: #f8f9fa;
       border: 1.5px solid #e0e3e7;
@@ -664,28 +737,28 @@
       text-align: center;
     }
   }
-  
+
   .phone-row select {
     min-width: 56px;
     background: #f8f9fa;
   }
-  
+
   .checkbox-row {
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    
+
     input[type="checkbox"] {
       margin-top: 4px;
       flex-shrink: 0;
     }
-    
+
     label {
       font-size: 0.9rem;
       line-height: 1.4;
     }
   }
-  
+
   // Specyficzne style dla serwisu
   .voice-recording {
     display: flex;
@@ -696,7 +769,7 @@
     border-radius: 8px;
     background: #f9fafb;
   }
-  
+
   .record-btn {
     display: flex;
     align-items: center;
@@ -709,24 +782,24 @@
     cursor: pointer;
     font-weight: 600;
     transition: background 0.2s;
-    
+
     &:hover {
       background: var(--color-primary-dark);
     }
-    
+
     img {
       width: 20px;
       height: 20px;
     }
   }
-  
+
   .recording-indicator {
     display: flex;
     align-items: center;
     gap: 8px;
     color: #dc2626;
     font-weight: 600;
-    
+
     .recording-dot {
       width: 12px;
       height: 12px;
@@ -735,12 +808,17 @@
       animation: pulse 1s infinite;
     }
   }
-  
+
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
   }
-  
+
   .recorded-file {
     display: flex;
     align-items: center;
@@ -748,12 +826,12 @@
     background: #e5f3ff;
     padding: 8px 12px;
     border-radius: 6px;
-    
+
     img {
       width: 20px;
       height: 20px;
     }
-    
+
     button {
       background: #dc2626;
       color: white;
@@ -764,7 +842,7 @@
       cursor: pointer;
     }
   }
-  
+
   .mode-switch {
     background: none;
     border: 1px solid var(--color-primary);
@@ -774,25 +852,25 @@
     font-size: 0.85rem;
     cursor: pointer;
     margin-top: 8px;
-    
+
     &:hover {
       background: var(--color-primary);
       color: white;
     }
   }
-  
+
   .submit-message {
     padding: 12px;
     border-radius: 6px;
     font-weight: 500;
     text-align: center;
-    
+
     &.success {
       background: #d1fae5;
       color: #065f46;
       border: 1px solid #10b981;
     }
-    
+
     &.error {
       background: #fee2e2;
       color: #991b1b;
@@ -807,18 +885,18 @@
       gap: 24px;
       margin: 60px auto;
     }
-    
+
     .contact-left,
     .contact-right {
       max-width: 100%;
       min-width: 0;
       padding: 24px 12px;
     }
-    
+
     .contact-left {
       border-radius: 20px 20px 0 0;
     }
-    
+
     .form-row {
       flex-direction: column;
       gap: 12px;
@@ -828,29 +906,33 @@
   @media (max-width: 768px) {
     .contact-form {
       padding: 24px 20px;
-      
+
       h3 {
         font-size: 1.25rem;
         margin-bottom: 16px;
       }
     }
-    
+
     .form-group {
       gap: 4px;
     }
-    
+
     .form-group input,
     .form-group textarea,
     .form-group select {
       padding: 10px 12px;
     }
-    
+
     .contact-left h2 {
       font-size: 1.3rem;
     }
-    
+
     .contact-bullets li {
       font-size: 0.9rem;
     }
+  }
+
+  #country {
+    color: var(--color-text-secondary) !important;
   }
 </style>
