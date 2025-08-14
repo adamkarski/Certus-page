@@ -33,6 +33,9 @@
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/message/send": [
+		"src/routes/message/send/+server.ts"
+	],
 	"/onas": [
 		"src/routes/onas/+layout.ts",
 		"src/routes/+layout.ts",

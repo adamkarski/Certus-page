@@ -72,10 +72,36 @@
     }
   }
 
+  let errors: Record<string, string> = {};
+
+  function validate() {
+    errors = {};
+    if (!formData.firstName.trim()) errors.firstName = "Imię jest wymagane";
+    if (!formData.lastName.trim()) errors.lastName = "Nazwisko jest wymagane";
+    if (!formData.email.trim()) {
+      errors.email = "Email jest wymagany";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = "Nieprawidłowy format email";
+    }
+    if (!formData.phone.trim()) errors.phone = "Telefon jest wymagany";
+    if (!formData.serviceType) errors.serviceType = "Wybierz rodzaj usługi";
+    if (!formData.message.trim()) errors.message = "Opis jest wymagany";
+    if (!formData.privacy) errors.privacy = "Zgoda jest wymagana";
+    
+    errors = errors; // This forces Svelte to update the view with the new errors
+    return Object.keys(errors).length === 0;
+  }
+
   async function handleSubmit(event: Event) {
     event.preventDefault();
-    isSubmitting = true;
     submitMessage = "";
+
+    if (!validate()) {
+      submitMessage = "Proszę poprawić błędy w formularzu.";
+      return;
+    }
+
+    isSubmitting = true;
 
     try {
       // Symulacja wysyłania formularza
@@ -220,8 +246,10 @@
                 type="text"
                 placeholder="Imię"
                 bind:value={formData.firstName}
+                class:error={errors.firstName}
                 required
               />
+              {#if errors.firstName}<span class="error-message">{errors.firstName}</span>{/if}
             </div>
             <div class="form-group">
               <label for="lastName">Nazwisko</label>
@@ -230,8 +258,10 @@
                 type="text"
                 placeholder="Nazwisko"
                 bind:value={formData.lastName}
+                class:error={errors.lastName}
                 required
               />
+              {#if errors.lastName}<span class="error-message">{errors.lastName}</span>{/if}
             </div>
           </div>
 
@@ -242,13 +272,15 @@
               type="email"
               placeholder="twoj@email.com"
               bind:value={formData.email}
+              class:error={errors.email}
               required
             />
+            {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
           </div>
 
           <div class="form-group">
             <label for="serviceType">Typ usługi serwisowej</label>
-            <select id="serviceType" bind:value={formData.serviceType} required>
+            <select id="serviceType" bind:value={formData.serviceType} class:error={errors.serviceType} required>
               <option value="warranty">Serwis gwarancyjny</option>
               <option value="post-warranty">Serwis pogwarancyjny</option>
               <option value="inspection">Przegląd techniczny</option>
@@ -257,6 +289,7 @@
               <option value="upgrade">Modernizacja</option>
               <option value="consultation">Konsultacja techniczna</option>
             </select>
+            {#if errors.serviceType}<span class="error-message">{errors.serviceType}</span>{/if}
           </div>
 
           <div class="form-row">
@@ -281,8 +314,10 @@
                   type="tel"
                   placeholder="123 456 789"
                   bind:value={formData.phone}
+                  class:error={errors.phone}
                   required
                 />
+                {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
               </div>
             </div>
           </div>
@@ -358,6 +393,7 @@
                 Zmień na wiadomość tekstową
               </button>
             {/if}
+            {#if errors.message}<span class="error-message">{errors.message}</span>{/if}
           </div>
 
           <div class="form-group privacy-group checkbox-row">
@@ -374,6 +410,7 @@
                 >polityką prywatności</a
               >.
             </label>
+            {#if errors.privacy}<span class="error-message">{errors.privacy}</span>{/if}
           </div>
 
           {#if submitMessage}
@@ -401,6 +438,9 @@
 </section>
 
 <style lang="scss">
+/* --- DEBUGGING BORDERS --- */
+#country { border: 2px solid red !important; }
+/* --- END DEBUGGING BORDERS --- */
 
 :global(.recorded-file){
 
@@ -934,5 +974,17 @@
 
   #country {
     color: var(--color-text-secondary) !important;
+  }
+
+  .error-message {
+    display: block;
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 4px;
+  }
+  .form-group input.error,
+  .form-group select.error,
+  .form-group textarea.error {
+    border-color: #ef4444;
   }
 </style>
