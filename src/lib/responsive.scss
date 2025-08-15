@@ -8,10 +8,15 @@
    - 480px: Mobile portrait
 */
 
+
+.hero-content {
+  overflow: hidden;
+}
+
 #video {
   position: relative;
   z-index: 1;
-  overflow: hidden; 
+  overflow: hidden;
 }
 #o-nas {
   position: relative;
@@ -20,7 +25,7 @@
 #image-section-01 {
   position: relative;
   z-index: 1;
-  overflow: hidden; 
+  overflow: hidden;
 }
 #image-section-02 {
   position: relative;
@@ -30,14 +35,10 @@
   position: relative;
   z-index: 1;
   input {
-
     color: var(--color-text-secondary);
-
   }
   textarea {
-
     color: var(--color-text-secondary);
-
   }
 }
 .section-wrapper {
@@ -58,7 +59,7 @@ tbody tr td .text {
     width: 100%;
     text-align: center;
   }
-  
+
   /* Responsywność dla mobilnych */
   @media (max-width: 768px) {
     width: 100%;
@@ -81,6 +82,12 @@ body.home {
     overflow: hidden; /* Zapobiegaj overflow */
   }
 }
+
+
+
+
+
+
 
 /* Stare skomplikowane media queries usunięte - teraz używamy prostszego systemu */
 @media (max-width: 1200px) {
@@ -166,29 +173,27 @@ body.home {
     h2 {
       font-size: 1.5rem !important;
     }
-    
   }
   .hero-content {
     opacity: 1;
-    button.items{
+    button.items {
       margin-top: 30px;
-     padding: 0px !important;
+      padding: 0px !important;
 
-     .topline{
-      text-align: center !important;
-      width: 100% !important;
-      height: 0px !important;
-      margin-top: 80% !important;
-      margin-left: -90px !important;
-    }
+      .topline {
+        text-align: center !important;
+        width: 100% !important;
+        height: 0px !important;
+        margin-top: 80% !important;
+        margin-left: -90px !important;
+      }
     }
   }
   .image-container-02 .phone-holder {
     transform: scale(0.7) !important;
-  
+
     margin-top: -40px !important;
     right: -8px !important;
-
   }
 }
 
@@ -224,13 +229,20 @@ body.home {
 @media (min-width: 1200px) and (max-width: 1600px) {
   .activeMachine .right {
     flex-direction: column !important;
+   
   }
 }
 .activeMachine .right_params {
   min-width: 30% !important;
+
 }
 
+
 @media (min-width: 1200px) {
+
+ 
+
+
   .menuItems {
     width: 600px;
   }
@@ -251,6 +263,8 @@ body.home {
     max-width: 40% !important;
     height: 100% !important;
     min-height: 100%;
+    display: flex;
+    flex-direction: column;
   }
   .activeMachine .right_params_content {
     padding-top: 2rem !important;

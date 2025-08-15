@@ -1,0 +1,27 @@
+# Certus API Configuration
+# Umożliwia wykonywanie plików PHP w katalogu static/api
+
+# Włącz wykonywanie PHP
+AddHandler application/x-httpd-php .php
+
+# CORS Headers
+Header always set Access-Control-Allow-Origin "*"
+Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS"
+Header always set Access-Control-Allow-Headers "Content-Type"
+
+# Handle preflight OPTIONS requests
+RewriteEngine On
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
+
+# Security headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options SAMEORIGIN
+
+# Limit file uploads to 20MB
+php_value upload_max_filesize 20M
+php_value post_max_size 25M
+
+# Enable error logging
+php_value log_errors On
+php_value error_log /path/to/your/error.log

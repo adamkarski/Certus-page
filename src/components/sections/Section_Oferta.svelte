@@ -8,11 +8,11 @@
   <div class="oferta-container container">
     <div class="section-header no-sel">
       <h2 class="section-title" use:typoFixAction>
-       <span class="highlight-polish">Polski </span> producent maszyn CNC
+        <span class="highlight-polish">Polski </span> producent maszyn CNC
       </h2>
 
       <p class="section-subtitle" use:typoFixAction>
-       20 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów
+        20 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów
         CNC.<br />
         Kompleksowa obsługa od projektu po serwis.<br />
         — wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy
@@ -28,10 +28,8 @@
 </section>
 
 <style lang="scss">
-
-
-.pattern-overlay {
-  position: absolute;
+  .pattern-overlay {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -43,14 +41,14 @@
 
     .pattern.two {
       transform: scale(1.2) skew(-15deg, 0deg);
-    background-image: url(/assets/images/pattern-image1-2.png);
-    position: absolute;
-    width: 100%;
-    height: 63px;
-    z-index: 11;
-    left: 0;
-    bottom: 85px;
-    pointer-events: auto;
+      background-image: url(/assets/images/pattern-image1-2.png);
+      position: absolute;
+      width: 100%;
+      height: 63px;
+      z-index: 11;
+      left: 0;
+      bottom: 85px;
+      pointer-events: auto;
     }
   }
 
@@ -70,7 +68,6 @@
     /* overflow: hidden; */
     width: 100%;
     padding: 0 9rem;
-    
   }
   // .oferta-container:before{
 

@@ -3,6 +3,7 @@
   import CtaButton from "../CtaButton.svelte";
   import { fade } from "svelte/transition";
   import { typoFixAction } from "$lib/utils/typography";
+  import axios from 'axios';
 
   let formData = {
     firstName: "",
@@ -20,47 +21,128 @@
   let messageInputMode: "text" | "record" | null = null;
   let isRecording = false;
   let recordedFileName = "";
+  let audioBlob: Blob | null = null;
+  let mediaRecorder: MediaRecorder | null = null;
+  let audioChunks: Blob[] = [];
+  let recordingDuration = 0;
+  let recordingTimer: number | null = null;
 
   function selectTextInputMode() {
     messageInputMode = "text";
-    isRecording = false;
-    recordedFileName = "";
+    cleanupRecording();
     formData.message = "";
   }
 
   function selectRecordInputMode() {
     messageInputMode = "record";
-    isRecording = false;
-    recordedFileName = "";
+    cleanupRecording();
     formData.message = "";
   }
 
-  function startRecording() {
-    isRecording = true;
+  function cleanupRecording() {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+    }
+    isRecording = false;
     recordedFileName = "";
-    setTimeout(() => {
-      stopRecording();
-    }, 3000);
+    audioBlob = null;
+    audioChunks = [];
+    recordingDuration = 0;
+    if (recordingTimer) {
+      clearInterval(recordingTimer);
+      recordingTimer = null;
+    }
+  }
+
+  async function startRecording() {
+    try {
+      // Sprawdź czy przeglądarka obsługuje MediaRecorder
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error('Nagrywanie nie jest obsługiwane w tej przeglądarce');
+      }
+
+      const stream = await navigator.mediaDevices.getUserMedia({ 
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          sampleRate: 44100
+        } 
+      });
+      
+      audioChunks = [];
+      recordingDuration = 0;
+      
+      mediaRecorder = new MediaRecorder(stream, {
+        mimeType: MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4'
+      });
+      
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunks.push(event.data);
+        }
+      };
+      
+      mediaRecorder.onstop = () => {
+        const mimeType = mediaRecorder?.mimeType || 'audio/webm';
+        audioBlob = new Blob(audioChunks, { type: mimeType });
+        
+        const extension = mimeType.includes('mp4') ? 'mp4' : 'webm';
+        recordedFileName = `wiadomosc_glosowa_${Date.now()}.${extension}`;
+        formData.message = `Wiadomość głosowa (${Math.round(recordingDuration)}s) - ${recordedFileName}`;
+        
+        // Zatrzymaj wszystkie ścieżki audio
+        stream.getTracks().forEach(track => track.stop());
+      };
+      
+      mediaRecorder.start(1000); // Zbieraj dane co sekundę
+      isRecording = true;
+      
+      // Timer do zliczania czasu
+      recordingTimer = setInterval(() => {
+        recordingDuration += 1;
+        
+        // Automatycznie zatrzymaj po 3 minutach (180s)
+        if (recordingDuration >= 180) {
+          stopRecording();
+        }
+      }, 1000);
+      
+    } catch (error) {
+      console.error('Błąd podczas nagrywania:', error);
+      submitMessage = error instanceof Error ? error.message : 'Nie udało się uzyskać dostępu do mikrofonu';
+    }
   }
 
   function stopRecording() {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+    }
+    
+    if (recordingTimer) {
+      clearInterval(recordingTimer);
+      recordingTimer = null;
+    }
+    
     isRecording = false;
-    recordedFileName = `wiadomosc_glosowa_${Date.now()}.mp3`;
-    formData.message = `Wiadomość głosowa (załącznik: ${recordedFileName})`;
+  }
+
+  function deleteRecording() {
+    cleanupRecording();
+    formData.message = "";
   }
 
   const countryPrefixes = [
-    { code: "Polska", prefix: "+48" },
-    { code: "Österreich", prefix: "+43" },
-    { code: "België", prefix: "+32" },
-    { code: "Deutschland", prefix: "+49" },
-    { code: "Česká republika", prefix: "+420" },
-    { code: "France", prefix: "+33" },
-    { code: "United Kingdom", prefix: "+44" },
-    { code: "Italia", prefix: "+39" },
-    { code: "España", prefix: "+34" },
-    { code: "Nederland", prefix: "+31" },
-    { code: "United States", prefix: "+1" },
+    { code: "PL", name: "Polska", prefix: "+48" },
+    { code: "AT", name: "Austria", prefix: "+43" },
+    { code: "BE", name: "Belgia", prefix: "+32" },
+    { code: "DE", name: "Niemcy", prefix: "+49" },
+    { code: "CZ", name: "Czechy", prefix: "+420" },
+    { code: "FR", name: "Francja", prefix: "+33" },
+    { code: "GB", name: "Wielka Brytania", prefix: "+44" },
+    { code: "IT", name: "Włochy", prefix: "+39" },
+    { code: "ES", name: "Hiszpania", prefix: "+34" },
+    { code: "NL", name: "Holandia", prefix: "+31" },
+    { code: "US", name: "USA", prefix: "+1" },
   ];
 
   function updatePhonePrefix() {
@@ -74,57 +156,261 @@
 
   let errors: Record<string, string> = {};
 
-  function validate() {
-    errors = {};
-    if (!formData.firstName.trim()) errors.firstName = "Imię jest wymagane";
-    if (!formData.lastName.trim()) errors.lastName = "Nazwisko jest wymagane";
-    if (!formData.email.trim()) {
-      errors.email = "Email jest wymagany";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Nieprawidłowy format email";
-    }
-    if (!formData.phone.trim()) errors.phone = "Telefon jest wymagany";
-    if (!formData.serviceType) errors.serviceType = "Wybierz rodzaj usługi";
-    if (!formData.message.trim()) errors.message = "Opis jest wymagany";
-    if (!formData.privacy) errors.privacy = "Zgoda jest wymagana";
+  // Ulepszone funkcje walidacyjne
+  function validateEmail(email: string): string | null {
+    if (!email.trim()) return "Email jest wymagany";
     
-    errors = errors; // This forces Svelte to update the view with the new errors
+    // Bardziej precyzyjna regex dla email
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email.trim())) {
+      return "Nieprawidłowy format email";
+    }
+    
+    if (email.length > 254) return "Email jest za długi (max 254 znaków)";
+    return null;
+  }
+
+  function validatePhone(phone: string): string | null {
+    if (!phone.trim()) return "Telefon jest wymagany";
+    
+    // Usuń spacje i myślniki dla walidacji
+    const cleanPhone = phone.replace(/[\s\-]/g, '');
+    
+    // Sprawdź czy zawiera tylko cyfry
+    if (!/^\d+$/.test(cleanPhone)) {
+      return "Numer telefonu może zawierać tylko cyfry, spacje i myślniki";
+    }
+    
+    // Sprawdź długość w zależności od kraju
+    const selectedCountry = countryPrefixes.find(c => c.code === formData.country);
+    if (selectedCountry) {
+      const minLength = getPhoneMinLength(selectedCountry.prefix);
+      const maxLength = getPhoneMaxLength(selectedCountry.prefix);
+      
+      if (cleanPhone.length < minLength) {
+        return `Numer jest za krótki (min ${minLength} cyfr dla ${selectedCountry.code})`;
+      }
+      if (cleanPhone.length > maxLength) {
+        return `Numer jest za długi (max ${maxLength} cyfr dla ${selectedCountry.code})`;
+      }
+    }
+    
+    return null;
+  }
+
+  function getPhoneMinLength(prefix: string): number {
+    const lengths: Record<string, number> = {
+      '+48': 9,   // Polska
+      '+43': 10,  // Austria
+      '+32': 9,   // Belgia
+      '+49': 11,  // Niemcy
+      '+420': 9,  // Czechy
+      '+33': 10,  // Francja
+      '+44': 10,  // UK
+      '+39': 10,  // Włochy
+      '+34': 9,   // Hiszpania
+      '+31': 9,   // Holandia
+      '+1': 10,   // USA
+    };
+    return lengths[prefix] || 9;
+  }
+
+  function getPhoneMaxLength(prefix: string): number {
+    const lengths: Record<string, number> = {
+      '+48': 9,   // Polska
+      '+43': 11,  // Austria
+      '+32': 9,   // Belgia
+      '+49': 12,  // Niemcy
+      '+420': 9,  // Czechy
+      '+33': 10,  // Francja
+      '+44': 11,  // UK
+      '+39': 11,  // Włochy
+      '+34': 9,   // Hiszpania
+      '+31': 9,   // Holandia
+      '+1': 10,   // USA
+    };
+    return lengths[prefix] || 12;
+  }
+
+  function validateField(fieldName: string, value: any): string | null {
+    switch (fieldName) {
+      case 'firstName':
+        if (!value.trim()) return "Imię jest wymagane";
+        if (value.trim().length < 2) return "Imię musi mieć co najmniej 2 znaki";
+        if (value.trim().length > 50) return "Imię jest za długie (max 50 znaków)";
+        return null;
+      
+      case 'lastName':
+        if (!value.trim()) return "Nazwisko jest wymagane";
+        if (value.trim().length < 2) return "Nazwisko musi mieć co najmniej 2 znaki";
+        if (value.trim().length > 50) return "Nazwisko jest za długie (max 50 znaków)";
+        return null;
+      
+      case 'email':
+        return validateEmail(value);
+      
+      case 'phone':
+        return validatePhone(value);
+      
+      case 'serviceType':
+        if (!value) return "Wybierz rodzaj usługi serwisowej";
+        return null;
+      
+      case 'message':
+        if (!value.trim()) return "Opis problemu jest wymagany";
+        if (value.trim().length < 10) return "Opis musi mieć co najmniej 10 znaków";
+        if (value.trim().length > 2000) return "Opis jest za długi (max 2000 znaków)";
+        return null;
+      
+      case 'privacy':
+        if (!value) return "Zgoda na przetwarzanie danych jest wymagana";
+        return null;
+      
+      default:
+        return null;
+    }
+  }
+
+  // Live validation - walidacja pojedynczego pola
+  function validateSingleField(fieldName: string) {
+    const error = validateField(fieldName, formData[fieldName as keyof typeof formData]);
+    if (error) {
+      errors = { ...errors, [fieldName]: error };
+    } else {
+      const { [fieldName]: removed, ...rest } = errors;
+      errors = rest;
+    }
+  }
+
+  // Funkcje pomocnicze dla UI
+  function getRemainingChars(text: string, maxLength: number): number {
+    return maxLength - text.length;
+  }
+
+  function getCharCountColor(text: string, maxLength: number): string {
+    const remaining = getRemainingChars(text, maxLength);
+    if (remaining < 50) return '#ef4444'; // czerwony
+    if (remaining < 200) return '#f59e0b'; // pomarańczowy
+    return '#6b7280'; // szary
+  }
+
+  function validate() {
+    const newErrors: Record<string, string> = {};
+    
+    // Walidacja wszystkich pól
+    Object.keys(formData).forEach(fieldName => {
+      if (fieldName === 'country') return; // Kraj nie wymaga walidacji
+      
+      const error = validateField(fieldName, formData[fieldName as keyof typeof formData]);
+      if (error) {
+        newErrors[fieldName] = error;
+      }
+    });
+    
+    errors = newErrors;
     return Object.keys(errors).length === 0;
   }
 
   async function handleSubmit(event: Event) {
     event.preventDefault();
+    console.log("🚀 Form submitted!", { formData, errors });
     submitMessage = "";
 
     if (!validate()) {
+      console.log("❌ Validation failed:", errors);
       submitMessage = "Proszę poprawić błędy w formularzu.";
       return;
     }
 
+    console.log("✅ Validation passed, sending data...");
     isSubmitting = true;
 
     try {
-      // Symulacja wysyłania formularza
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      submitMessage =
-        "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą w ciągu 24 godzin.";
-
-      // Reset formularza
-      formData = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        message: "",
-        privacy: false,
-        country: "PL",
-        serviceType: "warranty",
-      };
-      messageInputMode = null;
+      // Przygotuj dane do wysłania
+      const formDataToSend = new FormData();
+      
+      // Dodaj podstawowe dane formularza
+      formDataToSend.append('firstName', formData.firstName.trim());
+      formDataToSend.append('lastName', formData.lastName.trim());
+      formDataToSend.append('email', formData.email.trim());
+      formDataToSend.append('phone', `${phonePrefix} ${formData.phone.trim()}`);
+      formDataToSend.append('serviceType', formData.serviceType);
+      formDataToSend.append('country', formData.country);
+      formDataToSend.append('messageType', messageInputMode || 'text');
+      
+      // Dodaj wiadomość lub plik audio
+      if (messageInputMode === 'record' && audioBlob) {
+        formDataToSend.append('audioMessage', audioBlob, recordedFileName);
+        formDataToSend.append('message', `Wiadomość głosowa (${Math.round(recordingDuration)}s)`);
+      } else {
+        formDataToSend.append('message', formData.message.trim());
+      }
+      
+      // Dodaj metadane
+      formDataToSend.append('timestamp', new Date().toISOString());
+      formDataToSend.append('userAgent', navigator.userAgent);
+      formDataToSend.append('formType', 'serwis-kontakt');
+      
+      // Wyślij dane do PHP endpoint
+      // Dla development używaj localhost:8000, dla production relatywny URL
+      const apiUrl = import.meta.env.DEV 
+        ? 'http://localhost:8000/api/serwis-kontakt.php'
+        : '/api/serwis-kontakt.php';
+        
+      console.log("📤 Sending to:", apiUrl);
+      console.log("📦 FormData contents:");
+      for (let [key, value] of formDataToSend.entries()) {
+        console.log(`  ${key}:`, value);
+      }
+        
+      const response = await axios.post(apiUrl, formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        timeout: 30000, // 30s timeout
+      });
+      
+      console.log("📬 Response received:", response.data);
+      
+      // Sprawdź odpowiedź
+      if (response.data.success) {
+        submitMessage = response.data.message || 
+          "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą w ciągu 24 godzin.";
+        
+        // Reset formularza przy sukcesie
+        formData = {
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: "",
+          privacy: false,
+          country: "PL",
+          serviceType: "warranty",
+        };
+        messageInputMode = null;
+        cleanupRecording();
+        
+      } else {
+        submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
+      }
+      
     } catch (error) {
-      submitMessage =
-        "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.";
+      console.error('Błąd wysyłania formularza:', error);
+      
+      if (axios.isAxiosError(error)) {
+        if (error.code === 'ECONNABORTED') {
+          submitMessage = "Timeout - spróbuj ponownie za chwilę.";
+        } else if (error.response?.status === 413) {
+          submitMessage = "Plik audio jest za duży. Spróbuj nagrać krótszą wiadomość.";
+        } else if (error.response?.status >= 500) {
+          submitMessage = "Problem z serwerem. Spróbuj ponownie za chwilę.";
+        } else {
+          submitMessage = error.response?.data?.message || "Wystąpił błąd podczas wysyłania.";
+        }
+      } else {
+        submitMessage = "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.";
+      }
     } finally {
       isSubmitting = false;
     }
@@ -136,6 +422,10 @@
 
   $: if (formData.country) {
     updatePhonePrefix();
+    // Ponownie waliduj telefon po zmianie kraju
+    if (formData.phone.trim()) {
+      validateSingleField('phone');
+    }
   }
 </script>
 
@@ -247,6 +537,9 @@
                 placeholder="Imię"
                 bind:value={formData.firstName}
                 class:error={errors.firstName}
+                on:blur={() => validateSingleField('firstName')}
+                on:input={() => validateSingleField('firstName')}
+                maxlength="50"
                 required
               />
               {#if errors.firstName}<span class="error-message">{errors.firstName}</span>{/if}
@@ -259,6 +552,9 @@
                 placeholder="Nazwisko"
                 bind:value={formData.lastName}
                 class:error={errors.lastName}
+                on:blur={() => validateSingleField('lastName')}
+                on:input={() => validateSingleField('lastName')}
+                maxlength="50"
                 required
               />
               {#if errors.lastName}<span class="error-message">{errors.lastName}</span>{/if}
@@ -273,6 +569,9 @@
               placeholder="twoj@email.com"
               bind:value={formData.email}
               class:error={errors.email}
+              on:blur={() => validateSingleField('email')}
+              on:input={() => validateSingleField('email')}
+              maxlength="254"
               required
             />
             {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
@@ -280,7 +579,7 @@
 
           <div class="form-group">
             <label for="serviceType">Typ usługi serwisowej</label>
-            <select id="serviceType" bind:value={formData.serviceType} class:error={errors.serviceType} required>
+            <select id="serviceType" bind:value={formData.serviceType} class:error={errors.serviceType} on:change={() => validateSingleField('serviceType')} required>
               <option value="warranty">Serwis gwarancyjny</option>
               <option value="post-warranty">Serwis pogwarancyjny</option>
               <option value="inspection">Przegląd techniczny</option>
@@ -301,7 +600,7 @@
                 class="country-select"
               >
                 {#each countryPrefixes as country}
-                  <option value={country.code}>{country.code}</option>
+                  <option value={country.code}>{country.name}</option>
                 {/each}
               </select>
             </div>
@@ -315,6 +614,8 @@
                   placeholder="123 456 789"
                   bind:value={formData.phone}
                   class:error={errors.phone}
+                  on:blur={() => validateSingleField('phone')}
+                  on:input={() => validateSingleField('phone')}
                   required
                 />
                 {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
@@ -344,8 +645,14 @@
                 placeholder="Opisz problem z maszyną, objawy awarii, model urządzenia..."
                 bind:value={formData.message}
                 rows="4"
+                on:blur={() => validateSingleField('message')}
+                on:input={() => validateSingleField('message')}
+                maxlength="2000"
                 required
               ></textarea>
+              <div class="char-counter" style="color: {getCharCountColor(formData.message, 2000)}">
+                {getRemainingChars(formData.message, 2000)} znaków pozostało
+              </div>
               <button
                 type="button"
                 class="mode-switch"
@@ -356,6 +663,11 @@
             {:else if messageInputMode === "record"}
               <div class="voice-recording">
                 {#if !isRecording && !recordedFileName}
+                  <div class="record-instructions">
+                    <img src="assets/ikony/microphone.svg" alt="Mikrofon" />
+                    <p>Naciśnij przycisk i opisz problem głosowo</p>
+                    <small>Maksymalnie 3 minuty nagrania</small>
+                  </div>
                   <button
                     type="button"
                     class="record-btn"
@@ -367,20 +679,32 @@
                 {:else if isRecording}
                   <div class="recording-indicator">
                     <div class="recording-dot"></div>
-                    Nagrywanie... (3s)
+                    <div class="recording-info">
+                      <span class="recording-text">Nagrywanie...</span>
+                      <span class="recording-duration">{Math.floor(recordingDuration / 60)}:{(recordingDuration % 60).toString().padStart(2, '0')}</span>
+                    </div>
+                    <button
+                      type="button"
+                      class="stop-btn"
+                      on:click={stopRecording}
+                    >
+                      Zatrzymaj
+                    </button>
                   </div>
                 {:else if recordedFileName}
                   <div class="recorded-file">
                     <img src="assets/ikony/audio-file.svg" alt="Plik audio" />
-                    <span>{recordedFileName}</span>
+                    <div class="file-info">
+                      <span class="file-name">{recordedFileName}</span>
+                      <small class="file-duration">{Math.floor(recordingDuration / 60)}:{(recordingDuration % 60).toString().padStart(2, '0')} min</small>
+                    </div>
                     <button
                       type="button"
-                      on:click={() => {
-                        recordedFileName = "";
-                        formData.message = "";
-                      }}
+                      class="delete-btn"
+                      on:click={deleteRecording}
+                      title="Usuń nagranie"
                     >
-                      Usuń
+                      ✕
                     </button>
                   </div>
                 {/if}
@@ -401,6 +725,7 @@
               id="privacy"
               type="checkbox"
               bind:checked={formData.privacy}
+              on:change={() => validateSingleField('privacy')}
               required
             />
             <label for="privacy">
@@ -428,6 +753,7 @@
               text={isSubmitting
                 ? "Wysyłanie..."
                 : "Wyślij zgłoszenie serwisowe"}
+              type="submit"
               disabled={isSubmitting}
             />
           </div>
@@ -438,9 +764,6 @@
 </section>
 
 <style lang="scss">
-/* --- DEBUGGING BORDERS --- */
-#country { border: 2px solid red !important; }
-/* --- END DEBUGGING BORDERS --- */
 
 :global(.recorded-file){
 
@@ -808,6 +1131,33 @@
     border: 2px dashed #e0e3e7;
     border-radius: 8px;
     background: #f9fafb;
+    gap: 16px;
+  }
+
+  .record-instructions {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #6b7280;
+
+    img {
+      width: 40px;
+      height: 40px;
+      opacity: 0.6;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    small {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
   }
 
   .record-btn {
@@ -821,10 +1171,11 @@
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.2s;
+    transition: all 0.2s;
 
     &:hover {
       background: var(--color-primary-dark);
+      transform: scale(1.02);
     }
 
     img {
@@ -835,17 +1186,51 @@
 
   .recording-indicator {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     color: #dc2626;
     font-weight: 600;
+    padding: 20px;
 
     .recording-dot {
-      width: 12px;
-      height: 12px;
+      width: 16px;
+      height: 16px;
       background: #dc2626;
       border-radius: 50%;
       animation: pulse 1s infinite;
+    }
+
+    .recording-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+
+      .recording-text {
+        font-size: 1rem;
+      }
+
+      .recording-duration {
+        font-size: 1.5rem;
+        font-family: monospace;
+        color: #991b1b;
+      }
+    }
+
+    .stop-btn {
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #991b1b;
+      }
     }
   }
 
@@ -855,31 +1240,64 @@
       opacity: 1;
     }
     50% {
-      opacity: 0.5;
+      opacity: 0.3;
     }
   }
 
   .recorded-file {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: #e5f3ff;
-    padding: 8px 12px;
-    border-radius: 6px;
+    gap: 12px;
+    background: #dcfce7;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #bbf7d0;
+    width: 100%;
+    max-width: 400px;
 
     img {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
     }
 
-    button {
-      background: #dc2626;
+    .file-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      .file-name {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #047857;
+      }
+
+      .file-duration {
+        font-size: 0.75rem;
+        color: #059669;
+        font-family: monospace;
+      }
+    }
+
+    .delete-btn {
+      background: #ef4444;
       color: white;
       border: none;
-      padding: 4px 8px;
-      border-radius: 4px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
       font-size: 0.8rem;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #dc2626;
+      }
     }
   }
 
@@ -981,10 +1399,42 @@
     color: #ef4444;
     font-size: 0.875rem;
     margin-top: 4px;
+    font-weight: 500;
   }
+  
   .form-group input.error,
   .form-group select.error,
   .form-group textarea.error {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+  }
+
+  .char-counter {
+    font-size: 0.75rem;
+    text-align: right;
+    margin-top: 4px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  // Ulepszenia wizualne dla live validation
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border: 1.5px solid #cddc39;
+    background-color: #ffffff;
+  }
+
+  .form-group input:valid:not(.error),
+  .form-group textarea:valid:not(.error),
+  .form-group select:valid:not(.error) {
+    border-color: #10b981;
+  }
+
+  .form-group input:invalid.error,
+  .form-group textarea:invalid.error,
+  .form-group select:invalid.error {
     border-color: #ef4444;
   }
 </style>

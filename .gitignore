@@ -27,3 +27,4 @@ dist-ssr
 /build
 /.svelte-kit
 src/components/Maszyny_fullView.svelte
+TEST_SETUP.md

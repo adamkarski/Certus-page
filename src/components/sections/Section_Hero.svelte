@@ -93,7 +93,10 @@
                     swiperElement.swiper.slideTo(index);
                   }
                 }
-                setTimeout(() => updateNavigationButtons(swiperElement.swiper), 200);
+                setTimeout(
+                  () => updateNavigationButtons(swiperElement.swiper),
+                  200
+                );
               } else {
                 setTimeout(checkSwiper, 100);
               }
@@ -251,7 +254,13 @@
   $: slidesPerGroup = $windowWidth < 1024 ? 1 : 2;
 
   // Update swiper when window width changes
-  $: if (browser && !$activeCategoryStore && swiperElement && swiperElement.swiper && $windowWidth) {
+  $: if (
+    browser &&
+    !$activeCategoryStore &&
+    swiperElement &&
+    swiperElement.swiper &&
+    $windowWidth
+  ) {
     setTimeout(() => {
       const swiper = swiperElement.swiper;
 
@@ -433,7 +442,6 @@
     // Zapisz aktualny indeks slajdu przed otwarciem kategorii
     if (swiperElement && swiperElement.swiper) {
       lastActiveSlideIndex = swiperElement.swiper.activeIndex;
-      console.log("💾 Zapisuję aktualny indeks slajdu:", lastActiveSlideIndex);
     }
 
     const category = list.find((item) => item.id === c);
@@ -479,7 +487,6 @@
     // Po zamknięciu kategorii, wróć do zapisanego slajdu
     setTimeout(() => {
       if (swiperElement && swiperElement.swiper) {
-        console.log("🔙 Wracam do zapisanego slajdu:", lastActiveSlideIndex);
         swiperElement.swiper.slideTo(lastActiveSlideIndex);
         updateNavigationButtons(swiperElement.swiper);
       }
@@ -521,10 +528,6 @@
     // Po zamknięciu widoku maszyny, wróć do zapisanego slajdu
     setTimeout(() => {
       if (swiperElement && swiperElement.swiper) {
-        console.log(
-          "🔙 Wracam do zapisanego slajdu (closeFW):",
-          lastActiveSlideIndex
-        );
         swiperElement.swiper.slideTo(lastActiveSlideIndex);
         updateNavigationButtons(swiperElement.swiper);
       }
@@ -798,11 +801,61 @@
       {/if}
     </div>
   </div>
+  <span class="triangle"></span>
 </section>
 
 <MaszynyActiveMachine />
 
 <style lang="scss">
+  :global(.home .hero) {
+    overflow: hidden;
+    &::after {
+      content: "";
+      background-image: url(/assets/images/pattern-image1-2.png);
+      position: absolute;
+      width: 100vw;
+      height: 37px;
+      right: 0px;
+      filter: blur(0.3px);
+      bottom: 0px;
+    }
+
+    .triangle {
+      position: absolute;
+      width: 400px;
+      height: 100px;
+      bottom: 0px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 55px;
+        background: #f7f7f7;
+        clip-path: polygon(0 0, 79% 0, 100% 100%, 0% 100%);
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    :global(.home .hero .triangle) {
+    &::after{
+        clip-path: polygon(0 0, 40% 0, 60% 101%, 0% 100%) !important;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    :global(.home .hero .triangle) {
+    &::after{
+        clip-path: polygon(0 0, 20% 0, 40% 101%, 0% 100%) !important;
+      }
+    }
+  }
+
+
   :global(.swiper-nav-button.swiper-button-disabled) {
     opacity: 0.1 !important;
     cursor: not-allowed !important;
@@ -862,7 +915,7 @@
     :global(button.backFromCategory) {
       position: fixed !important;
       display: block;
-         top: 58vh;
+      top: 58vh;
       left: 0px;
       z-index: 5;
       transition: all ease 0.4s;
@@ -1079,25 +1132,20 @@
   }
 
   @media (max-width: 768px) {
-    .category-content .container h1{
-      padding-left:0px;
+    .category-content .container h1 {
+      padding-left: 0px;
       font-size: 1.2rem;
     }
     .view.category-view {
-
       margin-top: 20rem;
-      .item__category h2{
-
+      .item__category h2 {
         font-size: 0.7rem;
         padding-left: 10px;
         padding-right: 10px;
 
-        margin-top:   3.5rem !important;
+        margin-top: 3.5rem !important;
       }
-
     }
-
-
   }
 
   /* ————————————————  KATEGORIE  ———————————————— */
@@ -1228,7 +1276,6 @@
     }
     .headlines .topline {
       font-size: 1.4rem !important;
-     
     }
   }
 
@@ -1390,7 +1437,6 @@
 
   /* ————————————————  RESPONSYWNOŚĆ  ———————————————— */
   @media (max-width: 768px) {
-   
   }
 
   /* --- BLOKADA SCROLLA BODY DLA expandedView --- */
@@ -1470,7 +1516,6 @@
     }
     .headlines .topline {
       font-size: 1.4rem !important;
-     
     }
   }
 </style>

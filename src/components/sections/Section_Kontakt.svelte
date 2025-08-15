@@ -1,9 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import CtaButton from "../CtaButton.svelte";
-    import { fade } from "svelte/transition";
+  import { fade } from "svelte/transition";
   import { typoFixAction } from "$lib/utils/typography";
-  export let isKontaktPage = false; // Dodano deklarację propsa
+  import axios from 'axios';
+  export let isKontaktPage = false;
   let formData = {
     firstName: "",
     lastName: "",
@@ -16,137 +17,327 @@
   let isSubmitting = false;
   let submitMessage = "";
   let phonePrefix = "+48";
-  let messageInputMode: "text" | "record" | null = null; // 'text', 'record', or null (initial state)
+  let messageInputMode: "text" | "record" | null = null;
   let isRecording = false;
   let recordedFileName = "";
+  let audioBlob: Blob | null = null;
+  let mediaRecorder: MediaRecorder | null = null;
+  let audioChunks: Blob[] = [];
+  let recordingDuration = 0;
+  let recordingTimer: number | null = null;
+  let errors: Record<string, string> = {};
 
   function selectTextInputMode() {
     messageInputMode = "text";
-    isRecording = false;
-    recordedFileName = "";
-    formData.message = ""; // Clear message when switching modes
+    cleanupRecording();
+    formData.message = "";
   }
 
   function selectRecordInputMode() {
     messageInputMode = "record";
-    isRecording = false;
-    recordedFileName = "";
-    formData.message = ""; // Clear message when switching modes
+    cleanupRecording();
+    formData.message = "";
   }
 
-  function startRecording() {
-    isRecording = true;
-    recordedFileName = ""; // Clear previous recording
-    // Simulate recording for a few seconds
-    setTimeout(() => {
-      stopRecording();
-    }, 3000);
+  function cleanupRecording() {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+    }
+    isRecording = false;
+    recordedFileName = "";
+    audioBlob = null;
+    audioChunks = [];
+    recordingDuration = 0;
+    if (recordingTimer) {
+      clearInterval(recordingTimer);
+      recordingTimer = null;
+    }
+  }
+
+  async function startRecording() {
+    try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error('Nagrywanie nie jest obsługiwane w tej przeglądarce');
+      }
+
+      const stream = await navigator.mediaDevices.getUserMedia({ 
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          sampleRate: 44100
+        } 
+      });
+      
+      audioChunks = [];
+      recordingDuration = 0;
+      
+      mediaRecorder = new MediaRecorder(stream, {
+        mimeType: MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4'
+      });
+      
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunks.push(event.data);
+        }
+      };
+      
+      mediaRecorder.onstop = () => {
+        const mimeType = mediaRecorder?.mimeType || 'audio/webm';
+        audioBlob = new Blob(audioChunks, { type: mimeType });
+        
+        const extension = mimeType.includes('mp4') ? 'mp4' : 'webm';
+        recordedFileName = `wiadomosc_glosowa_${Date.now()}.${extension}`;
+        formData.message = `Wiadomość głosowa (${Math.round(recordingDuration)}s) - ${recordedFileName}`;
+        
+        stream.getTracks().forEach(track => track.stop());
+      };
+      
+      mediaRecorder.start(1000);
+      isRecording = true;
+      
+      recordingTimer = setInterval(() => {
+        recordingDuration += 1;
+        if (recordingDuration >= 180) {
+          stopRecording();
+        }
+      }, 1000) as unknown as number;
+      
+    } catch (error) {
+      console.error('Błąd podczas nagrywania:', error);
+      submitMessage = error instanceof Error ? error.message : 'Nie udało się uzyskać dostępu do mikrofonu';
+    }
   }
 
   function stopRecording() {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+    }
+    
+    if (recordingTimer) {
+      clearInterval(recordingTimer);
+      recordingTimer = null;
+    }
+    
     isRecording = false;
-    recordedFileName = `wiadomosc_glosowa_${Date.now()}.mp3`;
-    formData.message = `Wiadomość głosowa (załącznik: ${recordedFileName})`;
+  }
+
+  function deleteRecording() {
+    cleanupRecording();
+    formData.message = "";
   }
 
   const countryPrefixes = [
-    { code: "Polska", prefix: "+48" },
-    { code: "Österreich", prefix: "+43" },
-    { code: "België", prefix: "+32" },
-    { code: "България (Bŭlgariya)", prefix: "+359" },
-    { code: "Schweiz", prefix: "+41" },
-    { code: "Česká republika", prefix: "+420" },
-    { code: "Deutschland", prefix: "+49" },
-    { code: "Danmark", prefix: "+45" },
-    { code: "Eesti", prefix: "+372" },
-    { code: "España", prefix: "+34" },
-    { code: "Suomi", prefix: "+358" },
-    { code: "France", prefix: "+33" },
-    { code: "United Kingdom", prefix: "+44" },
-    { code: "Ελλάδα (Elláda)", prefix: "+30" },
-    { code: "Hrvatska", prefix: "+385" },
-    { code: "Magyarország", prefix: "+36" },
-    { code: "Éire", prefix: "+353" },
-    { code: "Italia", prefix: "+39" },
-    { code: "Lietuva", prefix: "+370" },
-    { code: "Latvija", prefix: "+371" },
-    { code: "Nederland", prefix: "+31" },
-    { code: "Norge", prefix: "+47" },
-    { code: "Portugal", prefix: "+351" },
-    { code: "România", prefix: "+40" },
-    { code: "Россия (Rossiya)", prefix: "+7" },
-    { code: "Sverige", prefix: "+46" },
-    { code: "Slovenija", prefix: "+386" },
-    { code: "Slovensko", prefix: "+421" },
-    { code: "Україна (Ukrayina)", prefix: "+380" },
-    { code: "United States", prefix: "+1" },
-    {
-      code: "الإمارات العربية المتحدة (Al-Imārāt al-ʿArabīyah al-Muttaḥidah)",
-      prefix: "+971",
-    },
-    { code: "বাংলাদেশ (Bānglādesh)", prefix: "+880" },
-    { code: "中国 (Zhōngguó)", prefix: "+86" },
-    { code: "香港 (Xiānggǎng)", prefix: "+852" },
-    { code: "Indonesia", prefix: "+62" },
-    { code: "ישראל (Yisra'el)", prefix: "+972" },
-    { code: "भारत (Bhārat)", prefix: "+91" },
-    { code: "ایران (Īrān)", prefix: "+98" },
-    { code: "日本 (Nihon)", prefix: "+81" },
-    { code: "대한민국 (Daehan Minguk)", prefix: "+82" },
-    { code: "Malaysia", prefix: "+60" },
-    { code: "Pilipinas", prefix: "+63" },
-    { code: "پاکستان (Pākistān)", prefix: "+92" },
-    {
-      code: "المملكة العربية السعودية (Al-Mamlakah al-ʿArabīyah as-Saʿūdīyah)",
-      prefix: "+966",
-    },
-    { code: "Singapore", prefix: "+65" },
-    { code: "ประเทศไทย (Prathet Thai)", prefix: "+66" },
-    { code: "Türkiye", prefix: "+90" },
-    { code: "臺灣 (Táiwān)", prefix: "+886" },
-    { code: "Việt Nam", prefix: "+84" },
-    // Możesz dodać więcej prefixów jeśli chcesz
+    { code: "PL", name: "Polska", prefix: "+48", length: 9 },
+    { code: "AT", name: "Austria", prefix: "+43", length: 11 },
+    { code: "BE", name: "Belgia", prefix: "+32", length: 9 },
+    { code: "DE", name: "Niemcy", prefix: "+49", length: 12 },
+    { code: "CZ", name: "Czechy", prefix: "+420", length: 9 },
+    { code: "FR", name: "Francja", prefix: "+33", length: 10 },
+    { code: "GB", name: "Wielka Brytania", prefix: "+44", length: 11 },
+    { code: "IT", name: "Włochy", prefix: "+39", length: 10 },
+    { code: "ES", name: "Hiszpania", prefix: "+34", length: 9 },
+    { code: "NL", name: "Holandia", prefix: "+31", length: 9 },
+    { code: "US", name: "USA", prefix: "+1", length: 10 },
   ];
 
-  function handleCountryChange(e: Event) {
-    const code = (e.target as HTMLSelectElement).value;
-    const found = countryPrefixes.find((c) => c.code === code);
-    phonePrefix = found ? found.prefix : "";
-    formData.country = code;
+  function updatePhonePrefix() {
+    const selectedCountry = countryPrefixes.find(
+      (c) => c.code === formData.country
+    );
+    if (selectedCountry) {
+      phonePrefix = selectedCountry.prefix;
+    }
   }
 
-  const handleSubmit = async (e: Event) => {
-    e.preventDefault();
-    if (!formData.privacy) {
-      submitMessage = "Musisz zaakceptować politykę prywatności.";
-      return;
-    }
+  // Funkcje walidacji (skopiowane z SerwisKontakt)
+  function validateEmail(email: string): string | null {
+    if (!email.trim()) return "Email jest wymagany";
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email.trim())) return "Nieprawidłowy format email";
+    if (email.length > 254) return "Email jest za długi (max 254 znaków)";
+    return null;
+  }
 
-    // Ensure message is set for recorded mode
-    if (messageInputMode === "record" && !formData.message) {
-      submitMessage = "Proszę nagrać wiadomość.";
-      return;
+  function validatePhone(phone: string, countryCode: string): string | null {
+    if (!phone.trim()) return "Telefon jest wymagany";
+    
+    const country = countryPrefixes.find(c => c.code === countryCode);
+    const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
+    
+    if (!/^\d+$/.test(cleanPhone)) {
+      return "Numer telefonu może zawierać tylko cyfry";
     }
+    
+    if (country && cleanPhone.length !== country.length) {
+      return `Numer telefonu dla ${country.name} musi mieć ${country.length} cyfr`;
+    }
+    
+    return null;
+  }
 
-    isSubmitting = true;
+  function validateName(name: string, fieldName: string): string | null {
+    if (!name.trim()) return `${fieldName} jest wymagane`;
+    if (name.trim().length < 2) return `${fieldName} musi mieć co najmniej 2 znaki`;
+    if (name.length > 50) return `${fieldName} jest za długie (max 50 znaków)`;
+    return null;
+  }
+
+  function validateMessage(message: string): string | null {
+    if (!message.trim()) return "Wiadomość jest wymagana";
+    if (message.trim().length < 10) return "Wiadomość musi mieć co najmniej 10 znaków";
+    if (message.length > 2000) return "Wiadomość jest za długa (max 2000 znaków)";
+    return null;
+  }
+
+  function validateField(fieldName: string, value: any): string | null {
+    switch (fieldName) {
+      case 'firstName': return validateName(value, 'Imię');
+      case 'lastName': return validateName(value, 'Nazwisko');
+      case 'email': return validateEmail(value);
+      case 'phone': return validatePhone(value, formData.country);
+      case 'message': return validateMessage(value);
+      case 'privacy': return value ? null : 'Musisz zaakceptować politykę prywatności';
+      default: return null;
+    }
+  }
+
+  function validateSingleField(fieldName: string) {
+    const error = validateField(fieldName, formData[fieldName as keyof typeof formData]);
+    if (error) {
+      errors = { ...errors, [fieldName]: error };
+    } else {
+      const { [fieldName]: removed, ...rest } = errors;
+      errors = rest;
+    }
+  }
+
+  function validate() {
+    const newErrors: Record<string, string> = {};
+    
+    const fieldsToValidate = ['firstName', 'lastName', 'email', 'phone', 'message', 'privacy'];
+    
+    for (const field of fieldsToValidate) {
+      const error = validateField(field, formData[field as keyof typeof formData]);
+      if (error) {
+        newErrors[field] = error;
+      }
+    }
+    
+    errors = newErrors;
+    return Object.keys(newErrors).length === 0;
+  }
+
+  async function handleSubmit(event: Event) {
+    event.preventDefault();
+    console.log("🚀 Kontakt form submitted!", { formData, errors });
     submitMessage = "";
-    setTimeout(() => {
+
+    if (!validate()) {
+      console.log("❌ Validation failed:", errors);
+      submitMessage = "Proszę poprawić błędy w formularzu.";
+      return;
+    }
+
+    console.log("✅ Validation passed, sending data...");
+    isSubmitting = true;
+
+    try {
+      const formDataToSend = new FormData();
+      
+      // Dodaj podstawowe dane formularza
+      formDataToSend.append('firstName', formData.firstName.trim());
+      formDataToSend.append('lastName', formData.lastName.trim());
+      formDataToSend.append('email', formData.email.trim());
+      formDataToSend.append('phone', `${phonePrefix} ${formData.phone.trim()}`);
+      formDataToSend.append('serviceType', 'consultation'); // Domyślny typ dla kontaktu głównego
+      formDataToSend.append('country', formData.country);
+      formDataToSend.append('messageType', messageInputMode || 'text');
+      
+      // Dodaj wiadomość lub plik audio
+      if (messageInputMode === 'record' && audioBlob) {
+        formDataToSend.append('audioMessage', audioBlob, recordedFileName);
+        formDataToSend.append('message', `Wiadomość głosowa (${Math.round(recordingDuration)}s)`);
+      } else {
+        formDataToSend.append('message', formData.message.trim());
+      }
+      
+      // Dodaj metadane
+      formDataToSend.append('timestamp', new Date().toISOString());
+      formDataToSend.append('userAgent', navigator.userAgent);
+      formDataToSend.append('formType', 'main-kontakt');
+      
+      // Endpoint - serwis-kontakt.php obsługuje oba formularze
+      const apiUrl = import.meta.env.DEV 
+        ? 'http://localhost:8000/api/serwis-kontakt.php'
+        : '/api/serwis-kontakt.php';
+        
+      console.log("📤 Sending to:", apiUrl);
+      console.log("📦 FormData contents:");
+      for (let [key, value] of formDataToSend.entries()) {
+        console.log(`  ${key}:`, value);
+      }
+        
+      const response = await axios.post(apiUrl, formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        timeout: 30000,
+      });
+      
+      console.log("📬 Response received:", response.data);
+      
+      if (response.data.success) {
+        submitMessage = response.data.message || 
+          "Dziękujemy za kontakt! Nasz zespół skontaktuje się z Tobą w ciągu 24 godzin.";
+        
+        // Reset formularza przy sukcesie
+        formData = {
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          message: "",
+          privacy: false,
+          country: "PL",
+        };
+        messageInputMode = null;
+        cleanupRecording();
+        
+      } else {
+        submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
+      }
+      
+    } catch (error) {
+      console.error('Błąd wysyłania formularza:', error);
+      
+      if (axios.isAxiosError(error)) {
+        if (error.code === 'ECONNABORTED') {
+          submitMessage = "Timeout - spróbuj ponownie za chwilę.";
+        } else if (error.response?.status === 413) {
+          submitMessage = "Plik audio jest za duży. Spróbuj nagrać krótszą wiadomość.";
+        } else if (error.response?.status >= 500) {
+          submitMessage = "Problem z serwerem. Spróbuj ponownie za chwilę.";
+        } else {
+          submitMessage = error.response?.data?.message || "Wystąpił błąd podczas wysyłania.";
+        }
+      } else {
+        submitMessage = "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.";
+      }
+    } finally {
       isSubmitting = false;
-      submitMessage = "Dziękujemy za wiadomość! Skontaktujemy się wkrótce.";
-      formData = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        message: "",
-        privacy: false,
-        country: "PL",
-      };
-      phonePrefix = "+48";
-      messageInputMode = null; // Reset input mode after submission
-      recordedFileName = "";
-    }, 1000);
-  };
+    }
+  }
+
+  onMount(() => {
+    updatePhonePrefix();
+  });
+
+  $: if (formData.country) {
+    updatePhonePrefix();
+    if (formData.phone.trim()) {
+      validateSingleField('phone');
+    }
+  }
 </script>
 
 <section class="contact-flex">
@@ -240,8 +431,13 @@
             type="text"
             placeholder="Imię"
             bind:value={formData.firstName}
+            class:error={errors.firstName}
+            on:blur={() => validateSingleField('firstName')}
+            on:input={() => validateSingleField('firstName')}
+            maxlength="50"
             required
           />
+          {#if errors.firstName}<span class="error-message">{errors.firstName}</span>{/if}
         </div>
         <div class="form-group">
           <label for="lastName">Nazwisko</label>
@@ -250,8 +446,13 @@
             type="text"
             placeholder="Nazwisko"
             bind:value={formData.lastName}
+            class:error={errors.lastName}
+            on:blur={() => validateSingleField('lastName')}
+            on:input={() => validateSingleField('lastName')}
+            maxlength="50"
             required
           />
+          {#if errors.lastName}<span class="error-message">{errors.lastName}</span>{/if}
         </div>
       </div>
       <div class="form-group">
@@ -259,88 +460,169 @@
         <input
           id="email"
           type="email"
-          placeholder="you@company.com"
+          placeholder="twoj@email.com"
           bind:value={formData.email}
+          class:error={errors.email}
+          on:blur={() => validateSingleField('email')}
+          on:input={() => validateSingleField('email')}
+          maxlength="254"
           required
         />
+        {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
       </div>
       <div class="form-group">
         <label for="phone">Numer telefonu</label>
         <div class="phone-row">
+          <span class="phone-prefix">{phonePrefix}</span>
           <select
             bind:value={formData.country}
-            on:change={handleCountryChange}
             class="country-select"
           >
-            {#each countryPrefixes as c}
-              <option value={c.code}>{c.code}</option>
+            {#each countryPrefixes as country}
+              <option value={country.code}>{country.name}</option>
             {/each}
           </select>
           <input
             id="phone"
             type="tel"
-            placeholder=""
+            placeholder="123 456 789"
             bind:value={formData.phone}
+            class:error={errors.phone}
+            on:blur={() => validateSingleField('phone')}
+            on:input={() => validateSingleField('phone')}
             required
-            pattern="[0-9\-\s\(\)]+"
           />
+          {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
         </div>
       </div>
-      {#if messageInputMode === null}
-        <div class="message-mode-selection">
-          <button on:click={selectTextInputMode} class="writeMessage" in:fade={{ }}>
-            <img src="/assets/ikony/message.svg" alt="Wpisz wiadomość" />
-          </button>
-
-          <button on:click={selectRecordInputMode} class="recordMessage" in:fade={{ }}>
-            <img src="/assets/ikony/record.svg" alt="Nagraj wiadomość" />
-          </button>
-        </div>
-      {:else if messageInputMode === "text"}
-        <div class="form-group">
-          <label for="message">Wiadomość</label>
+      <div class="form-group">
+        <label for="message">Wiadomość</label>
+        {#if messageInputMode === null}
+          <div class="message-mode-selection">
+            <button type="button" on:click={selectTextInputMode}>
+              <img src="/assets/ikony/message.svg" alt="Wiadomość tekstowa" />
+              <span>Napisz wiadomość</span>
+            </button>
+            <button type="button" on:click={selectRecordInputMode}>
+              <img src="/assets/ikony/record.svg" alt="Wiadomość głosowa" />
+              <span>Nagraj wiadomość</span>
+            </button>
+          </div>
+        {:else if messageInputMode === "text"}
           <textarea
             id="message"
-            placeholder="Wiadomość"
-            rows="5"
+            placeholder="Opisz swoje zapytanie, wymagania techniczne, potrzeby..."
             bind:value={formData.message}
+            rows="4"
+            on:blur={() => validateSingleField('message')}
+            on:input={() => validateSingleField('message')}
+            maxlength="2000"
+            class:error={errors.message}
             required
           ></textarea>
-        </div>
-      {:else if messageInputMode === "record"}
-        <div class="form-group">
-          <label for="message-voice">Wiadomość głosowa</label>
-          {#if !isRecording && !recordedFileName}
-            <CtaButton text="Rozpocznij nagrywanie" on:click={startRecording} />
-          {:else if isRecording}
-            <p>Nagrywanie... <span class="recording-indicator"></span></p>
-            <CtaButton text="Zatrzymaj nagrywanie" on:click={stopRecording} />
-          {:else if recordedFileName}
-            <p>Nagrano: {recordedFileName}</p>
-            <CtaButton
-              text="Nagraj ponownie"
-              on:click={selectRecordInputMode}
-            />
-          {/if}
+          <div class="char-counter" style="color: {formData.message.length > 1800 ? '#ef4444' : formData.message.length > 1600 ? '#f59e0b' : '#6b7280'}">
+            {2000 - formData.message.length} znaków pozostało
+          </div>
+          <button
+            type="button"
+            class="mode-switch"
+            on:click={() => (messageInputMode = null)}
+          >
+            Zmień na nagranie głosowe
+          </button>
+        {:else if messageInputMode === "record"}
+          <div class="voice-recording">
+            {#if !isRecording && !recordedFileName}
+              <div class="record-instructions">
+                <img src="assets/ikony/record.svg" alt="Mikrofon" />
+                <p>Naciśnij przycisk i opisz swoje zapytanie głosowo</p>
+                <small>Maksymalnie 3 minuty nagrania</small>
+              </div>
+              <button
+                type="button"
+                class="record-btn"
+                on:click={startRecording}
+              >
+                <img src="assets/ikony/record.svg" alt="Mikrofon" />
+                Rozpocznij nagrywanie
+              </button>
+            {:else if isRecording}
+              <div class="recording-indicator">
+                <div class="recording-dot"></div>
+                <div class="recording-info">
+                  <span class="recording-text">Nagrywanie...</span>
+                  <span class="recording-duration">{Math.floor(recordingDuration / 60)}:{(recordingDuration % 60).toString().padStart(2, '0')}</span>
+                </div>
+                <button
+                  type="button"
+                  class="stop-btn"
+                  on:click={stopRecording}
+                >
+                  Zatrzymaj
+                </button>
+              </div>
+            {:else if recordedFileName}
+              <div class="recorded-file">
+                <img src="assets/ikony/audio-file.svg" alt="Plik audio" />
+                <div class="file-info">
+                  <span class="file-name">{recordedFileName}</span>
+                  <small class="file-duration">{Math.floor(recordingDuration / 60)}:{(recordingDuration % 60).toString().padStart(2, '0')} min</small>
+                </div>
+                <button
+                  type="button"
+                  class="delete-btn"
+                  on:click={deleteRecording}
+                  title="Usuń nagranie"
+                >
+                  ✕
+                </button>
+              </div>
+            {/if}
+          </div>
+          <button
+            type="button"
+            class="mode-switch"
+            on:click={() => (messageInputMode = null)}
+          >
+            Zmień na wiadomość tekstową
+          </button>
+        {/if}
+        {#if errors.message}<span class="error-message">{errors.message}</span>{/if}
+      </div>
+      <div class="form-group privacy-group checkbox-row no-sel">
+        <input 
+          id="privacy" 
+          type="checkbox" 
+          bind:checked={formData.privacy}
+          class:error={errors.privacy}
+          on:change={() => validateSingleField('privacy')}
+          required
+        />
+        <label for="privacy">
+          Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
+          obsługi zapytania zgodnie z
+          <a href="/polityka-prywatnosci" target="_blank">polityką prywatności</a>.
+        </label>
+        {#if errors.privacy}<span class="error-message">{errors.privacy}</span>{/if}
+      </div>
+
+      {#if submitMessage}
+        <div
+          class="submit-message"
+          class:success={submitMessage.includes("Dziękujemy")}
+          class:error={submitMessage.includes("błąd") || submitMessage.includes("Error")}
+        >
+          {submitMessage}
         </div>
       {/if}
-      <div class="form-group privacy-group checkbox-row no-sel">
-        <input id="privacy" type="checkbox" bind:checked={formData.privacy} />
-        <label for="privacy">Zgadzam się z polityką prywatności.</label>
-      </div>
-      <!--    <button type="submit" class="submit-btn" disabled={isSubmitting}>
-        
-      </button> -->
-      <div class="text-left">
+
+      <div class="text-left ctaButton">
         <CtaButton
-          text={isSubmitting ? "wysyłanie..." : "wyślij wiadomość"}
+          text={isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}
           type="submit"
           disabled={isSubmitting}
         />
       </div>
-      {#if submitMessage}
-        <div class="success-message">{submitMessage}</div>
-      {/if}
     </form>
   </div>
 
@@ -726,6 +1008,325 @@ img{    width: 3rem;
       button {
         width: 100%;
         height: 80px;
+      }
+    }
+  }
+
+  // Nowe styles dla live validation i audio recording (ujednolicone z SerwisKontakt)
+  .error-message {
+    display: block;
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  
+  .form-group input.error,
+  .form-group select.error,
+  .form-group textarea.error {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+  }
+
+  .char-counter {
+    font-size: 0.75rem;
+    text-align: right;
+    margin-top: 4px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  // Style dla phone prefix
+  .phone-prefix {
+    background: #f9fafb;
+    border: 1px solid #e0e3e7;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+    min-width: 60px;
+  }
+
+  .phone-row {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .phone-row input {
+    border-radius: 0 6px 6px 0 !important;
+    flex: 1;
+  }
+
+  .phone-row select {
+    border-radius: 0 !important;
+    border-left: none;
+    border-right: none;
+    min-width: 120px;
+  }
+
+  // Enhanced focus states
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border: 1.5px solid #cddc39;
+    background-color: #ffffff;
+  }
+
+  .form-group input:valid:not(.error),
+  .form-group textarea:valid:not(.error),
+  .form-group select:valid:not(.error) {
+    border-color: #10b981;
+  }
+
+  // Voice recording styles (skopiowane z SerwisKontakt)
+  .voice-recording {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 2px dashed #e0e3e7;
+    border-radius: 8px;
+    background: #f9fafb;
+    gap: 16px;
+  }
+
+  .record-instructions {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #6b7280;
+
+    img {
+      width: 40px;
+      height: 40px;
+      opacity: 0.6;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    small {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+  }
+
+  .record-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+
+    &:hover {
+      background: var(--color-primary-dark);
+      transform: scale(1.02);
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .recording-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #dc2626;
+    font-weight: 600;
+    padding: 20px;
+
+    .recording-dot {
+      width: 16px;
+      height: 16px;
+      background: #dc2626;
+      border-radius: 50%;
+      animation: pulse 1s infinite;
+    }
+
+    .recording-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+
+      .recording-text {
+        font-size: 1rem;
+      }
+
+      .recording-duration {
+        font-size: 1.5rem;
+        font-family: monospace;
+        color: #991b1b;
+      }
+    }
+
+    .stop-btn {
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #991b1b;
+      }
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .recorded-file {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #dcfce7;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #bbf7d0;
+    width: 100%;
+    max-width: 400px;
+
+    img {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .file-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      .file-name {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #047857;
+      }
+
+      .file-duration {
+        font-size: 0.75rem;
+        color: #059669;
+        font-family: monospace;
+      }
+    }
+
+    .delete-btn {
+      background: #ef4444;
+      color: white;
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #dc2626;
+      }
+    }
+  }
+
+  .mode-switch {
+    background: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+  }
+
+  // Submit message styles
+  .submit-message {
+    margin: 16px 0;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+
+    &.success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    &.error {
+      background: #fee2e2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+    }
+  }
+
+  // Message mode selection improvements
+  .message-mode-selection {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+
+    button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex: 1;
+      padding: 16px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        border-color: var(--color-primary);
+        background: #f0f9ff;
+      }
+
+      img {
+        width: 32px;
+        height: 32px;
+        opacity: 0.7;
+      }
+
+      span {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #374151;
       }
     }
   }

@@ -76,11 +76,7 @@
           <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
-        <div
-          class="right"
-          class:expanded={$expandedViewStore}
-          
-        >
+        <div class="right" class:expanded={$expandedViewStore}>
           <div class="right_content">
             <h1 use:typoFixAction>
               <b>Nowa linia frezarek CERTUS HMM</b><br /><br />została
@@ -177,7 +173,7 @@
               </li>
             </ul>
 
-            <MachineMenu 
+            <MachineMenu
               downloadText="Do pobrania"
               downloadHref="/do_pobrania/Frezarki CNC HMM.pdf"
               contactText="Kontakt"
@@ -185,11 +181,7 @@
             />
 
             <Maszyny_table_frezarki />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+       
           </div>
 
           {#if $expandedViewStore}
@@ -309,7 +301,7 @@
               elastyczne mocowanie elementów o różnych kształtach i rozmiarach.
             </p>
 
-            <MachineMenu 
+            <MachineMenu
               downloadText="Do pobrania"
               downloadHref="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
               contactText="Kontakt"
@@ -317,11 +309,7 @@
             />
 
             <Maszyny_table_plotery />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+        
           </div>
 
           {#if $expandedViewStore}
@@ -438,7 +426,7 @@
               </li>
             </ul>
 
-            <MachineMenu 
+            <MachineMenu
               downloadText="Do pobrania"
               downloadHref="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
               contactText="Kontakt"
@@ -447,11 +435,7 @@
 
             <Maszyny_table_zabudowa />
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+           
           </div>
 
           {#if $expandedViewStore}
@@ -594,7 +578,7 @@
               </li>
             </ul>
 
-            <MachineMenu 
+            <MachineMenu
               downloadText="Do pobrania"
               downloadHref="/do_pobrania/Frezarki 5osiowe.pdf"
               contactText="Kontakt"
@@ -603,11 +587,7 @@
 
             <Maszyny_table_frezarki5osiowe />
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+         
           </div>
 
           {#if $expandedViewStore}
@@ -744,7 +724,7 @@
               </li>
             </ul>
 
-            <MachineMenu 
+            <MachineMenu
               downloadText="Do pobrania"
               downloadHref="/do_pobrania/Grawerki CNC.pdf"
               contactText="Kontakt"
@@ -753,11 +733,7 @@
 
             <Maszyny_table_grawerki />
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+         
           </div>
 
           {#if $expandedViewStore}
@@ -893,7 +869,7 @@
               </li>
             </ul>
 
-            <MachineMenu 
+            <MachineMenu
               downloadText="Do pobrania"
               downloadHref="/do_pobrania/Plotery linearne CNC.pdf"
               contactText="Kontakt"
@@ -902,11 +878,7 @@
 
             <Maszyny_table_ploteryLinearne />
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+          
           </div>
 
           {#if $expandedViewStore}
@@ -936,7 +908,7 @@
 
 <style lang="scss">
   /* --- DEBUGGING BORDERS --- */
- /*  .activeMachine { border: 2px solid red !important; display: block !important; }
+  /*  .activeMachine { border: 2px solid red !important; display: block !important; }
   .active_flex { border: 2px solid blue !important; display: flex !important; }
   .activeMachine .left { border: 2px solid green !important; display: flex !important; }
   .activeMachine .right { border: 2px solid orange !important; display: flex !important; } */
@@ -1084,7 +1056,7 @@
   }
   :global(.activeMachine .maszyny-dane-tabela) {
     margin-top: 4em;
-    padding-bottom: 24em;
+    
     font-size: 0.95rem;
   }
 
@@ -1154,6 +1126,8 @@
 
   .activeMachine .right.expanded {
     width: 60%;
+    display: flex;
+    flex-direction: column;
   }
 
   /* tExt right side of the active machine */
@@ -1320,7 +1294,7 @@
     .activeMachine {
       position: absolute !important;
       height: auto !important;
-      width: 100vw ;
+      width: 100vw;
     }
     .active_flex {
       display: flex !important;
@@ -1341,11 +1315,8 @@
       /* overflow: hidden !important; */ /* -- REMOVED TO FIX SCROLLING -- */
       max-height: unset !important;
     }
-
-  
   }
 
-  
   @media (max-width: 1200px) {
     body.no-scroll-hero .activeMachine .right .right_params {
       overflow: initial;

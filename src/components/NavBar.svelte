@@ -273,9 +273,9 @@
                     <!-- <div class="bestseller-badge">
            <span class="badge-text"> BESTSELLER</span>
          </div> -->
-                    <h3 class="bestseller-title">Plotery przemysłowe CNC</h3>
+                    <h3 class="bestseller-title">Certus 69</h3>
                     <p class="bestseller-subtitle">
-                      Najchętniej wybierane przez naszych klientów
+                      Najchętniej wybierana przez naszych klientów
                     </p>
                   </div>
 
