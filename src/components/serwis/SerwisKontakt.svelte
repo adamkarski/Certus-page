@@ -18,118 +18,14 @@
   let isSubmitting = false;
   let submitMessage = "";
   let phonePrefix = "+48";
-  let messageInputMode: "text" | "record" | null = null;
+
+  let messageInputMode: 'text' | 'record' | null = null;
   let isRecording = false;
-  let recordedFileName = "";
-  let audioBlob: Blob | null = null;
+  let recordingDuration = 0;
+  let recordedFileName: string | null = null;
+  let recordedFile: Blob | null = null;
   let mediaRecorder: MediaRecorder | null = null;
   let audioChunks: Blob[] = [];
-  let recordingDuration = 0;
-  let recordingTimer: number | null = null;
-
-  function selectTextInputMode() {
-    messageInputMode = "text";
-    cleanupRecording();
-    formData.message = "";
-  }
-
-  function selectRecordInputMode() {
-    messageInputMode = "record";
-    cleanupRecording();
-    formData.message = "";
-  }
-
-  function cleanupRecording() {
-    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-      mediaRecorder.stop();
-    }
-    isRecording = false;
-    recordedFileName = "";
-    audioBlob = null;
-    audioChunks = [];
-    recordingDuration = 0;
-    if (recordingTimer) {
-      clearInterval(recordingTimer);
-      recordingTimer = null;
-    }
-  }
-
-  async function startRecording() {
-    try {
-      // Sprawdź czy przeglądarka obsługuje MediaRecorder
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        throw new Error('Nagrywanie nie jest obsługiwane w tej przeglądarce');
-      }
-
-      const stream = await navigator.mediaDevices.getUserMedia({ 
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          sampleRate: 44100
-        } 
-      });
-      
-      audioChunks = [];
-      recordingDuration = 0;
-      
-      mediaRecorder = new MediaRecorder(stream, {
-        mimeType: MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4'
-      });
-      
-      mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          audioChunks.push(event.data);
-        }
-      };
-      
-      mediaRecorder.onstop = () => {
-        const mimeType = mediaRecorder?.mimeType || 'audio/webm';
-        audioBlob = new Blob(audioChunks, { type: mimeType });
-        
-        const extension = mimeType.includes('mp4') ? 'mp4' : 'webm';
-        recordedFileName = `wiadomosc_glosowa_${Date.now()}.${extension}`;
-        formData.message = `Wiadomość głosowa (${Math.round(recordingDuration)}s) - ${recordedFileName}`;
-        
-        // Zatrzymaj wszystkie ścieżki audio
-        stream.getTracks().forEach(track => track.stop());
-      };
-      
-      mediaRecorder.start(1000); // Zbieraj dane co sekundę
-      isRecording = true;
-      
-      // Timer do zliczania czasu
-      recordingTimer = setInterval(() => {
-        recordingDuration += 1;
-        
-        // Automatycznie zatrzymaj po 3 minutach (180s)
-        if (recordingDuration >= 180) {
-          stopRecording();
-        }
-      }, 1000);
-      
-    } catch (error) {
-      console.error('Błąd podczas nagrywania:', error);
-      submitMessage = error instanceof Error ? error.message : 'Nie udało się uzyskać dostępu do mikrofonu';
-    }
-  }
-
-  function stopRecording() {
-    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-      mediaRecorder.stop();
-    }
-    
-    if (recordingTimer) {
-      clearInterval(recordingTimer);
-      recordingTimer = null;
-    }
-    
-    isRecording = false;
-  }
-
-  function deleteRecording() {
-    cleanupRecording();
-    formData.message = "";
-  }
 
   const countryPrefixes = [
     { code: "PL", name: "Polska", prefix: "+48" },
@@ -156,37 +52,26 @@
 
   let errors: Record<string, string> = {};
 
-  // Ulepszone funkcje walidacyjne
   function validateEmail(email: string): string | null {
     if (!email.trim()) return "Email jest wymagany";
-    
-    // Bardziej precyzyjna regex dla email
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email.trim())) {
       return "Nieprawidłowy format email";
     }
-    
     if (email.length > 254) return "Email jest za długi (max 254 znaków)";
     return null;
   }
 
   function validatePhone(phone: string): string | null {
     if (!phone.trim()) return "Telefon jest wymagany";
-    
-    // Usuń spacje i myślniki dla walidacji
     const cleanPhone = phone.replace(/[\s\-]/g, '');
-    
-    // Sprawdź czy zawiera tylko cyfry
     if (!/^\d+$/.test(cleanPhone)) {
       return "Numer telefonu może zawierać tylko cyfry, spacje i myślniki";
     }
-    
-    // Sprawdź długość w zależności od kraju
     const selectedCountry = countryPrefixes.find(c => c.code === formData.country);
     if (selectedCountry) {
       const minLength = getPhoneMinLength(selectedCountry.prefix);
       const maxLength = getPhoneMaxLength(selectedCountry.prefix);
-      
       if (cleanPhone.length < minLength) {
         return `Numer jest za krótki (min ${minLength} cyfr dla ${selectedCountry.code})`;
       }
@@ -194,40 +79,39 @@
         return `Numer jest za długi (max ${maxLength} cyfr dla ${selectedCountry.code})`;
       }
     }
-    
     return null;
   }
 
   function getPhoneMinLength(prefix: string): number {
     const lengths: Record<string, number> = {
-      '+48': 9,   // Polska
-      '+43': 10,  // Austria
-      '+32': 9,   // Belgia
-      '+49': 11,  // Niemcy
-      '+420': 9,  // Czechy
-      '+33': 10,  // Francja
-      '+44': 10,  // UK
-      '+39': 10,  // Włochy
-      '+34': 9,   // Hiszpania
-      '+31': 9,   // Holandia
-      '+1': 10,   // USA
+      '+48': 9,
+      '+43': 10,
+      '+32': 9,
+      '+49': 11,
+      '+420': 9,
+      '+33': 10,
+      '+44': 10,
+      '+39': 10,
+      '+34': 9,
+      '+31': 9,
+      '+1': 10,
     };
     return lengths[prefix] || 9;
   }
 
   function getPhoneMaxLength(prefix: string): number {
     const lengths: Record<string, number> = {
-      '+48': 9,   // Polska
-      '+43': 11,  // Austria
-      '+32': 9,   // Belgia
-      '+49': 12,  // Niemcy
-      '+420': 9,  // Czechy
-      '+33': 10,  // Francja
-      '+44': 11,  // UK
-      '+39': 11,  // Włochy
-      '+34': 9,   // Hiszpania
-      '+31': 9,   // Holandia
-      '+1': 10,   // USA
+      '+48': 9,
+      '+43': 11,
+      '+32': 9,
+      '+49': 12,
+      '+420': 9,
+      '+33': 10,
+      '+44': 11,
+      '+39': 11,
+      '+34': 9,
+      '+31': 9,
+      '+1': 10,
     };
     return lengths[prefix] || 12;
   }
@@ -239,39 +123,32 @@
         if (value.trim().length < 2) return "Imię musi mieć co najmniej 2 znaki";
         if (value.trim().length > 50) return "Imię jest za długie (max 50 znaków)";
         return null;
-      
       case 'lastName':
         if (!value.trim()) return "Nazwisko jest wymagane";
         if (value.trim().length < 2) return "Nazwisko musi mieć co najmniej 2 znaki";
         if (value.trim().length > 50) return "Nazwisko jest za długie (max 50 znaków)";
         return null;
-      
       case 'email':
         return validateEmail(value);
-      
       case 'phone':
         return validatePhone(value);
-      
       case 'serviceType':
         if (!value) return "Wybierz rodzaj usługi serwisowej";
         return null;
-      
       case 'message':
-        if (!value.trim()) return "Opis problemu jest wymagany";
-        if (value.trim().length < 10) return "Opis musi mieć co najmniej 10 znaków";
-        if (value.trim().length > 2000) return "Opis jest za długi (max 2000 znaków)";
+        if (messageInputMode === 'text' && !value.trim()) return "Opis problemu jest wymagany";
+        if (messageInputMode === 'text' && value.trim().length < 10) return "Opis musi mieć co najmniej 10 znaków";
+        if (messageInputMode === 'text' && value.trim().length > 2000) return "Opis jest za długi (max 2000 znaków)";
+        if (messageInputMode === 'record' && !recordedFile) return "Nagraj wiadomość głosową";
         return null;
-      
       case 'privacy':
         if (!value) return "Zgoda na przetwarzanie danych jest wymagana";
         return null;
-      
       default:
         return null;
     }
   }
 
-  // Live validation - walidacja pojedynczego pola
   function validateSingleField(fieldName: string) {
     const error = validateField(fieldName, formData[fieldName as keyof typeof formData]);
     if (error) {
@@ -282,102 +159,66 @@
     }
   }
 
-  // Funkcje pomocnicze dla UI
   function getRemainingChars(text: string, maxLength: number): number {
     return maxLength - text.length;
   }
 
   function getCharCountColor(text: string, maxLength: number): string {
     const remaining = getRemainingChars(text, maxLength);
-    if (remaining < 50) return '#ef4444'; // czerwony
-    if (remaining < 200) return '#f59e0b'; // pomarańczowy
-    return '#6b7280'; // szary
+    if (remaining < 50) return '#ef4444';
+    if (remaining < 200) return '#f59e0b';
+    return '#6b7280';
   }
 
   function validate() {
     const newErrors: Record<string, string> = {};
-    
-    // Walidacja wszystkich pól
     Object.keys(formData).forEach(fieldName => {
-      if (fieldName === 'country') return; // Kraj nie wymaga walidacji
-      
+      if (fieldName === 'country') return;
       const error = validateField(fieldName, formData[fieldName as keyof typeof formData]);
       if (error) {
         newErrors[fieldName] = error;
       }
     });
-    
     errors = newErrors;
     return Object.keys(errors).length === 0;
   }
 
   async function handleSubmit(event: Event) {
     event.preventDefault();
-    console.log("🚀 Form submitted!", { formData, errors });
     submitMessage = "";
 
     if (!validate()) {
-      console.log("❌ Validation failed:", errors);
       submitMessage = "Proszę poprawić błędy w formularzu.";
       return;
     }
 
-    console.log("✅ Validation passed, sending data...");
     isSubmitting = true;
 
     try {
-      // Przygotuj dane do wysłania
-      const formDataToSend = new FormData();
-      
-      // Dodaj podstawowe dane formularza
-      formDataToSend.append('firstName', formData.firstName.trim());
-      formDataToSend.append('lastName', formData.lastName.trim());
-      formDataToSend.append('email', formData.email.trim());
-      formDataToSend.append('phone', `${phonePrefix} ${formData.phone.trim()}`);
-      formDataToSend.append('serviceType', formData.serviceType);
-      formDataToSend.append('country', formData.country);
-      formDataToSend.append('messageType', messageInputMode || 'text');
-      
-      // Dodaj wiadomość lub plik audio
-      if (messageInputMode === 'record' && audioBlob) {
-        formDataToSend.append('audioMessage', audioBlob, recordedFileName);
-        formDataToSend.append('message', `Wiadomość głosowa (${Math.round(recordingDuration)}s)`);
-      } else {
-        formDataToSend.append('message', formData.message.trim());
-      }
-      
-      // Dodaj metadane
-      formDataToSend.append('timestamp', new Date().toISOString());
-      formDataToSend.append('userAgent', navigator.userAgent);
-      formDataToSend.append('formType', 'serwis-kontakt');
-      
-      // Wyślij dane do PHP endpoint
-      // Dla development używaj localhost:8000, dla production relatywny URL
-      const apiUrl = import.meta.env.DEV 
-        ? 'http://localhost:8000/api/serwis-kontakt.php'
-        : '/api/serwis-kontakt.php';
-        
-      console.log("📤 Sending to:", apiUrl);
-      console.log("📦 FormData contents:");
-      for (let [key, value] of formDataToSend.entries()) {
-        console.log(`  ${key}:`, value);
-      }
-        
-      const response = await axios.post(apiUrl, formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        timeout: 30000, // 30s timeout
-      });
-      
-      console.log("📬 Response received:", response.data);
-      
-      // Sprawdź odpowiedź
+        const formDataToSend = new FormData();
+        Object.keys(formData).forEach(key => {
+            formDataToSend.append(key, formData[key as keyof typeof formData]);
+        });
+
+        if (messageInputMode === 'record' && recordedFile) {
+            formDataToSend.append('messageType', 'audio');
+            formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
+        } else {
+            formDataToSend.append('messageType', 'text');
+        }
+
+        formDataToSend.append('formType', 'serwis-kontakt');
+
+        const apiUrl = 'https://dm73147.domenomania.eu/api/send-email.php';
+        const response = await axios.post(apiUrl, formDataToSend, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            timeout: 30000,
+        });
+
       if (response.data.success) {
-        submitMessage = response.data.message || 
-          "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą w ciągu 24 godzin.";
-        
-        // Reset formularza przy sukcesie
+        submitMessage = response.data.message || "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą w ciągu 24 godzin.";
         formData = {
           firstName: "",
           lastName: "",
@@ -389,22 +230,15 @@
           serviceType: "warranty",
         };
         messageInputMode = null;
-        cleanupRecording();
-        
+        recordedFile = null;
+        recordedFileName = null;
       } else {
         submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
       }
-      
     } catch (error) {
-      console.error('Błąd wysyłania formularza:', error);
-      
       if (axios.isAxiosError(error)) {
         if (error.code === 'ECONNABORTED') {
           submitMessage = "Timeout - spróbuj ponownie za chwilę.";
-        } else if (error.response?.status === 413) {
-          submitMessage = "Plik audio jest za duży. Spróbuj nagrać krótszą wiadomość.";
-        } else if (error.response?.status >= 500) {
-          submitMessage = "Problem z serwerem. Spróbuj ponownie za chwilę.";
         } else {
           submitMessage = error.response?.data?.message || "Wystąpił błąd podczas wysyłania.";
         }
@@ -416,13 +250,60 @@
     }
   }
 
+  function selectTextInputMode() {
+    messageInputMode = 'text';
+  }
+
+  function selectRecordInputMode() {
+    messageInputMode = 'record';
+  }
+
+  async function startRecording() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder = new MediaRecorder(stream);
+      audioChunks = [];
+      mediaRecorder.ondataavailable = event => {
+        audioChunks.push(event.data);
+      };
+      mediaRecorder.onstop = () => {
+        recordedFile = new Blob(audioChunks, { type: 'audio/wav' });
+        recordedFileName = `nagranie-${new Date().toISOString()}.wav`;
+        isRecording = false;
+      };
+      mediaRecorder.start();
+      isRecording = true;
+      recordingDuration = 0;
+      const timer = setInterval(() => {
+        if (isRecording) {
+          recordingDuration++;
+        } else {
+          clearInterval(timer);
+        }
+      }, 1000);
+    } catch (err) {
+      submitMessage = "Nie udało się rozpocząć nagrywania. Sprawdź uprawnienia do mikrofonu.";
+    }
+  }
+
+  function stopRecording() {
+    if (mediaRecorder) {
+      mediaRecorder.stop();
+    }
+  }
+
+  function deleteRecording() {
+    recordedFile = null;
+    recordedFileName = null;
+    recordingDuration = 0;
+  }
+
   onMount(() => {
     updatePhonePrefix();
   });
 
   $: if (formData.country) {
     updatePhonePrefix();
-    // Ponownie waliduj telefon po zmianie kraju
     if (formData.phone.trim()) {
       validateSingleField('phone');
     }

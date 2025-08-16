@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 184 185">
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 184 108.64">
   <!-- Generator: Adobe Illustrator 29.6.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 207)  -->
   <defs>
     <style>
@@ -20,26 +20,35 @@
       }
 
       .st3, .st4 {
-        stroke: #a2a3a2;
         stroke-linecap: round;
         stroke-linejoin: round;
+      }
+
+      .st3, .st4, .st5 {
+        stroke: #a2a3a2;
         stroke-width: 1.81px;
       }
 
-      .st4 {
+      .st4, .st5 {
         fill: #fff;
       }
 
-      .st5 {
+      .st6 {
         fill: #6b6b6b;
+      }
+
+      .st5 {
+        stroke-miterlimit: 10;
       }
     </style>
   </defs>
-  <path class="st0" d="M57.04,105.15v26.67h8.19v-26.67h-8.19Z"/>
-  <path class="st4" d="M88.18,140.93H3.49v17.68h.07v24.33h10.99l9.5-7.83v-16.5h93.82v16.78l9.93,7.56h10.55v-42.01h-50.18.01Z"/>
-  <path class="st3" d="M93.66,158.61h20.49H24.04"/>
-  <path class="st4" d="M140.63,99.01H1.57v17.38h16.11v24.54h6.13v-24.54h96.12v24.54h6.13v-24.54h14.57v-17.38Z"/>
-  <path class="st5" d="M127.09,105.14H15.08v4.19h112.01v-4.19Z"/>
-  <path class="st1" d="M54.03,98.18h-1.5v18.14h1.5v-18.14Z"/>
-  <path class="st2" d="M53.62,75.58v48.99h15.04v-48.99s-15.04,0-15.04,0Z"/>
+  <path class="st0" d="M99.5,29.57v26.67h8.19v-26.67s-8.19,0-8.19,0Z"/>
+  <path class="st4" d="M130.64,65.35H45.95v17.68h.07v24.33h10.99l9.5-7.83v-16.5h93.82v16.78l9.93,7.56h10.55v-42.01h-50.18.01Z"/>
+  <path class="st3" d="M136.12,83.03h20.49-90.11"/>
+  <path class="st4" d="M183.09,23.43H44.03v17.38h16.11v24.54h6.13v-24.54h96.12v24.54h6.13v-24.54h14.57s0-17.38,0-17.38Z"/>
+  <path class="st6" d="M169.55,29.56H57.54v4.19h112.01s0-4.19,0-4.19Z"/>
+  <path class="st1" d="M96.49,22.6h-1.5v18.14h1.5v-18.14Z"/>
+  <path class="st2" d="M96.08,0v48.99h15.04V0s-15.04,0-15.04,0Z"/>
+  <path id="Vector_5" class="st5" d="M33.66,12.08H7.52c-3.65,0-6.62,2.96-6.62,6.62v82.41c0,3.65,2.96,6.62,6.62,6.62h26.13c3.65,0,6.62-2.96,6.62-6.62V18.7c0-3.65-2.96-6.62-6.62-6.62Z"/>
+  <path id="Vector_11" class="st2" d="M4.37,59.78V23.71c0-2.1,1.7-3.79,3.79-3.79h24.67c2.09,0,3.79,1.7,3.79,3.79v36.07c0,2.1-1.7,3.79-3.79,3.79H8.15c-2.1,0-3.79-1.7-3.79-3.79Z"/>
 </svg>

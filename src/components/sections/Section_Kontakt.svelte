@@ -5,6 +5,7 @@
   import { typoFixAction } from "$lib/utils/typography";
   import axios from 'axios';
   export let isKontaktPage = false;
+
   let formData = {
     firstName: "",
     lastName: "",
@@ -14,130 +15,33 @@
     privacy: false,
     country: "PL",
   };
+
   let isSubmitting = false;
   let submitMessage = "";
   let phonePrefix = "+48";
-  let messageInputMode: "text" | "record" | null = null;
-  let isRecording = false;
-  let recordedFileName = "";
-  let audioBlob: Blob | null = null;
-  let mediaRecorder: MediaRecorder | null = null;
-  let audioChunks: Blob[] = [];
-  let recordingDuration = 0;
-  let recordingTimer: number | null = null;
   let errors: Record<string, string> = {};
 
-  function selectTextInputMode() {
-    messageInputMode = "text";
-    cleanupRecording();
-    formData.message = "";
-  }
-
-  function selectRecordInputMode() {
-    messageInputMode = "record";
-    cleanupRecording();
-    formData.message = "";
-  }
-
-  function cleanupRecording() {
-    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-      mediaRecorder.stop();
-    }
-    isRecording = false;
-    recordedFileName = "";
-    audioBlob = null;
-    audioChunks = [];
-    recordingDuration = 0;
-    if (recordingTimer) {
-      clearInterval(recordingTimer);
-      recordingTimer = null;
-    }
-  }
-
-  async function startRecording() {
-    try {
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        throw new Error('Nagrywanie nie jest obsługiwane w tej przeglądarce');
-      }
-
-      const stream = await navigator.mediaDevices.getUserMedia({ 
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          sampleRate: 44100
-        } 
-      });
-      
-      audioChunks = [];
-      recordingDuration = 0;
-      
-      mediaRecorder = new MediaRecorder(stream, {
-        mimeType: MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4'
-      });
-      
-      mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          audioChunks.push(event.data);
-        }
-      };
-      
-      mediaRecorder.onstop = () => {
-        const mimeType = mediaRecorder?.mimeType || 'audio/webm';
-        audioBlob = new Blob(audioChunks, { type: mimeType });
-        
-        const extension = mimeType.includes('mp4') ? 'mp4' : 'webm';
-        recordedFileName = `wiadomosc_glosowa_${Date.now()}.${extension}`;
-        formData.message = `Wiadomość głosowa (${Math.round(recordingDuration)}s) - ${recordedFileName}`;
-        
-        stream.getTracks().forEach(track => track.stop());
-      };
-      
-      mediaRecorder.start(1000);
-      isRecording = true;
-      
-      recordingTimer = setInterval(() => {
-        recordingDuration += 1;
-        if (recordingDuration >= 180) {
-          stopRecording();
-        }
-      }, 1000) as unknown as number;
-      
-    } catch (error) {
-      console.error('Błąd podczas nagrywania:', error);
-      submitMessage = error instanceof Error ? error.message : 'Nie udało się uzyskać dostępu do mikrofonu';
-    }
-  }
-
-  function stopRecording() {
-    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-      mediaRecorder.stop();
-    }
-    
-    if (recordingTimer) {
-      clearInterval(recordingTimer);
-      recordingTimer = null;
-    }
-    
-    isRecording = false;
-  }
-
-  function deleteRecording() {
-    cleanupRecording();
-    formData.message = "";
-  }
+  // Audio recording state
+  let messageInputMode: 'text' | 'record' | null = null;
+  let isRecording = false;
+  let recordingDuration = 0;
+  let recordedFileName: string | null = null;
+  let recordedFile: Blob | null = null;
+  let mediaRecorder: MediaRecorder | null = null;
+  let audioChunks: Blob[] = [];
 
   const countryPrefixes = [
-    { code: "PL", name: "Polska", prefix: "+48", length: 9 },
-    { code: "AT", name: "Austria", prefix: "+43", length: 11 },
-    { code: "BE", name: "Belgia", prefix: "+32", length: 9 },
-    { code: "DE", name: "Niemcy", prefix: "+49", length: 12 },
-    { code: "CZ", name: "Czechy", prefix: "+420", length: 9 },
-    { code: "FR", name: "Francja", prefix: "+33", length: 10 },
-    { code: "GB", name: "Wielka Brytania", prefix: "+44", length: 11 },
-    { code: "IT", name: "Włochy", prefix: "+39", length: 10 },
-    { code: "ES", name: "Hiszpania", prefix: "+34", length: 9 },
-    { code: "NL", name: "Holandia", prefix: "+31", length: 9 },
-    { code: "US", name: "USA", prefix: "+1", length: 10 },
+    { code: "PL", name: "Polska", prefix: "+48" },
+    { code: "AT", name: "Austria", prefix: "+43" },
+    { code: "BE", name: "Belgia", prefix: "+32" },
+    { code: "DE", name: "Niemcy", prefix: "+49" },
+    { code: "CZ", name: "Czechy", prefix: "+420" },
+    { code: "FR", name: "Francja", prefix: "+33" },
+    { code: "GB", name: "Wielka Brytania", prefix: "+44" },
+    { code: "IT", name: "Włochy", prefix: "+39" },
+    { code: "ES", name: "Hiszpania", prefix: "+34" },
+    { code: "NL", name: "Holandia", prefix: "+31" },
+    { code: "US", name: "USA", prefix: "+1" },
   ];
 
   function updatePhonePrefix() {
@@ -149,7 +53,7 @@
     }
   }
 
-  // Funkcje walidacji (skopiowane z SerwisKontakt)
+  // Validation functions
   function validateEmail(email: string): string | null {
     if (!email.trim()) return "Email jest wymagany";
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -158,20 +62,57 @@
     return null;
   }
 
-  function validatePhone(phone: string, countryCode: string): string | null {
+  function getPhoneMinLength(prefix: string): number {
+    const lengths: Record<string, number> = {
+      '+48': 9,
+      '+43': 10,
+      '+32': 9,
+      '+49': 11,
+      '+420': 9,
+      '+33': 10,
+      '+44': 10,
+      '+39': 10,
+      '+34': 9,
+      '+31': 9,
+      '+1': 10,
+    };
+    return lengths[prefix] || 9;
+  }
+
+  function getPhoneMaxLength(prefix: string): number {
+    const lengths: Record<string, number> = {
+      '+48': 9,
+      '+43': 11,
+      '+32': 9,
+      '+49': 12,
+      '+420': 9,
+      '+33': 10,
+      '+44': 11,
+      '+39': 11,
+      '+34': 9,
+      '+31': 9,
+      '+1': 10,
+    };
+    return lengths[prefix] || 12;
+  }
+
+  function validatePhone(phone: string): string | null {
     if (!phone.trim()) return "Telefon jest wymagany";
-    
-    const country = countryPrefixes.find(c => c.code === countryCode);
-    const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
-    
+    const cleanPhone = phone.replace(/[\s\-]/g, '');
     if (!/^\d+$/.test(cleanPhone)) {
-      return "Numer telefonu może zawierać tylko cyfry";
+      return "Numer telefonu może zawierać tylko cyfry, spacje i myślniki";
     }
-    
-    if (country && cleanPhone.length !== country.length) {
-      return `Numer telefonu dla ${country.name} musi mieć ${country.length} cyfr`;
+    const selectedCountry = countryPrefixes.find(c => c.code === formData.country);
+    if (selectedCountry) {
+      const minLength = getPhoneMinLength(selectedCountry.prefix);
+      const maxLength = getPhoneMaxLength(selectedCountry.prefix);
+      if (cleanPhone.length < minLength) {
+        return `Numer jest za krótki (min ${minLength} cyfr dla ${selectedCountry.code})`;
+      }
+      if (cleanPhone.length > maxLength) {
+        return `Numer jest za długi (max ${maxLength} cyfr dla ${selectedCountry.code})`;
+      }
     }
-    
     return null;
   }
 
@@ -183,9 +124,10 @@
   }
 
   function validateMessage(message: string): string | null {
-    if (!message.trim()) return "Wiadomość jest wymagana";
-    if (message.trim().length < 10) return "Wiadomość musi mieć co najmniej 10 znaków";
-    if (message.length > 2000) return "Wiadomość jest za długa (max 2000 znaków)";
+    if (messageInputMode === 'text' && !message.trim()) return "Wiadomość jest wymagana";
+    if (messageInputMode === 'text' && message.trim().length < 10) return "Wiadomość musi mieć co najmniej 10 znaków";
+    if (messageInputMode === 'text' && message.length > 2000) return "Wiadomość jest za długa (max 2000 znaków)";
+    if (messageInputMode === 'record' && !recordedFile) return "Nagraj wiadomość głosową lub wybierz wiadomość tekstową";
     return null;
   }
 
@@ -194,7 +136,7 @@
       case 'firstName': return validateName(value, 'Imię');
       case 'lastName': return validateName(value, 'Nazwisko');
       case 'email': return validateEmail(value);
-      case 'phone': return validatePhone(value, formData.country);
+      case 'phone': return validatePhone(value);
       case 'message': return validateMessage(value);
       case 'privacy': return value ? null : 'Musisz zaakceptować politykę prywatności';
       default: return null;
@@ -227,10 +169,57 @@
     return Object.keys(newErrors).length === 0;
   }
 
+  // Audio recording functions
+  async function startRecording() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder = new MediaRecorder(stream);
+      audioChunks = [];
+      mediaRecorder.ondataavailable = event => {
+        audioChunks.push(event.data);
+      };
+      mediaRecorder.onstop = () => {
+        recordedFile = new Blob(audioChunks, { type: 'audio/wav' });
+        recordedFileName = `nagranie-${new Date().toISOString()}.wav`;
+        isRecording = false;
+        validateSingleField('message');
+      };
+      mediaRecorder.start();
+      isRecording = true;
+      recordingDuration = 0;
+      const timer = setInterval(() => {
+        if (isRecording) {
+          recordingDuration++;
+        } else {
+          clearInterval(timer);
+        }
+      }, 1000);
+    } catch (err) {
+      console.error("Recording error:", err);
+      submitMessage = "Nie udało się rozpocząć nagrywania. Sprawdź uprawnienia do mikrofonu.";
+    }
+  }
+
+  function stopRecording() {
+    if (mediaRecorder) {
+      mediaRecorder.stop();
+    }
+  }
+
+  function deleteRecording() {
+    recordedFile = null;
+    recordedFileName = null;
+    recordingDuration = 0;
+    validateSingleField('message');
+  }
+
   async function handleSubmit(event: Event) {
     event.preventDefault();
-    console.log("🚀 Kontakt form submitted!", { formData, errors });
     submitMessage = "";
+
+    if (messageInputMode === null) {
+        errors = { ...errors, message: 'Wybierz tryb wiadomości (tekst lub nagranie).' };
+    }
 
     if (!validate()) {
       console.log("❌ Validation failed:", errors);
@@ -242,47 +231,35 @@
     isSubmitting = true;
 
     try {
-      const formDataToSend = new FormData();
-      
-      // Dodaj podstawowe dane formularza
-      formDataToSend.append('firstName', formData.firstName.trim());
-      formDataToSend.append('lastName', formData.lastName.trim());
-      formDataToSend.append('email', formData.email.trim());
-      formDataToSend.append('phone', `${phonePrefix} ${formData.phone.trim()}`);
-      formDataToSend.append('serviceType', 'consultation'); // Domyślny typ dla kontaktu głównego
-      formDataToSend.append('country', formData.country);
-      formDataToSend.append('messageType', messageInputMode || 'text');
-      
-      // Dodaj wiadomość lub plik audio
-      if (messageInputMode === 'record' && audioBlob) {
-        formDataToSend.append('audioMessage', audioBlob, recordedFileName);
-        formDataToSend.append('message', `Wiadomość głosowa (${Math.round(recordingDuration)}s)`);
-      } else {
-        formDataToSend.append('message', formData.message.trim());
-      }
-      
-      // Dodaj metadane
-      formDataToSend.append('timestamp', new Date().toISOString());
-      formDataToSend.append('userAgent', navigator.userAgent);
-      formDataToSend.append('formType', 'main-kontakt');
-      
-      // Endpoint - serwis-kontakt.php obsługuje oba formularze
-      const apiUrl = import.meta.env.DEV 
-        ? 'http://localhost:8000/api/serwis-kontakt.php'
-        : '/api/serwis-kontakt.php';
+        const formDataToSend = new FormData();
         
-      console.log("📤 Sending to:", apiUrl);
-      console.log("📦 FormData contents:");
-      for (let [key, value] of formDataToSend.entries()) {
-        console.log(`  ${key}:`, value);
-      }
+        Object.keys(formData).forEach(key => {
+            formDataToSend.append(key, formData[key as keyof typeof formData]);
+        });
+
+        formDataToSend.set('phone', `${phonePrefix} ${formData.phone.trim()}`);
+        formDataToSend.append('formType', 'main-kontakt');
+        formDataToSend.append('timestamp', new Date().toISOString());
+        formDataToSend.append('userAgent', navigator.userAgent);
+
+        if (messageInputMode === 'record' && recordedFile) {
+            formDataToSend.append('messageType', 'audio');
+            formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
+            formDataToSend.delete('message');
+        } else {
+            formDataToSend.append('messageType', 'text');
+        }
+
+        const apiUrl = 'https://dm73147.domenomania.eu/api/send-email.php';
         
-      const response = await axios.post(apiUrl, formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        timeout: 30000,
-      });
+        console.log("📤 Sending to:", apiUrl);
+        
+        const response = await axios.post(apiUrl, formDataToSend, {
+            headers: {
+                // Axios will automatically set 'Content-Type': 'multipart/form-data'
+            },
+            timeout: 30000,
+        });
       
       console.log("📬 Response received:", response.data);
       
@@ -290,7 +267,6 @@
         submitMessage = response.data.message || 
           "Dziękujemy za kontakt! Nasz zespół skontaktuje się z Tobą w ciągu 24 godzin.";
         
-        // Reset formularza przy sukcesie
         formData = {
           firstName: "",
           lastName: "",
@@ -301,7 +277,9 @@
           country: "PL",
         };
         messageInputMode = null;
-        cleanupRecording();
+        recordedFile = null;
+        recordedFileName = null;
+        errors = {};
         
       } else {
         submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
@@ -314,7 +292,7 @@
         if (error.code === 'ECONNABORTED') {
           submitMessage = "Timeout - spróbuj ponownie za chwilę.";
         } else if (error.response?.status === 413) {
-          submitMessage = "Plik audio jest za duży. Spróbuj nagrać krótszą wiadomość.";
+          submitMessage = "Dane są za duże. Spróbuj skrócić wiadomość lub nagrać krótszy plik.";
         } else if (error.response?.status >= 500) {
           submitMessage = "Problem z serwerem. Spróbuj ponownie za chwilę.";
         } else {
@@ -368,7 +346,7 @@
     <div class="contact-info-block">
       <div class="info-row">
         <span class="info-icon"
-          ><img src="assets/ikony/telefon.svg" alt="Telefon" /></span
+          ><img src="/assets/ikony/telefon.svg" alt="Telefon" /></span
         >
         <b
           ><a href="tel:+48 606 324 406" title="Zadzwoń do Certus"
@@ -378,7 +356,7 @@
       </div>
       <div class="info-row">
         <span class="info-icon"
-          ><img src="assets/ikony/email.svg" alt="Email" /></span
+          ><img src="/assets/ikony/email.svg" alt="Email" /></span
         >
         <b
           ><a href="mailto:biuro@mg-certus.pl" title="Wyślij e-mail do Certus"
@@ -388,7 +366,7 @@
       </div>
       <div class="info-row">
         <span class="info-icon"
-          ><img src="assets/ikony/lokalizacja.svg" alt="Lokalizacja" /></span
+          ><img src="/assets/ikony/lokalizacja.svg" alt="Lokalizacja" /></span
         >
         <b
           ><a
@@ -408,7 +386,7 @@
         class="social-icon"
         rel="nofollow noopener noreferrer"
       >
-        <img src="assets/ikony/facebook.svg" alt="facebook" />
+        <img src="/assets/ikony/facebook.svg" alt="facebook" />
       </a>
 
       <a
@@ -417,7 +395,7 @@
         class="social-icon"
         rel="nofollow noopener noreferrer"
       >
-        <img src="assets/ikony/youtube.svg" alt="youtube" />
+        <img src="/assets/ikony/youtube.svg" alt="youtube" />
       </a>
     </div>
   </div>
@@ -470,11 +448,12 @@
         />
         {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
       </div>
-      <div class="form-group">
-        <label for="phone">Numer telefonu</label>
-        <div class="phone-row">
-          <span class="phone-prefix">{phonePrefix}</span>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="country">Kraj</label>
           <select
+            id="country"
             bind:value={formData.country}
             class="country-select"
           >
@@ -482,28 +461,38 @@
               <option value={country.code}>{country.name}</option>
             {/each}
           </select>
-          <input
-            id="phone"
-            type="tel"
-            placeholder="123 456 789"
-            bind:value={formData.phone}
-            class:error={errors.phone}
-            on:blur={() => validateSingleField('phone')}
-            on:input={() => validateSingleField('phone')}
-            required
-          />
-          {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefon</label>
+          <div class="phone-row">
+            <span class="phone-prefix">{phonePrefix}</span>
+            <input
+              id="phone"
+              type="tel"
+              placeholder="123 456 789"
+              bind:value={formData.phone}
+              class:error={errors.phone}
+              on:blur={() => validateSingleField('phone')}
+              on:input={() => validateSingleField('phone')}
+              required
+            />
+            {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
+          </div>
         </div>
       </div>
+
       <div class="form-group">
         <label for="message">Wiadomość</label>
         {#if messageInputMode === null}
           <div class="message-mode-selection">
-            <button type="button" on:click={selectTextInputMode}>
-              <img src="/assets/ikony/message.svg" alt="Wiadomość tekstowa" />
+            <button type="button" on:click={() => messageInputMode = 'text'}>
+              <img
+                src="/assets/ikony/message.svg"
+                alt="Wiadomość tekstowa"
+              />
               <span>Napisz wiadomość</span>
             </button>
-            <button type="button" on:click={selectRecordInputMode}>
+            <button type="button" on:click={() => messageInputMode = 'record'}>
               <img src="/assets/ikony/record.svg" alt="Wiadomość głosowa" />
               <span>Nagraj wiadomość</span>
             </button>
@@ -526,7 +515,7 @@
           <button
             type="button"
             class="mode-switch"
-            on:click={() => (messageInputMode = null)}
+            on:click={() => { messageInputMode = 'record'; formData.message = ''; validateSingleField('message'); }}
           >
             Zmień na nagranie głosowe
           </button>
@@ -534,8 +523,8 @@
           <div class="voice-recording">
             {#if !isRecording && !recordedFileName}
               <div class="record-instructions">
-                <img src="assets/ikony/record.svg" alt="Mikrofon" />
-                <p>Naciśnij przycisk i opisz swoje zapytanie głosowo</p>
+                <img src="/assets/ikony/microphone.svg" alt="Mikrofon" />
+                <p>Naciśnij przycisk i opisz swoje zapytanie</p>
                 <small>Maksymalnie 3 minuty nagrania</small>
               </div>
               <button
@@ -543,7 +532,7 @@
                 class="record-btn"
                 on:click={startRecording}
               >
-                <img src="assets/ikony/record.svg" alt="Mikrofon" />
+                <img src="/assets/ikony/microphone.svg" alt="Mikrofon" />
                 Rozpocznij nagrywanie
               </button>
             {:else if isRecording}
@@ -563,7 +552,7 @@
               </div>
             {:else if recordedFileName}
               <div class="recorded-file">
-                <img src="assets/ikony/audio-file.svg" alt="Plik audio" />
+                <img src="/assets/ikony/audio-file.svg" alt="Plik audio" />
                 <div class="file-info">
                   <span class="file-name">{recordedFileName}</span>
                   <small class="file-duration">{Math.floor(recordingDuration / 60)}:{(recordingDuration % 60).toString().padStart(2, '0')} min</small>
@@ -582,7 +571,7 @@
           <button
             type="button"
             class="mode-switch"
-            on:click={() => (messageInputMode = null)}
+            on:click={() => { messageInputMode = 'text'; deleteRecording(); }}
           >
             Zmień na wiadomość tekstową
           </button>
@@ -634,6 +623,15 @@
 </section>
 
 <style lang="scss">
+  .message-mode-selection button {
+    img {
+      padding: 10px;
+    }
+    span {
+      color: var(--color-text-secondary);
+      font-size: 0.8rem;
+    }
+  }
   .message-mode-selection {
     display: flex;
     transition: all ease 0.5s;
@@ -653,21 +651,21 @@
         width: 30%;
         opacity: 0.5;
       }
-      
     }
   }
-  .message-mode-selection button:hover{
 
+  .message-mode-selection button:hover {
     border: 1px solid var(--color-primary-dark);
-
-
   }
+
   .country-select {
-    max-width: 120px;
+    max-width: 100%;
   }
+
   a:hover {
     color: var(--color-primary);
   }
+
   .form-group.privacy-group.checkbox-row {
     display: flex;
     flex-direction: row;
@@ -678,7 +676,8 @@
       font-size: 12px;
     }
   }
-  .contact-flex{
+
+  .contact-flex {
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 1) 60%,
@@ -690,7 +689,8 @@
     padding-top: 5px;
     padding-bottom: 4px;
   }
-  .contact-flex .background .contact{  
+
+  .contact-flex .background .contact {
     display: flex;
     gap: 0px;
     box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
@@ -701,12 +701,13 @@
     position: relative;
     background-color: white;
   }
+
   .contact-flex .background {
     width: 100%;
     height: 100%;
     position: relative;
-
   }
+
   .text-left {
     display: flex;
     text-align: left;
@@ -715,9 +716,9 @@
     flex-direction: row;
     justify-content: flex-end;
   }
+
   .contact-left:before {
     content: "";
-
     position: absolute;
     overflow: hidden;
     width: 110px;
@@ -755,16 +756,15 @@
     background-image: url(/assets/kontakt-background.jpg);
     background-size: cover;
   }
+
   .contact-left h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
     margin-bottom: 32px;
     line-height: 1.2;
     color: white !important;
-    font-weight: 600;
     max-width: 300px;
     left: -31px;
-    
   }
 
   .contact-bullets {
@@ -772,6 +772,7 @@
     padding: 0;
     margin: 0 0 32px 0;
   }
+
   .contact-bullets li {
     display: flex;
     align-items: flex-start;
@@ -780,6 +781,7 @@
     line-height: 1.5;
     color: var(--color-gray-200);
   }
+
   .bullet {
     width: 11px;
     height: 63px;
@@ -790,25 +792,42 @@
     flex-shrink: 0;
     position: relative;
   }
+
   .contact-info-block {
     margin: 32px 0 18px 0;
   }
+
   .info-row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     font-size: 1rem;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     gap: 10px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+      small {
+        color: #ccc;
+        font-size: 0.85rem;
+        margin-top: 2px;
+      }
+    }
   }
+
   .info-icon {
     font-size: 1.2rem;
     margin-right: 6px;
+    margin-top: 4px;
   }
+
   .contact-social {
     display: flex;
     gap: 16px;
     margin-top: 18px;
   }
+
   .social-icon {
     display: flex;
     align-items: center;
@@ -820,15 +839,18 @@
     transition: background 0.2s;
     box-shadow: 0 2px 8px rgba(44, 90, 160, 0.08);
   }
+
   .social-icon:hover {
     background: #fff;
   }
+
   .contact-right {
     flex: 1.5;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .contact-form {
     width: 100%;
     max-width: 480px;
@@ -839,21 +861,25 @@
     flex-direction: column;
     gap: 18px;
   }
+
   .form-row {
     display: flex;
     gap: 18px;
   }
+
   .form-group {
     display: flex;
     flex-direction: column;
     flex: 1;
     gap: 6px;
   }
+
   .form-group label {
     font-size: 0.98rem;
     color: #232c32;
     font-weight: 500;
   }
+
   .form-group input,
   .form-group textarea,
   .form-group select {
@@ -865,224 +891,52 @@
     background: #f8f9fa;
     transition: border 0.2s;
   }
+
   .form-group input:focus,
   .form-group textarea:focus,
   .form-group select:focus {
     outline: none;
     border: 1.5px solid #cddc39;
   }
-  .phone-row {
-    display: flex;
-    gap: 8px;
-  }
-  .phone-row select {
-    min-width: 56px;
-    background: #f8f9fa;
-  }
-  .checkbox-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 4px;
-  }
-
-  .success-message {
-    margin-top: 12px;
-    padding: 12px;
-    background: #eaf7d6;
-    color: #3a5a1a;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1rem;
-  }
-
-  .message-mode-selection {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
-  .recording-indicator {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    background-color: red;
-    border-radius: 50%;
-    animation: pulse 1s infinite;
-  }
-
-  @keyframes pulse {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @media (max-width: 900px) {
-    .contact-flex .background .contact {
-      flex-direction: column !important;
-      margin: 60px auto;
-      
-      max-width: 100%;
-      gap: 0px;
-    }
-    .contact-flex .background{
-      padding: 0px 2em;
-      padding-bottom: 3em;
-      
-      
-      button{
-img{    width: 3rem;
-}
-    
-      }
-
-    }
-    .contact-left {
-      border-radius: 20px 20px 0px 0px !important;
-      min-width: 100% !important;
-      max-width: 100% !important;
-      padding: 30px 24px;
-    }
-    
-    .contact-right {
-      min-width: 100% !important;
-      max-width: 100% !important;
-      flex: 1;
-    }
-    
-    .contact-form {
-      padding: 30px 24px;
-      border-radius: 0px 0px 20px 20px !important;
-    }
-    
-    .contact-left:before {
-      display: none; // Ukrywa trójkąt na małych ekranach
-    }
-  }
-  
-  @media (max-width: 600px) {
-    .contact-flex {
-      padding: 0px 15px;
-    }
-    
-    .contact-flex .background .contact {
-      margin: 40px auto;
-      border-radius: 12px;
-    }
-    
-    .contact-left {
-      border-radius: 12px 12px 0px 0px !important;
-      padding: 24px 20px;
-    }
-    
-    .contact-left h2 {
-      font-size: 1.3rem;
-      margin-bottom: 24px;
-    }
-    
-    .contact-bullets li {
-      font-size: 0.9rem;
-      margin-bottom: 16px;
-    }
-    
-    .contact-form {
-      padding: 24px 20px;
-      border-radius: 0px 0px 12px 12px !important;
-    }
-    
-    .form-row {
-      flex-direction: column;
-      gap: 12px;
-    }
-    
-    .message-mode-selection {
-      flex-direction: column;
-      
-      button {
-        width: 100%;
-        height: 80px;
-      }
-    }
-  }
-
-  // Nowe styles dla live validation i audio recording (ujednolicone z SerwisKontakt)
-  .error-message {
-    display: block;
-    color: #ef4444;
-    font-size: 0.875rem;
-    margin-top: 4px;
-    font-weight: 500;
-  }
-  
-  .form-group input.error,
-  .form-group select.error,
-  .form-group textarea.error {
-    border-color: #ef4444;
-    background-color: #fef2f2;
-  }
-
-  .char-counter {
-    font-size: 0.75rem;
-    text-align: right;
-    margin-top: 4px;
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-
-  // Style dla phone prefix
-  .phone-prefix {
-    background: #f9fafb;
-    border: 1px solid #e0e3e7;
-    border-right: none;
-    border-radius: 6px 0 0 6px;
-    padding: 0 8px;
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-    color: #6b7280;
-    min-width: 60px;
-  }
 
   .phone-row {
     display: flex;
+    gap: 0px;
     align-items: stretch;
   }
-
+  .phone-row .phone-prefix {
+      background: #f8f9fa;
+      border: 1.5px solid #e0e3e7;
+      border-right: none;
+      border-radius: 6px 0 0 6px;
+      padding: 0 12px;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      color: #6b7280;
+  }
   .phone-row input {
     border-radius: 0 6px 6px 0 !important;
     flex: 1;
+    min-width: 0;
   }
 
-  .phone-row select {
-    border-radius: 0 !important;
-    border-left: none;
-    border-right: none;
-    min-width: 120px;
+  .checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    input[type="checkbox"] {
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    label {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
   }
 
-  // Enhanced focus states
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    outline: none;
-    border: 1.5px solid #cddc39;
-    background-color: #ffffff;
-  }
-
-  .form-group input:valid:not(.error),
-  .form-group textarea:valid:not(.error),
-  .form-group select:valid:not(.error) {
-    border-color: #10b981;
-  }
-
-  // Voice recording styles (skopiowane z SerwisKontakt)
   .voice-recording {
     display: flex;
     flex-direction: column;
@@ -1195,8 +1049,13 @@ img{    width: 3rem;
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
   }
 
   .recorded-file {
@@ -1257,14 +1116,14 @@ img{    width: 3rem;
   }
 
   .mode-switch {
-    background: transparent;
-    color: var(--color-primary);
+    background: none;
     border: 1px solid var(--color-primary);
-    padding: 8px 16px;
-    border-radius: 6px;
+    color: var(--color-primary);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
     cursor: pointer;
-    font-size: 0.875rem;
-    transition: all 0.2s;
+    margin-top: 8px;
 
     &:hover {
       background: var(--color-primary);
@@ -1272,62 +1131,114 @@ img{    width: 3rem;
     }
   }
 
-  // Submit message styles
   .submit-message {
-    margin: 16px 0;
-    padding: 12px 16px;
+    padding: 12px;
     border-radius: 6px;
     font-weight: 500;
+    text-align: center;
 
     &.success {
       background: #d1fae5;
       color: #065f46;
-      border: 1px solid #a7f3d0;
+      border: 1px solid #10b981;
     }
 
     &.error {
       background: #fee2e2;
-      color: #dc2626;
-      border: 1px solid #fecaca;
+      color: #991b1b;
+      border: 1px solid #ef4444;
     }
   }
 
-  // Message mode selection improvements
-  .message-mode-selection {
-    display: flex;
-    gap: 12px;
-    margin: 16px 0;
-
-    button {
-      display: flex;
+  @media (max-width: 900px) {
+    .contact-flex .background .contact {
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      flex: 1;
-      padding: 16px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-
-      &:hover {
-        border-color: var(--color-primary);
-        background: #f0f9ff;
-      }
-
-      img {
-        width: 32px;
-        height: 32px;
-        opacity: 0.7;
-      }
-
-      span {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: #374151;
-      }
+      padding: 24px 6px;
+      gap: 24px;
+      margin: 60px auto;
     }
+
+    .contact-left,
+    .contact-right {
+      max-width: 100%;
+      min-width: 0;
+      padding: 24px 12px;
+    }
+
+    .contact-left {
+      border-radius: 20px 20px 0 0;
+    }
+
+    .form-row {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-form {
+      padding: 24px 20px;
+    }
+
+    .form-group {
+      gap: 4px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 10px 12px;
+    }
+
+    .contact-left h2 {
+      font-size: 1.3rem;
+    }
+
+    .contact-bullets li {
+      font-size: 0.9rem;
+    }
+  }
+
+  .error-message {
+    display: block;
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  
+  .form-group input.error,
+  .form-group select.error,
+  .form-group textarea.error {
+    border-color: #ef4444;
+    background-color: #fef2f2;
+  }
+
+  .char-counter {
+    font-size: 0.75rem;
+    text-align: right;
+    margin-top: 4px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border: 1.5px solid #cddc39;
+    background-color: #ffffff;
+  }
+
+  .form-group input:valid:not(.error),
+  .form-group textarea:valid:not(.error),
+  .form-group select:valid:not(.error) {
+    border-color: #10b981;
+  }
+
+  .form-group input:invalid.error,
+  .form-group textarea:invalid.error,
+  .form-group select:invalid.error {
+    border-color: #ef4444;
   }
 </style>

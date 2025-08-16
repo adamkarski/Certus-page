@@ -1,6 +1,9 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
+// Disable prerendering for this server route
+export const prerender = false;
+
 export const POST: RequestHandler = async ({ request }) => {
     try {
         const data = await request.json();
