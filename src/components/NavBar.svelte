@@ -41,6 +41,7 @@
   // Reactive variables for active links
   $: currentPath = $page.url.pathname;
   $: isMaszynyActive = currentPath.startsWith("/maszyny");
+  $: isBestsellerActive = currentPath.startsWith("/bestseller");
   $: isSerwisActive = currentPath.startsWith("/serwis");
   $: isOnasActive = currentPath.startsWith("/onas");
   $: isKontaktActive = currentPath.startsWith("/kontakt");
@@ -52,6 +53,8 @@
       activePage.set("home");
     } else if (isMaszynyActive) {
       activePage.set("maszyny");
+    } else if (isBestsellerActive) {
+      activePage.set("bestseller");
     } else if (isSerwisActive) {
       activePage.set("serwis");
     } else if (isOnasActive) {
@@ -242,8 +245,9 @@
             role="group"
           >
             <a
-              href="javascript:void(0);"
+              href="/bestseller"
               class="nav-link flex items-center space-x-1"
+              class:active={isBestsellerActive}
             >
               <span>Bestseller</span>
               <svg
@@ -270,9 +274,6 @@
               >
                 <div class="bestseller-content p-6">
                   <div class="bestseller-header mb-4">
-                    <!-- <div class="bestseller-badge">
-           <span class="badge-text"> BESTSELLER</span>
-         </div> -->
                     <h3 class="bestseller-title">Certus 69</h3>
                     <p class="bestseller-subtitle">
                       Najchętniej wybierana przez naszych klientów
@@ -300,7 +301,7 @@
                       text="Zobacz dlaczego wybierają nas"
                       on:click={() => {
                         isBestsellerDropdownOpen = false;
-                        window.location.href = "/maszyny/#ploteryPrzemyslowe";
+                        goto("/bestseller");
                       }}
                     />
                   </div>
@@ -405,17 +406,18 @@
             </div>
           {/if}
           <a
-            href="/maszyny/#ploteryPrzemyslowe"
+            href="/bestseller"
             class="mobile-nav-link"
+            class:active={isBestsellerActive}
             on:click={closeMobileMenu}>Bestseller</a
           >
-          <a href="/serwis" class="mobile-nav-link" on:click={closeMobileMenu}
+          <a href="/serwis" class="mobile-nav-link" class:active={isSerwisActive} on:click={closeMobileMenu}
             >Serwis</a
           >
-          <a href="/onas" class="mobile-nav-link" on:click={closeMobileMenu}
+          <a href="/onas" class="mobile-nav-link" class:active={isOnasActive} on:click={closeMobileMenu}
             >O nas</a
           >
-          <a href="/kontakt" class="mobile-nav-link" on:click={closeMobileMenu}
+          <a href="/kontakt" class="mobile-nav-link" class:active={isKontaktActive} on:click={closeMobileMenu}
             >Kontakt</a
           >
         </div>

@@ -5,6 +5,10 @@
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
+	"/bestseller": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/dokumentacja": [
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
