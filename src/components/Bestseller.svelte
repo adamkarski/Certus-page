@@ -1,7 +1,11 @@
 <script lang="ts">
-  import { slide } from 'svelte/transition';
+  import { slide, fade } from 'svelte/transition';
+  import { onMount, onDestroy } from 'svelte';
+  import { tweened } from 'svelte/motion';
   import { cubicOut } from 'svelte/easing';
   import { typoFixAction } from '$lib/utils/typography';
+  import Section_Image02 from '$lib/../components/sections/Section_Image02.svelte';
+  import Section_Kontakt from '$lib/../components/sections/Section_Kontakt.svelte';
 
   const images = [
     {
@@ -49,6 +53,39 @@
   let lightboxImage: string | null = null;
   let currentImageIndex: number = 0;
 
+  // New variables for header image cycling
+  let currentHeaderImageIndex = 0;
+  let displayedHeaderImageSrc = images[currentHeaderImageIndex].src;
+  let imageIntervalId: number; // Renamed for clarity
+  let zoomIntervalId: number; // New interval for zoom
+
+  // Tweened store for scale
+  const scale = tweened(1.0, { duration: 10000, easing: cubicOut }); // Longer duration for one zoom cycle
+
+  onMount(() => {
+    // Image changing interval
+    imageIntervalId = setInterval(() => {
+      currentHeaderImageIndex = (currentHeaderImageIndex + 1) % images.length;
+      displayedHeaderImageSrc = images[currentHeaderImageIndex].src;
+    }, 5000); // Change image every 5 seconds
+
+    // Zoom animation interval
+    let zoomIn = true;
+    zoomIntervalId = setInterval(() => {
+      if (zoomIn) {
+        scale.set(1.05);
+      } else {
+        scale.set(1.0);
+      }
+      zoomIn = !zoomIn; // Toggle zoom direction
+    }, 10000); // Match duration of tweened animation for smooth loop
+
+    return () => {
+      clearInterval(imageIntervalId);
+      clearInterval(zoomIntervalId); // Clear zoom interval
+    };
+  });
+
   function openLightbox(src: string, index: number) {
     lightboxImage = src;
     currentImageIndex = index;
@@ -78,6 +115,9 @@
 
 <div class="bestseller-container">
   <header class="page-header">
+    {#key displayedHeaderImageSrc}
+      <img src={displayedHeaderImageSrc} alt="Header background" class="header-bg-image" transition:fade={{duration: 1000}} style="transform: scale({$scale});" />
+    {/key}
     <span class="triangle"></span>
   </header>
 
@@ -108,7 +148,6 @@
     </div>
     <div class="image-column">
       <img src="/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-glowne1.jpg" alt="Główne zdjęcie frezarko-grawerki CNC Certus 69" class="main-machine-image" />
-      <img src="/assets/images/bestseller/schemat-certus-69.jpg" alt="Panel sterowania frezarki CNC Certus 69" class="secondary-machine-image" />
     </div>
   </div>
 
@@ -138,15 +177,19 @@
   </section>
 
   <section class="gallery-section">
- 
-    <div class="gallery-grid">
-      {#each images as image, i}
-        <button class="gallery-item" on:click={() => openLightbox(image.src, i)}>
-          <img src={image.src} alt={image.alt} loading="lazy" />
-        </button>
-      {/each}
+    <div class="content-wrapper">
+      <div class="gallery-grid">
+        {#each images as image, i}
+          <button class="gallery-item" on:click={() => openLightbox(image.src, i)}>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+          </button>
+        {/each}
+      </div>
     </div>
   </section>
+
+  <Section_Image02 />
+  <Section_Kontakt />
 </div>
 
 {#if lightboxImage}
@@ -178,18 +221,28 @@
   }
 
   .page-header {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-5.png') no-repeat center center;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)); // Keep overlay, remove image
     background-size: cover;
     color: white;
     padding: 4rem 2rem;
     text-align: center;
-    margin-bottom: 0; /* Removed margin-bottom as main-title-section will follow */
+    margin-bottom: 0;
     position: relative;
     overflow: hidden;
-    height: 300px; /* Adjust height as needed */
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .header-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; // Place behind other header content
+    }
 
     .triangle {
       position: absolute;
@@ -197,7 +250,7 @@
       height: 100px;
       bottom: 0px;
       left: 0;
-      z-index: 1; /* Ensure it's above other content if needed */
+      z-index: 1; // Ensure it's above other content if needed
 
       &::after {
         content: "";
@@ -206,7 +259,7 @@
         left: 0;
         width: 100%;
         height: 55px;
-        background: white; /* Changed to white */
+        background: white;
         clip-path: polygon(0 0, 79% 0, 100% 100%, 0% 100%);
       }
     }
@@ -394,17 +447,10 @@
   }
 
   .gallery-section {
-    max-width: 1200px;
-    margin: 0 auto 3rem auto;
-    padding: 0 2rem;
+    padding: 100px 0;
+    margin: 0 auto;
+    padding: 1.7rem;
 
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--color-primary);
-      margin-bottom: 2rem;
-    }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -419,6 +465,7 @@
       padding: 0;
       cursor: pointer;
       position: relative; /* For z-index on hover */
+      min-height: 250px; /* Added to ensure visibility */
 
       img {
         width: 100%;
