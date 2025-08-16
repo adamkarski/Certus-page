@@ -63,26 +63,26 @@
   const scale = tweened(1.0, { duration: 10000, easing: cubicOut }); // Longer duration for one zoom cycle
 
   onMount(() => {
+    // Start the continuous zoom animation
+    function startZoomAnimation() {
+      scale.set(1.05, { duration: 5000 }).then(() => { // Zoom in over 5 seconds
+        scale.set(1.0, { duration: 5000 }).then(() => { // Zoom out over 5 seconds
+          // Loop the animation
+          startZoomAnimation();
+        });
+      });
+    }
+    startZoomAnimation(); // Start the animation when component mounts
+
     // Image changing interval
     imageIntervalId = setInterval(() => {
       currentHeaderImageIndex = (currentHeaderImageIndex + 1) % images.length;
       displayedHeaderImageSrc = images[currentHeaderImageIndex].src;
     }, 5000); // Change image every 5 seconds
 
-    // Zoom animation interval
-    let zoomIn = true;
-    zoomIntervalId = setInterval(() => {
-      if (zoomIn) {
-        scale.set(1.05);
-      } else {
-        scale.set(1.0);
-      }
-      zoomIn = !zoomIn; // Toggle zoom direction
-    }, 10000); // Match duration of tweened animation for smooth loop
-
     return () => {
       clearInterval(imageIntervalId);
-      clearInterval(zoomIntervalId); // Clear zoom interval
+      // No need to clear zoomIntervalId if it's a recursive promise chain
     };
   });
 
@@ -170,9 +170,10 @@
           </div>
         {/each}
       </div>
-      <p class="features-note">
-        To niewątpliwe bezkonkurencyjne atuty tego urządzenia. Przykładowe maszyny – można zobaczyć i przetestować na miejscu w firmie.
-      </p>
+      <div class="call-to-action-section">
+        <h1>Oceń Potencjał !</h1>
+        <p>To urządzenie wyróżnia się na rynku dzięki swoim unikalnym atutom. Aby w pełni ocenić jego potencjał, zapraszamy do przetestowania przykładowych maszyn w naszym centrum demonstracyjnym.</p>
+      </div>
     </div>
   </section>
 
@@ -215,9 +216,24 @@
 {/if}
 
 <style lang="scss">
+
+
+:global(.image-section-02 .phone-holder div a){
+
+color: white;
+
+}
+
+
   .bestseller-container {
     width: 100%;
     color: var(--color-text-primary);
+  }
+
+  .content-wrapper {
+    
+    margin: 0 auto;
+    padding: 0 2rem; // Default horizontal padding for content
   }
 
   .page-header {
@@ -267,17 +283,14 @@
 
   .main-title-section {
     background-color: white; /* Assuming the page background is white */
-    padding: 4rem 2rem 2rem; /* Increased top padding */
+    padding: 4rem 0 2rem; /* Increased top padding */
     text-align: left; /* Changed to left */
     margin-top: -55px; /* Overlap with the triangle */
     position: relative;
     z-index: 2;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     
-    .content-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    
 
     h1 {
       font-size: 2rem;
@@ -297,10 +310,9 @@
   .main-content {
     display: flex;
     gap: 2rem;
-    max-width: 1200px;
     margin: 3rem auto;
     padding: 0 2rem;
-    align-items: flex-start; /* Align items to the top */
+    align-items: flex-start;
   }
 
   .text-column {
@@ -324,7 +336,7 @@
 
   .text-column h2 {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-primary);
     border-bottom: 2px solid var(--color-primary-light);
     padding-bottom: 0.5rem;
@@ -335,11 +347,20 @@
     font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 1rem;
+    color: var(--color-text-secondary);
   }
   .text-column p, .text-column li {
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 1rem;
+    color: var(--color-text-secondary);
+  }
+  .text-column li {
+
+    list-style-type: none;
+    border-left: solid 4px var(--color-primary-light);
+    padding-left: 1rem;
+
   }
   .text-column ul {
     list-style-type: disc;
@@ -357,10 +378,7 @@
     padding: 100px 0;
     background: white;
 
-    .content-wrapper {
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    
 
     h2 {
       text-align: center;
@@ -395,10 +413,11 @@
       text-align: center;
       max-width: 280px;
       padding: 32px 24px;
+      border-top: 3px solid var(--color-primary);
       border-radius: 12px;
       transition: all 0.3s ease;
       background-color: white;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgb(75 124 23 / 13%);
 
       &:hover {
         transform: translateY(-8px);
@@ -415,11 +434,40 @@
       }
     }
 
-    .features-note {
+    .call-to-action-section {
       text-align: center;
-      margin-top: 2.5rem;
-      font-size: 0.95rem;
-      color: #666;
+      margin-top: 3rem;
+      padding: 2rem 0;
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--color-text-secondary);
+        margin-bottom: 16px;
+        position: relative;
+        display: inline-block;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          top: -20px;
+          width: 60px;
+          height: 4px;
+          background: var(--color-primary);
+          border-radius: 2px;
+        }
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: var(--color-text-secondary);
+        opacity: 0.8;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+      }
     }
   }
 
@@ -450,6 +498,7 @@
     padding: 100px 0;
     margin: 0 auto;
     padding: 1.7rem;
+    padding-bottom: 9rem;
 
     .gallery-grid {
       display: grid;
