@@ -6,7 +6,7 @@ import { parse } from 'node-html-parser';
 const buildDir = '.svelte-kit/output/prerendered';
 const searchIndexPath = 'static/search-index.json';
 
-console.log('🚀 Rozpoczynam generowanie indeksu wyszukiwania z plików produkcyjnych...');
+console.log('Rozpoczynam generowanie indeksu wyszukiwania z plików produkcyjnych...');
 
 // Sprawdź, czy katalog build istnieje
 if (!fs.existsSync(buildDir)) {

@@ -4,6 +4,7 @@
   import { fade } from "svelte/transition";
   import { typoFixAction } from "$lib/utils/typography";
   import axios from 'axios';
+  import '$lib/styles/form-styles.scss';
 
   let formData = {
     firstName: "",
@@ -336,7 +337,7 @@
         <div class="contact-info-block">
           <div class="info-row">
             <span class="info-icon">
-              <img src="assets/ikony/telefon.svg" alt="Telefon serwisowy" />
+              <img src="/assets/ikony/telefon.svg" alt="Telefon serwisowy" />
             </span>
             <div>
               <b>
@@ -349,7 +350,7 @@
           </div>
           <div class="info-row">
             <span class="info-icon">
-              <img src="assets/ikony/email.svg" alt="Email serwisowy" />
+              <img src="/assets/ikony/email.svg" alt="Email serwisowy" />
             </span>
             <div>
               <b>
@@ -366,7 +367,7 @@
           <div class="info-row">
             <span class="info-icon">
               <img
-                src="assets/ikony/lokalizacja.svg"
+                src="/assets/ikony/lokalizacja.svg"
                 alt="Lokalizacja serwisu"
               />
             </span>
@@ -392,7 +393,7 @@
             class="social-icon"
             rel="nofollow noopener noreferrer"
           >
-            <img src="assets/ikony/facebook.svg" alt="facebook" />
+            <img src="/assets/ikony/facebook.svg" alt="facebook" />
           </a>
           <a
             href="https://www.youtube.com/user/MGCERTUS/videos"
@@ -400,7 +401,7 @@
             class="social-icon"
             rel="nofollow noopener noreferrer"
           >
-            <img src="assets/ikony/youtube.svg" alt="youtube" />
+            <img src="/assets/ikony/youtube.svg" alt="youtube" />
           </a>
         </div>
       </div>
@@ -545,7 +546,7 @@
               <div class="voice-recording">
                 {#if !isRecording && !recordedFileName}
                   <div class="record-instructions">
-                    <img src="assets/ikony/microphone.svg" alt="Mikrofon" />
+                    <img src="/assets/ikony/microphone.svg" alt="Mikrofon" />
                     <p>Naciśnij przycisk i opisz problem głosowo</p>
                     <small>Maksymalnie 3 minuty nagrania</small>
                   </div>
@@ -554,7 +555,7 @@
                     class="record-btn"
                     on:click={startRecording}
                   >
-                    <img src="assets/ikony/microphone.svg" alt="Mikrofon" />
+                    <img src="/assets/ikony/microphone.svg" alt="Mikrofon" />
                     Rozpocznij nagrywanie
                   </button>
                 {:else if isRecording}
@@ -574,7 +575,7 @@
                   </div>
                 {:else if recordedFileName}
                   <div class="recorded-file">
-                    <img src="assets/ikony/audio-file.svg" alt="Plik audio" />
+                    <img src="/assets/ikony/audio-file.svg" alt="Plik audio" />
                     <div class="file-info">
                       <span class="file-name">{recordedFileName}</span>
                       <small class="file-duration">{Math.floor(recordingDuration / 60)}:{(recordingDuration % 60).toString().padStart(2, '0')} min</small>
@@ -646,21 +647,17 @@
 
 <style lang="scss">
 
-:global(.recorded-file){
-
-  color: var(--color-text-secondary) !important;
-  font-size: 0.8rem;
-  
-}
-:global(.ctaButton button span.text-container){
-
-  text-align: left;
-  span{
-    text-align: left;
-    
+  :global(.recorded-file){
+    color: var(--color-text-secondary) !important;
+    font-size: 0.8rem;
   }
-}
-#serviceType {
+  :global(.ctaButton button span.text-container){
+    text-align: left;
+    span{
+      text-align: left;
+    }
+  }
+  #serviceType {
     color: var(--color-text-secondary) !important;
   }
 
@@ -673,61 +670,8 @@
     color: var(--color-text-secondary) !important;
   }
 
-  .message-mode-selection button {
-    
-    img{
-
-      padding: 10px;
-    }
-    
-    span {
-      color: var(--color-text-secondary);
-      font-size: 0.8rem;
-    }
-  }
-  .message-mode-selection {
-    display: flex;
-    transition: all ease 0.5s;
-    button {
-      display: flex;
-      width: 50%;
-      height: 120px;
-      border: 1px solid var(--color-gray-200);
-      border-radius: 6px;
-      background-color: var(--color-bg-overlay);
-      text-align: center;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      transition: all ease 0.5s;
-      img {
-        width: 30%;
-        opacity: 0.5;
-      }
-    }
-  }
-
-  .message-mode-selection button:hover {
-    border: 1px solid var(--color-primary-dark);
-  }
-
-  .country-select {
-    max-width: 120px;
-  }
-
   a:hover {
     color: var(--color-primary);
-  }
-
-  .form-group.privacy-group.checkbox-row {
-    display: flex;
-    flex-direction: row;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-    label {
-      font-size: 12px;
-    }
   }
 
   .contact-flex {
@@ -770,9 +714,8 @@
     justify-content: flex-end;
   }
 
-  // Specyficzne style dla serwisu
   .serwis-contact-left {
-    background-image: url(/assets/serwis-background.jpg); // Można dodać dedykowane tło
+    background-image: url(/assets/serwis-background.jpg); 
 
     h2 {
       color: white;
@@ -909,312 +852,12 @@
     justify-content: center;
   }
 
-  .contact-form {
-    width: 100%;
-    max-width: 480px;
-    background: #fff;
-    border-radius: 12px;
-    padding: 36px 32px 28px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-
-    h3 {
+  .contact-form h3 {
       color: var(--color-text-secondary);
       font-size: 1.5rem;
       margin-bottom: 20px;
       font-weight: 600;
       text-align: center;
-    }
-  }
-
-  .form-row {
-    display: flex;
-    gap: 18px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 6px;
-  }
-
-  .form-group label {
-    font-size: 0.98rem;
-    color: #232c32;
-    font-weight: 500;
-  }
-
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    padding: 12px 14px;
-    border: 1.5px solid #e0e3e7;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-family: inherit;
-    background: #f8f9fa;
-    transition: border 0.2s;
-  }
-
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    outline: none;
-    border: 1.5px solid #cddc39;
-  }
-
-  .phone-row {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-
-    .phone-prefix {
-      background: #f8f9fa;
-      border: 1.5px solid #e0e3e7;
-      border-radius: 6px;
-      padding: 12px 8px;
-      font-size: 1rem;
-      color: #666;
-      min-width: 60px;
-      text-align: center;
-    }
-  }
-
-  .phone-row select {
-    min-width: 56px;
-    background: #f8f9fa;
-  }
-
-  .checkbox-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-
-    input[type="checkbox"] {
-      margin-top: 4px;
-      flex-shrink: 0;
-    }
-
-    label {
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-  }
-
-  // Specyficzne style dla serwisu
-  .voice-recording {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    border: 2px dashed #e0e3e7;
-    border-radius: 8px;
-    background: #f9fafb;
-    gap: 16px;
-  }
-
-  .record-instructions {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: #6b7280;
-
-    img {
-      width: 40px;
-      height: 40px;
-      opacity: 0.6;
-    }
-
-    p {
-      margin: 0;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    small {
-      font-size: 0.75rem;
-      color: #9ca3af;
-    }
-  }
-
-  .record-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.2s;
-
-    &:hover {
-      background: var(--color-primary-dark);
-      transform: scale(1.02);
-    }
-
-    img {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  .recording-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    color: #dc2626;
-    font-weight: 600;
-    padding: 20px;
-
-    .recording-dot {
-      width: 16px;
-      height: 16px;
-      background: #dc2626;
-      border-radius: 50%;
-      animation: pulse 1s infinite;
-    }
-
-    .recording-info {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-
-      .recording-text {
-        font-size: 1rem;
-      }
-
-      .recording-duration {
-        font-size: 1.5rem;
-        font-family: monospace;
-        color: #991b1b;
-      }
-    }
-
-    .stop-btn {
-      background: #dc2626;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-
-      &:hover {
-        background: #991b1b;
-      }
-    }
-  }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.3;
-    }
-  }
-
-  .recorded-file {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #dcfce7;
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px solid #bbf7d0;
-    width: 100%;
-    max-width: 400px;
-
-    img {
-      width: 24px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-
-    .file-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-
-      .file-name {
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: #047857;
-      }
-
-      .file-duration {
-        font-size: 0.75rem;
-        color: #059669;
-        font-family: monospace;
-      }
-    }
-
-    .delete-btn {
-      background: #ef4444;
-      color: white;
-      border: none;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      font-size: 0.8rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.2s;
-
-      &:hover {
-        background: #dc2626;
-      }
-    }
-  }
-
-  .mode-switch {
-    background: none;
-    border: 1px solid var(--color-primary);
-    color: var(--color-primary);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    margin-top: 8px;
-
-    &:hover {
-      background: var(--color-primary);
-      color: white;
-    }
-  }
-
-  .submit-message {
-    padding: 12px;
-    border-radius: 6px;
-    font-weight: 500;
-    text-align: center;
-
-    &.success {
-      background: #d1fae5;
-      color: #065f46;
-      border: 1px solid #10b981;
-    }
-
-    &.error {
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #ef4444;
-    }
   }
 
   @media (max-width: 900px) {
@@ -1235,31 +878,12 @@
     .contact-left {
       border-radius: 20px 20px 0 0;
     }
-
-    .form-row {
-      flex-direction: column;
-      gap: 12px;
-    }
   }
 
   @media (max-width: 768px) {
-    .contact-form {
-      padding: 24px 20px;
-
-      h3 {
+    .contact-form h3 {
         font-size: 1.25rem;
         margin-bottom: 16px;
-      }
-    }
-
-    .form-group {
-      gap: 4px;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      padding: 10px 12px;
     }
 
     .contact-left h2 {
@@ -1275,47 +899,4 @@
     color: var(--color-text-secondary) !important;
   }
 
-  .error-message {
-    display: block;
-    color: #ef4444;
-    font-size: 0.875rem;
-    margin-top: 4px;
-    font-weight: 500;
-  }
-  
-  .form-group input.error,
-  .form-group select.error,
-  .form-group textarea.error {
-    border-color: #ef4444;
-    background-color: #fef2f2;
-  }
-
-  .char-counter {
-    font-size: 0.75rem;
-    text-align: right;
-    margin-top: 4px;
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-
-  // Ulepszenia wizualne dla live validation
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus {
-    outline: none;
-    border: 1.5px solid #cddc39;
-    background-color: #ffffff;
-  }
-
-  .form-group input:valid:not(.error),
-  .form-group textarea:valid:not(.error),
-  .form-group select:valid:not(.error) {
-    border-color: #10b981;
-  }
-
-  .form-group input:invalid.error,
-  .form-group textarea:invalid.error,
-  .form-group select:invalid.error {
-    border-color: #ef4444;
-  }
 </style>
