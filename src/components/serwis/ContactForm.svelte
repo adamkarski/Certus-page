@@ -116,6 +116,7 @@
           class:error={errors.phone}
           bind:value={formData.phone}
           placeholder="+48 123 456 789"
+          autocomplete="tel"
         />
         {#if errors.phone}
           <span class="serwis-error-message">{errors.phone}</span>

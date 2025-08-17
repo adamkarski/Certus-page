@@ -480,6 +480,7 @@
                 id="country"
                 bind:value={formData.country}
                 class="country-select"
+                autocomplete="kraj"
               >
                 {#each countryPrefixes as country}
                   <option value={country.code}>{country.name}</option>
@@ -499,6 +500,7 @@
                   on:blur={() => validateSingleField('phone')}
                   on:input={() => validateSingleField('phone')}
                   required
+                  autocomplete="tel"
                 />
                 {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
               </div>
@@ -663,7 +665,7 @@
 
   #phone{
     width: auto;
-    max-width: 77%;
+    max-width: 50%;
   }
 
   .country-select input{

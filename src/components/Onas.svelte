@@ -286,7 +286,7 @@
       position: relative;
       color: var(--color-text-secondary);
       font-family: "Poppins", sans-serif;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 38px;
       text-align: left;
       margin-bottom: 30px;
