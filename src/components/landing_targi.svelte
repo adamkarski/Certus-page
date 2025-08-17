@@ -1,18 +1,24 @@
-<script>
+<script lang="ts">
   import { fade } from "svelte/transition";
   import { landingVisible } from "$lib/landingStore";
   import { onMount } from "svelte";
 
   let leftGradient = "";
   let rightGradient = "";
-  let leftGradients = []; // Tablica gradientów dla lewej strony
-  let rightGradients = []; // Tablica gradientów dla prawej strony
-  let machineImg;
+  let leftGradients: any[] = []; // Tablica gradientów dla lewej strony
+  let rightGradients: any[] = []; // Tablica gradientów dla prawej strony
+  let machineImg: HTMLImageElement;
   let isMobile = false;
   let imageSource = "/assets/landing_targi2025/MACHINE.jpg";
 
   function handleClick() {
     landingVisible.hide();
+  }
+
+  function handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleClick();
+    }
   }
 
   function checkMobile() {
@@ -38,7 +44,7 @@
     }
   }
 
-  function analyzeImageColors(img) {
+  function analyzeImageColors(img: HTMLImageElement) {
     // Na mobile nie analizujemy kolorów - nie ma blur efektów
     if (isMobile) {
       leftGradients = [];
@@ -50,6 +56,8 @@
 
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
+
+    if (!ctx) return;
 
     canvas.width = img.naturalWidth;
     canvas.height = img.naturalHeight;
@@ -80,16 +88,16 @@
       rightEdgeX = canvas.width;
     }
 
-    const leftColorSections = [];
-    const rightColorSections = [];
+    const leftColorSections: { r: number; g: number; b: number }[] = [];
+    const rightColorSections: { r: number; g: number; b: number }[] = [];
     const sampleWidth = Math.floor(canvas.width * 0.03); // Jeszcze węższa próbka
     const sections = 5;
 
     for (let section = 0; section < sections; section++) {
       const startY = Math.floor((canvas.height / sections) * section);
       const endY = Math.floor((canvas.height / sections) * (section + 1));
-      const leftSectionColors = [];
-      const rightSectionColors = [];
+      const leftSectionColors: { r: number; g: number; b: number }[] = [];
+      const rightSectionColors: { r: number; g: number; b: number }[] = [];
 
       // Próbkuj kolory w tej sekcji
       for (
@@ -175,7 +183,7 @@
     }
   }
 
-  function averageColors(colors) {
+  function averageColors(colors: { r: number; g: number; b: number }[]) {
     const total = colors.reduce(
       (acc, color) => ({
         r: acc.r + color.r,
@@ -221,7 +229,7 @@
   out:fade
   class="container targi-container"
   on:click={handleClick}
-  on:keydown={handleClick}
+  on:keydown={handleKeyDown}
   role="button"
   tabindex="0"
 >

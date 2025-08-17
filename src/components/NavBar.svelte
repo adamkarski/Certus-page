@@ -14,12 +14,12 @@
   // State for mobile menu
   let isMobileMenuOpen = false;
   let isMobileMaszynyOpen = false;
-  let autoExpandTimeout;
+  let autoExpandTimeout: number;
 
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
     if (isMobileMenuOpen) {
-      autoExpandTimeout = setTimeout(() => {
+      autoExpandTimeout = window.setTimeout(() => {
         isMobileMaszynyOpen = true;
       }, 2500);
     } else {
@@ -65,7 +65,7 @@
   }
 
   // Lottie player setup
-  let LottiePlayer;
+  let LottiePlayer: any;
   let scrolled = false;
   let showLottie = false;
   let windowWidth = 0;
@@ -79,7 +79,13 @@
   // Dropdown state
   let isMaszynyDropdownOpen = false;
   let isBestsellerDropdownOpen = false;
-  let hoveredCategory = kategorieMaszyn[0];
+  let hoveredCategory: any = kategorieMaszyn[0];
+
+  function handleKeyDown(event: KeyboardEvent) {
+    if (isMobileMenuOpen && event.key === 'Escape') {
+      closeMobileMenu();
+    }
+  }
 
   onMount(() => {
     let cleanup: () => void;
@@ -103,6 +109,8 @@
       window.addEventListener("resize", handleResize);
       handleResize();
 
+      window.addEventListener('keydown', handleKeyDown);
+
       const unsubscribe = preloaderVisible.subscribe((visible) => {
         if (!visible) {
           showLottie = true;
@@ -113,6 +121,7 @@
       cleanup = () => {
         window.removeEventListener("scroll", handleScroll);
         window.removeEventListener("resize", handleResize);
+        window.removeEventListener('keydown', handleKeyDown);
         unsubscribe();
       };
     })();
@@ -344,6 +353,9 @@
     <div
       class="mobile-menu-overlay"
       on:click={closeMobileMenu}
+      on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMobileMenu()}}
+      role="button"
+      tabindex="0"
       transition:fade={{ duration: 200 }}
     >
       <div

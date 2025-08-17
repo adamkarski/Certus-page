@@ -7,17 +7,15 @@
   <div class="o-nas-container container">
     <div class="o-nas-content">
       <div class="o-nas-text no-sel">
-        <h2 class="section-title " use:typoFixAction>Nasze maszyny CNC łączą polską inżynierię</h2>
+        <h2 class="section-title title-green" use:typoFixAction>Nasze maszyny łączą Polską inżynierię z najnowocześniejszymi technologiami obróbki.</h2>
 
-        <p class=" section-subtitle" use:typoFixAction>z najnowocześniejszymi technologiami obróbki.</p>
-        <br/><br/>
-        <p class="section-subtitle" use:typoFixAction>Zaprojektowane z myślą o małych zakładach i dużych kombinatach, oferują:</p>
+        <h2 class="section-title title-green" use:typoFixAction>Zaprojektowane z myślą o małych zakładach i dużych kombinatach</h2>
         <div class="o-nas-features">
           <ul>
             <li class="feature" use:typoFixAction>Precyzja obróbki do ±0,01mm</li>
             <li class="feature" use:typoFixAction>Kompatybilność z różnymi materiałami</li>
             <li class="feature" use:typoFixAction>Intuicyjne oprogramowanie sterujące</li>
-            <li class="feature" use:typoFixAction>Kompleksowy serwis gwarancyjny i pogwarancyjny</li>
+            <li class="feature" use:typoFixAction>Kompleksowy <a href="/serwis" rel="noopener noreferrer"> serwis gwarancyjny i pogwarancyjny</a></li>
           </ul>
         </div>
         <p class="o-nas-description" use:typoFixAction>Idealne rozwiązanie dla firm wymagających wysokiej jakości obróbki metali w produkcji prototypów i serii masowych.</p>
@@ -77,8 +75,17 @@
 
 <style lang="scss">
 
+.title-green{
+  font-size: 1.3rem;
+  padding-left: 20px;
+  border-left: 4px solid var(--color-primary-dark);
+}
 
-
+.feature a{
+background-color: var(--color-text-light);
+padding:0 10px;
+margin: 0 10px;
+}
 
 :global(#o-nas button )
    {
@@ -126,6 +133,10 @@
     font-size: 16px;
     color: #333;
   }
+
+
+  
+
   .o-nas-right {
     display: flex;
     flex-direction: column;

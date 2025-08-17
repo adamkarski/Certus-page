@@ -13,11 +13,23 @@
       scrollToElement(sectionId, 1200, 140); // 1.2 sekundy animacji, 140px offset
     }
   }
+
+  function handleKeyDown(event: KeyboardEvent, sectionId: string) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      navigateToMachine(sectionId);
+    }
+  }
 </script>
 
 <div class="oferta-container container">
   <div class="oferta-grid">
-    <div class="oferta-card" on:click={() => navigateToMachine("frezarki")}>
+    <div 
+      class="oferta-card" 
+      on:click={() => navigateToMachine("frezarki")}
+      on:keydown={(event) => handleKeyDown(event, "frezarki")}
+      tabindex="0"
+      role="button"
+    >
       <div class="oferta-icon">
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
       </div>
@@ -29,7 +41,13 @@
       />
     </div>
 
-    <div class="oferta-card" on:click={() => navigateToMachine("ploteryPrzemyslowe")}>
+    <div 
+      class="oferta-card" 
+      on:click={() => navigateToMachine("ploteryPrzemyslowe")}
+      on:keydown={(event) => handleKeyDown(event, "ploteryPrzemyslowe")}
+      tabindex="0"
+      role="button"
+    >
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
@@ -44,7 +62,13 @@
       />
     </div>
 
-    <div class="oferta-card" on:click={() => navigateToMachine("ploteryPrzemysloweZabudowa")}>
+    <div 
+      class="oferta-card" 
+      on:click={() => navigateToMachine("ploteryPrzemysloweZabudowa")}
+      on:keydown={(event) => handleKeyDown(event, "ploteryPrzemysloweZabudowa")}
+      tabindex="0"
+      role="button"
+    >
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg"
@@ -59,7 +83,13 @@
       />
     </div>
 
-    <div class="oferta-card" on:click={() => navigateToMachine("frezarki5osiowe")}>
+    <div 
+      class="oferta-card" 
+      on:click={() => navigateToMachine("frezarki5osiowe")}
+      on:keydown={(event) => handleKeyDown(event, "frezarki5osiowe")}
+      tabindex="0"
+      role="button"
+    >
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/frezarki5osiowe.svg"
@@ -74,7 +104,13 @@
       />
     </div>
 
-    <div class="oferta-card" on:click={() => navigateToMachine("grawerki")}>
+    <div 
+      class="oferta-card" 
+      on:click={() => navigateToMachine("grawerki")}
+      on:keydown={(event) => handleKeyDown(event, "grawerki")}
+      tabindex="0"
+      role="button"
+    >
       <div class="oferta-icon">
         <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
       </div>
@@ -86,7 +122,13 @@
       />
     </div>
 
-    <div class="oferta-card" on:click={() => navigateToMachine("ploteryLinearne")}>
+    <div 
+      class="oferta-card" 
+      on:click={() => navigateToMachine("ploteryLinearne")}
+      on:keydown={(event) => handleKeyDown(event, "ploteryLinearne")}
+      tabindex="0"
+      role="button"
+    >
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/ploteryLinearne.svg"

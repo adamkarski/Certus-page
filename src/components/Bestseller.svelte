@@ -52,6 +52,7 @@
 
   let lightboxImage: string | null = null;
   let currentImageIndex: number = 0;
+  let lightboxOverlay: HTMLDivElement;
 
   // New variables for header image cycling
   let currentHeaderImageIndex = 0;
@@ -95,10 +96,15 @@
   function openLightbox(src: string, index: number) {
     lightboxImage = src;
     currentImageIndex = index;
+    window.addEventListener('keydown', handleKeyDown);
+    setTimeout(() => {
+      lightboxOverlay?.focus();
+    }, 0);
   }
 
   function closeLightbox() {
     lightboxImage = null;
+    window.removeEventListener('keydown', handleKeyDown);
   }
 
   function nextImage() {
@@ -109,6 +115,17 @@
   function prevImage() {
     currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
     lightboxImage = images[currentImageIndex].src;
+  }
+
+  function handleKeyDown(event: KeyboardEvent) {
+    if (!lightboxImage) return;
+    if (event.key === 'Escape') {
+      closeLightbox();
+    } else if (event.key === 'ArrowLeft') {
+      prevImage();
+    } else if (event.key === 'ArrowRight') {
+      nextImage();
+    }
   }
 
   const slideConfig = {
@@ -227,10 +244,13 @@
 
 {#if lightboxImage}
   <div
+    bind:this={lightboxOverlay}
     class="lightbox-overlay"
     on:click={closeLightbox}
+    on:keydown={handleKeyDown}
     role="dialog"
     aria-modal="true"
+    tabindex="-1"
   >
     <button
       class="lightbox-close"

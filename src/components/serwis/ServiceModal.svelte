@@ -8,6 +8,8 @@
   export let isOpen = false;
   export let service: any = null;
 
+  let modalBackdrop: HTMLDivElement;
+
   function closeModal() {
     dispatch("close");
   }
@@ -19,9 +21,23 @@
   }
 
   function handleKeydown(event: KeyboardEvent) {
-    if (event.key === "Escape") {
+    if (isOpen && event.key === "Escape") {
       closeModal();
     }
+  }
+
+  function handleBackdropKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      if (event.target === event.currentTarget) {
+        closeModal();
+      }
+    }
+  }
+
+  $: if (isOpen && modalBackdrop) {
+    setTimeout(() => {
+      modalBackdrop.focus();
+    }, 0);
   }
 </script>
 
@@ -29,12 +45,15 @@
 
 {#if isOpen && service}
   <div
+    bind:this={modalBackdrop}
     class="serwis-modal-backdrop"
     transition:fade={{ duration: 200 }}
     on:click={handleBackdropClick}
+    on:keydown={handleBackdropKeydown}
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-title"
+    tabindex="-1"
   >
     <div
       class="serwis-modal-content"
