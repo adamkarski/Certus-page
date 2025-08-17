@@ -40,7 +40,21 @@
   textarea {
     color: var(--color-text-secondary);
   }
+  padding-left: 2rem;
+    padding-right: 2rem;
 }
+body.kontakt .contact-flex .contact-left::before{
+    background-color: #fcfcfc !important;
+}
+body.serwis .contact-flex .contact-left::before{
+  
+    background: linear-gradient(180deg, #fbfbfb 0%, #fdfdfd 100%) !important;
+}
+body.home .contact-flex .contact-left::before{
+  
+  background: linear-gradient(180deg, #fbfbfb 0%, #fdfdfd 100%) !important;
+}
+
 .section-wrapper {
   position: relative;
   z-index: 1;
@@ -135,6 +149,19 @@ body.home {
   }
 }
 
+@media (max-width: 900px) {
+
+  .contact-flex {
+
+    .contact-left::before{
+
+
+      display: none !important;
+    }
+  }
+
+
+}
 @media (max-width: 932px) {
   .image-container-02 {
     .phone-holder {

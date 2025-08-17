@@ -189,7 +189,7 @@
     <div class="content-wrapper">
       <h2>Kluczowe cechy maszyny</h2>
       <div class="benefits-grid">
-        {#each ["Małe gabaryty zewnętrzne maszyny przy maksymalnie dużym polu pracy.", "Kompaktowa budowa, profesjonalny wygląd oraz bezpieczeństwo podczas pracy.", "Duża sztywność maszyny.", "Ochrona elementów techniki liniowej.", "Możliwość łatwej rozbudowy oraz łatwy montaż przewidzianych dodatków w tym rozbudowa o 4 oś obrotu bez utraty pola pracy!!!.", "Funkcjonalny panel wolno stający z komputerem i monitorem.", "Oprogramowanie sterujące PIKOCNC PL", "Wybór sprawdzonych podzespołów do budowy obrabiarki, który zapewnia bardzo dużą jakość produktu."] as feature, i}
+        {#each ["Małe gabaryty zewnętrzne maszyny przy maksymalnie dużym polu pracy.", "Kompaktowa budowa, profesjonalny wygląd oraz bezpieczeństwo podczas pracy.", "Duża sztywność maszyny.", "Ochrona elementów techniki liniowej.", "Możliwość łatwej rozbudowy oraz łatwy montaż przewidzianych dodatków w tym rozbudowa o 4 oś obrotu bez utraty pola pracy!", "Funkcjonalny panel wolno stający z komputerem i monitorem.", "Oprogramowanie sterujące PIKOCNC PL", "Wybór sprawdzonych podzespołów do budowy obrabiarki, który zapewnia bardzo dużą jakość produktu."] as feature, i}
           <div class="benefit-item">
             <p>{feature}</p>
           </div>
@@ -197,7 +197,7 @@
       </div>
       <div class="call-to-action-section">
         <h1>Oceń Potencjał !</h1>
-        <p>
+        <p use:typoFixAction>
           To urządzenie wyróżnia się na rynku dzięki swoim unikalnym atutom. Aby
           w pełni ocenić jego potencjał, zapraszamy do przetestowania
           przykładowych maszyn w naszym centrum demonstracyjnym.

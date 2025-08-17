@@ -27,18 +27,16 @@
     font-size: 15px;
   }
 
-
   :global(.oferta-card .cta-button:hover .maszyny_span) {
     font-size: 14px;
   }
-:global(.oferta-card .cta-button .cta-svg) {
-  margin-left: -43px;
+  :global(.oferta-card .cta-button .cta-svg) {
+    margin-left: -43px;
   }
 
-:global(.oferta-card){
-  transform: scale(0.85);
-
-}
+  :global(.oferta-card) {
+    transform: scale(0.85);
+  }
 
   .cta-button {
     background-color: #eeeeee;
@@ -91,7 +89,7 @@
     /* background: #222; */
     background-color: #7e8c00;
   }
- 
+
   .cta-button:hover .cta-svg .cls-2 {
     fill: #7e8c00;
   }
@@ -101,7 +99,7 @@
       /* background: #222; */
       background-color: #7e8c00;
     }
-   
+
     .cta-button:hover .cta-svg .cls-2 {
       fill: #7e8c00;
     }

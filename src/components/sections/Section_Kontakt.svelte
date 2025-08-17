@@ -479,8 +479,8 @@
               required
               autocomplete="tel"
             />
-            {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
           </div>
+          {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
         </div>
       </div>
 
@@ -841,6 +841,7 @@
     .form-group input,
     .form-group textarea,
     .form-group select {
+      font-size: 0.9rem;
       padding: 10px 12px;
     }
 

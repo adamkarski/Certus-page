@@ -664,8 +664,8 @@
   }
 
   #phone{
-    width: auto;
-    max-width: 50%;
+   /*  width: auto;
+    max-width: 50%; */
   }
 
   .country-select input{
@@ -734,7 +734,8 @@
     height: 110px;
     margin-left: -70px;
     margin-top: -74px;
-    background: #ffffff;
+
+
     clip-path: polygon(0 0, 100% 0, 0 100%);
     border-left: 2px solid rgb(255 255 255);
     border-top: 2px solid rgb(255, 255, 255);

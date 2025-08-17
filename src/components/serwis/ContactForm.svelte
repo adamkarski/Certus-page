@@ -194,12 +194,16 @@
 
   .serwis-form-group {
     margin-bottom: 24px;
+    display: flex; // Added
+    flex-direction: column;
+    width: 100%; // Added to ensure it takes full width of its grid cell // Added
   }
 
   .serwis-form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 10px; // Changed from 20px
+    min-width: 0; // Added
     
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -224,6 +228,8 @@
     transition: all 0.2s;
     background: white;
     color: var(--color-text-secondary);
+    box-sizing: border-box; // Added
+    min-width: 0; // Added
 
     &:focus {
       outline: none;

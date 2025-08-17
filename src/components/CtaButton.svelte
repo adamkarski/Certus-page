@@ -66,10 +66,8 @@
 
     .text-container {
       transition: transform 0.4s ease;
-      width: 81%; 
+      width: 81%;
     }
-
-    
 
     .svg-container {
       position: absolute;
@@ -100,7 +98,7 @@
       background-color: #7e8c00;
       color: white;
       border-radius: 0px;
-      
+
       .text-container {
         // width: 50%; // Ustawiamy szerokość na auto, aby tekst mógł się rozciągać
         transform: translateX(-25px); // Przesuwamy tekst w lewo
@@ -178,6 +176,10 @@
       left: 126px;
       position: relative;
     }
+    .text-container {
+      text-align: left;
+      transform: translateX(6px);
+    }
     &:hover {
       background-color: rgba(150, 165, 0, 1);
       .cta-svg {
@@ -187,10 +189,10 @@
         position: relative;
       }
       .text-container {
-        transform: translateX(-6px); // Przesuwamy tekst w lewo
+  
+        transform: translateX(18px); // Przesuwamy tekst w lewo
+        text-align: left;
       }
     }
   }
-
-
 </style>

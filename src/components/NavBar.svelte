@@ -274,7 +274,8 @@
               >
                 <div class="bestseller-content p-6">
                   <div class="bestseller-header mb-4">
-                    <h3 class="bestseller-title">Certus 69</h3>
+                    <h3 class="bestseller-title">Frezarko‑grawerka CNC<br/><span class="bestseller-name">CERTUS 69</span>
+                    </h3>
                     <p class="bestseller-subtitle">
                       Najchętniej wybierana przez naszych klientów
                     </p>
@@ -282,7 +283,7 @@
 
                   <div class="bestseller-image mb-4">
                     <img
-                      src="/assets/maszyny/combined_88930d1c.png"
+                      src="/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-glowne1.jpg"
                       alt="Plotery przemysłowe CNC - Bestseller"
                       class="bestseller-img"
                     />
@@ -298,7 +299,7 @@
 
                   <div class="bestseller-cta">
                     <CtaButton classs="bestseller"
-                      text="Zobacz dlaczego wybierają nas"
+                      text="Sprawdz szczegóły"
                       on:click={() => {
                         isBestsellerDropdownOpen = false;
                         goto("/bestseller");
@@ -455,14 +456,22 @@
   }
 
   .bestseller-title {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #1f2937;
     margin-bottom: 8px;
     line-height: 1.3;
+    text-align: right;
+  
+    .bestseller-name{
+      font-size: 1.5rem;
+    }
+
   }
 
+
   .bestseller-subtitle {
+    text-align: right;
     font-size: 0.875rem;
     color: #6b7280;
     margin-bottom: 0;
@@ -473,7 +482,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f9fafb;
+
     border-radius: 12px;
     padding: 16px;
     margin: 16px 0;
@@ -491,6 +500,7 @@
     padding: 0;
     margin: 0;
     text-align: left;
+    margin-left:10px;
   }
 
   .features-list li {
@@ -499,10 +509,10 @@
     margin-bottom: 6px;
     line-height: 1.4;
   }
-
+ 
   .bestseller-cta {
-    margin-top: 16px;
-  }
+    margin-top: 26px;
+   }
 
   /* Dostosowanie CTA button w dropdown */
   .bestseller-dropdown :global(.cta-button) {
