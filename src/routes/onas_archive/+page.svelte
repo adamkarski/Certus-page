@@ -1,4 +1,5 @@
 <script lang="ts">
+  
   import Onas from '../../components/Onas.svelte';
   import Section_Header from "../../components/sections/Section_Header.svelte";
   import Section_Footer from "../../components/sections/Section_Footer.svelte";
@@ -8,8 +9,8 @@
 </script>
 
 <svelte:head>
-  <title>O nas - CERTUS | Your Vision, Our Precision</title>
-  <meta name="description" content="Jesteśmy polskim producentem maszyn CNC z ponad 10-letnim doświadczeniem w branży. Specjalizujemy się w tworzeniu precyzyjnych urządzeń dostosowanych do indywidualnych potrzeb naszych klientów." />
+  <title>O nas - Polski producent maszyn CNC - Certus</title>
+  <meta name="description" content="Poznaj Certus - polskiego producenta maszyn CNC z ponad 10-letnim doświadczeniem. Specjalizujemy się w frezarkach, ploterach i grawerach dla różnych branż." />
 </svelte:head>
 
 <div class="app">

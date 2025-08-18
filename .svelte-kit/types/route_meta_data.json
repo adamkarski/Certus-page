@@ -40,6 +40,14 @@
 	"/message/send": [
 		"src/routes/message/send/+server.ts"
 	],
+	"/onas_archive": [
+		"src/routes/onas_archive/+layout.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts",
+		"src/routes/onas_archive/+layout.ts",
+		"src/routes/+layout.ts",
+		"src/routes/+layout.server.ts"
+	],
 	"/onas": [
 		"src/routes/onas/+layout.ts",
 		"src/routes/+layout.ts",

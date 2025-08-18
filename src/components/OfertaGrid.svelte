@@ -1,16 +1,19 @@
 <script lang="ts">
+  import { browser } from "$app/environment";
   import CtaButton from "./CtaButton.svelte";
   import { scrollToElement } from "$lib/utils/smoothScroll";
 
   export let variant: "homepage" | "maszyny" = "homepage";
 
   function navigateToMachine(sectionId: string) {
-    if (variant === "homepage") {
-      // For homepage - navigate to maszyny page with hash
-      window.location.href = `/maszyny#${sectionId}`;
-    } else {
-      // For maszyny page - scroll to section with smooth animation
-      scrollToElement(sectionId, 1200, 140); // 1.2 sekundy animacji, 140px offset
+    if (browser) {
+      if (variant === "homepage") {
+        // For homepage - navigate to maszyny page with hash
+        window.location.href = `/maszyny#${sectionId}`;
+      } else {
+        // For maszyny page - scroll to section with smooth animation
+        scrollToElement(sectionId, 1200, 140); // 1.2 sekundy animacji, 140px offset
+      }
     }
   }
 
