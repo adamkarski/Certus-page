@@ -41,7 +41,7 @@
   let currentHeaderImageIndex = 0;
   let displayedHeaderImageSrc = images[currentHeaderImageIndex].src;
   let imageIntervalId: number;
-  const scale = tweened(1.0, { duration: 10000, easing: cubicOut });
+  const scale = tweened(1.0, { duration: 30000, easing: cubicOut });
 
   let showHeroTitle = false; // New variable
 
@@ -65,7 +65,7 @@
       // Use window.setInterval for clarity
       currentHeaderImageIndex = (currentHeaderImageIndex + 1) % images.length;
       displayedHeaderImageSrc = images[currentHeaderImageIndex].src;
-    }, 5000); // Change image every 5 seconds
+    }, 8000); // Change image every 5 seconds
 
     return () => {
       window.clearInterval(imageIntervalId); // Use window.clearInterval
@@ -84,7 +84,7 @@
     {#key displayedHeaderImageSrc}
       <div
         class="image-and-patterns-wrapper"
-        transition:fade={{ duration: 1000 }}
+        transition:fade={{ duration: 3000 }}
       >
         <img
           src={displayedHeaderImageSrc}
@@ -113,6 +113,9 @@
 </section>
 
 <style lang="scss">
+
+
+
   .triangle {
     position: absolute;
     width: 400px;

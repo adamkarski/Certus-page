@@ -1,29 +1,31 @@
 <script lang="ts">
   import OfertaGrid from "./OfertaGrid.svelte";
-  import { fade } from 'svelte/transition';
+  import { fade } from "svelte/transition";
   import Section_Onas_Images from "./sections/Section_Onas_Images.svelte";
-  import { typoFixAction } from '$lib/utils/typography';
+  import CtaButton from "../components/CtaButton.svelte";
+  import { typoFixAction } from "$lib/utils/typography";
 </script>
-
-
-
-
-
 
 <Section_Onas_Images />
 
-<p class="hero-description no-sel" use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
-  Jesteśmy polskim producentem maszyn CNC z ponad 10-letnim
-  doświadczeniem w branży. Specjalizujemy się w tworzeniu precyzyjnych
-  urządzeń dostosowanych do indywidualnych potrzeb naszych klientów.
-</p>
+<section class="onas section">
+  <p
+    class="description no-sel"
+    use:typoFixAction
+    in:fade={{ duration: 600, delay: 900 }}
+  >
+    Jesteśmy polskim producentem maszyn CNC z ponad 10-letnim doświadczeniem w
+    branży.
 
-
+    <br /><br />Specjalizujemy się w tworzeniu precyzyjnych urządzeń
+    dostosowanych do indywidualnych potrzeb naszych klientów.
+  </p>
+</section>
 
 <!-- Co nas wyróżnia Section -->
-<section class="wyroznia section">
+<section class="wyroznia section no-sel">
   <h2 class="section-title">Co nas wyróżnia</h2>
-  <div class="strengths-grid">
+  <div class="strengths-grid no-sel">
     <div class="strength-card fade-in" in:fade>
       <div class="strength-icon">
         <svg
@@ -37,7 +39,9 @@
           /></svg
         >
       </div>
-      <h3>Wszechstronność i elastyczność</h3>
+      <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
+        Wszechstronność i elastyczność
+      </h3>
       <p>
         Od małych warsztatów po złożone linie produkcyjne – tworzymy maszyny CNC
         dostosowane do potrzeb. Realizujemy również nietypowe projekty dla
@@ -57,7 +61,9 @@
           /></svg
         >
       </div>
-      <h3>Indywidualne podejście</h3>
+      <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
+        Indywidualne podejście
+      </h3>
       <p>
         Nie sprzedajemy gotowców – każda maszyna powstaje w dialogu z Klientem.
         Dopasowujemy parametry, konfiguracje i rozwiązania technologiczne.
@@ -76,7 +82,9 @@
           /></svg
         >
       </div>
-      <h3>Solidność i niezawodność</h3>
+      <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
+        Solidność i niezawodność
+      </h3>
       <p>
         Nasze maszyny tworzone są z myślą o wieloletniej eksploatacji. CERTUS to
         jakość bez kompromisów – nasze urządzenia pracują 24/7.
@@ -95,7 +103,9 @@
           /></svg
         >
       </div>
-      <h3>Najlepszy stosunek jakości do ceny</h3>
+      <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
+        Najlepszy stosunek jakości do ceny
+      </h3>
       <p>
         Umożliwiamy inwestycje w profesjonalne maszyny bez przepłacania.
         Wszystko projektujemy i montujemy w Polsce.
@@ -114,7 +124,9 @@
           /></svg
         >
       </div>
-      <h3>Serwis i rozwój</h3>
+      <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
+        Serwis i rozwój
+      </h3>
       <p>
         Oferujemy serwis gwarancyjny i pogwarancyjny oraz modernizacje urządzeń
         innych producentów. Twoja maszyna może rozwijać się razem z Tobą.
@@ -123,19 +135,8 @@
   </div>
 </section>
 
-
-
-
-
 <!-- Historia Section -->
-<section class="historia section">
-
-
-
-
-
-
-
+<section class="historia section no-sel">
   <h2 class="section-title">Nasza Historia</h2>
   <div class="historia-content">
     <div class="timeline">
@@ -197,15 +198,14 @@
   </div>
 </section>
 
-
 <!-- Produkty Section -->
-<section class="produkty section">
+<section class="produkty section no-sel">
   <h2 class="section-title">Nasze Produkty</h2>
   <OfertaGrid />
 </section>
 
 <!-- Branże Section -->
-<section class="branze section">
+<section class="branze section no-sel">
   <h2 class="section-title">Obsługiwane Branże</h2>
   <div class="industries-grid">
     <div class="industry-card fade-in" in:fade>
@@ -290,7 +290,7 @@
 </section>
 
 <!-- Dlaczego CERTUS Section -->
-<section class="dlaczego section">
+<section class="dlaczego section no-sel">
   <div class="dlaczego-content">
     <h2 class="section-title">Dlaczego CERTUS?</h2>
     <p class="dlaczego-text">
@@ -298,11 +298,23 @@
       wieloletnie doświadczenie. Nasze maszyny CNC to gwarancja precyzji,
       niezawodności i optymalnego stosunku jakości do ceny.
     </p>
-    <button class="btn btn--primary btn--lg">Skontaktuj się z nami</button>
+    <CtaButton classs="btn btn--primary btn--lg" text="Skontaktuj się z nami"
+    ></CtaButton>
   </div>
 </section>
 
 <style lang="scss">
+  section.onas {
+    padding: 0 9rem;
+    padding-top: 10vb;
+    .description {
+      text-align: center;
+      font-size: 1.5rem;
+
+      color: var(--color-text-secondary);
+    }
+  }
+
   .onas_page {
     display: none;
     min-width: 100vw;
@@ -353,6 +365,7 @@
 
   .section {
     padding: 60px 0;
+    color: var(--color-text-secondary);
   }
 
   .section-title {
@@ -412,7 +425,7 @@
   .timeline-icon {
     position: absolute;
     top: 15px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--color-primary);
     z-index: 2;
   }
@@ -422,6 +435,7 @@
     background-color: white;
     position: relative;
     border-radius: 6px;
+    padding-top: 7px;
   }
 
   /* Co nas wyróżnia Section */
@@ -429,6 +443,15 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
+    padding: 0 7rem;
+    h3 {
+      font-size: 1.4rem;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+
+      font-weight: 600;
+    }
   }
 
   .strength-card {
@@ -437,8 +460,14 @@
     text-align: center;
     border-radius: 8px;
     transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     &:hover {
       transform: translateY(-10px);
+    }
+    h3{
+      min-height: 80px; 
     }
   }
 
@@ -446,6 +475,11 @@
     font-size: 3rem;
     margin-bottom: 20px;
     color: var(--color-primary);
+    width: 60px; /* Fixed width for consistency */
+    height: 60px; /* Fixed height for consistency */
+    display: flex; /* Center content */
+    align-items: center; /* Center content */
+    justify-content: center; /* Center content */
   }
 
   /* Branże Section */
