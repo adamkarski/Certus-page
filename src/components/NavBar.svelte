@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, tick } from "svelte";
-  import { fly, fade } from "svelte/transition";
+  import { fly, fade, slide } from "svelte/transition";
   import { preloaderVisible } from "$lib/preloaderStore";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
@@ -19,9 +19,7 @@
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
     if (isMobileMenuOpen) {
-      autoExpandTimeout = window.setTimeout(() => {
-        isMobileMaszynyOpen = true;
-      }, 2500);
+      
     } else {
       clearTimeout(autoExpandTimeout);
       isMobileMaszynyOpen = false; // Close sub-menu when main menu closes
@@ -407,7 +405,7 @@
             >
           </button>
           {#if isMobileMaszynyOpen}
-            <div class="mobile-submenu">
+            <div class="mobile-submenu" transition:slide>
               {#each kategorieMaszyn as kategoria}
                 <a
                   href="#"
@@ -633,7 +631,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 1);
     backdrop-filter: blur(5px);
     z-index: 1000;
     display: flex;
@@ -642,7 +640,7 @@
 
   .mobile-menu-content {
     background: #232c32;
-    min-width: 84vw;
+    width: 100vw;
     height: 100%;
     display: flex;
     padding-top: 42px !important;

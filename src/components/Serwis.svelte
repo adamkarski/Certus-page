@@ -768,7 +768,7 @@
 
     h2 {
       font-size: 2.5rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--color-text-secondary);
       margin-bottom: 16px;
       position: relative;

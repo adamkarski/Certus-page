@@ -162,9 +162,9 @@
 
   <section class="main-content">
     <div class="text-column">
-      <h2>Opis urządzenia</h2>
+      <h2>CERTUS 69</h2>
       <p use:typoFixAction>
-        CERTUS 69 to kompaktowa w pełni funkcjonalna frezarka, grawerka cnc o
+        To w pełni funkcjonalna frezarka, grawerka cnc o
         szerokim zastosowaniu. Przeznaczona do pracy w materiałach taki jak:
         aluminium, metale kolorowe, drewno, plexi, obróbka drobnych elementów
         stalowych itp. Ogólny opis urządzeń CERTUS model: 69 Standard / 69
