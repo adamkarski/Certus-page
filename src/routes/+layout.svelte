@@ -19,8 +19,8 @@
         loading = false;
       });
     }
-    // Fallback - wyłącz preloader po 1 sekundzie
-    setTimeout(() => loading = false, 500);
+    // Fallback - wyłącz preloader po 2 sekundach
+    setTimeout(() => preloaderVisible.set(false), 2000);
 
     // Automatyczne dodanie data-label dla responsive tabel
     const addResponsiveTableLabels = () => {

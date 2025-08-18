@@ -1,29 +1,22 @@
 <script lang="ts">
   import OfertaGrid from "./OfertaGrid.svelte";
   import { fade } from 'svelte/transition';
+  import Section_Onas_Images from "./sections/Section_Onas_Images.svelte";
+  import { typoFixAction } from '$lib/utils/typography';
 </script>
 
-<section class="onas_page gradientHero">
-  <div class="first-container-back"></div>
-  <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
-  <div class="hero-content"></div>
-</section>
 
 
 
 
-<div class="hero-text">
-  <h1 class="hero-title">O firmie CERTUS</h1>
-  <p class="hero-tagline">Your Vision, Our Precision</p>
-  <p class="hero-description">
-    Jesteśmy polskim producentem maszyn CNC z ponad 10-letnim
-    doświadczeniem w branży. Specjalizujemy się w tworzeniu precyzyjnych
-    urządzeń dostosowanych do indywidualnych potrzeb naszych klientów.
-  </p>
-  <button class="btn btn--primary btn--lg cta-button"
-    >Poznaj nasze produkty</button
-  >
-</div>
+
+<Section_Onas_Images />
+
+<p class="hero-description no-sel" use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
+  Jesteśmy polskim producentem maszyn CNC z ponad 10-letnim
+  doświadczeniem w branży. Specjalizujemy się w tworzeniu precyzyjnych
+  urządzeń dostosowanych do indywidualnych potrzeb naszych klientów.
+</p>
 
 
 
@@ -311,6 +304,7 @@
 
 <style lang="scss">
   .onas_page {
+    display: none;
     min-width: 100vw;
     margin: 0 auto;
     min-height: 174px;
