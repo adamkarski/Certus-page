@@ -10,13 +10,12 @@
 </section>
 
 <section id="kontakt" class="kontakt">
-  <div class="kontakt-container container">
+ <!--  <div class="kontakt-container container">
     <div class="section-header">
       <h1 class="no-sel">Kontakt</h1>
       <hr />
     </div>
-    <!-- <p>{@html typoFix("W tym miejscu znajdziesz informacje o naszej firmie i ofercie.")}</p> -->
-  </div>
+  </div> -->
   <Section_Kontakt {isKontaktPage} />
 </section>
 
