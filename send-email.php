@@ -21,6 +21,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
 
+// --- Response type ---
+header('Content-Type: application/json; charset=utf-8');
+
+// --- Method guard ---
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Allow: POST, OPTIONS');
+    http_response_code(405);
+    echo json_encode(['success' => false, 'message' => 'Method not allowed']);
+    exit;
+}
+
 // --- Logging ---
 $log_file = 'email_log.txt';
 function write_log($message) {
@@ -65,6 +76,52 @@ if (!isset($data['email']) || !isset($data['formType'])) {
     echo json_encode(['success' => false, 'message' => $error_message, 'received_data' => $data]);
     exit;
 }
+
+// --- Cloudflare Turnstile Verification ---
+if (!isset($data['cf-turnstile-response'])) {
+    $error_message = 'Turnstile token missing.';
+    write_log($error_message);
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => $error_message]);
+    exit;
+}
+
+$turnstile_response = $data['cf-turnstile-response'];
+$secret_key = '0x4AAAAAABs8xXeBI5og02ZVNyH5HkVzlak'; // Replace with your actual secret key
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+    'secret'   => $secret_key,
+    'response' => $turnstile_response,
+    'remoteip' => $_SERVER['REMOTE_ADDR'] ?? null,
+]));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+
+if ($response === false) {
+    $err = curl_error($ch);
+    curl_close($ch);
+    write_log('Turnstile cURL error: ' . $err);
+    http_response_code(502);
+    echo json_encode(['success' => false, 'message' => 'Turnstile verification error.']);
+    exit;
+}
+
+curl_close($ch);
+
+$turnstile_result = json_decode($response, true);
+
+if (!is_array($turnstile_result) || empty($turnstile_result['success'])) {
+    $codes = $turnstile_result['error-codes'] ?? [];
+    $codesStr = is_array($codes) ? implode(', ', $codes) : (string)$codes;
+    write_log('Turnstile verification failed. Errors: ' . $codesStr);
+    http_response_code(403); // Forbidden
+    echo json_encode(['success' => false, 'message' => 'Turnstile verification failed.']);
+    exit;
+}
+write_log('Turnstile verification successful.');
 
 // --- Email construction ---
 $to = 'zbigniewkarski@yahoo.com'; // Main recipient

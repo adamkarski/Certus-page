@@ -105,6 +105,7 @@ declare module '$env/static/private' {
 	export const npm_config_strict_ssl: string;
 	export const HOMEBREW_PREFIX: string;
 	export const ZSH_CACHE_DIR: string;
+	export const npm_package_dependencies_gsap: string;
 	export const npm_config_version_git_message: string;
 	export const LOGNAME: string;
 	export const YARN_WRAP_OUTPUT: string;
@@ -239,6 +240,7 @@ declare module '$env/dynamic/private' {
 		npm_config_strict_ssl: string;
 		HOMEBREW_PREFIX: string;
 		ZSH_CACHE_DIR: string;
+		npm_package_dependencies_gsap: string;
 		npm_config_version_git_message: string;
 		LOGNAME: string;
 		YARN_WRAP_OUTPUT: string;

@@ -4,6 +4,7 @@
   let formData = {
     company: '',
     name: '',
+    dialCode: '+48', // New field
     phone: '',
     serviceType: '',
     description: ''
@@ -11,6 +12,56 @@
 
   let isSubmitting = false;
   let errors: Record<string, string> = {};
+
+  const commonDialCodes = [
+    '+1', '+7', '+20', '+27', '+30', '+31', '+32', '+33', '+34', '+36', '+39', '+40', '+41', '+43', '+44', '+45', '+46', '+47', '+48', '+49',
+    '+51', '+52', '+53', '+54', '+55', '+56', '+57', '+58', '+60', '+61', '+62', '+63', '+64', '+65', '+66', '+81', '+82', '+84', '+86',
+    '+90', '+91', '+92', '+93', '+94', '+95', '+98', '+212', '+213', '+216', '+218', '+220', '+221', '+222', '+223', '+224', '+225', '+226',
+    '+227', '+228', '+229', '+230', '+231', '+232', '+233', '+234', '+235', '+236', '+237', '+238', '+239', '+240', '+241', '+242', '+243',
+    '+244', '+245', '+246', '+247', '+248', '+249', '+250', '+251', '+252', '+253', '+254', '+255', '+256', '+257', '+258', '+260', '+261',
+    '+262', '+263', '+264', '+265', '+266', '+267', '+268', '+269', '+290', '+291', '+297', '+298', '+299', '+350', '+351', '+352', '+353',
+    '+354', '+355', '+356', '+357', '+358', '+359', '+370', '+371', '+372', '+373', '+374', '+375', '+376', '+377', '+378', '+379', '+380',
+    '+381', '+382', '+385', '+386', '+387', '+389', '+420', '+421', '+423', '+500', '+501', '+502', '+503', '+504', '+505', '+506', '+507',
+    '+508', '+509', '+590', '+591', '+592', '+593', '+594', '+595', '+596', '+597', '+598', '+599', '+670', '+672', '+673', '+674', '+675',
+    '+676', '+677', '+678', '+679', '+680', '+681', '+682', '+683', '+685', '+686', '+687', '+688', '+689', '+690', '+691', '+692', '+699',
+    '+850', '+852', '+853', '+855', '+856', '+870', '+878', '+880', '+881', '+882', '+883', '+886', '+888', '+960', '+961', '+962', '+963',
+    '+964', '+965', '+966', '+967', '+968', '+969', '+970', '+971', '+972', '+973', '+974', '+975', '+976', '+977', '+991', '+992', '+993',
+    '+994', '+995', '+996', '+998'
+  ].sort((a, b) => b.length - a.length); // Sort by length descending for correct matching
+
+  $: {
+    if (formData.phone) {
+      let currentPhone = formData.phone.trim();
+      let currentDialCode = formData.dialCode.trim();
+
+      let matchedNewDialCode = null;
+      let remainingPhone = currentPhone;
+
+      // Check if the phone number starts with a known dial code (different from current dialCode)
+      for (const code of commonDialCodes) {
+        if (currentPhone.startsWith(code) && code !== currentDialCode) {
+          matchedNewDialCode = code;
+          remainingPhone = currentPhone.substring(code.length).trim();
+          break;
+        }
+      }
+
+      if (matchedNewDialCode) {
+        formData.dialCode = matchedNewDialCode;
+        formData.phone = remainingPhone;
+      } else if (currentPhone.startsWith(currentDialCode)) {
+        // If it starts with the current dial code, just remove it from phone
+        formData.phone = currentPhone.substring(currentDialCode.length).trim();
+      }
+    }
+  }
+
+  // Ensure dialCode starts with '+'
+  $: if (formData.dialCode && !formData.dialCode.startsWith('+')) {
+    formData.dialCode = '+' + formData.dialCode.replace(/[^0-9]/g, ''); // Add '+' and remove non-digits
+  } else if (formData.dialCode) {
+    formData.dialCode = formData.dialCode.replace(/[^0-9+]/g, ''); // Only allow digits and '+'
+  }
 
   function validateForm() {
     errors = {};
@@ -23,9 +74,16 @@
       errors.name = 'Imię i nazwisko jest wymagane';
     }
 
+    // Validate dialCode
+    if (!formData.dialCode.trim()) {
+      errors.dialCode = 'Numer kierunkowy jest wymagany';
+    } else if (!/^\+[0-9]+$/.test(formData.dialCode.trim())) {
+      errors.dialCode = 'Nieprawidłowy format numeru kierunkowego (np. +48)';
+    }
+
     if (!formData.phone.trim()) {
       errors.phone = 'Numer telefonu jest wymagany';
-    } else if (!/^[\+]?[0-9\s\-\(\)]+$/.test(formData.phone)) {
+    } else if (!/^[0-9\s\-\(\)]+$/.test(formData.phone.trim())) { // Removed '+' from regex as dialCode is separate
       errors.phone = 'Nieprawidłowy format numeru telefonu';
     }
 
@@ -59,6 +117,7 @@
       formData = {
         company: '',
         name: '',
+        dialCode: '+48', // Reset dialCode
         phone: '',
         serviceType: '',
         description: ''
@@ -109,15 +168,25 @@
       
       <div class="serwis-form-group">
         <label class="serwis-form-label" for="phone" use:typoFixAction>Telefon</label>
-        <input 
-          type="tel" 
-          id="phone"
-          class="serwis-form-control" 
-          class:error={errors.phone}
-          bind:value={formData.phone}
-          placeholder="+48 123 456 789"
-          autocomplete="tel"
-        />
+        <div class="phone-input-group">
+          <input
+            type="text"
+            id="dialCode"
+            class="serwis-form-control dial-code-input"
+            bind:value={formData.dialCode}
+            placeholder="+48"
+            style="width: 80px; flex-shrink: 0;"
+          />
+          <input
+            type="tel"
+            id="phone"
+            class="serwis-form-control"
+            class:error={errors.phone}
+            bind:value={formData.phone}
+            placeholder="123 456 789"
+            autocomplete="tel"
+          />
+        </div>
         {#if errors.phone}
           <span class="serwis-error-message">{errors.phone}</span>
         {/if}

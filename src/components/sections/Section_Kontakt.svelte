@@ -21,6 +21,24 @@
   let submitMessage = "";
   let phonePrefix = "+48";
   let errors: Record<string, string> = {};
+  let turnstileToken: string | null = null;
+
+  // Global callback for Turnstile
+  // This function needs to be globally accessible, so it's attached to window.
+  // Turnstile will call this function when it successfully verifies the user.
+  onMount(() => {
+    (window as any).onTurnstileSuccessMain = (token: string) => {
+      turnstileToken = token;
+    };
+    (window as any).onTurnstileExpiredMain = () => {
+      turnstileToken = null;
+    };
+    (window as any).onTurnstileErrorMain = (err?: any) => {
+      turnstileToken = null;
+      submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
+      (window as any).turnstile?.reset();
+    };
+  });
 
   // Audio recording state
   let messageInputMode: 'text' | 'record' | null = null;
@@ -51,6 +69,12 @@
     );
     if (selectedCountry) {
       phonePrefix = selectedCountry.prefix;
+    }
+  }
+
+  $: {
+    if (formData.phone && phonePrefix && formData.phone.startsWith(phonePrefix)) {
+      formData.phone = formData.phone.substring(phonePrefix.length).trim();
     }
   }
 
@@ -228,29 +252,36 @@
       return;
     }
 
+    if (!turnstileToken) {
+      submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
+      isSubmitting = false;
+      return;
+    }
+
     console.log("✅ Validation passed, sending data...");
     isSubmitting = true;
 
+    const formDataToSend = new FormData();
+
+    Object.keys(formData).forEach(key => {
+        formDataToSend.append(key, formData[key as keyof typeof formData]);
+    });
+
+    formDataToSend.set('phone', `${phonePrefix} ${formData.phone.trim()}`);
+    formDataToSend.append('formType', 'main-kontakt');
+    formDataToSend.append('timestamp', new Date().toISOString());
+    formDataToSend.append('userAgent', navigator.userAgent);
+    formDataToSend.append('cf-turnstile-response', turnstileToken);
+
+    if (messageInputMode === 'record' && recordedFile) {
+        formDataToSend.append('messageType', 'audio');
+        formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
+        formDataToSend.delete('message');
+    } else {
+        formDataToSend.append('messageType', 'text');
+    }
+
     try {
-        const formDataToSend = new FormData();
-        
-        Object.keys(formData).forEach(key => {
-            formDataToSend.append(key, formData[key as keyof typeof formData]);
-        });
-
-        formDataToSend.set('phone', `${phonePrefix} ${formData.phone.trim()}`);
-        formDataToSend.append('formType', 'main-kontakt');
-        formDataToSend.append('timestamp', new Date().toISOString());
-        formDataToSend.append('userAgent', navigator.userAgent);
-
-        if (messageInputMode === 'record' && recordedFile) {
-            formDataToSend.append('messageType', 'audio');
-            formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
-            formDataToSend.delete('message');
-        } else {
-            formDataToSend.append('messageType', 'text');
-        }
-
         const apiUrl = 'https://dm73147.domenomania.eu/api/send-email.php';
         
         console.log("📤 Sending to:", apiUrl);
@@ -451,19 +482,7 @@
       </div>
       
       <div class="form-row">
-        <div class="form-group">
-          <label for="country">Kraj</label>
-          <select
-            id="country"
-            bind:value={formData.country}
-            class="country-select"
-            autocomplete="kraj"
-          >
-            {#each countryPrefixes as country}
-              <option value={country.code}>{country.name}</option>
-            {/each}
-          </select>
-        </div>
+        
         <div class="form-group">
           <label for="phone">Telefon</label>
           <div class="phone-row">
@@ -607,6 +626,10 @@
           {submitMessage}
         </div>
       {/if}
+
+      
+
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAABs8xaWAuEhKPhWB" data-callback="onTurnstileSuccessMain" data-expired-callback="onTurnstileExpiredMain" data-error-callback="onTurnstileErrorMain"></div> <!-- Turnstile widget -->
 
       <div class="text-left ctaButton">
         <CtaButton

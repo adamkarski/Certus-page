@@ -19,6 +19,26 @@
   let isSubmitting = false;
   let submitMessage = "";
   let phonePrefix = "+48";
+  let turnstileToken: string | null = null;
+
+  // Global callback for Turnstile
+  // This function needs to be globally accessible, so it's attached to window.
+  // Turnstile will call this function when it successfully verifies the user.
+  onMount(() => {
+    (window as any).onTurnstileSuccessSerwis = (token: string) => {
+      turnstileToken = token;
+    };
+    (window as any).onTurnstileExpiredSerwis = () => {
+      turnstileToken = null;
+    };
+    (window as any).onTurnstileErrorSerwis = (err?: any) => {
+      // Cloudflare error 300030 lub inne błędy klienta
+      turnstileToken = null;
+      submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
+      // Reset wszystkich widżetów na stronie (auto-render)
+      (window as any).turnstile?.reset();
+    };
+  });
 
   let messageInputMode: 'text' | 'record' | null = null;
   let isRecording = false;
@@ -193,28 +213,35 @@
       return;
     }
 
+    if (!turnstileToken) {
+      submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
+      isSubmitting = false;
+      return;
+    }
+
     isSubmitting = true;
 
+    const formDataToSend = new FormData();
+
+    Object.keys(formData).forEach(key => {
+        formDataToSend.append(key, formData[key as keyof typeof formData]);
+    });
+
+    formDataToSend.append('cf-turnstile-response', turnstileToken);
+
+    if (messageInputMode === 'record' && recordedFile) {
+        formDataToSend.append('messageType', 'audio');
+        formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
+    } else {
+        formDataToSend.append('messageType', 'text');
+    }
+
+    formDataToSend.append('formType', 'serwis-kontakt');
+
     try {
-        const formDataToSend = new FormData();
-        Object.keys(formData).forEach(key => {
-            formDataToSend.append(key, formData[key as keyof typeof formData]);
-        });
-
-        if (messageInputMode === 'record' && recordedFile) {
-            formDataToSend.append('messageType', 'audio');
-            formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
-        } else {
-            formDataToSend.append('messageType', 'text');
-        }
-
-        formDataToSend.append('formType', 'serwis-kontakt');
-
         const apiUrl = 'https://dm73147.domenomania.eu/api/send-email.php';
         const response = await axios.post(apiUrl, formDataToSend, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
+            // Do not set 'Content-Type' manually; Axios will add proper multipart boundary
             timeout: 30000,
         });
 
@@ -251,12 +278,8 @@
     }
   }
 
-  function selectTextInputMode() {
-    messageInputMode = 'text';
-  }
-
-  function selectRecordInputMode() {
-    messageInputMode = 'record';
+  function selectInputMode(mode: 'text' | 'record') {
+    messageInputMode = mode;
   }
 
   async function startRecording() {
@@ -631,6 +654,14 @@
               {submitMessage}
             </div>
           {/if}
+
+
+
+
+
+          
+
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAABs8xaWAuEhKPhWB" data-callback="onTurnstileSuccessSerwis" data-expired-callback="onTurnstileExpiredSerwis" data-error-callback="onTurnstileErrorSerwis"></div> <!-- Turnstile widget -->
 
           <div class="text-left ctaButton">
             <CtaButton
