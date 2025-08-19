@@ -7,7 +7,7 @@
   const sectionId = "video-header";
   let headerEl: HTMLDivElement;
 
-  const imgSrc = "/assets/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg";
+  const imgSrc = "assets/images/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg";
 
   onMount(() => {
     const observer = new IntersectionObserver(
@@ -102,7 +102,7 @@
       width: 30px;
       height: 46px;
       margin-left: -40px;
-      background-image: url(assets/red-arrow.svg);
+      background-image: url(/assets/images/red-arrow.svg);
     }
     h1 {
     margin: 0;

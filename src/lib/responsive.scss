@@ -43,8 +43,12 @@
   padding-left: 2rem;
     padding-right: 2rem;
 }
+
 body.kontakt .contact-flex .contact-left::before{
-    background-color: #fcfcfc !important;
+  background: #f7f7f7 !important;
+}
+body.kontakt .contact-flex {
+  background: linear-gradient(180deg, #f7f7f7 0%, #f7f7f7 100%) !important;
 }
 body.serwis .contact-flex .contact-left::before{
   
