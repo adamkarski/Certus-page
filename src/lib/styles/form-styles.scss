@@ -1,5 +1,7 @@
 /* Shared form styles */
-
+body.kontakt .contact-flex .contact-left::before{
+  background: #f2f2f2 !important;
+}
 .message-mode-selection button {
   img {
     padding: 10px;
