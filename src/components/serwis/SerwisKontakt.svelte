@@ -13,7 +13,6 @@
     phone: "",
     message: "",
     privacy: false,
-    country: "PL",
     serviceType: "warranty", // Dodane pole specyficzne dla serwisu
   };
   let isSubmitting = false;
@@ -48,28 +47,7 @@
   let mediaRecorder: MediaRecorder | null = null;
   let audioChunks: Blob[] = [];
 
-  const countryPrefixes = [
-    { code: "PL", name: "Polska", prefix: "+48" },
-    { code: "AT", name: "Austria", prefix: "+43" },
-    { code: "BE", name: "Belgia", prefix: "+32" },
-    { code: "DE", name: "Niemcy", prefix: "+49" },
-    { code: "CZ", name: "Czechy", prefix: "+420" },
-    { code: "FR", name: "Francja", prefix: "+33" },
-    { code: "GB", name: "Wielka Brytania", prefix: "+44" },
-    { code: "IT", name: "Włochy", prefix: "+39" },
-    { code: "ES", name: "Hiszpania", prefix: "+34" },
-    { code: "NL", name: "Holandia", prefix: "+31" },
-    { code: "US", name: "USA", prefix: "+1" },
-  ];
-
-  function updatePhonePrefix() {
-    const selectedCountry = countryPrefixes.find(
-      (c) => c.code === formData.country
-    );
-    if (selectedCountry) {
-      phonePrefix = selectedCountry.prefix;
-    }
-  }
+  
 
   let errors: Record<string, string> = {};
 
@@ -89,52 +67,16 @@
     if (!/^\d+$/.test(cleanPhone)) {
       return "Numer telefonu może zawierać tylko cyfry, spacje i myślniki";
     }
-    const selectedCountry = countryPrefixes.find(c => c.code === formData.country);
-    if (selectedCountry) {
-      const minLength = getPhoneMinLength(selectedCountry.prefix);
-      const maxLength = getPhoneMaxLength(selectedCountry.prefix);
-      if (cleanPhone.length < minLength) {
-        return `Numer jest za krótki (min ${minLength} cyfr dla ${selectedCountry.code})`;
-      }
-      if (cleanPhone.length > maxLength) {
-        return `Numer jest za długi (max ${maxLength} cyfr dla ${selectedCountry.code})`;
-      }
+    // General phone number length validation (e.g., 7 to 15 digits)
+    const minLength = 7;
+    const maxLength = 15;
+    if (cleanPhone.length < minLength) {
+      return `Numer jest za krótki (min ${minLength} cyfr)`;
+    }
+    if (cleanPhone.length > maxLength) {
+      return `Numer jest za długi (max ${maxLength} cyfr)`;
     }
     return null;
-  }
-
-  function getPhoneMinLength(prefix: string): number {
-    const lengths: Record<string, number> = {
-      '+48': 9,
-      '+43': 10,
-      '+32': 9,
-      '+49': 11,
-      '+420': 9,
-      '+33': 10,
-      '+44': 10,
-      '+39': 10,
-      '+34': 9,
-      '+31': 9,
-      '+1': 10,
-    };
-    return lengths[prefix] || 9;
-  }
-
-  function getPhoneMaxLength(prefix: string): number {
-    const lengths: Record<string, number> = {
-      '+48': 9,
-      '+43': 11,
-      '+32': 9,
-      '+49': 12,
-      '+420': 9,
-      '+33': 10,
-      '+44': 11,
-      '+39': 11,
-      '+34': 9,
-      '+31': 9,
-      '+1': 10,
-    };
-    return lengths[prefix] || 12;
   }
 
   function validateField(fieldName: string, value: any): string | null {
@@ -278,9 +220,7 @@
     }
   }
 
-  function selectInputMode(mode: 'text' | 'record') {
-    messageInputMode = mode;
-  }
+  
 
   async function startRecording() {
     try {
@@ -322,16 +262,7 @@
     recordingDuration = 0;
   }
 
-  onMount(() => {
-    updatePhonePrefix();
-  });
-
-  $: if (formData.country) {
-    updatePhonePrefix();
-    if (formData.phone.trim()) {
-      validateSingleField('phone');
-    }
-  }
+  
 </script>
 
 <section class="contact-flex">
@@ -498,50 +429,34 @@
 
           <div class="form-row">
             <div class="form-group">
-              <label for="country">Kraj</label>
-              <select
-                id="country"
-                bind:value={formData.country}
-                class="country-select"
-                autocomplete="kraj"
-              >
-                {#each countryPrefixes as country}
-                  <option value={country.code}>{country.name}</option>
-                {/each}
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="phone">Telefon</label>
-              <div class="phone-row">
-                <span class="phone-prefix">{phonePrefix}</span>
-                <input
-                  id="phone"
-                  type="tel"
-                  placeholder="123 456 789"
-                  bind:value={formData.phone}
-                  class:error={errors.phone}
-                  on:blur={() => validateSingleField('phone')}
-                  on:input={() => validateSingleField('phone')}
-                  required
-                  autocomplete="tel"
-                />
-                {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
-              </div>
-            </div>
+            <label for="phone">Telefon</label>
+            <input
+              id="phone"
+              type="tel"
+              placeholder="+48 123 456 789 (z numerem kierunkowym)"
+              bind:value={formData.phone}
+              class:error={errors.phone}
+              on:blur={() => validateSingleField('phone')}
+              on:input={() => validateSingleField('phone')}
+              required
+              autocomplete="tel"
+            />
+            {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
+          </div>
           </div>
 
           <div class="form-group">
             <label for="message">Opis problemu</label>
             {#if messageInputMode === null}
               <div class="message-mode-selection">
-                <button type="button" on:click={selectTextInputMode}>
+                <button type="button" on:click={() => messageInputMode = 'text'}>
                   <img
                     src="/assets/ikony/message.svg"
                     alt="Wiadomość tekstowa"
                   />
                   <span>Napisz wiadomość</span>
                 </button>
-                <button type="button" on:click={selectRecordInputMode}>
+                <button type="button" on:click={() => messageInputMode = 'record'}>
                   <img src="/assets/ikony/record.svg" alt="Wiadomość głosowa" />
                   <span>Nagraj wiadomość</span>
                 </button>

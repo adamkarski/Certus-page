@@ -72,11 +72,7 @@
     }
   }
 
-  $: {
-    if (formData.phone && phonePrefix && formData.phone.startsWith(phonePrefix)) {
-      formData.phone = formData.phone.substring(phonePrefix.length).trim();
-    }
-  }
+  
 
   // Validation functions
   function validateEmail(email: string): string | null {
@@ -485,20 +481,17 @@
         
         <div class="form-group">
           <label for="phone">Telefon</label>
-          <div class="phone-row">
-            <span class="phone-prefix">{phonePrefix}</span>
-            <input
-              id="phone"
-              type="tel"
-              placeholder="123 456 789"
-              bind:value={formData.phone}
-              class:error={errors.phone}
-              on:blur={() => validateSingleField('phone')}
-              on:input={() => validateSingleField('phone')}
-              required
-              autocomplete="tel"
-            />
-          </div>
+          <input
+            id="phone"
+            type="tel"
+            placeholder="+48 123 456 789 (z numerem kierunkowym)"
+            bind:value={formData.phone}
+            class:error={errors.phone}
+            on:blur={() => validateSingleField('phone')}
+            on:input={() => validateSingleField('phone')}
+            required
+            autocomplete="tel"
+          />
           {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
         </div>
       </div>
