@@ -556,8 +556,9 @@
               <a href="/polityka-prywatnosci" target="_blank"
                 >polityką prywatności</a
               >.
+              {#if errors.privacy}<span class="error-message">{errors.privacy}</span>{/if}
             </label>
-            {#if errors.privacy}<span class="error-message">{errors.privacy}</span>{/if}
+            
           </div>
 
           {#if submitMessage}

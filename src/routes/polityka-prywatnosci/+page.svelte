@@ -1,6 +1,6 @@
 <script lang="ts">
   
-  import Serwis from '../../components/Serwis.svelte';
+  import Polityka from '../../components/Polityka.svelte';
   import Section_Header from "../../components/sections/Section_Header.svelte";
   import Section_Footer from "../../components/sections/Section_Footer.svelte";
   import Section_Image02 from "../../components/sections/Section_Image02.svelte";
@@ -10,13 +10,22 @@
 
 <svelte:head>
   <title>Polityka prywatności - Certus</title>
-  <meta name="description" content="Zapoznaj się z polityką prywatności naszej firmy." />
+  <meta name="description" content="Polityka prywatności" />
 </svelte:head>
 
 <div class="app">
   <Section_Header />
   <main>
-    <Serwis />
+
+
+    
+
+
+    <Polityka />
+
+
+
+
     <Section_Image02 />
     <Section_Referencje />
   </main>

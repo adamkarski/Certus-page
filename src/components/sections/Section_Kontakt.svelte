@@ -606,8 +606,9 @@
           Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
           obsługi zapytania zgodnie z
           <a href="/polityka-prywatnosci" target="_blank">polityką prywatności</a>.
+          {#if errors.privacy}<span class="error-message">{errors.privacy}</span>{/if}
         </label>
-        {#if errors.privacy}<span class="error-message">{errors.privacy}</span>{/if}
+        
       </div>
 
       {#if submitMessage}
