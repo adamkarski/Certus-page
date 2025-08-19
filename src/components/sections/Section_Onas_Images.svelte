@@ -210,7 +210,7 @@
       width: 30px;
       height: 46px;
       margin-left: -40px;
-      background-image: url(assets/red-arrow.svg);
+      background-image: url(assets/images/red-arrow.svg);
       margin-top: 26px;
     }
   }
