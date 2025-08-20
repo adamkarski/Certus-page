@@ -19,7 +19,7 @@ export default {
 			directives: {
 				'script-src': ['self', 'https://challenges.cloudflare.com'],
 				'frame-src': ['self', 'https://challenges.cloudflare.com'],
-				'connect-src': ['self']
+				'connect-src': ['self', 'https://cdn.lottielab.com']
 			}
 		}
 	}
