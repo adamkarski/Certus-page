@@ -17,9 +17,9 @@ export default {
 		}),
 		csp: {
 			directives: {
-				'script-src': ['self', 'https://challenges.cloudflare.com'],
+				'script-src': ['self', 'https://challenges.cloudflare.com', 'unsafe-inline'],
 				'frame-src': ['self', 'https://challenges.cloudflare.com'],
-				'connect-src': ['self', 'https://cdn.lottielab.com']
+				'connect-src': ['self', 'https://cdn.lottielab.com', 'https://dm73147.domenomania.eu']
 			}
 		}
 	}

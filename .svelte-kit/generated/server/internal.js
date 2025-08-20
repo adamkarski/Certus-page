@@ -7,7 +7,7 @@ import { set_private_env, set_public_env, set_safe_public_env } from '../../../n
 
 export const options = {
 	app_template_contains_nonce: false,
-	csp: {"mode":"auto","directives":{"frame-src":["self","https://challenges.cloudflare.com"],"connect-src":["self","https://cdn.lottielab.com"],"script-src":["self","https://challenges.cloudflare.com"],"upgrade-insecure-requests":false,"block-all-mixed-content":false},"reportOnly":{"upgrade-insecure-requests":false,"block-all-mixed-content":false}},
+	csp: {"mode":"auto","directives":{"frame-src":["self","https://challenges.cloudflare.com"],"connect-src":["self","https://cdn.lottielab.com","https://dm73147.domenomania.eu"],"script-src":["self","https://challenges.cloudflare.com","unsafe-inline"],"upgrade-insecure-requests":false,"block-all-mixed-content":false},"reportOnly":{"upgrade-insecure-requests":false,"block-all-mixed-content":false}},
 	csrf_check_origin: true,
 	embedded: false,
 	env_public_prefix: 'PUBLIC_',
