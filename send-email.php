@@ -77,6 +77,7 @@ if (!isset($data['email']) || !isset($data['formType'])) {
     exit;
 }
 
+/*
 // --- Cloudflare Turnstile Verification ---
 if (!isset($data['cf-turnstile-response'])) {
     $error_message = 'Turnstile token missing.';
@@ -122,6 +123,7 @@ if (!is_array($turnstile_result) || empty($turnstile_result['success'])) {
     exit;
 }
 write_log('Turnstile verification successful.');
+*/
 
 // --- Email construction ---
 $to = 'zbigniewkarski@yahoo.com'; // Main recipient
