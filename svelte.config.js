@@ -14,6 +14,13 @@ export default {
 			fallback: undefined,
 			precompress: false,
 			strict: false // Allow dynamic routes to be ignored
-		})
+		}),
+		csp: {
+			directives: {
+				'script-src': ['self', 'https://challenges.cloudflare.com'],
+				'frame-src': ['self', 'https://challenges.cloudflare.com'],
+				'connect-src': ['self']
+			}
+		}
 	}
 };
