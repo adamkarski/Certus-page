@@ -623,7 +623,7 @@
 
       
 
-            <!-- <div class="cf-turnstile" data-sitekey="0x4AAAAAABs8xaWAuEhKPhWB" data-callback="onTurnstileSuccessMain" data-expired-callback="onTurnstileExpiredMain" data-error-callback="onTurnstileErrorMain"></div> --> <!-- Turnstile widget -->
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAABs8xaWAuEhKPhWB" data-callback="onTurnstileSuccessMain" data-expired-callback="onTurnstileExpiredMain" data-error-callback="onTurnstileErrorMain"></div> <!-- Turnstile widget -->
 
       <div class="text-left ctaButton">
         <CtaButton

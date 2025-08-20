@@ -155,11 +155,11 @@
       return;
     }
 
-    /* if (!turnstileToken) {
+    if (!turnstileToken) {
       submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
       isSubmitting = false;
       return;
-    } */
+    }
 
     isSubmitting = true;
 
