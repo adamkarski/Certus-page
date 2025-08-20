@@ -11,16 +11,10 @@
   import DevResolutionDisplay from '../components/DevResolutionDisplay.svelte';
   let loading = true;
   onMount(() => {
-    // Sprawdź czy strona już się załadowała
-    if (document.readyState === 'complete') {
+    // Hide preloader after a short delay to avoid content flash
+    setTimeout(() => {
       loading = false;
-    } else {
-      window.addEventListener('load', () => {
-        loading = false;
-      });
-    }
-    // Fallback - wyłącz preloader po 2 sekundach
-    setTimeout(() => preloaderVisible.set(false), 2000);
+    }, 500);
 
     // Automatyczne dodanie data-label dla responsive tabel
     const addResponsiveTableLabels = () => {

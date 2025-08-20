@@ -35,6 +35,8 @@
       playsinline
       class="masked-video"
       title="Wideo prezentujące procesy produkcyjne Certus"
+      preload="metadata"
+      poster="/assets/images/pattern-video-1.png"
     />
 
     <div class="pattern-overlay">
