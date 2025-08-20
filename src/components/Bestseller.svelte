@@ -9,43 +9,43 @@
 
   const images = [
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-1.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-1.jpg",
       alt: "Frezarko-grawerka CNC Certus 69 - widok z przodu",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-2.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-2.jpg",
       alt: "Panel sterowania frezarki CNC Certus 69",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-3.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-3.jpg",
       alt: "Szczegóły techniczne i konstrukcja maszyny Certus 69",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-4.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-4.jpg",
       alt: "Frezarka Certus 69 w trakcie pracy",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-5.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-5.jpg",
       alt: "Model 3D frezarko-grawerki CNC Certus 69",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-6.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-6.jpg",
       alt: "Elementy konstrukcyjne polskiej frezarki CNC Certus",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-7.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-7.jpg",
       alt: "Głowica robocza frezarki Certus 69",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-8.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-8.jpg",
       alt: "System prowadnic w maszynie CNC Certus 69",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-9.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-9.jpg",
       alt: "Gotowy produkt wykonany na frezarce Certus 69",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-10.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-10.jpg",
       alt: "Frezarko-grawerka Certus 69 - perspektywa boczna",
     },
   ];
@@ -61,7 +61,7 @@
   let zoomIntervalId: number; // New interval for zoom
 
   // Tweened store for scale
-  const scale = tweened(1.0, { duration: 10000, easing: cubicOut }); // Longer duration for one zoom cycle
+  const scale = tweened(1.0, { duration: 30000, easing: cubicOut }); // Longer duration for one zoom cycle
 
   const dev = false;
 
@@ -69,9 +69,9 @@
     if (!dev) {
       // Start the continuous zoom animation
       function startZoomAnimation() {
-        scale.set(1.05, { duration: 5000 }).then(() => {
+        scale.set(1.05, { duration: 8000 }).then(() => {
           // Zoom in over 5 seconds
-          scale.set(1.0, { duration: 5000 }).then(() => {
+          scale.set(1.0, { duration: 8000 }).then(() => {
             // Zoom out over 5 seconds
             // Loop the animation
             startZoomAnimation();
