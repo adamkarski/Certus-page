@@ -176,7 +176,7 @@ h3 {
       width: 30px;
       height: 46px;
       margin-left: -40px;
-      background-image: url(assets/red-arrow.svg);
+      background-image: url(/assets/images/red-arrow.svg);
     }
   @media (max-width: 768px) {
     .image-header-02 h2 {

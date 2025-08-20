@@ -821,7 +821,7 @@
         margin-top: 5px;
         width: 28px;
         height: 43px;
-        background-image: url(/assets/red-arrow.svg);
+        background-image: url(/assets/images/red-arrow.svg);
       }
     }
 
