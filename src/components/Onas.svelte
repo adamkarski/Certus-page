@@ -4,6 +4,7 @@
   import Section_Onas_Images from "./sections/Section_Onas_Images.svelte";
   import CtaButton from "../components/CtaButton.svelte";
   import { typoFixAction } from "$lib/utils/typography";
+  import CircleImage from "../components/circleImage.svelte";
 </script>
 
 <Section_Onas_Images />
@@ -206,85 +207,42 @@
 
 <!-- Branże Section -->
 <section class="branze section no-sel">
-  <h2 class="section-title">Obsługiwane Branże</h2>
+  <h2 class="section-title">Te i wiele innych branży w których pracują nasi klienci</h2>
   <div class="industries-grid">
+    
+   
     <div class="industry-card fade-in" in:fade>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 384 512"
-        width="1em"
-        height="1em"
-        fill="currentColor"
-        ><path
-          d="M378.7 32H133.3L256 182.7L378.7 32zM512 192H0V480c0 17.7 14.3 32 32 32H480c17.7 0 32-14.3 32-32V192zM256 336c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32s-14.3 32-32 32z"
-        /></svg
-      >
-      <h4>Złotnictwo</h4>
-    </div>
-    <div class="industry-card fade-in" in:fade>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-        width="1em"
-        height="1em"
-        fill="currentColor"
-        ><path
-          d="M160 32C160 14.3 145.7 0 128 0S96 14.3 96 32V64H48c-26.5 0-48 21.5-48 48V192c0 26.5 21.5 48 48 48H96v32c0 17.7 14.3 32 32 32s32-14.3 32-32V240h48c17.7 0 32-14.3 32-32s-14.3-32-32-32H160V64H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H160zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32H352V176c-17.7 0-32 14.3-32 32s14.3 32 32 32h48v32c0 17.7 14.3 32 32 32s32-14.3 32-32V240h48c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H416V32c0-17.7-14.3-32-32-32s-32 14.3-32 32V64H320V32z"
-        /></svg
-      >
-      <h4>Produkcja okularów</h4>
-    </div>
-    <div class="industry-card fade-in" in:fade>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-        width="1em"
-        height="1em"
-        fill="currentColor"
-        ><path
-          d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM160 256c0-19.7 5.8-38.3 15.8-53.1L60.7 148.9c-33.2 36-52.7 82.8-52.7 133.1c0 23.4 3.8 45.9 10.8 67.1L128 320l32-32v-32zM288 480c23.4 0 45.9-3.8 67.1-10.8L320 352l-32-32h-32v32c0 19.7-5.8 38.3-15.8 53.1L288 480zM400 256c0 19.7-5.8 38.3-15.8 53.1L449.3 364.1c33.2-36 52.7-82.8 52.7-133.1c0-23.4-3.8-45.9-10.8-67.1L400 192l-32 32v32z"
-        /></svg
-      >
+     
+      
+
+      <CircleImage src="/assets/images/przemysł-tekstylny.jpg" alt="Przemysł tekstylny" />
+
+
       <h4>Przemysł tekstylny</h4>
     </div>
     <div class="industry-card fade-in" in:fade>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-        width="1em"
-        height="1em"
-        fill="currentColor"
-        ><path
-          d="M318.6 254.6c-8.4-31.5-22.1-58.9-39.3-80.5C262.2 150.2 256 126.3 256 102.3c0-15.2 3.2-29.4 8.9-42.3H247.1c5.7 12.9 8.9 27.1 8.9 42.3 0 24-6.2 47.9-23.3 71.8-17.2 21.6-30.9 49-39.3 80.5C184.8 293.1 160 346.5 160 402.3c0 11.2 1.5 22.1 4.3 32.6H416c-15.2-40.5-28.9-83.2-40.1-127.5-2.1-8.3-4.4-16.5-7-24.6-2.6-8-5.3-15.9-8.2-23.7l-.1-.1zM128 448c0-55.2 24.2-107.2 62.8-145.1 2.5-2.5 5.2-4.9 7.9-7.2-12.4-31.2-21.9-63.8-28.3-97.5C163.6 169.5 144 133.5 144 96c0-35.3 28.7-64 64-64s64 28.7 64 64c0 37.5-20.4 73.5-27.2 102.2-.6 2.5-1.2 5-1.8 7.5H320c-1.2-5.1-2.5-10.2-3.9-15.1-5.8-20.9-11.6-41.8-11.6-64.3 0-35.3 28.7-64 64-64s64 28.7 64 64c0 37.5-19.6 73.5-26.4 102.2-6.8 28.7-16.3 56.1-28.3 81.2l-1.9 3.8c38.6 37.9 62.8 89.9 62.8 145.1H128z"
-        /></svg
-      >
+
+      <CircleImage src="/assets/images/obrobka-kamienia.jpg" alt="Przemysł tekstylny" />
+      
       <h4>Obróbka kamienia</h4>
     </div>
     <div class="industry-card fade-in" in:fade>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-        width="1em"
-        height="1em"
-        fill="currentColor"
-        ><path
-          d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM128 256a128 128 0 1 1 256 0 128 128 0 1 1 -256 0zM80 256a176 176 0 1 0 352 0 176 176 0 1 0 -352 0z"
-        /></svg
-      >
+    
+
+      <CircleImage src="/assets/images/jubilerstwo.jpg" alt="Przemysł jubilerski" />
+
+
       <h4>Jubilerstwo</h4>
     </div>
     <div class="industry-card fade-in" in:fade>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 576 512"
-        width="1em"
-        height="1em"
-        fill="currentColor"
-        ><path
-          d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 352.8 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80s-80 35.8-80 80s35.8 80 80 80z"
-        /></svg
-      >
-      <h4>Optyka</h4>
+      
+
+      <CircleImage src="/assets/images/produkcja-okularow.jpg" alt="Produkcja okularów" />
+
+
+
+
+      <h4>Produkcja okularów</h4>
     </div>
   </div>
 </section>
@@ -298,12 +256,43 @@
       wieloletnie doświadczenie. Nasze maszyny CNC to gwarancja precyzji,
       niezawodności i optymalnego stosunku jakości do ceny.
     </p>
-    <CtaButton classs="btn btn--primary btn--lg" text="Skontaktuj się z nami"
+    <CtaButton  on:click={() => window.location.href = "/kontakt"} classs="btn btn--primary btn--lg onasbutton" text="Skontaktuj się z nami" 
+     
+      
     ></CtaButton>
   </div>
 </section>
 
 <style lang="scss">
+
+
+
+  section.branze{
+
+    .section-title{
+
+      padding-bottom: 5vh;
+    }
+
+    padding: 0 9rem;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    .industries-grid{
+      h4{
+        font-size: 1.4rem;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: var(--color-text-secondary);
+        text-align: center;
+
+      }
+    }
+
+
+  }
+
+
   section.onas {
     padding: 0 9rem;
     padding-top: 10vb;
@@ -491,12 +480,25 @@
   }
 
   .industry-card {
-    i {
-      font-size: 3rem;
-      margin-bottom: 10px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 100%; /* Make the image responsive */
+      object-fit: contain; /* Maintain aspect ratio and fit within container */
+      max-height: 150px; /* Set a maximum height if needed */
+      margin-bottom: 10px; /* Add some space between image and title */
     }
+    h4 {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-weight:
+        600;
   }
-
+  }
   /* Dlaczego CERTUS Section */
   .dlaczego {
     background: var(--color-bg-secondary);

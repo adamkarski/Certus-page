@@ -8,7 +8,10 @@
    - 480px: Mobile portrait
 */
 
-
+:global(section.dlaczego > div > button > span.text-container > span){
+  text-align: left;
+    width: 100%;
+}
 .hero-content {
   overflow: hidden;
 }
@@ -44,9 +47,7 @@
     padding-right: 2rem;
 }
 
-body.kontakt .contact-flex .contact-left::before{
-  background: #f7f7f7 !important;
-}
+
 body.kontakt .contact-flex {
   background: linear-gradient(180deg, #f7f7f7 0%, #f7f7f7 100%) !important;
 }

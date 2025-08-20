@@ -35,6 +35,16 @@
 </button>
 
 <style lang="scss">
+
+
+
+
+:global(section.dlaczego .onasbutton .text-container){
+  text-align: left !important;
+    width: 100% !important;
+    
+}
+
   :global(.oferta-card .oferta-cta:hover .svg-container) {
     display: none !important;
   }

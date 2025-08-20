@@ -16,7 +16,7 @@
       alt: "Certus maszyny aluminium",
     },
     {
-      src: "/assets/images/onas/certus-maszyny-stół.jpg",
+      src: "/assets/images/onas/certus-maszyny-stol.jpg",
       alt: "Certus maszyny stół",
     },
     {
@@ -25,15 +25,15 @@
     },
     { src: "/assets/images/onas/certus-maszyny.png", alt: "Certus maszyny" },
     {
-      src: "/assets/images/onas/element-obrabiany-maszynami-certus-2.png",
+      src: "/assets/images/onas/element-obrabiany-maszynami-certus-2.jpg",
       alt: "Element obrabiany maszynami Certus 2",
     },
     {
-      src: "/assets/images/onas/element-obrabiany-maszynami-certus.png",
+      src: "/assets/images/onas/element-obrabiany-maszynami-certus.jpg",
       alt: "Element obrabiany maszynami Certus",
     },
     {
-      src: "/assets/images/onas/przemysł-jubilerski-cerus-cnc-maszyny.png",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-10.jpg",
       alt: "Przemysł jubilerski Certus CNC maszyny",
     },
   ];
@@ -155,16 +155,7 @@
     pointer-events: none;
     opacity: 0.6;
   }
-  .onas-pattern-1 {
-  /*   background-image: url(/assets/images/pattern-video-1.png);
-    position: absolute;
-    width: 184px;
-    height: 263px;
-    z-index: 10;
-    right: 0px;
-    top: -40px;
-    pointer-events: auto; */
-  }
+ 
   .onas-pattern-2 {
     background-image: url(/assets/images/pattern-video-2.png);
     position: absolute;
