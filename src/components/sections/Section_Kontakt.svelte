@@ -22,9 +22,16 @@
   let phonePrefix = "+48";
   let errors: Record<string, string> = {};
   let turnstileToken: string | null = null;
-  let turnstileWidgetId: string | null = null;
-
-  function initializeTurnstile() {
+    let turnstileWidgetId: string | null = null;
+  
+    // Funkcja pomocnicza do sprawdzenia, czy aplikacja działa lokalnie
+    function isLocalhost(): boolean {
+      if (typeof window === 'undefined') return false;
+      const hostname = window.location.hostname;
+      return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '';
+    }
+  
+    function initializeTurnstile() {
     // Usuń istniejący widget jeśli istnieje
     if (turnstileWidgetId) {
       try {
@@ -339,109 +346,114 @@
   }
 
   async function handleSubmit(event: Event) {
-    event.preventDefault();
-    submitMessage = "";
-
-    if (messageInputMode === null) {
-        errors = { ...errors, message: 'Wybierz tryb wiadomości (tekst lub nagranie).' };
-    }
-
-    if (!validate()) {
-      console.log("❌ Validation failed:", errors);
-      submitMessage = "Proszę poprawić błędy w formularzu.";
-      return;
-    }
-
-    if (!turnstileToken) {
-      submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
-      isSubmitting = false;
-      return;
-    }
-
-    console.log("✅ Validation passed, sending data...");
-    isSubmitting = true;
-
-    const formDataToSend = new FormData();
-
-    Object.keys(formData).forEach(key => {
-        const value = formData[key as keyof typeof formData];
-        // Konwertuj boolean na string dla pola privacy
-        const stringValue = typeof value === 'boolean' ? value.toString() : value;
-        formDataToSend.append(key, stringValue);
-    });
-    
-    const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;
-    formDataToSend.set('phone', phoneWithPrefix);
-
-    formDataToSend.append('formType', 'main-kontakt');
-    formDataToSend.append('timestamp', new Date().toISOString());
-    formDataToSend.append('userAgent', navigator.userAgent);
-    formDataToSend.append('cf-turnstile-response', turnstileToken);
-
-    if (messageInputMode === 'record' && recordedFile) {
-        formDataToSend.append('messageType', 'audio');
-        formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
-        formDataToSend.delete('message');
-    } else {
-        formDataToSend.append('messageType', 'text');
-    }
-
-    try {
-        const apiUrl = 'https://dm73147.domenomania.eu/api/send-email.php';
-        
-        console.log("📤 Sending to:", apiUrl);
-        
-        const response = await axios.post(apiUrl, formDataToSend, {
-            headers: {
-                // Axios will automatically set 'Content-Type': 'multipart/form-data'
-            },
-            timeout: 30000,
-        });
-      
-      console.log("📬 Response received:", response.data);
-      
-      if (response.data.success) {
-        submitMessage = response.data.message || 
-          "Dziękujemy za kontakt! Nasz zespół skontaktuje się z Tobą w ciągu 24 godzin.";
-        
-        formData = {
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          message: "",
-          privacy: false,
-        };
-        phonePrefix = "+48";
-        messageInputMode = null;
-        recordedFile = null;
-        recordedFileName = null;
-        errors = {};
-        
-      } else {
-        submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
+      event.preventDefault();
+      submitMessage = "";
+  
+      if (messageInputMode === null) {
+          errors = { ...errors, message: 'Wybierz tryb wiadomości (tekst lub nagranie).' };
       }
+  
+      if (!validate()) {
+        console.log("❌ Validation failed:", errors);
+        submitMessage = "Proszę poprawić błędy w formularzu.";
+        return;
+      }
+  
+      // Sprawdź token Turnstile tylko jeśli nie działamy lokalnie
+      if (!isLocalhost() && !turnstileToken) {
+        submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
+        isSubmitting = false;
+        return;
+      }
+  
+      console.log("✅ Validation passed, sending data...");
+      isSubmitting = true;
+  
+      const formDataToSend = new FormData();
+  
+      Object.keys(formData).forEach(key => {
+          const value = formData[key as keyof typeof formData];
+          // Konwertuj boolean na string dla pola privacy
+          const stringValue = typeof value === 'boolean' ? value.toString() : value;
+          formDataToSend.append(key, stringValue);
+      });
       
-    } catch (error) {
-      console.error('Błąd wysyłania formularza:', error);
+      const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;
+      formDataToSend.set('phone', phoneWithPrefix);
+  
+      formDataToSend.append('formType', 'main-kontakt');
+      formDataToSend.append('timestamp', new Date().toISOString());
+      formDataToSend.append('userAgent', navigator.userAgent);
       
-      if (axios.isAxiosError(error)) {
-        if (error.code === 'ECONNABORTED') {
-          submitMessage = "Timeout - spróbuj ponownie za chwilę.";
-        } else if (error.response?.status === 413) {
-          submitMessage = "Dane są za duże. Spróbuj skrócić wiadomość lub nagrać krótszy plik.";
-        } else if (error.response?.status >= 500) {
-          submitMessage = "Problem z serwerem. Spróbuj ponownie za chwilę.";
+      // Dodaj token Turnstile tylko jeśli nie działamy lokalnie
+      if (!isLocalhost()) {
+        formDataToSend.append('cf-turnstile-response', turnstileToken);
+      }
+  
+      if (messageInputMode === 'record' && recordedFile) {
+          formDataToSend.append('messageType', 'audio');
+          formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
+          formDataToSend.delete('message');
+      } else {
+          formDataToSend.append('messageType', 'text');
+      }
+  
+      try {
+          const apiUrl = 'https://dm73147.domenomania.eu/api/send-email.php';
+          
+          console.log("📤 Sending to:", apiUrl);
+          
+          const response = await axios.post(apiUrl, formDataToSend, {
+              headers: {
+                  // Axios will automatically set 'Content-Type': 'multipart/form-data'
+              },
+              timeout: 30000,
+          });
+        
+        console.log("📬 Response received:", response.data);
+        
+        if (response.data.success) {
+          submitMessage = response.data.message ||
+            "Dziękujemy za kontakt! Nasz zespół skontaktuje się z Tobą w ciągu 24 godzin.";
+          
+          formData = {
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            message: "",
+            privacy: false,
+          };
+          phonePrefix = "+48";
+          messageInputMode = null;
+          recordedFile = null;
+          recordedFileName = null;
+          errors = {};
+          
         } else {
-          submitMessage = error.response?.data?.message || "Wystąpił błąd podczas wysyłania.";
+          submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
         }
-      } else {
-        submitMessage = "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.";
+        
+      } catch (error) {
+        console.error('Błąd wysyłania formularza:', error);
+        
+        if (axios.isAxiosError(error)) {
+          if (error.code === 'ECONNABORTED') {
+            submitMessage = "Timeout - spróbuj ponownie za chwilę.";
+          } else if (error.response?.status === 413) {
+            submitMessage = "Dane są za duże. Spróbuj skrócić wiadomość lub nagrać krótszy plik.";
+          } else if (error.response?.status >= 500) {
+            submitMessage = "Problem z serwerem. Spróbuj ponownie za chwilę.";
+          } else {
+            submitMessage = error.response?.data?.message || "Wystąpił błąd podczas wysyłania.";
+          }
+        } else {
+          submitMessage = "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.";
+        }
+      } finally {
+        isSubmitting = false;
       }
-    } finally {
-      isSubmitting = false;
     }
-  }
 
 </script>
 
