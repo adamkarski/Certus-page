@@ -272,20 +272,68 @@
     return Object.keys(errors).length === 0;
   }
 
+  // Funkcja pomocnicza do sprawdzenia, czy aplikacja działa lokalnie
+    function isLocalhost(): boolean {
+      if (typeof window === 'undefined') return false;
+      const hostname = window.location.hostname;
+      return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '';
+    }
+  
+    // Funkcja pomocnicza do odświeżania tokena Turnstile i oczekiwania na nowy token
+    async function refreshTurnstileToken(): Promise<boolean> {
+      // Jeśli działamy lokalnie, nie wymagamy Turnstile
+      if (isLocalhost()) {
+        return true;
+      }
+      
+      if (!turnstileWidgetId) return false;
+      
+      return new Promise((resolve) => {
+        try {
+          // Zresetuj token
+          turnstileToken = null;
+          (window as any).turnstile.reset(turnstileWidgetId);
+          
+          // Poczekaj na nowy token (maksymalnie 2 sekundy)
+          let attempts = 0;
+          const maxAttempts = 20; // 2 sekundy przy 100ms interwale
+          const checkToken = setInterval(() => {
+            attempts++;
+            if (turnstileToken || attempts >= maxAttempts) {
+              clearInterval(checkToken);
+              resolve(turnstileToken !== null);
+            }
+          }, 100);
+        } catch (e) {
+          console.warn('Error resetting Turnstile widget:', e);
+          resolve(false);
+        }
+      });
+    }
+  
   async function handleSubmit(event: Event) {
-    event.preventDefault();
-    submitMessage = "";
-
-    if (!validate()) {
-      submitMessage = "Proszę poprawić błędy w formularzu.";
-      return;
-    }
-
-    if (!turnstileToken) {
-      submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
-      isSubmitting = false;
-      return;
-    }
+        event.preventDefault();
+        submitMessage = "";
+  
+        if (!validate()) {
+          submitMessage = "Proszę poprawić błędy w formularzu.";
+          return;
+        }
+  
+        // Odśwież token Turnstile przed wysłaniem formularza (chyba że działamy lokalnie)
+        const tokenRefreshed = await refreshTurnstileToken();
+        if (!tokenRefreshed) {
+          submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
+          isSubmitting = false;
+          return;
+        }
+  
+        // Sprawdź token Turnstile tylko jeśli nie działamy lokalnie
+        if (!isLocalhost() && !turnstileToken) {
+          submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
+          isSubmitting = false;
+          return;
+        }
 
     isSubmitting = true;
 
@@ -301,14 +349,17 @@
     const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;
     formDataToSend.set('phone', phoneWithPrefix);
 
-    formDataToSend.append('cf-turnstile-response', turnstileToken);
-
-    if (messageInputMode === 'record' && recordedFile) {
-        formDataToSend.append('messageType', 'audio');
-        formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
-    } else {
-        formDataToSend.append('messageType', 'text');
-    }
+    // Dodaj token Turnstile tylko jeśli nie działamy lokalnie
+        if (!isLocalhost()) {
+          formDataToSend.append('cf-turnstile-response', turnstileToken);
+        }
+    
+        if (messageInputMode === 'record' && recordedFile) {
+            formDataToSend.append('messageType', 'audio');
+            formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
+        } else {
+            formDataToSend.append('messageType', 'text');
+        }
 
     formDataToSend.append('formType', 'serwis-kontakt');
 
