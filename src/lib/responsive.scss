@@ -8,10 +8,7 @@
    - 480px: Mobile portrait
 */
 
-:global(section.dlaczego > div > button > span.text-container > span){
-  text-align: left;
-    width: 100%;
-}
+
 .hero-content {
   overflow: hidden;
 }
@@ -182,6 +179,15 @@ body.home {
 }
 
 @media (max-width: 757px) {
+
+  .contact-right {
+    .contact-form{
+
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+
   .video-header {
     margin-left: 3em !important;
     margin-top: -12em !important;
