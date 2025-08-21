@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
-  import { afterNavigate } from '$app/navigation';
+  import { onMount } from "svelte";
   import CtaButton from "../CtaButton.svelte";
   import { fade } from "svelte/transition";
   import { typoFixAction } from "$lib/utils/typography";
   import axios from 'axios';
   import '$lib/styles/form-styles.scss';
+  import { Turnstile } from 'svelte-turnstile';
 
   let formData = {
     firstName: "",
@@ -14,132 +14,16 @@
     phone: "",
     message: "",
     privacy: false,
-    serviceType: "warranty", // Dodane pole specyficzne dla serwisu
+    serviceType: "warranty",
   };
+
   let isSubmitting = false;
   let submitMessage = "";
   let phonePrefix = "+48";
   let errors: Record<string, string> = {};
   let turnstileToken: string | null = null;
-  let turnstileWidgetId: string | null = null;
+  let turnstileReset: (() => void) | undefined;
 
-  
-    
-      function initializeTurnstile() {
-        // Usuń istniejący widget jeśli istnieje
-        if (turnstileWidgetId) {
-          try {
-            (window as any).turnstile.remove(turnstileWidgetId);
-          } catch (e) {
-            console.warn('Error removing Turnstile widget:', e);
-          }
-          turnstileWidgetId = null;
-        }
-        
-        // Reset token
-        turnstileToken = null;
-        
-        // Sprawdź czy element kontenera istnieje
-        const container = document.getElementById('turnstile-container-serwis');
-        if (!container) {
-          console.warn('Turnstile container not found');
-          return;
-        }
-        
-        // Upewnij się, że kontener jest pusty
-        container.innerHTML = '';
-        
-        // Renderuj widget
-        if (typeof (window as any).turnstile !== 'undefined') {
-          turnstileWidgetId = (window as any).turnstile.render('#turnstile-container-serwis', {
-            sitekey: '0x4AAAAAABs8xaWAuEhKPhWB',
-            theme: 'light',
-            callback: function(token: string) {
-              turnstileToken = token;
-            },
-            'expired-callback': () => {
-              turnstileToken = null;
-            },
-            'error-callback': () => {
-              turnstileToken = null;
-              submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
-              // Spróbuj zresetować widget
-              if (turnstileWidgetId) {
-                try {
-                  (window as any).turnstile.reset(turnstileWidgetId);
-                } catch (e) {
-                  console.warn('Error resetting Turnstile widget:', e);
-                  // Jeśli reset się nie powiedzie, zainicjalizuj ponownie
-                  initializeTurnstile();
-                }
-              }
-            }
-          });
-        }
-      }
-    // Zmienna do przechowywania timeoutów
-    let turnstileTimeouts: ReturnType<typeof setTimeout>[] = [];
-  
-    onMount(() => {
-      // Sprawdź czy jesteśmy w przeglądarce (nie podczas SSR)
-      if (typeof window !== 'undefined') {
-        // Inicjalizuj Turnstile po krótkim opóźnieniu, aby upewnić się, że DOM jest gotowy
-        const timeoutId = setTimeout(() => {
-          initializeTurnstile();
-        }, 100);
-        
-        // Spróbuj ponownie zainicjalizować po 1 sekundzie, jeśli nie powiodło się
-        const retryTimeoutId = setTimeout(() => {
-          if (!turnstileWidgetId) {
-            initializeTurnstile();
-          }
-        }, 1000);
-        
-        // Zapisz timeouty, aby można je było wyczyścić w onDestroy
-        turnstileTimeouts = [timeoutId, retryTimeoutId];
-      }
-    });
-    
-    // Reinicjalizuj Turnstile po każdej nawigacji
-    afterNavigate(() => {
-      // Sprawdź czy jesteśmy w przeglądarce (nie podczas SSR)
-      if (typeof window !== 'undefined') {
-        // Inicjalizuj Turnstile po krótkim opóźnieniu, aby upewnić się, że DOM jest gotowy
-        const timeoutId = setTimeout(() => {
-          initializeTurnstile();
-        }, 100);
-        
-        // Spróbuj ponownie zainicjalizować po 1 sekundzie, jeśli nie powiodło się
-        const retryTimeoutId = setTimeout(() => {
-          if (!turnstileWidgetId) {
-            initializeTurnstile();
-          }
-        }, 1000);
-        
-        // Zapisz timeouty, aby można je było wyczyścić w onDestroy
-        turnstileTimeouts = [timeoutId, retryTimeoutId];
-      }
-    });
-  
-    onDestroy(() => {
-      // Wyczyść timeouty
-      if (typeof window !== 'undefined' && turnstileTimeouts.length > 0) {
-        turnstileTimeouts.forEach(timeoutId => {
-          clearTimeout(timeoutId);
-        });
-        turnstileTimeouts = [];
-      }
-      
-      // Usuń widget Turnstile
-      if (turnstileWidgetId) {
-        try {
-          (window as any).turnstile.remove(turnstileWidgetId);
-        } catch (e) {
-          console.warn('Error removing Turnstile widget in onDestroy:', e);
-        }
-        turnstileWidgetId = null;
-      }
-    });
   let messageInputMode: 'text' | 'record' | null = null;
   let isRecording = false;
   let recordingDuration = 0;
@@ -226,8 +110,8 @@
         return null;
       case 'message':
         if (messageInputMode === 'text' && !value.trim()) return "Opis problemu jest wymagany";
-        if (messageInputMode === 'text' && value.trim().length < 10) return "Opis musi mieć co najmniej 10 znaków";
-        if (messageInputMode === 'text' && value.trim().length > 2000) return "Opis jest za długi (max 2000 znaków)";
+        if (value.trim().length < 10) return "Opis musi mieć co najmniej 10 znaków";
+        if (value.trim().length > 2000) return "Opis jest za długi (max 2000 znaków)";
         if (messageInputMode === 'record' && !recordedFile) return "Nagraj wiadomość głosową";
         return null;
       case 'privacy':
@@ -272,106 +156,52 @@
     return Object.keys(errors).length === 0;
   }
 
-  // Funkcja pomocnicza do sprawdzenia, czy aplikacja działa lokalnie
-    function isLocalhost(): boolean {
-      if (typeof window === 'undefined') return false;
-      const hostname = window.location.hostname;
-      return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '';
-    }
-  
-    // Funkcja pomocnicza do odświeżania tokena Turnstile i oczekiwania na nowy token
-    async function refreshTurnstileToken(): Promise<boolean> {
-      // Jeśli działamy lokalnie, nie wymagamy Turnstile
-      if (isLocalhost()) {
-        return true;
-      }
-      
-      if (!turnstileWidgetId) return false;
-      
-      return new Promise((resolve) => {
-        try {
-          // Zresetuj token
-          turnstileToken = null;
-          (window as any).turnstile.reset(turnstileWidgetId);
-          
-          // Poczekaj na nowy token (maksymalnie 2 sekundy)
-          let attempts = 0;
-          const maxAttempts = 20; // 2 sekundy przy 100ms interwale
-          const checkToken = setInterval(() => {
-            attempts++;
-            if (turnstileToken || attempts >= maxAttempts) {
-              clearInterval(checkToken);
-              resolve(turnstileToken !== null);
-            }
-          }, 100);
-        } catch (e) {
-          console.warn('Error resetting Turnstile widget:', e);
-          resolve(false);
-        }
-      });
-    }
-  
   async function handleSubmit(event: Event) {
-        event.preventDefault();
-        submitMessage = "";
-  
-        if (!validate()) {
-          submitMessage = "Proszę poprawić błędy w formularzu.";
-          return;
-        }
-  
-        // Odśwież token Turnstile przed wysłaniem formularza (chyba że działamy lokalnie)
-        const tokenRefreshed = await refreshTurnstileToken();
-        if (!tokenRefreshed) {
-          submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
-          isSubmitting = false;
-          return;
-        }
-  
-        // Sprawdź token Turnstile tylko jeśli nie działamy lokalnie
-        if (!isLocalhost() && !turnstileToken) {
-          submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Odśwież stronę i spróbuj ponownie.";
-          isSubmitting = false;
-          return;
-        }
+    event.preventDefault();
+    submitMessage = "";
+
+    if (!validate()) {
+      submitMessage = "Proszę poprawić błędy w formularzu.";
+      return;
+    }
+
+    if (!turnstileToken) {
+      submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Spróbuj ponownie za chwilę.";
+      isSubmitting = false;
+      return;
+    }
 
     isSubmitting = true;
 
     const formDataToSend = new FormData();
 
     Object.keys(formData).forEach(key => {
-        const value = formData[key as keyof typeof formData];
-        // Konwertuj boolean na string dla pola privacy
-        const stringValue = typeof value === 'boolean' ? value.toString() : value;
-        formDataToSend.append(key, stringValue);
+        formDataToSend.append(key, formData[key as keyof typeof formData]);
     });
 
     const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;
     formDataToSend.set('phone', phoneWithPrefix);
+    formDataToSend.append('cf-turnstile-response', turnstileToken);
 
-    // Dodaj token Turnstile tylko jeśli nie działamy lokalnie
-        if (!isLocalhost()) {
-          formDataToSend.append('cf-turnstile-response', turnstileToken);
-        }
-    
-        if (messageInputMode === 'record' && recordedFile) {
-            formDataToSend.append('messageType', 'audio');
-            formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
-        } else {
-            formDataToSend.append('messageType', 'text');
-        }
+    if (messageInputMode === 'record' && recordedFile) {
+        formDataToSend.append('messageType', 'audio');
+        formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
+    } else {
+        formDataToSend.append('messageType', 'text');
+    }
 
     formDataToSend.append('formType', 'serwis-kontakt');
 
     try {
         const apiUrl = 'https://dm73147.domenomania.eu/api/send-email.php';
         const response = await axios.post(apiUrl, formDataToSend, {
-            // Do not set 'Content-Type' manually; Axios will add proper multipart boundary
             timeout: 30000,
         });
 
       if (response.data.success) {
         submitMessage = response.data.message || "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą w ciągu 24 godzin.";
+
+        // Resetuj formularz
         formData = {
           firstName: "",
           lastName: "",
@@ -385,19 +215,29 @@
         messageInputMode = null;
         recordedFile = null;
         recordedFileName = null;
+
+        // Zresetuj Turnstile dla kolejnego użycia
+        turnstileToken = null; // Clear token
+        if (turnstileReset) turnstileReset();
+
       } else {
         submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
+
+        // Zresetuj Turnstile po nieudanej próbie
+        if (turnstileReset) turnstileReset();
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.code === 'ECONNABORTED') {
           submitMessage = "Timeout - spróbuj ponownie za chwilę.";
-        } else {
-          submitMessage = error.response?.data?.message || "Wystąpił błąd podczas wysyłania.";
         }
-      } else {
+      }
+      else {
         submitMessage = "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.";
       }
+
+      // Zresetuj Turnstile po błędzie
+      if (turnstileReset) turnstileReset();
     } finally {
       isSubmitting = false;
     }
@@ -447,7 +287,6 @@
 
   
 </script>
-
 <section class="contact-flex">
   <div class="background">
     <div class="contact">
@@ -578,22 +417,6 @@
               />
               {#if errors.lastName}<span class="error-message">{errors.lastName}</span>{/if}
             </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              placeholder="twoj@email.com"
-              bind:value={formData.email}
-              class:error={errors.email}
-              on:blur={() => validateSingleField('email')}
-              on:input={() => validateSingleField('email')}
-              maxlength="254"
-              required
-            />
-            {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
           </div>
 
           <div class="form-group">
@@ -761,7 +584,7 @@
 
           
 
-          <div id="turnstile-container-serwis"></div>
+          <Turnstile siteKey="0x4AAAAAABs8xaWAuEhKPhWB" theme="light" on:callback={(e) => { turnstileToken = e.detail.token; }} on:expired={() => { turnstileToken = null; }} on:error={(e) => { turnstileToken = null; submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie..."; console.error('Turnstile error:', e.detail.code); }} bind:reset={turnstileReset} />
 
           <div class="text-left ctaButton">
             <CtaButton
@@ -989,7 +812,7 @@
     background: #cddc39;
     border-radius: 50%;
     transition: background 0.2s;
-    box-shadow: 0 2px 8px rgba(44, 90, 160, 0.08);
+    box-shadow: 0 2px 8px rgba(44, 90, 160,.08);
   }
 
   .social-icon:hover {
@@ -1045,9 +868,4 @@
       font-size: 0.9rem;
     }
   }
-
-  #country {
-    color: var(--color-text-secondary) !important;
-  }
-
 </style>
