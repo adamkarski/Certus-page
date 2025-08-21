@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
+  import { afterNavigate } from '$app/navigation';
   import CtaButton from "../CtaButton.svelte";
   import { fade } from "svelte/transition";
   import { typoFixAction } from "$lib/utils/typography";
@@ -22,28 +23,123 @@
   let turnstileToken: string | null = null;
   let turnstileWidgetId: string | null = null;
 
-  onMount(() => {
-    if (typeof turnstile !== 'undefined') {
-      turnstileWidgetId = turnstile.render('#turnstile-container-serwis', {
-        sitekey: '0x4AAAAAABs8xaWAuEhKPhWB',
-        theme: 'light',
-        callback: function(token: string) {
-          turnstileToken = token;
-        },
-        'expired-callback': () => {
-          turnstileToken = null;
-        },
-        'error-callback': () => {
-          turnstileToken = null;
-          submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
-          if (turnstileWidgetId) {
-            turnstile.reset(turnstileWidgetId);
+  
+    
+      function initializeTurnstile() {
+        // Usuń istniejący widget jeśli istnieje
+        if (turnstileWidgetId) {
+          try {
+            (window as any).turnstile.remove(turnstileWidgetId);
+          } catch (e) {
+            console.warn('Error removing Turnstile widget:', e);
           }
+          turnstileWidgetId = null;
         }
-      });
-    }
-  });
-
+        
+        // Reset token
+        turnstileToken = null;
+        
+        // Sprawdź czy element kontenera istnieje
+        const container = document.getElementById('turnstile-container-serwis');
+        if (!container) {
+          console.warn('Turnstile container not found');
+          return;
+        }
+        
+        // Upewnij się, że kontener jest pusty
+        container.innerHTML = '';
+        
+        // Renderuj widget
+        if (typeof (window as any).turnstile !== 'undefined') {
+          turnstileWidgetId = (window as any).turnstile.render('#turnstile-container-serwis', {
+            sitekey: '0x4AAAAAABs8xaWAuEhKPhWB',
+            theme: 'light',
+            callback: function(token: string) {
+              turnstileToken = token;
+            },
+            'expired-callback': () => {
+              turnstileToken = null;
+            },
+            'error-callback': () => {
+              turnstileToken = null;
+              submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
+              // Spróbuj zresetować widget
+              if (turnstileWidgetId) {
+                try {
+                  (window as any).turnstile.reset(turnstileWidgetId);
+                } catch (e) {
+                  console.warn('Error resetting Turnstile widget:', e);
+                  // Jeśli reset się nie powiedzie, zainicjalizuj ponownie
+                  initializeTurnstile();
+                }
+              }
+            }
+          });
+        }
+      }
+    // Zmienna do przechowywania timeoutów
+    let turnstileTimeouts: ReturnType<typeof setTimeout>[] = [];
+  
+    onMount(() => {
+      // Sprawdź czy jesteśmy w przeglądarce (nie podczas SSR)
+      if (typeof window !== 'undefined') {
+        // Inicjalizuj Turnstile po krótkim opóźnieniu, aby upewnić się, że DOM jest gotowy
+        const timeoutId = setTimeout(() => {
+          initializeTurnstile();
+        }, 100);
+        
+        // Spróbuj ponownie zainicjalizować po 1 sekundzie, jeśli nie powiodło się
+        const retryTimeoutId = setTimeout(() => {
+          if (!turnstileWidgetId) {
+            initializeTurnstile();
+          }
+        }, 1000);
+        
+        // Zapisz timeouty, aby można je było wyczyścić w onDestroy
+        turnstileTimeouts = [timeoutId, retryTimeoutId];
+      }
+    });
+    
+    // Reinicjalizuj Turnstile po każdej nawigacji
+    afterNavigate(() => {
+      // Sprawdź czy jesteśmy w przeglądarce (nie podczas SSR)
+      if (typeof window !== 'undefined') {
+        // Inicjalizuj Turnstile po krótkim opóźnieniu, aby upewnić się, że DOM jest gotowy
+        const timeoutId = setTimeout(() => {
+          initializeTurnstile();
+        }, 100);
+        
+        // Spróbuj ponownie zainicjalizować po 1 sekundzie, jeśli nie powiodło się
+        const retryTimeoutId = setTimeout(() => {
+          if (!turnstileWidgetId) {
+            initializeTurnstile();
+          }
+        }, 1000);
+        
+        // Zapisz timeouty, aby można je było wyczyścić w onDestroy
+        turnstileTimeouts = [timeoutId, retryTimeoutId];
+      }
+    });
+  
+    onDestroy(() => {
+      // Wyczyść timeouty
+      if (typeof window !== 'undefined' && turnstileTimeouts.length > 0) {
+        turnstileTimeouts.forEach(timeoutId => {
+          clearTimeout(timeoutId);
+        });
+        turnstileTimeouts = [];
+      }
+      
+      // Usuń widget Turnstile
+      if (turnstileWidgetId) {
+        try {
+          (window as any).turnstile.remove(turnstileWidgetId);
+        } catch (e) {
+          console.warn('Error removing Turnstile widget in onDestroy:', e);
+        }
+        turnstileWidgetId = null;
+      }
+    });
   let messageInputMode: 'text' | 'record' | null = null;
   let isRecording = false;
   let recordingDuration = 0;
@@ -196,7 +292,10 @@
     const formDataToSend = new FormData();
 
     Object.keys(formData).forEach(key => {
-        formDataToSend.append(key, formData[key as keyof typeof formData]);
+        const value = formData[key as keyof typeof formData];
+        // Konwertuj boolean na string dla pola privacy
+        const stringValue = typeof value === 'boolean' ? value.toString() : value;
+        formDataToSend.append(key, stringValue);
     });
 
     const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;

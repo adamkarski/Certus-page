@@ -62,6 +62,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_node_html_parser: string;
 	export const __CF_USER_TEXT_ENCODING: string;
 	export const npm_package_devDependencies_postcss: string;
+	export const npm_package_devDependencies__svelte_put_cloudflare_turnstile: string;
 	export const npm_execpath: string;
 	export const npm_package_devDependencies_tslib: string;
 	export const ZSH_DISABLE_COMPFIX: string;
@@ -197,6 +198,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_node_html_parser: string;
 		__CF_USER_TEXT_ENCODING: string;
 		npm_package_devDependencies_postcss: string;
+		npm_package_devDependencies__svelte_put_cloudflare_turnstile: string;
 		npm_execpath: string;
 		npm_package_devDependencies_tslib: string;
 		ZSH_DISABLE_COMPFIX: string;
