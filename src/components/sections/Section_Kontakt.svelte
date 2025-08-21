@@ -14,7 +14,6 @@
     phone: "",
     message: "",
     privacy: false,
-    country: "PL",
   };
 
   let isSubmitting = false;
@@ -28,6 +27,7 @@
     if (typeof turnstile !== 'undefined') {
       turnstileWidgetId = turnstile.render('#turnstile-container-main', {
         sitekey: '0x4AAAAAABs8xaWAuEhKPhWB',
+        theme: 'light',
         callback: function(token: string) {
           turnstileToken = token;
         },
@@ -43,8 +43,6 @@
         }
       });
     }
-
-    updatePhonePrefix();
   });
 
   // Audio recording state
@@ -70,16 +68,20 @@
     { code: "US", name: "USA", prefix: "+1" },
   ];
 
-  function updatePhonePrefix() {
-    const selectedCountry = countryPrefixes.find(
-      (c) => c.code === formData.country
-    );
-    if (selectedCountry) {
-      phonePrefix = selectedCountry.prefix;
+  function handlePhoneInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
+
+    if (value.startsWith('+')) {
+      for (const country of countryPrefixes) {
+        if (value.startsWith(country.prefix)) {
+          phonePrefix = country.prefix;
+          formData.phone = value.substring(country.prefix.length).trim();
+          break;
+        }
+      }
     }
   }
-
-  
 
   // Validation functions
   function validateEmail(email: string): string | null {
@@ -130,17 +132,16 @@
     if (!/^\d+$/.test(cleanPhone)) {
       return "Numer telefonu może zawierać tylko cyfry, spacje i myślniki";
     }
-    const selectedCountry = countryPrefixes.find(c => c.code === formData.country);
-    if (selectedCountry) {
-      const minLength = getPhoneMinLength(selectedCountry.prefix);
-      const maxLength = getPhoneMaxLength(selectedCountry.prefix);
-      if (cleanPhone.length < minLength) {
-        return `Numer jest za krótki (min ${minLength} cyfr dla ${selectedCountry.code})`;
-      }
-      if (cleanPhone.length > maxLength) {
-        return `Numer jest za długi (max ${maxLength} cyfr dla ${selectedCountry.code})`;
-      }
+    
+    const minLength = getPhoneMinLength(phonePrefix);
+    const maxLength = getPhoneMaxLength(phonePrefix);
+    if (cleanPhone.length < minLength) {
+      return `Numer jest za krótki (min ${minLength} cyfr dla ${phonePrefix})`;
     }
+    if (cleanPhone.length > maxLength) {
+      return `Numer jest za długi (max ${maxLength} cyfr dla ${phonePrefix})`;
+    }
+    
     return null;
   }
 
@@ -269,8 +270,10 @@
     Object.keys(formData).forEach(key => {
         formDataToSend.append(key, formData[key as keyof typeof formData]);
     });
+    
+    const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;
+    formDataToSend.set('phone', phoneWithPrefix);
 
-    formDataToSend.set('phone', `${phonePrefix} ${formData.phone.trim()}`);
     formDataToSend.append('formType', 'main-kontakt');
     formDataToSend.append('timestamp', new Date().toISOString());
     formDataToSend.append('userAgent', navigator.userAgent);
@@ -309,8 +312,8 @@
           phone: "",
           message: "",
           privacy: false,
-          country: "PL",
         };
+        phonePrefix = "+48";
         messageInputMode = null;
         recordedFile = null;
         recordedFileName = null;
@@ -341,12 +344,6 @@
     }
   }
 
-  $: if (formData.country) {
-    updatePhonePrefix();
-    if (formData.phone.trim()) {
-      validateSingleField('phone');
-    }
-  }
 </script>
 
 <section class="contact-flex">
@@ -480,23 +477,23 @@
         {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
       </div>
       
-      <div class="form-row">
-        
-        <div class="form-group">
-          <label for="phone">Telefon</label>
+      <div class="form-group phone-group">
+        <label for="phone">Telefon</label>
+        <div class="phone-input-wrapper">
+          <input type="text" bind:value={phonePrefix} class="country-code-input" />
           <input
             id="phone"
             type="tel"
-            placeholder="+48 123 456 789 (z numerem kierunkowym)"
+            placeholder="123 456 789"
             bind:value={formData.phone}
             class:error={errors.phone}
+            on:input={handlePhoneInput}
             on:blur={() => validateSingleField('phone')}
-            on:input={() => validateSingleField('phone')}
             required
             autocomplete="tel"
           />
-          {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
         </div>
+        {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
       </div>
 
       <div class="form-group">
@@ -648,6 +645,23 @@
 <style lang="scss">
   a:hover {
     color: var(--color-primary);
+  }
+
+  .phone-group {
+    .phone-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .country-code-input {
+      flex-shrink: 0;
+      width: 70px;
+      padding: 12px 8px;
+      // Add other styles to match your input fields
+    }
+    input[type="tel"] {
+      flex-grow: 1;
+    }
   }
 
   .contact-flex {

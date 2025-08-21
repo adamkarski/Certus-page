@@ -18,6 +18,7 @@
   let isSubmitting = false;
   let submitMessage = "";
   let phonePrefix = "+48";
+  let errors: Record<string, string> = {};
   let turnstileToken: string | null = null;
   let turnstileWidgetId: string | null = null;
 
@@ -25,6 +26,7 @@
     if (typeof turnstile !== 'undefined') {
       turnstileWidgetId = turnstile.render('#turnstile-container-serwis', {
         sitekey: '0x4AAAAAABs8xaWAuEhKPhWB',
+        theme: 'light',
         callback: function(token: string) {
           turnstileToken = token;
         },
@@ -50,9 +52,34 @@
   let mediaRecorder: MediaRecorder | null = null;
   let audioChunks: Blob[] = [];
 
-  
+  const countryPrefixes = [
+    { code: "PL", name: "Polska", prefix: "+48" },
+    { code: "AT", name: "Austria", prefix: "+43" },
+    { code: "BE", name: "Belgia", prefix: "+32" },
+    { code: "DE", name: "Niemcy", prefix: "+49" },
+    { code: "CZ", name: "Czechy", prefix: "+420" },
+    { code: "FR", name: "Francja", prefix: "+33" },
+    { code: "GB", name: "Wielka Brytania", prefix: "+44" },
+    { code: "IT", name: "Włochy", prefix: "+39" },
+    { code: "ES", name: "Hiszpania", prefix: "+34" },
+    { code: "NL", name: "Holandia", prefix: "+31" },
+    { code: "US", name: "USA", prefix: "+1" },
+  ];
 
-  let errors: Record<string, string> = {};
+  function handlePhoneInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
+
+    if (value.startsWith('+')) {
+      for (const country of countryPrefixes) {
+        if (value.startsWith(country.prefix)) {
+          phonePrefix = country.prefix;
+          formData.phone = value.substring(country.prefix.length).trim();
+          break;
+        }
+      }
+    }
+  }
 
   function validateEmail(email: string): string | null {
     if (!email.trim()) return "Email jest wymagany";
@@ -172,6 +199,9 @@
         formDataToSend.append(key, formData[key as keyof typeof formData]);
     });
 
+    const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;
+    formDataToSend.set('phone', phoneWithPrefix);
+
     formDataToSend.append('cf-turnstile-response', turnstileToken);
 
     if (messageInputMode === 'record' && recordedFile) {
@@ -199,9 +229,9 @@
           phone: "",
           message: "",
           privacy: false,
-          country: "PL",
           serviceType: "warranty",
         };
+        phonePrefix = "+48";
         messageInputMode = null;
         recordedFile = null;
         recordedFileName = null;
@@ -430,22 +460,23 @@
             {#if errors.serviceType}<span class="error-message">{errors.serviceType}</span>{/if}
           </div>
 
-          <div class="form-row">
-            <div class="form-group">
+          <div class="form-group phone-group">
             <label for="phone">Telefon</label>
-            <input
-              id="phone"
-              type="tel"
-              placeholder="+48 123 456 789 (z numerem kierunkowym)"
-              bind:value={formData.phone}
-              class:error={errors.phone}
-              on:blur={() => validateSingleField('phone')}
-              on:input={() => validateSingleField('phone')}
-              required
-              autocomplete="tel"
-            />
+            <div class="phone-input-wrapper">
+              <input type="text" bind:value={phonePrefix} class="country-code-input" />
+              <input
+                id="phone"
+                type="tel"
+                placeholder="123 456 789"
+                bind:value={formData.phone}
+                class:error={errors.phone}
+                on:input={handlePhoneInput}
+                on:blur={() => validateSingleField('phone')}
+                required
+                autocomplete="tel"
+              />
+            </div>
             {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
-          </div>
           </div>
 
           <div class="form-group">
@@ -598,6 +629,23 @@
 </section>
 
 <style lang="scss">
+
+  .phone-group {
+    .phone-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .country-code-input {
+      flex-shrink: 0;
+      width: 70px;
+      padding: 12px 8px;
+      // Add other styles to match your input fields
+    }
+    input[type="tel"] {
+      flex-grow: 1;
+    }
+  }
 
   :global(.recorded-file){
     color: var(--color-text-secondary) !important;
