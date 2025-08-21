@@ -14,7 +14,7 @@
     phone: "",
     message: "",
     privacy: false,
-    serviceType: "warranty",
+    serviceType: "Serwis Gwarancyjny",
   };
 
   let isSubmitting = false;
@@ -22,7 +22,6 @@
   let phonePrefix = "+48";
   let errors: Record<string, string> = {};
   let turnstileToken: string | null = null;
-  let turnstileReset: (() => void) | undefined;
 
   let messageInputMode: 'text' | 'record' | null = null;
   let isRecording = false;
@@ -110,8 +109,8 @@
         return null;
       case 'message':
         if (messageInputMode === 'text' && !value.trim()) return "Opis problemu jest wymagany";
-        if (value.trim().length < 10) return "Opis musi mieć co najmniej 10 znaków";
-        if (value.trim().length > 2000) return "Opis jest za długi (max 2000 znaków)";
+        if (messageInputMode === 'text' && value.trim().length < 10) return "Opis musi mieć co najmniej 10 znaków";
+        if (messageInputMode === 'text' && value.trim().length > 2000) return "Opis jest za długi (max 2000 znaków)";
         if (messageInputMode === 'record' && !recordedFile) return "Nagraj wiadomość głosową";
         return null;
       case 'privacy':
@@ -145,22 +144,28 @@
 
   function validate() {
     const newErrors: Record<string, string> = {};
-    Object.keys(formData).forEach(fieldName => {
-      if (fieldName === 'country') return;
-      const error = validateField(fieldName, formData[fieldName as keyof typeof formData]);
+    
+    const fieldsToValidate = ['firstName', 'lastName', 'email', 'phone', 'message', 'privacy', 'serviceType'];
+    
+    for (const field of fieldsToValidate) {
+      const error = validateField(field, formData[field as keyof typeof formData]);
       if (error) {
-        newErrors[fieldName] = error;
+        newErrors[field] = error;
       }
-    });
+    }
+    
     errors = newErrors;
-    return Object.keys(errors).length === 0;
+    return Object.keys(newErrors).length === 0;
   }
 
   async function handleSubmit(event: Event) {
     event.preventDefault();
     submitMessage = "";
 
+    console.log('Form data on submit:', formData);
+
     if (!validate()) {
+      console.log('Validation errors:', errors);
       submitMessage = "Proszę poprawić błędy w formularzu.";
       return;
     }
@@ -209,7 +214,7 @@
           phone: "",
           message: "",
           privacy: false,
-          serviceType: "warranty",
+          serviceType: "Serwis Gwarancyjny",
         };
         phonePrefix = "+48";
         messageInputMode = null;
@@ -218,13 +223,9 @@
 
         // Zresetuj Turnstile dla kolejnego użycia
         turnstileToken = null; // Clear token
-        if (turnstileReset) turnstileReset();
 
       } else {
         submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
-
-        // Zresetuj Turnstile po nieudanej próbie
-        if (turnstileReset) turnstileReset();
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -235,9 +236,6 @@
       else {
         submitMessage = "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.";
       }
-
-      // Zresetuj Turnstile po błędzie
-      if (turnstileReset) turnstileReset();
     } finally {
       isSubmitting = false;
     }
@@ -396,7 +394,6 @@
                 bind:value={formData.firstName}
                 class:error={errors.firstName}
                 on:blur={() => validateSingleField('firstName')}
-                on:input={() => validateSingleField('firstName')}
                 maxlength="50"
                 required
               />
@@ -411,7 +408,6 @@
                 bind:value={formData.lastName}
                 class:error={errors.lastName}
                 on:blur={() => validateSingleField('lastName')}
-                on:input={() => validateSingleField('lastName')}
                 maxlength="50"
                 required
               />
@@ -420,15 +416,30 @@
           </div>
 
           <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="twoj@email.com"
+              bind:value={formData.email}
+              class:error={errors.email}
+              on:blur={() => validateSingleField('email')}
+              maxlength="254"
+              required
+            />
+            {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
+          </div>
+
+          <div class="form-group">
             <label for="serviceType">Typ usługi serwisowej</label>
             <select id="serviceType" bind:value={formData.serviceType} class:error={errors.serviceType} on:change={() => validateSingleField('serviceType')} required>
-              <option value="warranty">Serwis gwarancyjny</option>
-              <option value="post-warranty">Serwis pogwarancyjny</option>
-              <option value="inspection">Przegląd techniczny</option>
-              <option value="repair">Naprawa awaryjna</option>
-              <option value="maintenance">Konserwacja</option>
-              <option value="upgrade">Modernizacja</option>
-              <option value="consultation">Konsultacja techniczna</option>
+              <option value="Serwis Gwarancyjny">Serwis gwarancyjny</option>
+              <option value="Serwis Pogwarancyjny">Serwis pogwarancyjny</option>
+              <option value="Przegląd Techniczny">Przegląd techniczny</option>
+              <option value="Naprawa awaryjna">Naprawa awaryjna</option>
+              <option value="Konservacja">Konserwacja</option>
+              <option value="Modernizacja">Modernizacja</option>
+              <option value="Konsultacja techniczna">Konsultacja techniczna</option>
             </select>
             {#if errors.serviceType}<span class="error-message">{errors.serviceType}</span>{/if}
           </div>
@@ -475,7 +486,6 @@
                 bind:value={formData.message}
                 rows="4"
                 on:blur={() => validateSingleField('message')}
-                on:input={() => validateSingleField('message')}
                 maxlength="2000"
                 required
               ></textarea>
@@ -584,7 +594,7 @@
 
           
 
-          <Turnstile siteKey="0x4AAAAAABs8xaWAuEhKPhWB" theme="light" on:callback={(e) => { turnstileToken = e.detail.token; }} on:expired={() => { turnstileToken = null; }} on:error={(e) => { turnstileToken = null; submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie..."; console.error('Turnstile error:', e.detail.code); }} bind:reset={turnstileReset} />
+          <Turnstile siteKey="0x4AAAAAABs8xaWAuEhKPhWB" theme="light" on:callback={(e) => { turnstileToken = e.detail.token; }} on:expired={() => { turnstileToken = null; }} on:error={(e) => { turnstileToken = null; submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie..."; console.error('Turnstile error:', e.detail.code); }} />
 
           <div class="text-left ctaButton">
             <CtaButton
