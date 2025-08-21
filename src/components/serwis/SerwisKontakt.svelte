@@ -19,24 +19,27 @@
   let submitMessage = "";
   let phonePrefix = "+48";
   let turnstileToken: string | null = null;
+  let turnstileWidgetId: string | null = null;
 
-  // Global callback for Turnstile
-  // This function needs to be globally accessible, so it's attached to window.
-  // Turnstile will call this function when it successfully verifies the user.
   onMount(() => {
-    (window as any).onTurnstileSuccessSerwis = (token: string) => {
-      turnstileToken = token;
-    };
-    (window as any).onTurnstileExpiredSerwis = () => {
-      turnstileToken = null;
-    };
-    (window as any).onTurnstileErrorSerwis = (err?: any) => {
-      // Cloudflare error 300030 lub inne błędy klienta
-      turnstileToken = null;
-      submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
-      // Reset wszystkich widżetów na stronie (auto-render)
-      (window as any).turnstile?.reset();
-    };
+    if (typeof turnstile !== 'undefined') {
+      turnstileWidgetId = turnstile.render('#turnstile-container-serwis', {
+        sitekey: '0x4AAAAAABs8xaWAuEhKPhWB',
+        callback: function(token: string) {
+          turnstileToken = token;
+        },
+        'expired-callback': () => {
+          turnstileToken = null;
+        },
+        'error-callback': () => {
+          turnstileToken = null;
+          submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
+          if (turnstileWidgetId) {
+            turnstile.reset(turnstileWidgetId);
+          }
+        }
+      });
+    }
   });
 
   let messageInputMode: 'text' | 'record' | null = null;
@@ -577,7 +580,7 @@
 
           
 
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAABs8xaWAuEhKPhWB" data-callback="onTurnstileSuccessSerwis" data-expired-callback="onTurnstileExpiredSerwis" data-error-callback="onTurnstileErrorSerwis"></div> <!-- Turnstile widget -->
+          <div id="turnstile-container-serwis"></div>
 
           <div class="text-left ctaButton">
             <CtaButton

@@ -22,22 +22,29 @@
   let phonePrefix = "+48";
   let errors: Record<string, string> = {};
   let turnstileToken: string | null = null;
+  let turnstileWidgetId: string | null = null;
 
-  // Global callback for Turnstile
-  // This function needs to be globally accessible, so it's attached to window.
-  // Turnstile will call this function when it successfully verifies the user.
   onMount(() => {
-    (window as any).onTurnstileSuccessMain = (token: string) => {
-      turnstileToken = token;
-    };
-    (window as any).onTurnstileExpiredMain = () => {
-      turnstileToken = null;
-    };
-    (window as any).onTurnstileErrorMain = (err?: any) => {
-      turnstileToken = null;
-      submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
-      (window as any).turnstile?.reset();
-    };
+    if (typeof turnstile !== 'undefined') {
+      turnstileWidgetId = turnstile.render('#turnstile-container-main', {
+        sitekey: '0x4AAAAAABs8xaWAuEhKPhWB',
+        callback: function(token: string) {
+          turnstileToken = token;
+        },
+        'expired-callback': () => {
+          turnstileToken = null;
+        },
+        'error-callback': () => {
+          turnstileToken = null;
+          submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
+          if (turnstileWidgetId) {
+            turnstile.reset(turnstileWidgetId);
+          }
+        }
+      });
+    }
+
+    updatePhonePrefix();
   });
 
   // Audio recording state
@@ -334,10 +341,6 @@
     }
   }
 
-  onMount(() => {
-    updatePhonePrefix();
-  });
-
   $: if (formData.country) {
     updatePhonePrefix();
     if (formData.phone.trim()) {
@@ -623,7 +626,7 @@
 
       
 
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAABs8xaWAuEhKPhWB" data-callback="onTurnstileSuccessMain" data-expired-callback="onTurnstileExpiredMain" data-error-callback="onTurnstileErrorMain"></div> <!-- Turnstile widget -->
+      <div id="turnstile-container-main"></div>
 
       <div class="text-left ctaButton">
         <CtaButton
