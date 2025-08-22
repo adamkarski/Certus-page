@@ -19,25 +19,22 @@ export const nodes = [
 	() => import('./nodes/15'),
 	() => import('./nodes/16'),
 	() => import('./nodes/17'),
-	() => import('./nodes/18'),
-	() => import('./nodes/19'),
-	() => import('./nodes/20')
+	() => import('./nodes/18')
 ];
 
 export const server_loads = [0];
 
 export const dictionary = {
-		"/": [10],
-		"/bestseller": [11],
-		"/dokumentacja": [12],
-		"/kontakt": [13,[2]],
-		"/mapa-witryny": [14,[3]],
-		"/maszyny": [15,[4]],
-		"/onas_archive": [17,[6]],
-		"/onas": [16,[5]],
-		"/polityka-prywatnosci": [18,[7]],
-		"/reklamacje": [19,[8]],
-		"/serwis": [20,[9]]
+		"/": [9],
+		"/bestseller": [10],
+		"/dokumentacja": [11],
+		"/kontakt": [12,[2]],
+		"/mapa-witryny": [13,[3]],
+		"/maszyny": [14,[4]],
+		"/onas_archive": [16,[6]],
+		"/onas": [15,[5]],
+		"/polityka-prywatnosci": [17,[7]],
+		"/serwis": [18,[8]]
 	};
 
 export const hooks = {

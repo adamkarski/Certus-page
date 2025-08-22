@@ -107,13 +107,7 @@
               >Wszystkie maszyny CNC</a
             >
           </li>
-          <li>
-            <a
-              href="/reklamacje"
-              class="footer-link"
-              title="Zwroty / Reklamacje">Zwroty / Reklamacje</a
-            >
-          </li>
+         
           <li>
             <a href="/dokumentacja" class="footer-link" title="Dokumentacja"
               >Dokumentacja</a

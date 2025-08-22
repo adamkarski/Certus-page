@@ -10,7 +10,7 @@
 
 <svelte:head>
   <title>O nas - Polski producent maszyn CNC - Certus</title>
-  <meta name="description" content="Poznaj Certus - polskiego producenta maszyn CNC z ponad 10-letnim doświadczeniem. Specjalizujemy się w frezarkach, ploterach i grawerach dla różnych branż." />
+  <meta name="description" content="Poznaj Certus - polskiego producenta maszyn CNC z ponad 20-letnim doświadczeniem. Specjalizujemy się w frezarkach, ploterach i grawerach dla różnych branż." />
 </svelte:head>
 
 <div class="app">

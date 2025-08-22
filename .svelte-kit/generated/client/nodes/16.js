@@ -1,1 +1,1 @@
-export { default as component } from "../../../../src/routes/onas/+page.svelte";
+export { default as component } from "../../../../src/routes/onas_archive/+page.svelte";

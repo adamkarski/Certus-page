@@ -64,14 +64,6 @@
 		"src/routes/+layout.ts",
 		"src/routes/+layout.server.ts"
 	],
-	"/reklamacje": [
-		"src/routes/reklamacje/+layout.ts",
-		"src/routes/+layout.ts",
-		"src/routes/+layout.server.ts",
-		"src/routes/reklamacje/+layout.ts",
-		"src/routes/+layout.ts",
-		"src/routes/+layout.server.ts"
-	],
 	"/serwis": [
 		"src/routes/serwis/+layout.ts",
 		"src/routes/+layout.ts",

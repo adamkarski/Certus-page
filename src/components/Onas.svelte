@@ -15,7 +15,7 @@
     use:typoFixAction
     in:fade={{ duration: 600, delay: 900 }}
   >
-    Jesteśmy polskim producentem maszyn CNC z ponad 10-letnim doświadczeniem w
+    Jesteśmy polskim producentem maszyn CNC z ponad 20-letnim doświadczeniem w
     branży.
 
     <br /><br />Specjalizujemy się w tworzeniu precyzyjnych urządzeń
@@ -174,7 +174,7 @@
         </div>
         <div class="timeline-content">
           <h3>Forum CNC</h3>
-          <p>Założyciel kultowego Forum CNC w Polsce</p>
+          <p>Lider kultowego Forum CNC w Polsce</p>
         </div>
       </div>
       <div class="timeline-item fade-in" in:fade>
