@@ -1,28 +1,67 @@
 <script lang="ts">
-	import Section_Kontakt from './sections/Section_Kontakt.svelte';
+  import Section_Kontakt from "./sections/Section_Kontakt.svelte";
 
   export let isKontaktPage = false;
 </script>
 
 <section class="kontakt_page gradientHero">
-  <div class="first-container-back"></div>
-  <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
+  <!--  <div class="first-container-back"></div>
+  <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div> -->
 </section>
 
 <section id="kontakt" class="kontakt">
- <!--  <div class="kontakt-container container">
-    <div class="section-header">
-      <h1 class="no-sel">Kontakt</h1>
-      <hr />
-    </div>
-  </div> -->
+  <span class="triangle"></span>
   <Section_Kontakt {isKontaktPage} />
 </section>
 
 <style lang="scss">
+  #kontakt {
+    overflow: hidden;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 220px;
+      left: 0px;
+      width: 100%;
+      height: 50px;
+      background-image: url(/assets/images/pattern-image1-2.png);
+    }
+  }
+  .triangle {
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    top: 160px;
+    left: 0;
+    z-index: 1; // Ensure it's above other content if needed
 
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 55px;
+      background: #f7f7f7;
+      clip-path: polygon(0 0, 79% 0, 100% 100%, 0% 100%);
+    }
+  }
 
-  
+  @media (max-width: 800px) {
+     .triangle {
+      &::after {
+        clip-path: polygon(0 0, 40% 0, 60% 101%, 0% 100%) !important;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+     .triangle {
+      &::after {
+        clip-path: polygon(0 0, 20% 0, 40% 101%, 0% 100%) !important;
+      }
+    }
+  }
   .kontakt-container {
     overflow: hidden;
     width: 100%;
@@ -55,7 +94,7 @@
   .kontakt_page {
     min-width: 100vw;
     margin: 0 auto;
-    min-height: 20vh;
+    height: 260px;
   }
 
   .first-container-back {
@@ -77,12 +116,7 @@
 
   .section-header {
     margin-bottom: 80px;
-    
   }
-  
-  
-
-
 
   @media (max-width: 768px) {
     .kontakt {

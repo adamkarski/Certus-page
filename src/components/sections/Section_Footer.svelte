@@ -271,15 +271,15 @@
     transition: all 0.2s ease;
     color: #ccc;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 0.9rem;
     transition: color 0.3s ease;
   }
 
   .footer-link:hover {
     color: white;
     background-color: var(--color-primary);
-    padding: 5px;
-    font-weight: 800;
+    padding: 2px;
+    font-weight: 600;
     transition: all 0.2s ease;
   }
 
@@ -289,13 +289,15 @@
 
     a {
       transition: all 0.2s ease;
+      font-size: 0.9rem;
     }
 
     a:hover {
+
       color: white;
       background-color: var(--color-primary);
       padding: 2px;
-      font-weight: 800;
+      
     }
   }
 
@@ -332,6 +334,17 @@
   .footer-bottom-links {
     display: flex;
     gap: 30px;
+  
+    a{
+     
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      padding: 0;
+      font-size: 14px;
+    }
   }
 
   @media (max-width: 1100px) {

@@ -25,7 +25,7 @@
 
 <!-- Co nas wyróżnia Section -->
 <section class="wyroznia section no-sel">
-  <h2 class="section-title">Co nas wyróżnia</h2>
+  <h2 class="section-title">Co nas wyróżnia?</h2>
   <div class="strengths-grid no-sel">
     <div class="strength-card fade-in" in:fade>
       <div class="strength-icon">
@@ -207,40 +207,39 @@
 
 <!-- Branże Section -->
 <section class="branze section no-sel">
-  <h2 class="section-title">Te i wiele innych branży w których pracują nasi klienci</h2>
+  <h2 class="section-title">
+    Te i wiele innych branży w których pracują nasi klienci
+  </h2>
   <div class="industries-grid">
-    
-   
     <div class="industry-card fade-in" in:fade>
-     
-      
-
-      <CircleImage src="/assets/images/przemysł-tekstylny.jpg" alt="Przemysł tekstylny" />
-
+      <CircleImage
+        src="/assets/images/przemysł-tekstylny.jpg"
+        alt="Przemysł tekstylny"
+      />
 
       <h4>Przemysł tekstylny</h4>
     </div>
     <div class="industry-card fade-in" in:fade>
+      <CircleImage
+        src="/assets/images/obrobka-kamienia.jpg"
+        alt="Przemysł tekstylny"
+      />
 
-      <CircleImage src="/assets/images/obrobka-kamienia.jpg" alt="Przemysł tekstylny" />
-      
       <h4>Obróbka kamienia</h4>
     </div>
     <div class="industry-card fade-in" in:fade>
-    
-
-      <CircleImage src="/assets/images/jubilerstwo.jpg" alt="Przemysł jubilerski" />
-
+      <CircleImage
+        src="/assets/images/jubilerstwo.jpg"
+        alt="Przemysł jubilerski"
+      />
 
       <h4>Jubilerstwo</h4>
     </div>
     <div class="industry-card fade-in" in:fade>
-      
-
-      <CircleImage src="/assets/images/produkcja-okularow.jpg" alt="Produkcja okularów" />
-
-
-
+      <CircleImage
+        src="/assets/images/produkcja-okularow.jpg"
+        alt="Produkcja okularów"
+      />
 
       <h4>Produkcja okularów</h4>
     </div>
@@ -256,42 +255,34 @@
       wieloletnie doświadczenie. Nasze maszyny CNC to gwarancja precyzji,
       niezawodności i optymalnego stosunku jakości do ceny.
     </p>
-    <CtaButton  on:click={() => window.location.href = "/kontakt"} classs="btn btn--primary btn--lg onasbutton" text="Skontaktuj się z nami" 
-     
-      
+    <CtaButton
+      on:click={() => (window.location.href = "/kontakt")}
+      classs="btn btn--primary btn--lg onasbutton"
+      text="Skontaktuj się z nami"
     ></CtaButton>
   </div>
 </section>
 
 <style lang="scss">
-
-
-
-  section.branze{
-
-    .section-title{
-
+  section.branze {
+    .section-title {
       padding-bottom: 5vh;
     }
 
     padding: 0 9rem;
     padding-top: 10vh;
     padding-bottom: 10vh;
-    .industries-grid{
-      h4{
+    .industries-grid {
+      h4 {
         font-size: 1.4rem;
         margin-top: 10px;
         margin-bottom: 10px;
         font-weight: 600;
         color: var(--color-text-secondary);
         text-align: center;
-
       }
     }
-
-
   }
-
 
   section.onas {
     padding: 0 9rem;
@@ -455,8 +446,8 @@
     &:hover {
       transform: translateY(-10px);
     }
-    h3{
-      min-height: 80px; 
+    h3 {
+      min-height: 80px;
     }
   }
 
@@ -480,7 +471,6 @@
   }
 
   .industry-card {
-  
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -495,9 +485,9 @@
       font-size: 1.2rem;
       margin-top: 10px;
       margin-bottom: 10px;
-      font-weight:
-        600;
-  }
+      font-weight: 600;
+      min-height: 150px;;
+    }
   }
   /* Dlaczego CERTUS Section */
   .dlaczego {

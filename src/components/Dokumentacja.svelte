@@ -1,8 +1,10 @@
-<section class="dokumentacja_page gradientHero">
-  <div class="first-container-back"></div>
-  <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
-</section>
+<script lang="ts">
+</script>
 
+<section class="Dokumentacja_page gradientHero">
+  <!--  <div class="first-container-back"></div>
+  <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div> -->
+</section>
 <section id="dokumentacja" class="dokumentacja">
   <div class="dokumentacja-container container">
     <div class="section-header">
@@ -10,10 +12,83 @@
       <hr />
     </div>
   </div>
+
+  <span class="triangle"></span>
 </section>
 
 <style lang="scss">
   .dokumentacja-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 0 9rem;
+  }
+
+  .dokumentacja {
+    width: 100%;
+    padding: 100px 0;
+    background: #f7f7f7;
+    color: var(--color-text-secondary);
+  }
+
+  .section-header {
+    margin-bottom: 80px;
+  }
+
+  @media (max-width: 768px) {
+    .dokumentacja {
+      padding: 80px 0;
+    }
+  }
+  #dokumentacja {
+    overflow: hidden;
+    background-color: #ffffff;
+    min-height: 50vh;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 220px;
+      left: 0px;
+      width: 100%;
+      height: 50px;
+      background-image: url(/assets/images/pattern-image1-2.png);
+    }
+  }
+  .triangle {
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    top: 160px;
+    left: 0;
+    z-index: 1; // Ensure it's above other content if needed
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 55px;
+      background: #ffffff;
+      clip-path: polygon(0 0, 79% 0, 100% 100%, 0% 100%);
+    }
+  }
+  @media (max-width: 800px) {
+     .triangle {
+      &::after {
+        clip-path: polygon(0 0, 40% 0, 60% 101%, 0% 100%) !important;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+     .triangle {
+      &::after {
+        clip-path: polygon(0 0, 20% 0, 40% 101%, 0% 100%) !important;
+      }
+    }
+  }
+
+  .Dokumentacja-container {
     overflow: hidden;
     width: 100%;
     padding: 0 9rem;
@@ -42,23 +117,23 @@
     }
   }
 
-  .dokumentacja_page {
+  .Dokumentacja_page {
     min-width: 100vw;
     margin: 0 auto;
-    min-height: 20vh;
+    height: 260px;
   }
 
   .first-container-back {
     background-image: url(/assets/first-block-polyline.svg);
     position: absolute;
-    top: 209px;
+    top: 218px;
     width: 100%;
     height: 44px;
     background-repeat: no-repeat;
     background-position-x: -1500px;
     background-size: cover;
   }
-  .dokumentacja {
+  .Dokumentacja {
     width: 100%;
     padding: 100px 0;
     background: #f7f7f7;
@@ -70,7 +145,7 @@
   }
 
   @media (max-width: 768px) {
-    .dokumentacja {
+    .Dokumentacja {
       padding: 80px 0;
     }
   }

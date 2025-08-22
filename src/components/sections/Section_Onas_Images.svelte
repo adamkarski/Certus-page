@@ -233,6 +233,15 @@
   @media (max-width: 768px) {
     .onas-header h1 {
       font-size: 1.5rem;
+    
+     
     }
+    .onas-header h1::before {
+        width: 20px;
+        height: 30px;
+        margin-left: -30px;
+        margin-top: 3px;
+        transform: scale(0.8);
+      }
   }
 </style>
