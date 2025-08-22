@@ -41,7 +41,7 @@
               Dokument ten stanowi checklistę do przeprowadzania okresowych przeglądów technicznych maszyn. Obejmuje kontrolę układu mechanicznego, elektrycznego, automatyki oraz systemów bezpieczeństwa.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/Formularz przeglądu technicznego okresowego (checklista).pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /> </a>
+              <a href="/do_pobrania/dokumantacja/Formularz-przeglądu-technicznego-okresowego-checklista.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /> </a>
             </td>
           </tr>
           <tr>
@@ -50,7 +50,7 @@
               Formularz służący do zgłaszania awarii lub nieprawidłowego działania maszyn. Zawiera pola na dane zgłaszającego, szczegóły maszyny oraz dokładny opis usterki.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/Formularz zgłoszenia usterki (serwisowy).pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
+              <a href="/do_pobrania/dokumantacja/Formularz-zgłoszenia-usterki-serwisowy.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
             </td>
           </tr>
           <tr>
@@ -59,7 +59,7 @@
               Karta kontrolna bezpieczeństwa i higieny pracy. Jest to checklista do weryfikacji stanu maszyny, wymaganych środków ochrony indywidualnej oraz procedur bezpieczeństwa przed rozpoczęciem pracy.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/KARTA KONTROLNA BHP.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
+              <a href="/do_pobrania/dokumantacja/KARTA-KONTROLNA-BHP.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
             </td>
           </tr>
           <tr>
@@ -77,7 +77,7 @@
               Protokół używany przy technicznym odbiorze maszyny CNC. Dokumentuje dane ogólne, stan maszyny, zakres wdrożenia oraz oświadczenia stron po zakończeniu instalacji.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/PROTOKÓŁ ODBIORU TECHNICZNEGO MASZYNY CNC.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
+              <a href="/do_pobrania/dokumantacja/PROTOKÓŁ-ODBIORU–TECHNICZNEGO-MASZYNY-CNC.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
             </td>
           </tr>
           <tr>
