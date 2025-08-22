@@ -913,14 +913,23 @@
     border-radius: 1rem;
 
     :global(button.backFromCategory) {
-      position: fixed !important;
-      display: block;
-      top: 58vh;
-      left: 0px;
-      z-index: 5;
-      transition: all ease 0.4s;
-      background-color: var(--color-primary);
-      color: white;
+      position: absolute !important;
+    /* display: block; */
+    bottom: 1px;
+    left: 0px;
+    z-index: 5;
+    transition: all ease 0.4s;
+    background-color: var(--color-primary);
+    color: white;
+    &::before{
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url(/assets/images/pattern-image1-2.png);
+    }
     }
 
     .back_category {
