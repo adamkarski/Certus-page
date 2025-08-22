@@ -41,7 +41,7 @@
               Dokument ten stanowi checklistę do przeprowadzania okresowych przeglądów technicznych maszyn. Obejmuje kontrolę układu mechanicznego, elektrycznego, automatyki oraz systemów bezpieczeństwa.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/Formularz-przeglądu-technicznego-okresowego-checklista.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /> </a>
+              <a href="/do_pobrania/dokumentacja/Formularz-przegladu-technicznego-okresowego-checklista.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /> </a>
             </td>
           </tr>
           <tr>
@@ -50,7 +50,7 @@
               Formularz służący do zgłaszania awarii lub nieprawidłowego działania maszyn. Zawiera pola na dane zgłaszającego, szczegóły maszyny oraz dokładny opis usterki.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/Formularz-zgłoszenia-usterki-serwisowy.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
+              <a href="/do_pobrania/dokumentacja/Formularz-zgloszenia-usterki-serwisowy.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
             </td>
           </tr>
           <tr>
@@ -59,7 +59,7 @@
               Karta kontrolna bezpieczeństwa i higieny pracy. Jest to checklista do weryfikacji stanu maszyny, wymaganych środków ochrony indywidualnej oraz procedur bezpieczeństwa przed rozpoczęciem pracy.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/KARTA-KONTROLNA-BHP.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
+              <a href="/do_pobrania/dokumentacja/KARTA-KONTROLNA-BHP.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
             </td>
           </tr>
           <tr>
@@ -68,7 +68,7 @@
               Dokument określa ogólne warunki sprzedaży obowiązujące w MG-CERTUS. Reguluje kwestie związane z ofertami, zamówieniami, cenami, warunkami płatności i dostaw.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/OWS.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
+              <a href="/do_pobrania/dokumentacja/OWS.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
             </td>
           </tr>
           <tr>
@@ -77,7 +77,7 @@
               Protokół używany przy technicznym odbiorze maszyny CNC. Dokumentuje dane ogólne, stan maszyny, zakres wdrożenia oraz oświadczenia stron po zakończeniu instalacji.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/PROTOKÓŁ-ODBIORU–TECHNICZNEGO-MASZYNY-CNC.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
+              <a href="/do_pobrania/dokumentacja/PROTOKOL-ODBIORU–TECHNICZNEGO-MASZYNY-CNC.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
             </td>
           </tr>
           <tr>
@@ -86,7 +86,7 @@
               Dokument potwierdzający przeszkolenie operatora maszyny CNC. Określa zakres odbytego szkolenia, obejmujący m.in. bezpieczeństwo, obsługę, programowanie i konserwację.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/Protokół szkoleniowo-wdrożeniowy operatora CNC.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
+              <a href="/do_pobrania/dokumentacja/Protokol-szkoleniowo-wdrozeniowy-operatora-CNC.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
             </td>
           </tr>
           <tr>
@@ -95,7 +95,7 @@
               Dokument opisujący zasady świadczenia usług serwisowych. Obejmuje warunki serwisu gwarancyjnego, pogwarancyjnego oraz zasady przeprowadzania okresowych przeglądów i napraw.
             </td>
             <td>
-              <a href="/do_pobrania/dokumantacja/Zasady serwisu gwarancyjnego, pogwarancyjnego i okresowych napraw - CERTUS (1).pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
+              <a href="/do_pobrania/dokumentacja/Zasady-serwisu-gwarancyjnego-pogwarancyjnego-i-okresowych-napraw-CERTUS.pdf" download class="cta-button"><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a>
             </td>
           </tr>
         </tbody>
