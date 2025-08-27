@@ -66,6 +66,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_tslib: string;
 	export const ZSH_DISABLE_COMPFIX: string;
 	export const npm_package_devDependencies_svelte: string;
+	export const PYDEVD_DISABLE_FILE_VALIDATION: string;
 	export const npm_package_devDependencies_glob: string;
 	export const npm_package_devDependencies__tailwindcss_postcss: string;
 	export const npm_package_devDependencies_svelte_turnstile: string;
@@ -86,6 +87,7 @@ declare module '$env/static/private' {
 	export const P9K_TTY: string;
 	export const npm_package_devDependencies__sveltejs_vite_plugin_svelte: string;
 	export const npm_package_name: string;
+	export const BUNDLED_DEBUGPY_PATH: string;
 	export const npm_package_devDependencies_sass: string;
 	export const npm_package_scripts_build: string;
 	export const npm_config_version_commit_hooks: string;
@@ -95,6 +97,7 @@ declare module '$env/static/private' {
 	export const XPC_SERVICE_NAME: string;
 	export const npm_package_devDependencies__sveltejs_adapter_auto: string;
 	export const npm_package_version: string;
+	export const VSCODE_DEBUGPY_ADAPTER_ENDPOINTS: string;
 	export const VSCODE_INJECTION: string;
 	export const npm_package_devDependencies_svelte_check: string;
 	export const npm_package_devDependencies_autoprefixer: string;
@@ -202,6 +205,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_tslib: string;
 		ZSH_DISABLE_COMPFIX: string;
 		npm_package_devDependencies_svelte: string;
+		PYDEVD_DISABLE_FILE_VALIDATION: string;
 		npm_package_devDependencies_glob: string;
 		npm_package_devDependencies__tailwindcss_postcss: string;
 		npm_package_devDependencies_svelte_turnstile: string;
@@ -222,6 +226,7 @@ declare module '$env/dynamic/private' {
 		P9K_TTY: string;
 		npm_package_devDependencies__sveltejs_vite_plugin_svelte: string;
 		npm_package_name: string;
+		BUNDLED_DEBUGPY_PATH: string;
 		npm_package_devDependencies_sass: string;
 		npm_package_scripts_build: string;
 		npm_config_version_commit_hooks: string;
@@ -231,6 +236,7 @@ declare module '$env/dynamic/private' {
 		XPC_SERVICE_NAME: string;
 		npm_package_devDependencies__sveltejs_adapter_auto: string;
 		npm_package_version: string;
+		VSCODE_DEBUGPY_ADAPTER_ENDPOINTS: string;
 		VSCODE_INJECTION: string;
 		npm_package_devDependencies_svelte_check: string;
 		npm_package_devDependencies_autoprefixer: string;
