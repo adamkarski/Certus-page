@@ -632,7 +632,6 @@
 
   :global(.recorded-file){
     color: var(--color-text-secondary) !important;
-    font-size: 0.8rem;
   }
   :global(.ctaButton button span.text-container){
     text-align: left;
@@ -702,7 +701,6 @@
 
     h2 {
       color: white;
-      font-size: 1.6rem;
       margin-bottom: 32px;
     }
   }
@@ -762,7 +760,6 @@
     display: flex;
     align-items: flex-start;
     margin-bottom: 18px;
-    font-size: 1rem;
     line-height: 1.5;
     color: var(--color-gray-200);
   }
@@ -785,7 +782,6 @@
   .info-row {
     display: flex;
     align-items: flex-start;
-    font-size: 1rem;
     margin-bottom: 16px;
     gap: 10px;
 
@@ -795,14 +791,12 @@
 
       small {
         color: #ccc;
-        font-size: 0.85rem;
         margin-top: 2px;
       }
     }
   }
 
   .info-icon {
-    font-size: 1.2rem;
     margin-right: 6px;
     margin-top: 4px;
   }
@@ -838,7 +832,6 @@
 
   .contact-form h3 {
       color: var(--color-text-secondary);
-      font-size: 1.5rem;
       margin-bottom: 20px;
       font-weight: 600;
       text-align: center;
@@ -866,16 +859,13 @@
 
   @media (max-width: 768px) {
     .contact-form h3 {
-        font-size: 1.25rem;
         margin-bottom: 16px;
     }
 
     .contact-left h2 {
-      font-size: 1.3rem;
     }
 
     .contact-bullets li {
-      font-size: 0.9rem;
     }
   }
 </style>

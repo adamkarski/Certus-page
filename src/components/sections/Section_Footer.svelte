@@ -214,7 +214,6 @@
     color: #ccc;
     line-height: 1.6;
     margin-bottom: 30px;
-    font-size: 15px;
   }
   .footer-description-secondary {
     color: #ccc;
@@ -232,7 +231,6 @@
   .social-link {
     color: #ccc;
     text-decoration: none;
-    font-size: 14px;
     transition: color 0.3s ease;
   }
 
@@ -244,7 +242,6 @@
   }
 
   .footer-title {
-    font-size: 18px;
     font-weight: 700;
     margin-bottom: 25px;
     letter-spacing: 1px;
@@ -265,7 +262,6 @@
     transition: all 0.2s ease;
     color: #ccc;
     text-decoration: none;
-    font-size: 0.9rem;
     transition: color 0.3s ease;
   }
 
@@ -283,7 +279,6 @@
 
     a {
       transition: all 0.2s ease;
-      font-size: 0.9rem;
     }
 
     a:hover {
@@ -300,12 +295,10 @@
     align-items: center;
     margin-bottom: 15px;
     color: #ccc;
-    font-size: 14px;
   }
 
   .contact-icon {
     margin-right: 10px;
-    font-size: 16px;
   }
 
   .footer-bottom {
@@ -321,7 +314,6 @@
 
   .copyright {
     color: #ccc;
-    font-size: 14px;
     margin: 0;
   }
 
@@ -332,7 +324,6 @@
     a{
      
       text-decoration: none;
-      font-size: 14px;
       transition: color 0.3s ease;
     }
     a:hover {

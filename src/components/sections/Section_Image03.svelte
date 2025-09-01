@@ -87,7 +87,6 @@ h3 {
           width: 34px;
         }
         a {
-          font-size: 3em;
           font-weight: 800;
           padding-left: 0.5em;
         }
@@ -158,16 +157,13 @@ h3 {
 
       font-weight: 500 !important;
       margin-left: -27px;
-      font-size: 1.2rem;
     }
   }
   .image-header-02 h2 {
     margin: 0;
-    font-size: 2.5rem;
     color: white !important; 
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     margin-left: -0.8em;
-    font-size: 2.5rem;
     font-weight: 700;
   }
   .image-header-02 h2:before {
@@ -180,7 +176,6 @@ h3 {
     }
   @media (max-width: 768px) {
     .image-header-02 h2 {
-      font-size: 1.5rem;
     }
   }
 </style>

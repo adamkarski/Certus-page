@@ -19,8 +19,6 @@
  border-top-left-radius: 0px; 
  padding-left: 40px; 
  height: 25px; 
- font-weight: 600; 
- font-size: 1.3rem; 
  width: 246px; 
  text-align: left; 
  display: flex; 
@@ -29,7 +27,6 @@
   flex-direction: row;
   color: white;
   border: none;
-  font-family: "Poppins";
   margin-left: 34px;
     transition: all ease-in-out 0.2s;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);

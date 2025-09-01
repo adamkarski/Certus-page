@@ -79,7 +79,6 @@
 
     h3 {
       margin: 0 0 8px 0;
-      font-size: 1.4rem;
       color: white;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       font-weight: 600;
@@ -90,7 +89,6 @@
       color: white;
       font-weight: 300;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-      font-size: 0.9rem;
     }
   }
 
@@ -112,11 +110,9 @@
 
   @media (max-width: 768px) {
     .maszyny-video-header h3 {
-      font-size: 1.2rem;
     }
     
     .maszyny-video-header p {
-      font-size: 0.8rem;
     }
     
     .maszyny-video {

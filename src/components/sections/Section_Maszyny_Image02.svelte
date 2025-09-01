@@ -80,7 +80,6 @@
 
     h3 {
       margin: 0 0 8px 0;
-      font-size: 1.4rem;
       color: white;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
       font-weight: 600;
@@ -91,7 +90,6 @@
       color: white;
       font-weight: 300;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-      font-size: 0.9rem;
     }
   }
 
@@ -103,7 +101,6 @@
     border-radius: 5px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.9rem;
     transition: background 0.3s ease;
 
     &:hover {
@@ -129,11 +126,9 @@
 
   @media (max-width: 768px) {
     .maszyny-plain-image-header h3 {
-      font-size: 1.2rem;
     }
     
     .maszyny-plain-image-header p {
-      font-size: 0.8rem;
     }
     
     .maszyny-plain-image {
@@ -141,7 +136,6 @@
     }
     
     .maszyny-cta-btn {
-      font-size: 0.8rem;
       padding: 6px 12px;
     }
   }

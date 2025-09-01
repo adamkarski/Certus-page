@@ -717,7 +717,6 @@
   }
 
   .contact-left h2 {
-    font-size: 1.5rem !important;
     font-weight: 600 !important;
     margin-bottom: 32px;
     line-height: 1.2;
@@ -736,7 +735,6 @@
     display: flex;
     align-items: flex-start;
     margin-bottom: 18px;
-    font-size: 1rem;
     line-height: 1.5;
     color: var(--color-gray-200);
   }
@@ -759,7 +757,6 @@
   .info-row {
     display: flex;
     align-items: flex-start;
-    font-size: 1rem;
     margin-bottom: 16px;
     gap: 10px;
 
@@ -776,7 +773,6 @@
   }
 
   .info-icon {
-    font-size: 1.2rem;
     margin-right: 6px;
     margin-top: 4px;
   }
@@ -812,7 +808,6 @@
 
   .contact-form h3 {
       color: var(--color-text-secondary);
-      font-size: 1.5rem;
       margin-bottom: 20px;
       font-weight: 600;
       text-align: center;
@@ -840,16 +835,13 @@
 
   @media (max-width: 768px) {
     .contact-form h3 {
-        font-size: 1.25rem;
         margin-bottom: 16px;
     }
 
     .contact-left h2 {
-      font-size: 1.3rem;
     }
 
     .contact-bullets li {
-      font-size: 0.9rem;
     }
   }
 </style>

@@ -106,11 +106,9 @@
     }
     h1 {
     margin: 0;
-    font-size: 2.5rem;
     color: white;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     font-weight: 700;
-    font-size: 2.5rem;
     color: white;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   }h3 {
@@ -153,7 +151,6 @@
   }
   @media (max-width: 768px) {
     .image-header h1 {
-      font-size: 1.5rem;
     }
   }
 </style>

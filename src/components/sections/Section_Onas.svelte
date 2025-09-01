@@ -76,7 +76,6 @@
 <style lang="scss">
 
 .title-green{
-  font-size: 1.3rem;
   padding-left: 20px;
   border-left: 4px solid var(--color-primary-dark);
 }
@@ -119,7 +118,6 @@ margin: 0 10px;
     color: #666;
     line-height: 1.8;
     margin-bottom: 25px;
-    font-size: 16px;
   }
 
   .o-nas-features {
@@ -130,7 +128,6 @@ margin: 0 10px;
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    font-size: 16px;
     color: #333;
   }
 
@@ -161,14 +158,12 @@ margin: 0 10px;
   }
 
   .step-title {
-    font-size: 28px;
     font-weight: bold;
     margin-bottom: 5px;
     color: var(--color-text-secondary);
   }
 
   .step-description {
-    font-size: 16px;
     color: #555;
   }
 

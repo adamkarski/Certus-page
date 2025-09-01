@@ -101,10 +101,8 @@
     }
 
     .section-title {
-      font-size: 20px;
     }
     .section-subtitle {
-      font-size: 14px;
       color: var(--color-text-secondary);
     }
   }

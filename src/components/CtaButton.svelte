@@ -65,9 +65,6 @@
     width: auto; // Szerokość dopasuje się do treści
     min-width: 260px; // Minimalna szerokość
     max-width: 90vw; // Maksymalna szerokość na mobilnych
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
     color: var(--color-text-primary);
     background-color: #eeeeee;
     cursor: pointer;

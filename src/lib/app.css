@@ -63,9 +63,6 @@ body {
   /* Typografia przeniesiona do typography.scss */
 
   /* ===== INNE STYLE ===== */
-  font-family: "Poppins", sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
   color: #efefef;
   background-color: var(--color-bg-primary);
   font-synthesis: none;
@@ -325,14 +322,10 @@ h2 {
 
 .section-title {
   color: var(--color-text-secondary);
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 38px;
   text-align: left;
   margin-bottom: 30px;
 }
 
 .section-subtitle {
-  font-size: 20px;
   color: var(--color-text-secondary);
 }

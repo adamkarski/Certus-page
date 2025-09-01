@@ -255,7 +255,6 @@
     
     h3 {
       color: var(--color-text-secondary);
-      font-size: 1.5rem;
       margin-bottom: 30px;
       font-weight: 600;
     }
@@ -285,7 +284,6 @@
     margin-bottom: 8px;
     font-weight: 500;
     color: var(--color-text-secondary);
-    font-size: 0.9rem;
   }
 
   .serwis-form-control {
@@ -293,7 +291,6 @@
     padding: 12px 16px;
     border: 2px solid #e5e7eb;
     border-radius: 8px;
-    font-size: 1rem;
     transition: all 0.2s;
     background: white;
     color: var(--color-text-secondary);
@@ -333,7 +330,6 @@
   .serwis-error-message {
     display: block;
     color: #ef4444;
-    font-size: 0.875rem;
     margin-top: 4px;
   }
 
@@ -344,7 +340,6 @@
     border: none;
     padding: 16px 24px;
     border-radius: 8px;
-    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
@@ -386,7 +381,6 @@
   @media (max-width: 768px) {
     .serwis-contact-form {
       h3 {
-        font-size: 1.25rem;
         margin-bottom: 24px;
       }
     }

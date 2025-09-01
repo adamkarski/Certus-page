@@ -159,7 +159,7 @@
           <p>Właściciel związany z rynkiem CNC od 2000 roku</p>
         </div>
       </div>
-      <div class="timeline-item fade-in" in:fade>
+      <div class="timeline-item fade-in" in:fade use:typoFixAction>
         <div class="timeline-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -274,7 +274,6 @@
     padding-bottom: 10vh;
     .industries-grid {
       h4 {
-        font-size: 1.4rem;
         margin-top: 10px;
         margin-bottom: 10px;
         font-weight: 600;
@@ -289,7 +288,6 @@
     padding-top: 10vb;
     .description {
       text-align: center;
-      font-size: 1.5rem;
 
       color: var(--color-text-secondary);
     }
@@ -351,7 +349,6 @@
   .section-title {
     text-align: center;
     margin-bottom: 40px;
-    font-size: 2.5rem;
     font-weight: bold;
   }
 
@@ -405,7 +402,6 @@
   .timeline-icon {
     position: absolute;
     top: 15px;
-    font-size: 1.4rem;
     color: var(--color-primary);
     z-index: 2;
   }
@@ -425,7 +421,6 @@
     gap: 30px;
     padding: 0 7rem;
     h3 {
-      font-size: 1.4rem;
       margin-top: 10px;
       margin-bottom: 10px;
       text-align: center;
@@ -452,7 +447,6 @@
   }
 
   .strength-icon {
-    font-size: 3rem;
     margin-bottom: 20px;
     color: var(--color-primary);
     width: 60px; /* Fixed width for consistency */
@@ -482,7 +476,6 @@
       margin-bottom: 10px; /* Add some space between image and title */
     }
     h4 {
-      font-size: 1.2rem;
       margin-top: 10px;
       margin-bottom: 10px;
       font-weight: 600;

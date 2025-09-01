@@ -133,14 +133,6 @@
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    font-size: 1.1rem;
-    color: #333;
-  
-    
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    font-size: 1.1rem;
     color: #333;
   }
 

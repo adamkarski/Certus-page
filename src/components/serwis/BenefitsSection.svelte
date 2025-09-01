@@ -95,7 +95,6 @@
     margin-bottom: 80px;
 
     h2 {
-      font-size: 2.5rem;
       font-weight: 700;
       color: var(--color-text-secondary);
       margin-bottom: 16px;
@@ -115,7 +114,6 @@
     }
 
     p {
-      font-size: 1.2rem;
       color: var(--color-text-secondary);
       opacity: 0.8;
     }
@@ -160,7 +158,6 @@
   }
 
   .serwis-benefit-item h4 {
-    font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-text-secondary);
     margin-bottom: 12px;
@@ -186,11 +183,9 @@
       margin-bottom: 60px;
 
       h2 {
-        font-size: 2rem;
       }
 
       p {
-        font-size: 1.1rem;
       }
     }
 
@@ -214,7 +209,6 @@
     }
 
     .serwis-benefit-item h4 {
-      font-size: 1.1rem;
     }
   }
 </style>
