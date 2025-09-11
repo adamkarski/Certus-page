@@ -1,0 +1,140 @@
+# Analiza Stylów Tabel w Projekcie
+
+Ten raport szczegółowo opisuje style CSS/SCSS wpływające na wygląd i zachowanie tabel w projekcie, z podziałem na pliki i komponenty.
+
+---
+
+## 1. Główne Style Tabel (`src/lib/table.scss`)
+
+Ten plik zawiera większość globalnych definicji stylów dla tabel.
+
+### Ogólne style tabeli (`table`)
+- `border-collapse: collapse;`
+- `background: #fafbfc;`
+- `border-radius: 10px;`
+- `overflow: hidden;`
+- `font-size: 1rem;`
+- `box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);`
+
+### Nagłówki tabel (`table thead th`)
+- `background-color: #788391;`
+- `padding: 0.8em 1em;`
+- `border-bottom: 1px solid #e5e7eb;`
+- `text-align: left;`
+- `background: #f1f3f6;`
+- `font-weight: 600;`
+- `font-size: 1.05em;`
+
+### Komórki tabeli (`table td`)
+- `padding: 0.8em 1em;`
+- `border-bottom: 1px solid #e5e7eb;`
+- `text-align: left;`
+
+### Pierwsza kolumna tabeli (`:global(.maszyny-dane-tabela td:first-child)`)
+- `font-weight: 600;`
+- `background-color: #f8f9fa;`
+- `border-right: 2px solid #3498db;`
+- `min-width: 250px;`
+- `flex-direction: row;`
+- `align-items: start;`
+- `flex-wrap: nowrap;`
+- `align-content: stretch;`
+- `justify-content: start;`
+- `height: auto;`
+- `min-height: 36px;`
+- `justify-items: stretch;`
+
+### Ostatnia kolumna tabeli (`.maszyny-dane-tabela td:last-child`)
+- `width: 65%;`
+
+### Wiersze tabeli
+- `tr:last-child td`: `border-bottom: none;`
+- `tr:nth-child(even)`: `background-color: #f9f9f9;`
+- `tr:hover`: `background-color: #e3f2fd;`, `transition: background-color 0.3s ease;`
+
+### Lista opcji (`.options-list`)
+- `display: flex;`
+- `margin: 0;`
+- `padding: 0;`
+- `list-style: none;`
+- `list-style-type: none;`
+- `flex-direction: row;`
+- `justify-content: flex-start;`
+- `align-items: center;`
+- `align-content: center;`
+- `flex-wrap: wrap;`
+
+### Elementy listy opcji (`.options-list li`)
+- `padding: 6px;`
+- `font-size: 0.7rem;` (UWAGA: W poprzedniej dyskusji była mowa o tym, że ta wartość może być problematyczna)
+- `position: relative;`
+- `list-style-type: none;`
+- `border: 1px solid rgba(128, 128, 128, 0.366);`
+- `border-radius: 5px;`
+- `width: auto;`
+- `text-align: center;`
+- `background-color: rgba(0, 0, 0, 0.04);`
+- `margin-bottom: 4px;`
+- `margin-right: 12px;`
+- `padding-left: 12px;`
+- `padding-right: 12px;`
+- `transition: all ease 0.3s;`
+- `li:hover`: `background-color: white;`
+
+### Inne style w `table.scss`
+- `.maszyny-dane .maszyny-dane-tabela .text`: `color: var(--color-text-primary);`
+- `.maszyny-dane .maszyny-dane-tabela img`: `width: 45px;`, `filter: grayscale(100%);`
+- `.standard-feature`: `color: var(--color-primary-dark);`, `font-weight: 600;`
+- `.specs-text`: `line-height: 1.5;`
+- Ujednolicone kolory nagłówków dla wszystkich tabel (`.frezarki th`, `.plotery th`, etc.): `color: #5d636b;`
+
+### Media Queries w `table.scss`
+- **`@media (max-width: 1200px)` (Tablet i mniejsze laptopy)**:
+  - `.maszyny-dane .maszyny-dane-content`: `flex-direction: column;`, `gap: 30px;`
+  - `.maszyny-dane .maszyny-dane-table-column`, `.maszyny-dane .maszyny-dane-gallery-column`: `flex: none;`, `width: 100%;`, `min-width: auto;`
+  - Zmiana kolejności kolumn.
+- **`@media (max-width: 900px)`**:
+  - `.maszyny-dane-tabela-wrap`: `overflow-x: auto;`, `max-width: 100vw;`
+- **`@media (max-width: 768px)`**:
+  - `.maszyny-dane .maszyny-dane-content`: `flex-direction: column;`, `gap: 20px;`
+  - `.maszyny-dane-tabela`: `min-width: 100%;`, `width: 100%;`, `font-size: 0.85rem;`
+  - `.maszyny-dane-tabela th`, `.maszyny-dane-tabela td`: `padding: 0.5em 0.3em;`, `word-wrap: break-word;`, `word-break: break-word;`, `hyphens: auto;`
+  - `:global(.maszyny-dane-tabela td:first-child)`: `min-width: auto !important;`, `width: 35% !important;`
+  - `.options-list li`: `font-size: 0.8rem;`, `padding: 4px 8px;`
+- **`@media (min-width: 481px) and (max-width: 768px)`**:
+  - `.options-list li`: `font-size: 0.7rem;`
+- **`@media (max-width: 480px)` (Card-like layout dla telefonów)**:
+  - `.maszyny-dane-tabela td:last-child`: `width: 100% !important;`
+  - Tabela, thead, tbody, th, td, tr stają się `display: block;`
+  - Nagłówki tabeli ukryte (`position: absolute; top: -9999px; left: -9999px;`)
+  - Komórki tabeli stylizowane jako bloki z paddingiem i `data-label`.
+  - `.options-list li`: `font-size: 0.75rem !important;`, `padding: 3px 6px !important;`
+
+---
+
+## 2. Style Tabel w `src/lib/app.css`
+
+Plik `app.css` nie zawiera bezpośrednich stylów dla elementów `<table>`, `<th>`, `<td>` ani klas specyficznych dla tabel. Skupia się na ogólnych stylach aplikacji, kolorach i typografii, które mogą pośrednio wpływać na wygląd tekstu w tabelach (np. poprzez dziedziczenie `font-family`, `color` z `:root` lub `body`).
+
+---
+
+## 3. Style Tabel w Komponentach Svelte
+
+Komponenty tabel (`src/components/tables/*.svelte`) oraz `src/components/Maszyny_activeMachine.svelte` importują `table.scss`, co oznacza, że dziedziczą i stosują globalne style z tego pliku. Nie zawierają one rozbudowanych, lokalnych bloków `<style>` nadpisujących podstawowe style tabel, poza kilkoma globalnymi nadpisaniami w `Maszyny_activeMachine.svelte`.
+
+### `src/components/Maszyny_activeMachine.svelte`
+- `:global(.activeMachine .maszyny-dane-tabela)`:
+  - `margin-top: 4em;`
+  - `font-size: 0.95rem;` (Nadpisuje globalny `font-size: 1rem;` z `table.scss` dla tabeli w tym komponencie)
+
+### Komponenty tabel (`src/components/tables/*.svelte`)
+
+Każdy z tych komponentów (`Maszyny_table_frezarki.svelte`, `Maszyny_table_frezarki5osiowe.svelte`, `Maszyny_table_grawerki.svelte`, `Maszyny_table_plotery.svelte`, `Maszyny_table_ploteryLinearne.svelte`, `Maszyny_table_specjalistyczne.svelte`, `Maszyny_table_zabudowa.svelte`) importuje `table.scss` (`import '$lib/table.scss';`). Oznacza to, że ich style są w dużej mierze kontrolowane przez ten plik. Nie zawierają one własnych, lokalnych bloków `<style>` z definicjami CSS, które nadpisywałyby style z `table.scss`.
+
+Jedynym wyjątkiem jest dodanie klas do elementu `<table>` (np. `class="maszyny-dane-tabela frezarki"`), które są następnie używane w `table.scss` do specyficznych stylów (np. `color` dla `th`).
+
+---
+
+## Podsumowanie
+
+Stylizacja tabel jest scentralizowana głównie w pliku `src/lib/table.scss`, który definiuje podstawowy wygląd, responsywność i specyficzne style dla różnych typów tabel. Komponenty Svelte odpowiedzialne za renderowanie tabel polegają na importowaniu tego pliku SCSS i nie wprowadzają znaczących lokalnych nadpisań, co sprzyja spójności wizualnej. Istnieje jedno nadpisanie `font-size` dla tabeli w `Maszyny_activeMachine.svelte` oraz potencjalnie problematyczny `font-size: 0.7rem;` dla `.options-list li` w `table.scss`.

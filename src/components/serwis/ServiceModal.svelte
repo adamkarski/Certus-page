@@ -225,7 +225,6 @@
 
     h3 {
       margin: 0;
-      font-size: 1.8rem;
       font-weight: 700;
       color: var(--color-text-secondary);
     }
@@ -251,7 +250,6 @@
   }
 
   .serwis-modal-description {
-    font-size: 1.1rem;
     line-height: 1.6;
     color: var(--color-text-secondary);
     margin-bottom: 32px;
@@ -261,7 +259,6 @@
     margin-bottom: 32px;
 
     h4 {
-      font-size: 1.2rem;
       font-weight: 600;
       color: var(--color-text-secondary);
       margin-bottom: 16px;
@@ -296,7 +293,6 @@
     &.highlight {
       color: var(--color-primary);
       font-weight: 600;
-      font-size: 1.1rem;
     }
   }
 
@@ -323,17 +319,14 @@
   .serwis-price-highlight {
     color: var(--color-primary);
     font-weight: 600;
-    font-size: 1.1rem;
   }
 
   .serwis-service-description {
     color: #6b7280;
-    font-size: 0.9rem;
     margin-bottom: 4px;
   }
 
   .serwis-service-details {
-    font-size: 0.9rem;
     color: var(--color-text-secondary);
   }
 

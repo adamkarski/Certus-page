@@ -72,9 +72,11 @@
 {/if}
 
 <style lang="scss">
+
   :global(.gradientHero) {
     background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
   }
+
 
   .error-page {
     position: fixed;
@@ -107,7 +109,6 @@
   }
 
   .error-code {
-    font-size: 8rem;
     font-weight: 900;
     line-height: 1;
     margin-bottom: 1.5rem;
@@ -123,14 +124,12 @@
   }
 
   .error-message h1 {
-    font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   .error-message p {
-    font-size: 1.25rem;
     opacity: 0.9;
     line-height: 1.6;
     max-width: 500px;
@@ -192,16 +191,13 @@
     }
 
     .error-code {
-      font-size: 6rem;
       margin-bottom: 1rem;
     }
 
     .error-message h1 {
-      font-size: 2rem;
     }
 
     .error-message p {
-      font-size: 1.1rem;
     }
 
     .error-actions {
@@ -219,15 +215,12 @@
 
   @media (max-width: 480px) {
     .error-code {
-      font-size: 4rem;
     }
 
     .error-message h1 {
-      font-size: 1.75rem;
     }
 
     .error-message p {
-      font-size: 1rem;
     }
 
   }

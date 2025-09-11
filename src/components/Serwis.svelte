@@ -753,7 +753,6 @@
     margin-bottom: 40px;
 
     .intro-text {
-      font-size: 1.2rem;
       line-height: 1.8;
       color: var(--color-text-secondary);
       margin: 0;
@@ -767,7 +766,6 @@
     padding: 0 20px;
 
     h2 {
-      font-size: 2.5rem;
       font-weight: 700;
       color: var(--color-text-secondary);
       margin-bottom: 16px;
@@ -786,7 +784,6 @@
     }
 
     p {
-      font-size: 1.2rem;
       color: var(--color-text-secondary);
       opacity: 0.8;
       max-width: 600px;
@@ -810,7 +807,6 @@
       color: var(--color-text-secondary);
       font-family: "Poppins", sans-serif;
       font-weight: 600;
-      font-size: 38px;
       text-align: left;
       margin-bottom: 30px;
 
@@ -827,7 +823,6 @@
 
     p {
       line-height: 1.8;
-      font-size: 1.1rem;
       margin-bottom: 0;
     }
   }
@@ -849,11 +844,9 @@
       margin-bottom: 30px;
 
       h2 {
-        font-size: 2rem;
       }
 
       p {
-        font-size: 1.1rem;
       }
     }
   }
@@ -864,7 +857,6 @@
     }
 
     .serwis-services-header h2 {
-      font-size: 1.8rem;
     }
   }
 
@@ -923,7 +915,6 @@
     );
 
     span.add {
-      font-size: 0.7rem;
       background-color: #b2b2b2;
       color: white;
       padding: 2px 4px;
@@ -967,7 +958,6 @@
   }
 
   .info-title {
-    font-size: 1.7rem;
     font-weight: 700;
     color: var(--color-text-secondary);
     line-height: 1.1;
@@ -976,7 +966,6 @@
   }
 
   .info-desc {
-    font-size: 1.1rem;
     color: #222;
     margin: 0;
     font-weight: 400;
@@ -1031,7 +1020,6 @@
       padding: 40px 16px 0 16px;
     }
     .info-title {
-      font-size: 1.2rem;
     }
     .info-card {
       padding: 20px 10px 20px 10px;
@@ -1039,7 +1027,6 @@
       width: 95vw;
     }
     .info-desc {
-      font-size: 0.98rem;
     }
   }
 
@@ -1133,7 +1120,6 @@
     color: white;
     padding: 4px 10px;
     border-radius: 12px;
-    font-size: 0.75rem;
     font-weight: 600;
     white-space: nowrap;
   }
@@ -1155,7 +1141,6 @@
     margin-top: auto;
     margin-left: 1em;
     margin-right: 1em;
-    font-size: 0.9rem;
 
     &:hover {
       background: var(--color-primary);
@@ -1224,7 +1209,6 @@
 
     .serwis-service-btn {
       padding: 6px 12px;
-      font-size: 0.85rem;
     }
   }
 
@@ -1245,7 +1229,6 @@
     margin-bottom: 80px;
 
     h2 {
-      font-size: 2.5rem;
       font-weight: 700;
       color: var(--color-text-secondary);
       margin-bottom: 16px;
@@ -1265,7 +1248,6 @@
     }
 
     p {
-      font-size: 1.2rem;
       color: var(--color-text-secondary);
       opacity: 0.8;
     }
@@ -1346,7 +1328,6 @@
   }
 
   .serwis-benefit-item h4 {
-    font-size: 1.4rem;
     font-weight: 600;
     color: var(--color-text-secondary);
     margin-bottom: 16px;
@@ -1358,7 +1339,6 @@
     opacity: 0.8;
     line-height: 1.6;
     margin: 0;
-    font-size: 1rem;
   }
 
   @media (max-width: 768px) {
@@ -1374,11 +1354,9 @@
       margin-bottom: 60px;
 
       h2 {
-        font-size: 2rem;
       }
 
       p {
-        font-size: 1.1rem;
       }
     }
 
@@ -1404,11 +1382,9 @@
     }
 
     .serwis-benefit-item h4 {
-      font-size: 1.2rem;
     }
 
     .serwis-benefit-item p {
-      font-size: 0.95rem;
     }
   }
 </style>

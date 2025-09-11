@@ -398,14 +398,12 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 
     h1 {
-      font-size: 2rem;
       font-weight: 700;
       color: var(--color-text-secondary);
       margin-bottom: 0.5rem;
       margin-top: 5rem;
     }
     .subtitle {
-      font-size: 1.3rem;
       color: var(--color-text-secondary);
       max-width: 800px;
       /* margin: 0 auto; */ /* Removed center alignment */
@@ -438,7 +436,6 @@
   }
 
   .text-column h2 {
-    font-size: 2rem;
     font-weight: 700;
     color: var(--color-primary);
     border-bottom: 2px solid var(--color-primary-light);
@@ -446,7 +443,6 @@
     margin-bottom: 1.5rem;
   }
   .text-column h3 {
-    font-size: 1.5rem;
     font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -454,7 +450,6 @@
   }
   .text-column p,
   .text-column li {
-    font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 1rem;
     color: var(--color-text-secondary);
@@ -483,7 +478,6 @@
     h2 {
       text-align: center;
       margin-bottom: 80px;
-      font-size: 2rem;
       font-weight: 700;
       color: var(--color-text-secondary);
       margin-bottom: 16px;
@@ -533,7 +527,6 @@
         opacity: 0.8;
         line-height: 1.6;
         margin: 0;
-        font-size: 1.1rem;
         font-weight: 500;
       }
     }
@@ -544,7 +537,6 @@
       padding: 2rem 0;
 
       h1 {
-        font-size: 2rem;
         font-weight: 700;
         color: var(--color-text-secondary);
         margin-bottom: 16px;
@@ -565,7 +557,6 @@
       }
 
       p {
-        font-size: 1.2rem;
         color: var(--color-text-secondary);
         opacity: 0.8;
         line-height: 1.6;
@@ -586,7 +577,6 @@
 
     .benefits-section h2 {
       margin-bottom: 60px;
-      font-size: 2rem;
     }
 
     .benefits-grid {
@@ -656,7 +646,6 @@
     position: absolute;
     top: 20px;
     right: 30px;
-    font-size: 3rem;
     color: white;
     background: transparent;
     border: none;
@@ -680,7 +669,6 @@
     background: rgba(255, 255, 255, 0.1);
     border: none;
     color: white;
-    font-size: 2rem;
     padding: 1rem;
     cursor: pointer;
     z-index: 1001;
@@ -737,19 +725,15 @@
     .page-header {
       padding: 3rem 1rem;
       h1 {
-        font-size: 2.5rem;
       }
       p {
-        font-size: 1.2rem;
       }
     }
     .main-title-section {
       padding: 1.5rem 1rem;
       h1 {
-        font-size: 2.2rem;
       }
       .subtitle {
-        font-size: 1rem;
       }
     }
     .main-content {

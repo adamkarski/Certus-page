@@ -944,7 +944,6 @@
   .maszyny-dane-text-image p {
     margin-bottom: 1rem;
     color: var(--color-text-secondary);
-    font-size: 1.08rem;
   }
   .maszyny_page {
     // min-width: 100vw;

@@ -1000,7 +1000,6 @@
       margin-left: -21.6px;
       padding-left: 1.5em;
       color: var(--color-text-primary);
-      font-size: x-large;
     }
 
     p {
@@ -1147,7 +1146,6 @@
     h2 {
       margin-top: 4rem;
       padding-left: 2rem;
-      font-size: x-large;
     }
     p {
       padding-left: 2rem;
@@ -1179,7 +1177,6 @@
   }
 
   .activeMachine .left h1 {
-    font-size: 3em;
     color: white;
     width: 100%;
     text-align: left;
@@ -1226,14 +1223,12 @@
       order: 1;
 
       h1 {
-        font-size: large !important;
         margin-top: 2rem !important;
       }
 
       p {
         width: 100% !important;
         padding-left: 1rem !important;
-        font-size: 0.9rem;
       }
 
       ul {
@@ -1352,14 +1347,12 @@
 
     :global(.activeMachine .right_content) {
       h1 {
-        font-size: medium !important;
         margin-top: 1rem !important;
         padding-left: 1rem !important;
       }
 
       p {
         padding-left: 0.5rem !important;
-        font-size: 0.85rem;
         padding-top: 1rem !important;
       }
 

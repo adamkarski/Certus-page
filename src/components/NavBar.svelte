@@ -457,7 +457,6 @@
     color: #8b4513;
     padding: 6px 16px;
     border-radius: 20px;
-    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -466,7 +465,6 @@
   }
 
   .bestseller-title {
-    font-size: 1.1rem;
     font-weight: 600;
     color: #1f2937;
     margin-bottom: 8px;
@@ -474,7 +472,6 @@
     text-align: right;
   
     .bestseller-name{
-      font-size: 1.5rem;
     }
 
   }
@@ -482,7 +479,6 @@
 
   .bestseller-subtitle {
     text-align: right;
-    font-size: 0.875rem;
     color: #6b7280;
     margin-bottom: 0;
     line-height: 1.4;
@@ -514,7 +510,6 @@
   }
 
   .features-list li {
-    font-size: 0.875rem;
     color: #374151;
     margin-bottom: 6px;
     line-height: 1.4;
@@ -529,7 +524,6 @@
     width: 100%;
     max-width: 320px;
     margin: 0 auto;
-    font-size: 1rem;
     height: 40px;
     display: flex;
     justify-content: center;
@@ -552,7 +546,6 @@
     background: white;
     border-radius: 72px;
     color: #616d5d;
-    font-size: 0.9em;
     font-weight: 200;
     margin-right: 22px;
     height: 76px;
@@ -670,7 +663,6 @@
 
   .mobile-nav-link {
     color: white;
-    font-size: 1.8rem;
     font-weight: 500;
     text-decoration: none;
     transition: color 0.2s;
@@ -703,7 +695,6 @@
 
   .mobile-submenu-link {
     color: #e0e0e0;
-    font-size: 1.2rem;
     text-decoration: none;
     transition: color 0.2s;
     &:hover {

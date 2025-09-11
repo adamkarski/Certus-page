@@ -188,7 +188,6 @@
     }
 
     .oferta-icon {
-      font-size: 50px;
       margin-bottom: 25px;
       display: block;
       width: 3.5em;
@@ -209,7 +208,6 @@
       grid-template-columns: repeat(6, 1fr);
 
       .oferta-icon {
-        font-size: 45px;
         width: 3.2em;
         max-width: 120px !important;
       }
@@ -229,7 +227,6 @@
 
         // Dostosowanie ikon
         .oferta-icon {
-          font-size: 45px;
           margin-bottom: 20px;
           width: 3.5em;
           min-width: 90px;
@@ -246,7 +243,6 @@
         :global(.oferta-cta) {
           width: 100% !important;
           max-width: 100% !important;
-          font-size: 0.9rem !important;
           height: auto !important;
           min-height: 50px !important;
           padding: 12px 15px !important;
@@ -286,7 +282,6 @@
       }
 
       .oferta-icon {
-        font-size: 50px;
         margin-bottom: 20px;
         width: 3em;
 
@@ -311,7 +306,6 @@
       }
 
       .oferta-icon {
-        font-size: 40px;
         margin-bottom: 15px;
         width: 2.5em;
 

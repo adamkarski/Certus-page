@@ -190,7 +190,6 @@
   }
   .onas-header h1 {
     margin: 0;
-    font-size: 4rem;
     color: white;
     text-shadow:0 13px 27px rgba(0, 0, 0, 0.5);
     font-weight: 700;
@@ -232,7 +231,6 @@
   }
   @media (max-width: 768px) {
     .onas-header h1 {
-      font-size: 1.5rem;
     
      
     }

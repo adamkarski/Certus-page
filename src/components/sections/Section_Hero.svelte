@@ -874,9 +874,11 @@
   }
 
   :global(.gradientHero) {
-    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
-  }
 
+    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
+
+  }
+  
   .active_flex {
     position: relative;
   }
@@ -1133,7 +1135,6 @@
         position: relative;
         top: -60px;
         left: -10px;
-        font-size: 1.3rem;
         padding-left: 20px;
         padding-right: 20px;
       }
@@ -1172,7 +1173,6 @@
     margin: 0;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     font-family: "Poppins", sans-serif;
-    font-size: 48px;
     font-weight: 700;
   }
   .category-image {
@@ -1214,7 +1214,6 @@
       width: 95%; /* Szerszy swiper */
 
       .topline {
-        font-size: 1.8em; /* Mniejszy tekst */
         top: 5px; /* Bliżej góry */
       }
     }
@@ -1228,7 +1227,6 @@
       width: 95%; /* Szerszy swiper */
 
       .topline {
-        font-size: 2em; /* Dostosowany tekst */
         top: 8px;
       }
     }
@@ -1241,7 +1239,6 @@
       width: 98%; /* Maksymalnie szeroki */
 
       .topline {
-        font-size: 1.6em; /* Mały tekst */
         top: 3px; /* Bardzo blisko góry */
       }
     }
@@ -1253,7 +1250,6 @@
   @media (min-width: 1920px) {
     swiper-container {
       .topline {
-        font-size: 2.6em;
       }
     }
   }
@@ -1262,7 +1258,6 @@
   @media (min-width: 1600px) and (max-width: 1919px) {
     swiper-container {
       .topline {
-        font-size: 2.4em;
       }
     }
   }
@@ -1271,7 +1266,6 @@
   @media (min-width: 1280px) and (max-width: 1599px) {
     swiper-container {
       .topline {
-        font-size: 2.2em;
       }
     }
   }
@@ -1280,11 +1274,9 @@
   @media (min-width: 1024px) and (max-width: 1279px) {
     swiper-container {
       .topline {
-        font-size: 2em;
       }
     }
     .headlines .topline {
-      font-size: 1.4rem !important;
     }
   }
 
@@ -1292,7 +1284,6 @@
   @media (min-width: 768px) and (max-width: 1023px) {
     swiper-container {
       .topline {
-        font-size: 1.8em;
       }
     }
   }
@@ -1301,7 +1292,6 @@
   @media (min-width: 481px) and (max-width: 767px) {
     swiper-container {
       .topline {
-        font-size: 1.6em;
         top: 15px; /* Średni margines na mobile landscape */
         min-height: 50px;
       }
@@ -1312,7 +1302,6 @@
   @media (max-width: 480px) {
     swiper-container {
       .topline {
-        font-size: 1.4em;
         top: 10px; /* Mniejszy margines na mobile */
         min-height: 40px;
       }
@@ -1524,7 +1513,6 @@
       right: 1rem;
     }
     .headlines .topline {
-      font-size: 1.4rem !important;
     }
   }
 </style>
