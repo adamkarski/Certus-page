@@ -72,9 +72,11 @@
 {/if}
 
 <style lang="scss">
-  // :global(.gradientHero) {
-  //   background: linear-gradient(180deg,#545454,#3e4042);
-  // }
+
+  :global(.gradientHero) {
+    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
+  }
+
 
   .error-page {
     position: fixed;
