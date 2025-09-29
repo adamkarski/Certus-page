@@ -816,7 +816,7 @@
       width: 100vw;
       height: 37px;
       right: 0px;
-      filter: blur(0.3px);
+     
       bottom: 0px;
     }
 
