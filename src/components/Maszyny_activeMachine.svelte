@@ -89,16 +89,16 @@
             <h3>Zastosowanie maszyn obejmuje m.in.:</h3>
 
             <ul class="">
-              <li use:typoFixAction>produkcję form wtryskowych i tłoczników</li>
+              <li use:typoFixAction>Produkcję form wtryskowych i tłoczników</li>
               <li use:typoFixAction>
-                obróbkę modeli odlewniczych i termoformowanych
+                Obróbkę modeli odlewniczych i termoformowanych
               </li>
               <li use:typoFixAction>
-                wykonywanie stempli, matryc oraz wykrojników ze stali i
+                Wykonywanie stempli, matryc oraz wykrojników ze stali i
                 aluminium
               </li>
               <li use:typoFixAction>
-                precyzyjne grawerowanie i wiele innych procesów przemysłowych
+                Precyzyjne grawerowanie i wiele innych procesów przemysłowych
               </li>
             </ul>
             <hr />
@@ -546,9 +546,7 @@
                 Głowice obrotowo-uchylne stosowane w tego typu urządzeniach
                 projektowane są z wykorzystaniem bezluzowych przekładni
                 harmonicznych, co zapewnia dużą sztywność przy zachowaniu
-                wysokiej dynamiki ruchów
-              </li>
-              <li use:typoFixAction>
+                wysokiej dynamiki ruchów. 
                 Dzięki takiej konstrukcji urządzenia osiągają bardzo wysoką
                 wydajność i jakość obróbki w swojej klasie
               </li>

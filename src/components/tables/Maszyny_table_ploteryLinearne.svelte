@@ -32,7 +32,11 @@
       </tr>
       <tr>
         <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczym (mm)</div></td>
-        <td class="highlight-options">270</td>
+        <td class="highlight-options">
+          <ul class="options-list">
+          <li>270</li>
+          </ul>
+        </td>
       </tr>
       <tr>
         <td><div class="text">Nóż oscylacyjny</div></td>

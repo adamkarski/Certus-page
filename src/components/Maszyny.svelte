@@ -687,9 +687,7 @@
         <li use:typoFixAction>
           Głowice obrotowo-uchylne stosowane w tego typu urządzeniach
           projektowane są z wykorzystaniem bezluzowych przekładni harmonicznych,
-          co zapewnia dużą sztywność przy zachowaniu wysokiej dynamiki ruchów
-        </li>
-        <li use:typoFixAction>
+          co zapewnia dużą sztywność przy zachowaniu wysokiej dynamiki ruchów.
           Dzięki takiej konstrukcji urządzenia osiągają bardzo wysoką wydajność
           i jakość obróbki w swojej klasie
         </li>
