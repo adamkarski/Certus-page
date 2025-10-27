@@ -10,7 +10,7 @@
 	let hdVideoElement: HTMLVideoElement;
 
 	const sdVideoSrc = '/assets/video/video-sd.m4v';
-	const hdVideoSrc = '/assets/video/video-hd.mp4';
+	const hdVideoSrc = '/assets/video/video-hd.m4v';
 
 	let sdOpacity = 1;
 	let hdOpacity = 0;
@@ -33,17 +33,23 @@
 			})
 			.then(() => {
 				if (sdVideoElement && hdVideoElement) {
-					hdVideoElement.currentTime = sdVideoElement.currentTime;
-					hdVideoElement.play();
+					hdVideoElement.addEventListener(
+						'canplay',
+						() => {
+							hdVideoElement.currentTime = sdVideoElement.currentTime;
+							hdVideoElement.play();
 
-					// Trigger the crossfade
-					sdOpacity = 0;
-					hdOpacity = 1;
+							// Trigger the crossfade
+							sdOpacity = 0;
+							hdOpacity = 1;
 
-					// After the fade, pause the SD video to save resources
-					setTimeout(() => {
-						sdVideoElement.pause();
-					}, 1000); // Corresponds to the CSS transition duration
+							// After the fade, pause the SD video to save resources
+							setTimeout(() => {
+								sdVideoElement.pause();
+							}, 1000);
+						},
+						{ once: true }
+					);
 				}
 			})
 			.catch((error) => {
@@ -59,7 +65,7 @@
 </script>
 
 <section id="video" class="video">
-	<div class="video-container">
+	<div class="video-container masked-video">
 		<!-- SD Video -->
 		<video
 			bind:this={sdVideoElement}
@@ -69,8 +75,6 @@
 			muted
 			loop
 			playsinline
-			class="masked-video"
-			title="Wideo prezentujące procesy produkcyjne Certus (SD)"
 			preload="auto"
 			poster="/assets/images/pattern-video-1.png"
 		/>
@@ -78,13 +82,10 @@
 		<video
 			bind:this={hdVideoElement}
 			src={hdVideoSrc}
-			style="opacity: {hdOpacity}; transition: opacity 1s ease-in-out; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top;"
-			autoplay
+			style="opacity: {hdOpacity}; transition: opacity 1s ease-in-out;"
 			muted
 			loop
 			playsinline
-			class="masked-video"
-			title="Wideo prezentujące procesy produkcyjne Certus (HD)"
 			preload="auto"
 		/>
 
@@ -105,6 +106,37 @@
 </section>
 
 <style lang="scss">
+	.video-container {
+		position: relative; // This is crucial for the absolute positioning of children
+		width: 100%;
+		margin: 0 auto;
+		background: black; // Fallback background
+	}
+
+	.video-container video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	.masked-video {
+		clip-path: polygon(
+			0% 0%,
+			94.18% 0%,
+			100% 12.04%,
+			100% 95.54%,
+			34.93% 95.54%,
+			32.23% 100%,
+			4.18% 100%,
+			0% 91.39%,
+			0% 0%
+		);
+	}
+
 	.pattern-overlay {
 		position: absolute;
 		top: 0;
@@ -177,30 +209,7 @@
 		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 		font-weight: 700;
 	}
-	.video-container {
-		position: relative;
-		width: 100%;
-		margin: 0 auto;
-		background: linear-gradient(180deg, rgba(247, 247, 247, 1) 0%, rgba(255, 255, 255, 1) 100%);
-	}
-	.masked-video {
-		width: 100%;
-		height: auto;
-		display: block;
-		object-fit: cover;
-		object-position: center top;
-		clip-path: polygon(
-			0% 0%,
-			94.18% 0%,
-			100% 12.04%,
-			100% 95.54%,
-			34.93% 95.54%,
-			32.23% 100%,
-			4.18% 100%,
-			0% 91.39%,
-			0% 0%
-		);
-	}
+
 	@media (max-width: 768px) {
 		.video-header h1 {
 		}
