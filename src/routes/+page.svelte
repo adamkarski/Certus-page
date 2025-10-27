@@ -25,9 +25,6 @@
     <Section_Hero />
     <Section_Oferta />
     <Section_Video />
-
-    xxxxx
-
     <Section_Onas />
     <Section_Image01 />
     <Section_Kontakt />
