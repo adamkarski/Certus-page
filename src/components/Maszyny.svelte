@@ -329,7 +329,7 @@
 
       <Section_Maszyny_Image01
         sectionId="plotery-image"
-        imgSrc="/assets/maszyny/88930d1c.png"
+        imgSrc="/assets/maszyny/SCHEMATY/Certus_0816_4.png"
         title="Przemysłowe plotery CNC"
         subtitle="Wydajność i precyzja"
       />
@@ -930,7 +930,7 @@
     <div class="maszyny-dane-gallery-column">
       <Section_Maszyny_Image01
         sectionId="ploteryLinearne-image"
-        imgSrc="/assets/maszyny/88930d1c.png"
+        imgSrc="/assets/maszyny/SCHEMATY/Certus_1530_3.png"
         title="Plotery tnące linearne"
         subtitle="Precyzyjne cięcie"
       />
