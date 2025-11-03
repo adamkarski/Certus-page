@@ -937,7 +937,7 @@
 
       <Section_Maszyny_Image02
         sectionId="ploteryLinearne-gallery"
-        imgSrc="/assets/maszyny/combined_88930d1c.png"
+        imgSrc="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
         title="Galeria ploterów linearnych"
         subtitle="Zobacz w akcji"
         ctaText="Przejdź do galerii"
