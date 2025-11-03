@@ -190,14 +190,14 @@
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
+               <!--  <img
                   src="/assets/maszyny/certus_7111_temp_schemat01.png"
                   alt="Schemat techniczny frezarki Certus 7111 - widok 1"
                 />
                 <img
                   src="/assets/maszyny/certus_7111_temp_schemat02.png"
                   alt="Schemat techniczny frezarki Certus 7111 - widok 2"
-                />
+                /> -->
               </div>
             </div>
           {/if}
@@ -318,14 +318,14 @@
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
+              <!--   <img
                   src="/assets/maszyny/certus_7111_temp_schemat01.png"
                   alt="Schemat techniczny plotera przemysłowego m_ploter - widok 1"
                 />
                 <img
                   src="/assets/maszyny/certus_7111_temp_schemat02.png"
                   alt="Schemat techniczny plotera przemysłowego m_ploter - widok 2"
-                />
+                /> -->
               </div>
             </div>
           {/if}
@@ -444,14 +444,14 @@
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
+              <!--   <img
                   src="/assets/maszyny/certus_7111_temp_schemat01.png"
                   alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 1"
                 />
                 <img
                   src="/assets/maszyny/certus_7111_temp_schemat02.png"
                   alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 2"
-                />
+                /> -->
               </div>
             </div>
           {/if}
@@ -740,14 +740,14 @@
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
+               <!--  <img
                   src="/assets/maszyny/certus_7111_temp_schemat01.png"
                   alt="Schemat techniczny grawerki Certus 3030 - widok 1"
                 />
                 <img
                   src="/assets/maszyny/certus_7111_temp_schemat02.png"
                   alt="Schemat techniczny grawerki Certus 3030 - widok 2"
-                />
+                /> -->
               </div>
             </div>
           {/if}

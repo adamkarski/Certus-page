@@ -637,14 +637,14 @@
     <div class="maszyny-dane-gallery-column">
       <Section_Maszyny_Image01
         sectionId="grawerki-image"
-        imgSrc="/assets/maszyny/certus_7111_temp_schemat01.png"
+        imgSrc="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
         title="Grawerki CNC"
         subtitle="Precyzyjne grawerowanie"
       />
 
       <Section_Maszyny_Image02
         sectionId="grawerki-gallery"
-        imgSrc="/assets/maszyny/certus_7111_temp.png"
+        imgSrc="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
         title="Galeria grawerek"
         subtitle="Zobacz nasze realizacje"
         ctaText="Przejdź do galerii"
@@ -781,14 +781,14 @@
     <div class="maszyny-dane-gallery-column">
       <Section_Maszyny_Image01
         sectionId="frezarki5osiowe-image"
-        imgSrc="/assets/maszyny/certus_7111_temp_schemat01.png"
+        imgSrc="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
         title="Frezarki pięcioosiowe"
         subtitle="Zaawansowana obróbka"
       />
 
       <Section_Maszyny_Image02
         sectionId="frezarki5osiowe-gallery"
-        imgSrc="/assets/maszyny/certus_7111_temp.png"
+        imgSrc="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
         title="Galeria frezarek 5-osiowych"
         subtitle="Zobacz możliwości"
         ctaText="Przejdź do galerii"
