@@ -322,7 +322,7 @@
     <div class="maszyny-dane-gallery-column">
       <Section_Maszyny_Video
         sectionId="plotery-video"
-        videoSrc="/assets/video/video.m4v"
+        videoSrc="/assets/video/video-hd.webm"
         title="Plotery w akcji"
         subtitle="Zobacz jak działają nasze plotery"
       />
