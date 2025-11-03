@@ -28,3 +28,4 @@ dist-ssr
 /.svelte-kit
 src/components/Maszyny_fullView.svelte
 TEST_SETUP.md
+static/assets/maszyny/old

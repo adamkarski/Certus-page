@@ -63,13 +63,13 @@
             <img
               style="filter: blur(120px);"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
+              src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
               alt="Frezarki CNC"
             />
             <img
               class="back_image"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
+              src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
               alt="Frezarki CNC"
             />
           </div>
@@ -217,13 +217,13 @@
             <img
               style="filter: blur(120px);"
               draggable="false"
-              src="/assets/maszyny/88930d1c.png"
+              src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
               alt="Ploter Przemysłowy"
             />
             <img
               class="back_image"
               draggable="false"
-              src="/assets/maszyny/88930d1c.png"
+              src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
               alt="Ploter Przemysłowy"
             />
           </div>
@@ -345,13 +345,13 @@
             <img
               style="filter: blur(120px);"
               draggable="false"
-              src="/assets/maszyny/80f5ea646ec.png"
+              src="/assets/maszyny/renders/Certus_0816_000_Layers/Certus_0816_000_Layer1.png"
               alt="Ploter Przemysłowy"
             />
             <img
               class="back_image"
               draggable="false"
-              src="/assets/maszyny/80f5ea646ec.png"
+              src="/assets/maszyny/renders/Certus_0816_000_Layers/Certus_0816_000_Layer1.png"
               alt="Ploter Przemysłowy"
             />
           </div>
@@ -471,14 +471,14 @@
             <img
               style="filter: blur(120px);"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
-              alt="Grawerki CNC"
+              src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
+              alt="Frezarki Pięcioosiowe CNC"
             />
             <img
               class="back_image"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
-              alt="Grawerki CNC"
+              src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
+              alt="Frezarki Pięcioosiowe CNC"
             />
           </div>
           <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
@@ -595,11 +595,11 @@
                 in:fade={{ duration: 300, delay: 200 }}
               >
                 <img
-                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                  src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
                   alt="Schemat techniczny grawerki Certus 6040 - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
+                  src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
                   alt="Schemat techniczny grawerki Certus 6040 - widok 2"
                 />
               </div>
@@ -621,13 +621,13 @@
             <img
               style="filter: blur(120px);"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
+              src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
               alt="Grawerki CNC"
             />
             <img
               class="back_image"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
+              src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
               alt="Grawerki CNC"
             />
           </div>
@@ -767,14 +767,14 @@
             <img
               style="filter: blur(120px);"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
-              alt="Tokarki CNC"
+              src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
+              alt="Plotery Linearne"
             />
             <img
               class="back_image"
               draggable="false"
-              src="/assets/maszyny/certus_7111_temp.png"
-              alt="Tokarki CNC"
+              src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
+              alt="Plotery Linearne"
             />
           </div>
           <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
@@ -886,7 +886,7 @@
                 in:fade={{ duration: 300, delay: 200 }}
               >
                 <img
-                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
+                  src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
                   alt="Schemat techniczny tokarki Certus 200 - widok 1"
                 />
                 <img

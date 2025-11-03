@@ -764,7 +764,7 @@
                     >
                       <img
                         class="image"
-                        src="/assets/maszyny/88930d1c.png"
+                        src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
                         alt="Ploter przemysłowy"
                       />
                     </button>
@@ -779,7 +779,7 @@
                       <img
                         class="image"
                         alt="Ploter przemysłowy bez zabudowy"
-                        src="/assets/maszyny/80f5ea646ec.png"
+                        src="/assets/maszyny/renders/Certus_0816_000_Layers/Certus_0816_000_Layer1.png"
                       />
                     </button>
                   </div>

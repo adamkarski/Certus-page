@@ -2,7 +2,7 @@
   {
     "id": "frezarki",
     "title": "Frezarki CNC HMM",
-    "img": "/assets/maszyny/certus_7111_temp.png",
+    "img": "/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png",
     "startExpanded": true,
     "url": null,
     "icon": "/assets/ikony/maszyny/frezarki.svg",
@@ -11,7 +11,7 @@
   {
     "id": "ploteryPrzemyslowe",
     "title": "Plotery przemysłowe CNC",
-    "img": "/assets/maszyny/combined_88930d1c.png",
+    "img": "/assets/maszyny/renders/PLOTERY_Layers/PLOTERY_Layer1.png",
     "startExpanded": false,
     "url": null,
     "icon": "/assets/ikony/maszyny/ploteryPrzemyslowe.svg",
@@ -20,7 +20,7 @@
   {
     "id": "frezarki5osiowe",
     "title": "Frezarki pięcioosiowe",
-    "img": "/assets/maszyny/80f5ea646ec.png",
+    "img": "/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png",
     "startExpanded": true,
     "url": null,
     "icon": "/assets/ikony/maszyny/frezarki5osiowe.svg",
@@ -29,7 +29,7 @@
   {
     "id": "grawerki",
     "title": "Grawerki CNC",
-    "img": "/assets/maszyny/88930d1c.png",
+    "img": "/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png",
     "startExpanded": true,
     "url": null,
     "icon": "/assets/ikony/maszyny/grawerki.svg",
@@ -38,7 +38,7 @@
   {
     "id": "ploteryLinearne",
     "title": "Plotery tnące linearne CNC",
-    "img": "/assets/maszyny/certus_7111_temp.png",
+    "img": "/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png",
     "startExpanded": true,
     "url": null,
     "icon": "/assets/ikony/maszyny/ploteryLinearne.svg",
@@ -47,7 +47,7 @@
   {
     "id": "specjalistyczne",
     "title": "Maszyny specjalistyczne",
-    "img": "/assets/maszyny/Certus-69---slider.png",
+    "img": "/assets/maszyny/renders/Certus_69_Layers/Certus_69_Layer1.png",
     "startExpanded": false,
     "url": "/maszyny/#specjalistyczne",
     "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
