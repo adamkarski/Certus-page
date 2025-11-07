@@ -177,6 +177,10 @@
         </div>
 
         <div class="desktop-menu-items">
+          
+
+         
+
           <div
             class="relative dropDownMenu"
             on:mouseenter={() => (isMaszynyDropdownOpen = true)}
@@ -232,10 +236,10 @@
                         <img
                           src={hoveredCategory.img}
                           alt={hoveredCategory.title}
-                          class="max-h-48 mx-auto mb-4 rounded-lg menu-image"
+                          class="menu-image"
                           in:fade={{ delay: 150, duration: 150 }}
-                          out:fade={{ duration: 150 }}
                         />
+
                       {/key}
                     {/if}
                   </div>
@@ -888,12 +892,12 @@
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     border: 1px solid #f3f4f6;
     overflow: hidden;
-    width: 600px;
+    width: 900px;
     max-width: 100vw;
     padding: 1rem;
 
     ul li {
-      padding: 10px;
+      padding: 3px;
       border-bottom: 1px solid #ccc;
       cursor: pointer;
     }
@@ -906,16 +910,13 @@
 
   .image-container {
     position: relative;
-    width: 100%;
-    height: 200px; /* Adjust as needed */
+    height: 50%;
+    
   }
 
   .menu-image {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-height: 100%;
-    max-width: 100%;
+    position: relative;
+    width: 100%;
+    height: 50%;
   }
 </style>

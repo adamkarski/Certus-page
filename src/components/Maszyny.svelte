@@ -68,16 +68,16 @@
       <div class="maszyny-dane-podtytul" use:typoFixAction>
         Zastosowanie maszyn obejmuje m.in.:
       </div>
-      <ul class="maszyny-dane-lista" use:typoFixAction>
-        <li use:typoFixAction>produkcję form wtryskowych i tłoczników</li>
+      <ul class="maszyny-dane-lista-small" use:typoFixAction>
+        <li use:typoFixAction>Produkcję form wtryskowych i tłoczników</li>
         <li use:typoFixAction>
-          obróbkę modeli odlewniczych i termoformowanych
+          Obróbkę modeli odlewniczych i termoformowanych
         </li>
         <li use:typoFixAction>
-          wykonywanie stempli, matryc oraz wykrojników ze stali i aluminium
+          Wykonywanie stempli, matryc oraz wykrojników ze stali i aluminium
         </li>
         <li use:typoFixAction>
-          precyzyjne grawerowanie i wiele innych procesów przemysłowych
+          Precyzyjne grawerowanie i wiele innych procesów przemysłowych
         </li>
       </ul>
 
@@ -152,6 +152,7 @@
       </ul>
     </div>
     <div class="right">
+      <br/>
       <img
         src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.png"
         alt="Schemat techniczny frezarki Certus 1080 PRO - widok 1"
@@ -160,14 +161,7 @@
         src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.png"
         alt="Schemat techniczny frezarki Certus 1080 PRO - widok 2"
       />
-      <img
-        src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_3.png"
-        alt="Schemat techniczny frezarki Certus 1080 PRO - widok 3"
-      />
-      <img
-        src="/assets/maszyny/SCHEMATY/Certus_1080_PRO.png"
-        alt="Schemat techniczny frezarki Certus 1080 PRO - widok 4"
-      />
+   
     </div>
   </div>
 
@@ -212,7 +206,7 @@
 <section id="ploteryPrzemyslowe" class="maszyny-dane">
   <div class="hr topline gradientHero">
     <img
-      src="/assets/maszyny/renders/Certus_0816_000_Layers/Certus_0816_000_Layer1.png"
+      src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
       alt="Przemysłowe plotery CNC bez zabudowy"
       class="topImage"
     />
@@ -286,6 +280,7 @@
       </ul>
     </div>
     <div class="right">
+      <br/>
       <img
       src="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
       alt="Schemat techniczny frezarki Certus 0816 - widok 1"
@@ -294,14 +289,7 @@
     src="/assets/maszyny/SCHEMATY/Certus_0816_2.png"
     alt="Schemat techniczny frezarki Certus 0816 - widok 2"
   />
-    <img
-    src="/assets/maszyny/SCHEMATY/Certus_0816_3.png"
-    alt="Schemat techniczny frezarki Certus 0816 - widok 3"
-  />
-    <img
-    src="/assets/maszyny/SCHEMATY/Certus_0816_4.png"
-    alt="Schemat techniczny frezarki Certus 0816 - widok 4"
-  />
+  
     </div>
   </div>
 
@@ -442,27 +430,17 @@
       </ul>
     </div>
     <div class="right">
+      <br/>
       <img
         src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_5.png"
         alt="Schemat techniczny frezarki Certus 0815 - widok 5"
       />
-      <img
-        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.png"
-        alt="Schemat techniczny frezarki Certus 0815 - widok 1"
-      />
-      <img
-        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.png"
-        alt="Schemat techniczny frezarki Certus 0815 - widok 2"
-      />
+   
       <img
         src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_3.png"
         alt="Schemat techniczny frezarki Certus 0815 - widok 3"
       />
-      <img
-        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_4.png"
-        alt="Schemat techniczny frezarki Certus 0815 - widok 4"
-      />
-
+   
     </div>
   </div>
 
@@ -597,6 +575,7 @@
       </ul>
     </div>
     <div class="right">
+      <br/>
       <img
         src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa.png"
         alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 1"
@@ -607,15 +586,6 @@
         alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 2"
       />
   
-      <img
-        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.png"
-        alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 3"
-      />
-  
-      <img
-        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_4.png"
-        alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 5"
-      />
   
     </div>
   </div>
@@ -749,6 +719,7 @@
       </ul>
     </div>
     <div class="right">
+      <br/>
       <img
         src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.png"
         alt="Schemat techniczny - widok 1"
@@ -757,10 +728,7 @@
         src="/assets/maszyny/SCHEMATY/Certus_5_Osi.png"
         alt="Schemat techniczny - widok 2"
       />
-      <img
-      src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.png"
-      alt="Schemat techniczny - widok 3"
-    />
+
     </div>
   </div>
 
@@ -891,21 +859,13 @@
       </ul>
     </div>
     <div class="right">
-
-      /assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png
+      <br/>
 
       <img
         src="/assets/maszyny/SCHEMATY/Certus_1530.png"
         alt="Schemat techniczny frezarki Certus 1530 - widok 1"
       />
-      <img
-        src="/assets/maszyny/SCHEMATY/Certus_1530_1.png"
-        alt="Schemat techniczny frezarki Certus 1530 - widok 2"
-      />
-      <img
-        src="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
-        alt="Schemat techniczny frezarki Certus 1530 - widok 3"
-      />
+ 
       <img
         src="/assets/maszyny/SCHEMATY/Certus_1530_3.png"
         alt="Schemat techniczny frezarki Certus 1530 - widok 4"
@@ -971,13 +931,38 @@
     left: 0px;
     margin-top: -100px;
     .topImage {
-      margin-top: 20px;
+      margin-top: -10px;
       float: right;
-      width: 24rem;
+      width: 37rem;
       padding-right: 8rem;
     }
   }
 
+  @media (max-width: 927px) {
+  .logomini {
+    min-width: 62px !important;
+    width: 30px;
+  }
+  .topline .topImage {
+    width: 16rem !important;
+    padding-right: 1em !important;
+    margin-top: 67px;
+  }
+}
+@media (min-width: 928px) and (max-width: 1199px) {
+  .topline .topImage {
+    width: 24rem !important;
+    padding-right: 1em !important;
+    margin-top: 0px;
+  }
+}
+@media (min-width: 1200px)  {
+  .topline .topImage {
+    width: 30rem !important;
+    padding-right: 1em !important;
+    margin-top: 0px;
+  }
+}
   .first-container-back {
     background-image: url(/assets/first-block-polyline.svg);
     position: absolute;

@@ -2,11 +2,11 @@
   {
     "id": "frezarki",
     "title": "Frezarki CNC HMM",
-    "img": "/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png",
-    "startExpanded": true,
+    "img": "/assets/maszyny/renders/FREZARKI_HMM_Layers/FREZARKI_HMM_Layer1.png",
+    "startExpanded": false,
     "url": null,
     "icon": "/assets/ikony/maszyny/frezarki.svg",
-    "machine":"m_frezarka"
+    "machine":["m_frezarka","m_frezarka1"]
   },
   {
     "id": "ploteryPrzemyslowe",
@@ -47,9 +47,18 @@
   {
     "id": "specjalistyczne",
     "title": "Maszyny specjalistyczne",
-    "img": "/assets/maszyny/renders/Certus_69_Layers/Certus_69_Layer1.png",
+    "img": "/assets/maszyny/renders/Certus_wiertarka_V1_Layers/Certus_wiertarka_V1_Layer1.png",
     "startExpanded": false,
     "url": "/maszyny/#specjalistyczne",
+    "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
+    "machine":"m_special"
+  },
+  {
+    "id": "certus",
+    "title": "Certus 69",
+    "img": "/assets/maszyny/renders/Certus_69_Layers/Certus_69_Layer1.png",
+    "startExpanded": false,
+    "url": "/bestseller",
     "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
     "machine":"m_special"
   }

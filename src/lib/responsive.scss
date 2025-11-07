@@ -40,18 +40,16 @@
     color: var(--color-text-secondary);
   }
   padding-left: 2rem;
-    padding-right: 2rem;
+  padding-right: 2rem;
 }
 
 body.kontakt .contact-flex {
   background: linear-gradient(180deg, #f7f7f7 0%, #f7f7f7 100%) !important;
 }
-body.serwis .contact-flex .contact-left::before{
-  
-    background: linear-gradient(180deg, #fbfbfb 0%, #fdfdfd 100%) !important;
+body.serwis .contact-flex .contact-left::before {
+  background: linear-gradient(180deg, #fbfbfb 0%, #fdfdfd 100%) !important;
 }
-body.home .contact-flex .contact-left::before{
-  
+body.home .contact-flex .contact-left::before {
   background: linear-gradient(180deg, #fbfbfb 0%, #fdfdfd 100%) !important;
 }
 
@@ -128,7 +126,7 @@ body.home {
 
 @media (max-width: 900px) {
   .contact-flex {
-    .contact-left::before{
+    .contact-left::before {
       display: none !important;
     }
   }
@@ -148,7 +146,7 @@ body.home {
 
 @media (max-width: 757px) {
   .contact-right {
-    .contact-form{
+    .contact-form {
       padding-left: 0px;
       padding-right: 0px;
     }
@@ -253,16 +251,6 @@ body.home {
   }
 }
 
-@media (max-width: 927px) {
-  .logomini {
-    min-width: 62px !important;
-    width: 30px;
-  }
-  body.maszyny .topImage {
-    width: 16rem !important;
-    padding-right: 1em !important;
-  }
-}
 
 @media (max-width: 1200px) {
   body.maszyny .maszyny-dane-cta {
@@ -422,13 +410,7 @@ body.home {
     bottom: 1.5em !important;
   }
 
-  body.maszyny .topImage {
-    width: 12rem !important;
-    padding-right: 1em !important;
-  }
-  body.maszyny .maszyny-dane-hr {
-    width: 100% !important;
-  }
+ 
 
   section.o-nas .container {
     padding: 2rem !important;
@@ -439,10 +421,7 @@ body.home {
 }
 
 @media (max-width: 480px) {
-  body.maszyny .topImage {
-    width: 8rem !important;
-    padding-right: 1em !important;
-  }
+ 
   :global(.maszyny-dane-tabela img) {
     width: 30px !important;
   }

@@ -741,7 +741,8 @@
       {/if}
 
       <!-- 2. Widoki kategorii - każdy z własną animacją -->
-      {#if $activeCategoryStore === "ploteryPrzemyslowe" && !$activeMachineStore}
+
+      {#if $activeCategoryStore === "frezarki" && !$activeMachineStore}
         <div
           class="view category-view no-sel"
           in:fly={{ ...flyConfig, y: 50 }}
@@ -749,37 +750,52 @@
         >
           <div class="category-content">
             <div class="container" in:fade={{ duration: 600, delay: 200 }}>
-              <div class="back_category"></div>
+              
               <div class="content">
-                <h1>
+              <!--   <h1>
                   {list.find((item) => item.id === $activeCategoryStore)?.title}
-                </h1>
+                </h1> -->
 
                 <div class="subListMachines">
                   <div class="item__category">
-                    <h2>W zabudowie</h2>
+                    <h2>
+                      CNC HMM-ST
+
+                      <br />
+                      <span class="subtitle"
+                        >(ST - Sliding Table - ruchomy stół)</span
+                      >
+                    </h2>
+
                     <button
                       type="button"
-                      on:click={() => openMachine("m-ploter")}
+                      on:click={() => openMachine("m_frezarka")}
                     >
                       <img
                         class="image"
-                        src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+                        src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
                         alt="Ploter przemysłowy"
                       />
                     </button>
                   </div>
 
                   <div class="item__category">
-                    <h2>Bez zabudowy</h2>
+                    <h2>
+                      CNC HMM-GT
+
+                      <br />
+                      <span class="subtitle"
+                        >(GT - Ganry Type - ruchoma brama)</span
+                      >
+                    </h2>
                     <button
                       type="button"
-                      on:click={() => openMachine("m-ploter1")}
+                      on:click={() => openMachine("m_frezarka1")}
                     >
                       <img
                         class="image"
                         alt="Ploter przemysłowy bez zabudowy"
-                        src="/assets/maszyny/renders/Certus_0816_000_Layers/Certus_0816_000_Layer1.png"
+                        src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
                       />
                     </button>
                   </div>
@@ -799,6 +815,122 @@
           </div>
         </div>
       {/if}
+
+      {#if $activeCategoryStore === "ploteryPrzemyslowe" && !$activeMachineStore}
+
+      <div
+
+        class="view category-view no-sel"
+
+        in:fly={{ ...flyConfig, y: 50 }}
+
+        out:fly={{ ...flyConfig, y: -50 }}
+
+      >
+
+        <div class="category-content">
+
+          <div class="container" in:fade={{ duration: 600, delay: 200 }}>
+
+            
+
+            <div class="content">
+
+           <!--    <h1>
+
+                {list.find((item) => item.id === $activeCategoryStore)?.title}
+
+              </h1> -->
+
+
+
+              <div class="subListMachines">
+
+                <div class="item__category m-ploter">
+
+                  <h2>W zabudowie</h2>
+
+                  <button
+
+                    type="button"
+
+                    on:click={() => openMachine("m-ploter")}
+
+                  >
+
+                    <img
+
+                      class="image"
+
+                      src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+
+                      alt="Ploter przemysłowy"
+
+                    />
+
+                  </button>
+
+                </div>
+
+
+
+                <div class="item__category">
+
+                  <h2>Bez zabudowy</h2>
+
+                  <button
+
+                    type="button"
+
+                    on:click={() => openMachine("m-ploter1")}
+
+                  >
+
+                    <img
+
+                      class="image"
+
+                      alt="Ploter przemysłowy bez zabudowy"
+
+                      src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
+
+                    />
+
+                  </button>
+
+                </div>
+
+              </div>
+
+              <div
+
+                in:fade={{ duration: 400, delay: 800 }}
+
+                out:fade={{ duration: 300 }}
+
+              >
+
+                <CtaButton
+
+                  on:click={close}
+
+                  text="Wróć"
+
+                  classs="backFromCategory"
+
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    {/if}
     </div>
   </div>
   <span class="triangle"></span>
@@ -816,7 +948,7 @@
       width: 100vw;
       height: 37px;
       right: 0px;
-     
+
       bottom: 0px;
     }
 
@@ -841,7 +973,7 @@
 
   @media (max-width: 800px) {
     :global(.home .hero .triangle) {
-    &::after{
+      &::after {
         clip-path: polygon(0 0, 40% 0, 60% 101%, 0% 100%) !important;
       }
     }
@@ -849,12 +981,11 @@
 
   @media (max-width: 500px) {
     :global(.home .hero .triangle) {
-    &::after{
+      &::after {
         clip-path: polygon(0 0, 20% 0, 40% 101%, 0% 100%) !important;
       }
     }
   }
-
 
   :global(.swiper-nav-button.swiper-button-disabled) {
     opacity: 0.1 !important;
@@ -868,17 +999,15 @@
   }
 
   .container {
-    max-width: 1200px;
+  /*   max-width: 1200px;
     margin: 0 auto;
-    padding: 0 0px;
+    padding: 0 0px; */
   }
 
   :global(.gradientHero) {
-
     background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
-
   }
-  
+
   .active_flex {
     position: relative;
   }
@@ -888,8 +1017,10 @@
     align-content: center;
     justify-content: space-around;
     align-items: flex-start;
-    margin-top: -100px;
+   /*  margin-top: -100px; */
     gap: 13%;
+    padding-left: 2%;
+    padding-right: 2%;
     .image {
       cursor: pointer;
     }
@@ -898,7 +1029,7 @@
     }
     .item__category {
       display: flex;
-      width: 30vw;
+      
       flex-direction: column-reverse;
       align-items: flex-end;
       justify-content: flex-end;
@@ -906,32 +1037,32 @@
       align-content: flex-start;
       flex-wrap: nowrap;
     }
+    .item__category.m-ploter{
+      margin-left: 2%;
+  }
   }
 
   .category-content .container {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    border-radius: 1rem;
+  
 
     :global(button.backFromCategory) {
       position: absolute !important;
-    /* display: block; */
-    bottom: 1px;
-    left: 0px;
-    z-index: 5;
-    transition: all ease 0.4s;
-    background-color: var(--color-primary);
-    color: white;
-    &::before{
-      content: "";
-      position: absolute;
-      top: 10px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url(/assets/images/pattern-image1-2.png);
-    }
+      /* display: block; */
+      bottom: -20px;
+      left: 0px;
+      z-index: 5;
+      transition: all ease 0.4s;
+      background-color: var(--color-primary);
+      color: white;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url(/assets/images/pattern-image1-2.png);
+      }
     }
 
     .back_category {
@@ -1036,7 +1167,7 @@
     }
 
     .hero-bg {
-      padding-top: 120px;
+     /*  padding-top: 120px; */
     }
   }
 
@@ -1114,21 +1245,22 @@
   }
 
   .view.category-view {
-    padding: 2rem;
-    max-height: calc(100vh - 100px); /* Limit height to avoid overflow */
+    // padding: 2rem; 
+    max-height: 100vh;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
+    /* width: 100%; */
+    /* height: 100%; */
+    /* display: flex; */
+    /* align-items: flex-start; */
     justify-content: center;
-    flex-direction: row;
-    margin-top: 18%;
+    /* flex-direction: row; */
+    // margin-top: 18%;
 
     .item__category {
       h2 {
+        font-size: 1rem;
         color: white !important;
-        background-color: #7c8897;
+     /*    background-color: #7c8897; */
         font-weight: 500;
         padding: 0.5rem;
         border-radius: 23px;
@@ -1141,6 +1273,15 @@
     }
   }
 
+  .item__category h2 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subtitle {
+    font-size: 0.7rem !important;
+  }
+
   @media (max-width: 768px) {
     .category-content .container h1 {
       padding-left: 0px;
@@ -1148,24 +1289,30 @@
     }
     .view.category-view {
       margin-top: 20rem;
+
       .item__category h2 {
         font-size: 0.7rem;
         padding-left: 10px;
         padding-right: 10px;
 
         margin-top: 3.5rem !important;
+
+        .subtitle {
+          font-size: 0.4rem !important;
+        }
       }
     }
   }
 
   /* ————————————————  KATEGORIE  ———————————————— */
   .category-content {
-    display: flex;
+ /*    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    padding: 2rem;
+    padding: 2rem; */
+    width: 100%;
   }
   .category-content h1 {
     color: #fff;
@@ -1193,7 +1340,7 @@
 
   /* ————————————————  SWIPER - CLEAN RESPONSIVE  ———————————————— */
   swiper-container {
-    width: 90%;
+    width: 100%;
     height: 778px; /* Bazowa wysokość */
     opacity: 0;
     margin-top: 0; /* Reset margin-top */
@@ -1201,6 +1348,45 @@
 
     .topline {
       transition: font-size 0.3s ease-in-out; /* Smooth font size transitions */
+    }
+  }
+
+  swiper-container swiper-slide {
+    button > div.item > div {
+      opacity: 0.5;
+    }
+    button > div.item > div:hover {
+      opacity: 1;
+    }
+  }
+
+
+
+  swiper-container swiper-slide:nth-child(1),
+  swiper-container swiper-slide:nth-child(2), 
+  swiper-container swiper-slide:nth-child(5) {
+  .headlines .topline{
+
+margin-left: -90px;
+
+}
+  }
+
+
+  swiper-container swiper-slide:nth-child(1),
+  swiper-container swiper-slide:nth-child(2) {
+
+    .headlines .topline{
+
+      margin-left: -90px;
+      
+    }
+
+
+
+
+    button > div.item > div {
+      transform: scale(1) !important;
     }
   }
 
@@ -1376,17 +1562,15 @@
 
   .headlines .topline {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    color: #fff;
+    color: #dbdbdb;
     line-height: 1;
     transition: all 0.3s ease;
     position: absolute;
     text-align: left;
-    /* Safe area - teksty nigdy nie będą przykryte przez navbar */
-    top: 20px; /* Dodatkowy margines od góry */
-    min-height: 60px; /* Minimalna wysokość dla lepszego pozycjonowania */
-    font-family: "Poppins", sans-serif;
+    margin-top: 65%;
     font-size: 1.8rem;
-    font-weight: 700;
+    z-index: 999999999;
+    font-family: "Poppins" !important;
   }
   .items:hover .headlines .topline {
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
@@ -1400,7 +1584,7 @@
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
-    transform: scale(0.75);
+    transform: scale(1);
   }
 
   .item .image img {

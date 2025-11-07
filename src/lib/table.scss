@@ -52,13 +52,13 @@ margin-right: 10px;
   }
 }
 .maszyny-dane-hr {
-  margin-bottom: 8em !important;
+  margin-bottom: 2em !important;
 }
 .maszyny-dane-podtytul {
   font-weight: 700;
-  font-size: 21px;
+  // font-size: 21px;
   color: #000000;
-  padding-left: 1.1em;
+  // padding-left: 1.1em;
   padding-top: 2em;
   padding-bottom: 1em;
 }
@@ -102,7 +102,7 @@ margin-right: 10px;
 }
 .maszyny-dane-lista-small li {
   padding-left: 1em;
-  font-size: 15px !important;
+  // font-size: 15px !important;
   border-left: 5px solid var(--color-primary);
   margin-bottom: 0.3em;
   margin-left: 30px;
@@ -151,7 +151,7 @@ hr,
 
 #maszyny.maszyny {
   width: 100%;
-  padding: 100px 0;
+  padding: 20px 0px 67px 0px;
   background: #f7f7f7;
 }
 
@@ -162,7 +162,7 @@ hr,
 }
 
 .section-header {
-  margin-bottom: 80px;
+  margin-bottom: 0px;
 }
 
 /* Responsywność dla strony maszyny - dopasowanie do strony głównej */
@@ -212,8 +212,8 @@ hr,
 }
 .maszyny-dane-lista {
   margin: 0 0 1.2rem 0;
-  padding-left: 1.2em;
-  font-size: 1.08rem;
+  // padding-left: 1.2em;
+  /* font-size: 1.08rem; */
   color: #222;
 }
 .maszyny-dane-lista li {
@@ -222,8 +222,8 @@ hr,
 }
 .maszyny-dane-podtytul {
   font-weight: 600;
-  margin: 1.2em 0 0.5em 0;
-  font-size: 1.1rem;
+  // margin: 1.2em 0 0.5em 0;
+  // font-size: 1.1rem;
   color: var(--color-text-secondary);
 }
 .maszyny-dane-tabela-wrap {

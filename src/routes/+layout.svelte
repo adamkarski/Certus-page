@@ -73,9 +73,9 @@
     // Add current page class
     document.body.classList.add($activePage);
     // Add landing class if landing is visible
-    if ($landingVisible) {
+   /*  if ($landingVisible) {
       document.body.classList.add('landing');
-    }
+    } */
   }
 </script>
 
@@ -92,13 +92,13 @@
 {/key}
 
 
-
-{#if $landingVisible}
+<!--  POPUP  -->
+<!-- {#if $landingVisible}
   <LandingTargi />
-{/if}
+{/if} -->
 
 <!-- Dev Resolution Display - only visible during development -->
-<!-- <DevResolutionDisplay /> -->
+<DevResolutionDisplay />
 
 
 <style lang="scss">

@@ -195,7 +195,7 @@
     </div>
     <div class="image-column">
       <img
-        src="/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-glowne1.jpg"
+        src="/assets/maszyny/renders/Certus_69_bestseller_Layers/Certus_69_bestseller_Layer1.png"
         alt="Główne zdjęcie frezarko-grawerki CNC Certus 69"
         class="main-machine-image"
       />
