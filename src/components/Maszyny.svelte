@@ -165,13 +165,6 @@
     </div>
   </div>
 
-  <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Frezarki CNC HMM.pdf"
-    contactText="Kontakt"
-    contactHref="#"
-  />
-
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
@@ -197,9 +190,12 @@
       />
     </div>
   </div>
-  <div class="maszyny-dane-cta">
-    <CtaButton text="Zamów konsultację" />
-  </div>
+  <MachineMenu
+    downloadText="Do pobrania"
+    downloadHref="/do_pobrania/Frezarki CNC HMM.pdf"
+    contactText="Kontakt"
+    contactHref="#"
+  />
 </section>
 
 <!-- Przemysłowe plotery CNC -->
@@ -293,13 +289,6 @@
     </div>
   </div>
 
-  <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
-    contactText="Kontakt"
-    contactHref="#"
-  />
-
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
@@ -323,9 +312,12 @@
       />
     </div>
   </div>
-  <div class="maszyny-dane-cta">
-    <CtaButton text="Zamów konsultację" />
-  </div>
+  <MachineMenu
+    downloadText="Do pobrania"
+    downloadHref="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
+    contactText="Kontakt"
+    contactHref="#"
+  />
 </section>
 
 <!-- Przemysłowe plotery CNC w zabudowie -->
@@ -444,13 +436,6 @@
     </div>
   </div>
 
-  <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
-    contactText="Kontakt"
-    contactHref="#"
-  />
-
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
@@ -476,9 +461,12 @@
       />
     </div>
   </div>
-  <div class="maszyny-dane-cta">
-    <CtaButton text="Zamów konsultację" />
-  </div>
+  <MachineMenu
+    downloadText="Do pobrania"
+    downloadHref="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
+    contactText="Kontakt"
+    contactHref="#"
+  />
 </section>
 
 <!-- Grawerki CNC -->
@@ -590,13 +578,6 @@
     </div>
   </div>
 
-  <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Grawerki CNC.pdf"
-    contactText="Kontakt"
-    contactHref="#"
-  />
-
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
@@ -622,9 +603,12 @@
       />
     </div>
   </div>
-  <div class="maszyny-dane-cta">
-    <CtaButton text="Zamów konsultację" />
-  </div>
+  <MachineMenu
+    downloadText="Do pobrania"
+    downloadHref="/do_pobrania/Grawerki CNC.pdf"
+    contactText="Kontakt"
+    contactHref="#"
+  />
 </section>
 
 <!-- Frezarki pięcioosiowe -->
@@ -732,13 +716,6 @@
     </div>
   </div>
 
-  <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Frezarki 5osiowe.pdf"
-    contactText="Kontakt"
-    contactHref="#"
-  />
-
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
@@ -764,9 +741,12 @@
       />
     </div>
   </div>
-  <div class="maszyny-dane-cta">
-    <CtaButton text="Zamów konsultację" />
-  </div>
+  <MachineMenu
+    downloadText="Do pobrania"
+    downloadHref="/do_pobrania/Frezarki 5osiowe.pdf"
+    contactText="Kontakt"
+    contactHref="#"
+  />
 </section>
 
 <!-- Plotery tnące linearne CNC -->
@@ -873,13 +853,6 @@
     </div>
   </div>
 
-  <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Plotery linearne CNC.pdf"
-    contactText="Kontakt"
-    contactHref="#"
-  />
-
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
@@ -905,9 +878,12 @@
       />
     </div>
   </div>
-  <div class="maszyny-dane-cta">
-    <CtaButton text="Zamów konsultację" />
-  </div>
+  <MachineMenu
+    downloadText="Do pobrania"
+    downloadHref="/do_pobrania/Plotery linearne CNC.pdf"
+    contactText="Kontakt"
+    contactHref="#"
+  />
 </section>
 
 <style lang="scss">

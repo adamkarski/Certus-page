@@ -209,7 +209,7 @@
             {#if isMaszynyDropdownOpen}
               <div class="mega-menu" transition:fly={{ y: -10, duration: 200 }}>
                 <div class="flex">
-                  <div class="w-1/3 py-4 px-2">
+                  <div class="w-1/3 py-4 px-2 megamenu-category-list">
                     <ul>
                       {#each kategorieMaszyn as kategoria, i}
                         <li>
@@ -839,7 +839,7 @@
     display: block;
     padding: 0.75rem 1rem;
     color: #374151;
-    transition: all 0.2s;
+    transition: color 0.2s, background-color 0.2s; // Explicit transition for color and background-color
     border-left: 4px solid transparent;
     &:hover {
       color: #16a34a;
@@ -914,21 +914,24 @@
     }
   }
 
-  .image-container {
-    position: relative;
-    height: 50%;
-    
-  }
+      .image-container {
+
+        position: relative;
+
+        height: 50%;
+
+      }
 
   .menu-image {
     position: relative;
     width: 100%;
     height: 50%;
     transition: transform 0.3s ease;
+    transform: scale(0.95); // Default smaller size
   }
 
   .image-container a:hover .menu-image {
-    transform: scale(1.05);
+    transform: scale(0.97); // Enlarge to normal size on hover
   }
 
   .image-container a {
@@ -946,5 +949,11 @@
   .bestseller-link-wrapper:hover {
     text-decoration: none;
     color: inherit;
+  }
+
+  .megamenu-category-list {
+    position: relative;
+    z-index: 1;
+    background-color: white;
   }
 </style>
