@@ -301,28 +301,17 @@
     const nextButton = document.getElementById("swiper-button-next-hero");
 
     if (prevButton && nextButton) {
-      // Without loop mode, we can use isBeginning and isEnd
-      const currentIndex = swiper.activeIndex;
-      const totalSlides = list.length;
-      const currentSlidesPerView = $windowWidth < 1024 ? 1 : 2; // Use reactive value
-      const currentSlidesPerGroup = $windowWidth < 1024 ? 1 : 2; // Use reactive value
-
-      // Remove existing disabled classes
-      prevButton.classList.remove("swiper-button-disabled");
-      nextButton.classList.remove("swiper-button-disabled");
-
-      // Use reactive slidesPerGroup value
-      const maxGroups = Math.ceil(totalSlides / currentSlidesPerGroup);
-      const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
-
-      // Check if we're at the beginning (group 0)
-      if (currentGroup === 0) {
+      // Use swiper's built-in isBeginning and isEnd properties
+      if (swiper.isBeginning) {
         prevButton.classList.add("swiper-button-disabled");
+      } else {
+        prevButton.classList.remove("swiper-button-disabled");
       }
 
-      // Check if we're at the end (last group)
-      if (currentGroup >= maxGroups - 1) {
+      if (swiper.isEnd) {
         nextButton.classList.add("swiper-button-disabled");
+      } else {
+        nextButton.classList.remove("swiper-button-disabled");
       }
     }
   }
@@ -331,43 +320,22 @@
   function handlePrevClick() {
     if (swiperElement && swiperElement.swiper) {
       const swiper = swiperElement.swiper;
-      const currentIndex = swiper.activeIndex;
-      const currentSlidesPerGroup =
-        (swiper.params && swiper.params.slidesPerGroup) ||
-        ($windowWidth < 1024 ? 1 : 2);
-      const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
-
-      if (currentGroup > 0) {
-        const targetIndex = (currentGroup - 1) * currentSlidesPerGroup;
-        swiper.slideTo(targetIndex, 300); // 300ms transition
-        // Update buttons after slide change
-        setTimeout(() => {
-          lastActiveSlideIndex = swiper.activeIndex; // Zapisz ostatni aktywny slajd
-          updateNavigationButtons(swiper);
-        }, 350); // Slightly longer than transition
-      }
+      swiper.slidePrev(300);
+      setTimeout(() => {
+        lastActiveSlideIndex = swiper.activeIndex;
+        updateNavigationButtons(swiper);
+      }, 350);
     }
   }
 
   function handleNextClick() {
     if (swiperElement && swiperElement.swiper) {
       const swiper = swiperElement.swiper;
-      const currentIndex = swiper.activeIndex;
-      const currentSlidesPerGroup =
-        (swiper.params && swiper.params.slidesPerGroup) ||
-        ($windowWidth < 1024 ? 1 : 2);
-      const maxGroups = Math.ceil(list.length / currentSlidesPerGroup);
-      const currentGroup = Math.floor(currentIndex / currentSlidesPerGroup);
-
-      if (currentGroup < maxGroups - 1) {
-        const targetIndex = (currentGroup + 1) * currentSlidesPerGroup;
-        swiper.slideTo(targetIndex, 300); // 300ms transition
-        // Update buttons after slide change
-        setTimeout(() => {
-          lastActiveSlideIndex = swiper.activeIndex; // Zapisz ostatni aktywny slajd
-          updateNavigationButtons(swiper);
-        }, 350); // Slightly longer than transition
-      }
+      swiper.slideNext(300);
+      setTimeout(() => {
+        lastActiveSlideIndex = swiper.activeIndex;
+        updateNavigationButtons(swiper);
+      }, 350);
     }
   }
 

@@ -233,12 +233,14 @@
                   >
                     {#if hoveredCategory}
                       {#key hoveredCategory.id}
-                        <img
-                          src={hoveredCategory.img}
-                          alt={hoveredCategory.title}
-                          class="menu-image"
-                          in:fade={{ delay: 150, duration: 150 }}
-                        />
+                        <a href="#" role="button" on:click|preventDefault={() => handleMaszynyNavigation(hoveredCategory.id)}>
+                          <img
+                            src={hoveredCategory.img}
+                            alt={hoveredCategory.title}
+                            class="menu-image"
+                            in:fade={{ delay: 150, duration: 150 }}
+                          />
+                        </a>
 
                       {/key}
                     {/if}
@@ -283,41 +285,42 @@
                 class="bestseller-dropdown absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
                 transition:fly={{ y: -10, duration: 200 }}
               >
-                <div class="bestseller-content p-6">
-                  <div class="bestseller-header mb-4">
-                    <h3 class="bestseller-title">Frezarko‑grawerka CNC<br/><span class="bestseller-name">CERTUS 69</span>
-                    </h3>
-                    <p class="bestseller-subtitle">
-                      Najchętniej wybierana przez naszych klientów
-                    </p>
-                  </div>
+                <a href="/bestseller" on:click={() => isBestsellerDropdownOpen = false} class="bestseller-link-wrapper">
+                  <div class="bestseller-content p-6">
+                    <div class="bestseller-header mb-4">
+                      <h3 class="bestseller-title">Frezarko‑grawerka CNC<br/><span class="bestseller-name">CERTUS 69</span>
+                      </h3>
+                      <p class="bestseller-subtitle">
+                        Najchętniej wybierana przez naszych klientów
+                      </p>
+                    </div>
 
-                  <div class="bestseller-image mb-4">
-                    <img
-                      src="/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-glowne1.jpg"
-                      alt="Plotery przemysłowe CNC - Bestseller"
-                      class="bestseller-img"
-                    />
-                  </div>
+                    <div class="bestseller-image mb-4">
+                      <img
+                        src="/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-glowne1.jpg"
+                        alt="Plotery przemysłowe CNC - Bestseller"
+                        class="bestseller-img"
+                      />
+                    </div>
 
-                  <div class="bestseller-features mb-4">
-                    <ul class="features-list">
-                      <li>✓ Najwyższa precyzja cięcia</li>
-                      <li>✓ Sprawdzone w tysiącach firm</li>
-                      <li>✓ Kompleksowa obsługa serwisowa</li>
-                    </ul>
-                  </div>
+                    <div class="bestseller-features mb-4">
+                      <ul class="features-list">
+                        <li>✓ Najwyższa precyzja cięcia</li>
+                        <li>✓ Sprawdzone w tysiącach firm</li>
+                        <li>✓ Kompleksowa obsługa serwisowa</li>
+                      </ul>
+                    </div>
 
-                  <div class="bestseller-cta">
-                    <CtaButton classs="bestseller"
-                      text="Sprawdz szczegóły"
-                      on:click={() => {
-                        isBestsellerDropdownOpen = false;
-                        goto("/bestseller");
-                      }}
-                    />
+                    <div class="bestseller-cta" on:click|stopPropagation={() => {
+                      isBestsellerDropdownOpen = false;
+                      goto("/bestseller");
+                    }}>
+                      <CtaButton classs="bestseller"
+                        text="Sprawdz szczegóły"
+                      />
+                    </div>
                   </div>
-                </div>
+                </a>
               </div>
             {/if}
           </div>
@@ -500,7 +503,7 @@
 
   .bestseller-img {
     max-width: 100%;
-    max-height: 160px;
+    max-height: 250px;
     object-fit: contain;
     border-radius: 8px;
   }
@@ -900,6 +903,9 @@
       padding: 3px;
       border-bottom: 1px solid #ccc;
       cursor: pointer;
+      &:last-child {
+        border-bottom: none; // Remove underline from the last li
+      }
     }
     .submenu-item:hover {
       color: var(--color-text-primary);
@@ -918,5 +924,27 @@
     position: relative;
     width: 100%;
     height: 50%;
+    transition: transform 0.3s ease;
+  }
+
+  .image-container a:hover .menu-image {
+    transform: scale(1.05);
+  }
+
+  .image-container a {
+    display: block;
+    cursor: pointer;
+  }
+
+  .bestseller-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer; // Change cursor to pointer to indicate it's a link
+    display: block; // Make the link take up the full space
+  }
+
+  .bestseller-link-wrapper:hover {
+    text-decoration: none;
+    color: inherit;
   }
 </style>
