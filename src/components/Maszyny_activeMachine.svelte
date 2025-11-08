@@ -192,14 +192,14 @@
               class="right_params_content"
               in:fade={{ duration: 300, delay: 200 }}
             >
-             <!--  <img
-                src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                alt="Schemat techniczny frezarki Certus 7111 - widok 1"
+              <img
+                src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.png"
+                alt="Schemat techniczny frezarki Certus 1080 PRO - widok 1"
               />
               <img
-                src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                alt="Schemat techniczny frezarki Certus 7111 - widok 2"
-              /> -->
+                src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.png"
+                alt="Schemat techniczny frezarki Certus 1080 PRO - widok 2"
+              />
             </div>
           </div>
         {/if}
@@ -476,14 +476,14 @@
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-              <!--   <img
-                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                  alt="Schemat techniczny plotera przemysłowego m_ploter - widok 1"
+                <img
+                  src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_5.png"
+                  alt="Schemat techniczny frezarki Certus 0815 - widok 5"
                 />
                 <img
-                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                  alt="Schemat techniczny plotera przemysłowego m_ploter - widok 2"
-                /> -->
+                  src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_3.png"
+                  alt="Schemat techniczny frezarki Certus 0815 - widok 3"
+                />
               </div>
             </div>
           {/if}
@@ -602,14 +602,14 @@
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-              <!--   <img
-                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                  alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 1"
+                <img
+                  src="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
+                  alt="Schemat techniczny frezarki Certus 0816 - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                  alt="Schemat techniczny plotera przemysłowego m_ploter1 - widok 2"
-                /> -->
+                  src="/assets/maszyny/SCHEMATY/Certus_0816_2.png"
+                  alt="Schemat techniczny frezarki Certus 0816 - widok 2"
+                />
               </div>
             </div>
           {/if}
@@ -753,12 +753,12 @@
                 in:fade={{ duration: 300, delay: 200 }}
               >
                 <img
-                  src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
-                  alt="Schemat techniczny grawerki Certus 6040 - widok 1"
+                  src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.png"
+                  alt="Schemat techniczny - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
-                  alt="Schemat techniczny grawerki Certus 6040 - widok 2"
+                  src="/assets/maszyny/SCHEMATY/Certus_5_Osi.png"
+                  alt="Schemat techniczny - widok 2"
                 />
               </div>
             </div>
@@ -898,14 +898,14 @@
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-               <!--  <img
-                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                  alt="Schemat techniczny grawerki Certus 3030 - widok 1"
+                <img
+                  src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa.png"
+                  alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                  alt="Schemat techniczny grawerki Certus 3030 - widok 2"
-                /> -->
+                  src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
+                  alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 2"
+                />
               </div>
             </div>
           {/if}
@@ -1044,12 +1044,12 @@
                 in:fade={{ duration: 300, delay: 200 }}
               >
                 <img
-                  src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
-                  alt="Schemat techniczny tokarki Certus 200 - widok 1"
+                  src="/assets/maszyny/SCHEMATY/Certus_1530.png"
+                  alt="Schemat techniczny frezarki Certus 1530 - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                  alt="Schemat techniczny tokarki Certus 200 - widok 2"
+                  src="/assets/maszyny/SCHEMATY/Certus_1530_3.png"
+                  alt="Schemat techniczny frezarki Certus 1530 - widok 4"
                 />
               </div>
             </div>
