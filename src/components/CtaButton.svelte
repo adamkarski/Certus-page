@@ -151,7 +151,8 @@
     .cta-svg {
     }
     .text-container {
-      text-align: left;
+      text-align: center;
+      width: 100%;
       transition: transform 0.4s ease;
     }
     &:hover {

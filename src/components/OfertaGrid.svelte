@@ -171,13 +171,13 @@
     text-align: center;
     transition: all 0.3s ease;
     display: flex;
-    align-items: end;
-    align-content: center;
+    align-items: center;
     cursor: pointer;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 
+    margin-bottom: 20px;
       span {
         text-align: left;
       }
@@ -200,7 +200,7 @@
         width: 100%;
     height: auto;
    
-    transform: scale(1.4) translate(22px, 0px);
+    
       }
     }
   }
