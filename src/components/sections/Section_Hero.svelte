@@ -742,7 +742,7 @@
                       <img
                         class="image"
                         src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-                        alt="Ploter przemysłowy"
+                        alt=""
                       />
                     </button>
                   </div>
@@ -762,7 +762,7 @@
                     >
                       <img
                         class="image"
-                        alt="Ploter przemysłowy bez zabudowy"
+                        alt=""
                         src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
                       />
                     </button>
@@ -816,7 +816,15 @@
 
                 <div class="item__category m-ploter">
 
-                  <h2>W zabudowie</h2>
+                  <h2>
+                    CNC HPP-CT
+
+                    <br />
+                    <span class="subtitle"
+                      >(CT — Closed Type - w zabudowie)</span
+                    >
+                  </h2>
+
 
                   <button
 
@@ -844,7 +852,15 @@
 
                 <div class="item__category">
 
-                  <h2>Bez zabudowy</h2>
+                  <h2>
+                    CNC HPP-OT
+
+                    <br />
+                    <span class="subtitle"
+                      >(OT — Open Type - otwarte)</span
+                    >
+                  </h2>
+
 
                   <button
 
@@ -1325,6 +1341,14 @@
     }
     button > div.item > div:hover {
       opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    swiper-container swiper-slide {
+      button > div.item > div {
+        opacity: 1; // Remove opacity for mobile devices
+      }
     }
   }
 

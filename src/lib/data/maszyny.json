@@ -45,15 +45,6 @@
     "machine":"m_ploterLinear"
   },
   {
-    "id": "specjalistyczne",
-    "title": "Maszyny specjalistyczne",
-    "img": "/assets/maszyny/renders/Certus_wiertarka_V1_Layers/Certus_wiertarka_V1_Layer1.png",
-    "startExpanded": false,
-    "url": "/maszyny/#specjalistyczne",
-    "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
-    "machine":"m_special"
-  },
-  {
     "id": "certus",
     "title": "Certus 69",
     "img": "/assets/maszyny/renders/Certus_69_Layers/Certus_69_Layer1.png",
@@ -61,5 +52,15 @@
     "url": "/bestseller",
     "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
     "machine":"m_special"
+  },
+  {
+    "id": "specjalistyczne",
+    "title": "Maszyny specjalistyczne",
+    "img": "/assets/maszyny/renders/Certus_wiertarka_V1_Layers/Certus_wiertarka_V1_Layer1.png",
+    "startExpanded": false,
+    "url": "/maszyny/#specjalistyczne",
+    "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
+    "machine":"m_special"
   }
+ 
 ]

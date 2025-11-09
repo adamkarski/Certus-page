@@ -167,14 +167,16 @@
     justify-items: center;
     .oferta-card {
       padding: 10px 0px;
-      border-radius: 0px;
-      text-align: center;
-      transition: all 0.3s ease;
-      display: grid;
-      align-items: end;
-      justify-content: start;
-      align-content: center;
-      cursor: pointer;
+    border-radius: 0px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: end;
+    align-content: center;
+    cursor: pointer;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 
       span {
         text-align: left;
@@ -195,9 +197,10 @@
       max-width: 140px !important;
 
       img {
-        // margin-left: 0.3em;
         width: 100%;
-        height: auto;
+    height: auto;
+   
+    transform: scale(1.4) translate(22px, 0px);
       }
     }
   }
@@ -208,8 +211,7 @@
       grid-template-columns: repeat(6, 1fr);
 
       .oferta-icon {
-        width: 3.2em;
-        max-width: 120px !important;
+    
       }
     }
   }
@@ -228,12 +230,10 @@
         // Dostosowanie ikon
         .oferta-icon {
           margin-bottom: 20px;
-          width: 3.5em;
-          min-width: 90px;
-          max-width: 120px !important;
+    
 
           img {
-            margin-left: 0.3em;
+           
             width: 100%;
             height: auto;
           }
@@ -263,7 +263,7 @@
     white-space: normal !important;
     word-break: break-word !important;
     line-height: 1.3 !important;
-    text-align: left !important;
+    text-align: center !important;
     display: block !important;
   }
 

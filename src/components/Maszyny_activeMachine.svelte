@@ -49,165 +49,160 @@
     in:fade={{ duration: 300, delay: 0 }}
     out:fade={{ duration: 300, delay: 0 }}
   >
-
     {#if $activeCategoryStore === "frezarki" && $activeMachineStore === "m_frezarka"}
+      <div class="active_flex">
+        <div
+          class="left gradientHero"
+          class:short={$expandedViewStore}
+          in:fade={{ duration: 300, delay: 0 }}
+          out:fade={{ duration: 300, delay: 0 }}
+        >
+          <h1>Seria Frezarek CNC<br />CERTUS HMM</h1>
 
-    <div class="active_flex">
-      <div
-        class="left gradientHero"
-        class:short={$expandedViewStore}
-        in:fade={{ duration: 300, delay: 0 }}
-        out:fade={{ duration: 300, delay: 0 }}
-      >
-        <h1>Seria Frezarek CNC<br />CERTUS HMM</h1>
-
-        <div class="left_image no-sel">
-          <img
-            style="filter: blur(120px);"
-            draggable="false"
-            src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-            alt="Frezarki CNC"
-          />
-          <img
-            class="back_image"
-            draggable="false"
-            src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-            alt="Frezarki CNC"
-          />
-        </div>
-        <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
-      </div>
-
-      <div class="right" class:expanded={$expandedViewStore}>
-        <div class="right_content">
-          <h1 use:typoFixAction>
-            <b>Nowa linia frezarek CERTUS HMM</b><br /><br />została
-            zaprojektowana z myślą o szybkim i precyzyjnym frezowaniu
-            materiałów takich jak stal, aluminium, drewno, tworzywa sztuczne i
-            inne.
-          </h1>
-          <br /><br />
-
-          <h3>Zastosowanie maszyn obejmuje m.in.:</h3>
-
-          <ul class="">
-            <li use:typoFixAction>Produkcję form wtryskowych i tłoczników</li>
-            <li use:typoFixAction>
-              Obróbkę modeli odlewniczych i termoformowanych
-            </li>
-            <li use:typoFixAction>
-              Wykonywanie stempli, matryc oraz wykrojników ze stali i
-              aluminium
-            </li>
-            <li use:typoFixAction>
-              Precyzyjne grawerowanie i wiele innych procesów przemysłowych
-            </li>
-          </ul>
-          <hr />
-
-          <h3>Konstrukcja i ergonomia</h3>
-
-          <ul class="">
-            <li use:typoFixAction>
-              Panel sterujący w formie wolnostojącej konsoli pozwala na
-              elastyczne rozmieszczenie stanowiska pracy, zwiększając komfort
-              obsługi i bezpieczeństwo operatora
-            </li>
-            <li use:typoFixAction>
-              Konsola zawiera m.in.: przyciski sterujące (Start, Stop, Pauza,
-              Reset), komputer przemysłowy, monitor, klawiaturę i mysz
-            </li>
-            <li use:typoFixAction>
-              Interfejs użytkownika oraz oprogramowanie dostępne są w języku
-              polskim
-            </li>
-          </ul>
-
-          <hr />
-
-          <h3>Chłodzenie i bezpieczeństwo pracy</h3>
-
-          <ul class="">
-            <li use:typoFixAction>
-              Zamknięta, w pełni zabudowana konstrukcja maszyny umożliwia
-              efektywne chłodzenie narzędzi oraz obrabianego materiału
-            </li>
-            <li use:typoFixAction>
-              Wbudowany układ chłodzenia składa się ze zbiornika, odstojnika
-              oraz pompy, co zapewnia stabilną pracę i ochronę komponentów
-            </li>
-            <li use:typoFixAction>
-              Elementy prowadzące, takie jak prowadnice liniowe oraz śruby
-              kulowe, są zabezpieczone trwałymi osłonami stalowymi, chroniąc
-              je przed zanieczyszczeniami i wydłużając ich żywotność
-            </li>
-          </ul>
-
-          <hr />
-          <h3>Wyposażenie i napęd</h3>
-
-          <ul class="">
-            <li use:typoFixAction>
-              Maszyny standardowo wyposażone są w automatyczny system wymiany
-              narzędzi z magazynem
-            </li>
-            <li use:typoFixAction>
-              Napęd realizowany jest przez Serwonapędy Hybrydowe lub Serwa AC
-              (w zależności od konfiguracji), zapewniając wysoką precyzję i
-              jakość obróbki
-            </li>
-            <li use:typoFixAction>
-              Komunikacja z maszyną odbywa się poprzez złącze LAN, co ułatwia
-              integrację z siecią zakładową
-            </li>
-          </ul>
-          <hr />
-          <h3>Cechy charakterystyczne serii HMM</h3>
-
-          <ul class="">
-            <li use:typoFixAction>Wysoka sztywność konstrukcji</li>
-            <li use:typoFixAction>
-              Dokładność i powtarzalność pracy w swojej klasie
-            </li>
-            <li use:typoFixAction>Nowoczesne rozwiązania technologiczne</li>
-            <li use:typoFixAction>
-              Intuicyjna obsługa i wsparcie w języku polskim
-            </li>
-          </ul>
-
-          <MachineMenu
-            downloadText="Do pobrania"
-            downloadHref="/do_pobrania/Frezarki CNC HMM.pdf"
-            contactText="Kontakt"
-            contactHref="#"
-          />
-
-          <Maszyny_table_frezarki />
-     
-        </div>
-
-        {#if $expandedViewStore}
-          <div class="right_params">
-            <div
-              class="right_params_content"
-              in:fade={{ duration: 300, delay: 200 }}
-            >
-              <img
-                src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.png"
-                alt="Schemat techniczny frezarki Certus 1080 PRO - widok 1"
-              />
-              <img
-                src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.png"
-                alt="Schemat techniczny frezarki Certus 1080 PRO - widok 2"
-              />
-            </div>
+          <div class="left_image no-sel">
+            <img
+              style="filter: blur(120px);"
+              draggable="false"
+              src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+              alt="Frezarki CNC"
+            />
+            <img
+              class="back_image"
+              draggable="false"
+              src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+              alt="Frezarki CNC"
+            />
           </div>
-        {/if}
-      </div>
-    </div>
+          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
+        </div>
 
+        <div class="right" class:expanded={$expandedViewStore}>
+          <div class="right_content">
+            <h1 use:typoFixAction>
+              <b>Nowa linia frezarek CERTUS HMM</b><br /><br />została
+              zaprojektowana z myślą o szybkim i precyzyjnym frezowaniu
+              materiałów takich jak stal, aluminium, drewno, tworzywa sztuczne i
+              inne.
+            </h1>
+            <br /><br />
+
+            <h3>Zastosowanie maszyn obejmuje m.in.:</h3>
+
+            <ul class="">
+              <li use:typoFixAction>Produkcję form wtryskowych i tłoczników</li>
+              <li use:typoFixAction>
+                Obróbkę modeli odlewniczych i termoformowanych
+              </li>
+              <li use:typoFixAction>
+                Wykonywanie stempli, matryc oraz wykrojników ze stali i
+                aluminium
+              </li>
+              <li use:typoFixAction>
+                Precyzyjne grawerowanie i wiele innych procesów przemysłowych
+              </li>
+            </ul>
+            <hr />
+
+            <h3>Konstrukcja i ergonomia</h3>
+
+            <ul class="">
+              <li use:typoFixAction>
+                Panel sterujący w formie wolnostojącej konsoli pozwala na
+                elastyczne rozmieszczenie stanowiska pracy, zwiększając komfort
+                obsługi i bezpieczeństwo operatora
+              </li>
+              <li use:typoFixAction>
+                Konsola zawiera m.in.: przyciski sterujące (Start, Stop, Pauza,
+                Reset), komputer przemysłowy, monitor, klawiaturę i mysz
+              </li>
+              <li use:typoFixAction>
+                Interfejs użytkownika oraz oprogramowanie dostępne są w języku
+                polskim
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3>Chłodzenie i bezpieczeństwo pracy</h3>
+
+            <ul class="">
+              <li use:typoFixAction>
+                Zamknięta, w pełni zabudowana konstrukcja maszyny umożliwia
+                efektywne chłodzenie narzędzi oraz obrabianego materiału
+              </li>
+              <li use:typoFixAction>
+                Wbudowany układ chłodzenia składa się ze zbiornika, odstojnika
+                oraz pompy, co zapewnia stabilną pracę i ochronę komponentów
+              </li>
+              <li use:typoFixAction>
+                Elementy prowadzące, takie jak prowadnice liniowe oraz śruby
+                kulowe, są zabezpieczone trwałymi osłonami stalowymi, chroniąc
+                je przed zanieczyszczeniami i wydłużając ich żywotność
+              </li>
+            </ul>
+
+            <hr />
+            <h3>Wyposażenie i napęd</h3>
+
+            <ul class="">
+              <li use:typoFixAction>
+                Maszyny standardowo wyposażone są w automatyczny system wymiany
+                narzędzi z magazynem
+              </li>
+              <li use:typoFixAction>
+                Napęd realizowany jest przez Serwonapędy Hybrydowe lub Serwa AC
+                (w zależności od konfiguracji), zapewniając wysoką precyzję i
+                jakość obróbki
+              </li>
+              <li use:typoFixAction>
+                Komunikacja z maszyną odbywa się poprzez złącze LAN, co ułatwia
+                integrację z siecią zakładową
+              </li>
+            </ul>
+            <hr />
+            <h3>Cechy charakterystyczne serii HMM</h3>
+
+            <ul class="">
+              <li use:typoFixAction>Wysoka sztywność konstrukcji</li>
+              <li use:typoFixAction>
+                Dokładność i powtarzalność pracy w swojej klasie
+              </li>
+              <li use:typoFixAction>Nowoczesne rozwiązania technologiczne</li>
+              <li use:typoFixAction>
+                Intuicyjna obsługa i wsparcie w języku polskim
+              </li>
+            </ul>
+
+            <MachineMenu
+              downloadText="Do pobrania"
+              downloadHref="/do_pobrania/Frezarki CNC HMM.pdf"
+              contactText="Kontakt"
+              contactHref="#"
+            />
+
+            <Maszyny_table_frezarki />
+          </div>
+
+          {#if $expandedViewStore}
+            <div class="right_params">
+              <div
+                class="right_params_content"
+                in:fade={{ duration: 300, delay: 200 }}
+              >
+                <img
+                  src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.png"
+                  alt="Schemat techniczny frezarki Certus CNC HMM-ST 1080 PRO - widok 1 - "
+                />
+                <img
+                  src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.png"
+                  alt="Schemat techniczny frezarki Certus CNC HMM-ST 1080 PRO - widok 2"
+                />
+              </div>
+            </div>
+          {/if}
+        </div>
+      </div>
     {:else if $activeCategoryStore === "frezarki" && $activeMachineStore === "m_frezarka1"}
-    
       <div class="active_flex">
         <div
           class="left gradientHero"
@@ -339,7 +334,6 @@
             />
 
             <Maszyny_table_frezarki />
-       
           </div>
 
           {#if $expandedViewStore}
@@ -348,14 +342,14 @@
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-               <!--  <img
-                  src="/assets/maszyny/certus_7111_temp_schemat01.png"
-                  alt="Schemat techniczny frezarki Certus 7111 - widok 1"
+                <img
+                  src="/assets/maszyny/SCHEMATY/Certus_1410_1.png"
+                  alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/certus_7111_temp_schemat02.png"
-                  alt="Schemat techniczny frezarki Certus 7111 - widok 2"
-                /> -->
+                  src="/assets/maszyny/SCHEMATY/Certus_1410_2.png"
+                  alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 2"
+                />
               </div>
             </div>
           {/if}
@@ -467,7 +461,6 @@
             />
 
             <Maszyny_table_plotery />
-        
           </div>
 
           {#if $expandedViewStore}
@@ -477,12 +470,12 @@
                 in:fade={{ duration: 300, delay: 200 }}
               >
                 <img
-                  src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_5.png"
-                  alt="Schemat techniczny frezarki Certus 0815 - widok 5"
+                  src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.png"
+                  alt="Schemat techniczny frezarki Certus CNC HPP-CT 0815 ATC - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_3.png"
-                  alt="Schemat techniczny frezarki Certus 0815 - widok 3"
+                  src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.png"
+                  alt="Schemat techniczny frezarki Certus CNC HPP-CT 0815 ATC - widok 2"
                 />
               </div>
             </div>
@@ -592,8 +585,6 @@
             />
 
             <Maszyny_table_zabudowa />
-
-           
           </div>
 
           {#if $expandedViewStore}
@@ -604,11 +595,11 @@
               >
                 <img
                   src="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
-                  alt="Schemat techniczny frezarki Certus 0816 - widok 1"
+                  alt="Schemat techniczny frezarki Certus CNC HPP-OT 0816 - widok 1"
                 />
                 <img
                   src="/assets/maszyny/SCHEMATY/Certus_0816_2.png"
-                  alt="Schemat techniczny frezarki Certus 0816 - widok 2"
+                  alt="Schemat techniczny frezarki Certus CNC HPP-OT 0816 - widok 2"
                 />
               </div>
             </div>
@@ -704,9 +695,9 @@
                 Głowice obrotowo-uchylne stosowane w tego typu urządzeniach
                 projektowane są z wykorzystaniem bezluzowych przekładni
                 harmonicznych, co zapewnia dużą sztywność przy zachowaniu
-                wysokiej dynamiki ruchów. 
-                Dzięki takiej konstrukcji urządzenia osiągają bardzo wysoką
-                wydajność i jakość obróbki w swojej klasie
+                wysokiej dynamiki ruchów. Dzięki takiej konstrukcji urządzenia
+                osiągają bardzo wysoką wydajność i jakość obróbki w swojej
+                klasie
               </li>
               <li use:typoFixAction>
                 Urządzenia zaprojektowane są z myślą o intensywnej,
@@ -742,8 +733,6 @@
             />
 
             <Maszyny_table_frezarki5osiowe />
-
-         
           </div>
 
           {#if $expandedViewStore}
@@ -754,11 +743,11 @@
               >
                 <img
                   src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.png"
-                  alt="Schemat techniczny - widok 1"
+                  alt="Schemat techniczny Frezarka pięcioosiowa - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/SCHEMATY/Certus_5_Osi.png"
-                  alt="Schemat techniczny - widok 2"
+                  src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.png"
+                  alt="Schemat techniczny Frezarka pięcioosiowa - widok 2"
                 />
               </div>
             </div>
@@ -888,8 +877,6 @@
             />
 
             <Maszyny_table_grawerki />
-
-         
           </div>
 
           {#if $expandedViewStore}
@@ -899,11 +886,11 @@
                 in:fade={{ duration: 300, delay: 200 }}
               >
                 <img
-                  src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa.png"
+                  src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
                   alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
+                  src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.png"
                   alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 2"
                 />
               </div>
@@ -1033,8 +1020,6 @@
             />
 
             <Maszyny_table_ploteryLinearne />
-
-          
           </div>
 
           {#if $expandedViewStore}
@@ -1044,12 +1029,12 @@
                 in:fade={{ duration: 300, delay: 200 }}
               >
                 <img
-                  src="/assets/maszyny/SCHEMATY/Certus_1530.png"
+                  src="/assets/maszyny/SCHEMATY/Certus_1530_1.png"
                   alt="Schemat techniczny frezarki Certus 1530 - widok 1"
                 />
                 <img
-                  src="/assets/maszyny/SCHEMATY/Certus_1530_3.png"
-                  alt="Schemat techniczny frezarki Certus 1530 - widok 4"
+                  src="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
+                  alt="Schemat techniczny frezarki Certus 1530 - widok 2"
                 />
               </div>
             </div>
@@ -1211,7 +1196,7 @@
   }
   :global(.activeMachine .maszyny-dane-tabela) {
     margin-top: 4em;
-    
+
     font-size: 0.95rem;
   }
 

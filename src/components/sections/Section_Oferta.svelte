@@ -7,7 +7,7 @@
 <section id="oferta" class="oferta">
   <div class="oferta-container container">
     <div class="section-header no-sel">
-      <h2 class="section-title" use:typoFixAction>
+     <!--  <h2 class="section-title" use:typoFixAction>
         <span class="highlight-polish">Polski </span> producent maszyn CNC
       </h2>
 
@@ -16,7 +16,7 @@
         CNC.<br />
         Kompleksowa obsługa od projektu po serwis.<br />
         — wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy
-      </p>
+      </p> -->
     </div>
 
     <OfertaGrid variant="homepage" />
@@ -55,12 +55,12 @@
   :global(.home #oferta) {
     position: relative;
     z-index: 516;
-    margin-top: 1000px;
+   
   }
 
   .oferta {
     width: 100%;
-    padding: 100px 0;
+    
     background: #f7f7f7;
   }
 
@@ -84,7 +84,7 @@
   //   overflow: hidden;
   // }
   .section-header {
-    margin-bottom: 80px;
+    margin-bottom: 0px;
   }
 
   @media (max-width: 768px) {

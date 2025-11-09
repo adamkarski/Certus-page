@@ -200,7 +200,7 @@ a[href^="#"] {
 
 /* Button reset */
 button {
-  certusmily: inherit;
+  font-family: inherit;
   font-size: inherit;
 }
 
@@ -208,7 +208,7 @@ button {
 input,
 textarea,
 select {
-  certusmily: inherit;
+  font-family: inherit;
 }
 
 /* Accessibility improvements */

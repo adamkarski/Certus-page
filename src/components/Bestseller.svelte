@@ -192,6 +192,30 @@
           >biuro@mg-certus.pl</a
         >
       </p>
+
+
+
+    <div class="schematy">
+
+
+      <img
+      src="/assets/maszyny/SCHEMATY/Certus_69_1.png"
+      alt="Schemat techniczny frezarki Certus 69"
+    />
+      <img
+      src="/assets/maszyny/SCHEMATY/Certus_69_2.png"
+      alt="Schemat techniczny frezarki Certus 69"
+    />
+
+
+
+
+
+
+    </div>   
+
+
+
     </div>
     <div class="image-column">
       <img
@@ -315,6 +339,18 @@
 {/if}
 
 <style lang="scss">
+
+
+.schematy{
+  display: flex;
+
+}
+.schematy img{
+
+  max-width: 45%;
+
+}
+
   :global(.image-section-02 .phone-holder div a) {
     color: white;
   }
@@ -429,7 +465,7 @@
     gap: 1.5rem; /* Space between images */
     align-items: flex-start; /* Align images to the top */
     justify-content: flex-start; /* Align images to the top */
-
+    
     img {
       max-width: 100%;
     }
@@ -472,7 +508,7 @@
   }
 
   .benefits-section {
-    padding: 100px 0;
+    
     background: white;
 
     h2 {
@@ -738,7 +774,7 @@
     }
     .main-content {
       flex-direction: column;
-      padding: 1.5rem 1rem;
+      padding: 0rem 3rem 0rem 3rem;
     
       .text-column{
         padding: 0 2rem;

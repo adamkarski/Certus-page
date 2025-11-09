@@ -306,7 +306,7 @@
 
       <Section_Maszyny_Image01
         sectionId="plotery-image"
-        imgSrc="/assets/maszyny/SCHEMATY/Certus_0816_4.png"
+        imgSrc="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
         title="Przemysłowe plotery CNC"
         subtitle="Wydajność i precyzja"
       />
@@ -424,12 +424,12 @@
     <div class="right">
       <br/>
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_5.png"
+        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.png"
         alt="Schemat techniczny frezarki Certus 0815 - widok 5"
       />
    
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_3.png"
+        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.png"
         alt="Schemat techniczny frezarki Certus 0815 - widok 3"
       />
    
@@ -565,12 +565,12 @@
     <div class="right">
       <br/>
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa.png"
+        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
         alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 1"
       />
   
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
+        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.png"
         alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 2"
       />
   
@@ -709,7 +709,7 @@
         alt="Schemat techniczny - widok 1"
       />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_5_Osi.png"
+        src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.png"
         alt="Schemat techniczny - widok 2"
       />
 
@@ -842,12 +842,12 @@
       <br/>
 
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_1530.png"
+        src="/assets/maszyny/SCHEMATY/Certus_1530_1.png"
         alt="Schemat techniczny frezarki Certus 1530 - widok 1"
       />
  
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_1530_3.png"
+        src="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
         alt="Schemat techniczny frezarki Certus 1530 - widok 4"
       />
     </div>
@@ -863,7 +863,7 @@
     <div class="maszyny-dane-gallery-column">
       <Section_Maszyny_Image01
         sectionId="ploteryLinearne-image"
-        imgSrc="/assets/maszyny/SCHEMATY/Certus_1530_3.png"
+        imgSrc="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
         title="Plotery tnące linearne"
         subtitle="Precyzyjne cięcie"
       />
