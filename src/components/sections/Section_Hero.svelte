@@ -571,7 +571,7 @@
 
 <!-- Tło i gradient pozostają statyczne -->
 <section class="hero">
-  <div class="hero-bg gradientHero">
+  <div class="hero-bg gradientHero ">
     <div class="hero-overlay"></div>
 
     <!-- Kontener dla animacji crossfade -->
@@ -989,7 +989,7 @@
   }
 
   :global(.gradientHero) {
-    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
+    background: linear-gradient(180deg, #3e4042 40%, #5454 100%);
   }
 
   .active_flex {
@@ -1243,7 +1243,7 @@
     .item__category {
       h2 {
         font-size: 1rem;
-        color: white !important;
+        color: #e3e3e3 !important;
      /*    background-color: #7c8897; */
         font-weight: 500;
         padding: 0.5rem;
@@ -1337,7 +1337,7 @@
 
   swiper-container swiper-slide {
     button > div.item > div {
-      opacity: 0.5;
+      opacity: 0.6;
     }
     button > div.item > div:hover {
       opacity: 1;
@@ -1553,15 +1553,16 @@ margin-left: -90px;
   }
 
   .headlines .topline {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    color: #dbdbdb;
+    /* text */-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    color: #e3e3e3;
     line-height: 1;
     transition: all 0.3s ease;
     position: absolute;
     text-align: left;
     margin-top: 65%;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     z-index: 999999999;
+    font-weight: 200;
     font-family: "Poppins" !important;
   }
   .items:hover .headlines .topline {
@@ -1586,6 +1587,16 @@ margin-left: -90px;
     object-fit: cover;
     transition: all 0.3s ease;
   }
+
+
+  .item .image img.bg {
+    display: block;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    transition: all 0.3s ease;
+  }
+
 
   .image-loader {
     display: flex;

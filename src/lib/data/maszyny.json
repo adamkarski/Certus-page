@@ -58,7 +58,7 @@
     "title": "Maszyny specjalistyczne",
     "img": "/assets/maszyny/renders/Certus_wiertarka_V1_Layers/Certus_wiertarka_V1_Layer1.png",
     "startExpanded": false,
-    "url": "/maszyny/#specjalistyczne",
+    "url": "/maszyny-specjalistyczne",
     "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
     "machine":"m_special"
   }

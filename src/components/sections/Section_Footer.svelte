@@ -1,7 +1,26 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { typoFixAction } from '$lib/utils/typography';
+  
+  import kategorieMaszyn from "$lib/data/maszyny.json";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
   const currentYear = new Date().getFullYear();
+
+
+
+  async function handleMaszynyNavigation(categoryId: string) {
+    
+    closeMobileMenu();
+    await tick();
+
+    if (currentPath.startsWith("/maszyny")) {
+      // Używamy wspólnej funkcji scrollowania z smooth easing
+      scrollToElement(categoryId, 1000, 140); // 1 sekunda animacji, 140px offset
+    } else {
+      goto(`/maszyny/#${categoryId}`);
+    }
+  }
 
   let LottiePlayer;
 
@@ -70,32 +89,49 @@
 
       <div class="footer-section">
         <h4 class="footer-title">PRODUKTY</h4>
+
+
         <ul class="footer-links">
-          <li>
-            <a
-              href="/maszyny/#frezarki"
-              class="footer-link"
-              title="Frezarki CNC">Frezarki CNC</a
+          {#each kategorieMaszyn as kategoria, i}
+            <li>
+              
+              {#if !kategoria.url}
+              
+              <a href="/maszyny#{kategoria.id}"
+                class="footer-link {kategoria.id}"
+                role="button"
+              
+                
+                in:fade={{ delay: i * 50, duration: 200 }}
+              >
+                {kategoria.title}
+              </a>
+              {/if}
+
+              {#if kategoria.url} 
+              <a href="{kategoria.url}"
+              class="footer-link {kategoria.id}"
+              role="button"
+            
+              
+              in:fade={{ delay: i * 50, duration: 200 }}
             >
-          </li>
-          <li>
-            <a href="/maszyny/#tokarki" class="footer-link" title="Tokarki CNC"
-              >Tokarki CNC</a
-            >
-          </li>
-          <li>
-            <a
-              href="/maszyny/#grawerki"
-              class="footer-link"
-              title="Grawerki CNC">Grawerki CNC</a
-            >
-          </li>
-          <li>
-            <a href="/maszyny/#plotery" class="footer-link" title="Plotery CNC"
-              >Plotery CNC</a
-            >
-          </li>
+              {kategoria.title}
+            </a> 
+              {/if}
+
+            </li>
+          {/each}
         </ul>
+
+
+
+
+
+
+
+
+        
       </div>
 
       <div class="footer-section">

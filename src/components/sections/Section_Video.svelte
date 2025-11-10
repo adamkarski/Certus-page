@@ -105,7 +105,7 @@
     width: 100vw;
     margin-left: calc(50% - 50vw);
     text-align: left;
-    padding: 2rem 0 1rem 0;
+    padding: 6rem 0 1rem 0;
     background: transparent;
     position: absolute;
     z-index: 2;

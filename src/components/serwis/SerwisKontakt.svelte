@@ -665,8 +665,7 @@
     height: auto;
     position: relative;
     top: 0px;
-    padding-top: 5px;
-    padding-bottom: 4px;
+   
   }
 
   .contact-flex .background .contact {
@@ -675,7 +674,7 @@
     box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
     border-radius: 14px;
     max-width: 1060px;
-    margin: 126px auto;
+    margin: 30px auto;
     align-items: stretch;
     position: relative;
     background-color: white;
@@ -842,7 +841,7 @@
       flex-direction: column;
       padding: 24px 6px;
       gap: 24px;
-      margin: 60px auto;
+      margin: 30px auto;
     }
 
     .contact-left,

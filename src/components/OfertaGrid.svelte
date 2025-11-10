@@ -280,7 +280,7 @@
   @media (max-width: 768px) {
     .oferta-container {
       padding: 0 2rem;
-      margin-left: 20px;
+      margin-left: 0px;
     }
 
     :global(.oferta-grid) {

@@ -80,19 +80,19 @@
 
 <style lang="scss">
   .serwis-benefits {
-    padding: 100px 0;
+    padding: 0px 0;
     background: white;
   }
 
   .serwis-benefits-container {
  
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 0 20px;
   }
 
   .serwis-section-header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
 
     h2 {
       font-weight: 700;

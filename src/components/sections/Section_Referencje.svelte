@@ -44,7 +44,7 @@
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 600 : 9999 }}>
       <div class="info-card-header">
         <img src="/assets/green-arrow.svg" alt="Ponad 20 lat doświadczenia w branży CNC" class="info-icon" />
-        <span class="info-title">Ponad 20 lat<br>doświadczenia<br>w branży</span>
+        <span class="info-title">Ponad 20 lat doświadczenia w branży</span>
       </div>
       <p class="info-desc" use:typoFixAction>
         Z ponad dekadą doświadczenia w branży CNC, CERTUS jest wiarygodnym partnerem dla wymagających klientów.
@@ -73,7 +73,7 @@
   background: none;
   padding: 0;
   margin: 0;
-  padding-bottom: 10em;
+  padding-bottom: 4em;
 
 
 }
@@ -85,7 +85,7 @@
   justify-content: center;
   margin: 0 auto;
   padding: 40px 0 0 0;
-  margin-top: 80px;
+  margin-top: 20px;
 }
 .info-card {
   background: #f7f7f7;
@@ -117,13 +117,13 @@
   }
 .info-card-header {
   display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
     margin-bottom: 8px;
     flex-direction: row;
-    align-content: flex-start;
+    align-content: center;
     justify-content: flex-start;
-    height: 7em;
+    height: 3em;
  
 }
 .info-icon {

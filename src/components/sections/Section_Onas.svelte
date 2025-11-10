@@ -11,15 +11,15 @@
           Precyzja, która pracuje na Twój wynik.
         </h2>
 
-        <h3 class="step-description" use:typoFixAction> 
+        <h3 class="step-description" use:typoFixAction>
           Projektujemy i budujemy w Polsce plotery i frezarki CNC – stabilne,
           powtarzalne, gotowe do pracy w wymagającej produkcji.
         </h3>
 
-       <br/><br/>
+        <br /><br />
 
-        <h2 class="section-title step-title">Dlaczego my: </h2>
-       
+        <h2 class="section-title step-title">Dlaczego my:</h2>
+
         <div class="">
           <ul>
             <li class="feature title-green" use:typoFixAction>
@@ -33,17 +33,16 @@
               pracy
             </li>
             <li class="feature title-green" use:typoFixAction>
-              Szybkie wdrożenie i serwis, realne wsparcie po zakupie 
+              Szybkie wdrożenie i serwis, realne wsparcie po zakupie
             </li>
           </ul>
         </div>
-      <br/><br/>
+        <br /><br />
         <h3 class="step-description" use:typoFixAction>
           Obsługujemy różne materiały (aluminium, kompozyty, tworzywa, drewno) –
           od prototypu po serię. Zobacz nasze modele lub zapytaj o rozwiązanie
           „szyte na miarę”.
         </h3>
-
       </div>
 
       <div class="o-nas-right">
@@ -154,13 +153,12 @@
     flex-direction: column;
     gap: 20px;
     max-width: 600px;
-    margin: auto;
+    margin: 0px;
   }
 
   .step {
     background-color: #fff;
     border-radius: 8px;
-   
 
     display: flex;
     align-items: center;
@@ -179,6 +177,7 @@
   }
 
   .step-description {
+    min-width: 300px;
     color: #555;
   }
 
@@ -189,6 +188,29 @@
     padding: 0.4em;
   }
 
+  @media (max-width: 930px) {
+    .o-nas-content {
+      display: flex;
+      gap: 5px;
+      flex-direction: column-reverse;
+
+
+      .o-nas-right{
+
+        flex-direction: column;
+        align-content: flex-start;
+        align-items: flex-start;
+        margin-left: 0px;
+        margin-top: 1em;
+
+      }
+    }
+
+    .step-description {
+      min-width: 200px;
+      color: #555;
+    }
+  }
   @media (max-width: 768px) {
     .o-nas {
       padding: 80px 0;

@@ -726,8 +726,8 @@
   }
   .serwis {
     width: 100%;
-    padding: 100px 0;
-    background: #f7f7f7;
+    padding: 10px 0;
+  
     color: var(--color-text-secondary);
   }
 
@@ -762,8 +762,8 @@
   // Style dla nagłówka sekcji usług serwisowych
   .serwis-services-header {
     text-align: center;
-    margin-bottom: 40px;
-    padding: 0 20px;
+   
+    padding: 0 0px;
 
     h2 {
       font-weight: 700;
@@ -794,13 +794,13 @@
   // Style dla dodatkowej sekcji
   .serwis-details {
     width: 100%;
-    padding: 100px 0;
+    padding: 30px 0;
     background: white;
     color: var(--color-text-secondary);
   }
 
   .content-section {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 
     .section-title {
       position: relative;
@@ -808,13 +808,13 @@
       font-family: "Poppins", sans-serif;
       font-weight: 600;
       text-align: left;
-      margin-bottom: 30px;
+      margin-top: 10px;
 
       &::before {
         content: "";
         position: absolute;
         left: -38px;
-        margin-top: 5px;
+        margin-top: -10px;
         width: 28px;
         height: 43px;
         background-image: url(/assets/images/red-arrow.svg);
@@ -868,7 +868,7 @@
     justify-content: center;
     align-items: center;
     background: none;
-    padding: 80px 0;
+    padding: 30px 0;
     margin: 0;
   }
 
@@ -1214,19 +1214,21 @@
 
   // Style dla sekcji benefits
   .serwis-benefits {
-    padding: 100px 0;
-    background: #f7f7f7;
+    padding: 0px 0;
+    
   }
 
   .serwis-benefits-container {
   
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 0 20px;
+    margin-bottom:30px;
+
   }
 
   .serwis-section-header {
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
 
     h2 {
       font-weight: 700;
@@ -1280,7 +1282,7 @@
 
     &:hover {
       transform: translateY(-12px);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 25px 30px -12px rgba(0, 0, 0, 0.25);
     }
   }
 

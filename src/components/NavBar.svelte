@@ -211,9 +211,46 @@
                 <div class="flex">
                   <div class="w-1/3 py-4 px-2 megamenu-category-list">
                     <ul>
-                      {#each kategorieMaszyn as kategoria, i}
+                     
+           <!--            {#each kategorieMaszyn as kategoria, i}
+                      <li>        
+                      {#if !kategoria.url}
+                              
+                                <a href="#"  on:click|preventDefault={() =>
+                              handleMaszynyNavigation(kategoria.id)}
+
+                                class="submenu-item {kategoria.id}"
+                                  role="button"
+                                
+                                on:mouseenter={() => (hoveredCategory = kategoria)}
+                            in:fade={{ delay: i * 50, duration: 200 }}
+                                >
+                                  {kategoria.title}
+                                </a>
+                 
+                                {/if}
+                  
+                                {#if kategoria.url} 
+                                <a href="{kategoria.url}" 
+                                class="submenu-item {kategoria.id}"
+                                role="button"
+                              
+                                on:mouseenter={() => (hoveredCategory = kategoria)}
+                            in:fade={{ delay: i * 50, duration: 200 }}
+                              >
+                                {kategoria.title}
+                              </a> 
+                                {/if}
+                              </li>
+                            
+ {/each} -->
+
+
+                     
+                     
+              {#each kategorieMaszyn as kategoria, i}
                         <li>
-                          <a
+                          <a 
                             href="#"
                             role="button"
                             on:click|preventDefault={() =>
@@ -225,7 +262,14 @@
                             {kategoria.title}
                           </a>
                         </li>
-                      {/each}
+                      {/each} 
+                    
+                    
+                  
+                    
+
+
+
                     </ul>
                   </div>
                   <div
@@ -822,7 +866,7 @@
     border-radius: 72px;
     margin-left: 8em;
     margin-right: 8em;
-    background-color: rgba(190, 190, 190, 0.13) !important;
+    background-color: rgba(50, 50, 50, 0.95) !important;
     .contenerNav {
       display: flex;
       gap: 1rem;
@@ -853,7 +897,7 @@
   }
 
   .nav-link {
-    min-width: 75px;
+    min-width: 79px;
     padding: 8px 16px;
     color: #4b5563;
     transition: all 300ms ease-in-out;
