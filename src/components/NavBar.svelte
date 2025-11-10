@@ -445,6 +445,10 @@
 </nav>
 
 <style lang="scss">
+
+
+
+
   /* Style dla bestseller dropdown */
   .bestseller-dropdown {
     width: 380px;

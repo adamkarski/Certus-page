@@ -1,28 +1,49 @@
 <script>
   import CtaButton from "../CtaButton.svelte";
-  import { typoFixAction } from '$lib/utils/typography';
+  import { typoFixAction } from "$lib/utils/typography";
 </script>
 
 <section id="o-nas" class="o-nas">
   <div class="o-nas-container container">
     <div class="o-nas-content">
       <div class="o-nas-text no-sel">
-        <h2 class="section-title title-green" use:typoFixAction>Nasze maszyny łączą Polską inżynierię z najnowocześniejszymi technologiami obróbki.</h2>
+        <h2 class="section-title step-title">
+          Precyzja, która pracuje na Twój wynik.
+        </h2>
 
-        <h2 class="section-title title-green" use:typoFixAction>Zaprojektowane z myślą o małych zakładach i dużych kombinatach</h2>
-        <div class="o-nas-features">
+        <h3 class="step-description" use:typoFixAction> 
+          Projektujemy i budujemy w Polsce plotery i frezarki CNC – stabilne,
+          powtarzalne, gotowe do pracy w wymagającej produkcji.
+        </h3>
+
+       <br/><br/>
+
+        <h2 class="section-title step-title">Dlaczego my: </h2>
+       
+        <div class="">
           <ul>
-            <li class="feature" use:typoFixAction>Precyzja obróbki do ±0,01mm</li>
-            <li class="feature" use:typoFixAction>Kompatybilność z różnymi materiałami</li>
-            <li class="feature" use:typoFixAction>Intuicyjne oprogramowanie sterujące</li>
-            <li class="feature" use:typoFixAction>Kompleksowy <a href="/serwis" rel="noopener noreferrer"> serwis gwarancyjny i pogwarancyjny</a></li>
+            <li class="feature title-green" use:typoFixAction>
+              Kontrola jakości na każdym etapie, mierzalna precyzja detalu
+            </li>
+            <li class="feature title-green" use:typoFixAction>
+              Standardowe modele + maszyny specjalne pod Twój proces
+            </li>
+            <li class="feature title-green" use:typoFixAction>
+              Sztywne konstrukcje, markowe podzespoły, długi bezawaryjny cykl
+              pracy
+            </li>
+            <li class="feature title-green" use:typoFixAction>
+              Szybkie wdrożenie i serwis, realne wsparcie po zakupie 
+            </li>
           </ul>
         </div>
-        <p class="o-nas-description" use:typoFixAction>Idealne rozwiązanie dla firm wymagających wysokiej jakości obróbki metali w produkcji prototypów i serii masowych.</p>
+      <br/><br/>
+        <h3 class="step-description" use:typoFixAction>
+          Obsługujemy różne materiały (aluminium, kompozyty, tworzywa, drewno) –
+          od prototypu po serię. Zobacz nasze modele lub zapytaj o rozwiązanie
+          „szyte na miarę”.
+        </h3>
 
-        <div class="center-cta">
-          <CtaButton text="Zapraszamy na bezpłatną konsultację" />
-        </div>
       </div>
 
       <div class="o-nas-right">
@@ -74,30 +95,27 @@
 </section>
 
 <style lang="scss">
+  .title-green {
+    padding-left: 20px;
+    border-left: 4px solid var(--color-primary-dark);
+  }
 
-.title-green{
-  padding-left: 20px;
-  border-left: 4px solid var(--color-primary-dark);
-}
+  .feature a {
+    background-color: var(--color-text-light);
+    padding: 0 10px;
+    margin: 0 10px;
+  }
 
-.feature a{
-background-color: var(--color-text-light);
-padding:0 10px;
-margin: 0 10px;
-}
-
-:global(#o-nas button )
-   {
+  :global(#o-nas button) {
     width: auto;
     padding-right: 16px;
-    
   }
 
   .o-nas {
     width: 100%;
     padding: 100px 0;
     background: white;
-    position: relative
+    position: relative;
   }
 
   .o-nas-container {
@@ -106,8 +124,8 @@ margin: 0 10px;
   }
 
   .o-nas-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex: 1 1 0;
     gap: 80px;
     align-items: start;
   }
@@ -131,9 +149,6 @@ margin: 0 10px;
     color: #333;
   }
 
-
-  
-
   .o-nas-right {
     display: flex;
     flex-direction: column;
@@ -145,7 +160,7 @@ margin: 0 10px;
   .step {
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
+   
 
     display: flex;
     align-items: center;

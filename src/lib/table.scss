@@ -15,6 +15,7 @@ margin-right: 10px;
 .maszyny-dane .maszyny-dane-tabela {
   .text {
     color: var(--color-text-primary);
+    font-size: 0.7em;
   }
   img {
     width: 45px;
@@ -311,6 +312,7 @@ tbody tr td .text {
   width: auto;
   display: flow-root;
   color: var(--color-text-primary);
+  font-size: 0.7em;
 }
 
 .options-list {
@@ -350,6 +352,7 @@ tbody tr td .text {
 .standard-feature {
   color: var(--color-primary-dark);
   font-weight: 600;
+  font-size: 0.7rem;
 }
 
 .specs-text {
@@ -385,7 +388,7 @@ tbody tr td .text {
 }
 
 .maszyny-dane-tabela td:last-child {
-  width: 65%;
+  width: 60%;
 }
 
 .maszyny-dane-tabela tr:nth-child(even) {
@@ -521,8 +524,8 @@ tbody tr td .text {
 
   /* Responsive first column - usuwa sztywną szerokość */
   :global(.maszyny-dane-tabela td:first-child) {
-    min-width: auto !important; /* Usuwa sztywną szerokość */
-    width: 35% !important; /* Elastyczna szerokość */
+    // min-width: auto !important; /* Usuwa sztywną szerokość */
+    // width: 35% !important; /* Elastyczna szerokość */
   }
 
  
@@ -549,7 +552,7 @@ tbody tr td .text {
   
    /* Responsive last column */
    .maszyny-dane-tabela td:last-child {
-    width: 100% !important;
+    width: 72% !important;
   }
   .maszyny-dane-tabela,
   .maszyny-dane-tabela thead,
@@ -609,7 +612,7 @@ tbody tr td .text {
   :global(.maszyny-dane-tabela td:first-child) {
     background-color: transparent !important;
     border-right: none !important;
-    width: auto !important;
+    
     font-weight: 600 !important;
   }
 

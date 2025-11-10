@@ -193,15 +193,19 @@
     color: white;
     text-shadow:0 13px 27px rgba(0, 0, 0, 0.5);
     font-weight: 700;
-    /* Removed word-by-word animation styles */
+    
+    font-size: 25px;
+    margin-top: 30px;
+
     &::before {
       content: "";
-      position: absolute;
-      width: 30px;
-      height: 46px;
-      margin-left: -40px;
-      background-image: url(/assets/images/red-arrow.svg);
-      margin-top: 26px;
+    position: absolute;
+    width: 30px;
+    height: 46px;
+    margin-left: -40px;
+    background-image: url(/assets/images/red-arrow.svg);
+    margin-top: -6px;
+    transform: scale(0.8);
     }
   }
   .onas-container {

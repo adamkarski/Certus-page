@@ -189,6 +189,16 @@
       transform: translateY(-5px);
     }
 
+    :global(.oferta-card:hover .oferta-cta) {
+      background-color: rgba(150, 165, 0, 1);
+      border-left: 4px solid #7e8c00;
+    }
+
+    :global(.oferta-card:hover .oferta-cta .text-container) {
+      transform: translateX(-6px);
+      color: var(--color-text-white);
+    }
+
     .oferta-icon {
       margin-bottom: 25px;
       display: block;

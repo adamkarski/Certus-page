@@ -1,7 +1,7 @@
 export function typoFix(html: string): string {
   const sierotki = [
     'a', 'i', 'o', 'u', 'w', 'z',
-    'A', 'I', 'O', 'U', 'W', 'Z'
+    'A', 'I', 'O', 'U', 'W', 'Z', ', która'
   ];
 
   const regex = /<[^>]+>|[^<]+/g;
