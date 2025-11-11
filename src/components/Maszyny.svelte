@@ -37,12 +37,12 @@
   <OfertaGrid variant="maszyny" />
 </section>
 
-<!-- Frezarki CNC HMM -->
+<!-- Frezarki CNC HMM-ST -->
 <section id="frezarki" class="maszyny-dane">
   <div class="hr topline gradientHero">
     <img
       src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-      alt="Frezarki CNC HMM"
+      alt="Frezarki CNC HMM-ST"
       class="topImage"
     />
   </div>
@@ -50,17 +50,17 @@
   <div class="maszyny-dane-header no-sel">
     <img
       src="/assets/ikony/maszyny/frezarki.svg"
-      alt="Frezarki CNC HMM"
+      alt="Frezarki CNC HMM-ST"
       class="maszyny-dane-ikona"
     />
-    <h2>Frezarki CNC HMM</h2>
+    <h2>Frezarki CNC HMM-ST</h2>
   </div>
   <hr class="maszyny-dane-hr" />
 
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Nowa linia frezarek CERTUS HMM</strong> została zaprojektowana z
+        <strong>Nowa linia frezarek CERTUS HMM-ST</strong> została zaprojektowana z
         myślą o szybkim i precyzyjnym frezowaniu materiałów takich jak stal, aluminium,
         drewno, tworzywa sztuczne i inne.
       </p>
@@ -86,8 +86,8 @@
       </div>
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
-          Panel sterujący w formie wolnostojącej konsoli pozwala na elastyczne
-          rozmieszczenie stanowiska pracy, zwiększając komfort obsługi i
+          Panel sterujący w formie wolnostojącej konsoli pozwala na
+          elastyczne rozmieszczenie stanowiska pracy, zwiększając komfort obsługi i
           bezpieczeństwo operatora
         </li>
         <li use:typoFixAction>
@@ -138,7 +138,7 @@
       </ul>
 
       <div class="maszyny-dane-podtytul" use:typoFixAction>
-        Cechy charakterystyczne serii HMM:
+        Cechy charakterystyczne serii HMM-ST:
       </div>
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>Wysoka sztywność konstrukcji</li>
@@ -176,7 +176,7 @@
       <Section_Maszyny_Image01
         sectionId="frezarki-image-01"
         imgSrc="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-        title="Frezarki CNC HMM"
+        title="Frezarki CNC HMM-ST"
         subtitle="Precyzyjne obróbki skrawaniem"
       />
 
@@ -192,7 +192,140 @@
   </div>
   <MachineMenu
     downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Frezarki CNC HMM.pdf"
+    downloadHref="/do_pobrania/Frezarki-CNC-HMM-ST.pdf"
+    contactText="Kontakt"
+    contactHref="#"
+  />
+</section>
+
+<!-- Frezarki CNC HMM-GT -->
+<section id="frezarki-gt" class="maszyny-dane">
+  <div class="hr topline gradientHero">
+    <img
+      src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
+      alt="Frezarki CNC HMM-GT"
+      class="topImage"
+    />
+  </div>
+
+  <div class="maszyny-dane-header no-sel">
+    <img
+      src="/assets/ikony/maszyny/frezarki.svg"
+      alt="Frezarki CNC HMM-GT"
+      class="maszyny-dane-ikona"
+    />
+    <h2>Frezarki CNC HMM-GT</h2>
+  </div>
+  <hr class="maszyny-dane-hr" />
+
+  <div class="maszyny-dane-text-image">
+    <div class="left">
+      <p use:typoFixAction>
+        <strong>FREZARKA CNC Z PRZEJEZDNĄ BRAMĄ</strong><br /><br />Do dużych formatów i ciężkich detali — detal stoi, pracuje brama.
+        HMM‑GT zaprojektowano do szybkiej i precyzyjnej obróbki arkuszy oraz
+        elementów o dużej masie i gabarytach. Doskonale sprawdza się w aluminium
+        i jego stopach, kompozytach, tworzywach, drewnie oraz — w odpowiedniej
+        konfiguracji wrzeciona — w wybranych stalach.
+      </p>
+
+      <div class="maszyny-dane-podtytul" use:typoFixAction>
+        Zastosowanie maszyn obejmuje m.in.:
+      </div>
+      <ul class="maszyny-dane-lista-small" use:typoFixAction>
+        <li use:typoFixAction>Modele i formy (odlewnicze, termoformujące, laminaty)</li>
+        <li use:typoFixAction>
+          Panele, płyty i profile długie (meblarstwo, signage, automotive)
+        </li>
+        <li use:typoFixAction>
+          Matryce, wykrojniki, przyrządy, prototypy i serie krótkie
+        </li>
+      </ul>
+
+      <div class="maszyny-dane-podtytul" use:typoFixAction>
+        Konstrukcja i ergonomia:
+      </div>
+      <ul class="maszyny-dane-lista-small" use:typoFixAction>
+        <li use:typoFixAction>
+          Stół stały — łatwy załadunek z palety, wózka lub żurawia; brak 
+          bezwładności detalu = lepsza jakość krawędzi i dokładność wymiarowa.
+        </li>
+        <li use:typoFixAction>
+          Brama przejezdna o wysokiej sztywności; napędy tandemowe osi Y
+          umożliwiają duże pola robocze bez zwiększania masy ruchomego stołu.
+        </li>
+        <li use:typoFixAction>
+          Segmentowe stoły: T‑slot / podciśnienie / hybryda; opcja przelotu
+          dla elementów ponadwymiarowych.
+        </li>
+        <li use:typoFixAction>
+          Konsola sterownicza wolnostojąca; interfejs i wsparcie w języku polskim.
+        </li>
+      </ul>
+
+      <div class="maszyny-dane-podtytul" use:typoFixAction>
+        Chłodzenie i bezpieczeństwo pracy:
+      </div>
+      <ul class="maszyny-dane-lista-small" use:typoFixAction>
+        <li use:typoFixAction>
+          Zabudowa z odciągiem wiórów/pyłów; czysta i bezpieczna strefa pracy.
+        </li>
+        <li use:typoFixAction>
+          Zintegrowane chłodzenie (zbiornik, odstojnik, pompa) dla stabilności
+          procesu i ochrony komponentów.
+        </li>
+        <li use:typoFixAction>
+          Osłony prowadnic i śrub kulowych — dłuższa żywotność i powtarzalność.
+        </li>
+      </ul>
+
+      <div class="maszyny-dane-podtytul" use:typoFixAction>
+        Wyposażenie i napęd:
+      </div>
+      <ul class="maszyny-dane-lista-small" use:typoFixAction>
+        <li use:typoFixAction>
+          Automatyczna wymiana narzędzi z magazynem w standardzie.
+        </li>
+        <li use:typoFixAction>
+          Serwonapędy hybrydowe lub AC (wg konfiguracji); przekładnie zębate
+          na dużych osiach; precyzja i dynamika w całym polu roboczym.
+        </li>
+        <li use:typoFixAction>
+          Komunikacja LAN — łatwa integracja z siecią zakładową i systemami CAM.
+        </li>
+      </ul>
+    </div>
+    <div class="right">
+      <br/>
+      <img
+        src="/assets/maszyny/SCHEMATY/Certus_1410_1.png"
+        alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 1"
+      />
+      <img
+        src="/assets/maszyny/SCHEMATY/Certus_1410_2.png"
+        alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 2"
+      />
+    </div>
+  </div>
+
+  <div class="maszyny-dane-content">
+    <div class="maszyny-dane-table-column">
+      <div class="maszyny-dane-tabela-wrap">
+        <Maszyny_table_frezarki />
+      </div>
+    </div>
+
+    <div class="maszyny-dane-gallery-column">
+      <Section_Maszyny_Image01
+        sectionId="frezarki-gt-image-01"
+        imgSrc="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
+        title="Frezarki CNC HMM-GT"
+        subtitle="Do dużych formatów"
+      />
+    </div>
+  </div>
+  <MachineMenu
+    downloadText="Do pobrania"
+    downloadHref="/do_pobrania/Frezarki-CNC-HMM-GT.pdf"
     contactText="Kontakt"
     contactHref="#"
   />

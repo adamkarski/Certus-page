@@ -138,12 +138,7 @@
         <h4 class="footer-title">FIRMA</h4>
         <ul class="footer-links">
           <li><a href="/onas" class="footer-link" title="O nas">O nas</a></li>
-          <li>
-            <a href="/maszyny" class="footer-link" title="Wszystkie maszyny CNC"
-              >Wszystkie maszyny CNC</a
-            >
-          </li>
-         
+              
           <li>
             <a href="/dokumentacja" class="footer-link" title="Dokumentacja"
               >Dokumentacja</a
@@ -203,9 +198,7 @@
             title="Polityka prywatności">Polityka prywatności</a
           >
 
-          <a href="/mapa-witryny" class="footer-link" title="Mapa witryny"
-            >Mapa witryny</a
-          >
+         
         </div>
       </div>
     </div>
