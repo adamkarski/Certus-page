@@ -174,7 +174,7 @@
 
             <MachineMenu
               downloadText="Do pobrania"
-              downloadHref="/do_pobrania/Frezarki CNC HMM_ST.pdf"
+              downloadHref="/do_pobrania/Frezarki-CNC-HMM-ST.pdf"
               contactText="Kontakt"
               contactHref="#"
             />
@@ -321,7 +321,7 @@
 
             <MachineMenu
               downloadText="Do pobrania"
-              downloadHref="/do_pobrania/Frezarki CNC HMM_GT.pdf"
+              downloadHref="/do_pobrania/Frezarki-CNC-HMM-GT.pdf"
               contactText="Kontakt"
               contactHref="#"
             />
@@ -448,7 +448,7 @@
 
             <MachineMenu
               downloadText="Do pobrania"
-              downloadHref="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
+              downloadHref="/do_pobrania/Plotery-przemyslowe-CNC-HPP-CT.pdf"
               contactText="Kontakt"
               contactHref="#"
             />
@@ -572,7 +572,7 @@
 
             <MachineMenu
               downloadText="Do pobrania"
-              downloadHref="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
+              downloadHref="/do_pobrania/Plotery-przemyslowe-CNC-HPP-OT.pdf"
               contactText="Kontakt"
               contactHref="#"
             />
@@ -720,7 +720,7 @@
 
             <MachineMenu
               downloadText="Do pobrania"
-              downloadHref="/do_pobrania/Frezarki 5osiowe.pdf"
+              downloadHref="/do_pobrania/Frezarki-5osiowe.pdf"
               contactText="Kontakt"
               contactHref="#"
             />
@@ -864,7 +864,7 @@
 
             <MachineMenu
               downloadText="Do pobrania"
-              downloadHref="/do_pobrania/Grawerki CNC.pdf"
+              downloadHref="/do_pobrania/Grawerki-CNC.pdf"
               contactText="Kontakt"
               contactHref="#"
             />
@@ -1007,7 +1007,7 @@
 
             <MachineMenu
               downloadText="Do pobrania"
-              downloadHref="/do_pobrania/Plotery linearne CNC.pdf"
+              downloadHref="/do_pobrania/Plotery-linearne-CNC.pdf"
               contactText="Kontakt"
               contactHref="#"
             />

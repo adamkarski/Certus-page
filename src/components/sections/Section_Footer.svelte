@@ -63,13 +63,56 @@
             href="https://m.facebook.com/CertusCNC/"
             class="social-link"
             title="Odwiedź nas na Facebooku"
-            rel="nofollow noopener noreferrer">Facebook</a
+            rel="nofollow noopener noreferrer">
+           
+            
+
+
+
+
+      
+<svg  class="footer_media_icon " data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 365.19 359.21">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="_8dSMfM" data-name="8dSMfM">
+    <g>
+      <path class="cls-1" d="M163.86.64c126.81-9.46,220.75,87.62,197.89,214.37-34.32,190.27-318.18,192.22-357.37,5.99C-18.55,112.02,50.63,9.08,163.86.64ZM169.86,14.6C68.56,21.29,1.8,105.01,16.21,205.2c26.78,186.25,306.48,186.63,332.69-1.02C364.38,93.36,280.87,7.26,169.86,14.6Z"/>
+      <path class="cls-1" d="M233.07,117.06h-22.5c-5.14,0-11.5,6.39-11.5,11.47v22.45h31.5c.35,0,1.19,1.11,1.36,1.66.52,1.62-3.15,29.8-3.87,33.75-.21,1.13-.47,1.87-1.49,2.5h-27.5v86.29l-1.5,1.5h-35c-4.26,0-1.51-10.17-1.46-12.43.47-20.45,2.29-52.58.01-71.92-.17-1.45-.12-2.57-1.55-3.44h-26l-1.5-1.5v-34.92l1.5-1.5h26l1.52-2.51c-3.82-29.43,1.03-60.7,35.6-65.2,5.97-.78,12.02-.15,17.84-.08s13.68-1.32,18.54,1.45v32.42Z"/>
+    </g>
+  </g>
+</svg>
+
+            </a
           >
           <a
             href="https://www.youtube.com/user/MGCERTUS/videos"
             class="social-link"
             title="Nasze maszyny CNC w akcji"
-            rel="nofollow noopener noreferrer">Youtube</a
+            rel="nofollow noopener noreferrer">
+            
+         
+            <svg  class="footer_media_icon " data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 365.19 359.21">
+              <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Wak7U3">
+    <g>
+      <path class="cls-1" d="M164.91.54c130.52-8.95,223.14,94.54,194.48,223.91-38.8,175.15-301.3,181.93-351.19,11.56C-24.94,122.89,45.41,8.73,164.91.54ZM169.9,14.54C61.48,21.74-4.88,116.33,19.3,221.88c37.24,162.58,282.73,165.32,324.68,5.13C374.7,109.68,290.57,6.53,169.9,14.54Z"/>
+      <path class="cls-1" d="M117.01,97.54c44.92-3.78,95.71,1.09,140.94,1.15,37.23,7.55,32.44,61.44,31.92,90.09-.54,29.74,1.91,61.35-34.72,69.2-43.39.4-90.15,3.75-133.44,1.25-68.35-3.95-41.87-79.18-46.28-125.36,3.7-22.11,19.87-34.5,41.58-36.33ZM152.39,218.98c2.11,1.95,7.11,2.2,9.61.65l58.74-35.14c3.82-2.18,4.11-7.17,2.14-10.66-17.78-10.07-35.66-24.02-53.76-33.11-11.01-5.53-17.67-8.68-19.01,6.98s-1.68,49.78,0,65.06c.17,1.53,1.27,5.28,2.27,6.22Z"/>
+    </g>
+  </g>
+</svg>
+
+            </a
           >
          
           <!-- <a
@@ -208,6 +251,23 @@
 <style lang="scss">
   :global(.gradientFooter) {
     background: linear-gradient(0deg, #67717e 0%, #3e4042 100%);
+  }
+
+
+
+
+  .social-link .footer_media_icon{
+
+    width: 2.4em;
+    height: auto;
+
+    
+  }
+
+  a.social-link{
+    border-radius: 200px;
+  
+  
   }
 
   .footer {

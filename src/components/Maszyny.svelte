@@ -346,13 +346,13 @@
       alt="Przemysłowe plotery CNC"
       class="maszyny-dane-ikona"
     />
-    <h2>Przemysłowe plotery CNC</h2>
+    <h2>Przemysłowe plotery CNC bez zabudowy</h2>
   </div>
   <hr class="maszyny-dane-hr" />
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Wielkoformatowe centra obróbcze CNC</strong> stanowią wysokowydajne
+        <strong>Wielkoformatowe centra obróbcze CNC</strong><br /><br /> stanowią wysokowydajne
         platformy przeznaczone do skrawania w co najmniej trzech osiach, z możliwością
         rozbudowy o dodatkowe osie sterowane. Dzięki temu łączą funkcje frezowania,
         wiercenia, gwintowania, toczenia, cięcia, bigowania, a nawet dozowania materiałów.
@@ -447,7 +447,7 @@
   </div>
   <MachineMenu
     downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Plotery przemysłowe CNC bez zabudowy.pdf"
+    downloadHref="/do_pobrania/Plotery-przemyslowe-CNC-HPP-OT.pdf"
     contactText="Kontakt"
     contactHref="#"
   />
@@ -475,7 +475,7 @@
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Zaawansowane wieloosiowe centra obróbcze</strong> zaprojektowane
+        <strong>Zaawansowane wieloosiowe centra obróbcze</strong><br /><br /> zaprojektowane
         z myślą o pracy w środowisku przemysłowym, gdzie kluczowe znaczenie mają
         bezpieczeństwo, czystość procesu oraz stabilność parametrów pracy.
       </p>
@@ -596,7 +596,7 @@
   </div>
   <MachineMenu
     downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Plotery przemysłowe CNC w zabudowie.pdf"
+    downloadHref="/do_pobrania/Plotery-przemyslowe-CNC-HPP-CT.pdf"
     contactText="Kontakt"
     contactHref="#"
   />
@@ -623,7 +623,7 @@
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Grawerki CNC</strong> to kompaktowe, precyzyjne urządzenia dedykowane
+        <strong>Grawerki CNC</strong><br /><br /> to kompaktowe, precyzyjne urządzenia dedykowane
         do obróbki materiałów wymagających bardzo dużej dokładności przy niewielkich
         wymiarach obszaru roboczego. Znajdą zastosowanie m.in. w produkcji form wtryskowych,
         stempli, narzędzi precyzyjnych, tabliczek znamionowych, paneli frontowych,
@@ -738,7 +738,7 @@
   </div>
   <MachineMenu
     downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Grawerki CNC.pdf"
+    downloadHref="/do_pobrania/Grawerki-CNC.pdf"
     contactText="Kontakt"
     contactHref="#"
   />
@@ -759,13 +759,13 @@
       alt="Frezarki CNC pięcioosiowe"
       class="maszyny-dane-ikona"
     />
-    <h2>Frezarki pięcioosiowe</h2>
+    <h2>Frezarki Pięcioosiowe CNC</h2>
   </div>
   <hr class="maszyny-dane-hr" />
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Pięcioosiowe centra frezarskie CNC</strong> to zaawansowane urządzenia
+        <strong>Pięcioosiowe centra frezarskie CNC</strong><br /><br /> to zaawansowane urządzenia
         przeznaczone do precyzyjnej obróbki detali o złożonej geometrii. Znajdują
         zastosowanie przede wszystkim w produkcji wielkogabarytowych form odlewniczych,
         matryc do termoformowania, modeli kompozytowych oraz elementów wymagających
@@ -876,7 +876,7 @@
   </div>
   <MachineMenu
     downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Frezarki 5osiowe.pdf"
+    downloadHref="/do_pobrania/Frezarki-5osiowe.pdf"
     contactText="Kontakt"
     contactHref="#"
   />
@@ -897,7 +897,7 @@
       alt="Plotery tnące linearne CNC"
       class="maszyny-dane-ikona"
     />
-    <h2>Plotery tnące linearne CNC</h2>
+    <h2>Plotery Liniowe CNC / Cuttery</h2>
   </div>
   <hr class="maszyny-dane-hr" />
   <div class="maszyny-dane-text-image">
@@ -905,7 +905,7 @@
       <p use:typoFixAction>
         <strong
           >Plotery liniowe CNC, znane również jako cuttery przemysłowe</strong
-        > to precyzyjne i wydajne urządzenia zaprojektowane do cięcia, bigowania,
+        ><br /><br /> to precyzyjne i wydajne urządzenia zaprojektowane do cięcia, bigowania,
         znakowania i opisywania szerokiej gamy materiałów płaskich. Idealnie sprawdzają
         się w przemyśle opakowaniowym, reklamowym, tekstylnym, kompozytowym i wielu
         innych branżach, gdzie wymagana jest wysoka jakość krawędzi oraz powtarzalność
@@ -1013,7 +1013,7 @@
   </div>
   <MachineMenu
     downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Plotery linearne CNC.pdf"
+    downloadHref="/do_pobrania/Plotery-linearne-CNC.pdf"
     contactText="Kontakt"
     contactHref="#"
   />
