@@ -39,9 +39,7 @@
         </div>
         <br /><br />
         <h3 class="step-description" use:typoFixAction>
-          Obsługujemy różne materiały (aluminium, kompozyty, tworzywa, drewno) –
-          od prototypu po serię. Zobacz nasze modele lub zapytaj o rozwiązanie
-          „szyte na miarę”.
+          Aluminium, kompozyty, tworzywa, drewno — jedna technologia, wiele zastosowań. Zobacz nasze maszyny albo zamów konfigurację na miarę.
         </h3>
       </div>
 
