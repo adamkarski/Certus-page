@@ -21,7 +21,7 @@
   const maszyny = [];
 </script>
 
-<section class="maszyny_page gradientHero">
+<section class="maszyny_page gradientHero_old">
   <div class="first-container-back"></div>
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
 </section>
@@ -39,7 +39,7 @@
 
 <!-- Frezarki CNC HMM-ST -->
 <section id="frezarki" class="maszyny-dane">
-  <div class="hr topline gradientHero">
+  <div class="hr topline gradientHero_old">
     <img
       src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
       alt="Frezarki CNC HMM-ST"
@@ -53,14 +53,14 @@
       alt="Frezarki CNC HMM-ST"
       class="maszyny-dane-ikona"
     />
-    <h2>Frezarki CNC HMM-ST</h2>
+    <h2>Frezarka CNC HMM-ST z ruchomym stołem</h2>
   </div>
   <hr class="maszyny-dane-hr" />
 
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Nowa linia frezarek CERTUS HMM-ST</strong> została zaprojektowana z
+        Zaprojektowana z
         myślą o szybkim i precyzyjnym frezowaniu materiałów takich jak stal, aluminium,
         drewno, tworzywa sztuczne i inne.
       </p>
@@ -200,7 +200,7 @@
 
 <!-- Frezarki CNC HMM-GT -->
 <section id="frezarki-gt" class="maszyny-dane">
-  <div class="hr topline gradientHero">
+  <div class="hr topline gradientHero_old">
     <img
       src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
       alt="Frezarki CNC HMM-GT"
@@ -214,14 +214,14 @@
       alt="Frezarki CNC HMM-GT"
       class="maszyny-dane-ikona"
     />
-    <h2>Frezarki CNC HMM-GT</h2>
+    <h2>Frezarka CNC HMM-GT z przejezdną bramą</h2>
   </div>
   <hr class="maszyny-dane-hr" />
 
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>FREZARKA CNC Z PRZEJEZDNĄ BRAMĄ</strong><br /><br />Do dużych formatów i ciężkich detali — detal stoi, pracuje brama.
+        Do dużych formatów i ciężkich detali — detal stoi, pracuje brama.
         HMM‑GT zaprojektowano do szybkiej i precyzyjnej obróbki arkuszy oraz
         elementów o dużej masie i gabarytach. Doskonale sprawdza się w aluminium
         i jego stopach, kompozytach, tworzywach, drewnie oraz — w odpowiedniej
@@ -333,7 +333,7 @@
 
 <!-- Przemysłowe plotery CNC -->
 <section id="ploteryPrzemyslowe" class="maszyny-dane">
-  <div class="hr topline gradientHero">
+  <div class="hr topline gradientHero_old">
     <img
       src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
       alt="Przemysłowe plotery CNC bez zabudowy"
@@ -455,7 +455,7 @@
 
 <!-- Przemysłowe plotery CNC w zabudowie -->
 <section id="ploteryPrzemysloweZabudowa" class="maszyny-dane">
-  <div class="hr topline gradientHero">
+  <div class="hr topline gradientHero_old">
     <img
       src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
       alt="Frezarki CNC"
@@ -604,7 +604,7 @@
 
 <!-- Grawerki CNC -->
 <section id="grawerki" class="maszyny-dane">
-  <div class="hr topline gradientHero">
+  <div class="hr topline gradientHero_old">
     <img
       src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
       alt="Grawerki CNC"
@@ -746,7 +746,7 @@
 
 <!-- Frezarki pięcioosiowe -->
 <section id="frezarki5osiowe" class="maszyny-dane">
-  <div class="hr topline gradientHero">
+  <div class="hr topline gradientHero_old">
     <img
       src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
       alt="Frezarki CNC pięcioosiowe"
@@ -884,7 +884,7 @@
 
 <!-- Plotery tnące linearne CNC -->
 <section id="ploteryLinearne" class="maszyny-dane">
-  <div class="hr topline gradientHero">
+  <div class="hr topline gradientHero_old">
     <img
       src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
       alt="Plotery tnące linearne CNC"

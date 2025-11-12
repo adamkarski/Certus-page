@@ -216,7 +216,7 @@
   }
 </script>
 
-<section class="serwis_page gradientHero">
+<section class="serwis_page gradientHero_old">
   <div class="first-container-back"></div>
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
 </section>

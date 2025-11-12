@@ -4,7 +4,7 @@
   export let isKontaktPage = false;
 </script>
 
-<section class="kontakt_page gradientHero">
+<section class="kontakt_page gradientHero_old">
   <!--  <div class="first-container-back"></div>
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div> -->
 </section>
