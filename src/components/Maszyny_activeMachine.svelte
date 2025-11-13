@@ -1051,6 +1051,7 @@
   .activeMachine {
     flex-direction: column;
     padding: 1rem;
+    background: white;
   }
 
   .activeMachine .left {

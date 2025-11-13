@@ -150,27 +150,29 @@
 
     // --- Initialize Sub-Swipers ---
     if (browser && $windowWidth < 1250) {
-                const initSubSwiper = (el, id) => {
-                  if (el && !el.swiper) {
-                    const subSwiperSlidesPerView = $windowWidth < 1024 ? 1 : 2;
-                    const subSwiperCenteredSlides = subSwiperSlidesPerView === 1 ? false : true;
-      
-                    const params = {
-                      slidesPerView: subSwiperSlidesPerView,
-                      centeredSlides: subSwiperCenteredSlides,
-                      spaceBetween: 10,
-                      mousewheel: true,
-                      simulateTouch: true, // Explicitly enable mouse/touch dragging
-                      touchStartPreventDefault: false,
-                    };
-                    Object.assign(el, params);
-                    el.initialize();
-                    el.swiper.on("fromEdge toEdge slideChange", () => {
-                      updateSubSwiperNav(el.swiper, id);
-                    });
-                    setTimeout(() => updateSubSwiperNav(el.swiper, id), 100);
-                  }
-                };      initSubSwiper(subSwiperFrezarkiEl, "frezarki");
+      const initSubSwiper = (el, id) => {
+        if (el && !el.swiper) {
+          const subSwiperSlidesPerView = $windowWidth < 1024 ? 1 : 2;
+          const subSwiperCenteredSlides =
+            subSwiperSlidesPerView === 1 ? false : true;
+
+          const params = {
+            slidesPerView: subSwiperSlidesPerView,
+            centeredSlides: subSwiperCenteredSlides,
+            spaceBetween: 10,
+            mousewheel: true,
+            simulateTouch: true, // Explicitly enable mouse/touch dragging
+            touchStartPreventDefault: false,
+          };
+          Object.assign(el, params);
+          el.initialize();
+          el.swiper.on("fromEdge toEdge slideChange", () => {
+            updateSubSwiperNav(el.swiper, id);
+          });
+          setTimeout(() => updateSubSwiperNav(el.swiper, id), 100);
+        }
+      };
+      initSubSwiper(subSwiperFrezarkiEl, "frezarki");
       initSubSwiper(subSwiperPloteryEl, "plotery");
     }
   });
@@ -397,8 +399,12 @@
 
   function updateSubSwiperNav(swiper, idPrefix) {
     if (!swiper) return;
-    const prevButton = document.getElementById(`swiper-button-prev-${idPrefix}`);
-    const nextButton = document.getElementById(`swiper-button-next-${idPrefix}`);
+    const prevButton = document.getElementById(
+      `swiper-button-prev-${idPrefix}`
+    );
+    const nextButton = document.getElementById(
+      `swiper-button-next-${idPrefix}`
+    );
     if (prevButton && nextButton) {
       if (swiper.isBeginning) {
         prevButton.classList.add("swiper-button-disabled");
@@ -657,7 +663,7 @@
 
 <!-- Tło i gradient pozostają statyczne -->
 <section class="hero">
-  <div class="hero-bg gradientHero ">
+  <div class="hero-bg gradientHero">
     <div class="hero-overlay"></div>
 
     <!-- Kontener dla animacji crossfade -->
@@ -804,9 +810,8 @@
         >
           <div class="category-content">
             <div class="container" in:fade={{ duration: 600, delay: 200 }}>
-              
               <div class="content">
-              <!--   <h1>
+                <!--   <h1>
                   {list.find((item) => item.id === $activeCategoryStore)?.title}
                 </h1> -->
 
@@ -845,17 +850,21 @@
                             >(ST - Sliding Table - ruchomy stół)</span
                           >
                         </h2>
-                                                                                                      <button
-                                                                                                        type="button"
-                                                                                                        on:click={() => openMachine("m_frezarka")}
-                                                                                                      >
-                                                                                                        <img
-                                                                                                          class="image"
-                                                                                                          src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-                                                                                                          alt=""
-                                                                                                          draggable="false"
-                                                                                                        />
-                                                                                                      </button>                      </div>
+                        <div
+                          role="button"
+                          tabindex="0"
+                          on:click={() => openMachine("m_frezarka")}
+                          on:keydown={(e) =>
+                            e.key === "Enter" && openMachine("m_frezarka")}
+                        >
+                          <img
+                            class="image"
+                            src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+                            alt=""
+                            draggable="false"
+                          />
+                        </div>
+                      </div>
                     </swiper-slide>
                     <swiper-slide>
                       <div class="item__category">
@@ -866,9 +875,12 @@
                             >(GT - Ganry Type - ruchoma brama)</span
                           >
                         </h2>
-                        <button
-                          type="button"
+                        <div
+                          role="button"
+                          tabindex="0"
                           on:click={() => openMachine("m_frezarka1")}
+                          on:keydown={(e) =>
+                            e.key === "Enter" && openMachine("m_frezarka1")}
                         >
                           <img
                             class="image"
@@ -876,7 +888,7 @@
                             src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
                             draggable="false"
                           />
-                        </button>
+                        </div>
                       </div>
                     </swiper-slide>
                   </swiper-container>
@@ -922,159 +934,138 @@
       {/if}
 
       {#if $activeCategoryStore === "ploteryPrzemyslowe" && !$activeMachineStore}
-
-      <div
-
-        class="view category-view no-sel"
-
-        in:fly={{ ...flyConfig, y: 50 }}
-
-        out:fly={{ ...flyConfig, y: -50 }}
-
-      >
-
-        <div class="category-content">
-
-          <div class="container" in:fade={{ duration: 600, delay: 200 }}>
-
-            
-
-            <div class="content">
-
-           <!--    <h1>
+        <div
+          class="view category-view no-sel"
+          in:fly={{ ...flyConfig, y: 50 }}
+          out:fly={{ ...flyConfig, y: -50 }}
+        >
+          <div class="category-content">
+            <div class="container" in:fade={{ duration: 600, delay: 200 }}>
+              <div class="content">
+                <!--    <h1>
 
                 {list.find((item) => item.id === $activeCategoryStore)?.title}
 
               </h1> -->
 
-
-
-              <div class="subListMachines">
-                {#if subSwiperSlidesPerView === 1}
-                  <button
-                    id="swiper-button-prev-plotery"
-                    class="swiper-nav-button swiper-nav-prev no-sel"
-                    on:click={() =>
-                      handleSubPrevClick(subSwiperPloteryEl.swiper)}
-                  >
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                <div class="subListMachines">
+                  {#if subSwiperSlidesPerView === 1}
+                    <button
+                      id="swiper-button-prev-plotery"
+                      class="swiper-nav-button swiper-nav-prev no-sel"
+                      on:click={() =>
+                        handleSubPrevClick(subSwiperPloteryEl.swiper)}
                     >
-                      <path
-                        d="M15 18L9 12L15 6"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </button>
-                {/if}
-                <swiper-container bind:this={subSwiperPloteryEl} loop="true">
-                  <swiper-slide>
-                    <div class="item__category m-ploter">
-                      <h2>
-                        CNC HPP-CT
-                        <br />
-                        <span class="subtitle"
-                          >(CT — Closed Type - w zabudowie)</span
-                        >
-                      </h2>
-                      <button
-                        type="button"
-                        on:click={() => openMachine("m-ploter")}
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <img
-                          class="image"
-                          src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
-                          alt="Ploter przemysłowy"
-                          draggable="false"
+                        <path
+                          d="M15 18L9 12L15 6"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
                         />
-                      </button>
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="item__category">
-                      <h2>
-                        CNC HPP-OT
-                        <br />
-                        <span class="subtitle"
-                          >(OT — Open Type - otwarte)</span
+                      </svg>
+                    </button>
+                  {/if}
+                  <swiper-container bind:this={subSwiperPloteryEl} loop="true">
+                    <swiper-slide>
+                      <div class="item__category m-ploter">
+                        <h2>
+                          CNC HPP-CT
+                          <br />
+                          <span class="subtitle"
+                            >(CT — Closed Type - w zabudowie)</span
+                          >
+                        </h2>
+                        <div
+                          role="button"
+                          tabindex="0"
+                          on:click={() => openMachine("m-ploter")}
+                          on:keydown={(e) =>
+                            e.key === "Enter" && openMachine("m-ploter")}
                         >
-                      </h2>
-                      <button
-                        type="button"
-                        on:click={() => openMachine("m-ploter1")}
-                      >
-                        <img
-                          class="image"
-                          alt="Ploter przemysłowy bez zabudowy"
-                          src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
-                          draggable="false"
-                        />
-                      </button>
-                    </div>
-                  </swiper-slide>
-                </swiper-container>
-                {#if subSwiperSlidesPerView === 1}
-                  <button
-                    id="swiper-button-next-plotery"
-                    class="swiper-nav-button swiper-nav-next no-sel"
-                    on:click={() =>
-                      handleSubNextClick(subSwiperPloteryEl.swiper)}
-                  >
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                          <img
+                            class="image"
+                            src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+                            alt="Ploter przemysłowy"
+                            draggable="false"
+                          />
+                        </div>
+                      </div>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <div class="item__category">
+                        <h2>
+                          CNC HPP-OT
+                          <br />
+                          <span class="subtitle"
+                            >(OT — Open Type - otwarte)</span
+                          >
+                        </h2>
+                        <div
+                          role="button"
+                          tabindex="0"
+                          on:click={() => openMachine("m-ploter1")}
+                          on:keydown={(e) =>
+                            e.key === "Enter" && openMachine("m-ploter1")}
+                        >
+                          <img
+                            class="image"
+                            alt="Ploter przemysłowy bez zabudowy"
+                            src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
+                            draggable="false"
+                          />
+                        </div>
+                      </div>
+                    </swiper-slide>
+                  </swiper-container>
+                  {#if subSwiperSlidesPerView === 1}
+                    <button
+                      id="swiper-button-next-plotery"
+                      class="swiper-nav-button swiper-nav-next no-sel"
+                      on:click={() =>
+                        handleSubNextClick(subSwiperPloteryEl.swiper)}
                     >
-                      <path
-                        d="M9 18L15 12L9 6"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </button>
-                {/if}
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 18L15 12L9 6"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  {/if}
+                </div>
+
+                <div
+                  in:fade={{ duration: 400, delay: 800 }}
+                  out:fade={{ duration: 300 }}
+                >
+                  <CtaButton
+                    on:click={close}
+                    text="Wróć"
+                    classs="backFromCategory"
+                  />
+                </div>
               </div>
-
-              <div
-
-                in:fade={{ duration: 400, delay: 800 }}
-
-                out:fade={{ duration: 300 }}
-
-              >
-
-                <CtaButton
-
-                  on:click={close}
-
-                  text="Wróć"
-
-                  classs="backFromCategory"
-
-                />
-
-              </div>
-
             </div>
-
           </div>
-
         </div>
-
-      </div>
-
-    {/if}
+      {/if}
     </div>
   </div>
   <span class="triangle"></span>
@@ -1143,7 +1134,7 @@
   }
 
   .container {
-  /*   max-width: 1200px;
+    /*   max-width: 1200px;
     margin: 0 auto;
     padding: 0 0px; */
   }
@@ -1161,7 +1152,7 @@
     position: relative;
     width: 100%;
     max-width: 100vw;
- 
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1179,27 +1170,33 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
-        button{
+
+        button {
           cursor: pointer;
         }
 
         .item__category {
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
+          opacity: 0.6;
+          transition: opacity 0.3s ease;
         }
 
         .item__category:hover {
-            opacity: 1;
+          opacity: 1;
+        }
+
+        div[role="button"] {
+          cursor: pointer;
+          border: none;
+          background: none;
+          padding: 60px;
+          margin: 0;
+          display: inline-block; /* Or block, depending on layout */
         }
       }
     }
   }
-  
 
-    .category-content .container {
-  
-
+  .category-content .container {
     :global(button.backFromCategory) {
       position: absolute !important;
       /* display: block; */
@@ -1322,7 +1319,7 @@
     }
 
     .hero-bg {
-     /*  padding-top: 120px; */
+      /*  padding-top: 120px; */
     }
   }
 
@@ -1400,7 +1397,7 @@
   }
 
   .view.category-view {
-    // padding: 2rem; 
+    // padding: 2rem;
     max-height: 100vh;
     position: absolute;
     /* width: 100%; */
@@ -1413,9 +1410,8 @@
 
     .item__category {
       h2 {
-        font-size: 1rem;
+        /* font-size: 1rem;
         color: #e3e3e3 !important;
-     /*    background-color: #7c8897; */
         font-weight: 500;
         padding: 0.5rem;
         border-radius: 23px;
@@ -1423,7 +1419,15 @@
         top: -60px;
         left: -10px;
         padding-left: 20px;
-        padding-right: 20px;
+        padding-right: 20px; */
+        font-size: 1rem;
+        color: #e3e3e3 !important;
+        font-weight: 500;
+        padding: 0.5rem;
+        border-radius: 23px;
+        position: relative;
+        bottom: -32vw;
+        right: -29vw;
       }
     }
   }
@@ -1443,7 +1447,7 @@
       font-size: 1.2rem;
     }
     .view.category-view {
-      margin-top: 20rem;
+      // margin-top: 20rem;
 
       .item__category h2 {
         font-size: 0.7rem;
@@ -1461,7 +1465,7 @@
 
   /* ————————————————  KATEGORIE  ———————————————— */
   .category-content {
- /*    display: flex;
+    /*    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1533,30 +1537,19 @@
     }
   }
 
-
-
   swiper-container swiper-slide:nth-child(1),
-  swiper-container swiper-slide:nth-child(2), 
+  swiper-container swiper-slide:nth-child(2),
   swiper-container swiper-slide:nth-child(5) {
-  .headlines .topline{
-
-margin-left: -90px;
-
-}
+    .headlines .topline {
+      margin-left: -90px;
+    }
   }
-
 
   swiper-container swiper-slide:nth-child(1),
   swiper-container swiper-slide:nth-child(2) {
-
-    .headlines .topline{
-
+    .headlines .topline {
       margin-left: -90px;
-      
     }
-
-
-
 
     button > div.item > div {
       transform: scale(1) !important;
@@ -1693,6 +1686,8 @@ margin-left: -90px;
     }
   }
 
+
+
   /* ————————————————  KAFELKI  ———————————————— */
   .items {
     flex: 1;
@@ -1734,7 +1729,8 @@ margin-left: -90px;
   }
 
   .headlines .topline {
-    /* text */-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    /* text */
+    -shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     color: #e3e3e3;
     line-height: 1;
     transition: all 0.3s ease;
@@ -1790,7 +1786,6 @@ margin-left: -90px;
     transition: all 0.3s ease;
   }
 
-
   .item .image img.bg {
     display: block;
     width: auto;
@@ -1798,7 +1793,6 @@ margin-left: -90px;
     object-fit: cover;
     transition: all 0.3s ease;
   }
-
 
   .image-loader {
     display: flex;
@@ -1922,7 +1916,9 @@ margin-left: -90px;
       overflow: visible;
 
       swiper-slide {
-        transition: transform 0.4s ease, opacity 0.4s ease;
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
         transform: scale(0.65);
         opacity: 0.4;
         display: flex;
