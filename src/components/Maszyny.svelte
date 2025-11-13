@@ -887,24 +887,24 @@
   <div class="hr topline gradientHero_old">
     <img
       src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
-      alt="Plotery tnące linearne CNC"
+      alt="Plotery frezująco-tnące linearne CNC"
       class="topImage"
     />
   </div>
   <div class="maszyny-dane-header no-sel">
     <img
       src="/assets/ikony/maszyny/ploteryLinearne.svg"
-      alt="Plotery tnące linearne CNC"
+      alt="Plotery frezująco-tnące linearne CNC"
       class="maszyny-dane-ikona"
     />
-    <h2>Plotery Liniowe CNC / Cuttery</h2>
+    <h2>Plotery frezująco-tnące linearne CNC</h2>
   </div>
   <hr class="maszyny-dane-hr" />
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
         <strong
-          >Plotery liniowe CNC, znane również jako cuttery przemysłowe</strong
+          >Plotery frezująco-tnące linearne CNC</strong
         ><br /><br /> to precyzyjne i wydajne urządzenia zaprojektowane do cięcia, bigowania,
         znakowania i opisywania szerokiej gamy materiałów płaskich. Idealnie sprawdzają
         się w przemyśle opakowaniowym, reklamowym, tekstylnym, kompozytowym i wielu
@@ -997,7 +997,7 @@
       <Section_Maszyny_Image01
         sectionId="ploteryLinearne-image"
         imgSrc="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
-        title="Plotery tnące linearne"
+        title="Plotery frezująco-tnące linearne CNC"
         subtitle="Precyzyjne cięcie"
       />
 

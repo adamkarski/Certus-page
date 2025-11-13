@@ -147,6 +147,30 @@
         }
       }
     }
+
+    // --- Initialize Sub-Swipers ---
+    if (browser && $windowWidth < 1250) {
+                const initSubSwiper = (el, id) => {
+                  if (el && !el.swiper) {
+                    const subSwiperSlidesPerView = $windowWidth < 1024 ? 1 : 2;
+                    const subSwiperCenteredSlides = subSwiperSlidesPerView === 1 ? false : true;
+      
+                    const params = {
+                      slidesPerView: subSwiperSlidesPerView,
+                      centeredSlides: subSwiperCenteredSlides,
+                      spaceBetween: 10,
+                      mousewheel: true,
+                    };
+                    Object.assign(el, params);
+                    el.initialize();
+                    el.swiper.on("fromEdge toEdge slideChange", () => {
+                      updateSubSwiperNav(el.swiper, id);
+                    });
+                    setTimeout(() => updateSubSwiperNav(el.swiper, id), 100);
+                  }
+                };      initSubSwiper(subSwiperFrezarkiEl, "frezarki");
+      initSubSwiper(subSwiperPloteryEl, "plotery");
+    }
   });
 
   function setupSwiperEvents(swiper) {
@@ -253,6 +277,32 @@
 
   $: slidesPerGroup = $windowWidth < 1024 ? 1 : 2;
 
+  // --- Reactive properties for Sub-Swipers ---
+  $: subSwiperSlidesPerView = $windowWidth < 1024 ? 1 : 2;
+  $: subSwiperCenteredSlides = false; // Always false to match main swiper behavior
+
+  // Update sub-swipers when window width changes
+  $: if (browser && $windowWidth) {
+    const updateSwiper = (swiperEl) => {
+      if (swiperEl && swiperEl.swiper) {
+        const swiper = swiperEl.swiper;
+        try {
+          if (swiper.params) {
+            swiper.params.slidesPerView = subSwiperSlidesPerView;
+            swiper.params.centeredSlides = subSwiperCenteredSlides;
+          }
+          swiperEl.setAttribute("slides-per-view", subSwiperSlidesPerView);
+          swiperEl.setAttribute("centered-slides", subSwiperCenteredSlides);
+          swiper.update();
+        } catch (e) {}
+      }
+    };
+    setTimeout(() => {
+      updateSwiper(subSwiperFrezarkiEl);
+      updateSwiper(subSwiperPloteryEl);
+    }, 100);
+  }
+
   // Update swiper when window width changes
   $: if (
     browser &&
@@ -336,6 +386,40 @@
         lastActiveSlideIndex = swiper.activeIndex;
         updateNavigationButtons(swiper);
       }, 350);
+    }
+  }
+
+  // --- Functions for Sub-Swipers ---
+  let subSwiperFrezarkiEl;
+  let subSwiperPloteryEl;
+
+  function updateSubSwiperNav(swiper, idPrefix) {
+    if (!swiper) return;
+    const prevButton = document.getElementById(`swiper-button-prev-${idPrefix}`);
+    const nextButton = document.getElementById(`swiper-button-next-${idPrefix}`);
+    if (prevButton && nextButton) {
+      if (swiper.isBeginning) {
+        prevButton.classList.add("swiper-button-disabled");
+      } else {
+        prevButton.classList.remove("swiper-button-disabled");
+      }
+      if (swiper.isEnd) {
+        nextButton.classList.add("swiper-button-disabled");
+      } else {
+        nextButton.classList.remove("swiper-button-disabled");
+      }
+    }
+  }
+
+  function handleSubPrevClick(swiper) {
+    if (swiper) {
+      swiper.slidePrev(300);
+    }
+  }
+
+  function handleSubNextClick(swiper) {
+    if (swiper) {
+      swiper.slideNext(300);
     }
   }
 
@@ -725,48 +809,98 @@
                 </h1> -->
 
                 <div class="subListMachines">
-                  <div class="item__category">
-                    <h2>
-                      CNC HMM-ST
-
-                      <br />
-                      <span class="subtitle"
-                        >(ST - Sliding Table - ruchomy stół)</span
-                      >
-                    </h2>
-
+                  {#if subSwiperSlidesPerView === 1}
                     <button
-                      type="button"
-                      on:click={() => openMachine("m_frezarka")}
+                      id="swiper-button-prev-frezarki"
+                      class="swiper-nav-button swiper-nav-prev no-sel"
+                      on:click={() =>
+                        handleSubPrevClick(subSwiperFrezarkiEl.swiper)}
                     >
-                      <img
-                        class="image"
-                        src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-                        alt=""
-                      />
-                    </button>
-                  </div>
-
-                  <div class="item__category">
-                    <h2>
-                      CNC HMM-GT
-
-                      <br />
-                      <span class="subtitle"
-                        >(GT - Ganry Type - ruchoma brama)</span
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                    </h2>
-                    <button
-                      type="button"
-                      on:click={() => openMachine("m_frezarka1")}
-                    >
-                      <img
-                        class="image"
-                        alt=""
-                        src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
-                      />
+                        <path
+                          d="M15 18L9 12L15 6"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
                     </button>
-                  </div>
+                  {/if}
+                  <swiper-container bind:this={subSwiperFrezarkiEl} loop="true">
+                    <swiper-slide>
+                      <div class="item__category">
+                        <h2>
+                          CNC HMM-ST
+                          <br />
+                          <span class="subtitle"
+                            >(ST - Sliding Table - ruchomy stół)</span
+                          >
+                        </h2>
+                        <button
+                          type="button"
+                          on:click={() => openMachine("m_frezarka")}
+                        >
+                          <img
+                            class="image"
+                            src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+                            alt=""
+                          />
+                        </button>
+                      </div>
+                    </swiper-slide>
+                    <swiper-slide>
+                      <div class="item__category">
+                        <h2>
+                          CNC HMM-GT
+                          <br />
+                          <span class="subtitle"
+                            >(GT - Ganry Type - ruchoma brama)</span
+                          >
+                        </h2>
+                        <button
+                          type="button"
+                          on:click={() => openMachine("m_frezarka1")}
+                        >
+                          <img
+                            class="image"
+                            alt=""
+                            src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
+                          />
+                        </button>
+                      </div>
+                    </swiper-slide>
+                  </swiper-container>
+                  {#if subSwiperSlidesPerView === 1}
+                    <button
+                      id="swiper-button-next-frezarki"
+                      class="swiper-nav-button swiper-nav-next no-sel"
+                      on:click={() =>
+                        handleSubNextClick(subSwiperFrezarkiEl.swiper)}
+                    >
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 18L15 12L9 6"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  {/if}
                 </div>
                 <div
                   in:fade={{ duration: 400, delay: 800 }}
@@ -813,77 +947,98 @@
 
 
               <div class="subListMachines">
-
-                <div class="item__category m-ploter">
-
-                  <h2>
-                    CNC HPP-CT
-
-                    <br />
-                    <span class="subtitle"
-                      >(CT — Closed Type - w zabudowie)</span
-                    >
-                  </h2>
-
-
+                {#if subSwiperSlidesPerView === 1}
                   <button
-
-                    type="button"
-
-                    on:click={() => openMachine("m-ploter")}
-
+                    id="swiper-button-prev-plotery"
+                    class="swiper-nav-button swiper-nav-prev no-sel"
+                    on:click={() =>
+                      handleSubPrevClick(subSwiperPloteryEl.swiper)}
                   >
-
-                    <img
-
-                      class="image"
-
-                      src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
-
-                      alt="Ploter przemysłowy"
-
-                    />
-
-                  </button>
-
-                </div>
-
-
-
-                <div class="item__category">
-
-                  <h2>
-                    CNC HPP-OT
-
-                    <br />
-                    <span class="subtitle"
-                      >(OT — Open Type - otwarte)</span
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                  </h2>
-
-
-                  <button
-
-                    type="button"
-
-                    on:click={() => openMachine("m-ploter1")}
-
-                  >
-
-                    <img
-
-                      class="image"
-
-                      alt="Ploter przemysłowy bez zabudowy"
-
-                      src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
-
-                    />
-
+                      <path
+                        d="M15 18L9 12L15 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
                   </button>
-
-                </div>
-
+                {/if}
+                <swiper-container bind:this={subSwiperPloteryEl} loop="true">
+                  <swiper-slide>
+                    <div class="item__category m-ploter">
+                      <h2>
+                        CNC HPP-CT
+                        <br />
+                        <span class="subtitle"
+                          >(CT — Closed Type - w zabudowie)</span
+                        >
+                      </h2>
+                      <button
+                        type="button"
+                        on:click={() => openMachine("m-ploter")}
+                      >
+                        <img
+                          class="image"
+                          src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+                          alt="Ploter przemysłowy"
+                        />
+                      </button>
+                    </div>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <div class="item__category">
+                      <h2>
+                        CNC HPP-OT
+                        <br />
+                        <span class="subtitle"
+                          >(OT — Open Type - otwarte)</span
+                        >
+                      </h2>
+                      <button
+                        type="button"
+                        on:click={() => openMachine("m-ploter1")}
+                      >
+                        <img
+                          class="image"
+                          alt="Ploter przemysłowy bez zabudowy"
+                          src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
+                        />
+                      </button>
+                    </div>
+                  </swiper-slide>
+                </swiper-container>
+                {#if subSwiperSlidesPerView === 1}
+                  <button
+                    id="swiper-button-next-plotery"
+                    class="swiper-nav-button swiper-nav-next no-sel"
+                    on:click={() =>
+                      handleSubNextClick(subSwiperPloteryEl.swiper)}
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9 18L15 12L9 6"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                {/if}
               </div>
 
               <div
@@ -998,55 +1153,46 @@
     position: relative;
   }
   .subListMachines {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+ 
     display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-around;
-    align-items: flex-start;
-   /*  margin-top: -100px; */
-    gap: 13%;
-    padding-left: 2%;
-    padding-right: 2%;
-    .image {
-      cursor: pointer;
+    justify-content: center;
+    align-items: center;
+
+    .swiper-nav-button {
+      top: 50%;
     }
-    button {
-      cursor: pointer;
-    }
-    .item__category {
-      display: flex;
-      
-      flex-direction: column-reverse;
-      align-items: flex-end;
-      justify-content: flex-end;
-      gap: 0.6rem;
-      align-content: flex-start;
-      flex-wrap: nowrap;
-    }
-    .item__category.m-ploter{
-      margin-left: 2%;
-  }
-  }
-  @media (max-width: 1250px) {
-    .subListMachines{
-      flex-direction: column;
+
+    swiper-container {
+      width: auto; /* Allow flexbox to center it */
+      max-width: 100%; /* Ensure it doesn't overflow */
+      height: 100%;
+
+      swiper-slide {
         display: flex;
-        align-content: center;
+        justify-content: center;
         align-items: center;
-        justify-content: space-evenly;
-        flex-wrap: nowrap;
-
-        .item__category{
-
-          width: 300px;
-
+        
+        button{
+          cursor: pointer;
         }
+
+        .item__category {
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .item__category:hover {
+            opacity: 1;
+        }
+      }
     }
-
   }
+  
 
-
-  .category-content .container {
+    .category-content .container {
   
 
     :global(button.backFromCategory) {
@@ -1751,6 +1897,45 @@ margin-left: -90px;
       right: 1rem;
     }
     .headlines .topline {
+    }
+  }
+
+  // --- Sub-Swiper Styles ---
+  .sublist-swiper-container {
+    position: relative;
+    width: 100%;
+    max-width: 90vw;
+    height: 450px; // Adjust as needed
+
+    .swiper-nav-button {
+      top: 50%; // Align with main swiper
+    }
+
+    swiper-container {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+
+      swiper-slide {
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        transform: scale(0.65);
+        opacity: 0.4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .item__category {
+          // Override some styles if needed
+          h2 {
+            top: -20px;
+          }
+        }
+      }
+
+      swiper-slide.swiper-slide-active {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   }
 </style>

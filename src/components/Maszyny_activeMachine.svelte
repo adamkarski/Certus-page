@@ -899,7 +899,7 @@
           in:fade={{ duration: 300, delay: 200 }}
           out:fade={{ duration: 300, delay: 100 }}
         >
-          <h1>Plotery Liniowe CNC / Cuttery</h1>
+          <h1>Plotery frezująco-tnące linearne CNC</h1>
 
           <div class="left_image no-sel">
             <img
@@ -926,7 +926,7 @@
         >
           <div class="right_content">
             <h1 use:typoFixAction>
-              <b>Plotery liniowe CNC, znane również jako cuttery przemysłowe</b
+              <b>Plotery frezująco-tnące linearne CNC</b
               ><br /><br />to precyzyjne i wydajne urządzenia zaprojektowane do
               cięcia, bigowania, znakowania i opisywania szerokiej gamy
               materiałów płaskich. Idealnie sprawdzają się w przemyśle
