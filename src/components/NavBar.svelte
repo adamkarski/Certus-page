@@ -879,7 +879,7 @@
     }
   }
   .logoCertus {
-    min-width: 200px;
+   /*  min-width: 200px; */
     padding-right: 3px;
   }
 

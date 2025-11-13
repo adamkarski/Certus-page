@@ -160,6 +160,8 @@
                       centeredSlides: subSwiperCenteredSlides,
                       spaceBetween: 10,
                       mousewheel: true,
+                      simulateTouch: true, // Explicitly enable mouse/touch dragging
+                      touchStartPreventDefault: false,
                     };
                     Object.assign(el, params);
                     el.initialize();
@@ -843,17 +845,17 @@
                             >(ST - Sliding Table - ruchomy stół)</span
                           >
                         </h2>
-                        <button
-                          type="button"
-                          on:click={() => openMachine("m_frezarka")}
-                        >
-                          <img
-                            class="image"
-                            src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-                            alt=""
-                          />
-                        </button>
-                      </div>
+                                                                                                      <button
+                                                                                                        type="button"
+                                                                                                        on:click={() => openMachine("m_frezarka")}
+                                                                                                      >
+                                                                                                        <img
+                                                                                                          class="image"
+                                                                                                          src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+                                                                                                          alt=""
+                                                                                                          draggable="false"
+                                                                                                        />
+                                                                                                      </button>                      </div>
                     </swiper-slide>
                     <swiper-slide>
                       <div class="item__category">
@@ -872,6 +874,7 @@
                             class="image"
                             alt=""
                             src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
+                            draggable="false"
                           />
                         </button>
                       </div>
@@ -989,6 +992,7 @@
                           class="image"
                           src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
                           alt="Ploter przemysłowy"
+                          draggable="false"
                         />
                       </button>
                     </div>
@@ -1010,6 +1014,7 @@
                           class="image"
                           alt="Ploter przemysłowy bez zabudowy"
                           src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
+                          draggable="false"
                         />
                       </button>
                     </div>
