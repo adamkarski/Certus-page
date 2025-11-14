@@ -80,7 +80,7 @@
 </script>
 
 {#if loading}
-  <div class="preloader no-sel gradientHero">
+  <div class="preloader no-sel gradientHero_old">
     <img src="/assets/logo-certus.svg" alt="Wczytuje stronę..." width="64" height="64" />
   </div>
 {/if}

@@ -135,13 +135,13 @@
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/ploteryLinearne.svg"
-          alt="Plotery tnące linearne CNC"
+          alt="Plotery frezująco-tnące linearne CNC"
         />
       </div>
 
       <CtaButton
         classs="oferta-cta"
-        text="Plotery tnące linearne CNC"
+        text="Plotery frezująco-tnące linearne CNC"
         
       />
     </div>

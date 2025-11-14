@@ -1,5 +1,5 @@
 <script lang="ts">
-  import OfertaGrid from "./OfertaGrid.svelte";
+  // import OfertaGrid from "./OfertaGrid.svelte";
   import { fade } from "svelte/transition";
   import Section_Onas_Images from "./sections/Section_Onas_Images.svelte";
   import CtaButton from "../components/CtaButton.svelte";
