@@ -410,16 +410,27 @@
     const nextButton = document.getElementById(
       `swiper-button-next-${idPrefix}`
     );
+
     if (prevButton && nextButton) {
-      if (swiper.isBeginning) {
-        prevButton.classList.add("swiper-button-disabled");
+      // Hide buttons if all slides are visible (no need to navigate)
+      if (swiper.slides.length <= swiper.params.slidesPerView) {
+        prevButton.classList.add("hide-navigation-sub");
+        nextButton.classList.add("hide-navigation-sub");
       } else {
-        prevButton.classList.remove("swiper-button-disabled");
-      }
-      if (swiper.isEnd) {
-        nextButton.classList.add("swiper-button-disabled");
-      } else {
-        nextButton.classList.remove("swiper-button-disabled");
+        prevButton.classList.remove("hide-navigation-sub");
+        nextButton.classList.remove("hide-navigation-sub");
+
+        // Manage disabled state based on swiper position
+        if (swiper.isBeginning) {
+          prevButton.classList.add("swiper-button-disabled");
+        } else {
+          prevButton.classList.remove("swiper-button-disabled");
+        }
+        if (swiper.isEnd) {
+          nextButton.classList.add("swiper-button-disabled");
+        } else {
+          nextButton.classList.remove("swiper-button-disabled");
+        }
       }
     }
   }
@@ -678,6 +689,7 @@
         {#if swiperReady}
           <div
             class="view slider-view"
+            class:slider-view--single-slide={slidesPerView === 1}
             in:fade={fadeConfig}
             out:fade={fadeConfig}
           >
@@ -816,12 +828,10 @@
           <div class="category-content">
             <div class="container" in:fade={{ duration: 600, delay: 200 }}>
               <div class="content">
-                <!--   <h1>
-                  {list.find((item) => item.id === $activeCategoryStore)?.title}
-                </h1> -->
-
-                <div class="subListMachines">
-                  <button
+                                <div
+                                  class="subListMachines"
+                                  class:subListMachines--single-view={subSwiperSlidesPerView === 1}
+                                >                  <button
                     id="swiper-button-prev-frezarki"
                     class="swiper-nav-button swiper-nav-prev no-sel"
                     on:click={() =>
@@ -843,7 +853,14 @@
                       />
                     </svg>
                   </button>
-                  <swiper-container bind:this={subSwiperFrezarkiEl}>
+                  <swiper-container
+                    bind:this={subSwiperFrezarkiEl}
+                    slides-per-view={subSwiperSlidesPerView}
+                    slides-per-group={subSwiperSlidesPerGroup}
+                    space-between="0"
+                    mousewheel
+                    loop="true"
+                  >
                     <swiper-slide>
                       <button
                         type="button"
@@ -947,7 +964,10 @@
 
               </h1> -->
 
-                <div class="subListMachines">
+                <div
+                  class="subListMachines"
+                  class:subListMachines--single-view={subSwiperSlidesPerView === 1}
+                >
                   <button
                     id="swiper-button-prev-plotery"
                     class="swiper-nav-button swiper-nav-prev no-sel"
@@ -976,6 +996,7 @@
                     slides-per-group={subSwiperSlidesPerGroup}
                     space-between="0"
                     mousewheel
+                    loop="true"
                   >
                     <swiper-slide>
                       <button
@@ -1126,6 +1147,12 @@
     cursor: not-allowed !important;
     pointer-events: none !important;
     transition: all;
+  }
+
+  :global(.swiper-nav-button.hide-navigation-sub) {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease;
   }
 
   section.hero .hero-bg {
@@ -1475,26 +1502,44 @@
       }
     }
   
-    .slider-view swiper-container swiper-slide,
-    .subListMachines swiper-container swiper-slide {
-      button > div.item > div {
-        /* .image */
-        opacity: 0.6;
-        transition: opacity 0.3s ease;
-      }
-      button > div.item > div img {
-        filter: blur(0.2px);
-        transition: filter 0.3s ease;
-      }
-  
-      button:hover > div.item > div {
-        opacity: 1;
-      }
-      button:hover > div.item > div img {
-        filter: blur(0);
-      }
-    }
-  
+        .slider-view swiper-container swiper-slide,
+        .subListMachines swiper-container swiper-slide {
+          button > div.item > div {
+            /* .image */
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+          }
+          button > div.item > div img {
+            filter: blur(0.2px);
+            transition: filter 0.3s ease;
+          }
+      
+          button:hover > div.item > div {
+            opacity: 1;
+          }
+          button:hover > div.item > div img {
+            filter: blur(0);
+          }
+        }
+      
+        // Override opacity/blur for single-view main swiper
+        .slider-view--single-slide swiper-container swiper-slide {
+          button > div.item > div {
+            opacity: 1 !important;
+          }
+          button > div.item > div img {
+            filter: blur(0) !important;
+          }
+        }    
+      // Override opacity/blur for single-view sub-swipers
+      .subListMachines--single-view swiper-container swiper-slide {
+        button > div.item > div {
+          opacity: 1 !important;
+        }
+        button > div.item > div img {
+          filter: blur(0) !important;
+        }
+      }  
     @media (max-width: 768px) {
       .slider-view swiper-container swiper-slide,
       .subListMachines swiper-container swiper-slide {
