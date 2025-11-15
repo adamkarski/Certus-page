@@ -56,8 +56,10 @@
 
               // Wróć do zapisanego slajdu po re-renderze
               setTimeout(() => {
-                swiperElement.swiper.slideTo(lastActiveSlideIndex);
-                updateNavigationButtons(swiperElement.swiper);
+                if (swiperElement && swiperElement.swiper) {
+                  swiperElement.swiper.slideTo(lastActiveSlideIndex);
+                  updateNavigationButtons(swiperElement.swiper);
+                }
               }, 200);
             } else {
               setTimeout(checkNewSwiper, 100);
@@ -94,7 +96,11 @@
                   }
                 }
                 setTimeout(
-                  () => updateNavigationButtons(swiperElement.swiper),
+                  () => {
+                    if (swiperElement && swiperElement.swiper) {
+                      updateNavigationButtons(swiperElement.swiper);
+                    }
+                  },
                   200
                 );
               } else {
@@ -215,8 +221,10 @@
       if (paginationEl) {
       } else {
         // Sprawdź czy istnieje w swiperElement
-        const swiperPagination =
-          swiperElement.querySelector(".swiper-pagination");
+        if (swiperElement) {
+          const swiperPagination =
+            swiperElement.querySelector(".swiper-pagination");
+        }
       }
     }, 500);
 
@@ -272,7 +280,9 @@
     ($activeCategoryStore !== undefined || $expandedViewStore !== undefined)
   ) {
     setTimeout(() => {
-      updateNavigationButtons(swiperElement.swiper);
+      if (swiperElement && swiperElement.swiper) {
+        updateNavigationButtons(swiperElement.swiper);
+      }
     }, 100);
   }
 
@@ -321,6 +331,9 @@
     $windowWidth
   ) {
     setTimeout(() => {
+      if (!swiperElement || !swiperElement.swiper) {
+        return;
+      }
       const swiper = swiperElement.swiper;
 
       // Update swiper parameters safely
@@ -484,7 +497,9 @@
         swiperElement.swiper
       ) {
         setTimeout(() => {
-          swiperElement.swiper.slideToLoop(0);
+          if (swiperElement && swiperElement.swiper) {
+            swiperElement.swiper.slideToLoop(0);
+          }
         }, 0);
       }
     }
@@ -665,9 +680,11 @@
   $: if ($resetHeroSwiper) {
     if (swiperElement && swiperElement.swiper) {
       setTimeout(() => {
-        // Wróć do ostatniego aktywnego slajdu zamiast zawsze do pierwszego
-        swiperElement.swiper.slideTo(lastActiveSlideIndex);
-        updateNavigationButtons(swiperElement.swiper);
+        if (swiperElement && swiperElement.swiper) {
+          // Wróć do ostatniego aktywnego slajdu zamiast zawsze do pierwszego
+          swiperElement.swiper.slideTo(lastActiveSlideIndex);
+          updateNavigationButtons(swiperElement.swiper);
+        }
       }, 100); // Zwiększone opóźnienie dla pewności
     }
     $activeCategoryStore = null;
@@ -1305,6 +1322,16 @@
     /* RESPONSIVE BREAKPOINTS - UPORZĄDKOWANE I UPROSZCZONE */
   
     /* Desktop - Duże ekrany (1200px+) */
+    @media (min-width: 1024px){
+    
+      :global(.subListMachines .swiper-nav-button) {
+        opacity:0;
+        transition: all ease 0.5s;
+      }
+    }
+
+  
+
     @media (min-width: 1200px) {
       .hero {
         height: 100vh;
