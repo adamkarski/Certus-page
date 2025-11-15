@@ -1,0 +1,103 @@
+/* ==============================================
+   UNIWERSALNY CSS Z MEDIA QUERIES - 2025
+   Najbardziej uniwersalne breakpointy dla laptopów i desktopów
+   Bazuje na statystykach użytkowania i najlepszych praktykach
+   ============================================== */
+
+/* RESET I BAZOWE STYLE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* MOBILNE STYLE (DOMYŚLNE) - Mobile First Approach
+   Dla ekranów do 479px (telefony) */
+
+
+
+/* TELEFONY DUŻE I TABLETY MAŁE
+   480px+ (30em+) - około 7% urządzeń */
+@media (min-width: 30em) {
+
+}
+
+/* TABLETY I MAŁE LAPTOPY
+   768px+ (48em+) - pokrywa 1366x768 (9.06% rynku) */
+@media (min-width: 48em) {
+  /* body { */
+    /* font-size: 18px; */
+  /* } */
+
+
+}
+
+
+/* LAPTOPY I DESKTOPY STANDARDOWE
+   1024px+ (64em+) - pokrywa większość laptopów i małych desktopów */
+@media (min-width: 64em) {
+
+
+}
+
+/* DESKTOPY STANDARDOWE I LAPTOPY DUŻE
+   1200px+ (75em+) - pokrywa 1920x1080 (21.96% rynku) */
+@media (min-width: 75em) {
+
+
+  /* Większe fonty dla lepszej czytelności na dużych ekranach */
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+}
+
+/* DESKTOPY DUŻE
+   1440px+ (90em+) - pokrywa 2560x1440 (4.57% rynku) i większe */
+@media (min-width: 90em) {
+  
+
+  /* Optymalizacja dla ekranów QHD */
+  /* body { */
+    /* font-size: 19px; */
+  /* } */
+}
+
+/* EKRANY BARDZO DUŻE (4K i ultrawide)
+   1920px+ (120em+) - premium desktopy */
+@media (min-width: 120em) {
+ 
+
+
+}
+
+/* MEDIA QUERIES DLA WYSOKOŚCI EKRANU
+   Przydatne dla laptopów o różnych proporcjach */
+@media (min-height: 600px) {
+ 
+}
+
+/* ORIENTACJA POZIOMA NA TABLETACH */
+@media (min-width: 48em) and (orientation: landscape) {
+
+}
+
+
+
+/* PREFERENCJE UŻYTKOWNIKA - DARK MODE */
+@media (prefers-color-scheme: dark) {
+
+}
+
+/* ZMNIEJSZONA ANIMACJA - dla użytkowników z preferencją */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* WYSOKIE KONTRASTY */
+@media (prefers-contrast: high) {
+ 
+}

@@ -1,0 +1,240 @@
+# Analiza Typografii Projektu
+
+Ten dokument zawiera szczegółową analizę stylów typograficznych używanych w całym projekcie, włączając w to globalne definicje i lokalne nadpisania w komponentach Svelte.
+
+---
+
+## 1. Globalny System Typografii (`src/lib/typography.scss`)
+
+Projekt wykorzystuje nowoczesny, responsywny system typografii oparty na funkcji `clamp()`, co pozwala na płynne skalowanie czcionek w zależności od szerokości ekranu.
+
+### Główne Definicje (`:root`)
+- **Font podstawowy (nagłówki):** `var(--font-primary)` -> `"Poppins", sans-serif`
+- **Font drugorzędny (tekst):** `var(--font-secondary)` -> `"Inter", sans-serif`
+- **Wagi czcionek:**
+  - `var(--font-weight-regular)`: 400
+  - `var(--font-weight-semibold)`: 600
+  - `var(--font-weight-bold)`: 700
+
+### Podstawowe Style
+- **`body`**:
+  - `font-family`: `"Inter", sans-serif`
+  - `font-weight`: 400
+  - `font-size`: `clamp(0.8125rem, 0.2vw + 0.75rem, 0.9375rem)` (płynnie od ~13px do 15px)
+  - `line-height`: 1.6
+
+- **`<p>`**:
+  - `font-family`: `"Inter", sans-serif`
+  - `font-size`: `1em` (dziedziczy z `body`, czyli ~13px-15px)
+  - `line-height`: 1.6
+
+### Skala Nagłówków (H1-H4)
+Wszystkie nagłówki używają `font-family: "Poppins"`.
+- **`h1`**: `font-size: clamp(1.8rem, 1vw + 1.5rem, 2.5rem)` (~29px - 40px)
+- **`h2`, `.section-title`**: `font-size: clamp(1.4rem, 0.8vw + 1.1rem, 1.8rem)` (~22px - 29px)
+- **`h3`**: `font-size: clamp(1.2rem, 0.5vw + 1.05rem, 1.5rem)` (~19px - 24px), `font-weight: 600`
+- **`h4`**: `font-size: clamp(1.1rem, 0.4vw + 1rem, 1.3rem)` (~17.5px - 21px), `font-weight: 600`
+
+---
+
+## 2. Style Globalne i Nadpisania (`app.css`, `table.scss`)
+
+### `src/lib/app.css`
+- **`.section-title`**:
+  - `font-family`: `"Poppins", sans-serif`
+  - `font-weight`: 700
+  - `font-size`: 38px
+- **`.section-subtitle`**:
+  - `font-size`: 20px
+- **`h2`**: Posiada nadpisanie `color: #666 !important;`, ale rozmiar i waga dziedziczone są z `typography.scss`.
+
+### `src/lib/table.scss`
+- **`.maszyny-dane h2`**:
+  - `font-size`: `1.3em !important`
+  - `font-weight`: `500 !important`
+- **`h1` (w tym pliku)**:
+  - `font-size`: 21px
+  - `font-weight`: 400
+- **`.maszyny-dane-podtytul`**:
+  - `font-weight`: 700
+  - `font-size`: 21px
+- **`.maszyny-dane-lista-small li`**:
+  - `font-size`: `15px !important`
+- **`.maszyny-dane h2` (inny selektor)**:
+  - `font-size`: `2rem`
+  - `font-weight`: 500
+- **`.maszyny-dane-lista`**:
+  - `font-size`: `1.08rem`
+- **`.maszyny-dane-podtytul` (inny selektor)**:
+  - `font-weight`: 600
+  - `font-size`: `1.1rem`
+- **`.maszyny-dane-tabela`**:
+  - `font-size`: `1rem`
+- **`.maszyny-dane-tabela th`**:
+  - `font-weight`: 600
+  - `font-size`: `1.05em`
+- **`.options-list li`**:
+  - `font-size`: `0.7rem` (TO JEST PRAWDOPODOBNIE BŁĘDNA WARTOŚĆ)
+- **`.standard-feature`**:
+  - `font-weight`: 600
+- **Media Query (max-width: 768px)**:
+  - `.options-list li`: `font-size: 0.8rem`
+  - `.maszyny-dane-tabela`: `font-size: 0.85rem`
+- **Media Query (max-width: 480px)**:
+  - `td:before`: `font-weight: bold`, `font-size: 0.9rem`
+  - `.options-list li`: `font-size: 0.75rem !important`
+
+---
+
+## 3. Lokalne Nadpisania w Komponentach (`*.svelte`)
+
+Poniżej znajduje się lista plików `.svelte` zawierających lokalne definicje stylów czcionek.
+
+### `src/components/Bestseller.svelte`
+- Selektory z `font-size`:
+  - `2rem` (wiele wystąpień)
+  - `1.3rem`
+  - `1.5rem`
+  - `1.1rem`
+  - `1.2rem`
+  - `3rem`
+  - `2.5rem`
+  - `2.2rem`
+  - `1rem`
+  - `1.8rem`
+- Selektory z `font-weight`:
+  - `700` (wiele wystąpień)
+  - `600`
+  - `500`
+
+### `src/components/CtaButton.svelte`
+- `font-family`: `"Poppins", sans-serif`
+- `font-weight`: `600`
+- `font-size`: `1rem`
+
+### `src/components/DevResolutionDisplay.svelte`
+- `font-family`: `'Monaco', 'Menlo', 'Ubuntu Mono', monospace`
+- `font-size`: `11px`, `10px`
+- `font-weight`: `bold`
+
+### `src/components/DiagonalSliceReveal.svelte`
+- `font-size`: `14px`, `1.5rem`, `1rem`, `1.3rem`, `0.9rem`, `1.1rem`, `0.85rem`
+- `font-weight`: `700`
+
+### `src/components/Dokumentacja.svelte`
+- `font-weight`: `600`
+
+### `src/components/Maszyny.svelte`
+- `font-size`: `1.08rem`
+- `font-weight`: `600 !important`
+
+### `src/components/Maszyny_activeMachine.svelte`
+- `font-size`: `large !important`, `0.9rem`, `x-large`, `0.95rem`, `3em`, `medium !important`, `0.85rem`
+- `font-weight`: (brak bezpośrednich definicji w tym pliku, dziedziczy lub używa `typoFixAction`)
+
+### `src/components/NavBar.svelte`
+- `font-size`: `0.75rem`, `1.1rem`, `1.5rem`, `0.875rem`, `1rem`, `0.9em`, `1.8rem`, `1.2rem`
+- `font-weight`: `700`, `600`, `200`, `500`, `600 !important`
+
+### `src/components/OfertaGrid.svelte`
+- `font-size`: `50px`, `45px`, `0.9rem !important`, `40px`
+
+### `src/components/Onas.svelte`
+- `font-size`: `1.4rem`, `1.5rem`, `2.5rem`, `3rem`, `1.2rem`
+- `font-weight`: `600`, `bold`
+
+### `src/components/Serwis.svelte`
+- `font-size`: `1.2rem`, `2.5rem`, `1.1rem`, `2rem`, `1.8rem`, `0.7rem`, `1.7rem`, `0.98rem`, `0.75rem`, `1rem`, `28px`, `0.85rem`, `1.4rem`, `38px`, `0.95rem`
+- `font-weight`: `700`, `600`, `400`
+- `font-family`: `"Poppins", sans-serif`
+
+### `src/components/cta-button-hero.svelte`
+- `font-weight`: `600`
+- `font-size`: `1.3rem`
+- `font-family`: `"Poppins"`
+
+### `src/components/cta-button-kategory.svelte`
+- `font-weight`: `600`
+- `font-size`: `1.3rem`
+- `font-family`: `"Poppins"`
+
+### `src/components/cta-button.svelte`
+- `font-size`: `15px`, `14px`, `1rem`
+- `font-weight`: `600`
+- `font-family`: `"Poppins"`
+
+### `src/components/sections/Section_Footer.svelte`
+- `font-size`: `15px`, `14px`, `18px`, `0.9rem`, `16px`
+- `font-weight`: `400`, `700`, `600`
+
+### `src/components/sections/Section_Hero.svelte`
+- `font-weight`: `300`, `400`, `700`, `500`
+- `font-size`: `2rem`, `1rem`, `1.3rem`, `1.2rem`, `0.7rem`, `48px`, `1.8em`, `2em`, `1.6em`, `2.6em`, `2.4em`, `2.2em`, `1.4rem !important`, `1.4em`, `1.8rem`
+- `font-family`: `"Poppins", sans-serif`
+
+### `src/components/sections/Section_Image01.svelte`
+- `font-size`: `2.5rem`, `1.5rem`
+- `font-weight`: `700`, `300`
+
+### `src/components/sections/Section_Image02.svelte`
+- `font-weight`: `300`, `800`, `500 !important`, `700`
+- `font-size`: `3em`, `1.2rem`, `2.5rem`, `1.5rem`
+
+### `src/components/sections/Section_Image03.svelte`
+- `font-weight`: `300`, `800`, `500 !important`, `700`
+- `font-size`: `3em`, `1.2rem`, `2.5rem`, `1.5rem`
+
+### `src/components/sections/Section_Kontakt.svelte`
+- `font-size`: `1.5rem !important`, `1rem`, `0.85rem`, `1.2rem`, `1.25rem`, `1.3rem`, `0.9rem`
+- `font-weight`: `600 !important`, `600`
+
+### `src/components/sections/Section_Maszyny_Image01.svelte`
+- `font-size`: `1.4rem`, `0.9rem`, `1.2rem`, `0.8rem`
+- `font-weight`: `600`, `300`
+
+### `src/components/sections/Section_Maszyny_Image02.svelte`
+- `font-size`: `1.4rem`, `0.9rem`, `1.2rem`, `0.8rem`
+- `font-weight`: `600`, `300`
+
+### `src/components/sections/Section_Maszyny_Video.svelte`
+- `font-size`: `1.4rem`, `0.9rem`, `1.2rem`, `0.8rem`
+- `font-weight`: `600`, `300`
+
+### `src/components/sections/Section_Oferta.svelte`
+- `font-size`: `20px`, `14px`
+
+### `src/components/sections/Section_Onas.svelte`
+- `font-size`: `1.3rem`, `16px`, `28px`
+- `font-weight`: `bold`
+
+### `src/components/sections/Section_Onas_Images.svelte`
+- `font-size`: `4rem`, `1.5rem`
+- `font-weight`: `700`
+
+### `src/components/sections/Section_Referencje.svelte`
+- `font-size`: `2rem`, `1.1rem`, `1.2rem`, `0.98rem`
+- `font-weight`: `700`, `400`
+
+### `src/components/sections/Section_Video.svelte`
+- `font-size`: `2.5rem`, `1.5rem`
+- `font-weight`: `700`
+
+### `src/components/serwis/BenefitsSection.svelte`
+- `font-size`: `2.5rem`, `1.2rem`, `1.25rem`, `2rem`, `1.1rem`
+- `font-weight`: `700`, `600`
+
+### `src/components/serwis/ContactForm.svelte`
+- `font-size`: `1.5rem`, `0.9rem`, `1rem`, `0.875rem`, `1.25rem`
+- `font-weight`: `600`, `500`
+
+### `src/components/serwis/ServiceModal.svelte`
+- `font-size`: `1.8rem`, `1.1rem`, `1.2rem`, `0.9rem`
+- `font-weight`: `700`, `600`, `500`
+
+### `src/components/serwis/SerwisKontakt.svelte`
+- `font-size`: `0.8rem`, `1.6rem`, `1.5rem !important`, `1rem`, `0.85rem`, `1.2rem`, `1.25rem`, `1.3rem`, `0.9rem`
+- `font-weight`: `600 !important`, `600`
+
+### `src/routes/+error.svelte`
+- `font-size`: `8rem`, `2.5rem`, `1.25rem`, `6rem`, `2rem`, `1.1rem`, `4rem`, `1.75rem`, `1rem`
+- `font-weight`: `900`, `700`, `500`

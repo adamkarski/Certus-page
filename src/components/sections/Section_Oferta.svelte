@@ -1,0 +1,109 @@
+<script lang="ts">
+  import OfertaGrid from "../OfertaGrid.svelte";
+  import { typoFixAction } from "$lib/utils/typography";
+  const oferta = [];
+</script>
+
+<section id="oferta" class="oferta">
+  <div class="oferta-container container">
+    <div class="section-header no-sel">
+     <!--  <h2 class="section-title" use:typoFixAction>
+        <span class="highlight-polish">Polski </span> producent maszyn CNC
+      </h2>
+
+      <p class="section-subtitle" use:typoFixAction>
+        20 lat doświadczenia w produkcji frezarek, grawerek, tokarek i ploterów
+        CNC.<br />
+        Kompleksowa obsługa od projektu po serwis.<br />
+        — wszystko z jednego źródła Znajdź sprzęt idealny do Twojej firmy
+      </p> -->
+    </div>
+
+    <OfertaGrid variant="homepage" />
+  </div>
+  <div class="first-container-back"></div>
+  <div class="pattern-overlay no-sel">
+    <div class="pattern two"></div>
+  </div>
+</section>
+
+<style lang="scss">
+  .pattern-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.3;
+    margin-top: -200px;
+
+    .pattern.two {
+      transform: scale(1.2) skew(-15deg, 0deg);
+      background-image: url(/assets/images/pattern-image1-2.png);
+      position: absolute;
+      width: 100%;
+      height: 63px;
+      z-index: 11;
+      left: 0;
+      bottom: 85px;
+      pointer-events: auto;
+    }
+  }
+
+  :global(.home #oferta) {
+    position: relative;
+    z-index: 516;
+   
+  }
+
+  .oferta {
+    width: 100%;
+    
+    background: #f7f7f7;
+  }
+
+  .oferta-container {
+    /* overflow: hidden; */
+    width: 100%;
+    padding: 0 9rem;
+  }
+  // .oferta-container:before{
+
+  //   content: "";
+  //   position: absolute;
+  //   background-image: url(/assets/pl.png);
+  //   width: 128px;
+  //   height: 179px;
+  //   right: -6px;
+  //   margin-top: -152px;
+  //   filter: blur(0.3px);
+  //   z-index: -1;
+  //   transform: scale(0.7) rotate(-4deg) matrix(0.9, 1, 143, 7.9, 60, 119);
+  //   overflow: hidden;
+  // }
+  .section-header {
+    margin-bottom: 0px;
+  }
+
+  @media (max-width: 768px) {
+    .oferta {
+      padding: 80px 0;
+    }
+
+    .oferta-container {
+      padding: 0 2rem !important;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+    }
+    .section-subtitle {
+      color: var(--color-text-secondary);
+    }
+  }
+</style>

@@ -1,0 +1,514 @@
+/* ========================================
+   RESPONSIVE STYLES - GLOBAL (CLEANED)
+   ======================================== */
+
+/* Breakpoints:
+   - 1200px: Tablets/Small laptops
+   - 768px: Mobile landscape
+   - 480px: Mobile portrait
+*/
+
+.hero-content {
+  overflow: hidden;
+}
+
+#video {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#o-nas {
+  position: relative;
+  z-index: 1;
+}
+#image-section-01 {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#image-section-02 {
+  position: relative;
+  z-index: 1;
+}
+.contact-flex {
+  position: relative;
+  z-index: 1;
+  input {
+    color: var(--color-text-secondary);
+  }
+  textarea {
+    color: var(--color-text-secondary);
+  }
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+body.kontakt .contact-flex {
+  background: linear-gradient(180deg, #f7f7f7 0%, #f7f7f7 100%) !important;
+}
+body.serwis .contact-flex .contact-left::before {
+  background: linear-gradient(180deg, #fbfbfb 0%, #fdfdfd 100%) !important;
+}
+body.home .contact-flex .contact-left::before {
+  background: linear-gradient(180deg, #fbfbfb 0%, #fdfdfd 100%) !important;
+}
+
+.section-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* STYL TABELI - POZOSTAWIONY ZGODNIE Z WYTYCZNYMI */
+.menuItems {
+  width: 700px;
+
+  a {
+    width: 100%;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100vw;
+  }
+}
+
+body.home {
+  .first-container-back {
+    background-image: url(../../../assets/first-block-polyline.svg);
+    position: absolute;
+    top: -24px;
+    width: 100vw;
+    height: 27px;
+    background-repeat: no-repeat;
+    background-position-x: -823px;
+    z-index: 3;
+    margin-left: -13%;
+    transform: scaleY(1);
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 1200px) {
+  .video-header,
+  .image-header {
+    margin-left: 4em !important;
+    margin-top: -13em !important;
+    h1:before {
+      margin-top: 0px !important;
+      transform: scale(0.9) !important;
+    }
+  }
+
+  .image-header-02 {
+    h3 {
+      font-weight: 500 !important;
+      margin-left: -23px !important;
+    }
+    margin-left: -5em !important;
+    margin-top: -0.5em !important;
+    h2:before {
+      margin-top: 0px !important;
+      transform: scale(0.9) !important;
+    }
+  }
+}
+@media (min-width: 932px) and (max-width: 1014px) {
+  .nav-link {
+    text-align: center;
+    min-width: 65px !important;
+    padding: 0px !important;
+  }
+  .dropDownMenu {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-flex {
+    .contact-left::before {
+      display: none !important;
+    }
+  }
+}
+@media (max-width: 932px) {
+  .image-container-02 {
+    .phone-holder {
+      right: 1em !important;
+      margin-top: -50px !important;
+    }
+
+    a {
+      margin-left: 0px !important;
+    }
+  }
+}
+
+@media (max-width: 757px) {
+  .contact-right {
+    .contact-form {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+
+  .video-header {
+    margin-left: 3em !important;
+    margin-top: -12em !important;
+  }
+  .image-header {
+    margin-left: 3em !important;
+    margin-top: -8em !important;
+  }
+  .image-header-02 {
+  /*   margin-left: -7em !important;
+    margin-top: -9em !important; */
+  }
+  .hero-content {
+    opacity: 1;
+    button.items {
+      margin-top: 30px;
+      padding: 0px !important;
+
+      .topline {
+        text-align: center !important;
+        width: 100% !important;
+        height: 0px !important;
+        margin-top: 80% !important;
+        margin-left: -90px !important;
+      }
+    }
+  }
+  .image-container-02 .phone-holder {
+    transform: scale(0.7) !important;
+    margin-top: -40px !important;
+    right: -8px !important;
+  }
+}
+
+@media (min-width: 757px) and (max-width: 932px) {
+  .oferta-container {
+    padding: 0 1rem !important;
+  }
+  .nav-link {
+    padding: 0px !important;
+    min-width: 51px !important;
+  }
+  .dropDownMenu {
+    padding: 8px;
+  }
+  body {
+  }
+
+  .oferta-container {
+    padding: 0 2rem !important;
+  }
+  .o-nas-container {
+    padding: 0 2rem !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .activeMachine .right {
+    flex-direction: column !important;
+  }
+}
+.activeMachine .right_params {
+  min-width: 30% !important;
+}
+
+@media (min-width: 1200px) {
+  .menuItems {
+    width: 600px;
+  }
+  tbody tr td:first-child {
+    width: 10% !important;
+    min-width: 20px !important;
+  }
+  .active_flex {
+    width: 100%;
+    display: flex;
+    height: 100%;
+  }
+  .activeMachine .left {
+    max-width: 60% !important;
+    height: 100% !important;
+  }
+  .activeMachine .right {
+    max-width: 40% !important;
+    height: 100% !important;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .activeMachine .right_params_content {
+    padding-top: 2rem !important;
+    padding-left: 0rem !important;
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+}
+
+
+@media (min-width: 1600px) {
+
+
+  .activeMachine .left_image img {
+    max-width: 35vw;
+    min-width: 35vw;
+  }
+
+
+}
+
+
+@media (max-width: 1200px) {
+  body.maszyny .maszyny-dane-cta {
+    padding-bottom: 5em;
+  }
+  .activeMachine {
+    flex-direction: column !important;
+    padding: 1rem !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+  }
+
+  .activeMachine .left {
+    width: 100% !important;
+    height: 50vh !important;
+    min-height: 400px !important;
+  }
+
+  .activeMachine .left.short {
+    width: 100% !important;
+    height: 40vh !important;
+    min-height: 300px !important;
+  }
+
+  .activeMachine .left h1 {
+    padding-left: 1em !important;
+    padding-top: 1em !important;
+    text-align: center !important;
+  }
+
+  .activeMachine .left_image img {
+    max-width: 45vw;
+    min-width: 45vw;
+  }
+
+  .activeMachine .right {
+    width: 100% !important;
+    height: 50vh !important;
+    overflow-y: auto !important;
+    padding: 10px 15px !important;
+    h1 {
+      margin-left: -16px !important;
+    }
+  }
+
+  .activeMachine .right.expanded {
+    width: 100% !important;
+    height: 60vh !important;
+  }
+
+  .activeMachine .right_content {
+    max-width: 100% !important;
+
+    h1 {
+      margin-top: 2rem !important;
+    }
+
+    p {
+      line-height: 1.5 !important;
+    }
+  }
+
+  .activeMachine .right_params_content {
+    padding-top: 2rem !important;
+    padding-left: 0rem !important;
+
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    h2 {
+      margin-top: 2rem !important;
+      padding-left: 1rem !important;
+    }
+
+    p {
+      padding-left: 1rem !important;
+    }
+
+    li {
+      padding-left: 1rem !important;
+    }
+  }
+
+  /* Tabela danych technicznych - POZOSTAWIONE */
+  :global(.activeMachine .maszyny-dane-tabela) {
+    margin-top: 2em !important;
+    padding-bottom: 2em !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* CTA Button responsywność - Usunięto font-size */
+  :global(.activeMachine .cta-button-hero) {
+    position: fixed !important;
+    left: 50% !important;
+    bottom: 2em !important;
+    transform: translateX(-50%) !important;
+    width: 200px !important;
+    height: 22px !important;
+    padding-left: 30px !important;
+    margin-left: 0 !important;
+    z-index: 10000030 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .activeMachine .left h1 {
+    padding-left: 0.5em !important;
+  }
+  .section-title::before {
+    transform: scale(0.8) !important;
+  }
+  .activeMachine .left_image img {
+    max-width: 70vw !important;
+    min-width: 50vw !important;
+  }
+
+  .activeMachine .right {
+    padding: 5px 10px !important;
+  }
+
+  .activeMachine .right_content {
+    h1 {
+      margin-top: 1rem !important;
+    }
+  }
+
+  .activeMachine .right_params_content {
+    padding-top: 1rem !important;
+    padding-left: 0.5rem !important;
+
+    h2 {
+      margin-top: 1rem !important;
+      padding-left: 0.5rem !important;
+    }
+
+    p {
+      padding-left: 0.5rem !important;
+    }
+
+    li {
+      padding-left: 0.5rem !important;
+    }
+  }
+
+  /* Tabela danych technicznych - POZOSTAWIONE */
+  :global(.activeMachine .maszyny-dane-tabela) {
+    font-size: 0.75rem !important;
+  }
+
+  /* CTA Button responsywność - Usunięto font-size */
+  :global(.activeMachine .cta-button-hero) {
+    width: 180px !important;
+    height: 20px !important;
+    padding-left: 25px !important;
+    bottom: 1.5em !important;
+  }
+
+ 
+
+  section.o-nas .container {
+    padding: 2rem !important;
+  }
+
+  .o-nas-right {
+  }
+}
+
+@media (max-width: 480px) {
+ 
+  :global(.maszyny-dane-tabela img) {
+    width: 30px !important;
+  }
+  .activeMachine {
+    padding: 0.5rem !important;
+  }
+
+  .activeMachine .left {
+    height: 45vh !important;
+    min-height: 250px !important;
+  }
+
+  .activeMachine .left.short {
+    height: 35vh !important;
+    min-height: 200px !important;
+  }
+
+  .activeMachine .left h1 {
+    padding-left: 0.3em !important;
+    padding-top: 0.5em !important;
+  }
+
+  .activeMachine .left_image img {
+    max-width: 75vw !important;
+    min-width: 60vw !important;
+  }
+
+  .activeMachine .right {
+    height: 55vh !important;
+    padding: 5px !important;
+  }
+
+  .activeMachine .right.expanded {
+    height: 65vh !important;
+  }
+
+  .activeMachine .right_content {
+    h1 {
+      margin-top: 0.5rem !important;
+    }
+
+    p {
+      line-height: 1.4 !important;
+    }
+  }
+
+  .activeMachine .right_params_content {
+    padding-top: 0.5rem !important;
+    padding-left: 0.25rem !important;
+
+    h2 {
+      margin-top: 0.5rem !important;
+      padding-left: 0.25rem !important;
+    }
+
+    p {
+      padding-left: 0.25rem !important;
+    }
+
+    li {
+      padding-left: 0.25rem !important;
+    }
+  }
+
+  /* Tabela danych technicznych - POZOSTAWIONE */
+  :global(.activeMachine .maszyny-dane-tabela) {
+    font-size: 0.7rem !important;
+    margin-top: 1em !important;
+  }
+
+  /* CTA Button responsywność - Usunięto font-size */
+  :global(.activeMachine .cta-button-hero) {
+    width: 160px !important;
+    height: 18px !important;
+    padding-left: 20px !important;
+    bottom: 1em !important;
+  }
+}

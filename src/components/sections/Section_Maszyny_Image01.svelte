@@ -1,0 +1,117 @@
+<script lang="ts">
+  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+  import { visibilityStore, setSectionVisible } from "../../lib/visibilityStore";
+  import { typoFixAction } from '$lib/utils/typography';
+
+  export let sectionId: string = "maszyny-image-01";
+  export let imgSrc: string = "/assets/placeholder-machine.jpg";
+  export let title: string = "Nasze maszyny";
+  export let subtitle: string = "Precyzja w każdym detalu";
+  
+  let headerEl: HTMLDivElement;
+
+  onMount(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSectionVisible(sectionId);
+        }
+      },
+      { threshold: 0.05 },
+    );
+    if (headerEl) observer.observe(headerEl);
+    return () => observer.disconnect();
+  });
+
+  $: visible = $visibilityStore[sectionId] === true;
+</script>
+
+<section id={sectionId} class="maszyny-image-section">
+  <div class="maszyny-image-container">
+    <img
+      src={imgSrc}
+      alt={title}
+      class="maszyny-masked-image"
+    />
+    <div class="maszyny-image-header" bind:this={headerEl} class:visible>
+      {#if visible}
+        <h3 class="no-sel" in:fade={{ duration: 600, delay: 400 }} use:typoFixAction>
+          {title}
+        </h3>
+        <p class="no-sel" use:typoFixAction>{subtitle}</p>
+      {/if}
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .maszyny-image-section {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+
+  .maszyny-image-header {
+    min-height: 60px;
+    width: 100%;
+    text-align: left;
+    padding: 1.5rem 0 1rem 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    h3 {
+      margin: 0 0 8px 0;
+      color: white;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      font-weight: 600;
+    }
+    
+    p {
+      margin: 0;
+      color: white;
+      font-weight: 300;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .maszyny-image-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    background: #f8f9fa;
+  }
+
+  .maszyny-masked-image {
+    width: 100%;
+    height: 200px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .maszyny-image-header h3 {
+    }
+    
+    .maszyny-image-header p {
+    }
+    
+    .maszyny-masked-image {
+      height: 150px;
+    }
+  }
+</style>
