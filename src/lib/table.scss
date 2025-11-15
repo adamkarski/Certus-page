@@ -439,6 +439,21 @@ tbody tr td .text {
   }
 
 
+  .maszyny-dane-tabela td:first-child img {
+          display: block;
+        margin: 0 auto 5px;
+        margin-left: 0px;
+        float: none;
+  }
+
+  
+.maszyny-dane-tabela td:first-child .text {
+    display: block; /* Make it a block to take up its own line */
+    text-align: left; /* Center the text under the image */
+    width: 100%;
+  }
+
+}
 
 }
 
@@ -479,7 +494,7 @@ text-align: left; /* Center the text under the image */
 width: 100%;
 }
 
-}
+
 
 
   // .section-title {
