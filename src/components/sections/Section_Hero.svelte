@@ -286,13 +286,13 @@
     }, 100);
   }
 
-  $: slidesPerView = $windowWidth < 1024 ? 1 : 2;
+  $: slidesPerView = $windowWidth <= 1024 ? 1 : 2;
 
-  $: slidesPerGroup = $windowWidth < 1024 ? 1 : 2;
+  $: slidesPerGroup = $windowWidth <= 1024 ? 1 : 2;
 
   // --- Reactive properties for Sub-Swipers (to match main swiper) ---
-  $: subSwiperSlidesPerView = $windowWidth < 1024 ? 1 : 2;
-  $: subSwiperSlidesPerGroup = $windowWidth < 1024 ? 1 : 2;
+  $: subSwiperSlidesPerView = $windowWidth <= 1024 ? 1 : 2;
+  $: subSwiperSlidesPerGroup = $windowWidth <= 1024 ? 1 : 2;
 
   // Update sub-swipers when window width changes
   $: if (browser && $windowWidth) {
@@ -1322,7 +1322,7 @@
     /* RESPONSIVE BREAKPOINTS - UPORZĄDKOWANE I UPROSZCZONE */
   
     /* Desktop - Duże ekrany (1200px+) */
-    @media (min-width: 1024px){
+    @media (min-width: 1025px){
     
       :global(.subListMachines .swiper-nav-button) {
         opacity:0;
