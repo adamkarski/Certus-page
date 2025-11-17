@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "./typography.scss";
-@import "./responsive.scss";
 
 
 
@@ -111,28 +110,6 @@ a {
 }
 
 /* Utility classes */
-.container {
-    @media (width >= 96rem) {
-        max-width: 100%;
-    }
-}
-.container {
-  @media (width >= 80rem) {
-      max-width: 100%;
-  }
-}
-.container {
-  @media (width >= 64rem) {
-      max-width: 100%;
-  }
-}
-.container {
-  @media (width >= 48rem) {
-      max-width: 100%;
-  }
-}
-
-
 .text-center {
   text-align: center;
 }
@@ -246,45 +223,6 @@ select {
 ::selection {
   background: #5d636b;
   color: white;
-}
-
-/* Print styles */
-@media print {
-  * {
-    background: transparent !important;
-    color: black !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  .header,
-  .footer {
-    display: none;
-  }
-}
-
-/* Responsive breakpoints */
-@media (max-width: 1200px) {
-  .container {
-    padding: 0 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 15px;
-  }
 }
 
 /* ========================================

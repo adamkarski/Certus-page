@@ -56,13 +56,6 @@
   line-height: 1.6;
 }
 
-/* Responsywność dla body - dopasowanie do tabel */
-@media (max-width: 768px) {
-  :global(body) {
-    font-size: 0.85rem; /* Rozmiar czcionki jak w tabelach na mniejszych ekranach */
-  }
-}
-
 /* ========================================
    NAGŁÓWKI - NOWA, ZMNIEJSZONA SKALA (dostosowana do 1rem)
    ======================================== */
