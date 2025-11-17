@@ -179,7 +179,7 @@
           <div
             class="relative dropDownMenu"
             on:mouseenter={() => (isMaszynyDropdownOpen = true)}
-            on:mouseleave={() => (isMaszynyDropdownOpen = true)}
+            on:mouseleave={() => (isMaszynyDropdownOpen = false)}
           >
             <a
               href="/maszyny"
@@ -285,7 +285,7 @@
           <div
             class="relative dropDownMenu bestsellerDropDown"
             on:mouseenter={() => (isBestsellerDropdownOpen = true)}
-            on:mouseleave={() => (isBestsellerDropdownOpen = true)}
+            on:mouseleave={() => (isBestsellerDropdownOpen = false)}
             role="group"
           >
             <a
