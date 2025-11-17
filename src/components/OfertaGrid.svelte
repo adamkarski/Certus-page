@@ -270,11 +270,7 @@
   }
 
   :global(.oferta-cta .text-container .maszyny_span) {
-    white-space: normal !important;
-    word-break: break-word !important;
-    line-height: 1.3 !important;
-    text-align: center !important;
-    display: block !important;
+
   }
 
   @media (max-width: 768px) {

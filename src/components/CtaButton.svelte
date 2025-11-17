@@ -61,7 +61,7 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     padding: 0 2em;
-    height: 45px; // Zwiększamy wysokość dla lepszej proporcji
+    height: 70px; // Zwiększamy wysokość dla lepszej proporcji
     width: auto; // Szerokość dopasuje się do treści
     min-width: 260px; // Minimalna szerokość
     max-width: 90vw; // Maksymalna szerokość na mobilnych
@@ -140,11 +140,9 @@
     }
   }
   button.oferta-cta {
-    background-color: transparent;
+    
     color: var(--color-text-primary);
-    position: relative;
-    border-left: 0px solid #7e8c00;
-    padding: 14px;
+   
     .svg-container {
       // background-color: #7e8c00;
     }

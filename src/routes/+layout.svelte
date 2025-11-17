@@ -3,6 +3,7 @@
   import { fade } from 'svelte/transition';
   import { page } from '$app/stores';
   import '../lib/app.css';
+  import '../lib/media_queries.css';
   import { onMount } from 'svelte';
   import { preloaderVisible } from '$lib/preloaderStore';
   import { activePage } from "$lib/visibilityStore";

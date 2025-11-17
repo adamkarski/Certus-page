@@ -95,14 +95,11 @@
                     swiperElement.swiper.slideTo(index);
                   }
                 }
-                setTimeout(
-                  () => {
-                    if (swiperElement && swiperElement.swiper) {
-                      updateNavigationButtons(swiperElement.swiper);
-                    }
-                  },
-                  200
-                );
+                setTimeout(() => {
+                  if (swiperElement && swiperElement.swiper) {
+                    updateNavigationButtons(swiperElement.swiper);
+                  }
+                }, 200);
               } else {
                 setTimeout(checkSwiper, 100);
               }
@@ -154,32 +151,30 @@
       }
     }
 
-        // --- Initialize Sub-Swipers ---
+    // --- Initialize Sub-Swipers ---
 
-        if (browser) {
-
-          const initSubSwiper = (el, id) => {
-            if (el && !el.swiper) {
-              const params = {
-                slidesPerView: subSwiperSlidesPerView,
-                slidesPerGroup: subSwiperSlidesPerGroup,
-                spaceBetween: 0,
-                mousewheel: true,
-              };
-              Object.assign(el, params);
-              el.initialize();
-              el.swiper.on("fromEdge toEdge slideChange", () => {
-                updateSubSwiperNav(el.swiper, id);
-              });
-              setTimeout(() => updateSubSwiperNav(el.swiper, id), 100);
-            }
+    if (browser) {
+      const initSubSwiper = (el, id) => {
+        if (el && !el.swiper) {
+          const params = {
+            slidesPerView: subSwiperSlidesPerView,
+            slidesPerGroup: subSwiperSlidesPerGroup,
+            spaceBetween: 0,
+            mousewheel: true,
           };
-
-          initSubSwiper(subSwiperFrezarkiEl, "frezarki");
-
-          initSubSwiper(subSwiperPloteryEl, "plotery");
-
+          Object.assign(el, params);
+          el.initialize();
+          el.swiper.on("fromEdge toEdge slideChange", () => {
+            updateSubSwiperNav(el.swiper, id);
+          });
+          setTimeout(() => updateSubSwiperNav(el.swiper, id), 100);
         }
+      };
+
+      initSubSwiper(subSwiperFrezarkiEl, "frezarki");
+
+      initSubSwiper(subSwiperPloteryEl, "plotery");
+    }
   });
 
   function setupSwiperEvents(swiper) {
@@ -845,10 +840,12 @@
           <div class="category-content">
             <div class="container" in:fade={{ duration: 600, delay: 200 }}>
               <div class="content">
-                                <div
-                                  class="subListMachines"
-                                  class:subListMachines--single-view={subSwiperSlidesPerView === 1}
-                                >                  <button
+                <div
+                  class="subListMachines"
+                  class:subListMachines--single-view={subSwiperSlidesPerView ===
+                    1}
+                >
+                  <button
                     id="swiper-button-prev-frezarki"
                     class="swiper-nav-button swiper-nav-prev no-sel"
                     on:click={() =>
@@ -983,7 +980,8 @@
 
                 <div
                   class="subListMachines"
-                  class:subListMachines--single-view={subSwiperSlidesPerView === 1}
+                  class:subListMachines--single-view={subSwiperSlidesPerView ===
+                    1}
                 >
                   <button
                     id="swiper-button-prev-plotery"
@@ -1191,245 +1189,249 @@
   .active_flex {
     position: relative;
   }
-    .subListMachines {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  
-      .swiper-nav-button {
-        top: 50%;
-      }
-      /* Most styles are now inherited from the shared rules below */
+  .subListMachines {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .swiper-nav-button {
+      top: 50%;
     }
-  
-    .category-content .container {
-      :global(button.backFromCategory) {
-        position: absolute !important;
-        /* display: block; */
-        bottom: -20px;
-        left: 0px;
-        z-index: 5;
-        transition: all ease 0.4s;
-        background-color: var(--color-primary);
-        color: white;
-        &::before {
-          content: "";
-          position: absolute;
-          top: 10px;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-image: url(/assets/images/pattern-image1-2.png);
-        }
-      }
-  
-      .back_category {
+    /* Most styles are now inherited from the shared rules below */
+  }
+
+  .category-content .container {
+    :global(button.backFromCategory) {
+      position: absolute !important;
+      /* display: block; */
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      transition: all ease 0.4s;
+      background-color: var(--color-primary);
+      color: white;
+      &::before {
+        content: "";
         position: absolute;
-        top: 0;
+        top: 10px;
         left: 0;
         right: 0;
         bottom: 0;
-        /*  background: linear-gradient(
+        background-image: url(/assets/images/pattern-image1-2.png);
+      }
+    }
+
+    .back_category {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /*  background: linear-gradient(
           180deg,
           rgb(208 201 201 / 81%) 0%,
           rgb(136 126 126 / 85%) 100%
         );  */
-        // border-radius: 1rem;
-        // border-left: 11px solid rgb(150, 165, 0);
-        z-index: 1;
-        opacity: 0.8;
-      }
-      .content {
-        z-index: 2;
-        position: relative;
-      }
-      .flex_table {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 2rem;
-        align-content: center;
-        flex-wrap: nowrap;
-  
-        color: black;
-        padding-left: 2rem;
-  
-        .IconDoc {
-          position: relative;
-          left: 230px;
-          top: -35px;
-        }
-  
-        h3 {
-          font-weight: 300;
-        }
-        padding-top: 3rem;
-      }
-      h2 {
-        font-size: 2rem;
-        font-weight: 400;
-      }
-  
-      h1 {
-        padding-left: 2rem;
-        color: #fff;
-        text-align: center;
-        margin-bottom: 1rem;
-        position: relative;
-        top: -114px;
-        font-family: "Poppins", sans-serif;
-        font-size: 2rem;
-        font-weight: 700;
-      }
+      // border-radius: 1rem;
+      // border-left: 11px solid rgb(150, 165, 0);
+      z-index: 1;
+      opacity: 0.8;
     }
-  
-    /* ————————————————  PRZYCISK POWROTU  ———————————————— */
-    .back {
-      top: 2rem;
-      left: 2rem;
-      z-index: 10;
-      background: rgba(0, 0, 0, 0.35);
-      color: #fff;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .back:hover {
-      background: rgba(0, 0, 0, 0.55);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-  
-    /* ————————————————  LAYOUT - CLEAN RESPONSIVE  ———————————————— */
-    .hero {
-      width: 100%;
-      height: 100vh; /* Bazowa wysokość - będzie nadpisana przez media queries */
-      position: relative;
-      z-index: 0;
-      top: 0px;
-      transition: height 0.3s ease-in-out; /* Smooth transitions */
-    }
-  
-    /* RESPONSIVE BREAKPOINTS - UPORZĄDKOWANE I UPROSZCZONE */
-  
-    /* Desktop - Duże ekrany (1200px+) */
-    @media (min-width: 1025px){
-    
-      :global(.subListMachines .swiper-nav-button) {
-        opacity:0;
-        transition: all ease 0.5s;
-      }
-    }
-
-  
-
-    @media (min-width: 1200px) {
-      .hero {
-        height: 100vh;
-      }
-  
-      .hero-bg {
-        /*  padding-top: 120px; */
-      }
-    }
-  
-    /* Tablet - Landscape (768px - 1199px) */
-    @media (min-width: 768px) and (max-width: 1199px) {
-      .hero {
-        height: 90vh;
-      }
-  
-      .hero-bg {
-        padding-top: 100px;
-      }
-    }
-  
-    /* Mobile - (max 767px) */
-    @media (max-width: 767px) {
-      .hero {
-        height: 80vh;
-      }
-  
-      .hero-bg {
-        padding-top: 80px;
-      }
-    }
-  
-    /* Bardzo małe ekrany */
-    @media (max-width: 480px) {
-      .hero {
-        height: 75vh;
-      }
-  
-      .hero-bg {
-        padding-top: 60px;
-      }
-    }
-  
-    /* ————————————————  GLOBAL STYLES - OFERTA POSITIONING  ———————————————— */
-  
-    /* Reset #oferta - teraz normalny flow, ponieważ hero nie jest fixed */
-    :global(.home #oferta) {
-      position: relative !important;
-      z-index: 1 !important;
-      margin-top: 0px !important; /* Normalny flow */
-    }
-  
-    /* Usunieto skomplikowane pozycjonowanie - teraz normalny flow */
-  
-    /* ————————————————  GLOBAL STYLES - ONAS POSITIONING  ———————————————— */
-  
-    /* Sekcja O-NAS - normalny flow, bez nakładania */
-    :global(.home #o-nas) {
-      position: relative !important;
-      z-index: 1 !important;
-      margin-top: 0px !important; /* Normalny flow */
-    }
-  
-    /* Usunieto skomplikowane media queries - teraz normalny flow */
-  
-    .hero-content {
-      position: relative;
+    .content {
       z-index: 2;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
     }
+    .flex_table {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2rem;
+      align-content: center;
+      flex-wrap: nowrap;
+
+      color: black;
+      padding-left: 2rem;
+
+      .IconDoc {
+        position: relative;
+        left: 230px;
+        top: -35px;
+      }
+
+      h3 {
+        font-weight: 300;
+      }
+      padding-top: 3rem;
+    }
+    h2 {
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    h1 {
+      padding-left: 2rem;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1rem;
+      position: relative;
+      top: -114px;
+      font-family: "Poppins", sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
+
+  /* ————————————————  PRZYCISK POWROTU  ———————————————— */
+  .back {
+    top: 2rem;
+    left: 2rem;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .back:hover {
+    background: rgba(0, 0, 0, 0.55);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ————————————————  LAYOUT - CLEAN RESPONSIVE  ———————————————— */
+  .hero {
+    width: 100%;
+    height: 100vh; /* Bazowa wysokość - będzie nadpisana przez media queries */
+    position: relative;
+    z-index: 0;
+    top: 0px;
+    transition: height 0.3s ease-in-out; /* Smooth transitions */
+  }
+
+  /* RESPONSIVE BREAKPOINTS - UPORZĄDKOWANE I UPROSZCZONE */
+
+  /* Desktop - Duże ekrany (1200px+) */
+  @media (min-width: 1025px) {
+    :global(.subListMachines .swiper-nav-button) {
+      opacity: 0;
+      transition: all ease 0.5s;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .hero {
+      height: 100vh;
+    }
+
+    .hero-bg {
+      /*  padding-top: 120px; */
+    }
+  }
+
+  @media (max-width: 1200px) {
     .view {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+      margin-top: -120px;
     }
-  
-    .view.category-view {
-      // padding: 2rem;
-      max-height: 100vh;
-      position: absolute;
-      /* width: 100%; */
-      /* height: 100%; */
-      /* display: flex; */
-      /* align-items: flex-start; */
-      justify-content: center;
-      /* flex-direction: row; */
-      // margin-top: 18%;
-  
-      .item__category {
-        h2 {
-          /* font-size: 1rem;
+  }
+  /* Tablet - Landscape (768px - 1199px) */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .hero {
+      height: 90vh;
+    }
+
+    .hero-bg {
+      padding-top: 100px;
+    }
+  }
+
+  /* Mobile - (max 767px) */
+  @media (max-width: 767px) {
+    .hero {
+      height: 80vh;
+    }
+
+    .hero-bg {
+      padding-top: 80px;
+    }
+  }
+
+  /* Bardzo małe ekrany */
+  @media (max-width: 480px) {
+    .hero {
+      height: 75vh;
+    }
+
+    .hero-bg {
+      padding-top: 60px;
+    }
+  }
+
+  /* ————————————————  GLOBAL STYLES - OFERTA POSITIONING  ———————————————— */
+
+  /* Reset #oferta - teraz normalny flow, ponieważ hero nie jest fixed */
+  :global(.home #oferta) {
+    position: relative !important;
+    z-index: 1 !important;
+    margin-top: 0px !important; /* Normalny flow */
+  }
+
+  /* Usunieto skomplikowane pozycjonowanie - teraz normalny flow */
+
+  /* ————————————————  GLOBAL STYLES - ONAS POSITIONING  ———————————————— */
+
+  /* Sekcja O-NAS - normalny flow, bez nakładania */
+  :global(.home #o-nas) {
+    position: relative !important;
+    z-index: 1 !important;
+    margin-top: 0px !important; /* Normalny flow */
+  }
+
+  /* Usunieto skomplikowane media queries - teraz normalny flow */
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .view {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .view.category-view {
+    // padding: 2rem;
+    max-height: 100vh;
+    position: absolute;
+    /* width: 100%; */
+    /* height: 100%; */
+    /* display: flex; */
+    /* align-items: flex-start; */
+    justify-content: center;
+    /* flex-direction: row; */
+    // margin-top: 18%;
+    z-index: 100;
+
+    .item__category {
+      h2 {
+        /* font-size: 1rem;
           color: #e3e3e3 !important;
           font-weight: 500;
           padding: 0.5rem;
@@ -1439,286 +1441,289 @@
           left: -10px;
           padding-left: 20px;
           padding-right: 20px; */
-          font-size: 1rem;
-          color: #e3e3e3 !important;
-          font-weight: 500;
-          padding: 0.5rem;
-          border-radius: 23px;
-          position: relative;
-          bottom: -32vw;
-          right: -29vw;
+        font-size: 1rem;
+        color: #e3e3e3 !important;
+        font-weight: 500;
+        padding: 0.5rem;
+        border-radius: 23px;
+        position: relative;
+        bottom: -32vw;
+        right: -29vw;
+      }
+    }
+  }
+
+  .item__category h2 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subtitle {
+    font-size: 0.7rem !important;
+  }
+
+  @media (max-width: 768px) {
+    .category-content .container h1 {
+      padding-left: 0px;
+      font-size: 1.2rem;
+    }
+    .view.category-view {
+      // margin-top: 20rem;
+
+      .item__category h2 {
+        font-size: 0.7rem;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        margin-top: 3.5rem !important;
+
+        .subtitle {
+          font-size: 0.4rem !important;
         }
       }
     }
-  
-    .item__category h2 {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .subtitle {
-      font-size: 0.7rem !important;
-    }
-  
-    @media (max-width: 768px) {
-      .category-content .container h1 {
-        padding-left: 0px;
-        font-size: 1.2rem;
-      }
-      .view.category-view {
-        // margin-top: 20rem;
-  
-        .item__category h2 {
-          font-size: 0.7rem;
-          padding-left: 10px;
-          padding-right: 10px;
-  
-          margin-top: 3.5rem !important;
-  
-          .subtitle {
-            font-size: 0.4rem !important;
-          }
-        }
-      }
-    }
-  
-    /* ————————————————  KATEGORIE  ———————————————— */
-    .category-content {
-      /*    display: flex;
+  }
+
+  /* ————————————————  KATEGORIE  ———————————————— */
+  .category-content {
+    /*    display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: 2rem;
       padding: 2rem; */
-      width: 100%;
+    width: 100%;
+  }
+  .category-content h1 {
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+  }
+  .category-image {
+    max-width: 600px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .category-image:hover {
+    transform: scale(1.02);
+  }
+  .category-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ————————————————  SWIPER - CLEAN RESPONSIVE  ———————————————— */
+  swiper-container {
+    width: 100%;
+    height: 778px; /* Bazowa wysokość */
+    opacity: 0;
+    margin-top: 0; /* Reset margin-top */
+    animation: fadeInSlider 0.6s ease-out 0.2s forwards;
+
+    .topline {
+      transition: font-size 0.3s ease-in-out; /* Smooth font size transitions */
     }
-    .category-content h1 {
-      color: #fff;
-      text-align: center;
-      margin: 0;
-      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      font-family: "Poppins", sans-serif;
-      font-weight: 700;
+  }
+
+  .slider-view swiper-container swiper-slide,
+  .subListMachines swiper-container swiper-slide {
+    button > div.item > div {
+      /* .image */
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
     }
-    .category-image {
-      max-width: 600px;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform 0.3s ease;
+    button > div.item > div img {
+      filter: blur(0.2px);
+      transition: filter 0.3s ease;
     }
-    .category-image:hover {
-      transform: scale(1.02);
+
+    button:hover > div.item > div {
+      opacity: 1;
     }
-    .category-image img {
-      width: 100%;
-      height: auto;
-      display: block;
+    button:hover > div.item > div img {
+      filter: blur(0);
     }
-  
-    /* ————————————————  SWIPER - CLEAN RESPONSIVE  ———————————————— */
-    swiper-container {
-      width: 100%;
-      height: 778px; /* Bazowa wysokość */
-      opacity: 0;
-      margin-top: 0; /* Reset margin-top */
-      animation: fadeInSlider 0.6s ease-out 0.2s forwards;
-  
-      .topline {
-        transition: font-size 0.3s ease-in-out; /* Smooth font size transitions */
-      }
+  }
+
+  // Override opacity/blur for single-view main swiper
+  .slider-view--single-slide swiper-container swiper-slide {
+    button > div.item > div {
+      opacity: 1 !important;
     }
-  
-        .slider-view swiper-container swiper-slide,
-        .subListMachines swiper-container swiper-slide {
-          button > div.item > div {
-            /* .image */
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-          }
-          button > div.item > div img {
-            filter: blur(0.2px);
-            transition: filter 0.3s ease;
-          }
-      
-          button:hover > div.item > div {
-            opacity: 1;
-          }
-          button:hover > div.item > div img {
-            filter: blur(0);
-          }
-        }
-      
-        // Override opacity/blur for single-view main swiper
-        .slider-view--single-slide swiper-container swiper-slide {
-          button > div.item > div {
-            opacity: 1 !important;
-          }
-          button > div.item > div img {
-            filter: blur(0) !important;
-          }
-        }    
-      // Override opacity/blur for single-view sub-swipers
-      .subListMachines--single-view swiper-container swiper-slide {
-        button > div.item > div {
-          opacity: 1 !important;
-        }
-        button > div.item > div img {
-          filter: blur(0) !important;
-        }
-      }  
-    @media (max-width: 768px) {
-      .slider-view swiper-container swiper-slide,
-      .subListMachines swiper-container swiper-slide {
-        button > div.item > div {
-          opacity: 1; // Remove opacity for mobile devices
-        }
-      }
+    button > div.item > div img {
+      filter: blur(0) !important;
     }
-  
-    .slider-view swiper-container swiper-slide:nth-child(1),
-    .slider-view swiper-container swiper-slide:nth-child(2),
-    .slider-view swiper-container swiper-slide:nth-child(5),
-    .subListMachines swiper-container swiper-slide:nth-child(1),
-    .subListMachines swiper-container swiper-slide:nth-child(2),
-    .subListMachines swiper-container swiper-slide:nth-child(5) {
-      .headlines .topline {
-        margin-left: -90px;
-      }
+  }
+  // Override opacity/blur for single-view sub-swipers
+  .subListMachines--single-view swiper-container swiper-slide {
+    button > div.item > div {
+      opacity: 1 !important;
     }
-  
-    .slider-view swiper-container swiper-slide:nth-child(1),
-    .slider-view swiper-container swiper-slide:nth-child(2),
-    .subListMachines swiper-container swiper-slide:nth-child(1),
-    .subListMachines swiper-container swiper-slide:nth-child(2) {
-      .headlines .topline {
-        margin-left: -90px;
-      }
-  
+    button > div.item > div img {
+      filter: blur(0) !important;
+    }
+  }
+  @media (max-width: 768px) {
+    .slider-view swiper-container swiper-slide,
+    .subListMachines swiper-container swiper-slide {
       button > div.item > div {
-        transform: scale(1) !important;
+        opacity: 1; // Remove opacity for mobile devices
       }
     }
-  
-    /* SPECJALNE REGUŁY SWIPER DLA PROBLEMATYCZNYCH ROZDZIELCZOŚCI */
-  
-    /* 1280x720, 1366x768 - niskie ekrany laptop */
-    @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
-      swiper-container {
-        margin-top: 80px;
-        height: 500px; /* Mniejsza wysokość dla niskich ekranów */
-        width: 95%; /* Szerszy swiper */
-  
-        .topline {
-          top: 5px; /* Bliżej góry */
-        }
+  }
+
+  .slider-view swiper-container swiper-slide:nth-child(1),
+  .slider-view swiper-container swiper-slide:nth-child(2),
+  .slider-view swiper-container swiper-slide:nth-child(5),
+  .subListMachines swiper-container swiper-slide:nth-child(1),
+  .subListMachines swiper-container swiper-slide:nth-child(2),
+  .subListMachines swiper-container swiper-slide:nth-child(5) {
+    .headlines .topline {
+      margin-left: -90px;
+    }
+  }
+
+  .slider-view swiper-container swiper-slide:nth-child(1),
+  .slider-view swiper-container swiper-slide:nth-child(2),
+  .subListMachines swiper-container swiper-slide:nth-child(1),
+  .subListMachines swiper-container swiper-slide:nth-child(2) {
+    .headlines .topline {
+      margin-left: -90px;
+    }
+
+    button > div.item > div {
+      transform: scale(1) !important;
+    }
+  }
+
+  /* SPECJALNE REGUŁY SWIPER DLA PROBLEMATYCZNYCH ROZDZIELCZOŚCI */
+
+  /* 1280x720, 1366x768 - niskie ekrany laptop */
+  @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
+    swiper-container {
+      margin-top: 80px;
+      height: 500px; /* Mniejsza wysokość dla niskich ekranów */
+      width: 95%; /* Szerszy swiper */
+
+      .topline {
+        top: 5px; /* Bliżej góry */
       }
     }
-  
-    /* 1600x900 - szerokie ale niskie ekrany */
-    @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
-      swiper-container {
-        height: 750px; /* Dostosowana wysokość */
-        margin-top: 100px; /* Dostosowany margines */
-        width: 95%; /* Szerszy swiper */
-  
-        .topline {
-          top: 8px;
-        }
+  }
+
+  /* 1600x900 - szerokie ale niskie ekrany */
+  @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
+    swiper-container {
+      height: 750px; /* Dostosowana wysokość */
+      margin-top: 100px; /* Dostosowany margines */
+      width: 95%; /* Szerszy swiper */
+
+      .topline {
+        top: 8px;
       }
     }
-  
-    /* Bardzo niskie ekrany laptop (height < 700px) */
-    @media (min-width: 1024px) and (max-height: 700px) {
-      swiper-container {
-        height: 350px; /* Bardzo mała wysokość */
-        width: 98%; /* Maksymalnie szeroki */
-  
-        .topline {
-          top: 3px; /* Bardzo blisko góry */
-        }
+  }
+
+  /* Bardzo niskie ekrany laptop (height < 700px) */
+  @media (min-width: 1024px) and (max-height: 700px) {
+    swiper-container {
+      /* height: 350px; /* Bardzo mała wysokość */
+      width: 100%; /* Maksymalnie szeroki */
+
+      .topline {
+        top: -63px !important;
+        
+          text-shadow: 0px 0px 7px black;
+        
       }
     }
-  
-    /* RESPONSIVE SWIPER STYLES */
-  
-    /* Desktop - Duże ekrany (1920px+) */
-    @media (min-width: 1920px) {
-      swiper-container {
-        .topline {
-        }
+  }
+
+  /* RESPONSIVE SWIPER STYLES */
+
+  /* Desktop - Duże ekrany (1920px+) */
+  @media (min-width: 1920px) {
+    swiper-container {
+      .topline {
       }
     }
-  
-    /* Desktop - Średnie ekrany (1600px - 1919px) */
-    @media (min-width: 1600px) and (max-width: 1919px) {
-      swiper-container {
-        .topline {
-        }
+  }
+
+  /* Desktop - Średnie ekrany (1600px - 1919px) */
+  @media (min-width: 1600px) and (max-width: 1919px) {
+    swiper-container {
+      .topline {
       }
     }
-  
-    /* Desktop - Małe ekrany (1280px - 1599px) */
-    @media (min-width: 1280px) and (max-width: 1599px) {
-      swiper-container {
-        .topline {
-        }
+  }
+
+  /* Desktop - Małe ekrany (1280px - 1599px) */
+  @media (min-width: 1280px) and (max-width: 1599px) {
+    swiper-container {
+      .topline {
       }
     }
-  
-    /* Laptop - Średnie (1024px - 1279px) */
-    @media (min-width: 1024px) and (max-width: 1279px) {
-      swiper-container {
-        .topline {
-        }
-      }
-      .headlines .topline {
+  }
+
+  /* Laptop - Średnie (1024px - 1279px) */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    swiper-container {
+      .topline {
       }
     }
-  
-    /* Tablet - Landscape (768px - 1023px) */
-    @media (min-width: 768px) and (max-width: 1023px) {
-      swiper-container {
-        .topline {
-        }
+    .headlines .topline {
+    }
+  }
+
+  /* Tablet - Landscape (768px - 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    swiper-container {
+      .topline {
       }
     }
-  
-    /* Mobile - Landscape (481px - 767px) */
-    @media (min-width: 481px) and (max-width: 767px) {
-      swiper-container {
-        .topline {
-          top: 15px; /* Średni margines na mobile landscape */
-          min-height: 50px;
-        }
+  }
+
+  /* Mobile - Landscape (481px - 767px) */
+  @media (min-width: 481px) and (max-width: 767px) {
+    swiper-container {
+      .topline {
+        top: 15px; /* Średni margines na mobile landscape */
+        min-height: 50px;
       }
     }
-  
-    /* Mobile - Portrait (max 480px) */
-    @media (max-width: 480px) {
-      swiper-container {
-        .topline {
-          top: 10px; /* Mniejszy margines na mobile */
-          min-height: 40px;
-        }
+  }
+
+  /* Mobile - Portrait (max 480px) */
+  @media (max-width: 480px) {
+    swiper-container {
+      .topline {
+        top: 10px; /* Mniejszy margines na mobile */
+        min-height: 40px;
       }
     }
-    .slider-view swiper-slide,
-    .subListMachines swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50%; /* Zapewnia równomierne rozmiary dla slides-per-view="2" */
-      flex-shrink: 0; /* Zapobiega kurczeniu się slajdów */
-      button {
-        transform: scale(0.85);
-        transition: transform 0.3s ease;
-  
-        .headlines {
-          /*  transform: translateY(90px); */
-        }
+  }
+  .slider-view swiper-slide,
+  .subListMachines swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%; /* Zapewnia równomierne rozmiary dla slides-per-view="2" */
+    flex-shrink: 0; /* Zapobiega kurczeniu się slajdów */
+    button {
+      transform: scale(0.85);
+      transition: transform 0.3s ease;
+
+      .headlines {
+        /*  transform: translateY(90px); */
       }
     }
+  }
 
   @keyframes fadeInSlider {
     from {
@@ -1731,15 +1736,13 @@
     }
   }
 
-
-
   /* ————————————————  KAFELKI  ———————————————— */
   .items {
     flex: 1;
     max-width: 100vw;
     min-width: 0; /* Zapobiega problemom z flex shrinking */
 
-    height: 117%;
+    height: 100%;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     border-radius: 16px;

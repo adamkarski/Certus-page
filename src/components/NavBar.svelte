@@ -19,7 +19,6 @@
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
     if (isMobileMenuOpen) {
-      
     } else {
       clearTimeout(autoExpandTimeout);
       isMobileMaszynyOpen = false; // Close sub-menu when main menu closes
@@ -80,7 +79,7 @@
   let hoveredCategory: any = kategorieMaszyn[0];
 
   function handleKeyDown(event: KeyboardEvent) {
-    if (isMobileMenuOpen && event.key === 'Escape') {
+    if (isMobileMenuOpen && event.key === "Escape") {
       closeMobileMenu();
     }
   }
@@ -107,7 +106,7 @@
       window.addEventListener("resize", handleResize);
       handleResize();
 
-      window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown);
 
       const unsubscribe = preloaderVisible.subscribe((visible) => {
         if (!visible) {
@@ -119,7 +118,7 @@
       cleanup = () => {
         window.removeEventListener("scroll", handleScroll);
         window.removeEventListener("resize", handleResize);
-        window.removeEventListener('keydown', handleKeyDown);
+        window.removeEventListener("keydown", handleKeyDown);
         unsubscribe();
       };
     })();
@@ -177,14 +176,10 @@
         </div>
 
         <div class="desktop-menu-items">
-          
-
-         
-
           <div
             class="relative dropDownMenu"
             on:mouseenter={() => (isMaszynyDropdownOpen = true)}
-            on:mouseleave={() => (isMaszynyDropdownOpen = false)}
+            on:mouseleave={() => (isMaszynyDropdownOpen = true)}
           >
             <a
               href="/maszyny"
@@ -211,44 +206,39 @@
                 <div class="flex">
                   <div class="w-1/3 py-4 px-2 megamenu-category-list">
                     <ul>
-                     
-           <!--            {#each kategorieMaszyn as kategoria, i}
-                      <li>        
-                      {#if !kategoria.url}
-                              
-                                <a href="#"  on:click|preventDefault={() =>
-                              handleMaszynyNavigation(kategoria.id)}
+                      {#each kategorieMaszyn as kategoria, i}
+                        <li>
+                          {#if !kategoria.url}
+                            <a
+                              href="#"
+                              on:click|preventDefault={() =>
+                                handleMaszynyNavigation(kategoria.id)}
+                              class="submenu-item {kategoria.id}"
+                              role="button"
+                              on:mouseenter={() =>
+                                (hoveredCategory = kategoria)}
+                              in:fade={{ delay: i * 50, duration: 200 }}
+                            >
+                              {kategoria.title}
+                            </a>
+                          {/if}
 
-                                class="submenu-item {kategoria.id}"
-                                  role="button"
-                                
-                                on:mouseenter={() => (hoveredCategory = kategoria)}
-                            in:fade={{ delay: i * 50, duration: 200 }}
-                                >
-                                  {kategoria.title}
-                                </a>
-                 
-                                {/if}
-                  
-                                {#if kategoria.url} 
-                                <a href="{kategoria.url}" 
-                                class="submenu-item {kategoria.id}"
-                                role="button"
-                              
-                                on:mouseenter={() => (hoveredCategory = kategoria)}
-                            in:fade={{ delay: i * 50, duration: 200 }}
-                              >
-                                {kategoria.title}
-                              </a> 
-                                {/if}
-                              </li>
-                            
- {/each} -->
+                          {#if kategoria.url}
+                            <a
+                              href={kategoria.url}
+                              class="submenu-item {kategoria.id}"
+                              role="button"
+                              on:mouseenter={() =>
+                                (hoveredCategory = kategoria)}
+                              in:fade={{ delay: i * 50, duration: 200 }}
+                            >
+                              {kategoria.title}
+                            </a>
+                          {/if}
+                        </li>
+                      {/each}
 
-
-                     
-                     
-              {#each kategorieMaszyn as kategoria, i}
+                      <!--    {#each kategorieMaszyn as kategoria, i}
                         <li>
                           <a 
                             href="#"
@@ -262,14 +252,7 @@
                             {kategoria.title}
                           </a>
                         </li>
-                      {/each} 
-                    
-                    
-                  
-                    
-
-
-
+                      {/each}  -->
                     </ul>
                   </div>
                   <div
@@ -277,7 +260,12 @@
                   >
                     {#if hoveredCategory}
                       {#key hoveredCategory.id}
-                        <a href="#" role="button" on:click|preventDefault={() => handleMaszynyNavigation(hoveredCategory.id)}>
+                        <a
+                          href="#"
+                          role="button"
+                          on:click|preventDefault={() =>
+                            handleMaszynyNavigation(hoveredCategory.id)}
+                        >
                           <img
                             src={hoveredCategory.img}
                             alt={hoveredCategory.title}
@@ -285,7 +273,6 @@
                             in:fade={{ delay: 150, duration: 150 }}
                           />
                         </a>
-
                       {/key}
                     {/if}
                   </div>
@@ -298,7 +285,7 @@
           <div
             class="relative dropDownMenu bestsellerDropDown"
             on:mouseenter={() => (isBestsellerDropdownOpen = true)}
-            on:mouseleave={() => (isBestsellerDropdownOpen = false)}
+            on:mouseleave={() => (isBestsellerDropdownOpen = true)}
             role="group"
           >
             <a
@@ -329,10 +316,17 @@
                 class="bestseller-dropdown absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden"
                 transition:fly={{ y: -10, duration: 200 }}
               >
-                <a href="/bestseller" on:click={() => isBestsellerDropdownOpen = false} class="bestseller-link-wrapper">
+                <a
+                  href="/bestseller"
+                  on:click={() => (isBestsellerDropdownOpen = false)}
+                  class="bestseller-link-wrapper"
+                >
                   <div class="bestseller-content p-6">
                     <div class="bestseller-header mb-4">
-                      <h3 class="bestseller-title">Frezarko‑grawerka CNC<br/><span class="bestseller-name">CERTUS 69</span>
+                      <h3 class="bestseller-title">
+                        Frezarko‑grawerka CNC<br /><span class="bestseller-name"
+                          >CERTUS 69</span
+                        >
                       </h3>
                       <p class="bestseller-subtitle">
                         Najchętniej wybierana przez naszych klientów
@@ -355,13 +349,14 @@
                       </ul>
                     </div>
 
-                    <div class="bestseller-cta" on:click|stopPropagation={() => {
-                      isBestsellerDropdownOpen = false;
-                      goto("/bestseller");
-                    }}>
-                      <CtaButton classs="bestseller"
-                        text="Sprawdz szczegóły"
-                      />
+                    <div
+                      class="bestseller-cta"
+                      on:click|stopPropagation={() => {
+                        isBestsellerDropdownOpen = false;
+                        goto("/bestseller");
+                      }}
+                    >
+                      <CtaButton classs="bestseller" text="Sprawdz szczegóły" />
                     </div>
                   </div>
                 </a>
@@ -402,7 +397,9 @@
     <div
       class="mobile-menu-overlay"
       on:click={closeMobileMenu}
-      on:keydown={(e) => { if (e.key === 'Enter' || e.key === ' ') closeMobileMenu()}}
+      on:keydown={(e) => {
+        if (e.key === "Enter" || e.key === " ") closeMobileMenu();
+      }}
       role="button"
       tabindex="0"
       transition:fade={{ duration: 200 }}
@@ -473,14 +470,23 @@
             class:active={isBestsellerActive}
             on:click={closeMobileMenu}>Bestseller</a
           >
-          <a href="/serwis" class="mobile-nav-link" class:active={isSerwisActive} on:click={closeMobileMenu}
-            >Serwis</a
+          <a
+            href="/serwis"
+            class="mobile-nav-link"
+            class:active={isSerwisActive}
+            on:click={closeMobileMenu}>Serwis</a
           >
-          <a href="/onas" class="mobile-nav-link" class:active={isOnasActive} on:click={closeMobileMenu}
-            >O nas</a
+          <a
+            href="/onas"
+            class="mobile-nav-link"
+            class:active={isOnasActive}
+            on:click={closeMobileMenu}>O nas</a
           >
-          <a href="/kontakt" class="mobile-nav-link" class:active={isKontaktActive} on:click={closeMobileMenu}
-            >Kontakt</a
+          <a
+            href="/kontakt"
+            class="mobile-nav-link"
+            class:active={isKontaktActive}
+            on:click={closeMobileMenu}>Kontakt</a
           >
         </div>
       </div>
@@ -489,10 +495,6 @@
 </nav>
 
 <style lang="scss">
-
-
-
-
   /* Style dla bestseller dropdown */
   .bestseller-dropdown {
     width: 380px;
@@ -520,17 +522,15 @@
   }
 
   .bestseller-title {
-    font-weight: 600;
-    color: #1f2937;
-    margin-bottom: 8px;
+    font-weight: 800;
+    margin-bottom: 0px;
     line-height: 1.3;
     text-align: right;
-  
-    .bestseller-name{
+    color: #232c327c;
+    font-size: 17px;
+    .bestseller-name {
     }
-
   }
-
 
   .bestseller-subtitle {
     text-align: right;
@@ -545,8 +545,9 @@
     align-items: center;
 
     border-radius: 12px;
-    padding: 16px;
-    margin: 16px 0;
+    
+
+  
   }
 
   .bestseller-img {
@@ -561,7 +562,7 @@
     padding: 0;
     margin: 0;
     text-align: left;
-    margin-left:10px;
+    margin-left: 10px;
   }
 
   .features-list li {
@@ -569,10 +570,10 @@
     margin-bottom: 6px;
     line-height: 1.4;
   }
- 
+
   .bestseller-cta {
     margin-top: 26px;
-   }
+  }
 
   /* Dostosowanie CTA button w dropdown */
   .bestseller-dropdown :global(.cta-button) {
@@ -758,7 +759,7 @@
   }
 
   /* Responsywność nawigacji - uporządkowana */
-  
+
   /* Średnie ekrany - lekkie zmniejszenie */
   @media (min-width: 758px) and (max-width: 1024px) {
     .ramka {
@@ -766,7 +767,7 @@
       transform-origin: center;
     }
   }
-  
+
   /* Małe ekrany - większe zmniejszenie */
   @media (min-width: 481px) and (max-width: 757px) {
     .desktop-menu-items {
@@ -817,8 +818,16 @@
     padding-left: 0px;
   }
 
-  .menubar {
+  nav .menubar {
     width: 100%;
+    transition: all 0.7s ease;
+    box-shadow: 0px 0px 26px 21px #0000001a;
+    border-radius: 52px;
+  }
+
+  nav.scrolled .menubar {
+    box-shadow: none;
+    border-radius: 52px;
   }
 
   .nav-link.kontakt-nav {
@@ -879,7 +888,7 @@
     }
   }
   .logoCertus {
-   /*  min-width: 200px; */
+    /*  min-width: 200px; */
     padding-right: 3px;
   }
 
@@ -887,7 +896,9 @@
     display: block;
     padding: 0.75rem 1rem;
     color: #374151;
-    transition: color 0.2s, background-color 0.2s; // Explicit transition for color and background-color
+    transition:
+      color 0.2s,
+      background-color 0.2s; // Explicit transition for color and background-color
     border-left: 4px solid transparent;
     &:hover {
       color: #16a34a;
@@ -962,13 +973,11 @@
     }
   }
 
-      .image-container {
+  .image-container {
+    position: relative;
 
-        position: relative;
-
-        height: 50%;
-
-      }
+    height: 50%;
+  }
 
   .menu-image {
     position: relative;
