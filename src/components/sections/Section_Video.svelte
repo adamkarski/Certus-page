@@ -140,7 +140,7 @@
   }
   .masked-video {
     width: 100%;
-    height: auto;
+    height: 500px;
     display: block;
     object-fit: cover;
     object-position: center top;
@@ -156,8 +156,5 @@
       0% 0%
     );
   }
-  @media (max-width: 768px) {
-    .video-header h1 {
-    }
-  }
+ 
 </style>

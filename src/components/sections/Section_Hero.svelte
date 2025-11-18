@@ -28,6 +28,34 @@
   // Zmienna do śledzenia stanów ładowania obrazków
   let imageLoadingStates = writable({});
 
+    function positionToplines() {
+    if (browser) {
+      const subSwiperSlides = document.querySelectorAll(
+        ".subListMachines swiper-slide"
+      );
+      subSwiperSlides.forEach((slide) => {
+        const image = slide.querySelector(".item .image img");
+        const topline = slide.querySelector(".headlines .topline");
+        const container = slide.querySelector(".items");
+
+        if (image && topline && container) {
+          const imageRect = image.getBoundingClientRect();
+          const containerRect = container.getBoundingClientRect();
+
+          // Calculate position relative to the container
+          const top = imageRect.bottom - containerRect.top - topline.offsetHeight;
+          const left = imageRect.left - containerRect.left;
+
+          topline.style.position = "absolute";
+          topline.style.top = `${top}px`;
+          topline.style.left = `${left}px`;
+          topline.style.margin = "0"; // Reset margins
+          topline.style.transform = "none"; // Reset transforms
+        }
+      });
+    }
+  }
+
   onMount(async () => {
     // Start preloading images immediately
     preloadImages();
@@ -117,9 +145,12 @@
       // Add resize listener
       const handleResize = () => {
         windowWidth.set(window.innerWidth);
+        positionToplines();
       };
       window.addEventListener("resize", handleResize);
       window.addEventListener("popstate", handlePopstate);
+
+      positionToplines();
 
       // Cleanup function
       return () => {
@@ -175,6 +206,7 @@
 
       initSubSwiper(subSwiperPloteryEl, "plotery");
     }
+    positionToplines();
   });
 
   function setupSwiperEvents(swiper) {
@@ -881,13 +913,6 @@
                         class="items no-sel"
                         on:click={() => openMachine("m_frezarka")}
                       >
-                        <div class="headlines">
-                          <div class="topline">
-                            CNC HMM-ST<br /><span class="subtitle"
-                              >(ST - Sliding Table - ruchomy stół)</span
-                            >
-                          </div>
-                        </div>
                         <div class="item">
                           <div class="image">
                             <img
@@ -895,6 +920,13 @@
                               alt="CNC HMM-ST"
                               draggable="false"
                             />
+                          </div>
+                        </div>
+                        <div class="headlines">
+                          <div class="topline">
+                            CNC HMM-ST<br /><span class="subtitle"
+                              >(ST - Sliding Table - ruchomy stół)</span
+                            >
                           </div>
                         </div>
                       </button>
@@ -905,13 +937,7 @@
                         class="items no-sel"
                         on:click={() => openMachine("m_frezarka1")}
                       >
-                        <div class="headlines">
-                          <div class="topline">
-                            CNC HMM-GT<br /><span class="subtitle"
-                              >(GT - Ganry Type - ruchoma brama)</span
-                            >
-                          </div>
-                        </div>
+                      
                         <div class="item">
                           <div class="image">
                             <img
@@ -919,6 +945,13 @@
                               alt="CNC HMM-GT"
                               draggable="false"
                             />
+                          </div>
+                        </div>
+                        <div class="headlines">
+                          <div class="topline">
+                            CNC HMM-GT<br /><span class="subtitle"
+                              >(GT - Ganry Type - ruchoma brama)</span
+                            >
                           </div>
                         </div>
                       </button>
@@ -1019,13 +1052,7 @@
                         class="items no-sel"
                         on:click={() => openMachine("m-ploter")}
                       >
-                        <div class="headlines">
-                          <div class="topline">
-                            CNC HPP-CT<br /><span class="subtitle"
-                              >(CT — Closed Type - w zabudowie)</span
-                            >
-                          </div>
-                        </div>
+                       
                         <div class="item">
                           <div class="image">
                             <img
@@ -1033,6 +1060,13 @@
                               alt="Ploter przemysłowy"
                               draggable="false"
                             />
+                          </div>
+                        </div>
+                        <div class="headlines">
+                          <div class="topline">
+                            CNC HPP-CT<br /><span class="subtitle"
+                              >(CT — Closed Type - w zabudowie)</span
+                            >
                           </div>
                         </div>
                       </button>
@@ -1043,13 +1077,7 @@
                         class="items no-sel"
                         on:click={() => openMachine("m-ploter1")}
                       >
-                        <div class="headlines">
-                          <div class="topline">
-                            CNC HPP-OT<br /><span class="subtitle"
-                              >(OT — Open Type - otwarte)</span
-                            >
-                          </div>
-                        </div>
+                       
                         <div class="item">
                           <div class="image">
                             <img
@@ -1057,6 +1085,13 @@
                               alt="Ploter przemysłowy bez zabudowy"
                               draggable="false"
                             />
+                          </div>
+                        </div>
+                        <div class="headlines">
+                          <div class="topline">
+                            CNC HPP-OT<br /><span class="subtitle"
+                              >(OT — Open Type - otwarte)</span
+                            >
                           </div>
                         </div>
                       </button>
@@ -1203,6 +1238,23 @@
     /* Most styles are now inherited from the shared rules below */
   }
 
+@media (max-height: 750px) {
+
+
+  .category-content .container {
+    :global(button.backFromCategory) {
+
+      opacity:0.3;
+      position: absolute !important;
+      bottom: 100px !important;
+
+    }
+  }
+
+
+
+}
+
   .category-content .container {
     :global(button.backFromCategory) {
       position: absolute !important;
@@ -1214,6 +1266,7 @@
       transition: all ease 0.4s;
       background-color: var(--color-primary);
       color: white;
+      font-family: "Poppins";
       &::before {
         content: "";
         position: absolute;
@@ -1569,6 +1622,24 @@
       filter: blur(0) !important;
     }
   }
+
+  .subListMachines swiper-slide .item {
+    border: 3px solid whitesmoke;
+  }
+  @media (max-height: 700px) {
+
+    .subListMachines swiper-slide .item {
+    border: 3px solid rgb(42, 73, 108);
+  }
+
+  .subListMachines swiper-slide .headlines .topline {
+    position: absolute;
+    top: -754px !important;
+    right: 50px;
+    border: 3px solid rgb(72, 16, 129);
+  }
+
+  }
   @media (max-width: 768px) {
     .slider-view swiper-container swiper-slide,
     .subListMachines swiper-container swiper-slide {
@@ -1578,16 +1649,7 @@
     }
   }
 
-  .slider-view swiper-container swiper-slide:nth-child(1),
-  .slider-view swiper-container swiper-slide:nth-child(2),
-  .slider-view swiper-container swiper-slide:nth-child(5),
-  .subListMachines swiper-container swiper-slide:nth-child(1),
-  .subListMachines swiper-container swiper-slide:nth-child(2),
-  .subListMachines swiper-container swiper-slide:nth-child(5) {
-    .headlines .topline {
-      margin-left: -90px;
-    }
-  }
+
 
   .slider-view swiper-container swiper-slide:nth-child(1),
   .slider-view swiper-container swiper-slide:nth-child(2),
@@ -1638,9 +1700,8 @@
 
       .topline {
         top: -63px !important;
-        
-          text-shadow: 0px 0px 7px black;
-        
+
+        text-shadow: 0px 0px 7px black;
       }
     }
   }
@@ -1782,9 +1843,7 @@
     color: #e3e3e3;
     line-height: 1;
     transition: all 0.3s ease;
-    position: absolute;
     text-align: left;
-    margin-top: 65%;
     font-size: 1.5rem;
     z-index: 999999999;
     font-weight: 200;

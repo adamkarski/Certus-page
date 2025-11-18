@@ -267,3 +267,14 @@ h2 {
 .section-subtitle {
   color: var(--color-text-secondary);
 }
+
+#video {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#image-section-01 {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}

@@ -210,7 +210,7 @@
                         <li>
                           {#if !kategoria.url}
                             <a
-                              href="#"
+                              href="maszyny#{kategoria.title}"
                               on:click|preventDefault={() =>
                                 handleMaszynyNavigation(kategoria.id)}
                               class="submenu-item {kategoria.id}"

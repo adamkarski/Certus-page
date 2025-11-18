@@ -1,7 +1,10 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
-  import { visibilityStore, setSectionVisible } from "../../lib/visibilityStore";
+  import {
+    visibilityStore,
+    setSectionVisible,
+  } from "../../lib/visibilityStore";
 
   const sectionId = "image-section-02";
   let headerEl: HTMLDivElement;
@@ -15,7 +18,7 @@
           setSectionVisible(sectionId);
         }
       },
-      { threshold: 0.05 },
+      { threshold: 0.05 }
     );
     if (headerEl) observer.observe(headerEl);
     return () => observer.disconnect();
@@ -56,15 +59,14 @@
 </section>
 
 <style lang="scss">
-
-h3 {
+  h3 {
     margin: 0;
     color: white;
     font-weight: 300;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     padding-top: 10px;
   }
-.image-section-02 {
+  .image-section-02 {
     width: 100vw;
     position: relative;
     overflow: hidden;
@@ -101,7 +103,6 @@ h3 {
       height: 100%;
       z-index: 2;
       pointer-events: none;
-      
 
       .pattern.one {
         background-image: url(/assets/images/pattern-image2-1.png);
@@ -153,27 +154,26 @@ h3 {
     left: 0;
     top: 0;
     padding-left: 11em;
-    h3{
-
+    h3 {
       font-weight: 500 !important;
-      margin-left: -27px;
+      margin-left: -15px;
     }
   }
   .image-header-02 h2 {
     margin: 0;
-    color: white !important; 
+    color: white !important;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     margin-left: -0.8em;
     font-weight: 700;
   }
   .image-header-02 h2:before {
-      content: "";
-      position: absolute;
-      width: 30px;
-      height: 46px;
-      margin-left: -40px;
-      background-image: url(/assets/images/red-arrow.svg);
-    }
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 46px;
+    margin-left: -40px;
+    background-image: url(/assets/images/red-arrow.svg);
+  }
   @media (max-width: 768px) {
     .image-header-02 h2 {
     }

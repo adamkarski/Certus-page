@@ -85,7 +85,7 @@
             </h1>
             <br /><br />
 
-            <h3>Zastosowanie maszyn obejmuje m.in.:</h3>
+            <h3><b>Zastosowanie maszyn obejmuje m.in.:<b/></h3>
 
             <ul class="">
               <li use:typoFixAction>Produkcję form wtryskowych i tłoczników</li>
@@ -102,7 +102,7 @@
             </ul>
             <hr />
 
-            <h3>Konstrukcja i ergonomia</h3>
+            <h3><b>Konstrukcja i ergonomia</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -122,7 +122,7 @@
 
             <hr />
 
-            <h3>Chłodzenie i bezpieczeństwo pracy</h3>
+            <h3><b>Chłodzenie i bezpieczeństwo pracy</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -141,7 +141,7 @@
             </ul>
 
             <hr />
-            <h3>Wyposażenie i napęd</h3>
+            <h3><b>Wyposażenie i napęd</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -159,7 +159,7 @@
               </li>
             </ul>
             <hr />
-            <h3>Cechy charakterystyczne serii HMM</h3>
+            <h3><b>Cechy charakterystyczne serii HMM</b></h3>
 
             <ul class="">
               <li use:typoFixAction>Wysoka sztywność konstrukcji</li>
@@ -239,7 +239,7 @@
             </h1>
             <br /><br />
 
-            <h3>Zastosowanie maszyn obejmuje m.in.:</h3>
+            <h3><b>Zastosowanie maszyn obejmuje m.in.:</b></h3>
 
             <ul class="">
               <li use:typoFixAction>Modele i formy (odlewnicze, termoformujące, laminaty)</li>
@@ -253,7 +253,7 @@
             </ul>
             <hr />
 
-            <h3>Konstrukcja i ergonomia</h3>
+            <h3><b>Konstrukcja i ergonomia</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -275,7 +275,7 @@
 
             <hr />
 
-            <h3>Chłodzenie i bezpieczeństwo pracy</h3>
+            <h3><b>Chłodzenie i bezpieczeństwo pracy</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -291,7 +291,7 @@
             </ul>
 
             <hr />
-            <h3>Wyposażenie i napęd</h3>
+            <h3><b>Wyposażenie i napęd</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -306,7 +306,7 @@
               </li>
             </ul>
             <hr />
-            <h3>Cechy charakterystyczne serii HMM-GT</h3>
+            <h3><b>Cechy charakterystyczne serii HMM-GT</b></h3>
 
             <ul class="">
               <li use:typoFixAction>Optymalna do dużych formatów i ciężkich detali</li>
@@ -384,7 +384,7 @@
           <div class="right_content">
             <h1 use:typoFixAction>
               <b>Zaawansowane wieloosiowe centra obróbcze</b>
-
+              <br/>
               zaprojektowane z myślą o pracy w środowisku przemysłowym, gdzie
               kluczowe znaczenie mają bezpieczeństwo, czystość procesu oraz
               stabilność parametrów pracy.
@@ -396,25 +396,30 @@
               oferują dodatkowe korzyści operacyjne i eksploatacyjne.
             </p>
 
-            <hr />
-            <h3 use:typoFixAction>Przewagi konstrukcyjne</h3>
+            <br/> <br/>
+            <h3 use:typoFixAction><b>Przewagi konstrukcyjne</b></h3>
 
-            <p use:typoFixAction>
+            <ul class="">
+              <li use:typoFixAction>
               W porównaniu do wersji otwartej, zabudowa chroni operatora przed
               odpryskami, pyłem i mgłą olejową, znacząco poprawiając
-              bezpieczeństwo oraz komfort pracy. W pełni zamknięta przestrzeń
-              robocza ułatwia również utrzymanie czystości w miejscu pracy oraz
-              ogranicza emisję hałasu i zanieczyszczeń do otoczenia. Zamknięta
-              konstrukcja pozwala na skuteczniejsze chłodzenie narzędzi i
-              materiału obrabianego – możliwa jest praca z układami chłodzenia
-              mgłą olejową lub cieczą w obiegu zamkniętym. W wielu przypadkach
-              zabudowa umożliwia też efektywniejsze odciąganie wiórów i pyłu, co
-              przekłada się na lepszą jakość obróbki i dłuższą żywotność
-              komponentów.
-            </p>
+              bezpieczeństwo oraz komfort pracy.
+              </li>
+              
 
-            <hr />
-            <h3 use:typoFixAction>Stabilność i precyzja</h3>
+              <li use:typoFixAction>W pełni zamknięta przestrzeń
+                robocza ułatwia również utrzymanie czystości w miejscu pracy oraz
+                ogranicza emisję hałasu i zanieczyszczeń do otoczenia.</li>
+                <li use:typoFixAction> Zamknięta konstrukcja pozwala na skuteczniejsze chłodzenie narzędzi i materiału obrabianego – możliwa jest praca z układami chłodzenia
+              mgłą olejową lub cieczą w obiegu zamkniętym. </li>
+              <li use:typoFixAction>
+              W wielu przypadkach zabudowa umożliwia też efektywniejsze odciąganie wiórów i pyłu, co
+              przekłada się na lepszą jakość obróbki i dłuższą żywotność komponentów.</li>
+           
+
+           <br/>
+
+            <h3 use:typoFixAction><b>Stabilność i precyzja</b></h3>
 
             <p use:typoFixAction>
               Obudowane maszyny są projektowane z myślą o jeszcze większej
@@ -424,8 +429,8 @@
               trudnoskrawalnych.
             </p>
 
-            <hr />
-            <h3 use:typoFixAction>Zastosowania i elastyczność</h3>
+            <br/>
+            <h3 use:typoFixAction><b>Zastosowania i elastyczność</b></h3>
 
             <p use:typoFixAction>
               Zabudowane plotery CNC znajdują zastosowanie w aplikacjach
@@ -437,8 +442,8 @@
               narzędzi.
             </p>
 
-            <hr />
-            <h3 use:typoFixAction>Opcje mocowania materiału</h3>
+            <br/>
+            <h3 use:typoFixAction><b>Opcje mocowania materiału</b></h3>
 
             <p use:typoFixAction>
               Podobnie jak modele otwarte, urządzenia mogą być wyposażone w stół
@@ -518,7 +523,7 @@
             </h1>
             <br /><br />
 
-            <h3>Konstrukcja i precyzja</h3>
+            <h3><b>Konstrukcja i precyzja</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -536,7 +541,7 @@
 
             <hr />
 
-            <h3>Zakres zastosowań</h3>
+            <h3><b>Zakres zastosowań</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -554,7 +559,7 @@
 
             <hr />
 
-            <h3>Opcje mocowania materiału</h3>
+            <h3><b>Opcje mocowania materiału</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -643,7 +648,7 @@
             </h1>
             <br /><br />
 
-            <h3>Zaawansowane sterowanie</h3>
+            <h3><b>Zaawansowane sterowanie</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -664,7 +669,7 @@
 
             <hr />
 
-            <h3>Automatyzacja i precyzja</h3>
+            <h3><b>Automatyzacja i precyzja</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -681,7 +686,7 @@
 
             <hr />
 
-            <h3>Konstrukcja i wydajność</h3>
+            <h3><b>Konstrukcja i wydajność</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -701,7 +706,7 @@
 
             <hr />
 
-            <h3>Opcje rozbudowy</h3>
+            <h3><b>Opcje rozbudowy</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -791,7 +796,7 @@
             </h1>
             <br /><br />
 
-            <h3>Precyzja i wydajność</h3>
+            <h3><b>Precyzja i wydajność</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -809,7 +814,7 @@
 
             <hr />
 
-            <h3>Konstrukcja i sterowanie</h3>
+            <h3><b>Konstrukcja i sterowanie</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -831,7 +836,7 @@
 
             <hr />
 
-            <h3>Opcje i rozbudowa</h3>
+            <h3><b>Opcje i rozbudowa</b></h3>
 
             <ul class="">
               <li use:typoFixAction>Pomiar wysokości narzędzia</li>
@@ -847,7 +852,7 @@
 
             <hr />
 
-            <h3>Chłodzenie i mocowanie</h3>
+            <h3><b>Chłodzenie i mocowanie</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -936,7 +941,7 @@
             </h1>
             <br /><br />
 
-            <h3>Wszechstronność i funkcjonalność</h3>
+            <h3><b>Wszechstronność i funkcjonalność</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -953,7 +958,7 @@
 
             <hr />
 
-            <h3>Format i konstrukcja</h3>
+            <h3><b>Format i konstrukcja</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -975,7 +980,7 @@
 
             <hr />
 
-            <h3>Automatyzacja i wygoda</h3>
+            <h3><b>Automatyzacja i wygoda</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -991,7 +996,7 @@
 
             <hr />
 
-            <h3>Obsługa i ergonomia</h3>
+            <h3><b>Obsługa i ergonomia</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
@@ -1086,18 +1091,21 @@
     order: 1;
 
     h1 {
-      font-size: large !important;
+      font-size: 16px !important;
       margin-top: 2rem !important;
     }
 
     p {
       width: 100% !important;
       padding-left: 1rem !important;
-      font-size: 0.9rem;
+      font-size: 16px !important;
     }
 
     ul {
       padding-left: 1rem !important;
+      li{
+        text-align: left;
+      }
     }
     h3 {
       padding-left: 1rem !important;
@@ -1458,6 +1466,7 @@
     }
     .activeMachine .right_content p {
       width: 100% !important;
+      font-size: 16px !important;
     }
   }
 

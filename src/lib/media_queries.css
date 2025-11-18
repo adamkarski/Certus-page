@@ -35,16 +35,7 @@
 /* DESKTOPY STANDARDOWE I LAPTOPY DUŻE
    1200px+ (75em+) - pokrywa 1920x1080 (21.96% rynku) */
 @media (min-width: 75em) {
-  /* Większe fonty dla lepszej czytelności na dużych ekranach */
-  h1 {
-    font-size: 2.5rem;
-  }
-  h2 {
-    font-size: 2rem;
-  }
-  h3 {
-    font-size: 1.75rem;
-  }
+
 }
 
 /* DESKTOPY DUŻE
