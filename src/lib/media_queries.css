@@ -203,13 +203,7 @@ svg{
       margin-top: 30px;
       padding: 0px !important;
 
-      .topline {
-        text-align: center !important;
-        width: 100% !important;
-        height: 0px !important;
-        margin-top: 80% !important;
-        margin-left: -90px !important;
-      }
+      
     }
   }
   .image-container-02 .phone-holder {

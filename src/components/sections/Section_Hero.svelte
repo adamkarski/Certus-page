@@ -39,18 +39,27 @@
         const container = slide.querySelector(".items");
 
         if (image && topline && container) {
-          const imageRect = image.getBoundingClientRect();
-          const containerRect = container.getBoundingClientRect();
+          const position = () => {
+            const imageRect = image.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
 
-          // Calculate position relative to the container
-          const top = imageRect.bottom - containerRect.top - topline.offsetHeight;
-          const left = imageRect.left - containerRect.left;
+            // Calculate position relative to the container
+            const top =
+              imageRect.bottom - containerRect.top - topline.offsetHeight;
+            const left = imageRect.left - containerRect.left;
 
-          topline.style.position = "absolute";
-          topline.style.top = `${top}px`;
-          topline.style.left = `${left}px`;
-          topline.style.margin = "0"; // Reset margins
-          topline.style.transform = "none"; // Reset transforms
+            topline.style.position = "absolute";
+            topline.style.top = `${top}px`;
+            topline.style.left = `${left}px`;
+            topline.style.margin = "0"; // Reset margins
+            topline.style.transform = "none"; // Reset transforms
+          };
+
+          if (image.complete) {
+            position();
+          } else {
+            image.onload = position;
+          }
         }
       });
     }
@@ -1623,23 +1632,8 @@
     }
   }
 
-  .subListMachines swiper-slide .item {
-    border: 3px solid whitesmoke;
-  }
-  @media (max-height: 700px) {
-
-    .subListMachines swiper-slide .item {
-    border: 3px solid rgb(42, 73, 108);
-  }
-
-  .subListMachines swiper-slide .headlines .topline {
-    position: absolute;
-    top: -754px !important;
-    right: 50px;
-    border: 3px solid rgb(72, 16, 129);
-  }
-
-  }
+  // .subListMachines swiper-slide .item {
+  // }
   @media (max-width: 768px) {
     .slider-view swiper-container swiper-slide,
     .subListMachines swiper-container swiper-slide {
@@ -1655,10 +1649,6 @@
   .slider-view swiper-container swiper-slide:nth-child(2),
   .subListMachines swiper-container swiper-slide:nth-child(1),
   .subListMachines swiper-container swiper-slide:nth-child(2) {
-    .headlines .topline {
-      margin-left: -90px;
-    }
-
     button > div.item > div {
       transform: scale(1) !important;
     }
@@ -1670,11 +1660,11 @@
   @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
     swiper-container {
       margin-top: 80px;
-      height: 500px; /* Mniejsza wysokość dla niskich ekranów */
-      width: 95%; /* Szerszy swiper */
+      height: 500px; 
+      width: 95%; 
 
       .topline {
-        top: 5px; /* Bliżej góry */
+        top: 5px; 
       }
     }
   }
@@ -1682,9 +1672,9 @@
   /* 1600x900 - szerokie ale niskie ekrany */
   @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
     swiper-container {
-      height: 750px; /* Dostosowana wysokość */
-      margin-top: 100px; /* Dostosowany margines */
-      width: 95%; /* Szerszy swiper */
+      height: 750px; 
+      margin-top: 100px; 
+      width: 95%; 
 
       .topline {
         top: 8px;
@@ -1695,8 +1685,8 @@
   /* Bardzo niskie ekrany laptop (height < 700px) */
   @media (min-width: 1024px) and (max-height: 700px) {
     swiper-container {
-      /* height: 350px; /* Bardzo mała wysokość */
-      width: 100%; /* Maksymalnie szeroki */
+      
+      width: 100%; 
 
       .topline {
         top: -63px !important;
@@ -1726,35 +1716,24 @@
 
   /* Desktop - Małe ekrany (1280px - 1599px) */
   @media (min-width: 1280px) and (max-width: 1599px) {
-    swiper-container {
-      .topline {
-      }
-    }
+   
   }
 
   /* Laptop - Średnie (1024px - 1279px) */
   @media (min-width: 1024px) and (max-width: 1279px) {
-    swiper-container {
-      .topline {
-      }
-    }
-    .headlines .topline {
-    }
+   
   }
 
   /* Tablet - Landscape (768px - 1023px) */
   @media (min-width: 768px) and (max-width: 1023px) {
-    swiper-container {
-      .topline {
-      }
-    }
+  
   }
 
   /* Mobile - Landscape (481px - 767px) */
   @media (min-width: 481px) and (max-width: 767px) {
     swiper-container {
       .topline {
-        top: 15px; /* Średni margines na mobile landscape */
+        top: 15px; 
         min-height: 50px;
       }
     }
@@ -1764,7 +1743,7 @@
   @media (max-width: 480px) {
     swiper-container {
       .topline {
-        top: 10px; /* Mniejszy margines na mobile */
+        top: 10px; 
         min-height: 40px;
       }
     }
@@ -1774,14 +1753,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%; /* Zapewnia równomierne rozmiary dla slides-per-view="2" */
-    flex-shrink: 0; /* Zapobiega kurczeniu się slajdów */
+    width: 50%; 
+    flex-shrink: 0; 
     button {
       transform: scale(0.85);
       transition: transform 0.3s ease;
 
       .headlines {
-        /*  transform: translateY(90px); */
+        
       }
     }
   }
@@ -1814,6 +1793,10 @@
     transition: all 0.2s ease;
     transform: translateX(100px) translateY(20px);
   }
+  .subListMachines .headlines {
+    transform: none;
+  }
+
   .items:hover {
     transform: scale(0.9) translateY(-3px);
 
@@ -1838,7 +1821,7 @@
   }
 
   .headlines .topline {
-    /* text */
+    position: absolute;
     -shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     color: #e3e3e3;
     line-height: 1;
@@ -2046,4 +2029,33 @@
       }
     }
   }
+
+
+
+  .slider-view swiper-container swiper-slide:nth-child(1),
+    .slider-view swiper-container swiper-slide:nth-child(2),
+    .slider-view swiper-container swiper-slide:nth-child(5),
+    .subListMachines swiper-container swiper-slide:nth-child(1),
+    .subListMachines swiper-container swiper-slide:nth-child(2),
+    .subListMachines swiper-container swiper-slide:nth-child(5) {
+      .headlines .topline {
+        margin-left: -90px;
+      }
+    }
+  
+    .slider-view swiper-container swiper-slide:nth-child(1),
+    .slider-view swiper-container swiper-slide:nth-child(2),
+    .subListMachines swiper-container swiper-slide:nth-child(1),
+    .subListMachines swiper-container swiper-slide:nth-child(2) {
+      .headlines .topline {
+        margin-left: -90px;
+      }
+  
+      button > div.item > div {
+        transform: scale(1) !important;
+      }
+    }
+
+
+
 </style>
