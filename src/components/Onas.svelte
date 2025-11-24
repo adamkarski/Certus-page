@@ -45,7 +45,7 @@ height="1.2em" fill="currentColor">
       <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
         Wszechstronność i elastyczność
       </h3>
-      <p>
+      <p use:typoFixAction>
         Od małych warsztatów po złożone linie produkcyjne – tworzymy maszyny CNC
         dostosowane do potrzeb. Realizujemy również nietypowe projekty dla
         różnorodnych branż.
@@ -67,7 +67,7 @@ height="1.2em" fill="currentColor">
       <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
         Indywidualne podejście
       </h3>
-      <p>
+      <p use:typoFixAction>
         Nie sprzedajemy gotowców – każda maszyna powstaje w dialogu z Klientem.
         Dopasowujemy parametry, konfiguracje i rozwiązania technologiczne.
       </p>
@@ -88,7 +88,7 @@ height="1.2em" fill="currentColor">
       <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
         Solidność i niezawodność
       </h3>
-      <p>
+      <p use:typoFixAction>
         Nasze maszyny tworzone są z myślą o wieloletniej eksploatacji. CERTUS to
         jakość bez kompromisów – nasze urządzenia pracują 24/7.
       </p>
@@ -109,8 +109,8 @@ fill="currentColor">
       </div>
       <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
         Najlepszy stosunek jakości do ceny
-      </h3>
-      <p>
+      </h3 >
+      <p use:typoFixAction>
         Umożliwiamy inwestycje w profesjonalne maszyny bez przepłacania.
         Wszystko projektujemy i montujemy w Polsce.
       </p>
@@ -141,7 +141,7 @@ fill="currentColor">
       <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
         Serwis i rozwój
       </h3>
-      <p>
+      <p use:typoFixAction>
         Oferujemy serwis gwarancyjny i pogwarancyjny oraz modernizacje urządzeń
         innych producentów. Twoja maszyna może rozwijać się razem z Tobą.
       </p>

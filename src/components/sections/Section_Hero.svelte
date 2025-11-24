@@ -1,11 +1,13 @@
 <script lang="ts">
+	import { text } from '@sveltejs/kit';
   import CtaButton from "../CtaButton.svelte";
   import { register } from "swiper/element/bundle";
   import { fade, fly } from "svelte/transition";
-  import { cubicOut } from "svelte/easing";
+  import { cubicOut, quintOut } from "svelte/easing";
+  import { tweened } from "svelte/motion";
   import { onMount, tick, afterUpdate } from "svelte";
   import { browser } from "$app/environment";
-  import { writable } from "svelte/store";
+  import { writable, type Writable } from "svelte/store";
 
   import { typoFixAction } from "$lib/utils/typography";
   import list from "$lib/data/maszyny.json";
@@ -20,6 +22,59 @@
 
   register();
 
+  const initialScale = 0.65;
+  let scaleStores = list.map(() =>
+    tweened(initialScale, { duration: 300, easing: quintOut })
+  );
+
+  // Stores for subcategory items
+  const frezarkaScale1 = tweened(initialScale, {
+    duration: 300,
+    easing: quintOut,
+  });
+  const frezarkaScale2 = tweened(initialScale, {
+    duration: 300,
+    easing: quintOut,
+  });
+  const ploterScale1 = tweened(initialScale, {
+    duration: 300,
+    easing: quintOut,
+  });
+  const ploterScale2 = tweened(initialScale, {
+    duration: 300,
+    easing: quintOut,
+  });
+
+  function scaleOnHover(
+    node: HTMLElement,
+    { store, initialValue }: { store: Writable<number>; initialValue: number }
+  ) {
+    const unsubscribe = store.subscribe((value) => {
+      node.style.transform = `scale(${value})`;
+    });
+
+    const handleMouseenter = () => {
+      store.set(initialValue + 0.03);
+    };
+
+    const handleMouseleave = () => {
+      store.set(initialValue);
+    };
+
+    node.addEventListener("mouseenter", handleMouseenter);
+    node.addEventListener("mouseleave", handleMouseleave);
+
+    return {
+      destroy() {
+        node.removeEventListener("mouseenter", handleMouseenter);
+        node.removeEventListener("mouseleave", handleMouseleave);
+        unsubscribe();
+      },
+    };
+  }
+
+  let backButtonOffsetX = 20; // User-configurable offset
+  let backButtonOffsetY = 20; // User-configurable offset
   let swiperReady = true; // Start as true so element renders immediately
   let swiperElement; // Declare swiperElement
   let swiperKey = 0; // Klucz do wymuszania re-renderu swipera
@@ -28,40 +83,61 @@
   // Zmienna do śledzenia stanów ładowania obrazków
   let imageLoadingStates = writable({});
 
-    function positionToplines() {
+  function positionToplines() {
     if (browser) {
-      const subSwiperSlides = document.querySelectorAll(
-        ".subListMachines swiper-slide"
-      );
-      subSwiperSlides.forEach((slide) => {
-        const image = slide.querySelector(".item .image img");
-        const topline = slide.querySelector(".headlines .topline");
-        const container = slide.querySelector(".items");
+        // Select all swiper-slides in both main and sub views
+        const allSlides = document.querySelectorAll('.slider-view swiper-slide, .subListMachines swiper-slide');
 
-        if (image && topline && container) {
-          const position = () => {
-            const imageRect = image.getBoundingClientRect();
-            const containerRect = container.getBoundingClientRect();
+        allSlides.forEach(slide => {
+            const container = slide.querySelector<HTMLElement>('.items'); // The button
+            const image = slide.querySelector<HTMLElement>('.item .image');
+            const topline = slide.querySelector<HTMLElement>('.headlines .topline');
 
-            // Calculate position relative to the container
-            const top =
-              imageRect.bottom - containerRect.top - topline.offsetHeight;
-            const left = imageRect.left - containerRect.left;
+            if (container && image && topline) {
+                // Add debugging borders
+                image.style.border = '2px solid red';
+                topline.style.border = '2px solid green';
 
-            topline.style.position = "absolute";
-            topline.style.top = `${top}px`;
-            topline.style.left = `${left}px`;
-            topline.style.margin = "0"; // Reset margins
-            topline.style.transform = "none"; // Reset transforms
-          };
+                const position = () => {
+                    const imageRect = image.getBoundingClientRect();
+                    const containerRect = container.getBoundingClientRect();
+                    const toplineRect = topline.getBoundingClientRect(); // Needed for width
 
-          if (image.complete) {
-            position();
-          } else {
-            image.onload = position;
-          }
-        }
-      });
+                    // The container (.items button) is scaled by initialScale.
+                    // We calculate the desired visual offset and then divide by the scale factor
+                    // to get the correct pre-scaled value to apply.
+                    const top = ((imageRect.bottom - containerRect.top)) / initialScale;
+                    const left = ((imageRect.right - containerRect.left) - toplineRect.width) / initialScale;
+
+                    // We are positioning the .topline, but it's inside .headlines.
+                    // The .headlines container needs to not interfere.
+                    const headlines = slide.querySelector<HTMLElement>('.headlines');
+                    if (headlines) {
+                      headlines.style.position = 'absolute';
+                      headlines.style.top = '0';
+                      headlines.style.left = '0';
+                      headlines.style.width = 'auto'; // let it shrink-wrap the topline
+                      headlines.style.transform = 'none';
+                    }
+
+                    topline.style.position = 'absolute';
+                    topline.style.top = `${top}px`;
+                    topline.style.left = `${left}px`;
+                    topline.style.transform = 'none'; 
+                    topline.style.margin = '0';
+                    topline.style.textAlign = 'right'; // Align text to the right
+                };
+                
+                const imgElement = image.querySelector('img');
+                if (imgElement && imgElement.complete) {
+                    position();
+                } else if (imgElement) {
+                    imgElement.onload = position;
+                } else {
+                    position();
+                }
+            }
+        });
     }
   }
 
@@ -155,11 +231,13 @@
       const handleResize = () => {
         windowWidth.set(window.innerWidth);
         positionToplines();
+        positionBackButton();
       };
       window.addEventListener("resize", handleResize);
       window.addEventListener("popstate", handlePopstate);
 
       positionToplines();
+      positionBackButton();
 
       // Cleanup function
       return () => {
@@ -216,6 +294,7 @@
       initSubSwiper(subSwiperPloteryEl, "plotery");
     }
     positionToplines();
+    positionBackButton();
   });
 
   function setupSwiperEvents(swiper) {
@@ -601,23 +680,48 @@
     }
   };
   const close = () => {
-    $activeCategoryStore = null;
-    $activeMachineStore = null; // Ensure activeMachine is null when closing category view
-    $expandedViewStore = false; // Ensure expandedView is false when closing category view
-    if (browser) {
-      const url = new URL(window.location.href);
-      url.searchParams.delete("category");
-      url.searchParams.delete("machine"); // Also clear machine param
-      history.pushState({ category: null, machine: null }, "", url.toString());
+    // If a machine view is open, just close that and return to the category list.
+    if ($activeMachineStore) {
+      document.body.classList.remove("active_machine_view");
+      $activeMachineStore = null;
+      $expandedViewStore = false;
+      if (browser) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("machine");
+        history.pushState(
+          { category: $activeCategoryStore, machine: null },
+          "",
+          url.toString()
+        );
+      }
+      return; // Stop here
     }
 
-    // Po zamknięciu kategorii, wróć do zapisanego slajdu
-    setTimeout(() => {
-      if (swiperElement && swiperElement.swiper) {
-        swiperElement.swiper.slideTo(lastActiveSlideIndex);
-        updateNavigationButtons(swiperElement.swiper);
+    // If only a category view is open, close it and return to the main slider.
+    if ($activeCategoryStore) {
+      $activeCategoryStore = null;
+      // $activeMachineStore is already null here, but let's be explicit
+      $activeMachineStore = null;
+      $expandedViewStore = false;
+      if (browser) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("category");
+        url.searchParams.delete("machine");
+        history.pushState(
+          { category: null, machine: null },
+          "",
+          url.toString()
+        );
       }
-    }, 100);
+
+      // Return to the last active slide in the main swiper
+      setTimeout(() => {
+        if (swiperElement && swiperElement.swiper) {
+          swiperElement.swiper.slideTo(lastActiveSlideIndex);
+          updateNavigationButtons(swiperElement.swiper);
+        }
+      }, 100);
+    }
   };
 
   const openMachine = (x) => {
@@ -639,27 +743,6 @@
       $expandedViewStore = true;
     }, 800);
   };
-  const closeFW = () => {
-    document.body.classList.remove("active_machine_view");
-
-    $activeCategoryStore = null;
-    $activeMachineStore = null;
-    $expandedViewStore = false;
-    if (browser) {
-      const url = new URL(window.location.href);
-      url.searchParams.delete("category");
-      url.searchParams.delete("machine");
-      history.pushState({ category: null, machine: null }, "", url.toString());
-    }
-
-    // Po zamknięciu widoku maszyny, wróć do zapisanego slajdu
-    setTimeout(() => {
-      if (swiperElement && swiperElement.swiper) {
-        swiperElement.swiper.slideTo(lastActiveSlideIndex);
-        updateNavigationButtons(swiperElement.swiper);
-      }
-    }, 100);
-  };
 
   const expandRightInfo = () => ($expandedViewStore = !$expandedViewStore);
 
@@ -673,6 +756,12 @@
     duration: 500,
     easing: cubicOut,
   };
+
+  $: if ($activeCategoryStore && !$activeMachineStore && browser) {
+    // We need to wait for the next DOM update cycle for the button to be rendered.
+    // A timeout of 0 achieves this, making the positioning feel instant.
+    setTimeout(positionBackButton, 0);
+  }
 
   // --- BLOKADA SCROLLA BODY DLA expandedView ---
   $: if (browser) {
@@ -727,6 +816,73 @@
     $activeMachineStore = null;
     $expandedViewStore = false;
     resetHeroSwiper.set(false); // Reset the store value
+  }
+
+  function positionBackButton() {
+    if (browser) {
+      const hero = document.querySelector<HTMLElement>(".hero");
+      const triangle = document.querySelector<HTMLElement>(".triangle");
+      const backButton =
+        document.querySelector<HTMLElement>(".backFromCategory");
+
+      if (hero && triangle && backButton) {
+        const heroRect = hero.getBoundingClientRect();
+        const triangleRect = triangle.getBoundingClientRect();
+        const buttonRect = backButton.getBoundingClientRect();
+
+        // Calculate position relative to the .hero container, placing the button above the triangle
+        const top = triangleRect.top - heroRect.top - buttonRect.height - -40; // 10px margin
+        const left =
+          triangleRect.left -
+          heroRect.left +
+          triangleRect.width / 2 -
+          buttonRect.width / 2;
+
+        backButton.style.position = "absolute";
+        backButton.style.top = `${top}px`;
+        backButton.style.left = `${left}px`;
+        backButton.style.transform = "none";
+        backButton.style.zIndex = "100"; // Ensure it's on top
+      }
+    }
+  }
+
+  // function positionBackButton() {
+  //   if (browser) {
+  //     const triangle = document.querySelector(".triangle");
+  //     const backButton = document.querySelector(".backFromCategory");
+
+  //     if (triangle && backButton) {
+  //       const rectTriangle = triangle.getBoundingClientRect();
+  //       const rectHero = document
+  //         .querySelector(".hero")
+  //         .getBoundingClientRect();
+
+  //       const top = rectTriangle.top - rectHero.top;
+  //       const left = rectTriangle.left - rectHero.left;
+
+  //       backButton.style.position = "absolute";
+  //       backButton.style.top = `${top}px`;
+  //       backButton.style.left = `${left}px`;
+  //     }
+  //   }
+  // }
+  onMount(() => {
+    positionToplines();
+    positionBackButton();
+
+    window.addEventListener("resize", positionBackButton);
+
+    return () => {
+      window.removeEventListener("resize", positionBackButton);
+    };
+  });
+
+  afterUpdate(positionBackButton);
+
+  // Uruchom funkcję po zmianie stanu aktywnej kategorii
+  $: if ($activeCategoryStore && !$activeMachineStore) {
+    setTimeout(() => positionBackButton(), 0);
   }
 </script>
 
@@ -808,12 +964,15 @@
                   }
                 }}
               >
-                {#each list as cat}
+                {#each list as cat, i}
                   <swiper-slide>
                     <button
-                      type="button"
-                      class="items items-left lift no-sel"
-                      on:click={() =>
+                                        use:scaleOnHover={{
+                                          store: scaleStores[i],
+                                          initialValue: initialScale,
+                                        }}
+                                        type="button"
+                                        class="items items-left lift no-sel"                      on:click={() =>
                         cat.url
                           ? (window.location.href = cat.url)
                           : openCategory(cat.id)}
@@ -877,6 +1036,7 @@
           class="view category-view no-sel"
           in:fly={{ ...flyConfig, y: 50 }}
           out:fly={{ ...flyConfig, y: -50 }}
+          on:introend={positionToplines}
         >
           <div class="category-content">
             <div class="container" in:fade={{ duration: 600, delay: 200 }}>
@@ -918,6 +1078,7 @@
                   >
                     <swiper-slide>
                       <button
+                        use:scaleOnHover={responsiveInitialScale}
                         type="button"
                         class="items no-sel"
                         on:click={() => openMachine("m_frezarka")}
@@ -942,11 +1103,11 @@
                     </swiper-slide>
                     <swiper-slide>
                       <button
+                        use:scaleOnHover={responsiveInitialScale}
                         type="button"
                         class="items no-sel"
                         on:click={() => openMachine("m_frezarka1")}
                       >
-                      
                         <div class="item">
                           <div class="image">
                             <img
@@ -989,16 +1150,7 @@
                     </svg>
                   </button>
                 </div>
-                <div
-                  in:fade={{ duration: 400, delay: 800 }}
-                  out:fade={{ duration: 300 }}
-                >
-                  <CtaButton
-                    on:click={close}
-                    text="Wróć"
-                    classs="backFromCategory"
-                  />
-                </div>
+                <!-- Back button moved for stable positioning -->
               </div>
             </div>
           </div>
@@ -1010,6 +1162,7 @@
           class="view category-view no-sel"
           in:fly={{ ...flyConfig, y: 50 }}
           out:fly={{ ...flyConfig, y: -50 }}
+          on:introend={positionToplines}
         >
           <div class="category-content">
             <div class="container" in:fade={{ duration: 600, delay: 200 }}>
@@ -1057,11 +1210,14 @@
                   >
                     <swiper-slide>
                       <button
+                        use:scaleOnHover={{
+                          store: ploterScale1,
+                          initialValue: initialScale,
+                        }}
                         type="button"
                         class="items no-sel"
                         on:click={() => openMachine("m-ploter")}
                       >
-                       
                         <div class="item">
                           <div class="image">
                             <img
@@ -1082,11 +1238,14 @@
                     </swiper-slide>
                     <swiper-slide>
                       <button
+                        use:scaleOnHover={{
+                          store: ploterScale2,
+                          initialValue: initialScale,
+                        }}
                         type="button"
                         class="items no-sel"
                         on:click={() => openMachine("m-ploter1")}
                       >
-                       
                         <div class="item">
                           <div class="image">
                             <img
@@ -1130,16 +1289,7 @@
                   </button>
                 </div>
 
-                <div
-                  in:fade={{ duration: 400, delay: 800 }}
-                  out:fade={{ duration: 300 }}
-                >
-                  <CtaButton
-                    on:click={close}
-                    text="Wróć"
-                    classs="backFromCategory"
-                  />
-                </div>
+                <!-- Back button moved for stable positioning -->
               </div>
             </div>
           </div>
@@ -1147,6 +1297,14 @@
       {/if}
     </div>
   </div>
+
+  <!-- Back button now lives here for stable positioning -->
+  {#if $activeCategoryStore && !$activeMachineStore}
+    <div in:fade={{ duration: 300 }} out:fade={{ duration: 200 }}>
+      <CtaButton on:click={close} text="Wróć" classs="backFromCategory" />
+    </div>
+  {/if}
+
   <span class="triangle"></span>
 </section>
 
@@ -1247,46 +1405,41 @@
     /* Most styles are now inherited from the shared rules below */
   }
 
-@media (max-height: 750px) {
+  :global(button.backFromCategory.back-button-positioned) {
+    top: var(--back-button-top) !important;
+    left: var(--back-button-left) !important;
+    transform: none !important;
+  }
 
-
-  .category-content .container {
-    :global(button.backFromCategory) {
-
-      opacity:0.3;
-      position: absolute !important;
-      bottom: 100px !important;
-
+  @media (max-height: 750px) {
+    .category-content .container {
+      :global(button.backFromCategory) {
+      }
     }
   }
 
+  :global(button.backFromCategory) {
+    z-index: 9999;
+    transition: all ease 0.4s;
+    height: 42px !important;
+    background-color: #96a500 !important;
+    color: white !important;
 
-
-}
-
-  .category-content .container {
-    :global(button.backFromCategory) {
-      position: absolute !important;
-      /* display: block; */
-      bottom: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9999;
-      transition: all ease 0.4s;
-      background-color: var(--color-primary);
-      color: white;
-      font-family: "Poppins";
-      &::before {
-        content: "";
-        position: absolute;
-        top: 10px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url(/assets/images/pattern-image1-2.png);
-      }
+    .text-container {
+      z-index: 300;
     }
 
+    &::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url(/assets/images/pattern-image1-2.png);
+    }
+  }
+  .category-content .container {
     .back_category {
       position: absolute;
       top: 0;
@@ -1583,14 +1736,10 @@
   /* ————————————————  SWIPER - CLEAN RESPONSIVE  ———————————————— */
   swiper-container {
     width: 100%;
-    height: 778px; /* Bazowa wysokość */
+    margin-top: -10px;
     opacity: 0;
-    margin-top: 0; /* Reset margin-top */
     animation: fadeInSlider 0.6s ease-out 0.2s forwards;
-
-    .topline {
-      transition: font-size 0.3s ease-in-out; /* Smooth font size transitions */
-    }
+    overflow: visible;
   }
 
   .slider-view swiper-container swiper-slide,
@@ -1643,8 +1792,6 @@
     }
   }
 
-
-
   .slider-view swiper-container swiper-slide:nth-child(1),
   .slider-view swiper-container swiper-slide:nth-child(2),
   .subListMachines swiper-container swiper-slide:nth-child(1),
@@ -1660,109 +1807,44 @@
   @media (min-width: 1280px) and (max-width: 1400px) and (max-height: 800px) {
     swiper-container {
       margin-top: 80px;
-      height: 500px; 
-      width: 95%; 
-
-      .topline {
-        top: 5px; 
-      }
+      height: 500px;
+      width: 95%;
     }
   }
 
   /* 1600x900 - szerokie ale niskie ekrany */
   @media (min-width: 1500px) and (max-width: 1700px) and (max-height: 950px) {
     swiper-container {
-      height: 750px; 
-      margin-top: 100px; 
-      width: 95%; 
-
-      .topline {
-        top: 8px;
-      }
+      height: 750px;
+      margin-top: 100px;
+      width: 95%;
     }
   }
 
   /* Bardzo niskie ekrany laptop (height < 700px) */
   @media (min-width: 1024px) and (max-height: 700px) {
     swiper-container {
-      
-      width: 100%; 
+      width: 100%;
 
       .topline {
-        top: -63px !important;
+   
 
         text-shadow: 0px 0px 7px black;
       }
     }
   }
 
-  /* RESPONSIVE SWIPER STYLES */
 
-  /* Desktop - Duże ekrany (1920px+) */
-  @media (min-width: 1920px) {
-    swiper-container {
-      .topline {
-      }
-    }
-  }
 
-  /* Desktop - Średnie ekrany (1600px - 1919px) */
-  @media (min-width: 1600px) and (max-width: 1919px) {
-    swiper-container {
-      .topline {
-      }
-    }
-  }
-
-  /* Desktop - Małe ekrany (1280px - 1599px) */
-  @media (min-width: 1280px) and (max-width: 1599px) {
-   
-  }
-
-  /* Laptop - Średnie (1024px - 1279px) */
-  @media (min-width: 1024px) and (max-width: 1279px) {
-   
-  }
-
-  /* Tablet - Landscape (768px - 1023px) */
-  @media (min-width: 768px) and (max-width: 1023px) {
-  
-  }
-
-  /* Mobile - Landscape (481px - 767px) */
-  @media (min-width: 481px) and (max-width: 767px) {
-    swiper-container {
-      .topline {
-        top: 15px; 
-        min-height: 50px;
-      }
-    }
-  }
-
-  /* Mobile - Portrait (max 480px) */
-  @media (max-width: 480px) {
-    swiper-container {
-      .topline {
-        top: 10px; 
-        min-height: 40px;
-      }
-    }
-  }
   .slider-view swiper-slide,
   .subListMachines swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%; 
-    flex-shrink: 0; 
-    button {
-      transform: scale(0.85);
-      transition: transform 0.3s ease;
-
-      .headlines {
-        
-      }
-    }
+    width: 50%;
+    flex-shrink: 0;
+    
+    
   }
 
   @keyframes fadeInSlider {
@@ -1787,23 +1869,19 @@
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     border-radius: 16px;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
   }
   .headlines {
     transition: all 0.2s ease;
-    transform: translateX(100px) translateY(20px);
-  }
-  .subListMachines .headlines {
-    transform: none;
+    /* transform: translateX(100px) translateY(20px); */
+    z-index: 900000000000;
+    /* position: absolute; */
+    /* width: 70vh; */
+    box-shadow: 12px 12px 12px #232323;
   }
 
-  .items:hover {
-    transform: scale(0.9) translateY(-3px);
 
-    .headlines {
-      // transform: translateY(50px) translateX(20px) scale(0.8);
-    }
-  }
+
 
   .items::before {
     content: "";
@@ -1812,7 +1890,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    // background: linear-gradient(45deg, transparent, rgba(255,255,255,.05), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -1821,8 +1898,8 @@
   }
 
   .headlines .topline {
-    position: absolute;
-    -shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    width:300px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     color: #e3e3e3;
     line-height: 1;
     transition: all 0.3s ease;
@@ -1834,7 +1911,6 @@
   }
   .items:hover .headlines .topline {
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-    // transform: translateY(-2px);
   }
 
   .items:hover {
@@ -2030,32 +2106,27 @@
     }
   }
 
-
+  .slider-view swiper-container swiper-slide:nth-child(1),
+  .slider-view swiper-container swiper-slide:nth-child(2),
+  .slider-view swiper-container swiper-slide:nth-child(5),
+  .subListMachines swiper-container swiper-slide:nth-child(1),
+  .subListMachines swiper-container swiper-slide:nth-child(2),
+  .subListMachines swiper-container swiper-slide:nth-child(5) {
+    .headlines .topline {
+      margin-left: -90px;
+    }
+  }
 
   .slider-view swiper-container swiper-slide:nth-child(1),
-    .slider-view swiper-container swiper-slide:nth-child(2),
-    .slider-view swiper-container swiper-slide:nth-child(5),
-    .subListMachines swiper-container swiper-slide:nth-child(1),
-    .subListMachines swiper-container swiper-slide:nth-child(2),
-    .subListMachines swiper-container swiper-slide:nth-child(5) {
-      .headlines .topline {
-        margin-left: -90px;
-      }
-    }
-  
-    .slider-view swiper-container swiper-slide:nth-child(1),
-    .slider-view swiper-container swiper-slide:nth-child(2),
-    .subListMachines swiper-container swiper-slide:nth-child(1),
-    .subListMachines swiper-container swiper-slide:nth-child(2) {
-      .headlines .topline {
-        margin-left: -90px;
-      }
-  
-      button > div.item > div {
-        transform: scale(1) !important;
-      }
+  .slider-view swiper-container swiper-slide:nth-child(2),
+  .subListMachines swiper-container swiper-slide:nth-child(1),
+  .subListMachines swiper-container swiper-slide:nth-child(2) {
+    .headlines .topline {
+      margin-left: -90px;
     }
 
-
-
+    button > div.item > div {
+      transform: scale(1) !important;
+    }
+  }
 </style>

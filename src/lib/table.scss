@@ -46,10 +46,11 @@ margin-right: 10px;
     position: relative;
     // background-color: #eeeeee !important;
     height: 30px;
-    font-size: 1.3em !important;
+    font-size: 1.1em !important;
     font-weight: 500 !important;
     padding-top: 3px;
     margin-bottom: 10px !important;
+    margin-left: 20px !important;
   }
 }
 .maszyny-dane-hr {
@@ -280,9 +281,14 @@ tbody tr td img {
 
 tbody tr td .text {
   width: auto;
-  display: flow-root;
+  display: grid;
   color: var(--color-text-primary);
   font-size: 0.7em;
+  min-width: 111px;
+  vertical-align: bottom;
+  text-align: left;
+  height: 52px;
+  align-items: center;
 }
 
 .options-list {

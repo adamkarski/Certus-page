@@ -346,14 +346,14 @@
       alt="Przemysłowe plotery CNC"
       class="maszyny-dane-ikona"
     />
-    <h2>Przemysłowe plotery CNC bez zabudowy</h2>
+    <h2>Wielkoformatowy ploter przemysłowy bez zabudowy<br />CERTUS HPP-OT</h2>
   </div>
   <hr class="maszyny-dane-hr" />
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Wielkoformatowe centra obróbcze CNC</strong><br /><br /> stanowią wysokowydajne
-        platformy przeznaczone do skrawania w co najmniej trzech osiach, z możliwością
+        <strong>Wielkoformatowy ploter przemysłowy bez zabudowy – HPP-OT</strong><br /><br /> to wielkoformatowe centrum obróbcze CNC stanowiące wysokowydajną
+        platformę przeznaczoną do skrawania w co najmniej trzech osiach, z możliwością
         rozbudowy o dodatkowe osie sterowane. Dzięki temu łączą funkcje frezowania,
         wiercenia, gwintowania, toczenia, cięcia, bigowania, a nawet dozowania materiałów.
       </p>
@@ -469,13 +469,13 @@
       alt="Przemysłowe plotery CNC w zabudowie"
       class="maszyny-dane-ikona"
     />
-    <h2>Przemysłowe plotery CNC w zabudowie</h2>
+    <h2>Zaawansowany wieloosiowy ploter przemysłowy w zabudowie<br />CERTUS HPP-CT</h2>
   </div>
   <hr class="maszyny-dane-hr" />
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Zaawansowane wieloosiowe centra obróbcze</strong><br /><br /> zaprojektowane
+        <strong>Zaawansowany wieloosiowy ploter przemysłowy w zabudowie – HPP-CT</strong><br /><br /> to zaawansowane wieloosiowe centrum obróbcze, zaprojektowane
         z myślą o pracy w środowisku przemysłowym, gdzie kluczowe znaczenie mają
         bezpieczeństwo, czystość procesu oraz stabilność parametrów pracy.
       </p>
@@ -1038,7 +1038,7 @@
     position: absolute;
     width: 100%;
     left: 0px;
-    margin-top: -100px;
+   /*  margin-top: -100px; */
     .topImage {
       margin-top: -10px;
       float: right;

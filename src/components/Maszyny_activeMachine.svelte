@@ -9,7 +9,6 @@
   import { browser } from "$app/environment";
   import { fade, fly } from "svelte/transition";
 
-
   import MachineMenu from "./MachineMenu.svelte";
 
   //tables dla maszyn
@@ -22,13 +21,13 @@
 
   // Dodanie funkcji closeFW
   const closeFW = () => {
-    activeCategoryStore.set(null);
+    // Preserve activeCategoryStore to return to subcategory view
     activeMachineStore.set(null);
     expandedViewStore.set(false);
 
     if (browser) {
       const url = new URL(window.location.href);
-      url.searchParams.delete("category");
+      // Preserve category parameter
       url.searchParams.delete("machine");
       window.history.pushState({}, "", url);
       document.body.classList.remove("no-scroll-hero");
@@ -37,7 +36,6 @@
   };
 
   let windowWidth;
-
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} />
@@ -56,7 +54,7 @@
           in:fade={{ duration: 300, delay: 0 }}
           out:fade={{ duration: 300, delay: 0 }}
         >
-          <h1>Seria Frezarek CNC<br />CERTUS HMM-ST</h1>
+          <h1>CERTUS HMM-ST</h1>
 
           <div class="left_image no-sel">
             <img
@@ -72,7 +70,7 @@
               alt="Frezarki CNC"
             />
           </div>
-          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
+          <CtaButton classs="backButton" on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div class="right" class:expanded={$expandedViewStore}>
@@ -85,7 +83,7 @@
             </h1>
             <br /><br />
 
-            <h3><b>Zastosowanie maszyn obejmuje m.in.:<b/></h3>
+            <h3><b>Zastosowanie maszyn obejmuje m.in.:<b /></b></h3>
 
             <ul class="">
               <li use:typoFixAction>Produkcję form wtryskowych i tłoczników</li>
@@ -209,7 +207,7 @@
           in:fade={{ duration: 300, delay: 0 }}
           out:fade={{ duration: 300, delay: 0 }}
         >
-          <h1>Seria Frezarek CNC<br />CERTUS HMM-GT</h1>
+          <h1>CERTUS HMM-GT</h1>
 
           <div class="left_image no-sel">
             <img
@@ -225,31 +223,33 @@
               alt="Frezarki CNC"
             />
           </div>
-          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
+          <CtaButton classs="backButton" on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div class="right" class:expanded={$expandedViewStore}>
           <div class="right_content">
             <h1 use:typoFixAction>
-              <b>FREZARKA CNC Z PRZEJEZDNĄ BRAMĄ</b><br /><br />Do dużych formatów i ciężkich detali — detal stoi, pracuje brama.
-              HMM‑GT zaprojektowano do szybkiej i precyzyjnej obróbki arkuszy oraz
-              elementów o dużej masie i gabarytach. Doskonale sprawdza się w aluminium
-              i jego stopach, kompozytach, tworzywach, drewnie oraz — w odpowiedniej
-              konfiguracji wrzeciona — w wybranych stalach.
+              <b>FREZARKA CNC Z PRZEJEZDNĄ BRAMĄ</b><br /><br />Do dużych
+              formatów i ciężkich detali — detal stoi, pracuje brama. HMM‑GT
+              zaprojektowano do szybkiej i precyzyjnej obróbki arkuszy oraz
+              elementów o dużej masie i gabarytach. Doskonale sprawdza się w
+              aluminium i jego stopach, kompozytach, tworzywach, drewnie oraz —
+              w odpowiedniej konfiguracji wrzeciona — w wybranych stalach.
             </h1>
             <br /><br />
 
             <h3><b>Zastosowanie maszyn obejmuje m.in.:</b></h3>
 
             <ul class="">
-              <li use:typoFixAction>Modele i formy (odlewnicze, termoformujące, laminaty)</li>
+              <li use:typoFixAction>
+                Modele i formy (odlewnicze, termoformujące, laminaty)
+              </li>
               <li use:typoFixAction>
                 Panele, płyty i profile długie (meblarstwo, signage, automotive)
               </li>
               <li use:typoFixAction>
                 Matryce, wykrojniki, przyrządy, prototypy i serie krótkie
               </li>
-              
             </ul>
             <hr />
 
@@ -257,19 +257,22 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Stół stały — łatwy załadunek z palety, wózka lub żurawia; brak 
-  bezwładności detalu = lepsza jakość krawędzi i dokładność wymiarowa.
+                Stół stały — łatwy załadunek z palety, wózka lub żurawia; brak
+                bezwładności detalu = lepsza jakość krawędzi i dokładność
+                wymiarowa.
               </li>
               <li use:typoFixAction>
                 Brama przejezdna o wysokiej sztywności; napędy tandemowe osi Y
-  umożliwiają duże pola robocze bez zwiększania masy ruchomego stołu.
+                umożliwiają duże pola robocze bez zwiększania masy ruchomego
+                stołu.
               </li>
               <li use:typoFixAction>
-                Segmentowe stoły: T‑slot / podciśnienie / hybryda; opcja przelotu
-  dla elementów ponadwymiarowych.
+                Segmentowe stoły: T‑slot / podciśnienie / hybryda; opcja
+                przelotu dla elementów ponadwymiarowych.
               </li>
               <li use:typoFixAction>
-                Konsola sterownicza wolnostojąca; interfejs i wsparcie w języku polskim.
+                Konsola sterownicza wolnostojąca; interfejs i wsparcie w języku
+                polskim.
               </li>
             </ul>
 
@@ -279,14 +282,16 @@
 
             <ul class="">
               <li use:typoFixAction>
-                Zabudowa z odciągiem wiórów/pyłów; czysta i bezpieczna strefa pracy.
+                Zabudowa z odciągiem wiórów/pyłów; czysta i bezpieczna strefa
+                pracy.
               </li>
               <li use:typoFixAction>
-                Zintegrowane chłodzenie (zbiornik, odstojnik, pompa) dla stabilności
-  procesu i ochrony komponentów.
+                Zintegrowane chłodzenie (zbiornik, odstojnik, pompa) dla
+                stabilności procesu i ochrony komponentów.
               </li>
               <li use:typoFixAction>
-                Osłony prowadnic i śrub kulowych — dłuższa żywotność i powtarzalność.
+                Osłony prowadnic i śrub kulowych — dłuższa żywotność i
+                powtarzalność.
               </li>
             </ul>
 
@@ -298,22 +303,28 @@
                 Automatyczna wymiana narzędzi z magazynem w standardzie.
               </li>
               <li use:typoFixAction>
-                Serwonapędy hybrydowe lub AC (wg konfiguracji); przekładnie zębate
-  na dużych osiach; precyzja i dynamika w całym polu roboczym.
+                Serwonapędy hybrydowe lub AC (wg konfiguracji); przekładnie
+                zębate na dużych osiach; precyzja i dynamika w całym polu
+                roboczym.
               </li>
               <li use:typoFixAction>
-                Komunikacja LAN — łatwa integracja z siecią zakładową i systemami CAM.
+                Komunikacja LAN — łatwa integracja z siecią zakładową i
+                systemami CAM.
               </li>
             </ul>
             <hr />
             <h3><b>Cechy charakterystyczne serii HMM-GT</b></h3>
 
             <ul class="">
-              <li use:typoFixAction>Optymalna do dużych formatów i ciężkich detali</li>
+              <li use:typoFixAction>
+                Optymalna do dużych formatów i ciężkich detali
+              </li>
               <li use:typoFixAction>
                 Wysoka sztywność portalu i powtarzalna jakość obróbki
               </li>
-              <li use:typoFixAction>Szybki załadunek/rozładunek, krótsze czasy przezbrojeń</li>
+              <li use:typoFixAction>
+                Szybki załadunek/rozładunek, krótsze czasy przezbrojeń
+              </li>
               <li use:typoFixAction>
                 Nowoczesna automatyka, intuicyjna obsługa, serwis PL
               </li>
@@ -356,7 +367,7 @@
           in:fade={{ duration: 300, delay: 200 }}
           out:fade={{ duration: 300, delay: 100 }}
         >
-          <h1>Plotery przemysłowe CNC w zabudowie</h1>
+          <h1>CERTUS HPP-CT</h1>
 
           <div class="left_image no-sel">
             <img
@@ -372,7 +383,7 @@
               alt="Ploter Przemysłowy Certus 0815 ATC w zabudowie"
             />
           </div>
-          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
+          <CtaButton classs="backButton" on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -383,11 +394,9 @@
         >
           <div class="right_content">
             <h1 use:typoFixAction>
-              <b>Zaawansowane wieloosiowe centra obróbcze</b>
-              <br/>
-              zaprojektowane z myślą o pracy w środowisku przemysłowym, gdzie
-              kluczowe znaczenie mają bezpieczeństwo, czystość procesu oraz
-              stabilność parametrów pracy.
+              <b>Zaawansowany wieloosiowy ploter przemysłowy w zabudowie – HPP-CT</b>
+              <br />
+              to zaawansowane wieloosiowe centrum obróbcze, zaprojektowane z myślą o pracy w środowisku przemysłowym, gdzie kluczowe znaczenie mają bezpieczeństwo, czystość procesu oraz stabilność parametrów pracy.
             </h1>
 
             <p use:typoFixAction>
@@ -396,69 +405,76 @@
               oferują dodatkowe korzyści operacyjne i eksploatacyjne.
             </p>
 
-            <br/> <br/>
+            <br /> <br />
             <h3 use:typoFixAction><b>Przewagi konstrukcyjne</b></h3>
 
             <ul class="">
               <li use:typoFixAction>
-              W porównaniu do wersji otwartej, zabudowa chroni operatora przed
-              odpryskami, pyłem i mgłą olejową, znacząco poprawiając
-              bezpieczeństwo oraz komfort pracy.
+                W porównaniu do wersji otwartej, zabudowa chroni operatora przed
+                odpryskami, pyłem i mgłą olejową, znacząco poprawiając
+                bezpieczeństwo oraz komfort pracy.
               </li>
-              
 
-              <li use:typoFixAction>W pełni zamknięta przestrzeń
-                robocza ułatwia również utrzymanie czystości w miejscu pracy oraz
-                ogranicza emisję hałasu i zanieczyszczeń do otoczenia.</li>
-                <li use:typoFixAction> Zamknięta konstrukcja pozwala na skuteczniejsze chłodzenie narzędzi i materiału obrabianego – możliwa jest praca z układami chłodzenia
-              mgłą olejową lub cieczą w obiegu zamkniętym. </li>
               <li use:typoFixAction>
-              W wielu przypadkach zabudowa umożliwia też efektywniejsze odciąganie wiórów i pyłu, co
-              przekłada się na lepszą jakość obróbki i dłuższą żywotność komponentów.</li>
-           
+                W pełni zamknięta przestrzeń robocza ułatwia również utrzymanie
+                czystości w miejscu pracy oraz ogranicza emisję hałasu i
+                zanieczyszczeń do otoczenia.
+              </li>
+              <li use:typoFixAction>
+                Zamknięta konstrukcja pozwala na skuteczniejsze chłodzenie
+                narzędzi i materiału obrabianego – możliwa jest praca z układami
+                chłodzenia mgłą olejową lub cieczą w obiegu zamkniętym.
+              </li>
+              <li use:typoFixAction>
+                W wielu przypadkach zabudowa umożliwia też efektywniejsze
+                odciąganie wiórów i pyłu, co przekłada się na lepszą jakość
+                obróbki i dłuższą żywotność komponentów.
+              </li>
 
-           <br/>
+              <br />
 
-            <h3 use:typoFixAction><b>Stabilność i precyzja</b></h3>
+              <h3 use:typoFixAction><b>Stabilność i precyzja</b></h3>
 
-            <p use:typoFixAction>
-              Obudowane maszyny są projektowane z myślą o jeszcze większej
-              sztywności konstrukcyjnej. Zwiększona masa i zamknięty układ
-              wspomagają tłumienie drgań, co przekłada się na wyższą precyzję
-              pracy, zwłaszcza przy obróbce metali i materiałów
-              trudnoskrawalnych.
-            </p>
+              <p use:typoFixAction>
+                Obudowane maszyny są projektowane z myślą o jeszcze większej
+                sztywności konstrukcyjnej. Zwiększona masa i zamknięty układ
+                wspomagają tłumienie drgań, co przekłada się na wyższą precyzję
+                pracy, zwłaszcza przy obróbce metali i materiałów
+                trudnoskrawalnych.
+              </p>
 
-            <br/>
-            <h3 use:typoFixAction><b>Zastosowania i elastyczność</b></h3>
+              <br />
+              <h3 use:typoFixAction><b>Zastosowania i elastyczność</b></h3>
 
-            <p use:typoFixAction>
-              Zabudowane plotery CNC znajdują zastosowanie w aplikacjach
-              wymagających powtarzalności i kontroli środowiska obróbki – m.in.
-              w przemyśle motoryzacyjnym, lotniczym, formierskim i technice
-              medycznej. Mogą pracować z szeroką gamą materiałów, od tworzyw
-              sztucznych i kompozytów, po aluminium i stal, z możliwością
-              rozbudowy o osie obrotowe oraz automatyczne systemy wymiany
-              narzędzi.
-            </p>
+              <p use:typoFixAction>
+                Zabudowane plotery CNC znajdują zastosowanie w aplikacjach
+                wymagających powtarzalności i kontroli środowiska obróbki –
+                m.in. w przemyśle motoryzacyjnym, lotniczym, formierskim i
+                technice medycznej. Mogą pracować z szeroką gamą materiałów, od
+                tworzyw sztucznych i kompozytów, po aluminium i stal, z
+                możliwością rozbudowy o osie obrotowe oraz automatyczne systemy
+                wymiany narzędzi.
+              </p>
 
-            <br/>
-            <h3 use:typoFixAction><b>Opcje mocowania materiału</b></h3>
+              <br />
+              <h3 use:typoFixAction><b>Opcje mocowania materiału</b></h3>
 
-            <p use:typoFixAction>
-              Podobnie jak modele otwarte, urządzenia mogą być wyposażone w stół
-              podciśnieniowy, T-rowkowy lub hybrydowy, co pozwala na szybkie i
-              elastyczne mocowanie elementów o różnych kształtach i rozmiarach.
-            </p>
+              <p use:typoFixAction>
+                Podobnie jak modele otwarte, urządzenia mogą być wyposażone w
+                stół podciśnieniowy, T-rowkowy lub hybrydowy, co pozwala na
+                szybkie i elastyczne mocowanie elementów o różnych kształtach i
+                rozmiarach.
+              </p>
 
-            <MachineMenu
-              downloadText="Do pobrania"
-              downloadHref="/do_pobrania/Plotery-przemyslowe-CNC-HPP-CT.pdf"
-              contactText="Kontakt"
-              contactHref="#"
-            />
+              <MachineMenu
+                downloadText="Do pobrania"
+                downloadHref="/do_pobrania/Plotery-przemyslowe-CNC-HPP-CT.pdf"
+                contactText="Kontakt"
+                contactHref="#"
+              />
 
-            <Maszyny_table_plotery />
+              <Maszyny_table_plotery />
+            </ul>
           </div>
 
           {#if $expandedViewStore}
@@ -488,7 +504,7 @@
           in:fade={{ duration: 300, delay: 200 }}
           out:fade={{ duration: 300, delay: 100 }}
         >
-          <h1>Plotery przemysłowe CNC bez zabudowy</h1>
+          <h1>CERTUS HPP-OT</h1>
 
           <div class="left_image no-sel">
             <img
@@ -504,7 +520,7 @@
               alt="Ploter Przemysłowy Certus 0816 bez zabudowy"
             />
           </div>
-          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
+          <CtaButton classs="backButton" on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -515,7 +531,7 @@
         >
           <div class="right_content">
             <h1 use:typoFixAction>
-              <b>Wielkoformatowe centra obróbcze CNC</b><br /><br />stanowią
+              <b>Wielkoformatowy ploter przemysłowy bez zabudowy – HPP-OT</b><br /><br />stanowią
               wysokowydajne platformy przeznaczone do skrawania w co najmniej
               trzech osiach, z możliwością rozbudowy o dodatkowe osie sterowane.
               Dzięki temu łączą funkcje frezowania, wiercenia, gwintowania,
@@ -628,7 +644,7 @@
               alt="Frezarka Pięcioosiowe CNC Certus"
             />
           </div>
-          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
+          <CtaButton classs="backButton" on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -773,10 +789,9 @@
               class="back_image"
               draggable="false"
               src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
-              
             />
           </div>
-          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
+          <CtaButton classs="backButton" on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -920,7 +935,7 @@
               alt=""
             />
           </div>
-          <CtaButton on:click={closeFW} text="Zamknij szczegóły" hero={true} />
+          <CtaButton classs="backButton" on:click={closeFW} text="Zamknij szczegóły" hero={true} />
         </div>
 
         <div
@@ -931,13 +946,13 @@
         >
           <div class="right_content">
             <h1 use:typoFixAction>
-              <b>Plotery frezująco-tnące linearne CNC</b
-              ><br /><br />to precyzyjne i wydajne urządzenia zaprojektowane do
-              cięcia, bigowania, znakowania i opisywania szerokiej gamy
-              materiałów płaskich. Idealnie sprawdzają się w przemyśle
-              opakowaniowym, reklamowym, tekstylnym, kompozytowym i wielu innych
-              branżach, gdzie wymagana jest wysoka jakość krawędzi oraz
-              powtarzalność obróbki.
+              <b>Plotery frezująco-tnące linearne CNC</b><br /><br />to
+              precyzyjne i wydajne urządzenia zaprojektowane do cięcia,
+              bigowania, znakowania i opisywania szerokiej gamy materiałów
+              płaskich. Idealnie sprawdzają się w przemyśle opakowaniowym,
+              reklamowym, tekstylnym, kompozytowym i wielu innych branżach,
+              gdzie wymagana jest wysoka jakość krawędzi oraz powtarzalność
+              obróbki.
             </h1>
             <br /><br />
 
@@ -1103,7 +1118,7 @@
 
     ul {
       padding-left: 1rem !important;
-      li{
+      li {
         text-align: left;
       }
     }
@@ -1127,7 +1142,13 @@
       height: auto;
     }
   }
+:global(.activeMachine .backButton){
 
+  height: 44px !important;
+    opacity: 0.95 !important;
+
+
+}
   :global(.activeMachine .right_content) {
     color: #595959;
     display: flex;
@@ -1311,7 +1332,7 @@
   }
 
   .activeMachine .left_image img {
-    max-width: 85vw;
+    max-width: 62vw;
     min-width: 25vw;
   }
 
@@ -1440,6 +1461,7 @@
       flex-direction: column;
       height: 100%;
       overflow: auto;
+    
     }
     .activeMachine .left {
       width: 100% !important;

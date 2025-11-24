@@ -573,8 +573,22 @@
 
   .bestseller-cta {
     margin-top: 26px;
+   
+  
+    
+  
   }
+  :global(button.bestseller:hover .cta-svg)
+  {
 
+transform: scaleY(1.5);
+}
+
+:global(button.bestseller .cta-svg)
+  {
+
+transform: scaleY(1.5);
+}
   /* Dostosowanie CTA button w dropdown */
   .bestseller-dropdown :global(.cta-button) {
     width: 100%;

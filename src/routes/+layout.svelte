@@ -12,7 +12,6 @@
   import DevResolutionDisplay from '../components/DevResolutionDisplay.svelte';
   let loading = true;
   onMount(() => {
-    // Hide preloader after a short delay to avoid content flash
     setTimeout(() => {
       loading = false;
     }, 500);
@@ -82,7 +81,7 @@
 
 {#if loading}
   <div class="preloader no-sel gradientHero_old">
-    <img src="/assets/logo-certus.svg" alt="Wczytuje stronę..." width="64" height="64" />
+    <img src="/assets/logo-certus.svg" alt="Wczytuje stronę..." width="164" height="164" />
   </div>
 {/if}
 
@@ -99,7 +98,7 @@
 {/if} -->
 
 <!-- Dev Resolution Display - only visible during development -->
-<DevResolutionDisplay />
+<!-- <DevResolutionDisplay /> -->
 
 
 <style lang="scss">
