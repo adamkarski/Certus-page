@@ -22,7 +22,7 @@
 
   register();
 
-  const initialScale = 0.65;
+  const initialScale = 0.85;
   let scaleStores = list.map(() =>
     tweened(initialScale, { duration: 300, easing: quintOut })
   );
@@ -95,8 +95,8 @@
 
             if (container && image && topline) {
                 // Add debugging borders
-                image.style.border = '2px solid red';
-                topline.style.border = '2px solid green';
+              /*   image.style.border = '2px solid red';
+                topline.style.border = '2px solid green'; */
 
                 const position = () => {
                     const imageRect = image.getBoundingClientRect();
@@ -121,7 +121,7 @@
                     }
 
                     topline.style.position = 'absolute';
-                    topline.style.top = `${top}px`;
+                    topline.style.top = `${top-35}px`;
                     topline.style.left = `${left}px`;
                     topline.style.transform = 'none'; 
                     topline.style.margin = '0';
@@ -1078,7 +1078,10 @@
                   >
                     <swiper-slide>
                       <button
-                        use:scaleOnHover={responsiveInitialScale}
+                        use:scaleOnHover={{
+                          store: frezarkaScale1,
+                          initialValue: initialScale,
+                        }}
                         type="button"
                         class="items no-sel"
                         on:click={() => openMachine("m_frezarka")}
@@ -1103,7 +1106,10 @@
                     </swiper-slide>
                     <swiper-slide>
                       <button
-                        use:scaleOnHover={responsiveInitialScale}
+                        use:scaleOnHover={{
+                          store: frezarkaScale2,
+                          initialValue: initialScale,
+                        }}
                         type="button"
                         class="items no-sel"
                         on:click={() => openMachine("m_frezarka1")}
@@ -1898,7 +1904,7 @@
   }
 
   .headlines .topline {
-    width:300px;
+    width:350px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     color: #e3e3e3;
     line-height: 1;
@@ -2085,7 +2091,7 @@
         transition:
           transform 0.4s ease,
           opacity 0.4s ease;
-        transform: scale(0.65);
+        transform: scale(0.75);
         opacity: 0.4;
         display: flex;
         justify-content: center;
