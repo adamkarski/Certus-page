@@ -190,17 +190,28 @@
     setTimeout(() => {
       if (browser) {
         const urlParams = new URLSearchParams(window.location.search);
-        const categoryId = urlParams.get("category");
-        const machineId = urlParams.get("machine");
-        const slideId = urlParams.get("slide");
+        let categoryId = urlParams.get("category");
+        let machineId = urlParams.get("machine");
+        let slideId = urlParams.get("slide");
+        const categoryData = categoryId ? list.find((item) => item.id === categoryId) : null;
 
+        // If the initial URL is for a category page that shouldn't exist,
+        // correct the URL and reset state to the main slider view.
+        if (categoryId && !machineId && categoryData && typeof categoryData.machine === "string") {
+          history.replaceState(null, "", "/");
+          // Nullify params to trigger main slider logic below
+          categoryId = null;
+          machineId = null;
+          slideId = null;
+        }
+        
         if (categoryId) {
-          // If category in URL, don't init swiper, just set stores
+          // This path is for valid category pages OR direct-to-machine pages.
           $activeCategoryStore = categoryId;
           $activeMachineStore = machineId;
           $expandedViewStore = !!machineId;
         } else {
-          // No category, so init swiper
+          // Otherwise, no category in URL, so initialize the main slider.
           if (swiperElement) {
             const checkSwiper = () => {
               if (swiperElement.swiper) {
@@ -602,24 +613,17 @@
       const categoryId = urlParams.get("category");
       const machineId = urlParams.get("machine");
       const slideId = urlParams.get("slide");
+      const categoryData = categoryId ? list.find((item) => item.id === categoryId) : null;
 
-      // This logic handles the case where the user uses the browser's back button
-      // to navigate from a machine view. We need to decide whether to go to a
-      // subcategory list or the main slider.
-      // We check if the OLD state was a machine view, and the NEW url has no machine.
-      if ($activeMachineStore && !machineId && categoryId) {
-        const categoryData = list.find((item) => item.id === categoryId);
-
-        // If the category we're "returning" to is a direct-to-machine item
-        // (machine property is a string), it means we should actually be
-        // returning to the main slider instead.
-        if (categoryData && typeof categoryData.machine === "string") {
-          $activeCategoryStore = null;
-          $activeMachineStore = null;
-          $expandedViewStore = false;
-          // The activeCategoryStore.subscribe will handle the main swiper update.
-          return; // Exit early to prevent other store updates.
-        }
+      // If the URL points to a category page that SHOULD NOT exist (because it's a direct-to-machine item),
+      // then reset the state to the main slider view and correct the URL.
+      if (categoryId && !machineId && categoryData && typeof categoryData.machine === "string") {
+        history.replaceState(null, "", "/");
+        $activeCategoryStore = null;
+        $activeMachineStore = null;
+        $expandedViewStore = false;
+        // The activeCategoryStore.subscribe will handle the main swiper update.
+        return;
       }
 
       // Default behavior: sync stores with URL parameters.
