@@ -189,15 +189,18 @@
             window.location.href = "tel:+48606324406";
           }}
         >
-          <CtaButton classs="ms-button" text="Zadzwoń: +48 606 324 406" />
+          <CtaButton classs="ms-button" text="Zadzwoń: 606 324 406" />
         </div>
 
         </div>
 
     
-      </div>
+     
+     
+     
 
-      <div class="images-wrapper">
+      </div>
+   <div class="images-wrapper">
         <img
           class="image_spc"
           src="/assets/maszyny/renders/Certus_4040_Layers/Certus_4040_Layer1.png"
@@ -210,6 +213,7 @@
         />
       </div>
 
+   
     </div>
   </section>
 
@@ -417,10 +421,14 @@
 
   /* Obrazki w kolumnie obok tekstu na dużych ekranach */
   .images-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    
+     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    
+    max-width: 61vh;
+    min-width: 41vh;
   }
 
   /* Obrazki */
@@ -436,6 +444,7 @@
     }
     /* Obrazki pod tekstem i przyciskami, ułożone w wierszu obok siebie */
     .images-wrapper {
+      flex-direction: column; /* Added for stacking on small screens */
       justify-content: flex-start;
       gap: 10px;
       margin-top: 20px;
@@ -1019,13 +1028,24 @@
   }
 
   .images-special .content-wrapper {
+    flex-direction: column;
+    gap: 0px;
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: stretch;
     img.image_spc {
-      /* width:33%; */
+      max-width: 100%; /* Ensure images are responsive */
+      height: auto; /* Maintain aspect ratio */
+      display: block; /* Remove extra space below images */
     }
   }
+
+  .images-special .content-wrapper .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .schematy {
     display: flex;
   }
