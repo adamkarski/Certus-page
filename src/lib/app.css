@@ -1,0 +1,280 @@
+@import "tailwindcss";
+@import "./typography.scss";
+
+
+
+img{
+  -webkit-user-drag: none;
+  pointer-events: none;
+  
+  }
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Hero nie jest już fixed, więc nie potrzebujemy padding-top */
+}
+
+
+.no-sel {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+:root {
+  /* ===== KOLORY GŁÓWNE ===== */
+  --color-primary: #96a500; /* Główny zielony akcent */
+  --color-primary-light: #c5d418; /* Jaśniejszy zielony */
+  --color-primary-dark: #7e8c00; /* Ciemniejszy zielony */
+
+  /* ===== KOLORY POMOCNICZE ===== */
+  --color-accent: #ffd700; /* Złoty akcent */
+  --color-accent-red: #ff0000; /* Czerwony dla strzałek */
+
+  /* ===== KOLORY TEKSTU ===== */
+  --color-text-primary: #333; /* Główny kolor tekstu */
+  --color-text-secondary: #666; /* Drugorzędny kolor tekstu */
+  --color-text-light: #ccc; /* Jasny tekst */
+  --color-text-white: #fff; /* Biały tekst */
+
+  /* ===== KOLORY TŁA ===== */
+  --color-bg-primary: #ffffff; /* Główny kolor tła */
+  --color-bg-secondary: #f7f7f7; /* Drugorzędny kolor tła */
+  --color-bg-dark: #1a1a1a; /* Ciemny kolor tła */
+  --color-bg-overlay: #f8f9fa; /* Kolor tła overlay */
+
+  /* ===== KOLORY BORDER ===== */
+  --color-border: #e9ecef; /* Kolor obramowania */
+  --color-border-dark: #333; /* Ciemny kolor obramowania */
+
+  /* Typografia przeniesiona do typography.scss */
+
+  /* ===== INNE STYLE ===== */
+  color: #efefef;
+  background-color: var(--color-bg-primary);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Zapewnienie że wszystkie sekcje nie powodują overflow */
+section {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 100vw;
+}
+
+header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 12;
+}
+
+main {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+/* Podstawowe style - typografia w typography.scss */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+
+
+.logomini .lottie-player .animation svg > g > g:nth-child(4) {
+  opacity: 0;
+}
+
+
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Focus styles */
+/* *:focus { */
+  /* outline: 2px solid #2c5aa0; */
+  /* outline-offset: 2px; */
+/* } */
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Smooth scrolling for anchor links */
+a[href^="#"] {
+  scroll-behavior: smooth;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Button reset */
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Accessibility improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Selection */
+::selection {
+  background: #5d636b;
+  color: white;
+}
+
+/* ========================================
+   FORCE TYPOGRAPHY COLORS - FINAL OVERRIDE
+   ======================================== */
+
+/* Wymuszenie kolorów na samym końcu dla najwyższego priorytetu */
+.section-title,
+h2.section-title,
+section h2,
+section .section-title {
+  color: #666 !important;
+}
+
+.section-subtitle,
+section .section-subtitle,
+.section-header .section-subtitle {
+  color: #666 !important;
+}
+
+/* Bardzo specyficzne selektory */
+[class*="section-title"] {
+  color: #666 !important;
+}
+
+[class*="section-subtitle"] {
+  color: #666 !important;
+}
+
+/* Dla pewności - wszystkie h2 */
+h2 {
+  color: #666 !important;
+}
+
+
+.section-title {
+  color: var(--color-text-secondary);
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.section-subtitle {
+  color: var(--color-text-secondary);
+}
+
+#video {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+#image-section-01 {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}

@@ -1,0 +1,706 @@
+/* ==============================================
+   UNIWERSALNY CSS Z MEDIA QUERIES - 2025
+   Najbardziej uniwersalne breakpointy dla laptopów i desktopów
+   Bazuje na statystykach użytkowania i najlepszych praktykach
+   ============================================== */
+
+/* RESET I BAZOWE STYLE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* MOBILNE STYLE (DOMYŚLNE) - Mobile First Approach
+   Dla ekranów do 479px (telefony) */
+
+/* TELEFONY DUŻE I TABLETY MAŁE
+   480px+ (30em+) - około 7% urządzeń */
+@media (min-width: 30em) {
+}
+
+/* TABLETY I MAŁE LAPTOPY
+   768px+ (48em+) - pokrywa 1366x768 (9.06% rynku) */
+@media (min-width: 48em) {
+  /* body { */
+  /* font-size: 18px; */
+  /* } */
+}
+
+/* LAPTOPY I DESKTOPY STANDARDOWE
+   1024px+ (64em+) - pokrywa większość laptopów i małych desktopów */
+@media (min-width: 64em) {
+}
+
+/* DESKTOPY STANDARDOWE I LAPTOPY DUŻE
+   1200px+ (75em+) - pokrywa 1920x1080 (21.96% rynku) */
+@media (min-width: 75em) {
+}
+
+/* DESKTOPY DUŻE
+   1440px+ (90em+) - pokrywa 2560x1440 (4.57% rynku) i większe */
+@media (min-width: 90em) {
+  /* Optymalizacja dla ekranów QHD */
+  /* body { */
+  /* font-size: 19px; */
+  /* } */
+}
+
+/* EKRANY BARDZO DUŻE (4K i ultrawide)
+   1920px+ (120em+) - premium desktopy */
+@media (min-width: 120em) {
+}
+
+/* MEDIA QUERIES DLA WYSOKOŚCI EKRANU
+   Przydatne dla laptopów o różnych proporcjach */
+@media (min-height: 600px) {
+}
+@media (max-height: 620px) {
+  .headlines .topline {
+    /*  margin-top: 25%; */
+  }
+}
+/* ORIENTACJA POZIOMA NA TABLETACH */
+@media (min-width: 48em) and (orientation: landscape) {
+}
+
+/* PREFERENCJE UŻYTKOWNIKA - DARK MODE */
+@media (prefers-color-scheme: dark) {
+}
+
+/* ZMNIEJSZONA ANIMACJA - dla użytkowników z preferencją */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* WYSOKIE KONTRASTY */
+@media (prefers-contrast: high) {
+}
+
+/* ========================================
+   RESPONSYWNE WYSOKOŚCI - PRZYKŁAD
+   ======================================== */
+
+/* Kiedy wysokość okna przeglądarki jest mniejsza lub równa 700px,
+   tło strony zmieni kolor na czerwony. */
+@media (max-height: 700px) {
+  nav.fixed {
+    transform: scale(0.7);
+    margin-top: -30px !important;
+  }
+  nav.fixed.scrolled {
+    margin-top: 0px !important;
+    transform: scale(1);
+
+    .contenerNav {
+      transform: scale(0.8) !important;
+    }
+  }
+}
+
+/* From responsive.scss */
+@media (max-width: 768px) {
+  .menuItems {
+    width: 100%;
+    max-width: 100vw;
+  }
+}
+@media (max-width: 1200px) {
+  .video-header,
+  .image-header {
+    margin-left: 4em !important;
+    margin-top: -13em !important;
+    h1:before {
+      margin-top: 0px !important;
+      transform: scale(0.9) !important;
+    }
+  }
+
+  .image-header-02 {
+    h3 {
+      font-weight: 500 !important;
+      margin-left: -23px !important;
+    }
+    margin-left: -5em !important;
+    margin-top: -0.5em !important;
+    h2:before {
+      margin-top: 0px !important;
+      transform: scale(0.9) !important;
+    }
+  }
+}
+@media (max-height: 600px) {
+  .bestseller-dropdown {
+    width: 425px !important;
+    z-index: 1000 !important;
+    padding: 24px !important;
+    margin-top: 6px !important;
+  }
+}
+@media (min-width: 932px) and (max-width: 1014px) {
+  .nav-link {
+    text-align: center;
+    min-width: 65px !important;
+    padding: 0px !important;
+  }
+  .dropDownMenu {
+    padding: 5px;
+  }
+}
+@media (max-width: 900px) {
+  .contact-flex {
+    .contact-left::before {
+      display: none !important;
+    }
+  }
+}
+@media (max-width: 932px) {
+  .image-container-02 {
+    .phone-holder {
+      right: 1em !important;
+      margin-top: -50px !important;
+    }
+
+    a {
+      margin-left: 0px !important;
+    }
+  }
+  .desktop-menu-items a.nav-link {
+    font-weight: 300 !important;
+    font-size: 14px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    margin-left: 7px;
+    svg {
+      margin-left: 10px;
+    }
+  }
+}
+@media (max-width: 757px) {
+  .contact-right {
+    .contact-form {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+
+  .video-header {
+    margin-left: 3em !important;
+    margin-top: -12em !important;
+  }
+  .image-header {
+    margin-left: 3em !important;
+    margin-top: -8em !important;
+  }
+  .hero-content {
+    opacity: 1;
+    button.items {
+      margin-top: 30px;
+      padding: 0px !important;
+    }
+  }
+  .image-container-02 .phone-holder {
+    transform: scale(0.7) !important;
+    margin-top: -40px !important;
+    right: -8px !important;
+  }
+}
+@media (min-width: 757px) and (max-width: 932px) {
+  .oferta-container {
+    padding: 0 1rem !important;
+  }
+  .nav-link {
+    padding: 0px !important;
+    min-width: 51px !important;
+  }
+  .dropDownMenu {
+    padding: 8px;
+  }
+  .oferta-container {
+    padding: 0 2rem !important;
+  }
+  .o-nas-container {
+    padding: 0 2rem !important;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .activeMachine .right {
+    flex-direction: column !important;
+  }
+}
+@media (min-width: 1200px) {
+  .menuItems {
+    width: 600px;
+  }
+  tbody tr td:first-child {
+    width: 10% !important;
+    min-width: 20px !important;
+  }
+  .active_flex {
+    width: 100%;
+    display: flex;
+    height: 100%;
+  }
+  .activeMachine .left {
+    max-width: 60% !important;
+    height: 100% !important;
+  }
+  .activeMachine .right {
+    max-width: 40% !important;
+    height: 100% !important;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .activeMachine .right_params_content {
+    padding-top: 2rem !important;
+    padding-left: 0rem !important;
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+  }
+}
+@media (min-width: 1600px) {
+  .activeMachine .left_image img {
+    max-width: 35vw;
+    min-width: 35vw;
+  }
+}
+@media (max-width: 1200px) {
+  body.maszyny .maszyny-dane-cta {
+    padding-bottom: 5em;
+  }
+  .activeMachine {
+    flex-direction: column !important;
+    padding: 1rem !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+  }
+
+  .activeMachine .left {
+    width: 100% !important;
+    height: 50vh !important;
+    min-height: 400px !important;
+  }
+
+  .activeMachine .left.short {
+    width: 100% !important;
+    height: 40vh !important;
+    min-height: 300px !important;
+  }
+
+  .activeMachine .left h1 {
+    padding-left: 1em !important;
+    padding-top: 1em !important;
+    text-align: center !important;
+  }
+
+  .activeMachine .left_image img {
+    max-width: 45vw;
+    min-width: 45vw;
+  }
+
+  .activeMachine .right {
+    width: 100% !important;
+    height: 50vh !important;
+    overflow-y: auto !important;
+    padding: 10px 15px !important;
+    h1 {
+      margin-left: -16px !important;
+    }
+  }
+
+  .activeMachine .right.expanded {
+    width: 100% !important;
+    height: 60vh !important;
+  }
+
+  .activeMachine .right_content {
+    max-width: 100% !important;
+
+    h1 {
+      margin-top: 2rem !important;
+    }
+
+    p {
+      line-height: 1.5 !important;
+    }
+  }
+
+  .activeMachine .right_params_content {
+    padding-top: 2rem !important;
+    padding-left: 0rem !important;
+
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    h2 {
+      margin-top: 2rem !important;
+      padding-left: 1rem !important;
+    }
+
+    p {
+      padding-left: 1rem !important;
+    }
+
+    li {
+      padding-left: 1rem !important;
+    }
+  }
+  :global(.activeMachine .maszyny-dane-tabela) {
+    margin-top: 2em !important;
+    padding-bottom: 2em !important;
+    font-size: 0.85rem !important;
+  }
+  :global(.activeMachine .cta-button-hero) {
+    position: fixed !important;
+    left: 50% !important;
+    bottom: 2em !important;
+    transform: translateX(-50%) !important;
+    width: 200px !important;
+    height: 22px !important;
+    padding-left: 30px !important;
+    margin-left: 0 !important;
+    z-index: 10000030 !important;
+  }
+}
+@media (max-width: 768px) {
+  .activeMachine .left h1 {
+    padding-left: 0.5em !important;
+  }
+  .section-title::before {
+    transform: scale(0.8) !important;
+  }
+  .activeMachine .left_image img {
+    max-width: 70vw !important;
+    min-width: 50vw !important;
+  }
+
+  .activeMachine .right {
+    padding: 5px 10px !important;
+  }
+
+  .activeMachine .right_content {
+    h1 {
+      margin-top: 1rem !important;
+    }
+  }
+
+  .activeMachine .right_params_content {
+    padding-top: 1rem !important;
+    padding-left: 0.5rem !important;
+
+    h2 {
+      margin-top: 1rem !important;
+      padding-left: 0.5rem !important;
+    }
+
+    p {
+      padding-left: 0.5rem !important;
+    }
+
+    li {
+      padding-left: 0.5rem !important;
+    }
+  }
+  :global(.activeMachine .maszyny-dane-tabela) {
+    font-size: 0.75rem !important;
+  }
+  :global(.activeMachine .cta-button-hero) {
+    width: 180px !important;
+    height: 20px !important;
+    padding-left: 25px !important;
+    bottom: 1.5em !important;
+  }
+
+  section.o-nas .container {
+    padding: 2rem !important;
+  }
+}
+@media (max-width: 480px) {
+  :global(.maszyny-dane-tabela img) {
+    width: 30px !important;
+  }
+  .activeMachine {
+    padding: 0.5rem !important;
+  }
+
+  .activeMachine .left {
+    height: 45vh !important;
+    min-height: 250px !important;
+  }
+
+  .activeMachine .left.short {
+    height: 35vh !important;
+    min-height: 200px !important;
+  }
+
+  .activeMachine .left h1 {
+    padding-left: 0.3em !important;
+    padding-top: 0.5em !important;
+  }
+
+  .activeMachine .left_image img {
+    max-width: 75vw !important;
+    min-width: 60vw !important;
+  }
+
+  .activeMachine .right {
+    height: 55vh !important;
+    padding: 5px !important;
+  }
+
+  .activeMachine .right.expanded {
+    height: 65vh !important;
+  }
+
+  .activeMachine .right_content {
+    h1 {
+      margin-top: 0.5rem !important;
+    }
+
+    p {
+      line-height: 1.4 !important;
+    }
+  }
+
+  .activeMachine .right_params_content {
+    padding-top: 0.5rem !important;
+    padding-left: 0.25rem !important;
+
+    h2 {
+      margin-top: 0.5rem !important;
+      padding-left: 0.25rem !important;
+    }
+
+    p {
+      padding-left: 0.25rem !important;
+    }
+
+    li {
+      padding-left: 0.25rem !important;
+    }
+  }
+  :global(.activeMachine .maszyny-dane-tabela) {
+    font-size: 0.7rem !important;
+    margin-top: 1em !important;
+  }
+  :global(.activeMachine .cta-button-hero) {
+    width: 160px !important;
+    height: 18px !important;
+    padding-left: 20px !important;
+    bottom: 1em !important;
+  }
+}
+
+/* From app.css */
+@media (min-width: 48rem) {
+  .container {
+    max-width: 100%;
+  }
+}
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+}
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  .header,
+  .footer {
+    display: none;
+  }
+}
+
+/* From table.scss */
+@media (max-width: 1300px) {
+  .maszyny-dane-text-image .right{
+    
+      margin-top: 100px;
+    
+  }
+}
+
+@media (max-width: 900px) {
+  .maszyny-dane-text-image {
+    flex-direction: column;
+    .left,
+    .right {
+      width: 100%;
+      text-align: left;
+    }
+    .right {
+      margin-top: 20px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  #maszyny.maszyny {
+    padding: 80px 0;
+  }
+  .maszyny-container {
+    padding: 0 2rem !important;
+  }
+  .section-header {
+    margin-bottom: 60px;
+  }
+}
+@media (max-width: 900px) {
+  .maszyny-dane {
+    padding: 2rem 1rem;
+  }
+  .maszyny-dane-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+  .maszyny-dane-cta {
+    text-align: center;
+  }
+}
+@media (max-width: 1200px) {
+  .maszyny-dane .maszyny-dane-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .maszyny-dane .maszyny-dane-table-column,
+  .maszyny-dane .maszyny-dane-gallery-column {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+  }
+  .maszyny-dane .maszyny-dane-gallery-column {
+    order: 2;
+  }
+  .maszyny-dane .maszyny-dane-table-column {
+    order: 1;
+  }
+}
+@media (max-width: 1200px) and (max-width: 768px) {
+  #maszyny.maszyny {
+    padding: 80px 0;
+  }
+  .maszyny-container {
+    padding: 0 2rem !important;
+  }
+  .section-header {
+    margin-bottom: 60px;
+  }
+  .maszyny-dane-tabela td:first-child img {
+    display: block;
+    margin: 0 auto 5px;
+    margin-left: 0px;
+    float: none;
+  }
+  .maszyny-dane-tabela td:first-child .text {
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+}
+@media (max-width: 1024px) {
+  .maszyny-dane .maszyny-dane-content {
+    gap: 25px;
+  }
+}
+@media (max-width: 900px) {
+  .maszyny-dane-tabela-wrap {
+    overflow-x: auto;
+    max-width: 100vw;
+  }
+}
+@media (max-width: 768px) {
+  .maszyny-dane-tabela td:first-child img {
+    display: block;
+    margin: 0 auto 5px;
+    margin-left: 0px;
+    float: none;
+  }
+  .maszyny-dane-tabela td:first-child .text {
+    display: block;
+    text-align: left;
+    width: 100%;
+  }
+  .maszyny-dane .maszyny-dane-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .maszyny-dane .maszyny-dane-table-column,
+  .maszyny-dane .maszyny-dane-gallery-column {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+  }
+  .options-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  }
+  .options-list li {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    display: inline-block !important;
+    margin-right: 8px;
+    margin-bottom: 4px;
+  }
+  .maszyny-dane-tabela {
+    min-width: 100%;
+    width: 100%;
+    font-size: 0.85rem;
+  }
+  .maszyny-dane-tabela th,
+  .maszyny-dane-tabela td {
+    padding: 0.5em 0.3em;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .maszyny-dane-tabela .options-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+  .maszyny-dane-tabela .options-list li {
+    display: inline-block !important;
+    font-size: 0.7rem;
+  }
+}
+
+/* From typography.scss */
+@media (max-width: 768px) {
+  :global(body) {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "frezarki",
+    "title": "Frezarki CNC HMM",
+    "img": "/assets/maszyny/renders/FREZARKI_HMM_Layers/FREZARKI_HMM_Layer1.png",
+    "startExpanded": false,
+    "url": null,
+    "icon": "/assets/ikony/maszyny/frezarki.svg",
+    "machine":["m_frezarka","m_frezarka1"]
+  },
+  {
+    "id": "ploteryPrzemyslowe",
+    "title": "Plotery przemysłowe CNC",
+    "img": "/assets/maszyny/renders/PLOTERY_Layers/PLOTERY_Layer1.png",
+    "startExpanded": false,
+    "url": null,
+    "icon": "/assets/ikony/maszyny/ploteryPrzemyslowe.svg",
+    "machine":["m-ploter","m-ploter1"]
+  },
+  {
+    "id": "frezarki5osiowe",
+    "title": "Frezarki pięcioosiowe",
+    "img": "/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png",
+    "startExpanded": true,
+    "url": null,
+    "icon": "/assets/ikony/maszyny/frezarki5osiowe.svg",
+    "machine":"m_frezarka5osi"
+  },
+  {
+    "id": "grawerki",
+    "title": "Grawerki CNC",
+    "img": "/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png",
+    "startExpanded": true,
+    "url": null,
+    "icon": "/assets/ikony/maszyny/grawerki.svg",
+    "machine":"m_grawerka"
+  },
+  {
+    "id": "ploteryLinearne",
+    "title": "Plotery CNC HLP-FT",
+    "subtitle":"<span class=\"nawias\">(frezująco-tnące linearne)</span>",
+    "img": "/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png",
+    "startExpanded": true,
+    "url": null,
+    "icon": "/assets/ikony/maszyny/ploteryLinearne.svg",
+    "machine":"m_ploterLinear"
+  },
+  {
+    "id": "certus",
+    "title": "Certus 69",
+    "img": "/assets/maszyny/renders/Certus_69_Layers/Certus_69_Layer1.png",
+    "startExpanded": false,
+    "url": "/bestseller",
+    "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
+    "machine":"m_special"
+  },
+  {
+    "id": "specjalistyczne",
+    "title": "Maszyny specjalistyczne",
+    "img": "/assets/maszyny/renders/Certus_wiertarka_V1_Layers/Certus_wiertarka_V1_Layer1.png",
+    "startExpanded": false,
+    "url": "/maszyny-specjalistyczne",
+    "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
+    "machine":"m_special"
+  }
+ 
+]

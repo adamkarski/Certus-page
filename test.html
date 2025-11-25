@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frezarka CNC Responsive</title>
+  <style>
+    .cnc-table {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      width: 100%;
+      background: #fff;
+    }
+    .cnc-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 220px;
+      padding: 1.6em 1em;
+    }
+    .cnc-row {
+      display: flex;
+      align-items: center;
+      padding: 0.5em 0;
+    }
+    .cnc-row + .cnc-row {
+      border-top: 1px solid #ccc;
+    }
+    .cnc-icon {
+      width: 36px;
+      height: 36px;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .cnc-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+      padding: 1em;
+    }
+    .cnc-right img {
+      max-width: 100%;
+      height: auto;
+    }
+    @media (max-width: 900px) {
+      .cnc-table {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cnc-left {
+        padding: 1em 0.5em;
+      }
+    }
+    @media (max-width: 600px) {
+      .cnc-table {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cnc-left, .cnc-right {
+        padding: 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cnc-table">
+    <div class="cnc-left">
+      <div class="cnc-row">
+        <img src="icon.svg" alt="Ikona CNC" class="cnc-icon">
+        <strong>Frezarka CNC HMM-ST z ruchomym stołem</strong>
+      </div>
+      <div class="cnc-row">
+        Zaprojektowana z myślą o szybkim i precyzyjnym frezowaniu materiałów takich jak stal, aluminium, drewno, tworzywa sztuczne i inne.
+      </div>
+    </div>
+    <div class="cnc-right">
+      <img src="image.jpg" alt="Frezarka CNC HMM-ST">
+    </div>
+  </div>
+</body>
+</html>
