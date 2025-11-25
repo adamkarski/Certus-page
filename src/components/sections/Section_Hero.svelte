@@ -79,6 +79,7 @@
   let swiperElement; // Declare swiperElement
   let swiperKey = 0; // Klucz do wymuszania re-renderu swipera
   let lastActiveSlideIndex = 0; // Zapamięta ostatni aktywny slajd
+  let subSwiperKey = 0; // Klucz do wymuszania re-renderu sub-swipera
 
   // Zmienna do śledzenia stanów ładowania obrazków
   let imageLoadingStates = writable({});
@@ -167,6 +168,9 @@
               setupSwiperEvents(swiperElement.swiper);
               updateNavigationButtons(swiperElement.swiper);
 
+              // Reposition toplines after swiper is ready
+              positionToplines();
+
               // Wróć do zapisanego slajdu po re-renderze
               setTimeout(() => {
                 if (swiperElement && swiperElement.swiper) {
@@ -208,6 +212,8 @@
                     swiperElement.swiper.slideTo(index);
                   }
                 }
+                // Position toplines once the swiper is ready on initial load
+                positionToplines();
                 setTimeout(() => {
                   if (swiperElement && swiperElement.swiper) {
                     updateNavigationButtons(swiperElement.swiper);
@@ -593,14 +599,42 @@
   function handlePopstate(event) {
     if (browser) {
       const urlParams = new URLSearchParams(window.location.search);
-      const slideId = urlParams.get("slide");
       const categoryId = urlParams.get("category");
       const machineId = urlParams.get("machine");
+      const slideId = urlParams.get("slide");
 
+      // This logic handles the case where the user uses the browser's back button
+      // to navigate from a machine view. We need to decide whether to go to a
+      // subcategory list or the main slider.
+      // We check if the OLD state was a machine view, and the NEW url has no machine.
+      if ($activeMachineStore && !machineId && categoryId) {
+        const categoryData = list.find((item) => item.id === categoryId);
+
+        // If the category we're "returning" to is a direct-to-machine item
+        // (machine property is a string), it means we should actually be
+        // returning to the main slider instead.
+        if (categoryData && typeof categoryData.machine === "string") {
+          $activeCategoryStore = null;
+          $activeMachineStore = null;
+          $expandedViewStore = false;
+          // The activeCategoryStore.subscribe will handle the main swiper update.
+          return; // Exit early to prevent other store updates.
+        }
+      }
+
+      // Default behavior: sync stores with URL parameters.
+      const wasInMachineView = $activeMachineStore !== null;
       $activeCategoryStore = categoryId;
       $activeMachineStore = machineId;
       $expandedViewStore = !!machineId;
 
+      // Handle swiper key for sub-swiper re-rendering
+      const isNowInCategoryView = categoryId !== null && machineId === null;
+      if (wasInMachineView && isNowInCategoryView) {
+        subSwiperKey++;
+      }
+
+      // Handle main swiper slide position
       if (slideId) {
         const index = list.findIndex((item) => item.id === slideId);
         if (index !== -1 && swiperElement && swiperElement.swiper) {
@@ -680,19 +714,38 @@
     }
   };
   const close = () => {
-    // If a machine view is open, just close that and return to the category list.
+    // If a machine view is open...
     if ($activeMachineStore) {
-      document.body.classList.remove("active_machine_view");
-      $activeMachineStore = null;
-      $expandedViewStore = false;
-      if (browser) {
-        const url = new URL(window.location.href);
-        url.searchParams.delete("machine");
-        history.pushState(
-          { category: $activeCategoryStore, machine: null },
-          "",
-          url.toString()
-        );
+      const categoryData = list.find((item) => item.id === $activeCategoryStore);
+
+      // Check if the parent category has a list of machines (sub-category view)
+      // by checking if its 'machine' property is an array.
+      if (categoryData && Array.isArray(categoryData.machine)) {
+        // This machine is part of a subcategory. Go back to the subcategory list.
+        document.body.classList.remove("active_machine_view");
+        $activeMachineStore = null;
+        $expandedViewStore = false;
+        if (browser) {
+          const url = new URL(window.location.href);
+          url.searchParams.delete("machine");
+          history.pushState(
+            { category: $activeCategoryStore, machine: null },
+            "",
+            url.toString()
+          );
+        }
+        subSwiperKey++; // Force re-render of the sub-swiper
+      } else {
+        // This machine was opened directly from the main slider (its 'machine' property is a string).
+        // Go back to the main slider.
+        $activeCategoryStore = null;
+        $activeMachineStore = null;
+        $expandedViewStore = false;
+        if (browser) {
+          const url = new URL(window.location.origin);
+          history.pushState({ category: null, machine: null }, "", url.toString());
+        }
+        // The activeCategoryStore subscriber will handle main swiper re-rendering (swiperKey++).
       }
       return; // Stop here
     }
@@ -700,7 +753,6 @@
     // If only a category view is open, close it and return to the main slider.
     if ($activeCategoryStore) {
       $activeCategoryStore = null;
-      // $activeMachineStore is already null here, but let's be explicit
       $activeMachineStore = null;
       $expandedViewStore = false;
       if (browser) {
@@ -1041,6 +1093,7 @@
           <div class="category-content">
             <div class="container" in:fade={{ duration: 600, delay: 200 }}>
               <div class="content">
+                {#key subSwiperKey}
                 <div
                   class="subListMachines"
                   class:subListMachines--single-view={subSwiperSlidesPerView ===
@@ -1156,6 +1209,7 @@
                     </svg>
                   </button>
                 </div>
+                {/key}
                 <!-- Back button moved for stable positioning -->
               </div>
             </div>
@@ -1178,7 +1232,7 @@
                 {list.find((item) => item.id === $activeCategoryStore)?.title}
 
               </h1> -->
-
+                {#key subSwiperKey}
                 <div
                   class="subListMachines"
                   class:subListMachines--single-view={subSwiperSlidesPerView ===
@@ -1294,6 +1348,7 @@
                     </svg>
                   </button>
                 </div>
+                {/key}
 
                 <!-- Back button moved for stable positioning -->
               </div>
