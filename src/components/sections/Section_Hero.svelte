@@ -874,6 +874,24 @@
     resetHeroSwiper.set(false); // Reset the store value
   }
 
+  // Reactive Guard: This block watches for invalid navigation states and corrects them.
+  $: {
+    if (browser && $activeCategoryStore && !$activeMachineStore) {
+      const categoryData = list.find((item) => item.id === $activeCategoryStore);
+      // If we've entered a "category view" for an item that should link
+      // directly to a machine (i.e. 'machine' is a string), it's an invalid state.
+      // This can happen when closing a direct-to-machine view.
+      // We must correct the state and go back to the main slider.
+      if (categoryData && typeof categoryData.machine === "string") {
+        // Use a timeout to defer this state change to the next event loop cycle,
+        // preventing potential issues with Svelte's reactivity.
+        setTimeout(() => {
+          $activeCategoryStore = null;
+        }, 0);
+      }
+    }
+  }
+
   function positionBackButton() {
     if (browser) {
       const hero = document.querySelector<HTMLElement>(".hero");

@@ -1061,13 +1061,7 @@
 {/if}
 
 <style lang="scss">
-  /* --- DEBUGGING BORDERS --- */
-  /*  .activeMachine { border: 2px solid red !important; display: block !important; }
-  .active_flex { border: 2px solid blue !important; display: flex !important; }
-  .activeMachine .left { border: 2px solid green !important; display: flex !important; }
-  .activeMachine .right { border: 2px solid orange !important; display: flex !important; } */
-  /* --- END DEBUGGING BORDERS --- */
-  /* Mobile layout for $activeMachineStore */
+
   .activeMachine {
     flex-direction: column;
     padding: 1rem;
@@ -1431,6 +1425,17 @@
     }
   }
 
+  @media (max-width: 1200px) {
+    .active_flex {
+      display: flex !important;
+      position: relative !important;
+      flex-direction: column;
+      height: 100%;
+      overflow: auto;
+    
+    }
+
+  }
   @media (max-width: 800px) {
     :global(body.r800) {
       all: unset !important;
@@ -1456,11 +1461,11 @@
       width: 100vw;
     }
     .active_flex {
-      display: flex !important;
+   /*    display: flex !important;
       position: relative !important;
       flex-direction: column;
       height: 100%;
-      overflow: auto;
+      overflow: auto; */
     
     }
     .activeMachine .left {
