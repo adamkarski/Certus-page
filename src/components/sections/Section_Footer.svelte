@@ -450,6 +450,11 @@
       padding: 60px 0 0;
     }
 
+    .contact-icon img{
+
+min-width: 25px;
+
+    }
     .footer-container {
       padding-left: 2em;
       padding-right: 2em;

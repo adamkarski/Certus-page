@@ -637,11 +637,11 @@
   }
 
   .contact-flex {
-    background: linear-gradient(
+    /* background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 1) 60%,
       rgba(235, 235, 235, 1) 100%
-    );
+    ); */
     height: auto;
     position: relative;
     top: 0px;
@@ -691,7 +691,7 @@
   }
 
   .contact-left.is-kontakt-page:before {
-    background: #f4f4f4; // Kolor dla strony kontakt
+    background: #f7f7f7; // Kolor dla strony kontakt
     border-left: none;
     border-top: none;
   }
@@ -815,7 +815,7 @@
   @media (max-width: 900px) {
     .contact-flex .background .contact {
       flex-direction: column;
-      padding: 24px 6px;
+      margin: 24px 6px 24px 6px !important;
       gap: 24px;
       margin: 60px auto;
     }

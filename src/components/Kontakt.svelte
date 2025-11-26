@@ -15,6 +15,16 @@
 </section>
 
 <style lang="scss">
+  
+  
+  
+  :global(.contact-flex .background){
+    background-color: #f7f7f7;
+  }
+  
+  :global(.gradientHero_old) {
+    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
+  }
   #kontakt {
     overflow: hidden;
     &::before {
@@ -26,7 +36,13 @@
       height: 50px;
       background-image: url(/assets/images/pattern-image1-2.png);
     }
+
+
   }
+
+
+
+
   .triangle {
     position: absolute;
     width: 400px;
