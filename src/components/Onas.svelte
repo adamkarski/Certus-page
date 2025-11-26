@@ -15,14 +15,9 @@
     use:typoFixAction
     in:fade={{ duration: 600, delay: 900 }}
   >
-    CERTUS to polska marka zbudowana na solidnych fundamentach – wiedzy,
-    doświadczeniu i pasji do inżynierii. Jesteśmy producentem maszyn CNC, który
-    od ponad dekady dostarcza rozwiązania skrojone na miarę – niezawodne,
-    długowieczne i technologicznie zaawansowane.
+    CERTUS to polska marka zbudowana na solidnych fundamentach – wiedzy, doświadczeniu i pasji do inżynierii. Jesteśmy producentem maszyn CNC, który od dwóch dekad dostarcza rozwiązania skrojone na miarę – niezawodne, długowieczne i technologicznie zaawansowane.
     <br /><br />
-    Nasza historia zaczęła się dużo wcześniej. Właściciel CERTUS od 2000 roku związany
-    jest z rynkiem CNC i był jednym z liderów kultowego Forum CNC – społeczności,
-    która kształtowała oblicze branży w Polsce.
+    Nasza historia zaczęła się dużo wcześniej. Właściciel CERTUS od 2000 roku związany jest z rynkiem CNC i był jednym z liderów kultowego Forum CNC – społeczności, która kształtowała oblicze branży w Polsce.
   </p>
 </section>
 

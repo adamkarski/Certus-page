@@ -47,7 +47,7 @@
         <span class="info-title">Ponad 20 lat doświadczenia w branży</span>
       </div>
       <p class="info-desc" use:typoFixAction>
-        Z ponad dekadą doświadczenia w branży CNC, CERTUS jest wiarygodnym partnerem dla wymagających klientów.
+        Z doświadczeniem zdobywanym przez przeszło dwie dekady w branży CNC, CERTUS jest wiarygodnym partnerem dla wymagających klientów.
       </p>
     </div>
   </div>

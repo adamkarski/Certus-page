@@ -166,12 +166,12 @@
     </div>
 
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image01
+     <!--  <Section_Maszyny_Image01
         sectionId="frezarki-image-01"
         imgSrc="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
         title="Frezarki CNC HMM-ST"
         subtitle="Precyzyjne obróbki skrawaniem"
-      />
+      /> -->
 
       <Section_Maszyny_Image02
         sectionId="frezarki-gallery"
