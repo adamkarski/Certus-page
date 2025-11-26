@@ -73,18 +73,29 @@ afterUpdate(() => {
           <h1>CERTUS HMM-ST</h1>
 
           <div class="left_image no-sel">
-            <img
-              style="filter: blur(120px);"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-              alt="Frezarki CNC"
-            />
-            <img
-              class="back_image"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-              alt="Frezarki CNC"
-            />
+            <picture>
+              <source
+                srcset="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                style="filter: blur(120px);"
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+                alt="Frezarki CNC"
+              />
+            </picture>
+            <picture class="back_image">
+              <source
+                srcset="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+                alt="Frezarki CNC"
+              />
+            </picture>
           </div>
           <CtaButton
             classs="backButton"
@@ -207,14 +218,26 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.png"
-                  alt="Schemat techniczny frezarki Certus CNC HMM-ST 1080 PRO - widok 1 - "
-                />
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.png"
-                  alt="Schemat techniczny frezarki Certus CNC HMM-ST 1080 PRO - widok 2"
-                />
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.png"
+                    alt="Schemat techniczny frezarki Certus CNC HMM-ST 1080 PRO - widok 1 - "
+                  />
+                </picture>
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.png"
+                    alt="Schemat techniczny frezarki Certus CNC HMM-ST 1080 PRO - widok 2"
+                  />
+                </picture>
               </div>
             </div>
           {/if}
@@ -236,18 +259,29 @@ afterUpdate(() => {
           <h1>CERTUS HMM-GT</h1>
 
           <div class="left_image no-sel">
-            <img
-              style="filter: blur(120px);"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
-              alt="Frezarki CNC"
-            />
-            <img
-              class="back_image"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
-              alt="Frezarki CNC"
-            />
+            <picture>
+              <source
+                srcset="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                style="filter: blur(120px);"
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
+                alt="Frezarki CNC"
+              />
+            </picture>
+            <picture class="back_image">
+              <source
+                srcset="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
+                alt="Frezarki CNC"
+              />
+            </picture>
           </div>
           <CtaButton
             classs="backButton"
@@ -377,14 +411,26 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_1410_1.png"
-                  alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 1"
-                />
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_1410_2.png"
-                  alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 2"
-                />
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_1410_1.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_1410_1.png"
+                    alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 1"
+                  />
+                </picture>
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_1410_2.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_1410_2.png"
+                    alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 2"
+                  />
+                </picture>
               </div>
             </div>
           {/if}
@@ -401,18 +447,29 @@ afterUpdate(() => {
           <h1>CERTUS HPP-CT</h1>
 
           <div class="left_image no-sel">
-            <img
-              style="filter: blur(120px);"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
-              alt="Ploter Przemysłowy Certus 0815 ATC w zabudowie"
-            />
-            <img
-              class="back_image"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
-              alt="Ploter Przemysłowy Certus 0815 ATC w zabudowie"
-            />
+            <picture>
+              <source
+                srcset="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                style="filter: blur(120px);"
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+                alt="Ploter Przemysłowy Certus 0815 ATC w zabudowie"
+              />
+            </picture>
+            <picture class="back_image">
+              <source
+                srcset="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+                alt="Ploter Przemysłowy Certus 0815 ATC w zabudowie"
+              />
+            </picture>
           </div>
           <CtaButton
             classs="backButton"
@@ -522,14 +579,26 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.png"
-                  alt="Schemat techniczny ploter Certus CNC HPP-CT 0815 ATC w zabudowie - widok 1"
-                />
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.png"
-                  alt="Schemat techniczny ploter Certus CNC HPP-CT 0815 ATC w zabudowie - widok 2"
-                />
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.png"
+                    alt="Schemat techniczny ploter Certus CNC HPP-CT 0815 ATC w zabudowie - widok 1"
+                  />
+                </picture>
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.png"
+                    alt="Schemat techniczny ploter Certus CNC HPP-CT 0815 ATC w zabudowie - widok 2"
+                  />
+                </picture>
               </div>
             </div>
           {/if}
@@ -550,18 +619,29 @@ afterUpdate(() => {
           <h1>CERTUS HPP-OT</h1>
 
           <div class="left_image no-sel">
-            <img
-              style="filter: blur(120px);"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
-              alt="Ploter Przemysłowy Certus 0816 bez zabudowy"
-            />
-            <img
-              class="back_image"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
-              alt="Ploter Przemysłowy Certus 0816 bez zabudowy"
-            />
+            <picture>
+              <source
+                srcset="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                style="filter: blur(120px);"
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
+                alt="Ploter Przemysłowy Certus 0816 bez zabudowy"
+              />
+            </picture>
+            <picture class="back_image">
+              <source
+                srcset="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
+                alt="Ploter Przemysłowy Certus 0816 bez zabudowy"
+              />
+            </picture>
           </div>
           <CtaButton
             classs="backButton"
@@ -656,14 +736,26 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
-                  alt="Schemat techniczny ploter Certus CNC HPP-OT 0816 bez zabudowy - widok 1"
-                />
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_0816_2.png"
-                  alt="Schemat techniczny ploter Certus CNC HPP-OT 0816 bez zabudowy - widok 2"
-                />
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_0816_1.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
+                    alt="Schemat techniczny ploter Certus CNC HPP-OT 0816 bez zabudowy - widok 1"
+                  />
+                </picture>
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_0816_2.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_0816_2.png"
+                    alt="Schemat techniczny ploter Certus CNC HPP-OT 0816 bez zabudowy - widok 2"
+                  />
+                </picture>
               </div>
             </div>
           {/if}
@@ -680,18 +772,29 @@ afterUpdate(() => {
           <h1>Frezarki Pięcioosiowe CNC</h1>
 
           <div class="left_image no-sel">
-            <img
-              style="filter: blur(120px);"
-              draggable="false"
-              src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
-              alt="Frezarka Pięcioosiowe CNC Certus"
-            />
-            <img
-              class="back_image"
-              draggable="false"
-              src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
-              alt="Frezarka Pięcioosiowe CNC Certus"
-            />
+            <picture>
+              <source
+                srcset="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                style="filter: blur(120px);"
+                draggable="false"
+                src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
+                alt="Frezarka Pięcioosiowe CNC Certus"
+              />
+            </picture>
+            <picture class="back_image">
+              <source
+                srcset="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                draggable="false"
+                src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
+                alt="Frezarka Pięcioosiowe CNC Certus"
+              />
+            </picture>
           </div>
           <CtaButton
             classs="backButton"
@@ -809,14 +912,26 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.png"
-                  alt="Schemat techniczny Frezarka pięcioosiowa Certus - widok 1"
-                />
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.png"
-                  alt="Schemat techniczny Frezarka pięcioosiowa Certus - widok 2"
-                />
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.png"
+                    alt="Schemat techniczny Frezarka pięcioosiowa Certus - widok 1"
+                  />
+                </picture>
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.png"
+                    alt="Schemat techniczny Frezarka pięcioosiowa Certus - widok 2"
+                  />
+                </picture>
               </div>
             </div>
           {/if}
@@ -833,17 +948,28 @@ afterUpdate(() => {
           <h1>Grawerki CNC</h1>
 
           <div class="left_image no-sel">
-            <img
-              style="filter: blur(120px);"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
-              alt="Grawerka CNC Certus"
-            />
-            <img
-              class="back_image"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
-            />
+            <picture>
+              <source
+                srcset="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                style="filter: blur(120px);"
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
+                alt="Grawerka CNC Certus"
+              />
+            </picture>
+            <picture class="back_image">
+              <source
+                srcset="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
+              />
+            </picture>
           </div>
           <CtaButton
             classs="backButton"
@@ -957,14 +1083,26 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
-                  alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 1"
-                />
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.png"
-                  alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 2"
-                />
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
+                    alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 1"
+                  />
+                </picture>
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.png"
+                    alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 2"
+                  />
+                </picture>
               </div>
             </div>
           {/if}
@@ -981,18 +1119,29 @@ afterUpdate(() => {
           <h1>CNC HLP-FT</h1>
 
           <div class="left_image no-sel">
-            <img
-              style="filter: blur(120px);"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
-              alt="Ploter Linearny CNC Certus 1530"
-            />
-            <img
-              class="back_image"
-              draggable="false"
-              src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
-              alt=""
-            />
+            <picture>
+              <source
+                srcset="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                style="filter: blur(120px);"
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
+                alt="Ploter Linearny CNC Certus 1530"
+              />
+            </picture>
+            <picture class="back_image">
+              <source
+                srcset="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp"
+                type="image/webp"
+              />
+              <img
+                draggable="false"
+                src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
+                alt=""
+              />
+            </picture>
           </div>
           <CtaButton
             classs="backButton"
@@ -1105,14 +1254,26 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_1530_1.png"
-                  alt="Schemat techniczny ploter linearny Certus 1530 - widok 1"
-                />
-                <img
-                  src="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
-                  alt="Schemat techniczny ploter linearny Certus 1530 - widok 2"
-                />
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_1530_1.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_1530_1.png"
+                    alt="Schemat techniczny ploter linearny Certus 1530 - widok 1"
+                  />
+                </picture>
+                <picture>
+                  <source
+                    srcset="/assets/maszyny/SCHEMATY/Certus_1530_2.webp"
+                    type="image/webp"
+                  />
+                  <img
+                    src="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
+                    alt="Schemat techniczny ploter linearny Certus 1530 - widok 2"
+                  />
+                </picture>
               </div>
             </div>
           {/if}
@@ -1403,7 +1564,7 @@ body.no-scroll-hero.active_machine_view {
     min-width: 25vw;
   }
 
-  .activeMachine .back_image {
+  .activeMachine picture.back_image {
     position: absolute;
   }
 
