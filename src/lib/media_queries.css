@@ -89,8 +89,8 @@
    tło strony zmieni kolor na czerwony. */
 @media (max-height: 700px) {
   nav.fixed {
-    transform: scale(0.7);
-    margin-top: -30px !important;
+    /* transform: scale(0.7); */
+    /* margin-top: -30px !important; */
   }
   nav.fixed.scrolled {
     margin-top: 0px !important;

@@ -20,8 +20,8 @@
 doświadczeniu i pasji do inżynierii. Jesteśmy producentem maszyn CNC, który od
 ponad dekady dostarcza rozwiązania skrojone na miarę – niezawodne, długowieczne
 i technologicznie zaawansowane.
-<br/>
-Nasza historia zaczęła się dużo wcześniej. Właściciel CERTUS od 2000 roku związany jest z rynkiem CNC i był jednym z założycieli kultowego Forum CNC – społeczności, która kształtowała oblicze branży w Polsce.
+<br/><br/>
+Nasza historia zaczęła się dużo wcześniej. Właściciel CERTUS od 2000 roku związany jest z rynkiem CNC i był jednym z liderów kultowego Forum CNC – społeczności, która kształtowała oblicze branży w Polsce.
   </p>
 </section>
 
@@ -235,8 +235,9 @@ fill="currentColor">
   }
 
   section.onas {
-    padding: 0 1rem;
+    padding: 0 4rem;
     padding-top: 3rem;
+
     .description {
      
 
@@ -306,7 +307,7 @@ fill="currentColor">
     color: var(--color-text-secondary);
     .description{
 
-      padding: 0  15rem;
+      padding: 0  1rem;
     color: var(--color-text-secondary);
     text-align:left;
     }
@@ -393,6 +394,9 @@ fill="currentColor">
 
       font-weight: 600;
     }
+    @media (max-width: 768px) {
+      padding: 0 1rem;
+    }
   }
 
   .strength-card {
@@ -462,6 +466,9 @@ fill="currentColor">
   }
 
   @media (max-width: 768px) {
+  
+
+  
     .timeline::after {
       left: 20px;
     }
@@ -484,4 +491,18 @@ fill="currentColor">
       left: 0; /* Ensure it's not pushed to 50% on mobile */
     }
   }
+
+
+  @media (max-width: 768px) {
+
+    section.onas{
+
+      padding: 1rem 1rem;
+
+
+    }
+
+
+  }
+
 </style>

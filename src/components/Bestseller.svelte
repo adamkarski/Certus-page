@@ -373,7 +373,7 @@
 
   .content-wrapper {
     margin: 0 auto;
-    padding: 0 2rem; // Default horizontal padding for content
+    padding: 0 2rem; 
   }
 
   .page-header {
@@ -774,7 +774,7 @@
     }
     .main-content {
       flex-direction: column;
-      padding: 0rem 3rem 0rem 3rem;
+      padding: 0rem 0.6rem 0rem 0.6rem;
     
       .text-column{
         padding: 0 2rem;

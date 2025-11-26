@@ -1,10 +1,8 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import { onMount } from "svelte"; 
-  import { tweened } from "svelte/motion"; 
-  import { cubicOut } from "svelte/easing"; 
-
-
+  import { onMount } from "svelte";
+  import { tweened } from "svelte/motion";
+  import { cubicOut } from "svelte/easing";
 
   const images = [
     {
@@ -23,7 +21,6 @@
       src: "/assets/images/onas/certus-maszyny-wielkogabarytowe-cnc.jpg",
       alt: "Certus maszyny wielkogabarytowe CNC",
     },
-    { src: "/assets/images/onas/certus-maszyny.png", alt: "Certus maszyny" },
     {
       src: "/assets/images/onas/element-obrabiany-maszynami-certus-2.jpg",
       alt: "Element obrabiany maszynami Certus 2",
@@ -69,7 +66,7 @@
 
     return () => {
       window.clearInterval(imageIntervalId); // Use window.clearInterval
-    }; 
+    };
   });
 </script>
 
@@ -92,19 +89,20 @@
           class="header-bg-image"
           style="transform: scale({$scale});"
         />
-
-        
       </div>
     {/key}
-   
+
     <div class="onas-header">
       <!-- Removed bind:this={headerEl} and class:visible -->
 
       <div class="hero-text no-sel">
         {#if showHeroTitle}
-          <h1 class="hero-title no-sel" in:fade={{ duration: 1600, delay: 100 }}>
-           <span in:fade={{ duration: 1600, delay: 800 }}>Your Vision,</span> 
-           <span in:fade={{ duration: 1600, delay: 1600 }}>Our Precision</span>
+          <h1
+            class="hero-title no-sel"
+            in:fade={{ duration: 1600, delay: 100 }}
+          >
+            <span in:fade={{ duration: 1600, delay: 800 }}>Your Vision,</span>
+            <span in:fade={{ duration: 1600, delay: 1600 }}>Our Precision</span>
           </h1>
         {/if}
       </div>
@@ -113,8 +111,13 @@
 </section>
 
 <style lang="scss">
-
-
+  .hero-text .hero-title {
+    @media screen and (max-width: 768px) {
+      font-size: 1.34rem;
+      width: 100%;
+      text-align: center;
+    }
+  }
 
   .triangle {
     position: absolute;
@@ -149,13 +152,13 @@
     top: 0;
     left: 0;
     width: 100vw;
-   
+
     height: 495px;
     z-index: 54;
     pointer-events: none;
     opacity: 0.6;
   }
- 
+
   .onas-pattern-2 {
     background-image: url(/assets/images/pattern-video-2.png);
     position: absolute;
@@ -191,21 +194,21 @@
   .onas-header h1 {
     margin: 0;
     color: white;
-    text-shadow:0 13px 27px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 13px 27px rgba(0, 0, 0, 0.5);
     font-weight: 700;
-    
+
     font-size: 25px;
     margin-top: 30px;
 
     &::before {
       content: "";
-    position: absolute;
-    width: 30px;
-    height: 46px;
-    margin-left: -40px;
-    background-image: url(/assets/images/red-arrow.svg);
-    margin-top: -6px;
-    transform: scale(0.8);
+      position: absolute;
+      width: 30px;
+      height: 46px;
+      margin-left: -40px;
+      background-image: url(/assets/images/red-arrow.svg);
+      margin-top: -6px;
+      transform: scale(0.8);
     }
   }
   .onas-container {
@@ -235,15 +238,13 @@
   }
   @media (max-width: 768px) {
     .onas-header h1 {
-    
-     
     }
     .onas-header h1::before {
-        width: 20px;
-        height: 30px;
-        margin-left: -30px;
-        margin-top: 3px;
-        transform: scale(0.8);
-      }
+      width: 20px;
+      height: 30px;
+      margin-left: -30px;
+      margin-top: 3px;
+      transform: scale(0.8);
+    }
   }
 </style>
