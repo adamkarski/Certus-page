@@ -496,13 +496,16 @@
             <div class="mobile-submenu" transition:slide>
               {#each kategorieMaszyn as kategoria}
                 {#if kategoria.url}
-                  <a class="mobile-submenu-link" href={kategoria.url} alt="{kategoria.title}"
-                    >{kategoria.title} 
+                  <a class="mobile-submenu-link" href={kategoria.url} alt="{kategoria.title}">{kategoria.title} 
                   </a>
                 {/if}
                 {#if kategoria.url == null}
-                  <a class="mobile-submenu-link" href="/maszyny#{kategoria.id}" alt="{kategoria.title}"
-                    >{kategoria.title} 
+                  <a class="mobile-submenu-link" 
+                  on:click|preventDefault={() =>
+                              handleMaszynyNavigation(kategoria.id)}
+                  
+                  
+                  href="/maszyny#{kategoria.id}" alt="{kategoria.title}" aria-rol>{kategoria.title} 
                   </a>
                 {/if}
               {/each}
