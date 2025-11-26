@@ -1067,9 +1067,9 @@
       border-top: 1px solid #ccc;
     }
     .cnc-icon {
-      width: 96px;
+      width: 107px;
       height: 96px;
-      margin-right: 15px;
+      margin-right: 8px;
       flex-shrink: 0;
     }
     .cnc-left .cnc-title{

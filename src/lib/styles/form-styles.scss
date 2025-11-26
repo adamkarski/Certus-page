@@ -2,6 +2,23 @@
 body.kontakt .contact-flex .contact-left::before{
   // background: #f2f2f2 !important;
 }
+
+
+
+body.kontakt .contact-flex .text-left button{
+
+  height: 45px;
+  background-color: var(--color-primary);
+  color: white;
+}
+body.kontakt .contact-flex .text-left.ctaButton{
+
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+
 .message-mode-selection button {
   img {
     padding: 10px;

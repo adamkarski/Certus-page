@@ -243,7 +243,7 @@
             on:mouseenter={() => (isMaszynyDropdownOpen = true)}
             on:mouseleave={() => (isMaszynyDropdownOpen = false)}
           >
-            <a
+            <a on:click|preventDefault={() => isMaszynyDropdownOpen=!isMaszynyDropdownOpen }
               href="/maszyny"
               class="nav-link flex items-center space-x-1"
               class:active={isMaszynyActive}
@@ -275,9 +275,8 @@
                       <li>
                         {#if !kategoria.url}
                           <a
-                            href="maszyny#{kategoria.id}"
-                            on:click|preventDefault={() =>
-                              handleMaszynyNavigation(kategoria.id)}
+                            href="/maszyny#{kategoria.id}"
+                            
                             class="submenu-item {kategoria.id}"
                             role="button"
                             on:mouseenter={() => (hoveredCategory = kategoria)}
