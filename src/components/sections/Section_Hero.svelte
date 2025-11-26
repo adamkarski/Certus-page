@@ -916,6 +916,16 @@
     }
   }
 
+  // Reactive statement to manage active_machine_view class on body
+  $: if (browser) {
+    if ($activeMachineStore) {
+      document.body.classList.add("active_machine_view");
+    } else {
+      document.body.classList.remove("active_machine_view");
+    }
+  }
+
+
   function positionBackButton() {
     if (browser) {
       const hero = document.querySelector<HTMLElement>(".hero");
@@ -1511,7 +1521,9 @@
   :global(.gradientHero) {
     background: linear-gradient(180deg, #3e4042 40%, #5454 100%);
   }
-
+  :global(.gradientHero_old) {
+    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
+  }
   .active_flex {
     position: relative;
   }
@@ -2126,6 +2138,7 @@
         overflow: hidden;
       }
     }
+   
   }
   /* ————————————————  NAVIGATION BUTTONS  ———————————————— */
   .swiper-nav-button {

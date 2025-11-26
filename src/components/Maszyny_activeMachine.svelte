@@ -1540,6 +1540,23 @@ afterUpdate(() => {
     }
   }
 
+  @media (max-width: 800px) {
+
+    .activeMachine {
+
+      height: 100vh;
+    }
+    .activeMachine .active_flex{
+      opacity: 0.5 !important;
+      overflow: hidden !important;
+    }
+    .activeMachine .active_flex .right{
+      overflow: hidden !important;
+      height: 100% !important;
+    }
+
+
+  }
   @media (max-width: 1200px) {
     body.no-scroll-hero .activeMachine .right .right_params {
       overflow: initial;

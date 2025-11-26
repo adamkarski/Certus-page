@@ -164,26 +164,20 @@
     <div class="text-column">
       <h2>CERTUS 69</h2>
       <p use:typoFixAction>
-        To w pełni funkcjonalna frezarka, grawerka cnc o
-        szerokim zastosowaniu. Przeznaczona do pracy w materiałach taki jak:
-        aluminium, metale kolorowe, drewno, plexi, obróbka drobnych elementów
-        stalowych itp. Ogólny opis urządzeń CERTUS model: 69 Standard / 69
-        Serwo.
+        To w pełni funkcjonalna frezarka, grawerka CNC o szerokim zastosowaniu. Przeznaczona do pracy w materiałach taki jak:
+        aluminium, metale kolorowe, drewno, plexi, obróbka drobnych elementów stalowych itp. Ogólny opis urządzeń CERTUS model: 69 Standard / 69 Serwo.
       </p>
       <p use:typoFixAction>
-        Urządzenie posiada otwartą przestrzeń roboczą, o polu pracy: w osi (X)
-        600mm x (Y) 900mm x (Z) 200 mm.
+        Urządzenie posiada otwartą przestrzeń roboczą, o polu pracy: w osi (X) 600mm x (Y) 900mm x (Z) 200 mm.
       </p>
 
       <h3>Obecnie produkowane modele:</h3>
       <ul>
         <li>
-          <strong>Model: CERTUS 69 Standard</strong> - Pole pracy 600x900x200 mm.
-          Waga maszyny 350 kg.
+          <strong>Model: CERTUS 69 Standard</strong> - Pole pracy 600x900x200 mm. Waga maszyny 350 kg.
         </li>
         <li>
-          <strong>Model: CERTUS 69 Serwo</strong> - Pole pracy 600x900x200 mm. Waga
-          maszyny 450 kg.
+          <strong>Model: CERTUS 69 Serwo</strong> - Pole pracy 600x900x200 mm. Waga maszyny 450 kg.
         </li>
       </ul>
 
