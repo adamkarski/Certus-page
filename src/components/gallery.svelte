@@ -12,6 +12,18 @@
   let currentImageIndex = 0;
   let hasTransitioned = false; // To control main image transition
 
+  // --- Animation State ---
+  let isClosing = false;
+
+  function closeGallery() {
+    isClosing = true;
+    setTimeout(() => {
+      onClose(); // Call parent close method
+      isClosing = false; // Reset for next time
+    }, 300); // Duration of fadeOut animation
+  }
+
+
   // Functions for navigation
   function nextImage() {
     currentImageIndex = (currentImageIndex + 1) % images.length;
@@ -38,7 +50,7 @@
     if (!isOpen) return;
 
     if (event.key === "Escape") {
-      onClose();
+      closeGallery();
     } else if (event.key === "ArrowRight") {
       nextImage();
     } else if (event.key === "ArrowLeft") {
@@ -150,16 +162,14 @@
 </script>
 
 {#if isOpen}
-  <div class="gallery-modal-overlay" transition:fade={{ duration: 200 }}>
+<div class="gallery-modal-overlay" class:closing={isClosing}>
     <div
       class="gallery-modal-content"
-      in:fly={{ y: 50, duration: 300, easing: cubicOut }}
-      out:fly={{ y: 50, duration: 200, easing: cubicOut }}
       role="dialog"
       aria-modal="true"
       aria-label="Gallery"
     >
-      <button class="close-button" on:click={onClose} aria-label="Zamknij galerię">
+      <button class="close-button" on:click={closeGallery} aria-label="Zamknij galerię">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -211,6 +221,7 @@
               class:active={i === currentImageIndex}
               on:click={() => selectImage(i)}
               aria-label="Wyświetl obrazek {image.title}"
+              style="animation-delay: {i * 50}ms"
             >
             <picture>
               <source srcset={image.src} type="image/webp" />
@@ -225,6 +236,24 @@
 {/if}
 
 <style lang="scss">
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes thumbnailFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
   .gallery-modal-overlay {
     position: fixed;
     top: 0;
@@ -236,6 +265,11 @@
     align-items: center;
     justify-content: center;
     z-index: 10000; /* Ensure it's on top of everything */
+    animation: fadeIn 0.3s ease-out;
+
+    &.closing {
+      animation: fadeOut 0.3s ease-in forwards;
+    }
   }
 
   .gallery-modal-content {
@@ -384,6 +418,10 @@
     overflow: hidden;
     flex-shrink: 0; /* Prevent shrinking */
     transition: border-color 0.2s;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: thumbnailFadeIn 0.3s ease-out forwards;
+
 
     &:hover {
       border-color: rgba(255, 255, 255, 0.4);
