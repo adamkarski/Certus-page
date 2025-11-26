@@ -19,7 +19,7 @@
   import "$lib/table.scss";
 
   // Gallery Imports
-  import Gallery from "./Gallery.svelte";
+  import Gallery from "$lib/components/Gallery.svelte";
   import { galleryData } from "$lib/data/galleryData"; // Assuming galleryData.ts exports galleryData
 
   // Gallery State
