@@ -152,7 +152,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-
+    overflow: hidden; /* Added to contain overflowing children */
     height: 495px;
     z-index: 54;
     pointer-events: none;

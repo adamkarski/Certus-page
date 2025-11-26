@@ -220,9 +220,12 @@ fill="currentColor">
       padding-bottom: 5vh;
     }
 
-    padding: 0 9rem;
+    padding: 0 5rem; /* Reduced default padding for wider screens */
     padding-top: 10vh;
     padding-bottom: 10vh;
+    @media (max-width: 768px) {
+      padding: 0 1rem; /* Specific padding for mobile */
+    }
     .industries-grid {
       h4 {
         margin-top: 10px;
@@ -386,7 +389,7 @@ fill="currentColor">
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
-    padding: 0 7rem;
+    padding: 0 4rem; /* Reduced default padding for wider screens */
     h3 {
       margin-top: 10px;
       margin-bottom: 10px;
