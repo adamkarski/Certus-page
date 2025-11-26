@@ -394,6 +394,36 @@
 
 
 
+  @media (max-width: 768px) {
+
+
+.maszyny-specjalistyczne-container{
+
+.text-block{
+
+
+  width: 100%;
+        padding: 22px;
+       
+        flex-direction: column;
+      
+
+}
+  .call-to-action-buttons{
+
+    float: left;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-end;
+        align-items: flex-start;
+        margin-top: 24px;
+  }
+}
+
+  }
+
+
+
   .call-to-action-buttons {
     display: flex;
     width: 100%;

@@ -66,10 +66,29 @@
   });
   $: preloaderVisible.set(loading);
 
+  // Update activePage store based on current path
+  $: {
+    if (typeof document !== 'undefined' && $page) {
+      const path = $page.url.pathname;
+      let pageName = 'home'; // Default to home
+
+      if (path === '/') {
+        pageName = 'home';
+      } else {
+        // Extract the first segment after '/'
+        const segments = path.split('/').filter(Boolean); // Remove empty strings
+        if (segments.length > 0) {
+          pageName = segments[0];
+        }
+      }
+      activePage.set(pageName);
+    }
+  }
+
   // Add active page class to body
   $: if (typeof document !== 'undefined') {
     // Remove all page classes
-    document.body.classList.remove('home', 'maszyny', 'serwis', 'onas', 'kontakt', 'landing', 'dokumentacja', 'maszyny-specjalistyczne');
+    document.body.classList.remove('home', 'maszyny', 'serwis', 'onas', 'kontakt', 'landing', 'dokumentacja', 'maszyny-specjalistyczne', 'bestseller');
     // Add current page class
     document.body.classList.add($activePage);
     // Add landing class if landing is visible
@@ -102,7 +121,9 @@
 
 
 <style lang="scss">
-
+  :global(.gradientHero_old) {
+    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
+  }
 :global(.lottie-player .animation svg > g > g:nth-child(5)) {
     // g > g:nth-child(3) > g > g:nth-child(6)
     opacity: 0;

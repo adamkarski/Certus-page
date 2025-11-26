@@ -42,31 +42,29 @@
   $: isSerwisActive = currentPath.startsWith("/serwis");
   $: isOnasActive = currentPath.startsWith("/onas");
   $: isKontaktActive = currentPath.startsWith("/kontakt");
-  $: isSpecialActive = currentPath.startsWith("/maszyny-specjalistyczne");
-  $: isDoclActive = currentPath.startsWith("/dokumentacja");
 
   $: isHomeActive = currentPath === "/";
 
   // Update active page store
-  $: {
-    if (isHomeActive) {
-      activePage.set("home");
-    } else if (isMaszynyActive) {
-      activePage.set("maszyny");
-    } else if (isBestsellerActive) {
-      activePage.set("bestseller");
-    } else if (isSerwisActive) {
-      activePage.set("serwis");
-    } else if (isOnasActive) {
-      activePage.set("onas");
-    } else if (isKontaktActive) {
-      activePage.set("kontakt");
-    }else if (isSpecialActive) {
-      activePage.set("maszyny-specjalistyczne");
-    }else if (isDoclActive) {
-      activePage.set("dokumentacja");
-    }
-  }
+  // $: {
+  //   if (isHomeActive) {
+  //     activePage.set("home");
+  //   } else if (isMaszynyActive) {
+  //     activePage.set("maszyny");
+  //   } else if (isBestsellerActive) {
+  //     activePage.set("bestseller");
+  //   } else if (isSerwisActive) {
+  //     activePage.set("serwis");
+  //   } else if (isOnasActive) {
+  //     activePage.set("onas");
+  //   } else if (isKontaktActive) {
+  //     activePage.set("kontakt");
+  //   }else if (isSpecialActive) {
+  //     activePage.set("maszyny-specjalistyczne");
+  //   }else if (isDoclActive) {
+  //     activePage.set("dokumentacja");
+  //   }
+  // }
 
   // Lottie player setup
   let LottiePlayer: any;

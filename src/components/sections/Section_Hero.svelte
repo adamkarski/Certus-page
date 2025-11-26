@@ -1511,9 +1511,7 @@
   :global(.gradientHero) {
     background: linear-gradient(180deg, #3e4042 40%, #5454 100%);
   }
-  :global(.gradientHero_old) {
-    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
-  }
+
   .active_flex {
     position: relative;
   }

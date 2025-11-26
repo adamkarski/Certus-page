@@ -3,7 +3,7 @@
   import { typoFixAction } from "$lib/utils/typography";
 </script>
 
-<section class="Dokumentacja_page gradientHero">
+<section class="Dokumentacja_page gradientHero_old">
   <!--  <div class="first-container-back"></div>
   <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div> -->
 </section>
@@ -173,6 +173,12 @@
 </section>
 
 <style lang="scss">
+
+:global(.gradientHero_old) {
+    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
+  }
+
+
   .cta-button {
     display: inline-block;
     padding: 10px 15px;
