@@ -69,7 +69,7 @@
   // Add active page class to body
   $: if (typeof document !== 'undefined') {
     // Remove all page classes
-    document.body.classList.remove('home', 'maszyny', 'serwis', 'onas', 'kontakt', 'landing');
+    document.body.classList.remove('home', 'maszyny', 'serwis', 'onas', 'kontakt', 'landing', 'dokumentacja', 'maszyny-specjalistyczne');
     // Add current page class
     document.body.classList.add($activePage);
     // Add landing class if landing is visible

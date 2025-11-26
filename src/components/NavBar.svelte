@@ -42,6 +42,9 @@
   $: isSerwisActive = currentPath.startsWith("/serwis");
   $: isOnasActive = currentPath.startsWith("/onas");
   $: isKontaktActive = currentPath.startsWith("/kontakt");
+  $: isSpecialActive = currentPath.startsWith("/maszyny-specjalistyczne");
+  $: isDoclActive = currentPath.startsWith("/dokumentacja");
+
   $: isHomeActive = currentPath === "/";
 
   // Update active page store
@@ -58,6 +61,10 @@
       activePage.set("onas");
     } else if (isKontaktActive) {
       activePage.set("kontakt");
+    }else if (isSpecialActive) {
+      activePage.set("maszyny-specjalistyczne");
+    }else if (isDoclActive) {
+      activePage.set("dokumentacja");
     }
   }
 
@@ -94,14 +101,17 @@
     const navLinkRect = navLink.getBoundingClientRect();
     const megaMenuRect = megaMenuEl.getBoundingClientRect();
     const categoryListRect = categoryList.getBoundingClientRect();
-    const parentRect = (megaMenuEl.offsetParent as HTMLElement).getBoundingClientRect();
+    const parentRect = (
+      megaMenuEl.offsetParent as HTMLElement
+    ).getBoundingClientRect();
 
     // Calculate the offset of the category list relative to the mega menu's edge.
     const listInternalOffsetLeft = categoryListRect.left - megaMenuRect.left;
 
     // Calculate the ideal left position for the mega-menu (in viewport coordinates)
     // to make the category list's right edge align with the nav link's right edge.
-    const idealLeft_viewport = navLinkRect.right - categoryListRect.width - listInternalOffsetLeft;
+    const idealLeft_viewport =
+      navLinkRect.right - categoryListRect.width - listInternalOffsetLeft;
 
     // --- Viewport Collision Detection ---
     let finalLeft_viewport = idealLeft_viewport;
@@ -255,7 +265,11 @@
                 ></path></svg
               >
             </a>
-            <div class="mega-menu" class:open={isMaszynyDropdownOpen} bind:this={megaMenuEl}>
+            <div
+              class="mega-menu"
+              class:open={isMaszynyDropdownOpen}
+              bind:this={megaMenuEl}
+            >
               <div class="flex">
                 <div class="w-1/3 py-4 px-2 megamenu-category-list">
                   <ul>
@@ -268,8 +282,7 @@
                               handleMaszynyNavigation(kategoria.id)}
                             class="submenu-item {kategoria.id}"
                             role="button"
-                            on:mouseenter={() =>
-                              (hoveredCategory = kategoria)}
+                            on:mouseenter={() => (hoveredCategory = kategoria)}
                           >
                             {kategoria.title}
                           </a>
@@ -280,8 +293,7 @@
                             href={kategoria.url}
                             class="submenu-item {kategoria.id}"
                             role="button"
-                            on:mouseenter={() =>
-                              (hoveredCategory = kategoria)}
+                            on:mouseenter={() => (hoveredCategory = kategoria)}
                           >
                             {kategoria.title}
                           </a>
@@ -486,12 +498,16 @@
           {#if isMobileMaszynyOpen}
             <div class="mobile-submenu" transition:slide>
               {#each kategorieMaszyn as kategoria}
-                <a
-                  href="#"
-                  on:click|preventDefault={() =>
-                    handleMaszynyNavigation(kategoria.id)}
-                  class="mobile-submenu-link">{kategoria.title}</a
-                >
+                {#if kategoria.url}
+                  <a class="mobile-submenu-link" href={kategoria.url} alt="{kategoria.title}"
+                    >{kategoria.title} 
+                  </a>
+                {/if}
+                {#if kategoria.url == null}
+                  <a class="mobile-submenu-link" href="/maszyny#{kategoria.id}" alt="{kategoria.title}"
+                    >{kategoria.title} 
+                  </a>
+                {/if}
               {/each}
             </div>
           {/if}
@@ -538,7 +554,7 @@
     transform: translateY(-10px);
     transition: all 200ms ease-in-out;
     pointer-events: none;
-    
+
     &.open {
       visibility: visible;
       opacity: 1;
@@ -588,9 +604,6 @@
     align-items: center;
 
     border-radius: 12px;
-    
-
-  
   }
 
   .bestseller-img {
@@ -616,22 +629,14 @@
 
   .bestseller-cta {
     margin-top: 26px;
-   
-  
-    
-  
   }
-  :global(button.bestseller:hover .cta-svg)
-  {
+  :global(button.bestseller:hover .cta-svg) {
+    transform: scaleY(1.5);
+  }
 
-transform: scaleY(1.5);
-}
-
-:global(button.bestseller .cta-svg)
-  {
-
-transform: scaleY(1.5);
-}
+  :global(button.bestseller .cta-svg) {
+    transform: scaleY(1.5);
+  }
   /* Dostosowanie CTA button w dropdown */
   .bestseller-dropdown :global(.cta-button) {
     width: 100%;
@@ -1003,7 +1008,7 @@ transform: scaleY(1.5);
   .mega-menu {
     position: absolute;
     top: 100%;
-    
+
     /* Hidden by default */
     visibility: hidden;
     opacity: 0;
