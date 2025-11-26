@@ -1547,22 +1547,85 @@ body.no-scroll-hero.active_machine_view {
     }
   }
 
-  .activeMachine .left_image {
-    width: 100%;
-    display: flex;
-    align-content: center;
-    height: 100%;
-    text-align: center;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+      .activeMachine .left_image {
 
-  }
+        width: 100%;
 
-  .activeMachine .left_image img {
-    max-width: 53vw;
-    min-width: 25vw;
-  }
+        display: flex;
+
+        align-content: center;
+
+        height: 100%;
+
+        text-align: center;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        justify-content: center;
+
+        position: relative; /* Added for absolute positioning of children */
+
+      }
+
+    
+
+      /* Styling for the overlaid machine images */
+
+      .activeMachine .left_image .machine-image-overlay {
+
+        position: absolute;
+
+        top: 0;
+
+        left: 0;
+
+        right: 0;
+
+        bottom: 0;
+
+        margin: auto; /* Centers the absolutely positioned element */
+
+        display: flex; /* To center the img within the picture */
+
+        align-items: center;
+
+        justify-content: center;
+
+        width: 100%; /* Ensure it takes full width for centering content */
+
+        height: 100%; /* Ensure it takes full height for centering content */
+
+      }
+
+    
+
+      .activeMachine .left_image .machine-image-overlay.blurred {
+
+        z-index: 1; /* Blurred image is underneath */
+
+      }
+
+    
+
+      .activeMachine .left_image .machine-image-overlay.back_image {
+
+        z-index: 2; /* Non-blurred image is on top */
+
+      }
+
+    
+
+      .activeMachine .left_image picture img { /* Targets img inside any picture within left_image */
+
+        max-width: 53vw;
+
+        min-width: 25vw;
+
+      }
+
+    
 
   .activeMachine picture.back_image {
     position: absolute;
