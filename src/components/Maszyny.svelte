@@ -18,7 +18,30 @@
   // import css styles
   import "$lib/table.scss";
 
+  // Gallery Imports
+  import Gallery from "./Gallery.svelte";
+  import { galleryData } from "$lib/data/galleryData"; // Assuming galleryData.ts exports galleryData
+
+  // Gallery State
+  let isGalleryOpen: boolean = false;
+  let currentGalleryImages: Array<{ src: string; title: string; alt: string }> = [];
+
   const maszyny = [];
+
+  function openGallery(categoryId: string) {
+    const galleryEntry = galleryData.find(g => g.id === categoryId);
+    if (galleryEntry) {
+      currentGalleryImages = galleryEntry.images;
+      isGalleryOpen = true;
+    } else {
+      console.warn(`Gallery data not found for category ID: ${categoryId}`);
+    }
+  }
+
+  function closeGallery() {
+    isGalleryOpen = false;
+    currentGalleryImages = []; // Clear images when closing
+  }
 </script>
 
 <section class="maszyny_page gradientHero_old">
@@ -175,11 +198,11 @@
 
       <Section_Maszyny_Image02
         sectionId="frezarki-gallery"
-        imgSrc="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+        imgSrc="/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-07.webp"
         title="Galeria realizacji"
         subtitle="Zobacz nasze frezarki w akcji"
         ctaText="Przejdź do galerii"
-        ctaAction={() => console.log("Galeria frezarek")}
+        ctaAction={() => openGallery("frezarki-st")}
       />
     </div>
   </div>
@@ -313,11 +336,13 @@
     </div>
 
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image01
-        sectionId="frezarki-gt-image-01"
-        imgSrc="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
-        title="Frezarki CNC HMM-GT"
-        subtitle="Do dużych formatów"
+      <Section_Maszyny_Image02
+        sectionId="frezarki-gt-gallery"
+        imgSrc="/assets/maszyny/galeria/webp/frezarka-hmm-gt-02.webp"
+        title="Galeria realizacji"
+        subtitle="Zobacz nasze frezarki w akcji"
+        ctaText="Przejdź do galerii"
+        ctaAction={() => openGallery("frezarki-gt")}
       />
     </div>
   </div>
@@ -435,18 +460,13 @@
     </div>
 
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Video
-        sectionId="plotery-video"
-        videoSrc="/assets/video/video-hd.webm"
-        title="Plotery w akcji"
-        subtitle="Zobacz jak działają nasze plotery"
-      />
-
-      <Section_Maszyny_Image01
-        sectionId="plotery-image"
-        imgSrc="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
-        title="Przemysłowe plotery CNC"
-        subtitle="Wydajność i precyzja"
+      <Section_Maszyny_Image02
+        sectionId="plotery-ot-gallery"
+        imgSrc="/assets/maszyny/galeria/webp/ploter-hpp-ot-05.webp"
+        title="Galeria realizacji"
+        subtitle="Zobacz nasze plotery w akcji"
+        ctaText="Przejdź do galerii"
+        ctaAction={() => openGallery("plotery-przemyslowe-ot")}
       />
     </div>
   </div>
@@ -582,11 +602,11 @@
     <div class="maszyny-dane-gallery-column">
       <Section_Maszyny_Image02
         sectionId="zabudowa-gallery"
-        imgSrc="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+        imgSrc="/assets/maszyny/galeria/webp/ploter-hpp-ct-02.webp"
         title="Plotery w zabudowie"
         subtitle="Kompaktowe rozwiązania"
         ctaText="Zobacz galerie"
-        ctaAction={() => console.log("Galeria zabudowa")}
+        ctaAction={() => openGallery("plotery-przemyslowe-ct")}
       />
 
       <Section_Maszyny_Image01
@@ -738,11 +758,11 @@
 
       <Section_Maszyny_Image02
         sectionId="grawerki-gallery"
-        imgSrc="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
+        imgSrc="/assets/maszyny/galeria/webp/grawerka-cnc-05.webp"
         title="Galeria grawerek"
         subtitle="Zobacz nasze realizacje"
         ctaText="Przejdź do galerii"
-        ctaAction={() => console.log("Galeria grawerek")}
+        ctaAction={() => openGallery("grawerki")}
       />
     </div>
   </div>
@@ -880,11 +900,11 @@
 
       <Section_Maszyny_Image02
         sectionId="frezarki5osiowe-gallery"
-        imgSrc="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
+        imgSrc="/assets/maszyny/galeria/webp/frezarka-5osiowa-01.webp"
         title="Galeria frezarek 5-osiowych"
         subtitle="Zobacz możliwości"
         ctaText="Przejdź do galerii"
-        ctaAction={() => console.log("Galeria frezarek 5-osiowych")}
+        ctaAction={() => openGallery("frezarki-5osiowe")}
       />
     </div>
   </div>
@@ -1024,11 +1044,11 @@
 
       <Section_Maszyny_Image02
         sectionId="ploteryLinearne-gallery"
-        imgSrc="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
+        imgSrc="/assets/maszyny/galeria/webp/ploter-hlp-ft.webp"
         title="Galeria ploterów linearnych"
         subtitle="Zobacz w akcji"
         ctaText="Przejdź do galerii"
-        ctaAction={() => console.log("Galeria ploterów linearnych")}
+        ctaAction={() => openGallery("plotery-linearne")}
       />
     </div>
   </div>
@@ -1039,6 +1059,10 @@
     contactHref="/kontakt"
   />
 </section>
+
+{#if isGalleryOpen}
+  <Gallery images={currentGalleryImages} isOpen={isGalleryOpen} onClose={closeGallery} />
+{/if}
 
 <style lang="scss">
   

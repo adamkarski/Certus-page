@@ -1,0 +1,1180 @@
+[{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-04.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-04.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-04.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-04.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-04.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-04.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-04.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-04.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-04.png|/assets/maszyny/galeria/frezarka-certus-4040-04.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-19.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-19.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-19.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-19.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-19.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-19.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-19.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-19.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-19.png|/assets/maszyny/galeria/ploter-hpp-ot-2-19.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-02.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-02.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-02.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-02.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-02.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-02.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/maszyna-specjalna-02.webp|/assets/maszyny/galeria/webp/maszyna-specjalna-02.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/maszyna-specjalna-02.png|/assets/maszyny/galeria/maszyna-specjalna-02.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-09.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-09.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-09.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-09.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-09.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-09.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-09.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-09.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-09.png|/assets/maszyny/galeria/frezarka-certus-1014-09.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-15.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-15.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-15.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-15.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-15.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-15.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-15.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-15.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-15.png|/assets/maszyny/galeria/frezarka-hmm-gt-15.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-12.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-12.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-12.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-12.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-12.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-12.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-12.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-12.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-12.png|/assets/maszyny/galeria/frezarka-certus-4040-12.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-02.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-02.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-02.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-02.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-02.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-02.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-02.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-02.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-02.png|/assets/maszyny/galeria/ploter-hpp-ct-02.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-14.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-14.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-14.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-14.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-14.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-14.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-7060-14.webp|/assets/maszyny/galeria/webp/frezarka-certus-7060-14.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-7060-14.png|/assets/maszyny/galeria/frezarka-certus-7060-14.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-28.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-28.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-28.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-28.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-28.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-28.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-28.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-28.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-28.png|/assets/maszyny/galeria/frezarka-certus-4040-28.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-16.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-16.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-16.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-16.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-16.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-16.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-16.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-16.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-16.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-16.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-02.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-02.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-02.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-02.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-02.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-02.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-7060-02.webp|/assets/maszyny/galeria/webp/frezarka-certus-7060-02.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-7060-02.png|/assets/maszyny/galeria/frezarka-certus-7060-02.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-35.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-35.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-35.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-35.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-35.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-35.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-35.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-35.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-35.png|/assets/maszyny/galeria/ploter-hpp-ot-2-35.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-18.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-18.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-18.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-18.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-18.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-18.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-18.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-18.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-18.png|/assets/maszyny/galeria/frezarka-certus-6040-18.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-25.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-25.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-25.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-25.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-25.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-25.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-25.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-25.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-25.png|/assets/maszyny/galeria/ploter-hpp-ot-25.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-36.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-36.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-36.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-36.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-36.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-36.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-36.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-36.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-36.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-36.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-05.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-05.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-05.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-05.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-05.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-05.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-05.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-05.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-05.png|/assets/maszyny/galeria/ploter-hpp-ot-05.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-05.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-05.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-05.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-05.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-05.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-05.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-05.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-05.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-05.png|/assets/maszyny/galeria/frezarka-certus-1014-05.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-69-05.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-69-05.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-69-05.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-69-05.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-69-05.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-69-05.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-69-05.webp|/assets/maszyny/galeria/webp/frezarka-certus-69-05.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-69-05.png|/assets/maszyny/galeria/frezarka-certus-69-05.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-13.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-13.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-13.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-13.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-13.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-13.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-13.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-13.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-13.png|/assets/maszyny/galeria/ploter-hpp-ot-13.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-22.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-22.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-22.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-22.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-22.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-22.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-22.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-22.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-22.png|/assets/maszyny/galeria/ploter-hpp-ct-22.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-02.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-02.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-02.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-02.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-02.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-02.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-02.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-02.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-02.png|/assets/maszyny/galeria/frezarka-certus-6040-02.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-32.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-32.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-32.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-32.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-32.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-32.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-32.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-32.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-32.png|/assets/maszyny/galeria/frezarka-certus-4040-32.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-14.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-14.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-14.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-14.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-14.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-14.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-14.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-14.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-14.png|/assets/maszyny/galeria/frezarka-certus-6040-14.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-5osiowa-02.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-5osiowa-02.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-5osiowa-02.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-5osiowa-02.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-5osiowa-02.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-5osiowa-02.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-5osiowa-02.webp|/assets/maszyny/galeria/webp/frezarka-5osiowa-02.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-5osiowa-02.png|/assets/maszyny/galeria/frezarka-5osiowa-02.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-10.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-10.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-10.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-10.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-10.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-10.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-10.webp|/assets/maszyny/galeria/webp/grawerka-cnc-10.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-10.png|/assets/maszyny/galeria/grawerka-cnc-10.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-15.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-15.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-15.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-15.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-15.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-15.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-15.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-15.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-15.png|/assets/maszyny/galeria/frezarka-certus-6040-15.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-38.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-38.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-38.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-38.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-38.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-38.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-38.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-38.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-38.png|/assets/maszyny/galeria/ploter-hpp-ot-2-38.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-33.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-33.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-33.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-33.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-33.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-33.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-33.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-33.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-33.png|/assets/maszyny/galeria/frezarka-certus-4040-33.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-19.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-19.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-19.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-19.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-19.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-19.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-7060-19.webp|/assets/maszyny/galeria/webp/frezarka-certus-7060-19.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-7060-19.png|/assets/maszyny/galeria/frezarka-certus-7060-19.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-22.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-22.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-22.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-22.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-22.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-22.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-22.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-22.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-22.png|/assets/maszyny/galeria/frezarka-hmm-gt-22.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-69-12.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-69-12.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-69-12.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-69-12.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-69-12.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-69-12.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-69-12.webp|/assets/maszyny/galeria/webp/frezarka-certus-69-12.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-69-12.png|/assets/maszyny/galeria/frezarka-certus-69-12.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-37.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-37.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-37.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-37.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-37.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-37.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-37.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-37.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-37.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-37.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-24.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-24.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-24.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-24.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-24.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-24.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-24.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-24.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-24.png|/assets/maszyny/galeria/ploter-hpp-ot-24.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-07.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-07.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-07.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-07.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-07.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-07.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-07.webp|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-07.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-07.png|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-07.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-15.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-15.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-15.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-15.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-15.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-15.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-15.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-15.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-15.png|/assets/maszyny/galeria/ploter-hpp-ct-15.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-03.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-03.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-03.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-03.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-03.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-03.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-7060-03.webp|/assets/maszyny/galeria/webp/frezarka-certus-7060-03.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-7060-03.png|/assets/maszyny/galeria/frezarka-certus-7060-03.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-15.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-15.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-15.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-15.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-15.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-15.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-7060-15.webp|/assets/maszyny/galeria/webp/frezarka-certus-7060-15.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-7060-15.png|/assets/maszyny/galeria/frezarka-certus-7060-15.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-32-szczegoly.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-32-szczegoly.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-32-szczegoly.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-32-szczegoly.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-32-szczegoly.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-32-szczegoly.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-32-szczegoly.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-32-szczegoly.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-32-szczegoly.png|/assets/maszyny/galeria/frezarka-hmm-gt-32-szczegoly.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-02.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-02.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-02.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-02.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-02.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-02.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-02.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-02.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-02.png|/assets/maszyny/galeria/frezarka-hmm-gt-02.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-39.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-39.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-39.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-39.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-39.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-39.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-39.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-39.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-39.png|/assets/maszyny/galeria/ploter-hpp-ct-39.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-09.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-09.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-09.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-09.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-09.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-09.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-09.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-09.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-09.png|/assets/maszyny/galeria/frezarka-hmm-gt-09.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-15.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-15.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-15.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-15.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-15.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-15.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-15.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-15.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-15.png|/assets/maszyny/galeria/frezarka-certus-1014-15.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-05.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-05.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-05.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-05.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-05.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-05.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-05.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-05.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-05.png|/assets/maszyny/galeria/ploter-hpp-ot-2-05.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-18.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-18.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-18.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-18.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-18.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-18.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-18.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-18.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-18.png|/assets/maszyny/galeria/frezarka-certus-4040-18.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-40.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-40.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-40.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-40.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-40.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-40.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-40.webp|/assets/maszyny/galeria/webp/grawerka-cnc-40.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-40.png|/assets/maszyny/galeria/grawerka-cnc-40.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-12.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-12.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-12.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-12.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-12.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-12.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-12.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-12.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-12.png|/assets/maszyny/galeria/frezarka-certus-6040-12.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-17.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-17.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-17.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-17.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-17.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-17.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-17.webp|/assets/maszyny/galeria/webp/grawerka-cnc-17.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-17.png|/assets/maszyny/galeria/grawerka-cnc-17.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-04.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-04.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-04.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-04.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-04.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-04.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/maszyna-specjalna-04.webp|/assets/maszyny/galeria/webp/maszyna-specjalna-04.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/maszyna-specjalna-04.png|/assets/maszyny/galeria/maszyna-specjalna-04.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-19.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-19.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-19.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-19.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-19.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-19.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-19.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-19.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-19.png|/assets/maszyny/galeria/frezarka-certus-1014-19.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-05.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-05.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-05.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-05.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-05.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-05.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-05.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-05.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-05.png|/assets/maszyny/galeria/frezarka-hmm-gt-05.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-16.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-16.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-16.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-16.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-16.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-16.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-16.webp|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-16.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-16.png|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-16.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-04.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-04.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-04.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-04.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-04.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-04.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-04.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-04.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-04.png|/assets/maszyny/galeria/ploter-hpp-ct-04.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-29.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-29.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-29.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-29.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-29.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-29.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-29.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-29.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-29.png|/assets/maszyny/galeria/frezarka-hmm-gt-29.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-08.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-08.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-08.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-08.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-08.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-08.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-08.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-08.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-08.png|/assets/maszyny/galeria/frezarka-certus-6040-08.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-25.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-25.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-25.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-25.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-25.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-25.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-25.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-25.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-25.png|/assets/maszyny/galeria/ploter-hpp-ot-2-25.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-10.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-10.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-10.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-10.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-10.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-10.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-10.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-10.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-10.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-10.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-33.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-33.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-33.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-33.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-33.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-33.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-33.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-33.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-33.png|/assets/maszyny/galeria/ploter-hpp-ot-2-33.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-12.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-12.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-12.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-12.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-12.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-12.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-12.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-12.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-12.png|/assets/maszyny/galeria/ploter-hpp-ct-12.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-22.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-22.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-22.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-22.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-22.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-22.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-22.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-22.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-22.png|/assets/maszyny/galeria/ploter-hpp-ot-22.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-01.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-01.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-01.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-01.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-01.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-01.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-01.webp|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-01.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-01.png|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-01.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-05.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-05.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-05.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-05.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-05.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-05.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-7060-05.webp|/assets/maszyny/galeria/webp/frezarka-certus-7060-05.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-7060-05.png|/assets/maszyny/galeria/frezarka-certus-7060-05.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-07.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-07.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-07.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-07.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-07.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-07.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-07.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-07.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-07.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-07.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-28.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-28.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-28.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-28.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-28.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-28.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-28.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-28.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-28.png|/assets/maszyny/galeria/frezarka-hmm-gt-28.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-03.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-03.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-03.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-03.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-03.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-03.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-03.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-03.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-03.png|/assets/maszyny/galeria/frezarka-certus-4040-03.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-32.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-32.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-32.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-32.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-32.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-32.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-32.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-32.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-32.png|/assets/maszyny/galeria/frezarka-hmm-gt-32.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-16.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-16.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-16.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-16.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-16.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-16.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-16.webp|/assets/maszyny/galeria/webp/grawerka-cnc-16.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-16.png|/assets/maszyny/galeria/grawerka-cnc-16.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-23.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-23.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-23.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-23.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-23.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-23.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-23.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-23.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-23.png|/assets/maszyny/galeria/frezarka-certus-4040-23.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-09.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-09.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-09.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-09.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-09.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-09.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-09.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-09.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-09.png|/assets/maszyny/galeria/ploter-hpp-ct-09.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-04.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-04.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-04.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-04.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-04.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-04.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-04.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-04.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-04.png|/assets/maszyny/galeria/ploter-hpp-ot-2-04.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-25.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-25.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-25.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-25.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-25.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-25.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-25.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-25.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-25.png|/assets/maszyny/galeria/ploter-hpp-ct-25.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-08.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-08.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-08.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-08.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-08.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-08.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-08.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-08.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-08.png|/assets/maszyny/galeria/frezarka-hmm-gt-08.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-14.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-14.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-14.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-14.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-14.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-14.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-14.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-14.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-14.png|/assets/maszyny/galeria/frezarka-certus-1014-14.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-09.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-09.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-09.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-09.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-09.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-09.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/maszyna-specjalna-09.webp|/assets/maszyny/galeria/webp/maszyna-specjalna-09.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/maszyna-specjalna-09.png|/assets/maszyny/galeria/maszyna-specjalna-09.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-02.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-02.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-02.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-02.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-02.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-02.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-02.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-02.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-02.png|/assets/maszyny/galeria/frezarka-certus-1014-02.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-12.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-12.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-12.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-12.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-12.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-12.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-12.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-12.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-12.png|/assets/maszyny/galeria/ploter-hpp-ot-2-12.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-31.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-31.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-31.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-31.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-31.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-31.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-31.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-31.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-31.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-31.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-10.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-10.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-10.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-10.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-10.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-10.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-10.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-10.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-10.png|/assets/maszyny/galeria/frezarka-certus-6040-10.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hlp-ft.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hlp-ft.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hlp-ft.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hlp-ft.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hlp-ft.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hlp-ft.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hlp-ft.webp|/assets/maszyny/galeria/webp/ploter-hlp-ft.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hlp-ft.png|/assets/maszyny/galeria/ploter-hlp-ft.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-20.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-20.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-20.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-20.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-20.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-20.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-20.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-20.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-20.png|/assets/maszyny/galeria/frezarka-certus-4040-20.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-36.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-36.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-36.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-36.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-36.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-36.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-36.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-36.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-36.png|/assets/maszyny/galeria/frezarka-certus-4040-36.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-26.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-26.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-26.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-26.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-26.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-26.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-26.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-26.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-26.png|/assets/maszyny/galeria/ploter-hpp-ct-26.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-17.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-17.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-17.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-17.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-17.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-17.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-17.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-17.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-17.png|/assets/maszyny/galeria/frezarka-certus-1014-17.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-17.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-17.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-17.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-17.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-17.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-17.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-17.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-17.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-17.png|/assets/maszyny/galeria/ploter-hpp-ot-17.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-01.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-01.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-01.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-01.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-01.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-01.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-01.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-01.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-01.png|/assets/maszyny/galeria/frezarka-certus-1014-01.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-11.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-11.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-11.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-11.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-11.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-11.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-11.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-11.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-11.png|/assets/maszyny/galeria/ploter-hpp-ot-2-11.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-21.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-21.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-21.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-21.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-21.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-21.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-21.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-21.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-21.png|/assets/maszyny/galeria/ploter-hpp-ot-21.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-06.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-06.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-06.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-06.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-06.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-06.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-7060-06.webp|/assets/maszyny/galeria/webp/frezarka-certus-7060-06.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-7060-06.png|/assets/maszyny/galeria/frezarka-certus-7060-06.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-06.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-06.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-06.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-06.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-06.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-06.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-06.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-06.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-06.png|/assets/maszyny/galeria/ploter-hpp-ct-06.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-14.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-14.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-14.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-14.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-14.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-14.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-14.webp|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-14.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-14.png|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-14.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-11.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-11.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-11.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-11.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-11.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-11.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-11.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-11.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-11.png|/assets/maszyny/galeria/frezarka-hmm-gt-11.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-01.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-01.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-01.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-01.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-01.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-01.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-01.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-01.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-01.png|/assets/maszyny/galeria/frezarka-certus-4040-01.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-07.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-07.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-07.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-07.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-07.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-07.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/maszyna-specjalna-07.webp|/assets/maszyny/galeria/webp/maszyna-specjalna-07.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/maszyna-specjalna-07.png|/assets/maszyny/galeria/maszyna-specjalna-07.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-06.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-06.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-06.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-06.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-06.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-06.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-06.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-06.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-06.png|/assets/maszyny/galeria/frezarka-hmm-gt-06.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-29.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-29.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-29.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-29.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-29.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-29.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-29.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-29.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-29.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-29.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1212-01.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1212-01.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1212-01.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1212-01.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1212-01.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1212-01.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1212-01.webp|/assets/maszyny/galeria/webp/frezarka-certus-1212-01.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1212-01.png|/assets/maszyny/galeria/frezarka-certus-1212-01.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-26.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-26.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-26.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-26.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-26.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-26.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-26.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-26.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-26.png|/assets/maszyny/galeria/ploter-hpp-ot-2-26.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-03.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-03.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-03.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-03.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-03.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-03.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-03.webp|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-03.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-03.png|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-03.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-43.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-43.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-43.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-43.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-43.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-43.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-43.webp|/assets/maszyny/galeria/webp/grawerka-cnc-43.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-43.png|/assets/maszyny/galeria/grawerka-cnc-43.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-14.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-14.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-14.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-14.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-14.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-14.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-14.webp|/assets/maszyny/galeria/webp/grawerka-cnc-14.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-14.png|/assets/maszyny/galeria/grawerka-cnc-14.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-11.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-11.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-11.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-11.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-11.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-11.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-11.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-11.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-11.png|/assets/maszyny/galeria/frezarka-certus-6040-11.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-27.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-27.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-27.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-27.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-27.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-27.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-27.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-27.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-27.png|/assets/maszyny/galeria/ploter-hpp-ot-27.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-14.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-14.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-14.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-14.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-14.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-14.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-14.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-14.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-14.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-14.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-20.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-20.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-20.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-20.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-20.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-20.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-20.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-20.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-20.png|/assets/maszyny/galeria/frezarka-certus-6040-20.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-17.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-17.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-17.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-17.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-17.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-17.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-17.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-17.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-17.png|/assets/maszyny/galeria/frezarka-hmm-gt-17.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-06.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-06.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-06.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-06.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-06.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-06.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-06.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-06.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-06.png|/assets/maszyny/galeria/frezarka-certus-4040-06.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-5osiowa-01.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-5osiowa-01.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-5osiowa-01.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-5osiowa-01.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-5osiowa-01.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-5osiowa-01.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-5osiowa-01.webp|/assets/maszyny/galeria/webp/frezarka-5osiowa-01.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-5osiowa-01.png|/assets/maszyny/galeria/frezarka-5osiowa-01.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-08.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-08.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-08.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-08.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-08.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-08.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-08.webp|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-08.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-08.png|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-08.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-13.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-13.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-13.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-13.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-13.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-13.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-13.webp|/assets/maszyny/galeria/webp/grawerka-cnc-13.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-13.png|/assets/maszyny/galeria/grawerka-cnc-13.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-44.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-44.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-44.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-44.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-44.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-44.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-44.webp|/assets/maszyny/galeria/webp/grawerka-cnc-44.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-44.png|/assets/maszyny/galeria/grawerka-cnc-44.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-30.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-30.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-30.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-30.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-30.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-30.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-30.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-30.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-30.png|/assets/maszyny/galeria/frezarka-certus-4040-30.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-05.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-05.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-05.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-05.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-05.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-05.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-05.webp|/assets/maszyny/galeria/webp/grawerka-cnc-05.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-05.png|/assets/maszyny/galeria/grawerka-cnc-05.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-11.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-11.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-11.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-11.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-11.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-11.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-11.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-11.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-11.png|/assets/maszyny/galeria/ploter-hpp-ot-11.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-29.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-29.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-29.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-29.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-29.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-29.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-29.webp|/assets/maszyny/galeria/webp/grawerka-cnc-29.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-29.png|/assets/maszyny/galeria/grawerka-cnc-29.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-11.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-11.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-11.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-11.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-11.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-11.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-11.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-11.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-11.png|/assets/maszyny/galeria/frezarka-certus-1014-11.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-36.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ct-36.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-36.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ct-36.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-36.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ct-36.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ct-36.webp|/assets/maszyny/galeria/webp/ploter-hpp-ct-36.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ct-36.png|/assets/maszyny/galeria/ploter-hpp-ct-36.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-16.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-16.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-16.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-16.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-16.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-16.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-16.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-16.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-16.png|/assets/maszyny/galeria/ploter-hpp-ot-2-16.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-06.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1014-06.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-06.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1014-06.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-06.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1014-06.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1014-06.webp|/assets/maszyny/galeria/webp/frezarka-certus-1014-06.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1014-06.png|/assets/maszyny/galeria/frezarka-certus-1014-06.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-01.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-6040-01.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-01.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-6040-01.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-01.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-6040-01.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-6040-01.webp|/assets/maszyny/galeria/webp/frezarka-certus-6040-01.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-6040-01.png|/assets/maszyny/galeria/frezarka-certus-6040-01.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-20.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-20.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-20.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-20.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-20.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-20.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-20.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-20.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-20.png|/assets/maszyny/galeria/frezarka-hmm-gt-20.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-45.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/grawerka-cnc-45.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-45.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/grawerka-cnc-45.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-45.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/grawerka-cnc-45.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/grawerka-cnc-45.webp|/assets/maszyny/galeria/webp/grawerka-cnc-45.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/grawerka-cnc-45.png|/assets/maszyny/galeria/grawerka-cnc-45.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-19.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-19.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-19.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-19.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-19.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-19.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-19.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-19.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-19.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-19.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-07.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-07.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-07.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-07.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-07.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-07.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-07.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-07.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-07.png|/assets/maszyny/galeria/frezarka-certus-4040-07.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-39.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-39.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-39.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-39.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-39.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-st-1080-39.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-39.webp|/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-39.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-st-1080-39.png|/assets/maszyny/galeria/frezarka-hmm-st-1080-39.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-01.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/maszyna-specjalna-01.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-01.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/maszyna-specjalna-01.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-01.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/maszyna-specjalna-01.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/maszyna-specjalna-01.webp|/assets/maszyny/galeria/webp/maszyna-specjalna-01.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/maszyna-specjalna-01.png|/assets/maszyny/galeria/maszyna-specjalna-01.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-16.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-hmm-gt-16.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-16.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-hmm-gt-16.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-16.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-hmm-gt-16.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-hmm-gt-16.webp|/assets/maszyny/galeria/webp/frezarka-hmm-gt-16.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-hmm-gt-16.png|/assets/maszyny/galeria/frezarka-hmm-gt-16.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-11.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-4040-11.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-11.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-4040-11.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-11.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-4040-11.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-4040-11.webp|/assets/maszyny/galeria/webp/frezarka-certus-4040-11.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-4040-11.png|/assets/maszyny/galeria/frezarka-certus-4040-11.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-13.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-13.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-13.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-13.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-13.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-1080-5-osi-13.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-13.webp|/assets/maszyny/galeria/webp/frezarka-certus-1080-5-osi-13.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-13.png|/assets/maszyny/galeria/frezarka-certus-1080-5-osi-13.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-17.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-17.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-17.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-17.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-17.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-17.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-7060-17.webp|/assets/maszyny/galeria/webp/frezarka-certus-7060-17.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-7060-17.png|/assets/maszyny/galeria/frezarka-certus-7060-17.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-20.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-20.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-20.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-20.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-20.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-20.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-20.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-20.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-20.png|/assets/maszyny/galeria/ploter-hpp-ot-2-20.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-36.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/ploter-hpp-ot-2-36.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-36.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/ploter-hpp-ot-2-36.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-36.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/ploter-hpp-ot-2-36.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-36.webp|/assets/maszyny/galeria/webp/ploter-hpp-ot-2-36.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/ploter-hpp-ot-2-36.png|/assets/maszyny/galeria/ploter-hpp-ot-2-36.png|g"
+    },{
+      "oldPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-01.webp",
+      "newPathAbs": "static/assets/maszyny/galeria/webp/frezarka-certus-7060-01.webp",
+      "oldRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-01.webp",
+      "newRelativeWebpPath": "/assets/maszyny/galeria/webp/frezarka-certus-7060-01.webp",
+      "oldRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-01.png",
+      "newRelativePngPath": "/assets/maszyny/galeria/frezarka-certus-7060-01.png",
+      "sedWebpCommand": "s|/assets/maszyny/galeria/webp/frezarka-certus-7060-01.webp|/assets/maszyny/galeria/webp/frezarka-certus-7060-01.webp|g",
+      "sedPngCommand": "s|/assets/maszyny/galeria/frezarka-certus-7060-01.png|/assets/maszyny/galeria/frezarka-certus-7060-01.png|g"
+    }]
