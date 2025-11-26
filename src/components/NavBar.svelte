@@ -240,7 +240,7 @@
         <div class="desktop-menu-items">
           <div
             class="relative dropDownMenu maszynyDropdown"
-            on:mouseenter={() => (isMaszynyDropdownOpen = true)}
+            
             on:mouseleave={() => (isMaszynyDropdownOpen = false)}
           >
             <a on:click|preventDefault={() => isMaszynyDropdownOpen=!isMaszynyDropdownOpen }

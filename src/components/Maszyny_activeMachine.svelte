@@ -1125,6 +1125,18 @@ afterUpdate(() => {
 {/if}
 
 <style lang="scss">
+
+body.no-scroll-hero.active_machine_view {
+
+
+  opacity: 0.4 !important;
+
+
+}
+
+
+
+
   .activeMachine {
     flex-direction: column;
     padding: 1rem;
@@ -1513,6 +1525,19 @@ afterUpdate(() => {
     :global(body.active_machine_view section#oferta) {
       margin-top: 10px !important;
     }
+    :global(body.active_machine_view main section) {
+    display: none !important;
+    }
+
+    :global(body.active_machine_view) {
+    
+      .active_flex{
+        height: auto;
+
+
+      }
+      
+    }
 
     .activeMachine {
       position: absolute !important;
@@ -1542,12 +1567,15 @@ afterUpdate(() => {
 
   @media (max-width: 800px) {
 
-    .activeMachine {
+        .activeMachine {
 
-      height: 100vh;
-    }
+          height: 100vh;
+
+          overflow-y: auto; /* Add this to make the activeMachine element itself scrollable */
+
+        }
     .activeMachine .active_flex{
-      opacity: 0.5 !important;
+  
       overflow: hidden !important;
     }
     .activeMachine .active_flex .right{
