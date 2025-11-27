@@ -54,10 +54,12 @@
 
     const handleMouseenter = () => {
       store.set(initialValue + 0.03);
+      isHoveringItems.set(true);
     };
 
     const handleMouseleave = () => {
       store.set(initialValue);
+      isHoveringItems.set(false);
     };
 
     node.addEventListener("mouseenter", handleMouseenter);
@@ -83,8 +85,10 @@
 
   // Zmienna do śledzenia stanów ładowania obrazków
   let imageLoadingStates = writable({});
+  const isHoveringItems = writable(false);
 
   function positionToplines() {
+    if ($isHoveringItems) return; // Prevent execution if an item button is hovered
     // minHeroContentHeight = 0; // Reset for each calculation
     if (browser) {
       // Select all swiper-slides in both main and sub views
@@ -108,8 +112,8 @@
             const toplineRect = topline.getBoundingClientRect(); // Needed for width
 
           
-                    let top = ((imageRect.bottom - containerRect.top)) / initialScale+10;
-                    let left = ((imageRect.right - containerRect.left) - toplineRect.width) / initialScale -50;
+                    let top = ((imageRect.bottom - containerRect.top)) / initialScale;
+                    let left = ((imageRect.right - containerRect.left) - toplineRect.width) / initialScale;
 
 
 
@@ -138,17 +142,16 @@
                       headlines.style.position = 'absolute';
                       headlines.style.top = '0';
                       headlines.style.left = '0';
-                      headlines.style.width = 'auto'; // let it shrink-wrap the topline
+                      headlines.style.width = '100%'; // Make it full width
                       headlines.style.transform = 'none';
                     }
                     topline.style.position = 'absolute';
-                    topline.style.top = `${top-35}px`;
+                    topline.style.top = `${top}px`;
                     // topline.style.top = `${top - 35 + ($windowWidth <= 768 ? 100 : 0)}px`;
-                    topline.style.left = `${left}px`;
-                 
-                    topline.style.transform = 'none';
-                    topline.style.margin = '0';
-                    topline.style.textAlign = 'right'; // Align text to the right
+                    topline.style.left = `${left+100}px`;
+                    topline.style.right = '0px';
+                    topline.style.width = '100%';
+                    topline.style.textAlign = 'center'; // Align text to the center
 
                     /* // The topline's bottom position relative to the hero-content
                     const finalTop = parseFloat(topline.style.top);
@@ -978,7 +981,7 @@
         const buttonRect = backButton.getBoundingClientRect();
 
         // Calculate position relative to the .hero container, placing the button above the triangle
-        const top = triangleRect.top - heroRect.top - buttonRect.height - -40; // 10px margin
+        const top = triangleRect.top - heroRect.top - buttonRect.height - -25; // 10px margin
         const left =
           triangleRect.left -
           heroRect.left +
@@ -987,7 +990,7 @@
 
         backButton.style.position = "absolute";
         backButton.style.top = `${top}px`;
-        backButton.style.left = `${left}px`;
+        backButton.style.left = `${left-40}px`;
         backButton.style.transform = "none";
         backButton.style.zIndex = "100"; // Ensure it's on top
       }
@@ -1909,7 +1912,7 @@
     opacity: 0;
     animation: fadeInSlider 0.6s ease-out 0.2s forwards;
     overflow: visible;
-    height: 120%;
+    height: 130%;
   }
 
   .slider-view swiper-container swiper-slide,
@@ -2066,7 +2069,7 @@
   :global(body.home span.nawias) {
     font-size: 1rem;
     margin-top: 10px;
-    float: right;
+  /*   float: right; */
   }
 
   .headlines .topline {
@@ -2080,10 +2083,12 @@
     z-index: 999999999;
     font-weight: 200;
     font-family: "Poppins" !important;
+    margin-left: -15%;
 
     @media (max-width: 768px) {
       font-size: 1.2rem;
       width: 200px;
+      margin-left: -25%;
     }
 
     @media (max-width: 480px) {
@@ -2100,8 +2105,8 @@
   }
   .item .image {
     position: relative;
-    border-radius: 12px;
-    overflow: hidden;
+    // border-radius: 12px;
+    // overflow: hidden;
     transition: all 0.3s ease;
     transform: scale(1);
   }
@@ -2132,6 +2137,7 @@
     height: auto;
     object-fit: cover;
     transition: all 0.3s ease;
+    margin-top: -30px;
   }
 
   .item .image img.bg {
@@ -2296,7 +2302,7 @@
   .subListMachines swiper-container swiper-slide:nth-child(2),
   .subListMachines swiper-container swiper-slide:nth-child(5) {
     .headlines .topline {
-      margin-left: -90px;
+     /*  margin-left: -90px; */
     }
   }
 
@@ -2305,7 +2311,7 @@
   .subListMachines swiper-container swiper-slide:nth-child(1),
   .subListMachines swiper-container swiper-slide:nth-child(2) {
     .headlines .topline {
-      margin-left: -90px;
+    /*   margin-left: -90px; */
     }
 
     button > div.item > div {
