@@ -185,6 +185,26 @@
         </svg>
       </button>
 
+      <!-- Thumbnails -->
+      <div class="thumbnails-container" bind:this={thumbnailsEl}>
+        <div class="thumbnails-scroll" >
+          {#each images as image, i}
+            <button
+              class="thumbnail-item"
+              class:active={i === currentImageIndex}
+              on:click={() => selectImage(i)}
+              aria-label="Wyświetl obrazek {image.title}"
+              style="animation-delay: {i * 50}ms"
+            >
+            <picture>
+              <source srcset={image.src} type="image/webp" />
+              <img src={image.fallbackSrc} alt={image.alt} />
+            </picture>
+            </button>
+          {/each}
+        </div>
+      </div>
+
       <!-- Main Image Display -->
       <div class="main-image-display">
         {#key currentImageIndex}
@@ -211,26 +231,6 @@
         <button class="nav-button next" on:click={nextImage} aria-label="Następny obrazek">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
-      </div>
-
-      <!-- Thumbnails -->
-      <div class="thumbnails-container" bind:this={thumbnailsEl}>
-        <div class="thumbnails-scroll" >
-          {#each images as image, i}
-            <button
-              class="thumbnail-item"
-              class:active={i === currentImageIndex}
-              on:click={() => selectImage(i)}
-              aria-label="Wyświetl obrazek {image.title}"
-              style="animation-delay: {i * 50}ms"
-            >
-            <picture>
-              <source srcset={image.src} type="image/webp" />
-              <img src={image.fallbackSrc} alt={image.alt} />
-            </picture>
-            </button>
-          {/each}
-        </div>
       </div>
     </div>
   </div>
@@ -277,12 +277,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    max-width: 90vw;
-    max-height: 90vh;
-    background-color: #1a1a1a;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    overflow: hidden; /* For rounded corners */
+    max-width: 100vw; /* Allow to expand fully */
+    max-height: 100vh; /* Allow to expand fully */
+    background-color: transparent; /* No background for content itself */
+    border-radius: 0; /* No rounded corners */
+    box-shadow: none; /* No shadow */
+    overflow: visible; /* Allow image to be centered properly if needed */
   }
 
   .close-button {
@@ -298,10 +298,10 @@
     padding: 5px;
     border-radius: 50%;
     transition: background-color 0.2s;
-    background-color: #1a1a12;
+    background-color: rgba(0, 0, 0, 0.5); /* Use transparent background matching nav buttons */
 
     &:hover {
-      background-color: #5b5906;
+      background-color: rgba(0, 0, 0, 0.8);
     }
     svg {
       width: 30px;
@@ -310,14 +310,12 @@
   }
 
   .main-image-display {
-    position: relative;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px;
-    background-color: #000; /* Black background for main image area */
-    max-height: calc(90vh - 120px); /* Adjust based on thumbnail height */
+    max-width: 100%;
+    max-height: 77%;
+    -o-object-fit: contain;
+    object-fit: cover;
+    width: auto;
+    height: 100vh;
     
     .image-wrapper {
       width: 100%;
@@ -325,12 +323,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      picture{
+        max-width: 100%;
+    max-height: 100%;
+    -o-object-fit: contain;
+    object-fit: cover;
+    width: auto;
+    height: 100vh;
+      }
     }
 
     img {
       max-width: 100%;
       max-height: 100%;
-      object-fit: cover; /* Ensure image fits without cropping */
+      object-fit: contain; /* Ensure image fits without cropping */
     }
   }
 
@@ -340,7 +346,7 @@
     left: 0;
     right: 0;
     padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.7);
+   /*  background-color: rgba(0, 0, 0, 0.7); */
     color: white;
     text-align: center;
     font-size: 0.9rem;
@@ -382,7 +388,7 @@
 
   .thumbnails-container {
     height: 100px; /* Fixed height for thumbnails */
-    background-color: #222;
+    background-color: transparent; /* Let overlay show through */
     padding: 10px 0;
     width: 100%;
     flex-shrink: 0; /* Prevent from shrinking */
@@ -454,7 +460,7 @@
     }
     .main-image-display {
       padding: 0px; /* Remove padding for maximum image size */
-      max-height: calc(100vh - 100px); /* Adjust based on thumbnail height */
+      max-height: calc(100vh - 80px); /* Adjust based on mobile thumbnail height (80px) */
     }
     .close-button {
       top: 5px;

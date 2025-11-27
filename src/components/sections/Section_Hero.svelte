@@ -79,13 +79,13 @@
   let swiperKey = 0; // Klucz do wymuszania re-renderu swipera
   let lastActiveSlideIndex = 0; // Zapamięta ostatni aktywny slajd
   let subSwiperKey = 0; // Klucz do wymuszania re-renderu sub-swipera
-  let minHeroContentHeight = 0;
+  // let minHeroContentHeight = 0;
 
   // Zmienna do śledzenia stanów ładowania obrazków
   let imageLoadingStates = writable({});
 
   function positionToplines() {
-    minHeroContentHeight = 0; // Reset for each calculation
+    // minHeroContentHeight = 0; // Reset for each calculation
     if (browser) {
       // Select all swiper-slides in both main and sub views
       const allSlides = document.querySelectorAll(
@@ -107,11 +107,20 @@
             const containerRect = container.getBoundingClientRect();
             const toplineRect = topline.getBoundingClientRect(); // Needed for width
 
-            // The container (.items button) is scaled by initialScale.
-            // We calculate the desired visual offset and then divide by the scale factor
-            // to get the correct pre-scaled value to apply.
-                    const top = ((imageRect.bottom - containerRect.top)) / initialScale;
-                    let left;
+          
+                    let top = ((imageRect.bottom - containerRect.top)) / initialScale+10;
+                    let left = ((imageRect.right - containerRect.left) - toplineRect.width) / initialScale -50;
+
+
+
+                    if ($windowWidth <= 768){
+                        // top+=20;
+
+
+                    }
+
+
+                  /*   let left;
                     if ($windowWidth <= 768) { // Assuming 768px as mobile breakpoint
                       // Center horizontally relative to the container
                       left = (containerRect.width / 2 - toplineRect.width / 2) / initialScale;
@@ -120,7 +129,7 @@
                       // Original logic for desktop/larger screens
                       left = ((imageRect.right - containerRect.left) - toplineRect.width) / initialScale - 50;
                       topline.style.textAlign = 'right'; // Align text to the right
-                    }
+                    } */
 
                     // We are positioning the .topline, but it's inside .headlines.
                     // The .headlines container needs to not interfere.
@@ -132,12 +141,16 @@
                       headlines.style.width = 'auto'; // let it shrink-wrap the topline
                       headlines.style.transform = 'none';
                     }
-
-                    topline.style.top = `${top - 35 + ($windowWidth <= 768 ? 100 : 0)}px`;
+                    topline.style.position = 'absolute';
+                    topline.style.top = `${top-35}px`;
+                    // topline.style.top = `${top - 35 + ($windowWidth <= 768 ? 100 : 0)}px`;
                     topline.style.left = `${left}px`;
+                 
                     topline.style.transform = 'none';
                     topline.style.margin = '0';
-                    // The topline's bottom position relative to the hero-content
+                    topline.style.textAlign = 'right'; // Align text to the right
+
+                    /* // The topline's bottom position relative to the hero-content
                     const finalTop = parseFloat(topline.style.top);
                     const finalHeight = toplineRect.height / initialScale; // Use scaled height
                     const currentToplineBottom = finalTop + finalHeight;
@@ -153,7 +166,7 @@
                             const absoluteToplineBottom = itemsRect.top - heroContentRect.top + finalTop + finalHeight;
                             minHeroContentHeight = Math.max(minHeroContentHeight, absoluteToplineBottom);
                         }
-                    }
+                    } */
           };
 
           const imgElement = image.querySelector("img");
@@ -1039,7 +1052,8 @@
     <div class="hero-overlay"></div>
 
     <!-- Kontener dla animacji crossfade -->
-    <div class="hero-content" style="min-height: {minHeroContentHeight}px;" in:fade={{ duration: 650, delay: 800 }}>
+    <div class="hero-content" in:fade={{ duration: 650, delay: 800 }}>
+    <!-- <div class="hero-content" style="min-height: {minHeroContentHeight}px;" in:fade={{ duration: 650, delay: 800 }}> -->
       <!-- 1. Slider - pokazuje się gdy nie ma aktywnej kategorii -->
       {#if !$activeCategoryStore}
         {#if swiperReady}
@@ -1717,7 +1731,7 @@
 
   @media (max-width: 1200px) {
     .view {
-      margin-top: -120px;
+      margin-top: -80px;
     }
   }
   /* Tablet - Landscape (768px - 1199px) */
@@ -1734,7 +1748,8 @@
   /* Mobile - (max 767px) */
   @media (max-width: 767px) {
     .hero {
-      height: 100vh;
+      height: 80vh;
+      // height: 100vh;
     }
 
     .hero-bg {
@@ -1894,6 +1909,7 @@
     opacity: 0;
     animation: fadeInSlider 0.6s ease-out 0.2s forwards;
     overflow: visible;
+    height: 120%;
   }
 
   .slider-view swiper-container swiper-slide,
@@ -1993,7 +2009,7 @@
     align-items: center;
     width: 50%;
     flex-shrink: 0;
-    overflow: visible;
+    // overflow: visible;
 
     @media (max-width: 1024px) {
       width: 100%; // Ensure full width on smaller screens when slidesPerView is 1
@@ -2027,7 +2043,7 @@
   .headlines {
     transition: all 0.2s ease;
     /* transform: translateX(100px) translateY(20px); */
-   
+    z-index: 900000000000;
     /* position: absolute; */
     /* width: 70vh; */
     
