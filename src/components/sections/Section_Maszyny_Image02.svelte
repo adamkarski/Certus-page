@@ -38,10 +38,10 @@
     />
     <div class="maszyny-plain-image-header" bind:this={headerEl} class:visible>
       {#if visible}
-        <h3 class="no-sel" in:fade={{ duration: 600, delay: 400 }} use:typoFixAction>
+        <!-- <h3 class="no-sel" in:fade={{ duration: 600, delay: 400 }} use:typoFixAction>
           {title}
-        </h3>
-        <p class="no-sel" use:typoFixAction>{subtitle}</p>
+        </h3> -->
+       <!--  <p class="no-sel" use:typoFixAction>{subtitle}</p> -->
         <button class="maszyny-cta-btn" on:click={ctaAction}>
           {ctaText}
         </button>
@@ -51,6 +51,9 @@
 </section>
 
 <style lang="scss">
+
+
+
   .maszyny-plain-image-section {
     width: 100%;
     position: relative;
@@ -62,21 +65,17 @@
   .maszyny-plain-image-header {
     min-height: 60px;
     width: 100%;
-    text-align: center;
-    padding: 1.5rem;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.6) 100%
-    );
+    text-align: right;
     position: absolute;
     z-index: 2;
     bottom: 0;
     left: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-left: 20px;
+
 
     h3 {
       margin: 0 0 8px 0;
@@ -94,30 +93,55 @@
   }
 
   .maszyny-cta-btn {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s ease;
+  position: relative;
+  background: rgba(126, 140, 0, 1);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+ 
+  cursor: pointer;
+  font-weight: 600;
+  overflow: hidden;
+  min-width: 200px;
+  text-align: left;
 
-    &:hover {
-      background: #2980b9;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 28px;
+    height: 100%;
+    background: linear-gradient(135deg, 
+      transparent 49%, 
+      rgba(251, 251, 251, 1) 49%, 
+      rgba(251, 251, 251, 1) 100%
+    );
+    transition: right 0.2s ease;
+    z-index: 1;
+  }
+
+  &:hover {
+    
+    
+    &::before {
+      right: 0;
     }
   }
+}
+
 
   .maszyny-plain-image-container {
     position: relative;
     width: 100%;
     margin: 0 auto;
     background: #f8f9fa;
+    aspect-ratio: 1 / 1; /* Make the container square */
   }
 
   .maszyny-plain-image {
     width: 100%;
-    height: 250px;
+    height: 100%; /* Fill the square container */
     display: block;
     object-fit: cover;
     object-position: center;
@@ -131,9 +155,7 @@
     .maszyny-plain-image-header p {
     }
     
-    .maszyny-plain-image {
-      height: 180px;
-    }
+    /* No need to set height here anymore, aspect-ratio handles it */
     
     .maszyny-cta-btn {
       padding: 6px 12px;

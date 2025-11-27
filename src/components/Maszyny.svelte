@@ -1,7 +1,7 @@
 <script lang="ts">
   import CtaButton from "./CtaButton.svelte";
   import OfertaGrid from "./OfertaGrid.svelte";
-  import Section_Maszyny_Image01 from "./sections/Section_Maszyny_Image01.svelte";
+  // import Section_Maszyny_Image01 from "./sections/Section_Maszyny_Image01.svelte";
   import Section_Maszyny_Video from "./sections/Section_Maszyny_Video.svelte";
   import Section_Maszyny_Image02 from "./sections/Section_Maszyny_Image02.svelte";
   import { typoFixAction } from "$lib/utils/typography";
@@ -609,12 +609,12 @@
         ctaAction={() => openGallery("plotery-przemyslowe-ct")}
       />
 
-      <Section_Maszyny_Image01
+    <!--   <Section_Maszyny_Image01
         sectionId="zabudowa-specs"
         imgSrc="/assets/certus-pomoc-wdrozenia.png"
         title="Dokumentacja techniczna"
         subtitle="Pobierz specyfikację"
-      />
+      /> -->
     </div>
   </div>
   <MachineMenu
@@ -749,12 +749,12 @@
     </div>
 
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image01
+    <!--   <Section_Maszyny_Image01
         sectionId="grawerki-image"
         imgSrc="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
         title="Grawerki CNC"
         subtitle="Precyzyjne grawerowanie"
-      />
+      /> -->
 
       <Section_Maszyny_Image02
         sectionId="grawerki-gallery"
@@ -891,12 +891,12 @@
     </div>
 
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image01
+   <!--    <Section_Maszyny_Image01
         sectionId="frezarki5osiowe-image"
         imgSrc="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
         title="Frezarki pięcioosiowe"
         subtitle="Zaawansowana obróbka"
-      />
+      /> -->
 
       <Section_Maszyny_Image02
         sectionId="frezarki5osiowe-gallery"
@@ -1035,12 +1035,12 @@
     </div>
 
     <div class="maszyny-dane-gallery-column">
-      <Section_Maszyny_Image01
+     <!--  <Section_Maszyny_Image01
         sectionId="ploteryLinearne-image"
         imgSrc="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
         title="Plotery CNC HLP-FT"
         subtitle="Precyzyjne cięcie"
-      />
+      /> -->
 
       <Section_Maszyny_Image02
         sectionId="ploteryLinearne-gallery"

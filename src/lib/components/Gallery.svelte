@@ -162,12 +162,13 @@
 </script>
 
 {#if isOpen}
-<div class="gallery-modal-overlay" class:closing={isClosing}>
+<div class="gallery-modal-overlay" class:closing={isClosing} on:click={closeGallery}>
     <div
       class="gallery-modal-content"
       role="dialog"
       aria-modal="true"
       aria-label="Gallery"
+      on:click|stopPropagation
     >
       <button class="close-button" on:click={closeGallery} aria-label="Zamknij galerię">
         <svg
@@ -286,20 +287,21 @@
 
   .close-button {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 3px;
+    right: 3px;
     background: none;
     border: none;
     cursor: pointer;
     color: white;
     font-size: 2rem;
-    z-index: 10001; /* Above main image */
+    z-index: 10001;
     padding: 5px;
     border-radius: 50%;
     transition: background-color 0.2s;
+    background-color: #1a1a12;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: #5b5906;
     }
     svg {
       width: 30px;
@@ -313,7 +315,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 0px;
     background-color: #000; /* Black background for main image area */
     max-height: calc(90vh - 120px); /* Adjust based on thumbnail height */
     
@@ -328,7 +330,7 @@
     img {
       max-width: 100%;
       max-height: 100%;
-      object-fit: contain; /* Ensure image fits without cropping */
+      object-fit: cover; /* Ensure image fits without cropping */
     }
   }
 
@@ -438,18 +440,27 @@
   }
 
   @media (max-width: 768px) {
+    .gallery-modal-overlay {
+      background-color: #000; /* Fully opaque on mobile */
+    }
+
     .gallery-modal-content {
-      max-width: 95vw;
-      max-height: 95vh;
+      max-width: 100vw;
+      max-height: 100vh;
+      width: 100%; /* Ensure it takes full width */
+      height: 100%; /* Ensure it takes full height */
+      border-radius: 0; /* No rounded corners on full screen */
+      box-shadow: none; /* No shadow on full screen */
     }
     .main-image-display {
-      padding: 10px;
-      max-height: calc(95vh - 100px);
+      padding: 0px; /* Remove padding for maximum image size */
+      max-height: calc(100vh - 100px); /* Adjust based on thumbnail height */
     }
     .close-button {
-      top: 10px;
-      right: 10px;
+      top: 5px;
+      right: 5px;
       font-size: 1.5rem;
+      padding: 10px;
       svg {
         width: 24px;
         height: 24px;
