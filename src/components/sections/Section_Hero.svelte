@@ -111,20 +111,16 @@
             const containerRect = container.getBoundingClientRect();
             const toplineRect = topline.getBoundingClientRect(); // Needed for width
 
-          
-                    let top = ((imageRect.bottom - containerRect.top)) / initialScale;
-                    let left = ((imageRect.right - containerRect.left) - toplineRect.width) / initialScale;
+            let top = (imageRect.bottom - containerRect.top) / initialScale;
+            let left =
+              (imageRect.right - containerRect.left - toplineRect.width) /
+              initialScale;
 
+            if ($windowWidth <= 768) {
+              // top+=20;
+            }
 
-
-                    if ($windowWidth <= 768){
-                        // top+=20;
-
-
-                    }
-
-
-                  /*   let left;
+            /*   let left;
                     if ($windowWidth <= 768) { // Assuming 768px as mobile breakpoint
                       // Center horizontally relative to the container
                       left = (containerRect.width / 2 - toplineRect.width / 2) / initialScale;
@@ -135,25 +131,25 @@
                       topline.style.textAlign = 'right'; // Align text to the right
                     } */
 
-                    // We are positioning the .topline, but it's inside .headlines.
-                    // The .headlines container needs to not interfere.
-                    const headlines = slide.querySelector<HTMLElement>('.headlines');
-                    if (headlines) {
-                      headlines.style.position = 'absolute';
-                      headlines.style.top = '0';
-                      headlines.style.left = '0';
-                      headlines.style.width = '100%'; // Make it full width
-                      headlines.style.transform = 'none';
-                    }
-                    topline.style.position = 'absolute';
-                    topline.style.top = `${top}px`;
-                    // topline.style.top = `${top - 35 + ($windowWidth <= 768 ? 100 : 0)}px`;
-                    topline.style.left = `${left+100}px`;
-                    topline.style.right = '0px';
-                    topline.style.width = '100%';
-                    topline.style.textAlign = 'center'; // Align text to the center
+            // We are positioning the .topline, but it's inside .headlines.
+            // The .headlines container needs to not interfere.
+            const headlines = slide.querySelector<HTMLElement>(".headlines");
+            if (headlines) {
+              headlines.style.position = "absolute";
+              headlines.style.top = "0";
+              headlines.style.left = "0";
+              headlines.style.width = "100%"; // Make it full width
+              headlines.style.transform = "none";
+            }
+            topline.style.position = "absolute";
+            topline.style.top = `${top}px`;
+            // topline.style.top = `${top - 35 + ($windowWidth <= 768 ? 100 : 0)}px`;
+            topline.style.left = `${left + 100}px`;
+            topline.style.right = "0px";
+            topline.style.width = "100%";
+            topline.style.textAlign = "center"; // Align text to the center
 
-                    /* // The topline's bottom position relative to the hero-content
+            /* // The topline's bottom position relative to the hero-content
                     const finalTop = parseFloat(topline.style.top);
                     const finalHeight = toplineRect.height / initialScale; // Use scaled height
                     const currentToplineBottom = finalTop + finalHeight;
@@ -967,7 +963,6 @@
     }
   }
 
-
   function positionBackButton() {
     if (browser) {
       const hero = document.querySelector<HTMLElement>(".hero");
@@ -990,7 +985,7 @@
 
         backButton.style.position = "absolute";
         backButton.style.top = `${top}px`;
-        backButton.style.left = `${left-40}px`;
+        backButton.style.left = `${left - 40}px`;
         backButton.style.transform = "none";
         backButton.style.zIndex = "100"; // Ensure it's on top
       }
@@ -1047,6 +1042,16 @@
   onDestroy(() => {
     clearInterval(timer);
   });
+
+  function getTitle(node) {
+    const parent = node.parentElement;
+
+    const topline = parent.querySelector(".topline");
+    if (topline) {
+      node.innerHTML = topline.innerHTML;
+      node.style.cursor = "pointer";
+    }
+  }
 </script>
 
 <!-- Tło i gradient pozostają statyczne -->
@@ -1056,7 +1061,7 @@
 
     <!-- Kontener dla animacji crossfade -->
     <div class="hero-content" in:fade={{ duration: 650, delay: 800 }}>
-    <!-- <div class="hero-content" style="min-height: {minHeroContentHeight}px;" in:fade={{ duration: 650, delay: 800 }}> -->
+      <!-- <div class="hero-content" style="min-height: {minHeroContentHeight}px;" in:fade={{ duration: 650, delay: 800 }}> -->
       <!-- 1. Slider - pokazuje się gdy nie ma aktywnej kategorii -->
       {#if !$activeCategoryStore}
         {#if swiperReady}
@@ -1186,6 +1191,14 @@
                         </div>
                       </div>
                     </button>
+
+                    <div class="item_title no-sel" use:getTitle
+                    on:click={() =>
+                      cat.url
+                        ? (window.location.href = cat.url)
+                        : openCategory(cat.id)}
+                    
+                    ></div>
                   </swiper-slide>
                 {/each}
 
@@ -1274,6 +1287,11 @@
                             </div>
                           </div>
                         </button>
+                        <div
+                          class="item_title no-sel"
+                          use:getTitle
+                          on:click={() => openMachine("m_frezarka")}
+                        ></div>
                       </swiper-slide>
                       <swiper-slide>
                         <button
@@ -1302,6 +1320,11 @@
                             </div>
                           </div>
                         </button>
+                        <div
+                          class="item_title no-sel"
+                          use:getTitle
+                          on:click={() => openMachine("m_frezarka1")}
+                        ></div>
                       </swiper-slide>
                     </swiper-container>
                     <button
@@ -1413,6 +1436,11 @@
                             </div>
                           </div>
                         </button>
+                        <div
+                          class="item_title no-sel"
+                          use:getTitle
+                          on:click={() => openMachine("m-ploter")}
+                        ></div>
                       </swiper-slide>
                       <swiper-slide>
                         <button
@@ -1441,6 +1469,11 @@
                             </div>
                           </div>
                         </button>
+                        <div
+                          class="item_title no-sel"
+                          use:getTitle
+                          on:click={() => openMachine("m-ploter1")}
+                        ></div>
                       </swiper-slide>
                     </swiper-container>
                     <button
@@ -1490,6 +1523,42 @@
 <MaszynyActiveMachine />
 
 <style lang="scss">
+  .category-content .subListMachines{
+
+
+    height: 500px;
+
+
+
+  }
+  .item_title {
+    position: absolute;
+    margin-bottom: -57%;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.72);
+    color: rgb(255, 255, 255);
+    line-height: 1;
+    transition: all 0.9s ease;
+    text-align: center;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 300;
+    opacity: 0.75;
+    font-family: "Poppins" !important;
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (max-width: 746px) {
+    .item_title {
+      font-size: 1.6rem;
+      margin-bottom: -85% !important;
+
+    
+      span {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
   :global(.home .hero) {
     overflow: hidden;
     &::after {
@@ -1562,7 +1631,7 @@
   }
 
   :global(.gradientHero) {
-    background: linear-gradient(180deg, #3e4042 40%, #5454 100%);
+    background: linear-gradient(344deg, #3e4042 40%, #5454 100%);
   }
   :global(.gradientHero_old) {
     background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
@@ -1923,7 +1992,7 @@
       transition: opacity 0.3s ease;
     }
     button > div.item > div img {
-      filter: blur(0.2px);
+      filter: blur(0.6px);
       transition: filter 0.3s ease;
     }
 
@@ -2049,7 +2118,7 @@
     z-index: 900000000000;
     /* position: absolute; */
     /* width: 70vh; */
-    
+    display: none;
   }
 
   .items::before {
@@ -2069,7 +2138,7 @@
   :global(body.home span.nawias) {
     font-size: 1rem;
     margin-top: 10px;
-  /*   float: right; */
+    /*   float: right; */
   }
 
   .headlines .topline {
@@ -2187,7 +2256,6 @@
         overflow: hidden;
       }
     }
-   
   }
   /* ————————————————  NAVIGATION BUTTONS  ———————————————— */
   .swiper-nav-button {
@@ -2302,7 +2370,7 @@
   .subListMachines swiper-container swiper-slide:nth-child(2),
   .subListMachines swiper-container swiper-slide:nth-child(5) {
     .headlines .topline {
-     /*  margin-left: -90px; */
+      /*  margin-left: -90px; */
     }
   }
 
@@ -2311,7 +2379,7 @@
   .subListMachines swiper-container swiper-slide:nth-child(1),
   .subListMachines swiper-container swiper-slide:nth-child(2) {
     .headlines .topline {
-    /*   margin-left: -90px; */
+      /*   margin-left: -90px; */
     }
 
     button > div.item > div {

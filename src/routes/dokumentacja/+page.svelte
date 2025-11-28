@@ -4,6 +4,56 @@
   import Dokumentacja from '../../components/Dokumentacja.svelte';
   import Section_Image01 from '../../components/sections/Section_Image01.svelte';
   import Section_Referencje from '../../components/sections/Section_Referencje.svelte';
+
+  import maszynyData from '$lib/data/maszyny.json';
+  import machineSeoContent from '$lib/data/machine-seo-content.json'; // New import
+  import { createSlug } from '$lib/utils/seo-utils';
+  import "$lib/table.scss"; // Import table-specific styles
+
+  interface MachineLink {
+    title: string;
+    url: string;
+    image: string; // Add image property
+  }
+
+  const allMachineLinks: MachineLink[] = [];
+
+  maszynyData.forEach(categoryEntry => {
+    // Skip entries with a direct URL (they are not individual machine pages)
+    if (categoryEntry.url) {
+      return;
+    }
+
+    // Handle case where category.machine is a single string (direct machine)
+    if (typeof categoryEntry.machine === 'string') {
+      const internalMachineId = categoryEntry.machine;
+      const seoDataForMachine = machineSeoContent[internalMachineId];
+
+      if (seoDataForMachine) {
+        const machineSlug = createSlug(seoDataForMachine.title);
+        allMachineLinks.push({
+          title: seoDataForMachine.title, // Use the detailed title from SEO content
+          url: `/maszyny/${categoryEntry.id}/${machineSlug}`,
+          image: seoDataForMachine.image // Include the image path
+        });
+      }
+    }
+    // Handle case where category.machine is an array of machine IDs (sub-machines)
+    else if (Array.isArray(categoryEntry.machine)) {
+      categoryEntry.machine.forEach(internalMachineId => {
+        const seoDataForMachine = machineSeoContent[internalMachineId];
+        if (seoDataForMachine) {
+          const machineSlug = createSlug(seoDataForMachine.title);
+          allMachineLinks.push({
+            title: seoDataForMachine.title, // Use the detailed title from SEO content
+            url: `/maszyny/${categoryEntry.id}/${machineSlug}`,
+            image: seoDataForMachine.image // Include the image path
+          });
+        }
+      });
+    }
+  });
+
 </script>
 
 <svelte:head>
@@ -15,12 +65,334 @@
   <Section_Header />
   <main>
     <Dokumentacja />
+
+    <section class="machine-seo-links-section">
+      <div class="container">
+        <h2>Certus Maszyny CNC</h2>
+        <p>
+          Zapraszamy do zapoznania się ze szczegółowymi informacjami o każdej z naszych maszyn.
+          Tutaj uzyskasz pełne specyfikacje, opisy i dane techniczne kadej z naszych maszyn. 
+        </p>
+        <!-- Changed class to match existing table wrapper for consistent styling -->
+        <div class="maszyny-dane-tabela-wrap">
+          <!-- Changed class to match existing table for consistent styling -->
+          <table class="maszyny-dane-tabela">
+            <thead>
+              <tr>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {#each allMachineLinks as link}
+                <tr>
+                  <td data-label="Maszyna">
+                    <a href="{link.url}" class="machine-link-item">
+                      <img src="{link.image}" alt="{link.title}" class="machine-thumbnail"/>
+                      <span>{link.title}</span>
+                    </a>
+                  </td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
     <Section_Image01 />
     <Section_Referencje />
   </main>
   <Section_Footer />
 </div>
 
+<style lang="scss">
+  // Specific styles for the machine links table, overriding or supplementing as needed
+  // Most table styling will now come from $lib/table.scss
+  .maszyny-dane-tabela-wrap {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    overflow-x: auto; /* Allows table to be scrollable on small screens, if needed */
+  }
+
+  .machine-seo-links-section {
+    color: #3e4042;
+    padding: 0 9rem;
+  }
+
+  .machine-link-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none; // Remove underline from the whole link
+    color: inherit; // Inherit color from parent td
+    font-weight: 600; // Match the font weight from previous styling
+    transition: color 0.2s ease-in-out;
+  }
+
+  .machine-link-item:hover {
+    color: var(--color-primary); // Highlight on hover
+  }
+
+  .machine-thumbnail {
+    width: 60px; // Small image size
+    height: 60px;
+    object-fit: contain; // Ensure image fits without cropping
+    margin-right: 15px; // Space between image and text
+    border-radius: 8px; // Slightly rounded corners
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // Subtle shadow
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .machine-link-item:hover .machine-thumbnail {
+    transform: scale(1.05); // Slightly enlarge image on hover
+  }
+
+  // Responsive adjustments for mobile, now handling a single column
+  @media (max-width: 768px) {
+    .machine-seo-links-section {
+      padding: 0 1rem; // Adjust padding for smaller screens
+    }
+  }
+
+  @media (max-width: 480px) {
+    .maszyny-dane-tabela {
+      td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 15px;
+        display: block;
+        border: 1px solid #e0e0e0;
+      }
+
+      td { // Apply directly to td since it's the only one
+        background-color: #f5f5f5; // Background for the single cell on mobile
+        font-weight: 600;
+        padding: 10px; // Adjust padding for mobile
+      }
+
+      td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-right: 10px;
+      }
+      td:nth-of-type(1)::before { content: "Maszyna:"; } // Only one data-label needed
+    }
+
+    .machine-link-item {
+      flex-direction: column; // Stack image and text vertically on small screens
+      text-align: center;
+    }
+
+    .machine-thumbnail {
+      margin-right: 0;
+      margin-bottom: 10px; // Space between image and text when stacked
+    }
+  }
 
 
+  :global(.gradientHero_old) {
+      background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
+    }
 
+
+    .cta-button {
+      display: inline-block;
+      padding: 10px 15px;
+
+      color: #333;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+    }
+
+    .cta-button img {
+      vertical-align: middle;
+    }
+
+    .dokumentacja-intro {
+      padding-top: 5%;
+      margin-bottom: 60px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      color: #333;
+    }
+
+    .dokumentacja-intro p {
+      color: var(--color-text-secondary);
+      margin-bottom: 1.5em;
+      line-height: 1.7;
+    }
+
+    .dokumentacja-intro a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .dokumentacja-intro a:hover {
+      color: var(--color-primary-dark);
+    }
+    @media (min-width: 1200px) {
+
+    }
+
+    tbody tr td:first-child {
+        width: 90% !important;
+        min-width: 20px !important;
+      }
+
+
+    .dokumentacja-container {
+      overflow: hidden;
+      width: 100%;
+      padding: 0 9rem;
+    }
+
+    .dokumentacja {
+      width: 100%;
+      padding: 100px 0;
+      background: #f7f7f7;
+      color: var(--color-text-secondary);
+    }
+
+    .section-header {
+      margin-bottom: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .dokumentacja {
+        padding: 80px 0;
+      }
+      .dokumentacja-container{
+
+
+        padding: 0 1rem;
+
+      }
+    }
+    #dokumentacja {
+      overflow: hidden;
+      background-color: #ffffff;
+      min-height: 50vh;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 220px;
+        left: 0px;
+        width: 100%;
+        height: 50px;
+        background-image: url(/assets/images/pattern-image1-2.png);
+      }
+    }
+    .triangle {
+      position: absolute;
+      width: 400px;
+      height: 100px;
+      top: 160px;
+      left: 0;
+      z-index: 1; // Ensure it's above other content if needed
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 55px;
+        background: #ffffff;
+        clip-path: polygon(0 0, 79% 0, 100% 100%, 0% 100%);
+      }
+    }
+    @media (max-width: 800px) {
+      .triangle {
+        &::after {
+          clip-path: polygon(0 0, 40% 0, 60% 101%, 0% 100%) !important;
+        }
+      }
+    }
+
+    @media (max-width: 500px) {
+      .triangle {
+        &::after {
+          clip-path: polygon(0 0, 20% 0, 40% 101%, 0% 100%) !important;
+        }
+      }
+    }
+
+    .Dokumentacja-container {
+      overflow: hidden;
+      width: 100%;
+      padding: 0 9rem;
+    }
+
+    .pattern-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20%;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.3;
+
+      .pattern.two {
+        transform: scale(1.2) skew(-15deg, 0deg);
+        background-image: url(/assets/images/pattern-image1-2.png);
+        position: absolute;
+        width: 100%;
+        height: 63px;
+        z-index: 11;
+        left: 0;
+        bottom: -10px;
+        pointer-events: auto;
+      }
+    }
+
+    .Dokumentacja_page {
+      min-width: 100vw;
+      margin: 0 auto;
+      height: 260px;
+    }
+
+    .first-container-back {
+      background-image: url(/assets/first-block-polyline.svg);
+      position: absolute;
+      top: 218px;
+      width: 100%;
+      height: 44px;
+      background-repeat: no-repeat;
+      background-position-x: -1500px;
+      background-size: cover;
+    }
+    .Dokumentacja {
+      width: 100%;
+      padding: 100px 0;
+      background: #f7f7f7;
+      color: var(--color-text-secondary);
+    }
+
+    .section-header {
+      margin-bottom: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .Dokumentacja {
+        padding: 80px 0;
+      }
+    }
+</style>
