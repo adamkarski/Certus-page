@@ -1632,6 +1632,17 @@
 
   :global(.gradientHero) {
     background: linear-gradient(344deg, #3e4042 40%, #5454 100%);
+
+
+    @media (max-width: 767px){
+      
+
+      background: linear-gradient(330deg, #3e4042 40%, #5454 100%) !important;
+      
+    }
+
+
+
   }
   :global(.gradientHero_old) {
     background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
