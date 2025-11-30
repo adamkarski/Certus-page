@@ -60,6 +60,13 @@
     overflow: hidden;
     margin-bottom: 20px;
     border-radius: 8px;
+    box-shadow:  1px 7px 20px 0px rgb(96 93 93 / 65%);
+    .maszyny-plain-image{
+
+
+      border: solid 1px black;
+
+    }
   }
 
   .maszyny-plain-image-header {

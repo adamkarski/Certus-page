@@ -62,9 +62,8 @@
 
 <!-- Frezarki CNC HMM-ST -->
 <section id="frezarki" class="maszyny-dane">
-  
-  
-  
+
+
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -76,15 +75,17 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png" alt="Frezarka CNC HMM-ST">
+      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("frezarki-st")}>
+        <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png" alt="Frezarka CNC HMM-ST">
+      </div>
     </div>
   </div>
-  
 
- 
+
+
   <div class="maszyny-dane-text-image" use:typoFixAction>
     <div class="left">
-    
+
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>Produkcję form wtryskowych i tłoczników</li>
         <li use:typoFixAction>
@@ -216,9 +217,8 @@
 
 <!-- Frezarki CNC HMM-GT -->
 <section id="frezarki-gt" class="maszyny-dane">
- 
- 
- 
+
+
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -227,14 +227,16 @@
       </div>
       <div class="cnc-row" use:typoFixAction>
         Do dużych formatów i ciężkich detali — detal stoi, pracuje brama. HMM‑GT
-        zaprojektowano do szybkiej i precyzyjnej obróbki arkuszy oraz elementów
+        zaprojektowano do szybkieji precyzyjnej obróbki arkuszy oraz elementów
         o dużej masie i gabarytach. Doskonale sprawdza się w aluminium i jego
         stopach, kompozytach, tworzywach, drewnie oraz — w odpowiedniej
         konfiguracji wrzeciona — w wybranych stalach.
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png" alt="Frezarki CNC HMM-G">
+      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("frezarki-gt")}>
+        <img src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png" alt="Frezarki CNC HMM-G">
+      </div>
     </div>
   </div>
 
@@ -244,7 +246,7 @@
 
   <div class="maszyny-dane-text-image">
     <div class="left">
-    
+
 
       <div class="maszyny-dane-podtytul" use:typoFixAction>
         Zastosowanie maszyn obejmuje m.in.:
@@ -358,7 +360,6 @@
 <section id="ploteryPrzemyslowe" class="maszyny-dane">
 
 
-   
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -373,7 +374,9 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT">
+      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("plotery-przemyslowe-ot")}>
+        <img src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT">
+      </div>
     </div>
   </div>
 
@@ -383,11 +386,10 @@
 
 
 
- 
   <div class="maszyny-dane-text-image">
-   
+
       <div class="left">
-  
+
 
       <div class="maszyny-dane-podtytul" use:typoFixAction>
         Konstrukcja i precyzja:
@@ -480,8 +482,8 @@
 
 <!-- Przemysłowe plotery CNC w zabudowie -->
 <section id="ploteryPrzemysloweZabudowa" class="maszyny-dane">
- 
- 
+
+
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -497,7 +499,9 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT">
+      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("plotery-przemyslowe-ct")}>
+        <img src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT">
+      </div>
     </div>
   </div>
 
@@ -508,8 +512,8 @@
 
   <div class="maszyny-dane-text-image">
     <div class="left">
-     
-   
+
+
       <div class="maszyny-dane-podtytul" use:typoFixAction>
         Przewagi konstrukcyjne:
       </div>
@@ -627,10 +631,8 @@
 
 <!-- Grawerki CNC -->
 <section id="grawerki" class="maszyny-dane">
-  
-  
 
-   
+
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -646,7 +648,9 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png" alt="Grawerki CNC Certus">
+      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("grawerki")}>
+        <img src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png" alt="Grawerki CNC Certus">
+      </div>
     </div>
   </div>
 
@@ -655,11 +659,10 @@
 
 
 
- 
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Grawerki CNC</strong><br /><br /> 
+        <strong>Grawerki CNC</strong><br /><br />
       </p>
 
       <div class="maszyny-dane-podtytul" use:typoFixAction>
@@ -778,9 +781,6 @@
 <section id="frezarki5osiowe" class="maszyny-dane">
 
 
-
-
-    
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -792,11 +792,13 @@
         urządzenia przeznaczone do precyzyjnej obróbki detali o złożonej geometrii.
         Znajdują zastosowanie przede wszystkim w produkcji wielkogabarytowych form
         odlewniczych, matryc do termoformowania, modeli kompozytowych oraz elementów
-        wymagających wielostronnej obróbki w jednym mocowaniu.  
+        wymagających wielostronnej obróbki w jednym mocowaniu.
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png" alt="Frezarki CNC pięcioosiowe">
+      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("frezarki-5osiowe")}>
+        <img src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png" alt="Frezarki CNC pięcioosiowe">
+      </div>
     </div>
   </div>
 
@@ -804,7 +806,7 @@
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong></strong><br /><br /> 
+        <strong></strong><br /><br />
       </p>
 
       <div class="maszyny-dane-podtytul">Zaawansowane sterowanie:</div>
@@ -856,7 +858,7 @@
       </ul>
 
       <div class="maszyny-dane-podtytul">Opcje rozbudowy:</div>
-      <ul class="maszyny-dane-lista-small">
+      <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
           Pięcioosiowe frezarki CNC mogą być rozbudowane o dodatkowe opcje takie
           jak chłodzenie narzędzi mgłą olejową
@@ -918,11 +920,8 @@
 
 <!-- Plotery tnące linearne CNC -->
 <section id="ploteryLinearne" class="maszyny-dane">
- 
- 
 
 
-    
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -934,11 +933,13 @@
         i wydajne urządzenia zaprojektowane do cięcia, bigowania, znakowania i opisywania
         szerokiej gamy materiałów płaskich. Idealnie sprawdzają się w przemyśle opakowaniowym,
         reklamowym, tekstylnym, kompozytowym i wielu innych branżach, gdzie wymagana
-        jest wysoka jakość krawędzi oraz powtarzalność obróbki. 
+        jest wysoka jakość krawędzi oraz powtarzalność obróbki.
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png" alt="Plotery CNC HLP-FT Certus">
+      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("plotery-linearne")}>
+        <img src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png" alt="Plotery CNC HLP-FT Certus">
+      </div>
     </div>
   </div>
 
@@ -950,7 +951,7 @@
   <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
-        <strong>Plotery CNC HLP-FT</strong><br /><br /> 
+        <strong>Plotery CNC HLP-FT</strong><br /><br />
       </p>
 
       <div class="maszyny-dane-podtytul">Wszechstronność i funkcjonalność:</div>
@@ -987,7 +988,7 @@
       </ul>
 
       <div class="maszyny-dane-podtytul">Automatyzacja i wygoda:</div>
-      <ul class="maszyny-dane-lista-small">
+      <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
           Plotery liniowe mogą być opcjonalnie wyposażone w taśmowy lub
           bezkońcowy stół transportowy, co znacząco zwiększa wydajność przy
@@ -1000,7 +1001,7 @@
       </ul>
 
       <div class="maszyny-dane-podtytul">Obsługa i ergonomia:</div>
-      <ul class="maszyny-dane-lista-small">
+      <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
           Sterowanie odbywa się z poziomu niezależnego pulpitu operatorskiego,
           co zapewnia wygodę i bezpieczeństwo obsługi, a także ułatwia
@@ -1065,8 +1066,13 @@
 {/if}
 
 <style lang="scss">
-  
-  
+
+
+  .gallery-trigger {
+    cursor: pointer;
+  }
+
+
   .cnc-table {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -1097,7 +1103,7 @@
       flex-shrink: 0;
     }
     .cnc-left .cnc-title{
-      max-width: 80%; 
+      max-width: 80%;
     }
     .cnc-right {
       display: flex;
@@ -1134,7 +1140,7 @@
       .cnc-left {
         padding: 1em 0.5em;
       }
-   
+
     }
     @media (max-width: 600px) {
       .cnc-table {
