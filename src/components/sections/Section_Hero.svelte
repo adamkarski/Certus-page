@@ -976,7 +976,7 @@
         const buttonRect = backButton.getBoundingClientRect();
 
         // Calculate position relative to the .hero container, placing the button above the triangle
-        const top = triangleRect.top - heroRect.top - buttonRect.height - -25; // 10px margin
+        const top = triangleRect.top - heroRect.top - buttonRect.height - -56; // 10px margin
         const left =
           triangleRect.left -
           heroRect.left +
@@ -1675,9 +1675,11 @@
   }
 
   @media (max-height: 750px) {
-    .category-content .container {
-      :global(button.backFromCategory) {
-      }
+    .category-content .container button.backFromCategory{
+      
+
+      transform: scale(0.6);
+      
     }
   }
 
@@ -1700,6 +1702,12 @@
       right: 0;
       bottom: 0;
       background-image: url(/assets/images/pattern-image1-2.png);
+    }
+  }
+
+  @media (max-width: 767px) {
+    :global(button.backFromCategory) {
+      transform: scale(0.6);
     }
   }
   .category-content .container {
