@@ -7,17 +7,47 @@
   const sectionId = "video-header";
   let headerEl: HTMLDivElement;
 
+  let videoElement: HTMLVideoElement; // Declare the video element
+
   onMount(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setSectionVisible(sectionId);
+          // Attempt to play video when it enters viewport
+          if (videoElement) {
+            videoElement.play().catch(error => {
+              console.error("Video playback failed:", error);
+              // Fallback for iOS: if autoplay fails, consider showing a play button
+              // or ensure poster image is visible.
+            });
+          }
+        } else {
+            // Pause video when it leaves viewport
+            if (videoElement) {
+                videoElement.pause();
+            }
         }
       },
       { threshold: 0.05 },
     );
-    if (headerEl) observer.observe(headerEl);
-    return () => observer.disconnect();
+    if (headerEl) observer.observe(headerEl); // Use headerEl or a dedicated video container element for observation
+    
+    // Also try to play immediately if already in view or for initial load
+    if (videoElement) {
+        videoElement.play().catch(error => {
+            console.error("Initial video playback failed:", error);
+        });
+    }
+
+    return () => {
+        observer.disconnect();
+        // Ensure video is paused or stopped on component destroy
+        if (videoElement) {
+            videoElement.pause();
+            videoElement.currentTime = 0; // Reset video to start
+        }
+    };
   });
 
   $: visible = $visibilityStore[sectionId] === true;
@@ -37,6 +67,7 @@
       title="Wideo prezentujące procesy produkcyjne Certus"
       preload="metadata"
       poster="/assets/images/pattern-video-1.png"
+      bind:this={videoElement}
     />
 
     <div class="pattern-overlay">
@@ -110,7 +141,7 @@
     position: absolute;
     z-index: 2;
     margin-left: 11em;
-    margin-top: -22em;
+    margin-top: -15em;
     :before {
       content: "";
       position: absolute;
