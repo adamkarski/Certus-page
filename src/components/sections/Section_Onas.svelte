@@ -52,7 +52,7 @@
           <div class="step-content">
             <div class="step-title">Analiza Potrzeb</div>
             <div class="step-description">
-              Dokądnie poznajemy Twoje wymagania produkcyjne
+              Dokładnie poznajemy Twoje wymagania produkcyjne
             </div>
           </div>
         </div>
