@@ -1192,12 +1192,13 @@
                       </div>
                     </button>
 
-                    <div class="item_title no-sel" use:getTitle
-                    on:click={() =>
-                      cat.url
-                        ? (window.location.href = cat.url)
-                        : openCategory(cat.id)}
-                    
+                    <div
+                      class="item_title no-sel"
+                      use:getTitle
+                      on:click={() =>
+                        cat.url
+                          ? (window.location.href = cat.url)
+                          : openCategory(cat.id)}
                     ></div>
                   </swiper-slide>
                 {/each}
@@ -1523,13 +1524,24 @@
 <MaszynyActiveMachine />
 
 <style lang="scss">
-  .category-content .subListMachines{
+  :global(.activeMachine .active_flex .maszyny-plain-image-container) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: #f8f9fa;
+    aspect-ratio: 2 / 1;
+    display: flex;
+  }
+  :global(.activeMachine .active_flex .maszyny-plain-image-container img) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+  }
 
-
+  .category-content .subListMachines {
     height: 500px;
-
-
-
   }
   .item_title {
     position: absolute;
@@ -1552,7 +1564,6 @@
       font-size: 1.6rem;
       margin-bottom: -85% !important;
 
-    
       span {
         font-size: 0.8rem;
       }
@@ -1633,16 +1644,9 @@
   :global(.gradientHero) {
     background: linear-gradient(344deg, #3e4042 40%, #5454 100%);
 
-
-    @media (max-width: 767px){
-      
-
+    @media (max-width: 767px) {
       background: linear-gradient(330deg, #3e4042 40%, #5454 100%) !important;
-      
     }
-
-
-
   }
   :global(.gradientHero_old) {
     background: linear-gradient(180deg, #545454 0%, #3e4042 100%);

@@ -143,7 +143,7 @@
     width: 100%;
     margin: 0 auto;
     background: #f8f9fa;
-    aspect-ratio: 1 / 1; /* Make the container square */
+    aspect-ratio: 2 / 1; /* Make the container square */
   }
 
   .maszyny-plain-image {

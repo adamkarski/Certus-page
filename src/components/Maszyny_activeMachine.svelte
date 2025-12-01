@@ -12,6 +12,30 @@
 
   import MachineMenu from "./MachineMenu.svelte";
 
+  // Gallery Imports
+  import Gallery from "$lib/components/Gallery.svelte";
+  import { galleryData } from "$lib/data/galleryData"; // Assuming galleryData.ts exports galleryData
+
+  // Gallery State
+  let isGalleryOpen: boolean = false;
+  let currentGalleryImages: Array<{ src: string; title: string; alt: string }> = [];
+
+
+  function openGallery(categoryId: string) {
+    const galleryEntry = galleryData.find(g => g.id === categoryId);
+    if (galleryEntry) {
+      currentGalleryImages = galleryEntry.images;
+      isGalleryOpen = true;
+    } else {
+      console.warn(`Gallery data not found for category ID: ${categoryId}`);
+    }
+  }
+
+  function closeGallery() {
+    isGalleryOpen = false;
+    currentGalleryImages = []; // Clear images when closing
+  }
+
   //tables dla maszyn
   import Maszyny_table_frezarki from "$lib/../components/tables/Maszyny_table_frezarki.svelte";
   import Maszyny_table_plotery from "$lib/../components/tables/Maszyny_table_plotery.svelte";
@@ -73,18 +97,7 @@ afterUpdate(() => {
           <h1>CERTUS HMM-ST</h1>
 
           <div class="left_image no-sel">
-            <picture>
-              <source
-                srcset="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
-                type="image/webp"
-              />
-              <img
-                style="filter: blur(120px);"
-                draggable="false"
-                src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
-                alt="Frezarki CNC"
-              />
-            </picture>
+            
             <picture class="back_image">
               <source
                 srcset="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
@@ -218,6 +231,16 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
+                <section class="maszyny-plain-image-section" on:click={() => openGallery("frezarki-st")}>
+                  <div class="maszyny-plain-image-container">
+                    <img src="/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-07.webp" alt="Frezarka CNC HMM-ST" class="maszyny-plain-image">
+                    <div class="maszyny-plain-image-header">
+                      <button class="maszyny-cta-btn">
+                        Przejdź do galerii
+                      </button>
+                    </div>
+                  </div>
+                </section>
                 <picture>
                   <source
                     srcset="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.webp"
@@ -259,18 +282,7 @@ afterUpdate(() => {
           <h1>CERTUS HMM-GT</h1>
 
           <div class="left_image no-sel">
-            <picture>
-              <source
-                srcset="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp"
-                type="image/webp"
-              />
-              <img
-                style="filter: blur(120px);"
-                draggable="false"
-                src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
-                alt="Frezarki CNC"
-              />
-            </picture>
+            
             <picture class="back_image">
               <source
                 srcset="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp"
@@ -411,6 +423,16 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
+                <section class="maszyny-plain-image-section" on:click={() => openGallery("frezarki-gt")}>
+                  <div class="maszyny-plain-image-container">
+                    <img src="/assets/maszyny/galeria/webp/frezarka-hmm-gt-02.webp" alt="Frezarka CNC HMM-GT" class="maszyny-plain-image">
+                    <div class="maszyny-plain-image-header">
+                      <button class="maszyny-cta-btn">
+                        Przejdź do galerii
+                      </button>
+                    </div>
+                  </div>
+                </section>
                 <picture>
                   <source
                     srcset="/assets/maszyny/SCHEMATY/Certus_1410_1.webp"
@@ -447,18 +469,7 @@ afterUpdate(() => {
           <h1>CERTUS HPP-CT</h1>
 
           <div class="left_image no-sel">
-            <picture>
-              <source
-                srcset="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
-                type="image/webp"
-              />
-              <img
-                style="filter: blur(120px);"
-                draggable="false"
-                src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
-                alt="Ploter Przemysłowy Certus 0815 ATC w zabudowie"
-              />
-            </picture>
+            
             <picture class="back_image">
               <source
                 srcset="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
@@ -579,6 +590,16 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
+                <section class="maszyny-plain-image-section" on:click={() => openGallery("plotery-przemyslowe-ct")}>
+                  <div class="maszyny-plain-image-container">
+                    <img src="/assets/maszyny/galeria/webp/ploter-hpp-ct-02.webp" alt="Ploter Przemysłowy HPP-CT" class="maszyny-plain-image">
+                    <div class="maszyny-plain-image-header">
+                      <button class="maszyny-cta-btn">
+                        Przejdź do galerii
+                      </button>
+                    </div>
+                  </div>
+                </section>
                 <picture>
                   <source
                     srcset="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.webp"
@@ -619,18 +640,7 @@ afterUpdate(() => {
           <h1>CERTUS HPP-OT</h1>
 
           <div class="left_image no-sel">
-            <picture>
-              <source
-                srcset="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp"
-                type="image/webp"
-              />
-              <img
-                style="filter: blur(120px);"
-                draggable="false"
-                src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
-                alt="Ploter Przemysłowy Certus 0816 bez zabudowy"
-              />
-            </picture>
+            
             <picture class="back_image">
               <source
                 srcset="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp"
@@ -736,6 +746,16 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
+                <section class="maszyny-plain-image-section" on:click={() => openGallery("plotery-przemyslowe-ot")}>
+                  <div class="maszyny-plain-image-container">
+                    <img src="/assets/maszyny/galeria/webp/ploter-hpp-ot-05.webp" alt="Ploter Przemysłowy HPP-OT" class="maszyny-plain-image">
+                    <div class="maszyny-plain-image-header">
+                      <button class="maszyny-cta-btn">
+                        Przejdź do galerii
+                      </button>
+                    </div>
+                  </div>
+                </section>
                 <picture>
                   <source
                     srcset="/assets/maszyny/SCHEMATY/Certus_0816_1.webp"
@@ -772,18 +792,7 @@ afterUpdate(() => {
           <h1>Frezarki Pięcioosiowe CNC</h1>
 
           <div class="left_image no-sel">
-            <picture>
-              <source
-                srcset="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp"
-                type="image/webp"
-              />
-              <img
-                style="filter: blur(120px);"
-                draggable="false"
-                src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
-                alt="Frezarka Pięcioosiowe CNC Certus"
-              />
-            </picture>
+            
             <picture class="back_image">
               <source
                 srcset="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp"
@@ -912,6 +921,16 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
+                <section class="maszyny-plain-image-section" on:click={() => openGallery("frezarki-5osiowe")}>
+                  <div class="maszyny-plain-image-container">
+                    <img src="/assets/maszyny/galeria/webp/frezarka-5osiowa-01.webp" alt="Frezarka pięcioosiowa" class="maszyny-plain-image">
+                    <div class="maszyny-plain-image-header">
+                      <button class="maszyny-cta-btn">
+                        Przejdź do galerii
+                      </button>
+                    </div>
+                  </div>
+                </section>
                 <picture>
                   <source
                     srcset="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.webp"
@@ -948,18 +967,7 @@ afterUpdate(() => {
           <h1>Grawerki CNC</h1>
 
           <div class="left_image no-sel">
-            <picture>
-              <source
-                srcset="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
-                type="image/webp"
-              />
-              <img
-                style="filter: blur(120px);"
-                draggable="false"
-                src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
-                alt="Grawerka CNC Certus"
-              />
-            </picture>
+            
             <picture class="back_image">
               <source
                 srcset="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
@@ -1083,6 +1091,16 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
+                <section class="maszyny-plain-image-section" on:click={() => openGallery("grawerki")}>
+                  <div class="maszyny-plain-image-container">
+                    <img src="/assets/maszyny/galeria/webp/grawerka-cnc-05.webp" alt="Grawerka CNC" class="maszyny-plain-image">
+                    <div class="maszyny-plain-image-header">
+                      <button class="maszyny-cta-btn">
+                        Przejdź do galerii
+                      </button>
+                    </div>
+                  </div>
+                </section>
                 <picture>
                   <source
                     srcset="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.webp"
@@ -1119,18 +1137,7 @@ afterUpdate(() => {
           <h1>CNC HLP-FT</h1>
 
           <div class="left_image no-sel">
-            <picture>
-              <source
-                srcset="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp"
-                type="image/webp"
-              />
-              <img
-                style="filter: blur(120px);"
-                draggable="false"
-                src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
-                alt="Ploter Linearny CNC Certus 1530"
-              />
-            </picture>
+            
             <picture class="back_image">
               <source
                 srcset="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp"
@@ -1254,6 +1261,16 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
+                <section class="maszyny-plain-image-section" on:click={() => openGallery("plotery-linearne")}>
+                  <div class="maszyny-plain-image-container">
+                    <img src="/assets/maszyny/galeria/webp/ploter-hlp-ft.webp" alt="Ploter Liniowy" class="maszyny-plain-image">
+                    <div class="maszyny-plain-image-header">
+                      <button class="maszyny-cta-btn">
+                        Przejdź do galerii
+                      </button>
+                    </div>
+                  </div>
+                </section>
                 <picture>
                   <source
                     srcset="/assets/maszyny/SCHEMATY/Certus_1530_1.webp"
@@ -1283,6 +1300,10 @@ afterUpdate(() => {
       <div class="active_flex" bind:this={containerRef}></div>
     {/if}
   </div>
+{/if}
+
+{#if isGalleryOpen}
+  <Gallery images={currentGalleryImages} isOpen={isGalleryOpen} onClose={closeGallery} />
 {/if}
 
 <style lang="scss">
@@ -1526,6 +1547,7 @@ body.no-scroll-hero.active_machine_view {
     padding-top: 4rem;
     text-align: left;
     padding-left: 2rem;
+    width: 100%; /* Ensure it takes full available width */
     ul {
       list-style-type: none;
       padding-left: 0;
@@ -1750,8 +1772,15 @@ body.no-scroll-hero.active_machine_view {
       margin-top: 10px !important;
     }
     :global(body.active_machine_view main section) {
+     
     display: none !important;
     }
+
+    :global(body.active_machine_view main section.maszyny-plain-image-section) {
+    display: block !important;
+    padding-right:20px;
+    }
+
 
     :global(body.active_machine_view) {
     
@@ -1862,6 +1891,104 @@ body.no-scroll-hero.active_machine_view {
     .activeMachine .right_params_content {
       padding-top: 0.5rem !important;
       padding-left: 0.5rem !important;
+    }
+  }
+  .gallery-trigger {
+    cursor: pointer;
+  }
+
+  .maszyny-plain-image-section {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow:  1px 7px 20px 0px rgb(96 93 93 / 65%);
+    cursor: pointer;
+  }
+
+  .maszyny-plain-image-header {
+    min-height: 60px;
+    width: 100%;
+    text-align: right;
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-left: 20px;
+  }
+
+  .maszyny-plain-image-header h3 {
+    margin: 0 0 8px 0;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+  }
+    
+  .maszyny-plain-image-header p {
+    margin: 0 0 15px 0;
+    color: white;
+    font-weight: 300;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .maszyny-cta-btn {
+    position: relative;
+    background: rgba(126, 140, 0, 1);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    overflow: hidden;
+    min-width: 200px;
+    text-align: left;
+  }
+
+  .maszyny-cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 28px;
+    height: 100%;
+    background: linear-gradient(135deg, 
+      transparent 49%, 
+      rgba(251, 251, 251, 1) 49%, 
+      rgba(251, 251, 251, 1) 100%
+    );
+    transition: right 0.2s ease;
+    z-index: 1;
+  }
+
+  .maszyny-cta-btn:hover::before {
+    right: 0;
+  }
+
+  .maszyny-plain-image-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    background: #f8f9fa;
+    aspect-ratio: 2 / 1;
+  }
+
+  .maszyny-plain-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .maszyny-cta-btn {
+      padding: 6px 12px;
     }
   }
 </style>

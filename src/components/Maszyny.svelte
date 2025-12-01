@@ -75,9 +75,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("frezarki-st")}>
-        <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png" alt="Frezarka CNC HMM-ST">
-      </div>
+      <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png" alt="Frezarka CNC HMM-ST">
     </div>
   </div>
 
@@ -234,9 +232,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("frezarki-gt")}>
-        <img src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png" alt="Frezarki CNC HMM-G">
-      </div>
+      <img src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png" alt="Frezarki CNC HMM-G" class="">
     </div>
   </div>
 
@@ -374,9 +370,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("plotery-przemyslowe-ot")}>
-        <img src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT">
-      </div>
+      <img src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="">
     </div>
   </div>
 
@@ -499,9 +493,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("plotery-przemyslowe-ct")}>
-        <img src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT">
-      </div>
+      <img src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="">
     </div>
   </div>
 
@@ -648,9 +640,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("grawerki")}>
-        <img src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png" alt="Grawerki CNC Certus">
-      </div>
+      <img src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png" alt="Grawerki CNC Certus" class="">
     </div>
   </div>
 
@@ -796,9 +786,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("frezarki-5osiowe")}>
-        <img src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png" alt="Frezarki CNC pięcioosiowe">
-      </div>
+      <img src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png" alt="Frezarki CNC pięcioosiowe" class="">
     </div>
   </div>
 
@@ -937,9 +925,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <div class="gallery-trigger" role="button" tabindex="0" on:click={() => openGallery("plotery-linearne")}>
-        <img src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png" alt="Plotery CNC HLP-FT Certus">
-      </div>
+      <img src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png" alt="Plotery CNC HLP-FT Certus" class="">
     </div>
   </div>
 
@@ -1068,9 +1054,7 @@
 <style lang="scss">
 
 
-  .gallery-trigger {
-    cursor: pointer;
-  }
+  
 
 
   .cnc-table {
