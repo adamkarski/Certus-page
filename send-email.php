@@ -87,7 +87,7 @@ if (!isset($data['cf-turnstile-response'])) {
 }
 
 $turnstile_response = $data['cf-turnstile-response'];
-$secret_key = '0x4AAAAAABs8xWgRvUgnyrMwZ2W_EmBzqtQ'; // Replace with your actual secret key
+$secret_key = '0x4AAAAAACEnWmYxJ485BOOXrQZBbobe-Jc'; // Replace with your actual secret key
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');

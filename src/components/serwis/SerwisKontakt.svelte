@@ -594,7 +594,7 @@
 
           
 
-          <Turnstile siteKey="0x4AAAAAABs8xaWAuEhKPhWB" theme="light" on:callback={(e) => { turnstileToken = e.detail.token; }} on:expired={() => { turnstileToken = null; }} on:error={(e) => { turnstileToken = null; submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie..."; console.error('Turnstile error:', e.detail.code); }} />
+          <Turnstile siteKey="0x4AAAAAACEnWiyzZjf30AYU" theme="light" on:callback={(e) => { turnstileToken = e.detail.token; }} on:expired={() => { turnstileToken = null; }} on:error={(e) => { turnstileToken = null; submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie..."; console.error('Turnstile error:', e.detail.code); }} />
 
           <div class="text-left ctaButton">
             <CtaButton
