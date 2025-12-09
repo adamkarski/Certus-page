@@ -14,7 +14,6 @@
     <p>serwisów: certuscnc.pl, certuscnc.com.pl, certuscnc.eu, mg-certus.pl</p>
 
     <h2>1. Informacje ogólne</h2>
-    <p>
       1. Niniejsza Polityka prywatności określa zasady przetwarzania danych osobowych użytkowników serwisów internetowych dostępnych pod adresami:
       <ul>
         <li>https://certuscnc.pl</li>
@@ -23,7 +22,6 @@
         <li>https://mg-certus.pl</li>
       </ul>
       (dalej łącznie: „Serwis”).
-    </p>
     <p>
       2. Administratorem danych osobowych zbieranych za pośrednictwem Serwisu jest:
       P.P.H.U. „MG-CERTUS” MARIUSZ GÓRECKI
@@ -39,7 +37,6 @@
     </p>
 
     <h2>2. Zakres przetwarzanych danych</h2>
-    <p>
       1. Za pośrednictwem Serwisu możemy przetwarzać następujące kategorie danych:
       <ul>
         <li>dane podawane w formularzu kontaktowym (np. imię, nazwisko, nazwa firmy, adres e-mail, numer telefonu, treść wiadomości),</li>
@@ -47,65 +44,51 @@
         <li>dane niezbędne do przygotowania oferty, zawarcia i wykonania umowy (np. dane identyfikacyjne, dane kontaktowe, dane rozliczeniowe),</li>
         <li>dane techniczne związane z korzystaniem z Serwisu (np. adres IP, data i czas połączenia, informacje o przeglądarce, systemie operacyjnym) – gromadzone przez serwer oraz mechanizmy bezpieczeństwa (firewall, system logów).</li>
       </ul>
-    </p>
     <p>
       2. Co do zasady nie zbieramy poprzez Serwis szczególnych kategorii danych (tzw. danych wrażliwych) w rozumieniu art. 9 RODO. Jeżeli użytkownik dobrowolnie przekaże takie dane, będą one przetwarzane wyłącznie w zakresie niezbędnym i uzasadnionym charakterem sprawy.
     </p>
 
     <h2>3. Cele i podstawy prawne przetwarzania danych</h2>
     <p>Dane osobowe przetwarzamy wyłącznie w zakresie niezbędnym do osiągnięcia określonych poniżej celów:</p>
-    <p>
       1. Obsługa zapytań przesłanych przez formularz kontaktowy lub e-mail
       <ul>
         <li>cel: udzielenie odpowiedzi, przygotowanie wstępnej oferty, bieżąca komunikacja,</li>
         <li>podstawa prawna: art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes Administratora – komunikacja z potencjalnymi i obecnymi klientami) lub art. 6 ust. 1 lit. b RODO (podjęcie działań przed zawarciem umowy).</li>
       </ul>
-    </p>
-    <p>
       2. Zawarcie i wykonanie umowy (np. sprzedaż maszyn, usług serwisowych, doradczych)
       <ul>
         <li>cel: przygotowanie oferty, zawarcie, wykonanie i rozliczenie umowy,</li>
         <li>podstawa prawna: art. 6 ust. 1 lit. b RODO (wykonanie umowy lub działania zmierzające do jej zawarcia).</li>
       </ul>
-    </p>
-    <p>
       3. Wypełnianie obowiązków prawnych (np. księgowość, archiwizacja dokumentów, obowiązki podatkowe)
       <ul>
         <li>cel: realizacja obowiązków wynikających z powszechnie obowiązujących przepisów prawa,</li>
         <li>podstawa prawna: art. 6 ust. 1 lit. c RODO.</li>
       </ul>
-    </p>
-    <p>
       4. Ustalenie, dochodzenie lub obrona roszczeń
       <ul>
         <li>cel: ochrona naszych praw i dochodzenie roszczeń lub obrona przed roszczeniami,</li>
         <li>podstawa prawna: art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes Administratora).</li>
       </ul>
-    </p>
-    <p>
       5. Działania marketingowe w ograniczonym zakresie
       <ul>
         <li>jeżeli użytkownik dobrowolnie udostępni swoje dane w celu otrzymania oferty lub informacji handlowej, możemy wykorzystywać je do komunikacji marketingowej dotyczącej naszych produktów i usług,</li>
         <li>podstawa prawna: art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes Administratora – marketing bezpośredni własnych produktów i usług) lub art. 6 ust. 1 lit. a RODO (zgoda – w przypadku marketingu drogą elektroniczną wymagającego zgody na podstawie przepisów szczególnych).</li>
       </ul>
-    </p>
 
     <h2>4. Pliki cookies i technologie podobne</h2>
     <p>
       1. Serwis nie wykorzystuje cookies w celach marketingowych lub analitycznych oraz nie profiluje użytkowników na podstawie plików cookies.
     </p>
-    <p>
       2. W związku z funkcjonowaniem Serwisu mogą być stosowane:
       <ul>
         <li>techniczne (niezbędne) pliki cookies – służące zapewnieniu prawidłowego działania strony, bezpieczeństwa oraz obsługi podstawowych funkcji (np. sesyjnych). Ich użycie jest niezbędne do korzystania z Serwisu. Jeżeli takie pliki są wykorzystywane, odbywa się to na podstawie art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes Administratora polegający na zapewnieniu prawidłowego działania strony).</li>
       </ul>
-    </p>
     <p>
       3. Serwis może korzystać z rozwiązań podmiotów zewnętrznych (np. usług hostingowych, zabezpieczeń sieciowych, takich jak firewall lub CDN). Podmioty te mogą wykorzystywać własne, niezbędne techniczne pliki cookies w celu zapewnienia poprawnego i bezpiecznego działania Serwisu. Szczegóły stosowania takich rozwiązań wynikają z polityk prywatności tych podmiotów.
     </p>
 
     <h2>5. Odbiorcy danych</h2>
-    <p>
       1. Dane osobowe mogą być przekazywane następującym kategoriom odbiorców:
       <ul>
         <li>dostawcom usług IT i hostingu (utrzymanie serwerów, poczty e-mail, systemów bezpieczeństwa),</li>
@@ -114,7 +97,6 @@
         <li>firmom kurierskim, operatorom pocztowym i przewoźnikom – w związku z realizacją dostaw,</li>
         <li>innym podmiotom współpracującym z Administratorem przy realizacji umów (np. serwisanci, podwykonawcy), jeżeli jest to konieczne do realizacji danej usługi.</li>
       </ul>
-    </p>
     <p>
       2. Odbiorcy danych przetwarzają dane na podstawie stosownych umów powierzenia lub jako odrębni administratorzy – zgodnie z właściwymi przepisami prawa.
     </p>
@@ -142,7 +124,7 @@
     </p>
 
     <h2>8. Prawa osób, których dane dotyczą</h2>
-    <p>Osobie, której dane dotyczą, przysługują następujące prawa:</p>
+    Osobie, której dane dotyczą, przysługują następujące prawa:
     <ul>
       <li>Prawo dostępu do danych – uzyskania informacji, czy przetwarzamy dane oraz dostępu do ich treści.</li>
       <li>Prawo do sprostowania danych – gdy dane są nieprawidłowe lub niekompletne.</li>
@@ -167,14 +149,12 @@
     <p>
       1. Administrator stosuje odpowiednie środki techniczne i organizacyjne zapewniające ochronę przetwarzanych danych osobowych, odpowiednie do ryzyka naruszenia praw lub wolności osób, których dane dotyczą.
     </p>
-    <p>
       2. W szczególności stosowane są:
       <ul>
         <li>zabezpieczenia serwerów i infrastruktury IT,</li>
         <li>ograniczenia dostępu do danych (uprawnienia, hasła),</li>
         <li>procedury ochrony danych i poufności dla osób współpracujących z Administratorem.</li>
       </ul>
-    </p>
 
     <h2>11. Zmiany Polityki prywatności</h2>
     <p>
