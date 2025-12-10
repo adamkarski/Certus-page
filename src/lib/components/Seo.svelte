@@ -1,15 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-
+	const base_url = 'https://mg-certus.pl:5173'; 
 	// Definiujemy dane SEO, które komponent może przyjąć
 	export let title = 'CERTUS - Maszyny i Centra Obróbcze CNC';
 	export let description = 'Wysokowydajne centra obróbcze CNC, frezarki, plotery i grawerki. Profesjonalne doradztwo, serwis i wdrożenia.';
-	export let image = 'https://mg-certus.pl/assets/images/maszyny/frezarki/frezarka-cnc-hmm-st/Frezarka-CNC-HMM-ST-z-ruchomym-stoem-Certus-1080-PRO.jpg'; // Domyślny obrazek
+	export let image = `${base_url}/static/images/certusPage.jpg`; // Domyślny obrazek
 	export let type = 'website';
 
-	// Pobieramy bazowy URL ze zmiennej środowiskowej
-	// W przyszłości można to przenieść do .env i czytać za pomocą import.meta.env.VITE_BASE_URL
-	const base_url = 'https://mg-certus.pl:5173'; 
+
 
 	// Konstruujemy pełne adresy URL
 	const canonicalUrl = `${base_url}${$page.url.pathname}`;

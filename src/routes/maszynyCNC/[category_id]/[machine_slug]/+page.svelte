@@ -13,12 +13,12 @@ import type { PageData } from './$types';
 
 
 	onMount(() => {
-	if (browser) {
+	 if (browser) {
 		showPreloader = true;
 		setTimeout(() => {
 			window.location.href = '/maszyny'; // Redirect to the main machines page
-		}, 5500); // 1.5 second delay for preloader
-	}
+		}, 1500); // 1.5 second delay for preloader
+	} 
 });
 
 
@@ -27,7 +27,7 @@ import type { PageData } from './$types';
 </script>
 
 <svelte:head>
-	<!-- SEO tags are handled by the Seo.svelte component in the root layout -->
+<title>{machine.name}</title>
 </svelte:head>
 
 
@@ -54,6 +54,8 @@ import type { PageData } from './$types';
 	.machine-details-page {
 		padding: 4rem 1rem;
 		background: #f4f4f4;
+		padding-top: 200px;
+
 	}
 	.container {
 		max-width: 900px;
