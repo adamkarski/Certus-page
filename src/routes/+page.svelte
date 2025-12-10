@@ -15,11 +15,12 @@
 <svelte:head>
   <title>Certus - Maszyny tworzone z pasją i precyzją</title>
   <meta name="description" content="Certus - specjalizujemy się w produkcji maszyn przemysłowych najwyższej jakości" />
+  <LocalBusiness/>
 </svelte:head>
 
 <div class="app">
   <Section_Header />
-  <LocalBusiness/>
+
   <main>
     
     <Section_Hero />

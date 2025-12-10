@@ -22,18 +22,18 @@
     <title>{seo.title} | Certus Maszyny CNC</title>
     <meta name="description" content={seo.description} />
     <meta name="keywords" content={seo.keywords} />
-    <link rel="canonical" href="https://yourwebsite.com{seo.url}" />
+    <link rel="canonical" href="https://mg-certus{seo.url}" />
 
     <meta property="og:title" content="{seo.title} | Certus Maszyny CNC" />
     <meta property="og:description" content={seo.description} />
-    <meta property="og:image" content="https://yourwebsite.com{seo.image}" />
-    <meta property="og:url" content="https://yourwebsite.com{seo.url}" />
+    <meta property="og:image" content="https://mg-certus{seo.image}" />
+    <meta property="og:url" content="https://mg-certus{seo.url}" />
     <meta property="og:type" content="product" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{seo.title} | Certus Maszyny CNC" />
     <meta name="twitter:description" content={seo.description} />
-    <meta name="twitter:image" content="https://yourwebsite.com{seo.image}" />
+    <meta name="twitter:image" content="https://mg-certus{seo.image}" />
 </svelte:head>
 
 {#if showPreloader}

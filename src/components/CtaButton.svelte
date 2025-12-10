@@ -1,4 +1,5 @@
 <script lang="ts">
+	// import { text } from '@sveltejs/kit';
   import { createEventDispatcher } from "svelte";
   export let text: string = "OK";
   export let type: string = "button";
@@ -36,7 +37,9 @@
 
 <style lang="scss">
 
+:global(body.home .contact-flex .text-left.ctaButton button) {
 
+}
 
 
 :global(section.dlaczego .onasbutton .text-container){

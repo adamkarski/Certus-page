@@ -5,9 +5,9 @@
       "@type": ["LocalBusiness", "Organization"],
       "name": "Certus",
       "legalName": "Certus",
-      "url": "https://certus.pl",
-      "logo": "https://certus.pl/assets/logo-certus.svg",
-      "image": "https://certus.pl/assets/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg",
+      "url": "https://mg-certus.pl",
+      "logo": "https://mg-certus/assets/logo-certus.svg",
+      "image": "https://mg-certus/assets/images/certusPage.jpg",
       "description": "Polski producent maszyn CNC, ploterów i frezarek do obróbki metalu, drewna i tworzyw. Precyzja do ±0,01 mm, intuicyjne sterowanie i pełny serwis.",
       "telephone": "+48 606 324 406",
       "email": "biuro@mg-certus.pl",
@@ -33,7 +33,9 @@
       ],
       "sameAs": [
         "https://www.mg-certus.pl",
-        "https://certus.pl",
+        "https://certuscnc.pl",
+        "https://certuscnc.eu",
+        "https://certuscnc.com.pl",
         "https://www.facebook.com/mgcertus"
       ],
       "hasOfferCatalog": {
@@ -53,7 +55,7 @@
             "itemOffered": {
               "@type": "Product",
               "name": "Plotery CNC",
-              "description": "Nowoczesne plotery do cięcia i grawerowania z wysoką dokładnością."
+              "description": "Nowoczesne plotery CNC do cięcia i grawerowania z wysoką dokładnością."
             }
           },
           {

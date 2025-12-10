@@ -4,12 +4,17 @@ body.kontakt .contact-flex .contact-left::before{
 }
 
 
-body.kontakt .contact-flex .text-left button{
-
+body.home .contact-flex .text-left.ctaButton button,
+body.kontakt .contact-flex .text-left.ctaButton button {
   height: 45px;
   background-color: var(--color-primary);
   color: white;
 }
+body.home .contact-flex .text-left.ctaButton{
+  display: flex;
+  justify-content: flex-start;
+}
+
 body.kontakt .contact-flex .text-left.ctaButton{
 
   display: flex;
