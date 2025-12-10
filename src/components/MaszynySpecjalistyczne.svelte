@@ -135,6 +135,35 @@
     easing: cubicOut,
     axis: "x",
   };
+
+
+   // Gallery Imports
+   import Gallery from "$lib/components/Gallery.svelte";
+  import { galleryData } from "$lib/data/galleryData"; // Assuming galleryData.ts exports galleryData
+
+  // Gallery State
+  let isGalleryOpen: boolean = false;
+  let currentGalleryImages: Array<{ src: string; title: string; alt: string }> = [];
+
+
+
+  function openGallery(categoryId: string) {
+    const galleryEntry = galleryData.find(g => g.id === categoryId);
+    if (galleryEntry) {
+      currentGalleryImages = galleryEntry.images;
+      isGalleryOpen = true;
+    } else {
+      console.warn(`Gallery data not found for category ID: ${categoryId}`);
+    }
+  }
+
+  function closeGallery() {
+    isGalleryOpen = false;
+    currentGalleryImages = []; // Clear images when closing
+  }
+
+
+
 </script>
 
 <div class="maszyny-specjalistyczne-container">
@@ -191,6 +220,9 @@
         >
           <CtaButton classs="ms-button" text="Zadzwoń: 606 324 406" />
         </div>
+         <div on:click|stopPropagation={() => openGallery("maszyny-specjalne")}>
+             <CtaButton classs="ms-button" text="Zobacz galerię" />
+           </div>
 
         </div>
 
@@ -369,6 +401,11 @@
     />
   </div>
 {/if}
+
+{#if isGalleryOpen}
+  <Gallery images={currentGalleryImages} isOpen={isGalleryOpen} onClose={closeGallery} />
+{/if}
+
 
 <style lang="scss">
   :global(button.ms-button) {

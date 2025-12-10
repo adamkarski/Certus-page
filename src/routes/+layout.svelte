@@ -1,4 +1,7 @@
 <script lang="ts">
+  import Seo from '$lib/components/Seo.svelte';
+
+  export let data;
 
   import { fade } from 'svelte/transition';
   import { page } from '$app/stores';
@@ -97,6 +100,8 @@
     } */
   }
 </script>
+
+<Seo {...data.seo} />
 
 {#if loading}
   <div class="preloader no-sel gradientHero_old">

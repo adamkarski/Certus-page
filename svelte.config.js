@@ -21,6 +21,9 @@ export default {
 				'frame-src': ['self', 'https://challenges.cloudflare.com'],
 				'connect-src': ['self', 'https://cdn.lottielab.com', 'https://dm73147.domenomania.eu']
 			}
+		},
+		prerender: {
+			handleMissingId: 'warn'
 		}
 	}
 };

@@ -8,6 +8,8 @@ export default defineConfig({
     https: {
       key: fs.readFileSync('localhost+1-key.pem'),
       cert: fs.readFileSync('localhost+1.pem'),
-    },
-  }
+    		watch: {
+    			usePolling: true,
+    		},
+    	},  }
 });

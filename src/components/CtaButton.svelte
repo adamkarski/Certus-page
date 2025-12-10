@@ -64,7 +64,7 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     padding: 0 2em;
-    height: 70px; // Zwiększamy wysokość dla lepszej proporcji
+    height: 45px; // Zwiększamy wysokość dla lepszej proporcji
     width: auto; // Szerokość dopasuje się do treści
     min-width: 260px; // Minimalna szerokość
     max-width: 90vw; // Maksymalna szerokość na mobilnych

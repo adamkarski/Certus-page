@@ -6,54 +6,27 @@
   import Section_Referencje from '../../components/sections/Section_Referencje.svelte';
 
   import maszynyData from '$lib/data/maszyny.json';
-  import machineSeoContent from '$lib/data/machine-seo-content.json'; // New import
-  import { createSlug } from '$lib/utils/seo-utils';
   import "$lib/table.scss"; // Import table-specific styles
 
   interface MachineLink {
     title: string;
     url: string;
-    image: string; // Add image property
+    image: string;
   }
 
   const allMachineLinks: MachineLink[] = [];
 
-  maszynyData.forEach(categoryEntry => {
-    // Skip entries with a direct URL (they are not individual machine pages)
-    if (categoryEntry.url) {
-      return;
-    }
-
-    // Handle case where category.machine is a single string (direct machine)
-    if (typeof categoryEntry.machine === 'string') {
-      const internalMachineId = categoryEntry.machine;
-      const seoDataForMachine = machineSeoContent[internalMachineId];
-
-      if (seoDataForMachine) {
-        const machineSlug = createSlug(seoDataForMachine.title);
+  maszynyData.forEach(category => {
+    if (category.seo && Array.isArray(category.seo)) {
+      category.seo.forEach(machine => {
         allMachineLinks.push({
-          title: seoDataForMachine.title, // Use the detailed title from SEO content
-          url: `/maszyny/${categoryEntry.id}/${machineSlug}`,
-          image: seoDataForMachine.image // Include the image path
+          title: machine.name,
+          url: `/maszynyCNC/${category.id}/${machine.slug}`,
+          image: machine.image
         });
-      }
-    }
-    // Handle case where category.machine is an array of machine IDs (sub-machines)
-    else if (Array.isArray(categoryEntry.machine)) {
-      categoryEntry.machine.forEach(internalMachineId => {
-        const seoDataForMachine = machineSeoContent[internalMachineId];
-        if (seoDataForMachine) {
-          const machineSlug = createSlug(seoDataForMachine.title);
-          allMachineLinks.push({
-            title: seoDataForMachine.title, // Use the detailed title from SEO content
-            url: `/maszyny/${categoryEntry.id}/${machineSlug}`,
-            image: seoDataForMachine.image // Include the image path
-          });
-        }
       });
     }
   });
-
 </script>
 
 <svelte:head>

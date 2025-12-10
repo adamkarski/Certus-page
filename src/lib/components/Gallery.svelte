@@ -286,7 +286,7 @@
   }
 
   .close-button {
-    position: absolute;
+    position: fixed;
     top: 3px;
     right: 3px;
     background: none;

@@ -1,3 +1,4 @@
+
 [
   {
     "id": "frezarki",
@@ -6,7 +7,23 @@
     "startExpanded": false,
     "url": null,
     "icon": "/assets/ikony/maszyny/frezarki.svg",
-    "machine":["m_frezarka","m_frezarka1"]
+    "machine":["m_frezarka","m_frezarka1"],
+    "seo": [
+        {
+          "id": "m_frezarka",
+          "slug": "frezarka-cnc-hmm-st-z-ruchomym-stoem",
+          "name": "Frezarka CNC HMM-ST z ruchomym stołem",
+          "short_description": "Zaprojektowana z myślą o szybkim i precyzyjnym frezowaniu materiałów takich jak stal, aluminium, drewno, tworzywa sztuczne i inne.",
+          "image": "/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+        },
+        {
+          "id": "m_frezarka1",
+          "slug": "frezarka-cnc-hmm-gt-z-ruchoma-brama",
+          "name": "Frezarka CNC HMM-GT z ruchomą bramą",
+          "short_description": "Do dużych formatów i ciężkich detali — detal stoi, pracuje brama. HMM-GT zaprojektowano do szybkiej i precyzyjnej obróbki arkuszy oraz elementów o dużej masie i gabarytach.",
+          "image": "/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
+        }
+      ]
   },
   {
     "id": "ploteryPrzemyslowe",
@@ -15,7 +32,23 @@
     "startExpanded": false,
     "url": null,
     "icon": "/assets/ikony/maszyny/ploteryPrzemyslowe.svg",
-    "machine":["m-ploter","m-ploter1"]
+    "machine":["m-ploter","m-ploter1"],
+    "seo": [
+        {
+          "id": "m-ploter",
+          "slug": "wielkoformatowy-ploter-przemyslowy-hpp-ot",
+          "name": "Wielkoformatowy ploter przemysłowy bez zabudowy – HPP-OT",
+          "short_description": "Wielkoformatowe centrum obróbcze CNC stanowiące wysokowydajną platformę przeznaczoną do skrawania w co najmniej trzech osiach, z możliwością rozbudowy o dodatkowe osie sterowane.",
+          "image": "/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
+        },
+        {
+          "id": "m-ploter1",
+          "slug": "wieloosiowy-ploter-przemyslowy-w-zabudowie-hpp-ct",
+          "name": "Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT",
+          "short_description": "Zaawansowane wieloosiowe centrum obróbcze, zaprojektowane z myślą o pracy w środowisku przemysłowym, gdzie kluczowe znaczenie mają bezpieczeństwo, czystość procesu oraz stabilność parametrów pracy.",
+          "image": "/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+        }
+      ]
   },
   {
     "id": "frezarki5osiowe",
@@ -24,7 +57,16 @@
     "startExpanded": true,
     "url": null,
     "icon": "/assets/ikony/maszyny/frezarki5osiowe.svg",
-    "machine":"m_frezarka5osi"
+    "machine":"m_frezarka5osi",
+    "seo": [
+        {
+          "id": "m_frezarka5osi",
+          "slug": "piecioosiowe-centra-frezarskie-cnc",
+          "name": "Pięcioosiowe centra frezarskie CNC",
+          "short_description": "Zaawansowane urządzenia przeznaczone do precyzyjnej obróbki detali o złożonej geometrii.",
+          "image": "/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
+        }
+      ]
   },
   {
     "id": "grawerki",
@@ -33,7 +75,16 @@
     "startExpanded": true,
     "url": null,
     "icon": "/assets/ikony/maszyny/grawerki.svg",
-    "machine":"m_grawerka"
+    "machine":"m_grawerka",
+    "seo": [
+      {
+        "id": "m_grawerka",
+        "slug": "grawerki-cnc",
+        "name": "Grawerki CNC",
+        "short_description": "Kompaktowe, precyzyjne urządzenia dedykowane do obróbki materiałów wymagających bardzo dużej dokładności przy niewielkich wymiarach obszaru roboczego.",
+        "image": "/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
+      }
+    ]
   },
   {
     "id": "ploteryLinearne",
@@ -43,7 +94,16 @@
     "startExpanded": true,
     "url": null,
     "icon": "/assets/ikony/maszyny/ploteryLinearne.svg",
-    "machine":"m_ploterLinear"
+    "machine":"m_ploterLinear",
+    "seo": [
+        {
+          "id": "m_ploterLinear",
+          "slug": "plotery-cnc-hlp-ft",
+          "name": "Plotery CNC HLP-FT",
+          "short_description": "Precyzyjne i wydajne urządzenia zaprojektowane do cięcia, bigowania, znakowania i opisywania szerokiej gamy materiałów płaskich.",
+          "image": "/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
+        }
+      ]
   },
   {
     "id": "certus",

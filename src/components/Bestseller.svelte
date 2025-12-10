@@ -6,6 +6,8 @@
   import { typoFixAction } from "$lib/utils/typography";
   import Section_Image02 from "$lib/../components/sections/Section_Image02.svelte";
   import Section_Kontakt from "$lib/../components/sections/Section_Kontakt.svelte";
+  import CtaButton from "./CtaButton.svelte";
+ 
 
   const images = [
     {
@@ -134,6 +136,36 @@
     easing: cubicOut,
     axis: "x",
   };
+
+
+    // Gallery Imports
+    import Gallery from "$lib/components/Gallery.svelte";
+  import { galleryData } from "$lib/data/galleryData"; // Assuming galleryData.ts exports galleryData
+
+  // Gallery State
+  let isGalleryOpen: boolean = false;
+  let currentGalleryImages: Array<{ src: string; title: string; alt: string }> = [];
+
+
+
+  function openGallery(categoryId: string) {
+    const galleryEntry = galleryData.find(g => g.id === categoryId);
+    if (galleryEntry) {
+      currentGalleryImages = galleryEntry.images;
+      isGalleryOpen = true;
+    } else {
+      console.warn(`Gallery data not found for category ID: ${categoryId}`);
+    }
+  }
+
+  function closeGallery() {
+    isGalleryOpen = false;
+    currentGalleryImages = []; // Clear images when closing
+  }
+
+
+
+
 </script>
 
 <div class="bestseller-container">
@@ -186,6 +218,9 @@
           >biuro@mg-certus.pl</a
         >
       </p>
+      <div on:click|stopPropagation={() => openGallery("certus-69")}>
+        <CtaButton classs="ms-button" text="Zobacz galerię" />
+      </div>
 
 
 
@@ -331,9 +366,10 @@
     />
   </div>
 {/if}
-
+{#if isGalleryOpen}
+  <Gallery images={currentGalleryImages} isOpen={isGalleryOpen} onClose={closeGallery} />
+{/if}
 <style lang="scss">
-
 
 .schematy{
   display: flex;
