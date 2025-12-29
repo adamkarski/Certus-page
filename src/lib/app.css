@@ -20,7 +20,6 @@ body {
   /* Hero nie jest już fixed, więc nie potrzebujemy padding-top */
 }
 
-
 .no-sel {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */

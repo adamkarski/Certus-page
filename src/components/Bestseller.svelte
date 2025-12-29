@@ -211,6 +211,9 @@
         <li>
           <strong>Model: CERTUS 69 Serwo</strong> - Pole pracy 600x900x200 mm. Waga maszyny 450 kg.
         </li>
+        <li>
+          <strong>Model: CERTUS 69 Serwo ATC</strong> - Pole pracy 600x900x200 mm. Waga maszyny 580 kg.
+        </li>
       </ul>
 
       <p>
