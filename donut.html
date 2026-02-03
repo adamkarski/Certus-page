@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edytor Donuta SVG - Z kopiowaniem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        #editor-container {
+            display: flex;
+            gap: 20px;
+        }
+        #svg-container {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        #controls {
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #94ac3b;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #7a9430;
+        }
+        button.danger {
+            background: #dc3545;
+        }
+        button.danger:hover {
+            background: #c82333;
+        }
+        button.copy {
+            background: #28a745;
+        }
+        button.copy:hover {
+            background: #218838;
+        }
+        .segment-item {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        .color-picker {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .selected {
+            stroke: #ff0000 !important;
+            stroke-width: 6px !important;
+        }
+        #copy-result {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            display: none;
+        }
+        #equalize-btn {
+            background: #007bff;
+            font-size: 12px;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edytor Donuta SVG - Kopiuj SVG</h1>
+    <p>2 segmenty = po 180°, 12 = po 30°. Kliknij "Kopiuj SVG" aby skopiować gotowy kod!</p>
+    
+    <div id="editor-container">
+        <div id="svg-container">
+            <svg id="donut-svg" width="400" height="400" viewBox="0 0 277.75 277.75">
+            </svg>
+        </div>
+        <div id="controls">
+            <h3>Kontrolki</h3>
+            <button id="add-segment">+ Segment</button>
+            <button id="remove-segment">- Segment</button>
+            <button id="equalize-btn">Rozrównaj</button>
+            <button id="copy-svg" class="copy">📋 Kopiuj SVG</button>
+            <button id="clear-all" class="danger">Wyczyść</button>
+            
+            <div id="copy-result">
+                ✅ SVG skopiowane do schowka!
+            </div>
+            
+            <h3>Segmenty (po <span id="equal-angle">45</span>°)</h3>
+            <div id="segments-list"></div>
+        </div>
+    </div>
+
+    <script>
+        const SVG_NS = 'http://www.w3.org/2000/svg';
+        const CENTER_X = 138.85;
+        const CENTER_Y = 138.85;
+        const INNER_RADIUS = 80;
+        const OUTER_RADIUS = 138;
+        const TOTAL_ANGLE = 360;
+        const STROKE_WIDTH = 4;
+
+        let segments = [];
+        let selectedSegmentIndex = -1;
+
+        const svg = document.getElementById('donut-svg');
+        const segmentsList = document.getElementById('segments-list');
+        const equalAngleSpan = document.getElementById('equal-angle');
+        const copyResult = document.getElementById('copy-result');
+        const copyBtn = document.getElementById('copy-svg');
+
+        function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+            const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+            return {
+                x: centerX + (radius * Math.cos(angleInRadians)),
+                y: centerY + (radius * Math.sin(angleInRadians))
+            };
+        }
+
+        function describeDonutArc(startAngle, endAngle, color) {
+            const innerStart = polarToCartesian(CENTER_X, CENTER_Y, INNER_RADIUS, endAngle);
+            const innerEnd = polarToCartesian(CENTER_X, CENTER_Y, INNER_RADIUS, startAngle);
+            const outerStart = polarToCartesian(CENTER_X, CENTER_Y, OUTER_RADIUS, startAngle);
+            const outerEnd = polarToCartesian(CENTER_X, CENTER_Y, OUTER_RADIUS, endAngle);
+
+            const largeArcFlag = (endAngle - startAngle) <= 180 ? "0" : "1";
+
+            const d = [
+                "M", outerStart.x.toFixed(2), outerStart.y.toFixed(2),
+                "A", OUTER_RADIUS, OUTER_RADIUS, 0, largeArcFlag, 1, 
+                outerEnd.x.toFixed(2), outerEnd.y.toFixed(2),
+                "L", innerStart.x.toFixed(2), innerStart.y.toFixed(2),
+                "A", INNER_RADIUS, INNER_RADIUS, 0, largeArcFlag, 0, 
+                innerEnd.x.toFixed(2), innerEnd.y.toFixed(2),
+                "Z"
+            ].join(" ");
+
+            const path = document.createElementNS(SVG_NS, 'path');
+            path.setAttribute('d', d);
+            path.style.fill = color;
+            path.style.stroke = '#fff';
+            path.style.strokeWidth = STROKE_WIDTH + 'px';
+            path.style.strokeMiterlimit = '10';
+            path.dataset.index = segments.length;
+            path.classList.add('segment');
+            
+            path.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selectSegment(parseInt(path.dataset.index));
+            });
+            
+            return path;
+        }
+
+        function selectSegment(index) {
+            document.querySelectorAll('.segment').forEach(p => p.classList.remove('selected'));
+            selectedSegmentIndex = index;
+            if (index >= 0 && index < segments.length) {
+                const path = svg.querySelector(`[data-index="${index}"]`);
+                path.classList.add('selected');
+            }
+        }
+
+        function equalizeSegments() {
+            if (segments.length === 0) return;
+            const anglePerSegment = TOTAL_ANGLE / segments.length;
+            segments.forEach((seg, i) => {
+                segments[i].color = seg.color || `hsl(${i * 360 / segments.length}, 70%, 50%)`;
+            });
+            equalAngleSpan.textContent = anglePerSegment.toFixed(0);
+            render();
+        }
+
+        function render() {
+            svg.innerHTML = '';
+            const anglePerSegment = TOTAL_ANGLE / segments.length;
+            let currentAngle = 0;
+
+            for (let i = 0; i < segments.length; i++) {
+                const path = describeDonutArc(currentAngle, currentAngle + anglePerSegment, segments[i].color);
+                svg.appendChild(path);
+                
+                if (i === selectedSegmentIndex) {
+                    path.classList.add('selected');
+                }
+                
+                currentAngle += anglePerSegment;
+            }
+        }
+
+        function updateList() {
+            segmentsList.innerHTML = '';
+            segments.forEach((seg, index) => {
+                const div = document.createElement('div');
+                div.className = 'segment-item';
+                div.innerHTML = `
+                    <strong>#${index + 1}</strong>
+                    <input type="color" class="color-picker" value="${seg.color}" onchange="changeColor(${index}, this.value)">
+                `;
+                segmentsList.appendChild(div);
+            });
+        }
+
+        function changeColor(index, color) {
+            segments[index].color = color;
+            render();
+        }
+
+        function generateSVGCode() {
+            let styleContent = '';
+            let pathsContent = '';
+            
+            segments.forEach((seg, i) => {
+                const className = `.cls-${i + 1}`;
+                styleContent += `${className} { fill: ${seg.color}; stroke: #fff; stroke-miterlimit: 10; stroke-width: ${STROKE_WIDTH}px; }\n`;
+                
+                const anglePerSegment = TOTAL_ANGLE / segments.length;
+                const startAngle = i * anglePerSegment;
+                const endAngle = (i + 1) * anglePerSegment;
+                
+                const innerStart = polarToCartesian(CENTER_X, CENTER_Y, INNER_RADIUS, endAngle);
+                const innerEnd = polarToCartesian(CENTER_X, CENTER_Y, INNER_RADIUS, startAngle);
+                const outerStart = polarToCartesian(CENTER_X, CENTER_Y, OUTER_RADIUS, startAngle);
+                const outerEnd = polarToCartesian(CENTER_X, CENTER_Y, OUTER_RADIUS, endAngle);
+
+                const largeArcFlag = (endAngle - startAngle) <= 180 ? "0" : "1";
+
+                const d = [
+                    "M", outerStart.x.toFixed(2), outerStart.y.toFixed(2),
+                    "A", OUTER_RADIUS, OUTER_RADIUS, "0", largeArcFlag, "1", 
+                    outerEnd.x.toFixed(2), outerEnd.y.toFixed(2),
+                    "L", innerStart.x.toFixed(2), innerStart.y.toFixed(2),
+                    "A", INNER_RADIUS, INNER_RADIUS, "0", largeArcFlag, "0", 
+                    innerEnd.x.toFixed(2), innerEnd.y.toFixed(2),
+                    "Z"
+                ].join(" ");
+
+                pathsContent += `<path class="${className.replace('.', '')}" d="${d}"/>`;
+            });
+
+            const svgCode = `<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Donut_Editor" data-name="Donut Editor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 277.75 277.75">
+  <defs>
+    <style>
+      ${styleContent}
+    </style>
+  </defs>
+  ${pathsContent}
+</svg>`;
+
+            return svgCode;
+        }
+
+        // Eventy
+        document.getElementById('add-segment').onclick = () => {
+            segments.push({ color: '#94ac3b' });
+            equalizeSegments();
+            updateList();
+        };
+
+        document.getElementById('remove-segment').onclick = () => {
+            if (segments.length > 0) {
+                segments.pop();
+                equalizeSegments();
+                updateList();
+                selectSegment(-1);
+            }
+        };
+
+        document.getElementById('equalize-btn').onclick = equalizeSegments;
+
+        document.getElementById('clear-all').onclick = () => {
+            segments = [];
+            selectedSegmentIndex = -1;
+            svg.innerHTML = '';
+            updateList();
+            equalAngleSpan.textContent = '0';
+        };
+
+        copyBtn.onclick = async () => {
+            const svgCode = generateSVGCode();
+            try {
+                await navigator.clipboard.writeText(svgCode);
+                copyResult.style.display = 'block';
+                setTimeout(() => {
+                    copyResult.style.display = 'none';
+                }, 3000);
+            } catch (err) {
+                console.error('Błąd kopiowania: ', err);
+            }
+        };
+
+        svg.onclick = (e) => {
+            if (e.target === svg) selectSegment(-1);
+        };
+
+        // Inicjalizacja z oryginalnymi kolorami
+        segments = [
+            { color: '#94ac3b' }, { color: '#94ac3b' }, { color: '#94ac3b' }, { color: '#94ac3b' },
+            { color: '#94ac3b' }, { color: '#94ac3b' }, { color: '#94ac3b' }, { color: '#94ac3b' },
+            { color: '#94ac3b' }, { color: '#94ac3b' }, { color: '#94ac3b' }, { color: '#94ac3b' }
+        ];
+        equalizeSegments();
+        updateList();
+
+        window.changeColor = changeColor;
+    </script>
+</body>
+</html>

@@ -996,7 +996,7 @@ afterUpdate(() => {
           <div class="right_content">
             <h1 use:typoFixAction>
               <b>Grawerki CNC</b><br /><br />To kompaktowe, precyzyjne
-              urządzenia dedykowane do obróbki materiałów wymagających bardzo
+              urządzenia przeznaczone do obróbki materiałów wymagających bardzo
               dużej dokładności przy niewielkich wymiarach obszaru roboczego.
               Znajdą zastosowanie m.in. w produkcji form wtryskowych, stempli,
               narzędzi precyzyjnych, tabliczek znamionowych, paneli frontowych,
