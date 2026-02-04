@@ -47,136 +47,173 @@
   // Funkcja zwracająca pełne dane serwisu na podstawie typu
   function getServiceData(type: string) {
     const servicesData = {
-      warranty: {
-        type: "warranty",
-        title: "Serwis Gwarancyjny",
-        description:
-          "Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12 miesięcy od daty dostawy",
-        highlights: ["BEZPŁATNE", "Czas reakcji: Do 5 dni"],
-        details: [
-          { label: "Okres gwarancji", value: "12 miesięcy od dostawy" },
-          { label: "Koszt serwisu", value: "BEZPŁATNE", highlight: true },
-          { label: "Koszt dojazdu", value: "Bezpłatne do 200 km" },
-          { label: "Czas reakcji", value: "Do 5 dni roboczych" },
-        ],
-        includes: [
-          "Wady materiałowe",
-          "Błędy produkcyjne",
-          "Awarie z normalnego użytkowania",
-          "Oryginalne części zamienne",
-          "Raport z wykonanych prac",
-        ],
-        excludes: [
-          "Błędy użytkownika",
-          "Zaniedbania konserwacyjne",
-          "Eksploatacja niezgodna z przeznaczeniem",
-          "Uszkodzenia mechaniczne",
-        ],
-      },
-      "post-warranty": {
-        type: "post-warranty",
-        title: "Serwis Pogwarancyjny",
-        description:
-          "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym",
-        highlights: ["240 zł/h", "Do 7 dni"],
-        details: [
-          {
-            label: "Stawka godzinowa",
-            value: "240 zł netto/h",
-            highlight: true,
-          },
-          { label: "Minimalne rozliczenie", value: "1 godzina" },
-          { label: "Czas reakcji", value: "Do 7 dni roboczych" },
-          { label: "Koszt dojazdu", value: "2,50 zł netto/km" },
-        ],
-        includes: [
-          "Diagnostyka awarii",
-          "Naprawa podzespołów",
-          "Wymiana części zamiennych",
-          "Testowanie po naprawie",
-          "Szczegółowy raport serwisowy",
-          "Instrukcja eksploatacji",
-        ],
-        note: "Koszt dojazdu liczony w obie strony. Części zamienne dodatkowo według cennika.",
-      },
-      inspections: {
-        type: "inspections",
-        title: "Przeglądy Okresowe",
-        description:
-          "Regularne przeglądy zapewniające optymalną pracę maszyn i przedłużające ich żywotność",
-        highlights: ["Od 1000 zł", "Co 6 mies."],
-        details: [
-          {
-            label: "Częstotliwość",
-            value: "Co 6 miesięcy lub 1000 roboczogodzin",
-          },
-          {
-            label: "Maszyny 3-osiowe standard",
-            value: "1000 zł netto",
-            highlight: true,
-          },
-          {
-            label: "Maszyny 3-osiowe rozszerzony",
-            value: "1600 zł netto",
-            highlight: true,
-          },
-          {
-            label: "Maszyny 5-osiowe standard",
-            value: "1400 zł netto",
-            highlight: true,
-          },
-          {
-            label: "Maszyny 5-osiowe rozszerzony",
-            value: "2200 zł netto",
-            highlight: true,
-          },
-        ],
-        includes: [
-          "Diagnostyka wszystkich podzespołów",
-          "Kontrola dokładności osi",
-          "Sprawdzenie systemów chłodzenia",
-          "Kontrola układów smarowania",
-          "Kalibracja narzędzi",
-          "Raport z rekomendacjami",
-          "Plan konserwacji",
-        ],
-        note: "Przegląd rozszerzony obejmuje dodatkowo wymianę płynów eksploatacyjnych i drobnych części zużywalnych.",
-      },
-      additional: {
-        type: "additional",
-        title: "Usługi Dodatkowe",
-        description:
-          "Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu",
-        highlights: ["Priorytet 48h", "Szkolenia"],
-        services: [
-          {
-            name: "Serwis priorytetowy",
-            price: "400 zł netto",
-            description: "Reakcja do 48 godzin",
-            details: "Priorytetowe traktowanie zgłoszenia serwisowego",
-          },
-          {
-            name: "Diagnostyka zdalna",
-            price: "100 zł netto",
-            description: "Każde rozpoczęte 30 minut",
-            details: "Zdalna pomoc techniczna przez internet",
-          },
-          {
-            name: "Szkolenie operatora",
-            price: "1200 zł netto/dzień",
-            description: "Na miejscu u klienta",
-            details: "Kompleksowe szkolenie z obsługi maszyny",
-          },
-          {
-            name: "Instalacja maszyny",
-            price: "1500-2500 zł netto",
-            description: "Według umowy",
-            details: "Profesjonalna instalacja i uruchomienie",
-          },
-        ],
-      },
-    };
+ 
 
+    
+  "warranty": {
+    "type": "warranty",
+    "title": "Serwis Gwarancyjny",
+    "description": "Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12 miesięcy od daty dostawy",
+    "highlights": [
+      "BEZPŁATNE",
+      "Czas reakcji: Do 5 dni"
+    ],
+    "details": [
+      {
+        "label": "Okres gwarancji",
+        "value": "12 miesięcy od dostawy"
+      },
+      {
+        "label": "Koszt serwisu",
+        "value": "BEZPŁATNE",
+        "highlight": true
+      },
+      {
+        "label": "Koszt dojazdu",
+        "value": "Bezpłatne do 200 km"
+      },
+      {
+        "label": "Czas reakcji",
+        "value": "Do 5 dni roboczych"
+      }
+    ],
+    "includes": [
+      "Wady materiałowe",
+      "Błędy produkcyjne",
+      "Awarie z normalnego użytkowania",
+      "Oryginalne części zamienne",
+      "Raport z wykonanych prac"
+    ],
+    "excludes": [
+      "Błędy użytkownika",
+      "Zaniedbania konserwacyjne",
+      "Eksploatacja niezgodna z przeznaczeniem",
+      "Uszkodzenia mechaniczne"
+    ]
+  },
+  "post-warranty": {
+    "type": "post-warranty",
+    "title": "Serwis Pogwarancyjny",
+    "description": "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym",
+    "highlights": [
+      "240 zł/h",
+      "Do 7 dni"
+    ],
+    "details": [
+      {
+        "label": "Stawka godzinowa",
+        "value": "240 zł netto/h",
+        "highlight": true
+      },
+      {
+        "label": "Minimalne rozliczenie",
+        "value": "1 godzina"
+      },
+      {
+        "label": "Czas reakcji",
+        "value": "Do 7 dni roboczych"
+      },
+      {
+        "label": "Koszt dojazdu",
+        "value": "2,50 zł netto/km"
+      }
+    ],
+    "includes": [
+      "Diagnostyka awarii",
+      "Naprawa podzespołów",
+      "Wymiana części zamiennych",
+      "Testowanie po naprawie",
+      "Szczegółowy raport serwisowy",
+      "Instrukcja eksploatacji"
+    ],
+    "note": "Koszt dojazdu liczony w obie strony. Części zamienne dodatkowo według cennika."
+  },
+  "inspections": {
+    "type": "inspections",
+    "title": "Przeglądy Okresowe",
+    "description": "Regularne przeglądy zapewniające optymalną pracę maszyn i przedłużające ich żywotność",
+    "highlights": [
+      "Od 1000 zł",
+      "Co 6 mies."
+    ],
+    "details": [
+      {
+        "label": "Częstotliwość",
+        "value": "Co 6 miesięcy lub 1000 roboczogodzin"
+      },
+      {
+        "label": "Maszyny 3-osiowe standard",
+        "value": "1000 zł netto",
+        "highlight": true
+      },
+      {
+        "label": "Maszyny 3-osiowe rozszerzony",
+        "value": "1600 zł netto",
+        "highlight": true
+      },
+      {
+        "label": "Maszyny 5-osiowe standard",
+        "value": "1400 zł netto",
+        "highlight": true
+      },
+      {
+        "label": "Maszyny 5-osiowe rozszerzony",
+        "value": "2200 zł netto",
+        "highlight": true
+      }
+    ],
+    "includes": [
+      "Diagnostyka wszystkich podzespołów",
+      "Kontrola dokładności osi",
+      "Sprawdzenie systemów chłodzenia",
+      "Kontrola układów smarowania",
+      "Kalibracja narzędzi",
+      "Raport z rekomendacjami",
+      "Plan konserwacji"
+    ],
+    "note": "Przegląd rozszerzony obejmuje dodatkowo wymianę płynów eksploatacyjnych i drobnych części zużywalnych."
+  },
+  "additional": {
+    "type": "additional",
+    "title": "Usługi Dodatkowe",
+    "description": "Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu",
+    "highlights": [
+      "Priorytet 24h",
+      "Szkolenia"
+    ],
+    "services": [
+      {
+        "name": "Serwis priorytetowy",
+        "price": "400 zł netto",
+        "description": "Reakcja do 24 godzin",
+
+
+
+
+
+        "details": "Priorytetowe traktowanie zgłoszenia serwisowego"
+      },
+      {
+        "name": "Diagnostyka zdalna",
+        "price": "100 zł netto",
+        "description": "Każde rozpoczęte 30 minut",
+        "details": "Zdalna pomoc techniczna przez internet"
+      },
+      {
+        "name": "Szkolenie operatora",
+        "price": "1200 zł netto/dzień",
+        "description": "Na miejscu u klienta",
+        "details": "Kompleksowe szkolenie z obsługi maszyny"
+      },
+      {
+        "name": "Instalacja maszyny",
+        "price": "1500-2500 zł netto",
+        "description": "Według umowy",
+        "details": "Profesjonalna instalacja i uruchomienie"
+      }
+    ]
+  }
+}
     return servicesData[type] || null;
   }
 
@@ -480,12 +517,12 @@
             title: "Usługi Dodatkowe",
             description:
               "Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu",
-            highlights: ["Priorytet 48h", "Szkolenia"],
+            highlights: ["Priorytet 24h", "Szkolenia"],
             services: [
               {
                 name: "Serwis priorytetowy",
                 price: "400 zł netto",
-                description: "Reakcja do 48 godzin",
+                description: "Reakcja do 24 godzin",
                 details: "Priorytetowe traktowanie zgłoszenia serwisowego",
               },
               {
@@ -540,7 +577,7 @@
 
       <div class="serwis-service-highlight">
         <span class="serwis-highlight-item" use:typoFixAction
-          >Priorytet 48h</span
+          >Priorytet 24h</span
         >
         <span class="serwis-highlight-item" use:typoFixAction>Szkolenia</span>
       </div>
@@ -617,7 +654,7 @@
         </div>
         <h4 use:typoFixAction>Szybka reakcja</h4>
         <p use:typoFixAction>
-          Zazwyczaj w ciągu 24 godzin, priorytetowo do 48h
+          Zazwyczaj w ciągu 48 godzin, priorytetowo do 24h
         </p>
       </div>
 
