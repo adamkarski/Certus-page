@@ -637,7 +637,7 @@
         </div>
         <h4 use:typoFixAction>Doświadczony zespół</h4>
         <p use:typoFixAction>
-          10+ lat stażu w branży CNC i setki zadowolonych klientów
+          20+ lat 20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNCstażu w branży CNC i setki zadowolonych klientów
         </p>
       </div>
 
