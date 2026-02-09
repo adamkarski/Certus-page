@@ -15,7 +15,7 @@
         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
       </svg>`,
       title: 'Doświadczony zespół',
-      description: '20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC20+ lat stażu w branży CNC'
+      description: '20+ lat stażu w branży CNC'
     },
     {
       icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
