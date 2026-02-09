@@ -9,7 +9,7 @@
   import Maszyny_table_frezarki_GT_ST from "./tables/Maszyny_table_frezarki_GT_ST.svelte";
 
   import Maszyny_table_ploteryPrzemyslowe_CT_OT from "./tables/Maszyny_table_plotery_przemyslowe_CT_OT.svelte";
-  
+
   import Maszyny_table_ploteryLinearne from "./tables/Maszyny_table_ploteryLinearne.svelte";
   import Maszyny_table_grawerki from "./tables/Maszyny_table_grawerki.svelte";
   import Maszyny_table_frezarki5osiowe from "./tables/Maszyny_table_frezarki5osiowe.svelte";
@@ -453,7 +453,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <Maszyny_table_ploteryPrzemyslowe />
+        <Maszyny_table_ploteryPrzemyslowe_CT_OT />
       </div>
     </div>
 
