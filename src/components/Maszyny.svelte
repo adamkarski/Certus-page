@@ -7,12 +7,13 @@
   import { typoFixAction } from "$lib/utils/typography";
 
   import Maszyny_table_frezarki from "./tables/Maszyny_table_frezarki.svelte";
-  import Maszyny_table_plotery from "./tables/Maszyny_table_plotery.svelte";
+  import Maszyny_table_ploteryPrzemyslowe from "./tables/Maszyny_table_plotery_przemyslowe.svelte";
+  import Maszyny_table_ploteryLinearne from "./tables/Maszyny_table_ploteryLinearne.svelte";
   import Maszyny_table_zabudowa from "./tables/Maszyny_table_zabudowa.svelte";
   import Maszyny_table_grawerki from "./tables/Maszyny_table_grawerki.svelte";
   import Maszyny_table_frezarki5osiowe from "./tables/Maszyny_table_frezarki5osiowe.svelte";
-  import Maszyny_table_ploteryLinearne from "./tables/Maszyny_table_ploteryLinearne.svelte";
-  import Maszyny_table_specjalistyczne from "./tables/Maszyny_table_specjalistyczne.svelte";
+
+
   import MachineMenu from "./MachineMenu.svelte";
 
   // import css styles
@@ -451,7 +452,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <Maszyny_table_plotery />
+        <Maszyny_table_ploteryPrzemyslowe />
       </div>
     </div>
 

@@ -38,10 +38,11 @@
 
   //tables dla maszyn
   import Maszyny_table_frezarki from "$lib/../components/tables/Maszyny_table_frezarki.svelte";
-  import Maszyny_table_plotery from "$lib/../components/tables/Maszyny_table_plotery.svelte";
+
   import Maszyny_table_grawerki from "$lib/../components/tables/Maszyny_table_grawerki.svelte";
   import Maszyny_table_frezarki5osiowe from "$lib/../components/tables/Maszyny_table_frezarki5osiowe.svelte";
   import Maszyny_table_ploteryLinearne from "$lib/../components/tables/Maszyny_table_ploteryLinearne.svelte";
+  import Maszyny_table_ploteryPrzemyslowe from "$lib/../components/tables/Maszyny_table_plotery_przemyslowe.svelte";
   import Maszyny_table_zabudowa from "$lib/../components/tables/Maszyny_table_zabudowa.svelte";
 
   // Dodanie funkcji closeFW
@@ -580,7 +581,7 @@ afterUpdate(() => {
                 contactHref="/kontakt"
               />
 
-              <Maszyny_table_plotery />
+              <Maszyny_table_ploteryPrzemyslowe />
             </ul>
           </div>
 
