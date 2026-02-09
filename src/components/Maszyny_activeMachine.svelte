@@ -1857,7 +1857,8 @@ body.no-scroll-hero.active_machine_view {
   @media (max-width: 480px) {
     .activeMachine {
       padding: 0.5rem;
-      width: 100vw;
+      height: 100vh !important;
+      width: 100vw !important;
     }
 
     .activeMachine .left {
