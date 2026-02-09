@@ -37,13 +37,13 @@
   }
 
   //tables dla maszyn
-  import Maszyny_table_frezarki from "$lib/../components/tables/Maszyny_table_frezarki.svelte";
+  import Maszyny_table_frezarki_GT_ST from "./tables/Maszyny_table_frezarki_GT_ST.svelte";
 
   import Maszyny_table_grawerki from "$lib/../components/tables/Maszyny_table_grawerki.svelte";
   import Maszyny_table_frezarki5osiowe from "$lib/../components/tables/Maszyny_table_frezarki5osiowe.svelte";
   import Maszyny_table_ploteryLinearne from "$lib/../components/tables/Maszyny_table_ploteryLinearne.svelte";
-  import Maszyny_table_ploteryPrzemyslowe from "$lib/../components/tables/Maszyny_table_plotery_przemyslowe.svelte";
-  import Maszyny_table_zabudowa from "$lib/../components/tables/Maszyny_table_zabudowa.svelte";
+  import Maszyny_table_ploteryPrzemyslowe_CT_OT from "./tables/Maszyny_table_plotery_przemyslowe_CT_OT.svelte";
+ 
 
   // Dodanie funkcji closeFW
   const closeFW = () => {
@@ -223,7 +223,7 @@ afterUpdate(() => {
               contactHref="/kontakt"
             />
 
-            <Maszyny_table_frezarki />
+            <Maszyny_table_frezarki_GT_ST />
           </div>
 
           {#if $expandedViewStore}
@@ -415,7 +415,7 @@ afterUpdate(() => {
               contactHref="/kontakt"
             />
 
-            <Maszyny_table_frezarki />
+            <Maszyny_table_frezarki_GT_ST />
           </div>
 
           {#if $expandedViewStore}
@@ -581,7 +581,7 @@ afterUpdate(() => {
                 contactHref="/kontakt"
               />
 
-              <Maszyny_table_ploteryPrzemyslowe />
+              <Maszyny_table_ploteryPrzemyslowe_CT_OT />
             </ul>
           </div>
 
@@ -738,7 +738,7 @@ afterUpdate(() => {
               contactHref="/kontakt"
             />
 
-            <Maszyny_table_zabudowa />
+            <Maszyny_table_ploteryPrzemyslowe_CT_OT/>
           </div>
 
           {#if $expandedViewStore}

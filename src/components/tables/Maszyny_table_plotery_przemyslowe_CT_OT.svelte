@@ -2,7 +2,7 @@
   import '$lib/table.scss';
  </script>
 
-<table class="maszyny-dane-tabela zabudowa">
+<table class="maszyny-dane-tabela plotery">
     <thead>
       <tr>
         <th>Parametr</th>
@@ -14,14 +14,16 @@
         <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
         <td class="highlight-options">
           <ul class="options-list">
-            <li>1400×1000</li>
-            <li>1400×1200</li>
-            <li>1400×1600</li>
+           
+            
+            <li>1400x1000</li>
+            <li>1400x1200</li>
+            <li>1400x1600</li>
           </ul>
         </td>
       </tr>
       <tr>
-        <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczym (mm)</div></td>
+        <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczego (mm)</div></td>
         <td class="highlight-options">
           <ul class="options-list">
             <li>270</li>
@@ -62,34 +64,15 @@
         <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
       </tr>
       <tr>
-
-        <td><img src="/assets/ikony/table/zbiornik.svg" alt="oprozniany zbiornik na wióry" /><div class="text">Opróżniany zbiornik na wióry</div></td>
-
-        
-        <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
-      </tr>
-      <tr>
-
-
-        <td><img src="/assets/ikony/table/oslonyboczne.svg" alt="osłony boczne" /><div class="text">Osłony boczne</div></td>
-
-        
-        <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
-      </tr>
-      <tr>
-        <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół roboczy" /><div class="text">Stół roboczy poziomo-pionowy T-rowkowy</div></td>
-        <td class="standard-feature"><span class="check-mark">✓</span>Do 1000mm wysokości</td>
-      </tr>
-      <tr>
-        <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje dodatkowe" /><div class="text">Opcje dodatkowe</div></td>
+        <td><img src="/assets/ikony/table/opcje.svg" alt="Opcje" /><div class="text">Opcje dodatkowe</div></td>
         <td class="specs-text">
           <ul class="options-list">
             <li>Chłodzenie (ciągłe cieczą)</li>
             <li>Chłodzenie (mgła olejowa)</li>
             <li>Pomiar wysokości narzędzia</li>
-            <li>Sonda 3D</li>
+            <li>Sonda 3D z makrami</li>
             <li>Centralne smarowanie</li>
-            <li>Kamera</li>
+            <li>Kamera wizyjna</li>
             <li>4. oś obrotowa</li>
             <li>5. oś obrotowa</li>
           </ul>
