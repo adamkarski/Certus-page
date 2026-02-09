@@ -65,7 +65,6 @@ export const galleryData = [
       { "src": "/assets/maszyny/galeria/webp/ploter-hpp-ct-15.webp", "fallbackSrc": "/assets/maszyny/galeria/ploter-hpp-ct-15.png", "title": "Ploter HPP-CT (15)", "alt": "Ploter Przemysłowy HPP-CT" },
       { "src": "/assets/maszyny/galeria/webp/ploter-hpp-ct-22.webp", "fallbackSrc": "/assets/maszyny/galeria/ploter-hpp-ct-22.png", "title": "Ploter HPP-CT (22)", "alt": "Ploter Przemysłowy HPP-CT" },
       { "src": "/assets/maszyny/galeria/webp/ploter-hpp-ct-25.webp", "fallbackSrc": "/assets/maszyny/galeria/ploter-hpp-ct-25.png", "title": "Ploter HPP-CT (25)", "alt": "Ploter Przemysłowy HPP-CT" },
-      { "src": "/assets/maszyny/galeria/webp/ploter-hpp-ct-26.webp", "fallbackSrc": "/assets/maszyny/galeria/ploter-hpp-ct-26.png", "title": "Ploter HPP-CT (26)", "alt": "Ploter Przemysłowy HPP-CT" },
       { "src": "/assets/maszyny/galeria/webp/ploter-hpp-ct-36.webp", "fallbackSrc": "/assets/maszyny/galeria/ploter-hpp-ct-36.png", "title": "Ploter HPP-CT (36)", "alt": "Ploter Przemysłowy HPP-CT" },
       { "src": "/assets/maszyny/galeria/webp/ploter-hpp-ct-39.webp", "fallbackSrc": "/assets/maszyny/galeria/ploter-hpp-ct-39.png", "title": "Ploter HPP-CT (39)", "alt": "Ploter Przemysłowy HPP-CT" }
     ]
