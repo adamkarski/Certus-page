@@ -430,6 +430,8 @@
   }
   .activeMachine {
     padding: 0.5rem !important;
+    height: 100vh !important;
+    width: 100vw !important;
   }
 
   .activeMachine .left {
