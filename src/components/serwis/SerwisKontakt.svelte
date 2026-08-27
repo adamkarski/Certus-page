@@ -22,6 +22,7 @@
   let phonePrefix = "+48";
   let errors: Record<string, string> = {};
   let turnstileToken: string | null = null;
+  let turnstileReset: (() => void) | undefined;
 
   let messageInputMode: 'text' | 'record' | null = null;
   let isRecording = false;
@@ -198,7 +199,7 @@
     formDataToSend.append('formType', 'serwis-kontakt');
 
     try {
-        const apiUrl = 'https://dm73147.domenomania.eu/api/send-email.php';
+        const apiUrl = 'https://api.mg-certus.pl/sendEmail.php';
         const response = await axios.post(apiUrl, formDataToSend, {
             timeout: 30000,
         });
@@ -223,11 +224,13 @@
 
         // Zresetuj Turnstile dla kolejnego użycia
         turnstileToken = null; // Clear token
+        turnstileReset?.();
 
       } else {
         submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
       }
     } catch (error) {
+      turnstileReset?.();
       if (axios.isAxiosError(error)) {
         if (error.code === 'ECONNABORTED') {
           submitMessage = "Timeout - spróbuj ponownie za chwilę.";
@@ -594,7 +597,7 @@
 
           
 
-          <Turnstile siteKey="0x4AAAAAACEnWiyzZjf30AYU" theme="light" on:callback={(e) => { turnstileToken = e.detail.token; }} on:expired={() => { turnstileToken = null; }} on:error={(e) => { turnstileToken = null; submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie..."; console.error('Turnstile error:', e.detail.code); }} />
+          <Turnstile siteKey="0x4AAAAAACEnWiyzZjf30AYU" theme="light" bind:reset={turnstileReset} on:callback={(e) => { turnstileToken = e.detail.token; }} on:expired={() => { turnstileToken = null; }} on:error={(e) => { turnstileToken = null; turnstileReset?.(); submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie..."; console.error('Turnstile error:', e.detail.code); }} />
 
           <div class="text-left ctaButton">
             <CtaButton
@@ -776,6 +779,9 @@
 
   .contact-info-block {
     margin: 32px 0 18px 0;
+    a{
+      transition: all ease 0.3s;
+    }
   }
 
   .info-row {

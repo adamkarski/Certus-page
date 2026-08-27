@@ -631,6 +631,11 @@
     margin-top: 26px;
   }
   :global(button.bestseller:hover .cta-svg) {
+    width: 21px;
+    height: 13px;
+    left: 26px;
+    position: relative;
+    transform: rotate(1deg);
     transform: scaleY(1.5);
   }
 
@@ -981,6 +986,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    outline: none;
 
     &:hover {
       color: var(--color-text-primary);
