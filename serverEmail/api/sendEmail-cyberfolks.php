@@ -2,17 +2,20 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// --- Load .env from parent directory ---
-$envFile = __DIR__ . '/../.env';
-if (file_exists($envFile)) {
-    $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $line) {
-        $line = trim($line);
-        if ($line === '' || $line[0] === '#') continue;
-        if (strpos($line, '=') !== false) {
-            [$key, $value] = explode('=', $line, 2);
-            $_ENV[trim($key)] = trim($value);
-        }
+// --- Load .env from same directory ---
+$envFile = __DIR__ . '/.env';
+if (!file_exists($envFile)) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Server configuration error: .env file not found.']);
+    exit;
+}
+$lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+foreach ($lines as $line) {
+    $line = trim($line);
+    if ($line === '' || $line[0] === '#') continue;
+    if (strpos($line, '=') !== false) {
+        [$key, $value] = explode('=', $line, 2);
+        $_ENV[trim($key)] = trim($value);
     }
 }
 
@@ -187,6 +190,14 @@ $smtpPort     = (int)($_ENV['SMTP_PORT'] ?? 465);
 $smtpUser     = $_ENV['SMTP_USER'] ?? '';
 $smtpPass     = $_ENV['SMTP_PASS'] ?? '';
 
+if (empty($smtpHost) || empty($smtpUser) || empty($smtpPass)) {
+    $error_message = 'Server configuration error: SMTP credentials missing in .env.';
+    write_log($error_message);
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => $error_message]);
+    exit;
+}
+
 // --- Main Email to Admin ---
 $mail = new PHPMailer(true);
 try {
@@ -217,33 +228,38 @@ try {
     write_log("Admin email sent successfully to {$to}.");
 
     // --- Auto-reply to User ---
-    $userMail = new PHPMailer(true);
-    $userMail->isSMTP();
-    $userMail->Host       = $smtpHost;
-    $userMail->SMTPAuth   = true;
-    $userMail->Username   = $smtpUser;
-    $userMail->Password   = $smtpPass;
-    $userMail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $userMail->Port       = $smtpPort;
-    $userMail->CharSet    = 'UTF-8';
+    try {
+        $userMail = new PHPMailer(true);
+        $userMail->isSMTP();
+        $userMail->Host       = $smtpHost;
+        $userMail->SMTPAuth   = true;
+        $userMail->Username   = $smtpUser;
+        $userMail->Password   = $smtpPass;
+        $userMail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $userMail->Port       = $smtpPort;
+        $userMail->CharSet    = 'UTF-8';
 
-    $userMail->setFrom($smtpUser, 'Certus CNC');
-    $userMail->addAddress($data['email']);
+        $userMail->setFrom($smtpUser, 'Certus CNC');
+        $userMail->addAddress($data['email']);
 
-    $userMail->isHTML(true);
-    $userMail->Subject = 'Potwierdzenie otrzymania wiadomości - Certus CNC';
-    $userMail->Body    = '
-        <html><body>
-          <h3>Dziękujemy za Twoją wiadomość!</h3>
-          <p>Otrzymaliśmy Twoje zapytanie i wkrótce się z Tobą skontaktujemy.</p>
-          <p>Pozdrawiamy,<br>Zespół Certus CNC</p>
-          <hr>
-          <p><small>To jest automatyczna wiadomość, prosimy na nią nie odpowiadać.</small></p>
-        </body></html>';
-    $userMail->AltBody = 'Dziękujemy za Twoją wiadomość! Otrzymaliśmy Twoje zapytanie i wkrótce się z Tobą skontaktujemy. Pozdrawiamy, Zespół Certus CNC';
+        $userMail->isHTML(true);
+        $userMail->Subject = 'Potwierdzenie otrzymania wiadomości - Certus CNC';
+        $userMail->Body    = '
+            <html><body>
+              <h3>Dziękujemy za Twoją wiadomość!</h3>
+              <p>Otrzymaliśmy Twoje zapytanie i wkrótce się z Tobą skontaktujemy.</p>
+              <p>Pozdrawiamy,<br>Zespół Certus CNC</p>
+              <hr>
+              <p><small>To jest automatyczna wiadomość, prosimy na nią nie odpowiadać.</small></p>
+            </body></html>';
+        $userMail->AltBody = 'Dziękujemy za Twoją wiadomość! Otrzymaliśmy Twoje zapytanie i wkrótce się z Tobą skontaktujemy. Pozdrawiamy, Zespół Certus CNC';
 
-    $userMail->send();
-    write_log("Confirmation email sent successfully to {$data['email']}.");
+        $userMail->send();
+        write_log("Confirmation email sent successfully to {$data['email']}.");
+    } catch (Exception $e) {
+        write_log("Confirmation email failed for {$data['email']}: {$userMail->ErrorInfo}");
+        // Don't fail the main request — admin email was already sent
+    }
 
     echo json_encode(['success' => true, 'message' => 'Wiadomość została wysłana pomyślnie.']);
 
