@@ -14,8 +14,12 @@
       ([entry]) => {
         if (entry.isIntersecting) {
           setSectionVisible(sectionId);
-          // Attempt to play video when it enters viewport
+          // Lazy-load video on first scroll into view (bots don't scroll -> no download)
           if (videoElement) {
+            if (!videoElement.getAttribute('src')) {
+              videoElement.src = videoSrc;
+            }
+            videoElement.load();
             videoElement.play().catch(error => {
               console.error("Video playback failed:", error);
               // Fallback for iOS: if autoplay fails, consider showing a play button
@@ -32,13 +36,6 @@
       { threshold: 0.05 },
     );
     if (headerEl) observer.observe(headerEl); // Use headerEl or a dedicated video container element for observation
-    
-    // Also try to play immediately if already in view or for initial load
-    if (videoElement) {
-        videoElement.play().catch(error => {
-            console.error("Initial video playback failed:", error);
-        });
-    }
 
     return () => {
         observer.disconnect();
@@ -58,14 +55,13 @@
 <section id="video" class="video">
   <div class="video-container">
     <video
-      src={videoSrc}
       autoplay
       muted
       loop
       playsinline
       class="masked-video"
       title="Wideo prezentujące procesy produkcyjne Certus"
-      preload="metadata"
+      preload="none"
       poster="/assets/images/pattern-video-1.png"
       bind:this={videoElement}
     />
