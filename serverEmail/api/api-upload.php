@@ -12,7 +12,7 @@
 $UPLOAD_PASSWORD = 'ilwORDkcc4K/aOQUiakcmtw5WNOCBpGt7bDCeX3lIOg=';
 $ALLOWED_EXTENSIONS = ['php', 'env', 'txt', 'json'];
 $MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-$LOG_FILE = __DIR__ . '/../upload_log.txt';
+$LOG_FILE = __DIR__ . '/upload_log.txt';
 
 // --- Logging ---
 function upload_log($message) {

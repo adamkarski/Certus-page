@@ -3,10 +3,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // --- Load .env from same directory ---
-$envFile = __DIR__ . '/.env';
+$envFile = __DIR__ . '/.ve';
 if (!file_exists($envFile)) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Server configuration error: .env file not found.']);
+    echo json_encode(['success' => false, 'message' => 'Server configuration error: .ve file not found.']);
     exit;
 }
 $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // --- Logging ---
-$log_file = __DIR__ . '/../email_log.txt';
+$log_file = __DIR__ . '/email_log.txt';
 function write_log($message) {
     global $log_file;
     $timestamp = date("Y-m-d H:i:s");
@@ -109,44 +109,44 @@ if (!isset($data['cf-turnstile-response'])) {
 }
 
 $turnstile_response = $data['cf-turnstile-response'];
-$secret_key = '0x4AAAAAACEnWmYxJ485BOOXrQZBbobe-Jc';
+    $secret_key = '0x4AAAAAACEnWmYxJ485BOOXrQZBbobe-Jc';
 
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-    'secret'   => $secret_key,
-    'response' => $turnstile_response,
-    'remoteip' => $_SERVER['REMOTE_ADDR'] ?? null,
-]));
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($ch);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+        'secret'   => $secret_key,
+        'response' => $turnstile_response,
+        'remoteip' => $_SERVER['REMOTE_ADDR'] ?? null,
+    ]));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
 
-if ($response === false) {
-    $err = curl_error($ch);
+    if ($response === false) {
+        $err = curl_error($ch);
+        curl_close($ch);
+        write_log('Turnstile cURL error: ' . $err);
+        http_response_code(502);
+        echo json_encode(['success' => false, 'message' => 'Turnstile verification error.']);
+        exit;
+    }
+
     curl_close($ch);
-    write_log('Turnstile cURL error: ' . $err);
-    http_response_code(502);
-    echo json_encode(['success' => false, 'message' => 'Turnstile verification error.']);
-    exit;
-}
 
-curl_close($ch);
+    $turnstile_result = json_decode($response, true);
 
-$turnstile_result = json_decode($response, true);
-
-if (!is_array($turnstile_result) || empty($turnstile_result['success'])) {
-    $codes = $turnstile_result['error-codes'] ?? [];
-    $codesStr = is_array($codes) ? implode(', ', $codes) : (string)$codes;
-    write_log('Turnstile verification failed. Errors: ' . $codesStr);
-    http_response_code(403);
-    echo json_encode(['success' => false, 'message' => 'Turnstile verification failed.']);
-    exit;
-}
-write_log('Turnstile verification successful.');
+    if (!is_array($turnstile_result) || empty($turnstile_result['success'])) {
+        $codes = $turnstile_result['error-codes'] ?? [];
+        $codesStr = is_array($codes) ? implode(', ', $codes) : (string)$codes;
+        write_log('Turnstile verification failed. Errors: ' . $codesStr);
+        http_response_code(403);
+        echo json_encode(['success' => false, 'message' => 'Turnstile verification failed.']);
+        exit;
+    }
+    write_log('Turnstile verification successful.');
 
 // --- Email construction ---
-$to = 'zbigniew.karski@gmail.com';
+$to = 'gmaro@mg-certus.pl';
 $subject = '';
 $message_body = '';
 $message_text = $data['message'] ?? '';
@@ -164,17 +164,26 @@ if ($data['formType'] === 'main-kontakt') {
           <p>" . nl2br(htmlspecialchars($message_text)) . "</p>
         </body></html>";
 } elseif ($data['formType'] === 'serwis-kontakt') {
-    $subject = 'Nowe zgłoszenie serwisowe (Certus)';
+    $serviceType = $data['serviceType'] ?? '';
+    $phone = $data['phone'] ?? '';
+    $subject = 'Zgłoszenie serwisowe - ' . $serviceType . ' - Tel: ' . $phone;
     $message_body = "
-        <html><body>
-          <h2>Nowe zgłoszenie serwisowe</h2>
-          <p><strong>Imię:</strong> " . htmlspecialchars($data['firstName'] ?? '') . "</p>
-          <p><strong>Nazwisko:</strong> " . htmlspecialchars($data['lastName'] ?? '') . "</p>
-          <p><strong>Email:</strong> " . htmlspecialchars($data['email']) . "</p>
-          <p><strong>Telefon:</strong> " . htmlspecialchars($data['phone'] ?? '') . "</p>
-          <p><strong>Typ usługi:</strong> " . htmlspecialchars($data['serviceType'] ?? '') . "</p>
-          <p><strong>Opis problemu:</strong></p>
-          <p>" . nl2br(htmlspecialchars($message_text)) . "</p>
+        <html><body style=\"font-family: Arial, Helvetica, sans-serif; line-height: 1.6; color: #333;\">
+          <h2 style=\"color: #96a500; border-bottom: 2px solid #96a500; padding-bottom: 8px;\">Nowe zgłoszenie serwisowe</h2>
+          <table cellpadding=\"8\" cellspacing=\"0\" style=\"border-collapse: collapse; width: 100%; max-width: 600px;\">
+            <tr><td style=\"border-bottom: 1px solid #eee; font-weight: bold; color: #666; width: 180px;\">Typ usługi</td>
+                <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($serviceType) . "</td></tr>
+            <tr><td style=\"border-bottom: 1px solid #eee; font-weight: bold; color: #666;\">Imię</td>
+                <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($data['firstName'] ?? '') . "</td></tr>
+            <tr><td style=\"border-bottom: 1px solid #eee; font-weight: bold; color: #666;\">Nazwisko</td>
+                <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($data['lastName'] ?? '') . "</td></tr>
+            <tr><td style=\"border-bottom: 1px solid #eee; font-weight: bold; color: #666;\">Email</td>
+                <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($data['email']) . "</td></tr>
+            <tr><td style=\"border-bottom: 1px solid #eee; font-weight: bold; color: #666;\">Telefon</td>
+                <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($phone) . "</td></tr>
+            <tr><td style=\"font-weight: bold; color: #666;\">Opis problemu</td>
+                <td>" . nl2br(htmlspecialchars($message_text)) . "</td></tr>
+          </table>
         </body></html>";
 } else {
     $error_message = 'Nieznany typ formularza.';
@@ -211,7 +220,8 @@ try {
     $mail->CharSet    = 'UTF-8';
 
     $mail->setFrom($smtpUser, 'Formularz Certus');
-    $mail->addAddress($to, 'GMaro');
+    $mail->addAddress('gmaro@mg-certus.pl', 'Certus');
+    $mail->addAddress('zbigniew.karski@gmail.com', 'Zbigniew Karski');
     $mail->addReplyTo($data['email'], ($data['firstName'] ?? '') . ' ' . ($data['lastName'] ?? ''));
 
     if ($isMultipart && isset($_FILES['audio']) && $_FILES['audio']['error'] == UPLOAD_ERR_OK) {
@@ -225,7 +235,7 @@ try {
     $mail->AltBody = strip_tags($message_body);
 
     $mail->send();
-    write_log("Admin email sent successfully to {$to}.");
+    write_log("Admin email sent successfully to {$to} + gmaro@mg-certus.pl.");
 
     // --- Auto-reply to User ---
     try {

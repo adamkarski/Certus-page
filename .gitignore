@@ -29,3 +29,7 @@ dist-ssr
 src/components/Maszyny_fullView.svelte
 TEST_SETUP.md
 static/assets/maszyny/old
+/certus-email-template
+/.omo/run-continuation
+/.playwright-mcp
+/.omo

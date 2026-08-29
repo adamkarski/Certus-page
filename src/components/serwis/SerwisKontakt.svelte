@@ -61,6 +61,23 @@
     }
   }
 
+  function handleCountryCodeInput(event: Event) {
+    const val = (event.target as HTMLInputElement).value;
+    // If browser autofill dumps full number into prefix field, parse it
+    for (const country of countryPrefixes) {
+      if (val.startsWith(country.prefix)) {
+        phonePrefix = country.prefix;
+        formData.phone = val.substring(country.prefix.length).trim();
+        return;
+      }
+    }
+    // If it's just digits without +, it might be the full number — keep prefix, put digits in phone
+    if (/^\d{7,}$/.test(val.replace(/[\s\-]/g, ''))) {
+      formData.phone = val.trim();
+      phonePrefix = "+48";
+    }
+  }
+
   function validateEmail(email: string): string | null {
     if (!email.trim()) return "Email jest wymagany";
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -392,12 +409,14 @@
               <label for="firstName">Imię</label>
               <input
                 id="firstName"
+                name="firstName"
                 type="text"
                 placeholder="Imię"
                 bind:value={formData.firstName}
                 class:error={errors.firstName}
                 on:blur={() => validateSingleField('firstName')}
                 maxlength="50"
+                autocomplete="given-name"
                 required
               />
               {#if errors.firstName}<span class="error-message">{errors.firstName}</span>{/if}
@@ -406,12 +425,14 @@
               <label for="lastName">Nazwisko</label>
               <input
                 id="lastName"
+                name="lastName"
                 type="text"
                 placeholder="Nazwisko"
                 bind:value={formData.lastName}
                 class:error={errors.lastName}
                 on:blur={() => validateSingleField('lastName')}
                 maxlength="50"
+                autocomplete="family-name"
                 required
               />
               {#if errors.lastName}<span class="error-message">{errors.lastName}</span>{/if}
@@ -422,12 +443,14 @@
             <label for="email">Email</label>
             <input
               id="email"
+              name="email"
               type="email"
               placeholder="twoj@email.com"
               bind:value={formData.email}
               class:error={errors.email}
               on:blur={() => validateSingleField('email')}
               maxlength="254"
+              autocomplete="email"
               required
             />
             {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
@@ -440,7 +463,7 @@
               <option value="Serwis Pogwarancyjny">Serwis pogwarancyjny</option>
               <option value="Przegląd Techniczny">Przegląd techniczny</option>
               <option value="Naprawa awaryjna">Naprawa awaryjna</option>
-              <option value="Konservacja">Konserwacja</option>
+              <option value="Konserwacja">Konserwacja</option>
               <option value="Modernizacja">Modernizacja</option>
               <option value="Konsultacja techniczna">Konsultacja techniczna</option>
             </select>
@@ -450,9 +473,17 @@
           <div class="form-group phone-group">
             <label for="phone">Telefon</label>
             <div class="phone-input-wrapper">
-              <input type="text" bind:value={phonePrefix} class="country-code-input" />
+              <input
+                type="text"
+                name="phoneCountryCode"
+                bind:value={phonePrefix}
+                class="country-code-input"
+                autocomplete="tel-country-code"
+                on:input={handleCountryCodeInput}
+              />
               <input
                 id="phone"
+                name="phone"
                 type="tel"
                 placeholder="123 456 789"
                 bind:value={formData.phone}
@@ -460,7 +491,7 @@
                 on:input={handlePhoneInput}
                 on:blur={() => validateSingleField('phone')}
                 required
-                autocomplete="tel"
+                autocomplete="tel-national"
               />
             </div>
             {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
@@ -603,7 +634,7 @@
             <CtaButton
               text={isSubmitting
                 ? "Wysyłanie..."
-                : "Wyślij zgłoszenie serwisowe"}
+                : "Wyślij zgłoszenie"}
               type="submit"
               disabled={isSubmitting}
             />
@@ -635,12 +666,6 @@
 
   :global(.recorded-file){
     color: var(--color-text-secondary) !important;
-  }
-  :global(.ctaButton button span.text-container){
-    text-align: left;
-    span{
-      text-align: left;
-    }
   }
   #serviceType {
     color: var(--color-text-secondary) !important;
