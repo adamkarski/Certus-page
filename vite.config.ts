@@ -5,11 +5,14 @@ import fs from 'fs';
 export default defineConfig({
   plugins: [sveltekit()],
   server: {
+    host: true,
     https: {
       key: fs.readFileSync('localhost+1-key.pem'),
       cert: fs.readFileSync('localhost+1.pem'),
-    		watch: {
-    			usePolling: true,
-    		},
-    	},  }
+    },
+    watch: {
+      usePolling: true,
+    },
+  }
 });
+

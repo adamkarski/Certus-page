@@ -349,10 +349,10 @@
             <div>
               <b>
                 <a
-                  href="mailto:serwis@mg-certus.pl"
+                  href="mailto:kontakt@mg-certus.pl"
                   title="Wyślij e-mail do serwisu"
                 >
-                  serwis@mg-certus.pl
+                  kontakt@mg-certus.pl
                 </a>
               </b>
               <small>Zgłoszenia serwisowe</small>

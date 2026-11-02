@@ -385,7 +385,7 @@
                   <div class="bestseller-features mb-4">
                     <ul class="features-list">
                       <li>✓ Najwyższa precyzja cięcia</li>
-                      <li>✓ Sprawdzone w tysiącach firm</li>
+                      <li>✓ Zaufało nam ponad 500 firm</li>
                       <li>✓ Kompleksowa obsługa serwisowa</li>
                     </ul>
                   </div>

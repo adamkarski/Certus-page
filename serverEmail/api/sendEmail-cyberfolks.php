@@ -3,10 +3,10 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // --- Load .env from same directory ---
-$envFile = __DIR__ . '/.ve';
+$envFile = __DIR__ . '/.env';
 if (!file_exists($envFile)) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Server configuration error: .ve file not found.']);
+    echo json_encode(['success' => false, 'message' => 'Server configuration error: .env file not found.']);
     exit;
 }
 $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);

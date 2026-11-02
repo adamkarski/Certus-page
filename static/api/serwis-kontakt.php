@@ -62,7 +62,7 @@ try {
         $isMainContact = true;
     } else {
         // Domyślnie: formularz serwisowy
-        $mailTo = 'serwis@mg-certus.pl'; 
+        $mailTo = 'kontakt@mg-certus.pl'; 
         $mailSubject = 'Nowe zgłoszenie serwisowe - Certus';
         $isMainContact = false;
     }

@@ -53,65 +53,25 @@
   "warranty": {
     "type": "warranty",
     "title": "Serwis Gwarancyjny",
-    "description": "Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12 miesięcy od daty dostawy",
+    "description": "12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie.",
     "highlights": [
-      "BEZPŁATNE",
-      "Czas reakcji: Do 5 dni"
+      "Robocizna 0 zł",
+      "Dojazd 2,50 zł/km"
     ],
     "details": [
       {
         "label": "Okres gwarancji",
-        "value": "12 miesięcy od dostawy"
+        "value": "12 miesięcy od odbioru technicznego"
       },
       {
-        "label": "Koszt serwisu",
-        "value": "BEZPŁATNE",
+        "label": "Robocizna serwisu",
+        "value": "Bezpłatnie (0 zł)",
         "highlight": true
       },
       {
-        "label": "Koszt dojazdu",
-        "value": "Bezpłatne do 200 km"
-      },
-      {
-        "label": "Czas reakcji",
-        "value": "Do 5 dni roboczych"
-      }
-    ],
-    "includes": [
-      "Wady materiałowe",
-      "Błędy produkcyjne",
-      "Awarie z normalnego użytkowania",
-      "Oryginalne części zamienne",
-      "Raport z wykonanych prac"
-    ],
-    "excludes": [
-      "Błędy użytkownika",
-      "Zaniedbania konserwacyjne",
-      "Eksploatacja niezgodna z przeznaczeniem",
-      "Uszkodzenia mechaniczne"
-    ]
-  },
-  "post-warranty": {
-    "type": "post-warranty",
-    "title": "Serwis Pogwarancyjny",
-    "description": "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym",
-    "highlights": [
-      "240 zł/h",
-      "Do 7 dni"
-    ],
-    "details": [
-      {
-        "label": "Stawka godzinowa",
-        "value": "240 zł netto/h",
+        "label": "Części gwarancyjne",
+        "value": "Bezpłatnie",
         "highlight": true
-      },
-      {
-        "label": "Minimalne rozliczenie",
-        "value": "1 godzina"
-      },
-      {
-        "label": "Czas reakcji",
-        "value": "Do 7 dni roboczych"
       },
       {
         "label": "Koszt dojazdu",
@@ -119,97 +79,124 @@
       }
     ],
     "includes": [
-      "Diagnostyka awarii",
-      "Naprawa podzespołów",
-      "Wymiana części zamiennych",
-      "Testowanie po naprawie",
-      "Szczegółowy raport serwisowy",
-      "Instrukcja eksploatacji"
+      "Robocizna serwisu w ramach naprawy gwarancyjnej",
+      "Części wymieniane w ramach naprawy gwarancyjnej",
+      "Wady materiałowe i błędy produkcyjne",
+      "Awarie wynikające z normalnego użytkowania",
+      "Raport z wykonanych prac"
     ],
-    "note": "Koszt dojazdu liczony w obie strony. Części zamienne dodatkowo według cennika."
+    "excludes": [
+      "Materiały eksploatacyjne i części zużywające się (smar, chłodziwo, tulejki, paski)",
+      "Koszt dojazdu serwisu (płatny 2,50 zł netto/km)",
+      "Błędy użytkownika i nieautoryzowane modyfikacje",
+      "Zaniedbania konserwacyjne",
+      "Eksploatacja niezgodna z przeznaczeniem i BHP"
+    ]
+  },
+  "post-warranty": {
+    "type": "post-warranty",
+    "title": "Serwis Pogwarancyjny",
+    "description": "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym.",
+    "highlights": [
+      "240 zł netto/h",
+      "Dojazd 2,50 zł/km"
+    ],
+    "details": [
+      {
+        "label": "Stawka robocizny",
+        "value": "240 zł netto/h",
+        "highlight": true
+      },
+      {
+        "label": "Diagnoza usterki",
+        "value": "240 zł netto/h"
+      },
+      {
+        "label": "Koszt dojazdu",
+        "value": "2,50 zł netto/km"
+      },
+      {
+        "label": "Części i materiały",
+        "value": "Wg wyceny po diagnozie"
+      }
+    ],
+    "includes": [
+      "Diagnostyka awarii i usterek",
+      "Naprawa i regulacja podzespołów",
+      "Wymiana części zamiennych",
+      "Testowanie maszyny po naprawie",
+      "Szczegółowy raport serwisowy"
+    ],
+    "note": "Dojazd 2,50 zł netto/km, liczony w obie strony od siedziby w Choczni. Czas dojazdu nie jest doliczany. Części i materiały wg wyceny po diagnozie."
   },
   "inspections": {
     "type": "inspections",
     "title": "Przeglądy Okresowe",
-    "description": "Regularne przeglądy zapewniające optymalną pracę maszyn i przedłużające ich żywotność",
+    "description": "Zalecany co 12 miesięcy, co 6 miesięcy przy pracy wielozmianowej lub w trudnych warunkach (pył, praca z chłodziwem).",
     "highlights": [
-      "Od 1000 zł",
-      "Co 6 mies."
+      "240 zł netto/h",
+      "Co 12 mies."
     ],
     "details": [
       {
         "label": "Częstotliwość",
-        "value": "Co 6 miesięcy lub 1000 roboczogodzin"
+        "value": "Zalecany co 12 mies. (co 6 mies. przy pracy wielozmianowej)"
       },
       {
-        "label": "Maszyny 3-osiowe standard",
-        "value": "1000 zł netto",
+        "label": "Stawka robocizny",
+        "value": "240 zł netto/h",
         "highlight": true
       },
       {
-        "label": "Maszyny 3-osiowe rozszerzony",
-        "value": "1600 zł netto",
-        "highlight": true
+        "label": "Szacowany czas",
+        "value": "Ok. 3–4 h dla frezarki HMM-ST"
       },
       {
-        "label": "Maszyny 5-osiowe standard",
-        "value": "1400 zł netto",
-        "highlight": true
-      },
-      {
-        "label": "Maszyny 5-osiowe rozszerzony",
-        "value": "2200 zł netto",
-        "highlight": true
+        "label": "Koszt dojazdu",
+        "value": "2,50 zł netto/km"
       }
     ],
     "includes": [
-      "Diagnostyka wszystkich podzespołów",
-      "Kontrola dokładności osi",
-      "Sprawdzenie systemów chłodzenia",
-      "Kontrola układów smarowania",
-      "Kalibracja narzędzi",
-      "Raport z rekomendacjami",
-      "Plan konserwacji"
+      "Diagnostyka wszystkich podzespołów i układu mechanicznego",
+      "Kontrola dokładności i geometrii osi",
+      "Sprawdzenie instalacji elektrycznej i automatyki",
+      "Kontrola układu smarowania i chłodzenia",
+      "Protokół serwisowy z kartą przeglądu i pomiarów"
     ],
-    "note": "Przegląd rozszerzony obejmuje dodatkowo wymianę płynów eksploatacyjnych i drobnych części zużywalnych."
+    "note": "Rozliczenie: 240 zł netto/h + dojazd 2,50 zł netto/km. Materiały eksploatacyjne i części płatne wg zużycia."
   },
   "additional": {
     "type": "additional",
     "title": "Usługi Dodatkowe",
-    "description": "Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu",
+    "description": "Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) w cenie maszyny.",
     "highlights": [
-      "Priorytet 24h",
-      "Szkolenia"
+      "Szkolenie do 3h w cenie",
+      "Szkolenie dodatkowe 240 zł netto/h"
     ],
     "services": [
       {
-        "name": "Serwis priorytetowy",
-        "price": "400 zł netto",
-        "description": "Reakcja do 24 godzin",
-
-
-
-
-
-        "details": "Priorytetowe traktowanie zgłoszenia serwisowego"
+        "name": "Szkolenie podstawowe operatora",
+        "price": "W cenie maszyny",
+        "description": "Do 3 h przy uruchomieniu maszyny",
+        "details": "Szkolenie operatora z obsługi maszyny i zasad BHP potwierdzone protokołem."
       },
       {
-        "name": "Diagnostyka zdalna",
+        "name": "Szkolenie dodatkowe operatora",
+        "price": "240 zł netto/h",
+        "description": "Na miejscu lub wg ustaleń",
+        "details": "Każde dodatkowe szkolenie z zaawansowanej obsługi, oprogramowania lub dla nowych pracowników."
+      },
+      {
+        "name": "Zdalna diagnostyka online",
         "price": "100 zł netto",
-        "description": "Każde rozpoczęte 30 minut",
-        "details": "Zdalna pomoc techniczna przez internet"
+        "description": "Za każde rozpoczęte 30 min",
+        "details": "Szybka pomoc techniczna i diagnostyka problemu przez internet."
       },
       {
-        "name": "Szkolenie operatora",
-        "price": "1200 zł netto/dzień",
-        "description": "Na miejscu u klienta",
-        "details": "Kompleksowe szkolenie z obsługi maszyny"
-      },
-      {
-        "name": "Instalacja maszyny",
-        "price": "1500-2500 zł netto",
-        "description": "Według umowy",
-        "details": "Profesjonalna instalacja i uruchomienie"
+        "name": "Dojazd serwisu",
+        "price": "2,50 zł netto/km",
+        "description": "W obie strony od Choczni",
+        "details": "Czas dojazdu nie jest doliczany. Przykład: klient w odległości 150 km → 300 km × 2,50 zł = 750 zł netto."
       }
     ]
   }
@@ -282,26 +269,27 @@
             type: "warranty",
             title: "Serwis Gwarancyjny",
             description:
-              "Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12 miesięcy od daty dostawy lub w opcji rozszerzonej 24 miesiące",
-            highlights: ["BEZPŁATNE", "Czas reakcji: Do 5 dni"],
+              "12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie.",
+            highlights: ["Robocizna 0 zł", "Dojazd 2,50 zł/km"],
             details: [
-              { label: "Okres gwarancji", value: "12 miesięcy od dostawy" },
-              { label: "Koszt serwisu", value: "BEZPŁATNE", highlight: true },
-              { label: "Koszt dojazdu", value: "Bezpłatne do 200 km" },
-              { label: "Czas reakcji", value: "Do 5 dni roboczych" },
+              { label: "Okres gwarancji", value: "12 miesięcy od odbioru technicznego" },
+              { label: "Robocizna serwisu", value: "Bezpłatnie (0 zł)", highlight: true },
+              { label: "Części gwarancyjne", value: "Bezpłatnie", highlight: true },
+              { label: "Koszt dojazdu", value: "2,50 zł netto/km" },
             ],
             includes: [
-              "Wady materiałowe",
-              "Błędy produkcyjne",
-              "Awarie z normalnego użytkowania",
-              "Oryginalne części zamienne",
+              "Robocizna serwisu w ramach naprawy gwarancyjnej",
+              "Części wymieniane w ramach naprawy gwarancyjnej",
+              "Wady materiałowe i błędy produkcyjne",
+              "Awarie wynikające z normalnego użytkowania",
               "Raport z wykonanych prac",
             ],
             excludes: [
-              "Błędy użytkownika",
+              "Materiały eksploatacyjne i części zużywające się (smar, chłodziwo, tulejki, paski)",
+              "Koszt dojazdu serwisu (płatny 2,50 zł netto/km)",
+              "Błędy użytkownika i nieautoryzowane modyfikacje",
               "Zaniedbania konserwacyjne",
-              "Eksploatacja niezgodna z przeznaczeniem",
-              "Uszkodzenia mechaniczne",
+              "Eksploatacja niezgodna z przeznaczeniem i BHP",
             ],
           },
         })}
@@ -328,18 +316,15 @@
       </div>
 
       <p class="info-desc" use:typoFixAction>
-        Kompleksowa opieka serwisowa dla wszystkich maszyn CNC w okresie 12
-        miesięcy od daty dostawy <span class="add"
-          >(24 miesiące w opcji rozszerzonej)</span
-        >
+        12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie.
       </p>
 
       <div class="serwis-service-highlight">
         <span class="serwis-highlight-item" use:typoFixAction
-          >Koszt BEZPŁATNY</span
+          >Robocizna 0 zł</span
         >
         <span class="serwis-highlight-item" use:typoFixAction
-          >Czas reakcji do 5 dni</span
+          >Dojazd 2,50 zł/km</span
         >
       </div>
     </div>
@@ -354,27 +339,26 @@
             type: "post-warranty",
             title: "Serwis Pogwarancyjny",
             description:
-              "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym",
-            highlights: ["240 zł/h", "Do 7 dni"],
+              "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym.",
+            highlights: ["240 zł netto/h", "Dojazd 2,50 zł/km"],
             details: [
               {
-                label: "Stawka godzinowa",
+                label: "Stawka robocizny",
                 value: "240 zł netto/h",
                 highlight: true,
               },
-              { label: "Minimalne rozliczenie", value: "1 godzina" },
-              { label: "Czas reakcji", value: "Do 7 dni roboczych" },
+              { label: "Diagnoza usterki", value: "240 zł netto/h" },
               { label: "Koszt dojazdu", value: "2,50 zł netto/km" },
+              { label: "Części i materiały", value: "Wg wyceny po diagnozie" },
             ],
             includes: [
-              "Diagnostyka awarii",
-              "Naprawa podzespołów",
+              "Diagnostyka awarii i usterek",
+              "Naprawa i regulacja podzespołów",
               "Wymiana części zamiennych",
-              "Testowanie po naprawie",
+              "Testowanie maszyny po naprawie",
               "Szczegółowy raport serwisowy",
-              "Instrukcja eksploatacji",
             ],
-            note: "Koszt dojazdu liczony w obie strony. Części zamienne dodatkowo według cennika.",
+            note: "Dojazd 2,50 zł netto/km, liczony w obie strony od siedziby w Choczni. Czas dojazdu nie jest doliczany. Części i materiały wg wyceny po diagnozie.",
           },
         })}
       on:keydown={(e) =>
@@ -409,10 +393,10 @@
 
       <div class="serwis-service-highlight">
         <span class="serwis-highlight-item" use:typoFixAction
-          >Koszt 240 zł/h</span
+          >Koszt 240 zł netto/h</span
         >
         <span class="serwis-highlight-item" use:typoFixAction
-          >Czas reakcji do 7 dni</span
+          >Dojazd 2,50 zł/km</span
         >
       </div>
     </div>
@@ -427,44 +411,35 @@
             type: "inspections",
             title: "Przeglądy Okresowe",
             description:
-              "Regularne przeglądy zapewniające optymalną pracę maszyn i przedłużające ich żywotność",
-            highlights: ["Od 1000 zł", "Co 6 mies."],
+              "Zalecany co 12 miesięcy, co 6 miesięcy przy pracy wielozmianowej lub w trudnych warunkach (pył, praca z chłodziwem).",
+            highlights: ["240 zł netto/h", "Co 12 mies."],
             details: [
               {
                 label: "Częstotliwość",
-                value: "Co 6 miesięcy lub 1000 roboczogodzin",
+                value: "Zalecany co 12 mies. (co 6 mies. przy pracy wielozmianowej)",
               },
               {
-                label: "Maszyny 3-osiowe standard",
-                value: "1000 zł netto",
+                label: "Stawka robocizny",
+                value: "240 zł netto/h",
                 highlight: true,
               },
               {
-                label: "Maszyny 3-osiowe rozszerzony",
-                value: "1600 zł netto",
-                highlight: true,
+                label: "Szacowany czas",
+                value: "Ok. 3–4 h dla frezarki HMM-ST",
               },
               {
-                label: "Maszyny 5-osiowe standard",
-                value: "1400 zł netto",
-                highlight: true,
-              },
-              {
-                label: "Maszyny 5-osiowe rozszerzony",
-                value: "2200 zł netto",
-                highlight: true,
+                label: "Koszt dojazdu",
+                value: "2,50 zł netto/km",
               },
             ],
             includes: [
-              "Diagnostyka wszystkich podzespołów",
-              "Kontrola dokładności osi",
-              "Sprawdzenie systemów chłodzenia",
-              "Kontrola układów smarowania",
-              "Kalibracja narzędzi",
-              "Raport z rekomendacjami",
-              "Plan konserwacji",
+              "Diagnostyka wszystkich podzespołów i układu mechanicznego",
+              "Kontrola dokładności i geometrii osi",
+              "Sprawdzenie instalacji elektrycznej i automatyki",
+              "Kontrola układu smarowania i chłodzenia",
+              "Protokół serwisowy z kartą przeglądu i pomiarów",
             ],
-            note: "Przegląd rozszerzony obejmuje dodatkowo wymianę płynów eksploatacyjnych i drobnych części zużywalnych.",
+            note: "Rozliczenie: 240 zł netto/h + dojazd 2,50 zł netto/km. Materiały eksploatacyjne i części płatne wg zużycia.",
           },
         })}
       on:keydown={(e) =>
@@ -500,9 +475,9 @@
 
       <div class="serwis-service-highlight">
         <span class="serwis-highlight-item" use:typoFixAction
-          >Koszt od 1000 zł</span
+          >Koszt 240 zł netto/h</span
         >
-        <span class="serwis-highlight-item" use:typoFixAction>Co 6 mies.</span>
+        <span class="serwis-highlight-item" use:typoFixAction>Co 12 mies.</span>
       </div>
     </div>
 
@@ -516,32 +491,32 @@
             type: "additional",
             title: "Usługi Dodatkowe",
             description:
-              "Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu",
-            highlights: ["Priorytet 24h", "Szkolenia"],
+              "Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) w cenie maszyny.",
+            highlights: ["Szkolenie do 3h w cenie", "Szkolenie dodatkowe 240 zł netto/h"],
             services: [
               {
-                name: "Serwis priorytetowy",
-                price: "400 zł netto",
-                description: "Reakcja do 24 godzin",
-                details: "Priorytetowe traktowanie zgłoszenia serwisowego",
+                name: "Szkolenie podstawowe operatora",
+                price: "W cenie maszyny",
+                description: "Do 3 h przy uruchomieniu maszyny",
+                details: "Szkolenie operatora z obsługi maszyny i zasad BHP potwierdzone protokołem.",
               },
               {
-                name: "Diagnostyka zdalna",
+                name: "Szkolenie dodatkowe operatora",
+                price: "240 zł netto/h",
+                description: "Na miejscu lub wg ustaleń",
+                details: "Każde dodatkowe szkolenie z zaawansowanej obsługi, oprogramowania lub dla nowych pracowników.",
+              },
+              {
+                name: "Zdalna diagnostyka online",
                 price: "100 zł netto",
-                description: "Każde rozpoczęte 30 minut",
-                details: "Zdalna pomoc techniczna przez internet",
+                description: "Za każde rozpoczęte 30 min",
+                details: "Szybka pomoc techniczna i diagnostyka problemu przez internet.",
               },
               {
-                name: "Szkolenie operatora",
-                price: "1200 zł netto/dzień",
-                description: "Na miejscu u klienta",
-                details: "Kompleksowe szkolenie z obsługi maszyny",
-              },
-              {
-                name: "Instalacja maszyny",
-                price: "1500-2500 zł netto",
-                description: "Według umowy",
-                details: "Profesjonalna instalacja i uruchomienie",
+                name: "Dojazd serwisu",
+                price: "2,50 zł netto/km",
+                description: "W obie strony od Choczni",
+                details: "Czas dojazdu nie jest doliczany. Przykład: klient w odległości 150 km → 300 km × 2,50 zł = 750 zł netto.",
               },
             ],
           },
@@ -572,14 +547,13 @@
       </div>
 
       <p class="info-desc" use:typoFixAction>
-        Dodatkowe usługi wspierające eksploatację maszyn i rozwój zespołu
+        Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) w cenie maszyny.
       </p>
 
       <div class="serwis-service-highlight">
         <span class="serwis-highlight-item" use:typoFixAction
-          >Priorytet 24h</span
+          >Szkolenie dodatkowe: 240 zł netto/h</span
         >
-        <span class="serwis-highlight-item" use:typoFixAction>Szkolenia</span>
       </div>
     </div>
   </div>
