@@ -573,162 +573,234 @@
       </div>
     </section>
 
-    <!-- D6. KONTAKT (wg mockupu Dawida) -->
-    <section id="kontakt" class="cx-wrap section-pad-lg">
-      <div class="white-card">
-        <div class="cx-two">
+    <!-- D6. KONTAKT (spójny z /serwis i /kontakt) -->
+    <section id="kontakt" class="contact-flex">
+      <div class="background">
+        <div class="contact">
           <!-- Lewa kolumna: Treść kontaktowa -->
-          <div class="contact-left-col">
-            <h2 class="contact-title" use:typoFixAction>
-              Masz pytania? Skontaktuj się z nami!
-            </h2>
-            <p class="contact-lead-box" use:typoFixAction>
-              Napisz, z jakiego materiału i jakiej wielkości są Twoje detale —
-              dobierzemy konfigurację HMP-G1 i przygotujemy ofertę.
-            </p>
+          <div class="contact-left no-sel hmp-contact-left">
+            <h2 use:typoFixAction>Masz pytania? Skontaktuj się z nami!</h2>
+            <ul use:typoFixAction class="contact-bullets no-sel">
+              <li>
+                <span class="bullet"></span>
+                <div class="bullet-content">
+                  Napisz, z jakiego materiału i jakiej wielkości są Twoje detale — dobierzemy optymalną konfigurację HMP-G1 i przygotujemy wycenę.
+                </div>
+              </li>
+              <li>
+                <span class="bullet"></span>
+                <div class="bullet-content">
+                  Nasz zespół inżynierów pomoże dobrać wrzeciono (do 6 kW), magazyn narzędzi ATC (10–16 pozycji) oraz system sterowania.
+                </div>
+              </li>
+              <li>
+                <span class="bullet"></span>
+                <div class="bullet-content">
+                  Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy szybko, zazwyczaj w ciągu 24 godzin.
+                </div>
+              </li>
+            </ul>
 
-            <div class="contact-info-list">
-              <p class="contact-phone">
-                <a href="tel:+48606324406">+48 606 324 406</a>
-              </p>
-              <p class="contact-email">
-                <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a>
-              </p>
-              <p class="contact-address">
-                Biała Droga 177, 34-123 Chocznia, woj. Małopolskie
-              </p>
+            <div class="contact-info-block">
+              <div class="info-row">
+                <span class="info-icon">
+                  <img src="/assets/ikony/telefon.svg" alt="Telefon" />
+                </span>
+                <div>
+                  <b>
+                    <a href="tel:+48606324406" title="Zadzwoń do Certus">+48 606 324 406</a>
+                  </b>
+                  <small>Dni robocze 8:00–16:00</small>
+                </div>
+              </div>
+              <div class="info-row">
+                <span class="info-icon">
+                  <img src="/assets/ikony/email.svg" alt="Email" />
+                </span>
+                <div>
+                  <b>
+                    <a href="mailto:biuro@mg-certus.pl" title="Wyślij e-mail do Certus">biuro@mg-certus.pl</a>
+                  </b>
+                  <small>Dział handlowy i techniczny</small>
+                </div>
+              </div>
+              <div class="info-row">
+                <span class="info-icon">
+                  <img src="/assets/ikony/lokalizacja.svg" alt="Lokalizacja" />
+                </span>
+                <div>
+                  <b>
+                    <a
+                      href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      title="Otwórz lokalizację w Google Maps"
+                      rel="noopener noreferrer"
+                    >
+                      Biała Droga 177, 34-123 Chocznia
+                    </a>
+                  </b>
+                  <small>Siedziba i produkcja CERTUS</small>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Prawa kolumna: Formularz kontaktowy -->
-          <div class="contact-form-col">
-            <form class="cx-form" on:submit={handleSubmit}>
-              <label class="form-field">
-                <span class="field-label">Imię *</span>
-                <input
-                  type="text"
-                  bind:value={formData.firstName}
-                  class:input-err={errors.firstName}
-                  placeholder="Imię"
-                />
-                {#if errors.firstName}<span class="err-text"
-                    >{errors.firstName}</span
-                  >{/if}
-              </label>
+          <div class="contact-right">
+            <form class="contact-form" on:submit={handleSubmit} autocomplete="off">
+              <h3>Zapytaj o konfigurację HMP-G1</h3>
 
-              <label class="form-field">
-                <span class="field-label">Nazwisko *</span>
-                <input
-                  type="text"
-                  bind:value={formData.lastName}
-                  class:input-err={errors.lastName}
-                  placeholder="Nazwisko"
-                />
-                {#if errors.lastName}<span class="err-text"
-                    >{errors.lastName}</span
-                  >{/if}
-              </label>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">Imię</label>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    placeholder="Imię"
+                    bind:value={formData.firstName}
+                    class:error={errors.firstName}
+                    on:blur={() => validateSingleField('firstName')}
+                    maxlength="50"
+                    autocomplete="given-name"
+                    required
+                  />
+                  {#if errors.firstName}<span class="error-message">{errors.firstName}</span>{/if}
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Nazwisko</label>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    placeholder="Nazwisko"
+                    bind:value={formData.lastName}
+                    class:error={errors.lastName}
+                    on:blur={() => validateSingleField('lastName')}
+                    maxlength="50"
+                    autocomplete="family-name"
+                    required
+                  />
+                  {#if errors.lastName}<span class="error-message">{errors.lastName}</span>{/if}
+                </div>
+              </div>
 
-              <label class="form-field">
-                <span class="field-label">Email *</span>
+              <div class="form-group">
+                <label for="email">Email</label>
                 <input
+                  id="email"
+                  name="email"
                   type="email"
+                  placeholder="twoj@email.com"
                   bind:value={formData.email}
-                  class:input-err={errors.email}
-                  placeholder="adres@email.com"
+                  class:error={errors.email}
+                  on:blur={() => validateSingleField('email')}
+                  maxlength="254"
+                  autocomplete="email"
+                  required
                 />
-                {#if errors.email}<span class="err-text">{errors.email}</span
-                  >{/if}
-              </label>
+                {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
+              </div>
 
-              <label class="form-field">
-                <span class="field-label">Telefon *</span>
-                <input
-                  type="tel"
-                  bind:value={formData.phone}
-                  class:input-err={errors.phone}
-                  placeholder="+48 123 456 789"
-                />
-                {#if errors.phone}<span class="err-text">{errors.phone}</span
-                  >{/if}
-              </label>
+              <div class="form-group phone-group">
+                <label for="phone">Telefon</label>
+                <div class="phone-input-wrapper">
+                  <input
+                    type="text"
+                    name="phoneCountryCode"
+                    bind:value={phonePrefix}
+                    class="country-code-input"
+                    autocomplete="tel-country-code"
+                    on:input={handleCountryCodeInput}
+                  />
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="123 456 789"
+                    bind:value={formData.phone}
+                    class:error={errors.phone}
+                    on:input={handlePhoneInput}
+                    on:blur={() => validateSingleField('phone')}
+                    required
+                    autocomplete="tel-national"
+                  />
+                </div>
+                {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
+              </div>
 
-              <label class="form-field">
-                <span class="field-label">Obrabiany materiał</span>
-                <input
-                  type="text"
-                  bind:value={formData.material}
-                  placeholder="np. aluminium, mosiądz, POM"
-                />
-              </label>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="material">Obrabiany materiał</label>
+                  <input
+                    id="material"
+                    name="material"
+                    type="text"
+                    placeholder="np. aluminium, stal, mosiądz"
+                    bind:value={formData.material}
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="size">Największy detal [mm]</label>
+                  <input
+                    id="size"
+                    name="size"
+                    type="text"
+                    placeholder="np. 180 × 120 × 40"
+                    bind:value={formData.size}
+                  />
+                </div>
+              </div>
 
-              <label class="form-field">
-                <span class="field-label">Największy detal [mm]</span>
-                <input
-                  type="text"
-                  bind:value={formData.size}
-                  placeholder="np. 180 × 120 × 40"
-                />
-              </label>
-
-              <label class="form-field form-field--full">
-                <span class="field-label">Wiadomość</span>
+              <div class="form-group">
+                <label for="message">Wiadomość / uwagi do konfiguracji</label>
                 <textarea
+                  id="message"
                   rows="4"
+                  placeholder="Opisz rodzaj obróbki, wymagane tolerancje lub zadaj pytanie..."
                   bind:value={formData.message}
-                  placeholder="Opisz swoje potrzeby lub zadaj pytanie..."
+                  maxlength="2000"
                 ></textarea>
-              </label>
-
-              <div class="form-field form-field--full">
-                <label class="checkbox-label">
-                  <input type="checkbox" bind:checked={formData.privacy} />
-                  <span>
-                    Wyrażam zgodę na przetwarzanie danych osobowych w celu
-                    obsługi zapytania zgodnie z <a
-                      href="/polityka-prywatnosci"
-                      target="_blank"
-                      class="olive-link">polityką prywatności</a
-                    >. *
-                  </span>
-                </label>
-                {#if errors.privacy}<span class="err-text"
-                    >{errors.privacy}</span
-                  >{/if}
               </div>
 
-              <div class="turnstile-box form-field--full">
-                <Turnstile
-                  siteKey="0x4AAAAAAAxyxV79aWwI7t9_"
-                  on:turnstile-callback={(e) =>
-                    (turnstileToken = e.detail.token)}
-                  on:turnstile-reset={() => (turnstileToken = null)}
-                  bind:reset={turnstileReset}
+              <div class="form-group privacy-group checkbox-row">
+                <input
+                  id="privacy"
+                  type="checkbox"
+                  bind:checked={formData.privacy}
+                  on:change={() => validateSingleField('privacy')}
+                  required
                 />
+                <label for="privacy">
+                  Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zapytania zgodnie z
+                  <a href="/polityka-prywatnosci" target="_blank">polityką prywatności</a>. *
+                  {#if errors.privacy}<span class="error-message">{errors.privacy}</span>{/if}
+                </label>
               </div>
+
+              <Turnstile
+                siteKey="0x4AAAAAAAxyxV79aWwI7t9_"
+                on:turnstile-callback={(e) => (turnstileToken = e.detail.token)}
+                on:turnstile-reset={() => (turnstileToken = null)}
+                bind:reset={turnstileReset}
+              />
 
               {#if submitMessage}
                 <div
-                  class="alert-box form-field--full"
-                  class:alert-ok={submitSuccess}
-                  class:alert-err={!submitSuccess}
+                  class="submit-message"
+                  class:success={submitSuccess}
+                  class:error={!submitSuccess}
                 >
                   {submitMessage}
                 </div>
               {/if}
 
-              <div class="form-field--full">
-                <button
+              <div class="text-left ctaButton">
+                <CtaButton
+                  text={isSubmitting ? "Wysyłanie..." : "Wyślij zapytanie"}
                   type="submit"
-                  class="btn-submit"
                   disabled={isSubmitting}
-                >
-                  {#if isSubmitting}
-                    Wysyłanie...
-                  {:else}
-                    Wyślij zapytanie
-                  {/if}
-                </button>
+                />
               </div>
             </form>
           </div>
@@ -915,18 +987,33 @@
   }
 
   .cx-hero-img-box {
-    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .cx-hero-img-box::after {
-    display: block;
-    position: relative;
-    content: " _";
-    width: 28%;
-    border-radius: 12px;
-    height: 42%;
-    box-shadow: 20px 20px 20px rgba(255, 255, 255, 0.3);
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 82%;
+    height: 38%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.15) 45%,
+      rgba(255, 255, 255, 0) 75%
+    );
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(14px);
   }
   .cx-hero-img {
+    position: relative;
+    z-index: 2;
     width: 100%;
     display: block;
     object-fit: cover;
@@ -1209,172 +1296,257 @@
     }
   }
 
-  /* D6. Kontakt */
-  .cx-two {
-    display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: 48px;
+  /* D6. Kontakt - Spójny z /serwis i /kontakt */
+  .contact-flex {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 1) 60%,
+      rgba(235, 235, 235, 1) 100%
+    );
+    height: auto;
+    position: relative;
+    top: 0px;
+    padding: 40px 0 80px 0;
   }
 
-  .contact-left-col {
+  .contact-flex .background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .contact-flex .background .contact {
+    display: flex;
+    gap: 0px;
+    box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
+    border-radius: 14px;
+    max-width: 1060px;
+    margin: 0 auto;
+    align-items: stretch;
+    position: relative;
+    background-color: white;
+  }
+
+  .contact-left {
+    flex: 1.1;
+    background: #232c32;
+    color: #fff;
+    border-radius: 20px 0px 0px 20px;
+    padding: 40px 36px 32px 36px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    min-width: 340px;
+    max-width: 480px;
+    background-image: url(/assets/kontakt-background.jpg);
+    background-size: cover;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      overflow: hidden;
+      width: 110px;
+      height: 110px;
+      left: 0;
+      top: 0;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      border-left: 2px solid rgb(255 255 255);
+      border-top: 2px solid rgb(255 255 255);
+      background-repeat: no-repeat;
+    }
+
+    h2 {
+      font-size: 1.5rem !important;
+      font-weight: 600 !important;
+      margin-bottom: 32px;
+      line-height: 1.2;
+      color: white !important;
+      max-width: 300px;
+    }
   }
 
-  .contact-title {
-    margin: 0 0 18px;
-    font-size: 22px;
-    font-weight: 600;
-    color: #444444;
+  .contact-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+
+    li {
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      color: var(--color-gray-200);
+
+      .bullet-content {
+        flex: 1;
+        font-size: 14px;
+      }
+    }
   }
 
-  .contact-lead-box {
-    margin: 0;
-    padding-left: 14px;
-    border-left: 4px solid #96a500;
-    color: #666666;
-    font-size: 15px;
-    line-height: 1.6;
+  .bullet {
+    width: 11px;
+    min-height: 22px;
+    height: auto;
+    background: var(--color-primary);
+    border-radius: 0;
+    margin-right: 16px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    flex-shrink: 0;
+    position: relative;
   }
 
-  .contact-info-list {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .contact-phone {
-    margin: 0 0 4px;
-    font-weight: 600;
-    color: #444444;
-    font-size: 16px;
+  .contact-info-block {
+    margin: 24px 0 12px 0;
 
     a {
-      color: #444444;
+      transition: all ease 0.3s;
+      color: #ffffff;
       text-decoration: none;
-      transition: color 0.3s ease;
+
       &:hover {
-        color: #7e8c00;
+        color: var(--color-primary);
       }
     }
   }
 
-  .contact-email {
-    margin: 0 0 4px;
-    a {
-      color: #7e8c00;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      &:hover {
-        color: #4f5700;
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .contact-address {
-    margin: 0;
-    color: #666666;
-    font-size: 14px;
-  }
-
-  /* Formularz */
-  .cx-form {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    .field-label {
-      font-size: 13px;
-      color: #444444;
-      font-weight: 500;
-    }
-
-    input,
-    textarea {
-      font-family: inherit;
-      font-size: 14px;
-      padding: 10px;
-      border: 1px solid #d6d6d6;
-      background: #f7f7f7;
-      border-radius: 4px;
-      color: #333333;
-      transition:
-        border-color 0.3s ease,
-        background-color 0.3s ease;
-
-      &:focus {
-        outline: none;
-        border-color: #7e8c00;
-        background: #ffffff;
-      }
-
-      &.input-err {
-        border-color: #ef4444;
-      }
-    }
-  }
-
-  .form-field--full {
-    grid-column: 1 / -1;
-  }
-
-  .err-text {
-    font-size: 12px;
-    color: #ef4444;
-  }
-
-  .checkbox-label {
+  .info-row {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #666666;
-    cursor: pointer;
+    margin-bottom: 16px;
+    gap: 10px;
 
-    input[type="checkbox"] {
-      margin-top: 3px;
-      accent-color: #7e8c00;
+    div {
+      display: flex;
+      flex-direction: column;
+
+      b {
+        font-size: 15px;
+        color: #ffffff;
+      }
+
+      small {
+        color: #ccc;
+        margin-top: 2px;
+        font-size: 12px;
+      }
     }
   }
 
-  .turnstile-box {
-    margin: 4px 0;
+  .info-icon {
+    margin-right: 6px;
+    margin-top: 4px;
+    img {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
   }
 
-  .alert-box {
+  .contact-right {
+    flex: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-form {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 36px 32px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    h3 {
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-align: center;
+      font-size: 1.25rem;
+    }
+  }
+
+  .phone-group {
+    .phone-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .country-code-input {
+      flex-shrink: 0;
+      width: 70px;
+      padding: 12px 8px;
+    }
+
+    input[type="tel"] {
+      flex-grow: 1;
+    }
+  }
+
+  .contact-flex .text-left.ctaButton {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 8px;
+
+    :global(button) {
+      height: 45px;
+      background-color: var(--color-primary);
+      color: white;
+    }
+  }
+
+  :global(.contact-flex .cta-button:hover) {
+    width: 64%;
+  }
+
+  .submit-message {
     padding: 12px 16px;
     border-radius: 6px;
     font-size: 14px;
-  }
+    line-height: 1.4;
 
-  .alert-ok {
-    background: #ecfdf5;
-    color: #065f46;
-    border: 1px solid #a7f3d0;
-  }
+    &.success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
 
-  .alert-err {
-    background: #fef2f2;
-    color: #991b1b;
-    border: 1px solid #fecaca;
+    &.error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
   }
 
   /* RWD */
   @media (max-width: 900px) {
+    .contact-flex .background .contact {
+      flex-direction: column;
+      padding: 24px 6px;
+      gap: 24px;
+      margin: 20px auto;
+    }
+
+    .contact-left,
+    .contact-right {
+      max-width: 100%;
+      min-width: 0;
+      padding: 24px 16px;
+    }
+
+    .contact-left {
+      border-radius: 20px 20px 0 0;
+    }
+
     .cx-hero,
     .cx-feat,
-    .cx-spec,
-    .cx-two,
-    .cx-form {
+    .cx-spec {
       grid-template-columns: minmax(0, 1fr);
     }
 
