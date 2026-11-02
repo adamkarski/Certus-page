@@ -1,41 +1,74 @@
 <script lang="ts">
 	import { page } from "$app/stores";
-	const base_url = "https://mg-certus.pl";
-	// Definiujemy dane SEO, które komponent może przyjąć
-	export let title = "CERTUS - Maszyny i Centra Obróbcze CNC";
-	export let description =
+	import { getRouteSeo } from "$lib/data/seo-routes";
+
+	const BASE_URL = "https://mg-certus.pl";
+
+	// Optional props (in case passed manually)
+	export let title: string | undefined = undefined;
+	export let description: string | undefined = undefined;
+	export let ogTitle: string | undefined = undefined;
+	export let ogDescription: string | undefined = undefined;
+	export let image: string | undefined = undefined;
+	export let type: string | undefined = undefined;
+
+	$: pageSeo = ($page?.data?.seo || {}) as {
+		title?: string;
+		description?: string;
+		ogTitle?: string;
+		ogDescription?: string;
+		image?: string;
+		type?: "website" | "product" | "article";
+	};
+
+	$: pathname = ($page?.url?.pathname || "/").replace(/\/$/, "") || "/";
+	$: routeSeo = getRouteSeo(pathname) || {};
+
+	$: effectiveTitle =
+		title || pageSeo.title || routeSeo.title || "CERTUS - Maszyny i Centra Obróbcze CNC";
+	$: effectiveDescription =
+		description ||
+		pageSeo.description ||
+		routeSeo.description ||
 		"Wysokowydajne centra obróbcze CNC, frezarki, plotery i grawerki. Profesjonalne doradztwo, serwis i wdrożenia.";
-	export let image = `${base_url}/static/images/certusPage.jpg`; // Domyślny obrazek
-	export let type = "website";
+	$: effectiveOgTitle =
+		ogTitle || pageSeo.ogTitle || routeSeo.ogTitle || effectiveTitle;
+	$: effectiveOgDescription =
+		ogDescription ||
+		pageSeo.ogDescription ||
+		routeSeo.ogDescription ||
+		effectiveDescription;
+	$: effectiveType = type || pageSeo.type || routeSeo.type || "website";
 
-	$: isHmp = $page?.url?.pathname?.startsWith("/hmp-g1");
+	$: rawImage =
+		image || pageSeo.image || routeSeo.image || "/assets/images/certusPage.jpg";
+	$: cleanImage = rawImage.replace(/^\/static\//, "/").replace(/^static\//, "/");
+	$: imageUrl = cleanImage.startsWith("http")
+		? cleanImage
+		: `${BASE_URL}${cleanImage.startsWith("/") ? "" : "/"}${cleanImage}`;
 
-	// Konstruujemy pełne adresy URL
-	$: canonicalUrl = `${base_url}${$page.url.pathname}`;
-	$: imageUrl = image.startsWith("http") ? image : `${base_url}${image}`;
-	$: logoUrl = `${base_url}/static/assets/logo-certus.svg`; // Zakładając, że logo jest w static/assets
+	$: canonicalUrl = `${BASE_URL}${pathname === "/" ? "" : pathname}`;
+	$: logoUrl = `${BASE_URL}/assets/logo-certus.svg`;
 </script>
 
 <svelte:head>
-	{#if !isHmp}
-		<!-- Standard SEO -->
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<link rel="canonical" href={canonicalUrl} />
+	<!-- Standard SEO -->
+	<title>{effectiveTitle}</title>
+	<meta name="description" content={effectiveDescription} />
+	<link rel="canonical" href={canonicalUrl} />
 
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content={type} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={imageUrl} />
-		<meta property="og:url" content={canonicalUrl} />
-		<meta property="og:site_name" content="CERTUS Maszyny CNC" />
-		<meta property="og:logo" content={logoUrl} />
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content={effectiveType} />
+	<meta property="og:title" content={effectiveOgTitle} />
+	<meta property="og:description" content={effectiveOgDescription} />
+	<meta property="og:image" content={imageUrl} />
+	<meta property="og:url" content={canonicalUrl} />
+	<meta property="og:site_name" content="CERTUS Maszyny CNC" />
+	<meta property="og:logo" content={logoUrl} />
 
-		<!-- Twitter -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={imageUrl} />
-	{/if}
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={effectiveOgTitle} />
+	<meta name="twitter:description" content={effectiveOgDescription} />
+	<meta name="twitter:image" content={imageUrl} />
 </svelte:head>

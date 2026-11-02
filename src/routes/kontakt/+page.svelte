@@ -8,10 +8,7 @@
   import Section_Referencje from "../../components/sections/Section_Referencje.svelte";
 </script>
 
-<svelte:head>
-  <title>Kontakt - Certus</title>
-  <meta name="description" content="Skontaktuj się z nami - dane teleadresowe." />
-</svelte:head>
+
 
 <div class="app">
   <Section_Header />

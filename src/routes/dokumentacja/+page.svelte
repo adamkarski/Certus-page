@@ -29,10 +29,7 @@
   });
 </script>
 
-<svelte:head>
-  <title>Dokumentacja - Certus</title>
-  <meta name="description" content="Pobierz dokumentację techniczną i instrukcje obsługi." />
-</svelte:head>
+
 
 <div class="app">
   <Section_Header />

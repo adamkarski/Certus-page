@@ -248,7 +248,7 @@
           </a>
           <div
             class="relative dropDownMenu maszynyDropdown"
-            
+            role="group"
             on:mouseleave={() => (isMaszynyDropdownOpen = false)}
           >
             <a on:click|preventDefault={() => isMaszynyDropdownOpen=!isMaszynyDropdownOpen }
@@ -313,8 +313,7 @@
                   {#if hoveredCategory}
                     {#key hoveredCategory.id}
                       <a
-                        href="#"
-                        role="button"
+                        href={hoveredCategory.url || `/maszyny#${hoveredCategory.id}`}
                         on:click|preventDefault={() =>
                           handleMaszynyNavigation(hoveredCategory.id)}
                       >
@@ -398,13 +397,7 @@
                     </ul>
                   </div>
 
-                  <div
-                    class="bestseller-cta"
-                    on:click|stopPropagation={() => {
-                      isBestsellerDropdownOpen = false;
-                      goto("/bestseller");
-                    }}
-                  >
+                  <div class="bestseller-cta">
                     <CtaButton classs="bestseller" text="Sprawdz szczegóły" />
                   </div>
                 </div>
@@ -454,7 +447,12 @@
     >
       <div
         class="mobile-menu-content"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu mobilne"
+        tabindex="-1"
         on:click|stopPropagation
+        on:keydown|stopPropagation
         transition:fly={{ x: "-100%", duration: 300, easing: cubicOut }}
       >
         <div class="mobile-menu-header">
@@ -512,17 +510,13 @@
             <div class="mobile-submenu" transition:slide>
               {#each kategorieMaszyn as kategoria}
                 {#if kategoria.url}
-                  <a class="mobile-submenu-link" href={kategoria.url} alt="{kategoria.title}">{kategoria.title} 
-                  </a>
+                  <a class="mobile-submenu-link" href={kategoria.url}>{kategoria.title}</a>
                 {/if}
                 {#if kategoria.url == null}
                   <a class="mobile-submenu-link" 
                   on:click|preventDefault={() =>
                               handleMaszynyNavigation(kategoria.id)}
-                  
-                  
-                  href="/maszyny#{kategoria.id}" alt="{kategoria.title}" aria-rol>{kategoria.title} 
-                  </a>
+                  href="/maszyny#{kategoria.id}">{kategoria.title}</a>
                 {/if}
               {/each}
             </div>

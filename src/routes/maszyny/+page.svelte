@@ -20,10 +20,7 @@
   });
 </script>
 
-<svelte:head>
-  <title>Maszyny CNC - Certus</title>
-  <meta name="description" content="Poznaj naszą ofertę maszyn CNC - wysokiej jakości urządzenia przemysłowe" />
-</svelte:head>
+
 
 
 

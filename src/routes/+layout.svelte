@@ -101,7 +101,7 @@
   }
 </script>
 
-<Seo {...data.seo} />
+<Seo />
 
 {#if loading}
   <div class="preloader no-sel gradientHero_old">

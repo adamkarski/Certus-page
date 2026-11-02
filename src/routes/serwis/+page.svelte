@@ -8,10 +8,7 @@
   
 </script>
 
-<svelte:head>
-  <title>Serwis maszyn CNC - Gwarancyjny i pogwarancyjny - Certus</title>
-  <meta name="description" content="Profesjonalny serwis maszyn CNC Certus. Oferujemy serwis gwarancyjny, pogwarancyjny oraz przeróbki maszyn. Doświadczony zespół techników." />
-</svelte:head>
+
 
 <div class="app">
   <Section_Header />

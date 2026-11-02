@@ -8,10 +8,7 @@
   
 </script>
 
-<svelte:head>
-  <title>Mapa witryny - Certus</title>
-  <meta name="description" content="Znajdź wszystko, czego szukasz na naszej stronie. Pełna mapa witryny Certus." />
-</svelte:head>
+
 
 <div class="app">
   <Section_Header />

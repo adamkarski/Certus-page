@@ -8,10 +8,7 @@
   
 </script>
 
-<svelte:head>
-  <title>Polityka prywatności - Certus</title>
-  <meta name="description" content="Polityka prywatności" />
-</svelte:head>
+
 
 <div class="app">
   <Section_Header />

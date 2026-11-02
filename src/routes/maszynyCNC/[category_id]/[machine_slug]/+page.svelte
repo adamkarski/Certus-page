@@ -26,9 +26,7 @@ import type { PageData } from './$types';
 
 </script>
 
-<svelte:head>
-<title>{machine.name}</title>
-</svelte:head>
+
 
 
 
