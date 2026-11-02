@@ -25,14 +25,14 @@
       ([entry]) => {
         if (entry.isIntersecting) visible = true;
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     const benefitsObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) benefitsVisible = true;
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionEl) observer.observe(sectionEl);
@@ -47,160 +47,157 @@
   // Funkcja zwracająca pełne dane serwisu na podstawie typu
   function getServiceData(type: string) {
     const servicesData = {
- 
-
-    
-  "warranty": {
-    "type": "warranty",
-    "title": "Serwis Gwarancyjny",
-    "description": "12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie.",
-    "highlights": [
-      "Robocizna 0 zł",
-      "Dojazd 2,50 zł/km"
-    ],
-    "details": [
-      {
-        "label": "Okres gwarancji",
-        "value": "12 miesięcy od odbioru technicznego"
+      warranty: {
+        type: "warranty",
+        title: "Serwis Gwarancyjny",
+        description:
+          "12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie.",
+        highlights: ["Robocizna 0 zł", "Dojazd 2,50 zł/km"],
+        details: [
+          {
+            label: "Okres gwarancji",
+            value: "12 miesięcy od odbioru technicznego",
+          },
+          {
+            label: "Robocizna serwisu",
+            value: "Bezpłatnie (0 zł)",
+            highlight: true,
+          },
+          {
+            label: "Części gwarancyjne",
+            value: "Bezpłatnie",
+            highlight: true,
+          },
+          {
+            label: "Koszt dojazdu",
+            value: "2,50 zł netto/km",
+          },
+        ],
+        includes: [
+          "Robocizna serwisu w ramach naprawy gwarancyjnej",
+          "Części wymieniane w ramach naprawy gwarancyjnej",
+          "Wady materiałowe i błędy produkcyjne",
+          "Awarie wynikające z normalnego użytkowania",
+          "Raport z wykonanych prac",
+        ],
+        excludes: [
+          "Materiały eksploatacyjne i części zużywające się (smar, chłodziwo, tulejki, paski)",
+          "Koszt dojazdu serwisu (płatny 2,50 zł netto/km)",
+          "Błędy użytkownika i nieautoryzowane modyfikacje",
+          "Zaniedbania konserwacyjne",
+          "Eksploatacja niezgodna z przeznaczeniem i BHP",
+        ],
       },
-      {
-        "label": "Robocizna serwisu",
-        "value": "Bezpłatnie (0 zł)",
-        "highlight": true
+      "post-warranty": {
+        type: "post-warranty",
+        title: "Serwis Pogwarancyjny",
+        description:
+          "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym.",
+        highlights: ["240 zł netto/h", "Dojazd 2,50 zł/km"],
+        details: [
+          {
+            label: "Stawka robocizny",
+            value: "240 zł netto/h",
+            highlight: true,
+          },
+          {
+            label: "Diagnoza usterki",
+            value: "240 zł netto/h",
+          },
+          {
+            label: "Koszt dojazdu",
+            value: "2,50 zł netto/km",
+          },
+          {
+            label: "Części i materiały",
+            value: "Wg wyceny po diagnozie",
+          },
+        ],
+        includes: [
+          "Diagnostyka awarii i usterek",
+          "Naprawa i regulacja podzespołów",
+          "Wymiana części zamiennych",
+          "Testowanie maszyny po naprawie",
+          "Szczegółowy raport serwisowy",
+        ],
+        note: "Dojazd 2,50 zł netto/km, liczony w obie strony od siedziby w Choczni. Czas dojazdu nie jest doliczany. Części i materiały wg wyceny po diagnozie.",
       },
-      {
-        "label": "Części gwarancyjne",
-        "value": "Bezpłatnie",
-        "highlight": true
+      inspections: {
+        type: "inspections",
+        title: "Przeglądy Okresowe",
+        description:
+          "Zalecany co 12 miesięcy, co 6 miesięcy przy pracy wielozmianowej lub w trudnych warunkach (pył, praca z chłodziwem).",
+        highlights: ["240 zł netto/h", "Co 12 mies."],
+        details: [
+          {
+            label: "Częstotliwość",
+            value:
+              "Zalecany co 12 mies. (co 6 mies. przy pracy wielozmianowej)",
+          },
+          {
+            label: "Stawka robocizny",
+            value: "240 zł netto/h",
+            highlight: true,
+          },
+          {
+            label: "Szacowany czas",
+            value: "Ok. 3–4 h dla frezarki HMM-ST",
+          },
+          {
+            label: "Koszt dojazdu",
+            value: "2,50 zł netto/km",
+          },
+        ],
+        includes: [
+          "Diagnostyka wszystkich podzespołów i układu mechanicznego",
+          "Kontrola dokładności i geometrii osi",
+          "Sprawdzenie instalacji elektrycznej i automatyki",
+          "Kontrola układu smarowania i chłodzenia",
+          "Protokół serwisowy z kartą przeglądu i pomiarów",
+        ],
+        note: "Rozliczenie: 240 zł netto/h + dojazd 2,50 zł netto/km. Materiały eksploatacyjne i części płatne wg zużycia.",
       },
-      {
-        "label": "Koszt dojazdu",
-        "value": "2,50 zł netto/km"
-      }
-    ],
-    "includes": [
-      "Robocizna serwisu w ramach naprawy gwarancyjnej",
-      "Części wymieniane w ramach naprawy gwarancyjnej",
-      "Wady materiałowe i błędy produkcyjne",
-      "Awarie wynikające z normalnego użytkowania",
-      "Raport z wykonanych prac"
-    ],
-    "excludes": [
-      "Materiały eksploatacyjne i części zużywające się (smar, chłodziwo, tulejki, paski)",
-      "Koszt dojazdu serwisu (płatny 2,50 zł netto/km)",
-      "Błędy użytkownika i nieautoryzowane modyfikacje",
-      "Zaniedbania konserwacyjne",
-      "Eksploatacja niezgodna z przeznaczeniem i BHP"
-    ]
-  },
-  "post-warranty": {
-    "type": "post-warranty",
-    "title": "Serwis Pogwarancyjny",
-    "description": "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym.",
-    "highlights": [
-      "240 zł netto/h",
-      "Dojazd 2,50 zł/km"
-    ],
-    "details": [
-      {
-        "label": "Stawka robocizny",
-        "value": "240 zł netto/h",
-        "highlight": true
+      additional: {
+        type: "additional",
+        title: "Usługi Dodatkowe",
+        description:
+          "Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) w cenie maszyny.",
+        highlights: [
+          "Szkolenie do 3h w cenie",
+          "Szkolenie dodatkowe 240 zł netto/h",
+        ],
+        services: [
+          {
+            name: "Szkolenie podstawowe operatora",
+            price: "W cenie maszyny",
+            description: "Do 3 h przy uruchomieniu maszyny",
+            details:
+              "Szkolenie operatora z obsługi maszyny i zasad BHP potwierdzone protokołem.",
+          },
+          {
+            name: "Szkolenie dodatkowe operatora",
+            price: "240 zł netto/h",
+            description: "Na miejscu lub wg ustaleń",
+            details:
+              "Każde dodatkowe szkolenie z zaawansowanej obsługi, oprogramowania lub dla nowych pracowników.",
+          },
+          {
+            name: "Zdalna diagnostyka online",
+            price: "100 zł netto",
+            description: "Za każde rozpoczęte 30 min",
+            details:
+              "Szybka pomoc techniczna i diagnostyka problemu przez internet.",
+          },
+          {
+            name: "Dojazd serwisu",
+            price: "2,50 zł netto/km",
+            description: "W obie strony od Choczni",
+            details:
+              "Czas dojazdu nie jest doliczany. Przykład: klient w odległości 150 km → 300 km × 2,50 zł = 750 zł netto.",
+          },
+        ],
       },
-      {
-        "label": "Diagnoza usterki",
-        "value": "240 zł netto/h"
-      },
-      {
-        "label": "Koszt dojazdu",
-        "value": "2,50 zł netto/km"
-      },
-      {
-        "label": "Części i materiały",
-        "value": "Wg wyceny po diagnozie"
-      }
-    ],
-    "includes": [
-      "Diagnostyka awarii i usterek",
-      "Naprawa i regulacja podzespołów",
-      "Wymiana części zamiennych",
-      "Testowanie maszyny po naprawie",
-      "Szczegółowy raport serwisowy"
-    ],
-    "note": "Dojazd 2,50 zł netto/km, liczony w obie strony od siedziby w Choczni. Czas dojazdu nie jest doliczany. Części i materiały wg wyceny po diagnozie."
-  },
-  "inspections": {
-    "type": "inspections",
-    "title": "Przeglądy Okresowe",
-    "description": "Zalecany co 12 miesięcy, co 6 miesięcy przy pracy wielozmianowej lub w trudnych warunkach (pył, praca z chłodziwem).",
-    "highlights": [
-      "240 zł netto/h",
-      "Co 12 mies."
-    ],
-    "details": [
-      {
-        "label": "Częstotliwość",
-        "value": "Zalecany co 12 mies. (co 6 mies. przy pracy wielozmianowej)"
-      },
-      {
-        "label": "Stawka robocizny",
-        "value": "240 zł netto/h",
-        "highlight": true
-      },
-      {
-        "label": "Szacowany czas",
-        "value": "Ok. 3–4 h dla frezarki HMM-ST"
-      },
-      {
-        "label": "Koszt dojazdu",
-        "value": "2,50 zł netto/km"
-      }
-    ],
-    "includes": [
-      "Diagnostyka wszystkich podzespołów i układu mechanicznego",
-      "Kontrola dokładności i geometrii osi",
-      "Sprawdzenie instalacji elektrycznej i automatyki",
-      "Kontrola układu smarowania i chłodzenia",
-      "Protokół serwisowy z kartą przeglądu i pomiarów"
-    ],
-    "note": "Rozliczenie: 240 zł netto/h + dojazd 2,50 zł netto/km. Materiały eksploatacyjne i części płatne wg zużycia."
-  },
-  "additional": {
-    "type": "additional",
-    "title": "Usługi Dodatkowe",
-    "description": "Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) w cenie maszyny.",
-    "highlights": [
-      "Szkolenie do 3h w cenie",
-      "Szkolenie dodatkowe 240 zł netto/h"
-    ],
-    "services": [
-      {
-        "name": "Szkolenie podstawowe operatora",
-        "price": "W cenie maszyny",
-        "description": "Do 3 h przy uruchomieniu maszyny",
-        "details": "Szkolenie operatora z obsługi maszyny i zasad BHP potwierdzone protokołem."
-      },
-      {
-        "name": "Szkolenie dodatkowe operatora",
-        "price": "240 zł netto/h",
-        "description": "Na miejscu lub wg ustaleń",
-        "details": "Każde dodatkowe szkolenie z zaawansowanej obsługi, oprogramowania lub dla nowych pracowników."
-      },
-      {
-        "name": "Zdalna diagnostyka online",
-        "price": "100 zł netto",
-        "description": "Za każde rozpoczęte 30 min",
-        "details": "Szybka pomoc techniczna i diagnostyka problemu przez internet."
-      },
-      {
-        "name": "Dojazd serwisu",
-        "price": "2,50 zł netto/km",
-        "description": "W obie strony od Choczni",
-        "details": "Czas dojazdu nie jest doliczany. Przykład: klient w odległości 150 km → 300 km × 2,50 zł = 750 zł netto."
-      }
-    ]
-  }
-}
+    };
     return servicesData[type] || null;
   }
 
@@ -272,9 +269,20 @@
               "12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie.",
             highlights: ["Robocizna 0 zł", "Dojazd 2,50 zł/km"],
             details: [
-              { label: "Okres gwarancji", value: "12 miesięcy od odbioru technicznego" },
-              { label: "Robocizna serwisu", value: "Bezpłatnie (0 zł)", highlight: true },
-              { label: "Części gwarancyjne", value: "Bezpłatnie", highlight: true },
+              {
+                label: "Okres gwarancji",
+                value: "12 miesięcy od odbioru technicznego",
+              },
+              {
+                label: "Robocizna serwisu",
+                value: "Bezpłatnie (0 zł)",
+                highlight: true,
+              },
+              {
+                label: "Części gwarancyjne",
+                value: "Bezpłatnie",
+                highlight: true,
+              },
               { label: "Koszt dojazdu", value: "2,50 zł netto/km" },
             ],
             includes: [
@@ -316,7 +324,9 @@
       </div>
 
       <p class="info-desc" use:typoFixAction>
-        12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie.
+        12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru
+        technicznego. Robocizna i części wymieniane w ramach naprawy
+        gwarancyjnej — bezpłatnie.
       </p>
 
       <div class="serwis-service-highlight">
@@ -416,7 +426,8 @@
             details: [
               {
                 label: "Częstotliwość",
-                value: "Zalecany co 12 mies. (co 6 mies. przy pracy wielozmianowej)",
+                value:
+                  "Zalecany co 12 mies. (co 6 mies. przy pracy wielozmianowej)",
               },
               {
                 label: "Stawka robocizny",
@@ -492,31 +503,38 @@
             title: "Usługi Dodatkowe",
             description:
               "Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) w cenie maszyny.",
-            highlights: ["Szkolenie do 3h w cenie", "Szkolenie dodatkowe 240 zł netto/h"],
+            highlights: [
+              "Szkolenie do 3h w cenie",
+              "Szkolenie dodatkowe 240 zł netto/h",
+            ],
             services: [
               {
                 name: "Szkolenie podstawowe operatora",
                 price: "W cenie maszyny",
                 description: "Do 3 h przy uruchomieniu maszyny",
-                details: "Szkolenie operatora z obsługi maszyny i zasad BHP potwierdzone protokołem.",
+                details:
+                  "Szkolenie operatora z obsługi maszyny i zasad BHP potwierdzone protokołem.",
               },
               {
                 name: "Szkolenie dodatkowe operatora",
                 price: "240 zł netto/h",
                 description: "Na miejscu lub wg ustaleń",
-                details: "Każde dodatkowe szkolenie z zaawansowanej obsługi, oprogramowania lub dla nowych pracowników.",
+                details:
+                  "Każde dodatkowe szkolenie z zaawansowanej obsługi, oprogramowania lub dla nowych pracowników.",
               },
               {
                 name: "Zdalna diagnostyka online",
                 price: "100 zł netto",
                 description: "Za każde rozpoczęte 30 min",
-                details: "Szybka pomoc techniczna i diagnostyka problemu przez internet.",
+                details:
+                  "Szybka pomoc techniczna i diagnostyka problemu przez internet.",
               },
               {
                 name: "Dojazd serwisu",
                 price: "2,50 zł netto/km",
                 description: "W obie strony od Choczni",
-                details: "Czas dojazdu nie jest doliczany. Przykład: klient w odległości 150 km → 300 km × 2,50 zł = 750 zł netto.",
+                details:
+                  "Czas dojazdu nie jest doliczany. Przykład: klient w odległości 150 km → 300 km × 2,50 zł = 750 zł netto.",
               },
             ],
           },
@@ -551,9 +569,105 @@
       </p>
 
       <div class="serwis-service-highlight">
-        <span class="serwis-highlight-item" use:typoFixAction
-          >Szkolenie dodatkowe: 240 zł netto/h</span
-        >
+        <span class="serwis-highlight-item" use:typoFixAction>
+          Szkolenie dodatkowe:<br />240 zł netto/h
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nowy blok Cennik serwisu (B6) -->
+  <div class="cennik-serwisu-container">
+    <div class="cennik-serwisu-card">
+      <h3 class="cennik-title" use:typoFixAction>Cennik serwisu</h3>
+
+      <div class="cennik-grid">
+        <!-- Gwarancja -->
+        <div class="cennik-item">
+          <h4 use:typoFixAction>Gwarancja</h4>
+          <p use:typoFixAction>
+            12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem
+            odbioru technicznego.
+          </p>
+          <p class="cennik-sub" use:typoFixAction>W okresie gwarancji:</p>
+          <ul class="cennik-list" use:typoFixAction>
+            <li>robocizna serwisu — bezpłatnie,</li>
+            <li>
+              części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie,
+            </li>
+            <li>
+              materiały eksploatacyjne i części zużywające się (np. smar,
+              chłodziwo, tulejki zaciskowe, paski napędowe) — płatne,
+            </li>
+            <li>dojazd serwisu — płatny wg stawki poniżej.</li>
+          </ul>
+        </div>
+
+        <!-- Serwis pogwarancyjny -->
+        <div class="cennik-item">
+          <h4 use:typoFixAction>Serwis pogwarancyjny</h4>
+          <p use:typoFixAction>
+            Robocizna, w tym diagnoza: <strong>240 zł netto/h</strong>.
+          </p>
+          <p use:typoFixAction>Części i materiały: wg wyceny po diagnozie.</p>
+        </div>
+
+        <!-- Przegląd okresowy -->
+        <div class="cennik-item">
+          <h4 use:typoFixAction>Przegląd okresowy</h4>
+          <p use:typoFixAction>
+            Zalecany co 12 miesięcy, co 6 miesięcy przy pracy wielozmianowej lub
+            w trudnych warunkach (pył, praca z chłodziwem).
+          </p>
+          <p use:typoFixAction>Czas: ok. 3–4 h dla frezarki HMM-ST.</p>
+          <p use:typoFixAction>
+            Rozliczenie: <strong>240 zł netto/h</strong> + dojazd.
+          </p>
+        </div>
+
+        <!-- Szkolenie operatora -->
+        <div class="cennik-item">
+          <h4 use:typoFixAction>Szkolenie operatora</h4>
+          <p use:typoFixAction>
+            Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) — <strong
+              >w cenie maszyny</strong
+            >.
+          </p>
+          <p use:typoFixAction>
+            Każde dodatkowe szkolenie — <strong>240 zł netto/h</strong>.
+          </p>
+        </div>
+
+        <!-- Dojazd -->
+        <div class="cennik-item cennik-item-wide">
+          <h4 use:typoFixAction>Dojazd</h4>
+          <p use:typoFixAction>
+            <strong>2,50 zł netto/km</strong>, liczone w obie strony od siedziby
+            w Choczni. Czas dojazdu nie jest doliczany.
+          </p>
+          <p class="cennik-example" use:typoFixAction>
+            <em>Przykład:</em> klient w odległości 150 km → 300 km × 2,50 zł =
+            <strong>750 zł netto</strong>.
+          </p>
+        </div>
+
+        <!-- Zdalna diagnostyka online -->
+        <div class="cennik-item cennik-item-wide">
+          <p use:typoFixAction>
+            <strong>Zdalna diagnostyka online:</strong> 100 zł netto za każde rozpoczęte
+            30 min.
+          </p>
+        </div>
+      </div>
+
+      <div class="cennik-footer">
+        <p use:typoFixAction>
+          Wszystkie ceny netto. Pełne warunki: <a href="/dokumentacja"
+            >„Zasady serwisu i cennik”</a
+          >
+          oraz <a href="/dokumentacja">OWS</a> w zakładce
+          <a href="/dokumentacja">Dokumentacja</a>.
+        </p>
       </div>
     </div>
   </div>
@@ -568,10 +682,8 @@
         </h2>
         <p use:typoFixAction>
           Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość
-          udoskonalania zakupionych produktów. Wierzymy, że praca nie kończy się
-          na sprzedaży maszyny — jesteśmy zawsze gotowi pomóc i doradzić. Jako
-          zespół wsparcia jesteśmy zawsze dostępni, aby rozwiązać wszelkie
-          problemy i udzielić profesjonalnej pomocy w każdej sytuacji.
+          modernizacji zakupionych maszyn. Praca nie kończy się na sprzedaży —
+          maszynę serwisujemy przez cały okres jej eksploatacji.
         </p>
 
         <br />
@@ -587,8 +699,6 @@
     </div>
   </section>
 </section>
-
-
 
 <section class="serwis-benefits" bind:this={benefitsSectionEl}>
   <div class="serwis-benefits-container">
@@ -621,14 +731,11 @@
         style="transition-delay: 100ms"
       >
         <div class="serwis-benefit-icon">
-          <img
-            src="/assets/ikony/szybka-reakcja.svg"
-            alt="Dobór rozwiązań"
-          />
+          <img src="/assets/ikony/szybka-reakcja.svg" alt="Dobór rozwiązań" />
         </div>
         <h4 use:typoFixAction>Szybka reakcja</h4>
         <p use:typoFixAction>
-          Zazwyczaj w ciągu 48 godzin, priorytetowo do 24h
+          Oddzwaniamy najpóźniej następnego dnia roboczego
         </p>
       </div>
 
@@ -676,17 +783,10 @@
 />
 
 <style lang="scss">
-
-
-  .contact-form{
-    input{
-
+  .contact-form {
+    input {
       color: var(--color-text-secondary);
     }
- 
-
-
-
   }
   .serwis-container {
     overflow: hidden;
@@ -738,7 +838,7 @@
   .serwis {
     width: 100%;
     padding: 10px 0;
-  
+
     color: var(--color-text-secondary);
   }
 
@@ -773,7 +873,7 @@
   // Style dla nagłówka sekcji usług serwisowych
   .serwis-services-header {
     text-align: center;
-   
+
     padding: 0 0px;
 
     h2 {
@@ -888,7 +988,7 @@
     flex-wrap: wrap;
     gap: 2.5vw;
     width: 100%;
-   
+
     justify-content: center;
     margin: 0 auto;
     padding: 40px 20px 0 20px;
@@ -1120,8 +1220,9 @@
   // Highlights (znaczniki)
   .serwis-service-highlight {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 8px;
-    flex-wrap: wrap;
     margin: 12px 0;
     padding-left: 1em;
   }
@@ -1129,10 +1230,14 @@
   .serwis-highlight-item {
     background: var(--color-primary);
     color: white;
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 12px;
     font-weight: 600;
-    white-space: nowrap;
+    white-space: normal;
+    line-height: 1.35;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
   }
 
   // Przycisk szczegółów
@@ -1202,9 +1307,8 @@
     .content-section .section-title {
       font-size: 28px;
       padding-left: 10px;
-    
-      &::before{
 
+      &::before {
         left: -25px;
         margin-top: -2px;
       }
@@ -1226,15 +1330,12 @@
   // Style dla sekcji benefits
   .serwis-benefits {
     padding: 0px 0;
-    
   }
 
   .serwis-benefits-container {
-  
     margin: 10px auto;
     padding: 0 20px;
-    margin-bottom:30px;
-
+    margin-bottom: 30px;
   }
 
   .serwis-section-header {
@@ -1300,7 +1401,7 @@
   .serwis-benefit-icon {
     width: 90px;
     height: 90px;
-    background:  var(--color-text-secondary);
+    background: var(--color-text-secondary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1398,6 +1499,132 @@
     }
 
     .serwis-benefit-item p {
+    }
+  }
+
+  // Style dla nowego bloku Cennik serwisu (B6)
+  .cennik-serwisu-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 40px auto 20px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .cennik-serwisu-card {
+    background: #f7f7f7;
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    border-top: 4px solid var(--color-primary, #96a500);
+    padding: 36px 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+    .cennik-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .cennik-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .cennik-item {
+      background: #ffffff;
+      padding: 20px 24px;
+      border-radius: 12px;
+      border: 1px solid #ebebeb;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+
+      h4 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--color-primary, #7e8c00);
+        margin: 0 0 10px 0;
+      }
+
+      p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #444;
+        margin: 0 0 8px 0;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .cennik-sub {
+        font-weight: 600;
+        color: #333;
+        margin-top: 6px;
+      }
+
+      .cennik-list {
+        margin: 6px 0 0 0;
+        padding-left: 20px;
+
+        li {
+          font-size: 0.9rem;
+          color: #555;
+          line-height: 1.45;
+          margin-bottom: 4px;
+        }
+      }
+
+      .cennik-example {
+        background: #fdfdfd;
+        border-left: 3px solid var(--color-primary, #96a500);
+        padding: 6px 12px;
+        margin-top: 8px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      &.cennik-item-wide {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .cennik-footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px dashed #d5d5d5;
+      font-size: 0.95rem;
+      color: #666;
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: var(--color-primary, #7e8c00);
+        font-weight: 600;
+        text-decoration: underline;
+
+        &:hover {
+          color: #222;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cennik-serwisu-card {
+      padding: 24px 18px;
+
+      .cennik-title {
+        font-size: 1.4rem;
+      }
+
+      .cennik-grid {
+        grid-template-columns: 1fr;
+      }
     }
   }
 </style>

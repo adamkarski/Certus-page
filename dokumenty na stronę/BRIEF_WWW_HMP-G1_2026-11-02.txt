@@ -1,0 +1,299 @@
+BRIEF DLA WYKONAWCY — PODSTRONA HMP-G1 + STRONA GŁÓWNA + MENU
+Strona: mg-certus.pl
+Data: 02.11.2026
+Zlecający: Dawid (CERTUS)
+
+Mockup (wygląd docelowy): link do mockupu przekazuje Dawid — 2 plansze:
+  1. Podstrona mg-certus.pl/hmp-g1
+  2. Strona główna — pierwszy slajd karuzeli
+Zdjęcia: folder "HMP-G1_www" (lista plików w części F).
+
+======================================================================
+JAK PRACOWAĆ Z TYM BRIEFEM
+======================================================================
+- Każdy krok ma: GDZIE / CO ZROBIĆ / tekst do wklejenia.
+- Teksty do kopiowania są między ">>>" i "<<<" — kopiuj wszystko pomiędzy, bez znaczników.
+- Odhaczaj [ ] -> [x].
+- ZASADA WIZUALNA: używaj ISTNIEJĄCYCH komponentów i stylów strony (Poppins, kapsuła menu,
+  białe karty z zaokrągleniem 16 px na tle #F7F7F7, nagłówki z oliwkowym paskiem #96A500,
+  tabela parametrów z "chipsami" jak na /maszyny, karty z oliwkową górną krawędzią jak
+  "Kluczowe cechy" na /bestseller, blok "Masz pytania?" i stopka bez zmian).
+  NOWE są tylko: ciemny pas hero podstrony, slajd HMP-G1 na stronie głównej, pozycja menu.
+- Nie dopisywać żadnych parametrów ani tekstów spoza briefu. Brakuje czegoś — pytać Dawida.
+
+======================================================================
+CZĘŚĆ A — NOWA PODSTRONA, ADRES I SEO
+======================================================================
+
+[ ] A1. Utworzyć podstronę pod adresem:
+>>>
+https://mg-certus.pl/hmp-g1
+<<<
+
+[ ] A2. Title strony:
+>>>
+HMP-G1 – kompaktowe centrum frezarskie CNC | CERTUS
+<<<
+
+[ ] A3. Meta description:
+>>>
+CERTUS HMP-G1: kompaktowe centrum frezarskie CNC w pełnej zabudowie. Pole pracy 500 × 400 mm, oś Z do 350 mm, wrzeciono do 6 kW, opcjonalnie ATC 10–16 pozycji. Polski producent.
+<<<
+
+[ ] A4. og:title / og:description — te same teksty co A2 / A3.
+    og:image — zdjęcie hmp-g1-hero.jpg (pełny adres https://mg-certus.pl/..., BEZ portu).
+    canonical i og:url:
+>>>
+https://mg-certus.pl/hmp-g1
+<<<
+UWAGA: na reszcie strony canonical/og:url mają dziś błędny port ":5173" — na tej podstronie
+NIE kopiować tego błędu (poprawka całej strony = osobny brief).
+
+[ ] A5. Dodać adres /hmp-g1 do sitemap.xml (jeśli strona ma sitemapę).
+
+======================================================================
+CZĘŚĆ B — MENU (wszystkie strony)
+======================================================================
+
+[ ] B1. W menu głównym dodać pierwszą pozycję, PRZED "Maszyny":
+Tekst:
+>>>
+Nowość: HMP-G1
+<<<
+Link: /hmp-g1
+Wygląd: pigułka w kolorze #7E8C00, biały tekst (jak aktywna pozycja menu, tylko w oliwkowym kolorze),
+widoczna na stałe, nie tylko na podstronie. Na telefonie — pierwsza pozycja w rozwijanym menu.
+
+[ ] B2. W rozwijanym menu "Maszyny" (lista kategorii) dodać pozycję:
+>>>
+Kompaktowe centrum HMP-G1
+<<<
+Link: /hmp-g1
+
+======================================================================
+CZĘŚĆ C — STRONA GŁÓWNA: PIERWSZY SLAJD KARUZELI
+======================================================================
+
+[ ] C1. Dodać nowy slajd jako PIERWSZY w karuzeli na stronie głównej.
+Obecne slajdy kategorii zostają bez zmian, jako kolejne.
+Tło: bez zmian (obecny szary gradient strony głównej).
+Układ: tekst po lewej, zdjęcie po prawej (zaokrąglenie 16 px, cień) — wg mockupu, plansza 2.
+
+Plakietka (oliwkowa pigułka #7E8C00, biały tekst, wersaliki):
+>>>
+Nowość
+<<<
+Nagłówek (duży, biały, pogrubiony):
+>>>
+HMP-G1
+<<<
+Podtytuł:
+>>>
+Kompaktowe centrum frezarskie CNC.
+<<<
+Opis:
+>>>
+Pełna zabudowa, ATC i wrzeciono do 6 kW na 0,94 × 0,90 m powierzchni.
+<<<
+Przycisk 1 (wypełniony, kolor #9ACD32, ciemny tekst) — link /hmp-g1:
+>>>
+Poznaj HMP-G1
+<<<
+Przycisk 2 (obrys biały) — link /hmp-g1#kontakt:
+>>>
+Zapytaj o ofertę
+<<<
+Zdjęcie: hmp-g1-slajd.jpg
+
+======================================================================
+CZĘŚĆ D — PODSTRONA /hmp-g1, SEKCJA PO SEKCJI
+======================================================================
+
+--- D1. HERO (ciemny pas na całą szerokość) ---
+Tło: gradient od #545454 (góra) do #2E3032 (dół). Kapsuła menu jak na całej stronie, na tym tle.
+Na dole ukośne białe ścięcie jak na /bestseller.
+Układ: tekst po lewej, zdjęcie po prawej (zaokrąglenie 16 px, cień).
+
+[ ] Nadtytuł (małe wersaliki, kolor #C5D84A):
+>>>
+Nowość · kompaktowe centrum frezarskie CNC
+<<<
+[ ] H1 (bardzo duży, biały, pogrubiony):
+>>>
+HMP-G1
+<<<
+[ ] Lead (jasny tekst):
+>>>
+Pełna zabudowa, automatyczna wymiana narzędzi i wrzeciono do 6 kW — na 0,94 × 0,90 m powierzchni.
+<<<
+[ ] Przycisk 1 (wypełniony #9ACD32, ciemny tekst, kształt pigułki) — przewija do #kontakt:
+>>>
+Zapytaj o ofertę
+<<<
+[ ] Przycisk 2 (obrys biały) — UKRYĆ, dopóki nie ma pliku karty katalogowej (patrz D4):
+>>>
+Karta katalogowa PDF
+<<<
+[ ] Zdjęcie: hmp-g1-hero.jpg
+
+[ ] Pod tekstem i zdjęciem — 4 parametry w rzędzie (na telefonie 2 × 2).
+Każdy: cienka linia #9ACD32 na górze, etykieta (małe wersaliki, szara), wartość (duża, biała),
+dopisek (mały, szary):
+
+1. etykieta: >>>Pole pracy X × Y<<<   wartość: >>>500 × 400 mm<<<   dopisek: >>>lub 400 × 250 mm<<<
+2. etykieta: >>>Oś Z<<<               wartość: >>>do 350 mm<<<      dopisek: >>>zakres roboczy<<<
+3. etykieta: >>>Wrzeciono<<<          wartość: >>>do 6 kW<<<        dopisek: >>>dobór pod materiał<<<
+4. etykieta: >>>Magazyn ATC<<<        wartość: >>>10–16 poz.<<<     dopisek: >>>opcja<<<
+
+--- D2. KONSTRUKCJA (biała karta na szarym tle) ---
+[ ] Nagłówek sekcji:
+>>>
+Mały gabaryt. Ta sama konstrukcja co w dużych maszynach.
+<<<
+[ ] Tekst pod nagłówkiem:
+>>>
+HMP-G1 ma rozwiązania mechaniczne większych maszyn CERTUS — zmienione są wymiary, nie zasady.
+<<<
+[ ] 4 bloki w siatce 2 × 2 (na telefonie jeden pod drugim). Każdy: zdjęcie (zaokrąglenie 10 px),
+nagłówek z oliwkowym paskiem po lewej, tekst.
+
+Blok 1 — zdjęcie: hmp-g1-kinematyka.jpg
+Nagłówek: >>>Kinematyka<<<
+Tekst:
+>>>
+Prowadnice liniowe i śruby kulowe na wszystkich osiach, napęd przez przekładnię pasową HTD.
+<<<
+
+Blok 2 — zdjęcie: hmp-g1-zabudowa.jpg
+Nagłówek: >>>Zabudowa<<<
+Tekst:
+>>>
+Zamknięta komora robocza z czujnikiem drzwi. Drzwi z pneumatycznym wspomaganiem — jedyne takie rozwiązanie w ofercie CERTUS.
+<<<
+
+Blok 3 — zdjęcie: hmp-g1-wrzeciono.jpg
+Nagłówek: >>>Wrzeciono i narzędzia<<<
+Tekst:
+>>>
+Wrzeciona do 6 kW. Wersja bazowa: tulejki ER20 bezpośrednio na wrzecionie. Z ATC: oprawki ISO20 / ISO30 i magazyn 10–16 pozycji.
+<<<
+
+Blok 4 — zdjęcie: hmp-g1-stol.jpg
+Nagłówek: >>>Kontrola procesu<<<
+Tekst:
+>>>
+Chłodzenie mgłą olejową lub cieczą, czujnik długości narzędzia, centralne smarowanie — dobierane do materiału i trybu pracy.
+<<<
+
+--- D3. DANE TECHNICZNE (biała karta) ---
+[ ] Nagłówek sekcji:
+>>>
+Dane techniczne
+<<<
+[ ] Tabela — TEN SAM komponent co na /maszyny (nagłówek "Parametr | Dostępne opcje", wartości jako chipsy).
+Po prawej stronie tabeli: rysunek wymiarowy hmp-g1-wymiary.jpg.
+Wiersze (Parametr → chipsy, każdy chips w osobnej ramce; "✓ ..." = oliwkowy tekst bez ramki):
+
+1. Obszar roboczy X × Y (mm)              → 400×250 | 500×400
+2. Oś Z (mm)                               → do 350
+3. Wrzeciono                               → do 6 kW
+4. Mocowanie narzędzia                     → ER20 (bez ATC) | ISO20 / ISO30 (z ATC)
+5. Magazyn narzędzi ATC                    → Bez wymiany | 10–16 pozycji
+6. Prowadzenie i napęd osi                 → Prowadnice liniowe, rozmiar 20 | Śruby kulowe, pasek HTD
+7. Zabudowa                                → ✓ W standardzie · czujnik drzwi · wspomaganie pneumatyczne drzwi
+8. Opcje dodatkowe                         → Chłodzenie cieczą | Mgła olejowa | Pomiar długości narzędzia | Centralne smarowanie
+9. Sterowanie                              → PikoCNC | CAM: PikoCAM | Wolnostojący pulpit
+10. Sprężone powietrze                     → 6,5 bar (robocze)
+11. Wymiary zewnętrzne (szer. × gł. × wys.) → 936 × 900 × 1466 mm
+
+NIE DODAWAĆ wierszy: masa, obroty wrzeciona, zasilanie elektryczne (dane w trakcie potwierdzania —
+Dawid przekaże je osobno).
+
+--- D4. KARTA KATALOGOWA (pod rysunkiem wymiarowym) ---
+[ ] Blok przygotować, ale UKRYĆ do czasu otrzymania pliku PDF od Dawida (wtedy też włączyć przycisk z D1).
+Tytuł: >>>Karta katalogowa HMP-G1<<<
+Przycisk: >>>Pobierz PDF<<<   (plik: /do_pobrania/Karta-katalogowa-HMP-G1.pdf — nazwa docelowa)
+
+--- D5. PO ZAKUPIE (4 karty z oliwkową górną krawędzią, jak "Kluczowe cechy" na /bestseller) ---
+[ ] Nagłówek (wyśrodkowany): >>>Po zakupie<<<
+
+Karta 1 — tytuł: >>>Uruchomienie<<<
+>>>
+Instalacja i szkolenie podstawowe operatora (do 3 h) w cenie maszyny.
+<<<
+Karta 2 — tytuł: >>>Gwarancja 12 miesięcy<<<
+>>>
+Od dnia odbioru, potwierdzonego protokołem odbioru technicznego.
+<<<
+Karta 3 — tytuł: >>>Dokumentacja<<<
+>>>
+DTR, deklaracja zgodności WE, karta gwarancyjna z każdą maszyną.
+<<<
+Karta 4 — tytuł: >>>Serwis producenta<<<
+>>>
+Gwarancyjny i pogwarancyjny. Zasady i cennik
+<<<
+("Zasady i cennik" = link do /serwis)
+
+--- D6. KONTAKT (kotwica #kontakt) ---
+[ ] Standardowy blok "Masz pytania? Skontaktuj się z nami!" — jak na całej stronie, z dwiema zmianami:
+
+a) Tekst przy nagłówku (zamiast standardowych 3 punktów):
+>>>
+Napisz, z jakiego materiału i jakiej wielkości są Twoje detale — dobierzemy konfigurację HMP-G1 i przygotujemy ofertę.
+<<<
+
+b) W formularzu, po polu "Telefon", dodać 2 pola (nieobowiązkowe):
+Etykieta: >>>Obrabiany materiał<<<     placeholder: >>>np. aluminium, mosiądz, POM<<<
+Etykieta: >>>Największy detal [mm]<<<  placeholder: >>>np. 180 × 120 × 40<<<
+
+c) Temat wiadomości wysyłanej z tego formularza:
+>>>
+Zapytanie: HMP-G1
+<<<
+Zgłoszenia trafiają na biuro@mg-certus.pl (jak dotychczasowy formularz kontaktowy).
+
+======================================================================
+CZĘŚĆ E — WERSJA MOBILNA
+======================================================================
+[ ] E1. Na szerokości telefonu: hero — tekst nad zdjęciem; 4 parametry 2 × 2; bloki D2 jeden pod drugim;
+       tabela — etykieta nad chipsami; karty D5 2 × 2; formularz w jednej kolumnie.
+[ ] E2. Slajd na stronie głównej na telefonie: tekst nad zdjęciem, przyciski pod sobą lub obok (bez ucinania).
+
+======================================================================
+CZĘŚĆ F — ZDJĘCIA (folder "HMP-G1_www")
+======================================================================
+hmp-g1-hero.jpg        → D1 hero podstrony + og:image
+hmp-g1-slajd.jpg       → C1 slajd na stronie głównej
+hmp-g1-kinematyka.jpg  → D2 blok 1
+hmp-g1-zabudowa.jpg    → D2 blok 2
+hmp-g1-wrzeciono.jpg   → D2 blok 3
+hmp-g1-stol.jpg        → D2 blok 4
+hmp-g1-wymiary.jpg     → D3 rysunek wymiarowy
+
+[ ] F1. Każde zdjęcie: konwersja do WebP, szerokość max. 1600 px, atrybut alt (teksty poniżej),
+       lazy-loading wszędzie poza hero.
+Teksty alt:
+hmp-g1-hero.jpg       >>>Frezarka CNC CERTUS HMP-G1 w pełnej zabudowie<<<
+hmp-g1-slajd.jpg      >>>Frezarka CNC CERTUS HMP-G1<<<
+hmp-g1-kinematyka.jpg >>>Konstrukcja HMP-G1 bez osłon<<<
+hmp-g1-zabudowa.jpg   >>>HMP-G1 z uniesionymi drzwiami komory roboczej<<<
+hmp-g1-wrzeciono.jpg  >>>Wrzeciono HMP-G1 nad stołem T-rowkowym<<<
+hmp-g1-stol.jpg       >>>Stół roboczy HMP-G1 z czujnikiem pomiaru narzędzia<<<
+hmp-g1-wymiary.jpg    >>>Wymiary zewnętrzne HMP-G1: 936 × 900 × 1466 mm<<<
+
+UWAGA: część zdjęć to grafiki z social mediów (logo w rogu, na jednym tekst). Wgrać jako tymczasowe —
+Dawid przekaże czyste ujęcia do podmiany (te same nazwy plików, więc wystarczy nadpisać).
+
+======================================================================
+CZĘŚĆ G — KONTROLA KOŃCOWA
+======================================================================
+[ ] G1. mg-certus.pl/hmp-g1 działa; title i description jak w A2/A3; canonical BEZ ":5173".
+[ ] G2. Pozycja "Nowość: HMP-G1" widoczna w menu na każdej stronie (desktop + telefon), prowadzi do /hmp-g1.
+[ ] G3. Strona główna: slajd HMP-G1 jest pierwszy; oba przyciski działają; pozostałe slajdy bez zmian.
+[ ] G4. Formularz na /hmp-g1: testowe zapytanie dochodzi na biuro@mg-certus.pl z tematem "Zapytanie: HMP-G1"
+       i wypełnionymi polami "Obrabiany materiał" / "Największy detal".
+[ ] G5. Na podstronie NIE MA: masy, obrotów wrzeciona, zasilania elektrycznego, linku do nieistniejącego PDF.
+[ ] G6. Podgląd linku: wkleić https://mg-certus.pl/hmp-g1 do Facebooka (Sharing Debugger) i LinkedIn
+       (Post Inspector) — musi pokazać zdjęcie i tytuł HMP-G1.
+[ ] G7. Odesłać Dawidowi listę wykonanych kroków + zrzuty ekranu (desktop + telefon).

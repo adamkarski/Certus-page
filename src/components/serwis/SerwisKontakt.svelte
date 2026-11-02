@@ -222,7 +222,7 @@
         });
 
       if (response.data.success) {
-        submitMessage = response.data.message || "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą w ciągu 24 godzin.";
+        submitMessage = response.data.message || "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą najpóźniej następnego dnia roboczego.";
 
         // Resetuj formularz
         formData = {
@@ -313,19 +313,15 @@
         <ul use:typoFixAction class="contact-bullets no-sel">
           <li>
             <span class="bullet"></span>
-            Wypełnij formularz, a nasz serwisant skontaktuje się z Tobą w ciągu 24
-            godzin i umówi wizytę lub udzieli pomocy zdalnej.
+            Pobierz i wypełnij <a href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf" download class="bullet-link">formularz zgłoszenia usterki</a>, a następnie wyślij go na <a href="mailto:kontakt@mg-certus.pl" class="bullet-link">kontakt@mg-certus.pl</a>. Dołącz zdjęcia lub krótkie wideo problemu.
           </li>
           <li>
             <span class="bullet"></span>
-            Nasz zespół serwisowy pracuje 7 dni w tygodniu<br />
-            i jest gotowy pomóc w każdej sytuacji awaryjnej.
+            Sprawy pilne: +48 606 324 406, w dni robocze 8:00–16:00. Oddzwaniamy najpóźniej następnego dnia roboczego.
           </li>
           <li>
             <span class="bullet"></span>
-            Oferujemy bezpłatną diagnostykę<br />
-            oraz szybką wycenę naprawy<br />
-            dla wszystkich maszyn CNC.
+            Termin wizyty ustalamy po analizie zgłoszenia.
           </li>
         </ul>
         <div class="contact-info-block">
@@ -339,7 +335,7 @@
                   +48 606 324 406
                 </a>
               </b>
-              <small>Linia serwisowa 24/7</small>
+              <small>Dni robocze 8:00–16:00</small>
             </div>
           </div>
           <div class="info-row">
@@ -639,6 +635,10 @@
               disabled={isSubmitting}
             />
           </div>
+
+          <p class="form-download-note" use:typoFixAction>
+            Możesz też pobrać <a href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf" download>formularz zgłoszenia usterki (PDF)</a>, wypełnić go i wysłać na <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a>.
+          </p>
         </form>
       </div>
     </div>
@@ -789,6 +789,32 @@
     margin-bottom: 18px;
     line-height: 1.5;
     color: var(--color-gray-200);
+
+    a.bullet-link {
+      color: var(--color-primary, #96a500);
+      text-decoration: underline;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .form-download-note {
+    margin-top: 18px;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: #666;
+
+    a {
+      color: var(--color-primary, #7e8c00);
+      font-weight: 600;
+      text-decoration: underline;
+
+      &:hover {
+        color: #222;
+      }
+    }
   }
 
   .bullet {

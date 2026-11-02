@@ -111,7 +111,7 @@
       // Symulacja wysyłania formularza
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      alert('Dziękujemy za zgłoszenie! Skontaktujemy się z Państwem w ciągu 24 godzin.');
+      alert('Dziękujemy za zgłoszenie! Skontaktujemy się z Państwem najpóźniej następnego dnia roboczego.');
       
       // Reset formularza
       formData = {

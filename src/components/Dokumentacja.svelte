@@ -51,16 +51,12 @@
         <tbody>
           <tr>
             <td>
-              <strong
-                >Formularz przeglądu technicznego okresowego (checklista)</strong
-              ><br />
-              Dokument ten stanowi checklistę do przeprowadzania okresowych przeglądów
-              technicznych maszyn. Obejmuje kontrolę układu mechanicznego, elektrycznego,
-              automatyki oraz systemów bezpieczeństwa.
+              <strong>Ogólne Warunki Sprzedaży (OWS)</strong><br />
+              Warunki ofert, zamówień, płatności, dostawy, gwarancji i odpowiedzialności MG-CERTUS.
             </td>
             <td>
               <a
-                href="/do_pobrania/dokumentacja/Formularz-przegladu-technicznego-okresowego-checklista.pdf"
+                href="/do_pobrania/dokumentacja/CERTUS_OWS_Ogolne_Warunki_Sprzedazy.pdf"
                 download
                 class="cta-button"
                 ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
@@ -69,99 +65,86 @@
           </tr>
           <tr>
             <td>
-              <strong>Formularz zgłoszenia usterki (serwisowy)</strong><br />
-              Formularz służący do zgłaszania awarii lub nieprawidłowego działania
-              maszyn. Zawiera pola na dane zgłaszającego, szczegóły maszyny oraz
-              dokładny opis usterki.
+              <strong>Zasady serwisu i cennik usług serwisowych</strong><br />
+              Serwis gwarancyjny i pogwarancyjny, przeglądy okresowe, tryb zgłoszeń, stawki i koszt dojazdu.
             </td>
             <td>
               <a
-                href="/do_pobrania/dokumentacja/Formularz-zgloszenia-usterki-serwisowy.pdf"
+                href="/do_pobrania/dokumentacja/CERTUS_Zasady_serwisu_i_cennik.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>KARTA KONTROLNA BHP</strong><br />
-              Karta kontrolna bezpieczeństwa i higieny pracy. Jest to checklista
-              do weryfikacji stanu maszyny, wymaganych środków ochrony indywidualnej
-              oraz procedur bezpieczeństwa przed rozpoczęciem pracy.
-            </td>
-            <td>
-              <a
-                href="/do_pobrania/dokumentacja/KARTA-KONTROLNA-BHP.pdf"
-                download
-                class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <strong>Ogólne Warunki Sprzedaży (OWS)</strong><br />
-              Dokument określa ogólne warunki sprzedaży obowiązujące w MG-CERTUS.
-              Reguluje kwestie związane z ofertami, zamówieniami, cenami, warunkami
-              płatności i dostaw.
-            </td>
-            <td>
-              <a
-                href="/do_pobrania/dokumentacja/OWS.pdf"
-                download
-                class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a
-              >
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+              </a>
             </td>
           </tr>
           <tr>
             <td>
               <strong>Protokół odbioru technicznego maszyny CNC</strong><br />
-              Protokół używany przy technicznym odbiorze maszyny CNC. Dokumentuje
-              dane ogólne, stan maszyny, zakres wdrożenia oraz oświadczenia stron
-              po zakończeniu instalacji.
+              Protokół podpisywany przy odbiorze: dane maszyny i wyposażenia, zakres wdrożenia, stan maszyny, oświadczenia stron.
             </td>
             <td>
               <a
-                href="/do_pobrania/dokumentacja/PROTOKOL-ODBIORU–TECHNICZNEGO-MASZYNY-CNC.pdf"
+                href="/do_pobrania/dokumentacja/CERTUS_Protokol_odbioru_technicznego.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a
-              >
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+              </a>
             </td>
           </tr>
           <tr>
             <td>
-              <strong>Protokół szkoleniowo-wdrożeniowy operatora CNC</strong><br
-              />
-              Dokument potwierdzający przeszkolenie operatora maszyny CNC. Określa
-              zakres odbytego szkolenia, obejmujący m.in. bezpieczeństwo, obsługę,
-              programowanie i konserwację.
+              <strong>Protokół szkolenia i wdrożenia operatora</strong><br />
+              Potwierdzenie szkolenia operatora: zakres szkolenia, uwagi i podpisy.
             </td>
             <td>
               <a
-                href="/do_pobrania/dokumentacja/Protokol-szkoleniowo-wdrozeniowy-operatora-CNC.pdf"
+                href="/do_pobrania/dokumentacja/CERTUS_Protokol_szkolenia_operatora.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a
-              >
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+              </a>
             </td>
           </tr>
           <tr>
             <td>
-              <strong>Zasady serwisu</strong><br />
-              Dokument opisujący zasady świadczenia usług serwisowych. Obejmuje warunki
-              serwisu gwarancyjnego, pogwarancyjnego oraz zasady przeprowadzania
-              okresowych przeglądów i napraw.
+              <strong>Karta kontrolna BHP</strong><br />
+              Kontrola stanu maszyny, środków ochrony indywidualnej i procedur bezpieczeństwa przed rozpoczęciem pracy.
             </td>
             <td>
               <a
-                href="/do_pobrania/dokumentacja/Zasady-serwisu-gwarancyjnego-pogwarancyjnego-i-okresowych-napraw-CERTUS.pdf"
+                href="/do_pobrania/dokumentacja/CERTUS_Karta_kontrolna_BHP.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" /></a
-              >
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Zgłoszenie usterki / awarii</strong><br />
+              Formularz zgłoszenia serwisowego. Wypełniony wyślij na kontakt@mg-certus.pl wraz ze zdjęciami lub wideo.
+            </td>
+            <td>
+              <a
+                href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf"
+                download
+                class="cta-button"
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Protokół serwisowy z kartą przeglądu</strong><br />
+              Protokół wizyty serwisowej (przegląd, naprawa) z kartą pomiarów i listą kontrolną przeglądu okresowego.
+            </td>
+            <td>
+              <a
+                href="/do_pobrania/dokumentacja/CERTUS_Protokol_serwisowy_karta_przegladu.pdf"
+                download
+                class="cta-button"
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+              </a>
             </td>
           </tr>
         </tbody>
