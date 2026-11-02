@@ -203,18 +203,6 @@
       margin-bottom: 5px;
       color: var(--color-text-secondary);
   }
-  a {
-      color: #3498db;
-      text-decoration: none;
-  }
-  a:hover {
-      text-decoration: underline;
-  }
-
-
-
-
-
 
   .pattern-overlay {
     position: relative;
@@ -257,17 +245,4 @@
     background-size: cover;
     filter: contrast(8.5);
   }
-
-
-
-
-
-
-  a:hover {
-    color: var(--color-primary);
-  }
-
-
-
-
 </style>

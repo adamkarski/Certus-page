@@ -23,7 +23,15 @@ export default {
 			}
 		},
 		prerender: {
-			handleMissingId: 'warn'
+			handleMissingId: (details) => {
+				if (
+					details.id.startsWith('m_') ||
+					details.id.startsWith('m-')
+				) {
+					return;
+				}
+				console.warn(details.message);
+			}
 		}
 	}
 };

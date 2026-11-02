@@ -82,21 +82,6 @@
     justify-content: flex-end;
     align-items: flex-end;
     padding-left: 20px;
-
-
-    h3 {
-      margin: 0 0 8px 0;
-      color: white;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-      font-weight: 600;
-    }
-    
-    p {
-      margin: 0 0 15px 0;
-      color: white;
-      font-weight: 300;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    }
   }
 
   .maszyny-cta-btn {

@@ -231,8 +231,8 @@
           >biuro@mg-certus.pl</a
         >
       </p>
-      <div on:click|stopPropagation={() => openGallery("certus-69")}>
-        <CtaButton classs="ms-button" text="Zobacz galerię" />
+      <div>
+        <CtaButton classs="ms-button" text="Zobacz galerię" on:click={() => openGallery("certus-69")} />
       </div>
 
 

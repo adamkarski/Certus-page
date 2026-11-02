@@ -682,10 +682,6 @@
     max-width: 50%; */
   }
 
-  .country-select input{
-    color: var(--color-text-secondary) !important;
-  }
-
   a:hover {
     color: var(--color-primary);
   }
@@ -730,7 +726,7 @@
   }
 
   .serwis-contact-left {
-    background-image: url(/assets/serwis-background.jpg); 
+    background-image: url(/assets/kontakt-background.jpg); 
 
     h2 {
       color: white;

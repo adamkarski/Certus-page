@@ -337,7 +337,7 @@
     background-position-x: -1500px;
     background-size: cover;
   }
-  .Dokumentacja {
+  #dokumentacja {
     width: 100%;
     padding: 100px 0;
     background: #f7f7f7;
@@ -349,7 +349,7 @@
   }
 
   @media (max-width: 768px) {
-    .Dokumentacja {
+    #dokumentacja {
       padding: 80px 0;
     }
   }

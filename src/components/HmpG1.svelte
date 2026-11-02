@@ -964,28 +964,6 @@
     }
   }
 
-  .btn-submit {
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 600;
-    background: #7e8c00;
-    color: #ffffff;
-    border: 0;
-    border-radius: 30px;
-    padding: 12px 32px;
-    cursor: pointer;
-    transition:
-      background-color 0.3s ease,
-      filter 0.3s ease,
-      box-shadow 0.3s ease;
-
-    &:hover {
-      background: #96a500;
-      filter: brightness(1.08);
-      box-shadow: 0 4px 14px rgba(126, 140, 0, 0.35);
-    }
-  }
-
   .cx-hero-img-box {
     position: relative;
     display: flex;
@@ -1072,11 +1050,6 @@
 
   .section-pad-sm {
     padding-top: 32px;
-  }
-
-  .section-pad-lg {
-    padding-top: 32px;
-    padding-bottom: 64px;
   }
 
   .white-card {

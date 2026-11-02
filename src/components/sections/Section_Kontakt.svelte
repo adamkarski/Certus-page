@@ -807,15 +807,8 @@
     margin-bottom: 16px;
     gap: 10px;
 
-    div {
-      display: flex;
-      flex-direction: column;
-
-      small {
-        color: #ccc;
-        font-size: 0.85rem;
-        margin-top: 2px;
-      }
+    b {
+      color: #fff;
     }
   }
 
@@ -853,13 +846,6 @@
     justify-content: center;
   }
 
-  .contact-form h3 {
-      color: var(--color-text-secondary);
-      margin-bottom: 20px;
-      font-weight: 600;
-      text-align: center;
-  }
-
   @media (max-width: 900px) {
     .contact-flex .background .contact {
       flex-direction: column;
@@ -881,14 +867,5 @@
   }
 
   @media (max-width: 768px) {
-    .contact-form h3 {
-        margin-bottom: 16px;
-    }
-
-    .contact-left h2 {
-    }
-
-    .contact-bullets li {
-    }
   }
 </style>

@@ -99,11 +99,5 @@
     .section-header {
       margin-bottom: 60px;
     }
-
-    .section-title {
-    }
-    .section-subtitle {
-      color: var(--color-text-secondary);
-    }
   }
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
+  import { fade } from "svelte/transition";
   import { typoFixAction } from '$lib/utils/typography';
   
   import kategorieMaszyn from "$lib/data/maszyny.json";

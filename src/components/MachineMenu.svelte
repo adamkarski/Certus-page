@@ -46,10 +46,6 @@
           justify-content: center;
           border: none;
         }
-        li img {
-          width: 1.7em;
-          margin-right: 20px;
-        }
       }
     }
   }

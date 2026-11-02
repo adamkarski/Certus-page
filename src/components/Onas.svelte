@@ -366,68 +366,6 @@ section.branze {
     font-weight: bold;
   }
 
-  /* Historia Section */
-  .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    &::after {
-      content: "";
-      position: absolute;
-      width: 6px;
-      background-color: var(--color-border);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
-    }
-  }
-
-  .timeline-item {
-    padding: 10px 40px;
-    position: relative;
-    background-color: inherit;
-    width: 50%;
-    &.fade-in {
-    }
-    &:nth-child(odd) {
-      left: 0;
-    }
-    &:nth-child(even) {
-      left: 50%;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      right: -17px;
-      background-color: white;
-      border: 4px solid var(--color-primary);
-      top: 15px;
-      border-radius: 50%;
-      z-index: 1;
-    }
-    &:nth-child(even)::after {
-      left: -16px;
-    }
-  }
-
-  .timeline-icon {
-    position: absolute;
-    top: 15px;
-    color: var(--color-primary);
-    z-index: 2;
-  }
-
-  .timeline-content {
-    padding: 20px 30px;
-    background-color: white;
-    position: relative;
-    border-radius: 6px;
-    padding-top: 7px;
-  }
-
   /* Co nas wyróżnia Section */
   .strengths-grid {
     display: grid;
@@ -509,30 +447,6 @@ section.branze {
   .dlaczego-text {
     max-width: 800px;
     margin: 0 auto 30px;
-  }
-
-  @media (max-width: 768px) {
-    .timeline::after {
-      left: 20px;
-    }
-
-    .timeline-item {
-      width: 100%;
-      padding-left: 60px;
-      left: 0 !important;
-    }
-
-    .timeline-item::after {
-      left: 13px;
-    }
-
-    .timeline-item:nth-child(even)::after {
-      left: 13px;
-    }
-
-    .timeline-item:nth-child(even) {
-      left: 0; /* Ensure it's not pushed to 50% on mobile */
-    }
   }
 
   @media (max-width: 768px) {

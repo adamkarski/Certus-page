@@ -97,12 +97,6 @@
     border-left: 4px solid var(--color-primary-dark);
   }
 
-  .feature a {
-    background-color: var(--color-text-light);
-    padding: 0 10px;
-    margin: 0 10px;
-  }
-
   :global(#o-nas button) {
     width: auto;
     padding-right: 16px;
@@ -125,18 +119,6 @@
     flex: 1 1 0;
     gap: 80px;
     align-items: start;
-  }
-
-  /* Lokalny styl usunięty - używamy globalnego z typography.scss */
-
-  .o-nas-description {
-    color: #666;
-    line-height: 1.8;
-    margin-bottom: 25px;
-  }
-
-  .o-nas-features {
-    margin-top: 40px;
   }
 
   .feature {

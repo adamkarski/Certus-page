@@ -44,6 +44,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 {#if isOpen && service}
+  <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
   <div
     bind:this={modalBackdrop}
     class="serwis-modal-backdrop"
