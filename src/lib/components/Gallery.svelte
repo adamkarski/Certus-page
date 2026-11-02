@@ -159,16 +159,34 @@
   function handleImageLoad() {
     hasTransitioned = true;
   }
+
+  function handleOverlayClick(event: MouseEvent) {
+    if (event.target === event.currentTarget) {
+      closeGallery();
+    }
+  }
 </script>
 
 {#if isOpen}
-<div class="gallery-modal-overlay" class:closing={isClosing} on:click={closeGallery}>
+<div
+  class="gallery-modal-overlay"
+  class:closing={isClosing}
+  on:click={handleOverlayClick}
+  on:keydown={(e) => {
+    if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
+      if (e.target === e.currentTarget) closeGallery();
+    }
+  }}
+  role="button"
+  tabindex="0"
+  aria-label="Zamknij galerię"
+>
     <div
       class="gallery-modal-content"
       role="dialog"
       aria-modal="true"
-      aria-label="Gallery"
-      on:click|stopPropagation
+      aria-label="Galeria zdjęć"
+      tabindex="-1"
     >
       <button class="close-button" on:click={closeGallery} aria-label="Zamknij galerię">
         <svg

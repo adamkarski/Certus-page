@@ -233,7 +233,18 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <section class="maszyny-plain-image-section" on:click={() => openGallery("frezarki-st")}>
+                <section
+                  class="maszyny-plain-image-section"
+                  role="button"
+                  tabindex="0"
+                  on:click={() => openGallery("frezarki-st")}
+                  on:keydown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openGallery("frezarki-st");
+                    }
+                  }}
+                >
                   <div class="maszyny-plain-image-container">
                     <img src="/assets/maszyny/galeria/webp/frezarka-hmm-st-1080-07.webp" alt="Frezarka CNC HMM-ST" class="maszyny-plain-image">
                     <div class="maszyny-plain-image-header">
@@ -425,7 +436,18 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <section class="maszyny-plain-image-section" on:click={() => openGallery("frezarki-gt")}>
+                <section
+                  class="maszyny-plain-image-section"
+                  role="button"
+                  tabindex="0"
+                  on:click={() => openGallery("frezarki-gt")}
+                  on:keydown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openGallery("frezarki-gt");
+                    }
+                  }}
+                >
                   <div class="maszyny-plain-image-container">
                     <img src="/assets/maszyny/galeria/webp/frezarka-hmm-gt-02.webp" alt="Frezarka CNC HMM-GT" class="maszyny-plain-image">
                     <div class="maszyny-plain-image-header">
@@ -592,7 +614,18 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <section class="maszyny-plain-image-section" on:click={() => openGallery("plotery-przemyslowe-ct")}>
+                <section
+                  class="maszyny-plain-image-section"
+                  role="button"
+                  tabindex="0"
+                  on:click={() => openGallery("plotery-przemyslowe-ct")}
+                  on:keydown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openGallery("plotery-przemyslowe-ct");
+                    }
+                  }}
+                >
                   <div class="maszyny-plain-image-container">
                     <img src="/assets/maszyny/galeria/webp/ploter-hpp-ct-02.webp" alt="Ploter Przemysłowy HPP-CT" class="maszyny-plain-image">
                     <div class="maszyny-plain-image-header">
@@ -748,7 +781,18 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <section class="maszyny-plain-image-section" on:click={() => openGallery("plotery-przemyslowe-ot")}>
+                <section
+                  class="maszyny-plain-image-section"
+                  role="button"
+                  tabindex="0"
+                  on:click={() => openGallery("plotery-przemyslowe-ot")}
+                  on:keydown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openGallery("plotery-przemyslowe-ot");
+                    }
+                  }}
+                >
                   <div class="maszyny-plain-image-container">
                     <img src="/assets/maszyny/galeria/webp/ploter-hpp-ot-05.webp" alt="Ploter Przemysłowy HPP-OT" class="maszyny-plain-image">
                     <div class="maszyny-plain-image-header">
@@ -923,7 +967,18 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <section class="maszyny-plain-image-section" on:click={() => openGallery("frezarki-5osiowe")}>
+                <section
+                  class="maszyny-plain-image-section"
+                  role="button"
+                  tabindex="0"
+                  on:click={() => openGallery("frezarki-5osiowe")}
+                  on:keydown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openGallery("frezarki-5osiowe");
+                    }
+                  }}
+                >
                   <div class="maszyny-plain-image-container">
                     <img src="/assets/maszyny/galeria/webp/frezarka-5osiowa-01.webp" alt="Frezarka pięcioosiowa" class="maszyny-plain-image">
                     <div class="maszyny-plain-image-header">
@@ -978,6 +1033,7 @@ afterUpdate(() => {
               <img
                 draggable="false"
                 src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
+                alt="Grawerka CNC"
               />
             </picture>
           </div>
@@ -1093,7 +1149,18 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <section class="maszyny-plain-image-section" on:click={() => openGallery("grawerki")}>
+                <section
+                  class="maszyny-plain-image-section"
+                  role="button"
+                  tabindex="0"
+                  on:click={() => openGallery("grawerki")}
+                  on:keydown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openGallery("grawerki");
+                    }
+                  }}
+                >
                   <div class="maszyny-plain-image-container">
                     <img src="/assets/maszyny/galeria/webp/grawerka-cnc-05.webp" alt="Grawerka CNC" class="maszyny-plain-image">
                     <div class="maszyny-plain-image-header">
@@ -1263,7 +1330,18 @@ afterUpdate(() => {
                 class="right_params_content"
                 in:fade={{ duration: 300, delay: 200 }}
               >
-                <section class="maszyny-plain-image-section" on:click={() => openGallery("plotery-linearne")}>
+                <section
+                  class="maszyny-plain-image-section"
+                  role="button"
+                  tabindex="0"
+                  on:click={() => openGallery("plotery-linearne")}
+                  on:keydown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openGallery("plotery-linearne");
+                    }
+                  }}
+                >
                   <div class="maszyny-plain-image-container">
                     <img src="/assets/maszyny/galeria/webp/ploter-hlp-ft.webp" alt="Ploter Liniowy" class="maszyny-plain-image">
                     <div class="maszyny-plain-image-header">

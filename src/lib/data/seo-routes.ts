@@ -124,3 +124,4 @@ export function getRouteSeo(pathname: string): RouteSeoData | undefined {
 	const normalized = pathname.replace(/\/$/, '') || '/';
 	return routeSeoMap[normalized];
 }
+

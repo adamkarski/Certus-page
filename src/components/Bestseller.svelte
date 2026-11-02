@@ -110,6 +110,12 @@
     window.removeEventListener('keydown', handleKeyDown);
   }
 
+  function handleOverlayClick(event: MouseEvent) {
+    if (event.target === event.currentTarget) {
+      closeLightbox();
+    }
+  }
+
   function nextImage() {
     currentImageIndex = (currentImageIndex + 1) % images.length;
     lightboxImage = images[currentImageIndex].src;
@@ -312,11 +318,11 @@
   <div
     bind:this={lightboxOverlay}
     class="lightbox-overlay"
-    on:click={closeLightbox}
+    on:click={handleOverlayClick}
     on:keydown={handleKeyDown}
-    role="dialog"
-    aria-modal="true"
-    tabindex="-1"
+    role="button"
+    tabindex="0"
+    aria-label="Zamknij galerię"
   >
     <button
       class="lightbox-close"
@@ -374,7 +380,6 @@
       src={lightboxImage}
       alt="Powiększone zdjęcie bestsellera"
       class="lightbox-image"
-      on:click|stopPropagation
       transition:fade={{ duration: 200 }}
     />
   </div>

@@ -1,8 +1,6 @@
 <script lang="ts">
   import Seo from '$lib/components/Seo.svelte';
 
-  export let data;
-
   import { fade } from 'svelte/transition';
   import { page } from '$app/stores';
   import '../lib/app.css';

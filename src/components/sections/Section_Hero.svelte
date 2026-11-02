@@ -1268,11 +1268,21 @@
 
                       <div
                         class="item_title no-sel"
+                        role="button"
+                        tabindex="0"
                         use:getTitle
                         on:click={() =>
                           cat.url
                             ? (window.location.href = cat.url)
                             : openCategory(cat.id)}
+                        on:keydown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            cat.url
+                              ? (window.location.href = cat.url)
+                              : openCategory(cat.id);
+                          }
+                        }}
                       ></div>
                     </swiper-slide>
                   {/if}
@@ -1365,8 +1375,16 @@
                         </button>
                         <div
                           class="item_title no-sel"
+                          role="button"
+                          tabindex="0"
                           use:getTitle
                           on:click={() => openMachine("m_frezarka")}
+                          on:keydown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              openMachine("m_frezarka");
+                            }
+                          }}
                         ></div>
                       </swiper-slide>
                       <swiper-slide>
@@ -1398,8 +1416,16 @@
                         </button>
                         <div
                           class="item_title no-sel"
+                          role="button"
+                          tabindex="0"
                           use:getTitle
                           on:click={() => openMachine("m_frezarka1")}
+                          on:keydown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              openMachine("m_frezarka1");
+                            }
+                          }}
                         ></div>
                       </swiper-slide>
                     </swiper-container>
@@ -1514,8 +1540,16 @@
                         </button>
                         <div
                           class="item_title no-sel"
+                          role="button"
+                          tabindex="0"
                           use:getTitle
                           on:click={() => openMachine("m-ploter")}
+                          on:keydown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              openMachine("m-ploter");
+                            }
+                          }}
                         ></div>
                       </swiper-slide>
                       <swiper-slide>
@@ -1547,8 +1581,16 @@
                         </button>
                         <div
                           class="item_title no-sel"
+                          role="button"
+                          tabindex="0"
                           use:getTitle
                           on:click={() => openMachine("m-ploter1")}
+                          on:keydown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              openMachine("m-ploter1");
+                            }
+                          }}
                         ></div>
                       </swiper-slide>
                     </swiper-container>
