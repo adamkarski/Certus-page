@@ -25,11 +25,11 @@
   <div class="info-cards-wrapper">
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 0 : 9999 }}>
       <div class="info-card-header">
-        <img src="/assets/green-arrow.svg" alt="Najwyższa jakość naszych komponentów" class="info-icon" />
-        <span class="info-title" use:typoFixAction>Najwyższa jakość komponentów:</span>
+        <img src="/assets/green-arrow.svg" alt="Markowe podzespoły" class="info-icon" />
+        <span class="info-title" use:typoFixAction>Markowe podzespoły:</span>
       </div>
       <p class="info-desc" use:typoFixAction>
-        Wszystkie maszyny są produkowane z użyciem najwyższej jakości komponentów, co gwarantuje trwałość i niezawodność.
+        Prowadnice liniowe, śruby kulowe i napędy od sprawdzonych dostawców, z częściami dostępnymi w Polsce i UE.
       </p>
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 300 : 9999 }}>

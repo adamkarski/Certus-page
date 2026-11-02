@@ -1170,8 +1170,8 @@
                           Kompaktowe centrum frezarskie CNC.
                         </div>
                         <p class="hmp-promo-desc">
-                          Pełna zabudowa, ATC i wrzeciono do 6 kW na mniej niż 1
-                          metrze kwadratowym powierzchni.
+                          Pełna zabudowa, ATC i wrzeciono do 6 kW na powierzchni
+                          mniejszej niż 1 m².
                         </p>
                         <div class="hmp-promo-buttons">
                           <a
@@ -1223,7 +1223,8 @@
                       >
                         <div class="headlines">
                           <div class="topline">
-                            {cat.title}
+                            <MachineTitleSvg text={cat.title} height="1.15em" />
+
                             {#if cat.subtitle}
                               {@html cat.subtitle}
                             {/if}
@@ -1367,7 +1368,7 @@
                           </div>
                           <div class="headlines">
                             <div class="topline">
-                              CNC HMM-ST<br /><span class="nawias"
+                              <MachineTitleSvg text="CNC HMM-ST" height="1.15em" /><br /><span class="nawias"
                                 >(ST - Sliding Table - ruchomy stół)</span
                               >
                             </div>
@@ -1408,7 +1409,7 @@
                           </div>
                           <div class="headlines">
                             <div class="topline">
-                              CNC HMM-GT<br /><span class="nawias"
+                              <MachineTitleSvg text="CNC HMM-GT" height="1.15em" /><br /><span class="nawias"
                                 >(GT - Ganry Type - ruchoma brama)</span
                               >
                             </div>
@@ -1532,7 +1533,7 @@
                           </div>
                           <div class="headlines">
                             <div class="topline">
-                              CNC HPP-CT<br /><span class="nawias"
+                              <MachineTitleSvg text="CNC HPP-CT" height="1.15em" /><br /><span class="nawias"
                                 >(CT — Closed Type - w zabudowie)</span
                               >
                             </div>
@@ -1573,7 +1574,7 @@
                           </div>
                           <div class="headlines">
                             <div class="topline">
-                              CNC HPP-OT<br /><span class="nawias"
+                              <MachineTitleSvg text="CNC HPP-OT" height="1.15em" /><br /><span class="nawias"
                                 >(OT — Open Type - otwarte)</span
                               >
                             </div>
@@ -1662,26 +1663,51 @@
   .item_title {
     position: absolute;
     margin-bottom: -57%;
-    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.72);
     color: rgb(255, 255, 255);
-    line-height: 1;
+    line-height: 1.2;
     transition: all 0.9s ease;
     text-align: center;
     width: 100%;
-    font-size: 1.3rem;
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
     font-weight: 300;
-    opacity: 0.75;
-    font-family: "Poppins" !important;
+    opacity: 0.95;
+    font-family: "Snasm", "Poppins", sans-serif !important;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    z-index: 20;
+
+    :global(.machine-svg-title) {
+      height: 1.2em;
+      max-width: 90%;
+      width: auto;
+      object-fit: contain;
+    }
+
+    :global(span:not(.sr-only)),
+    :global(.nawias) {
+      font-family: "Snasm", "Poppins", sans-serif !important;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(0.72rem, 1.1vw, 0.88rem);
+      color: #96a500;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
+      margin-top: 4px;
+      line-height: 1.2;
+      opacity: 0.95;
+    }
   }
   @media screen and (max-width: 746px) {
     .item_title {
-      font-size: 1.6rem;
+      font-size: clamp(1rem, 3.5vw, 1.35rem);
       margin-bottom: -85% !important;
 
-      span {
-        font-size: 0.8rem;
+      :global(span:not(.sr-only)),
+      :global(.nawias) {
+        font-size: 0.78rem;
       }
     }
   }
@@ -2293,9 +2319,14 @@
   }
 
   :global(body.home span.nawias) {
-    font-size: 1rem;
-    margin-top: 10px;
-    /*   float: right; */
+    font-family: "Snasm", "Poppins", sans-serif !important;
+    font-style: italic;
+    font-size: clamp(0.72rem, 1.1vw, 0.88rem);
+    color: #96a500;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
+    margin-top: 4px;
+    display: inline-block;
+    letter-spacing: 0.02em;
   }
 
   .headlines .topline {
@@ -2594,12 +2625,16 @@
   }
 
   .hmp-promo-subtitle {
-    font-size: 20px;
-    line-height: 1.4;
+    font-family: "Snasm", "Poppins", sans-serif !important;
+    font-style: italic;
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.3;
     color: #ffffff !important;
-    font-weight: 600;
+    font-weight: 500;
     margin: 0;
     text-align: right;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
   }
 
   .hmp-promo-desc {
@@ -2779,6 +2814,10 @@
 
     .hmp-promo-title {
       font-size: 38px;
+    }
+
+    .hmp-promo-subtitle {
+      font-size: 16px;
     }
 
     .hmp-hero-render-img {

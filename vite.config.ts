@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [sveltekit()],
   server: {
     host: true,
+    hmr: {
+      protocol: 'wss',
+    },
     https: {
       key: fs.readFileSync('localhost+1-key.pem'),
       cert: fs.readFileSync('localhost+1.pem'),

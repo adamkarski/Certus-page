@@ -7,9 +7,9 @@
   <div class="o-nas-container container">
     <div class="o-nas-content">
       <div class="o-nas-text no-sel">
-        <h2 class="section-title step-title">
+        <h1 class="section-title step-title">
           Precyzja, która pracuje na Twój wynik.
-        </h2>
+        </h1>
 
         <h3 class="step-description" use:typoFixAction>
           Projektujemy i budujemy w Polsce plotery i frezarki CNC – stabilne,

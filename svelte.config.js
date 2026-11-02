@@ -27,7 +27,7 @@ export default {
 			directives: {
 				'script-src': ['self', 'https://challenges.cloudflare.com', 'unsafe-inline'],
 				'frame-src': ['self', 'https://challenges.cloudflare.com'],
-				'connect-src': ['self', 'https://cdn.lottielab.com', 'https://api.mg-certus.pl']
+				'connect-src': ['self', 'https://cdn.lottielab.com', 'https://api.mg-certus.pl', 'ws:', 'wss:']
 			}
 		},
 		prerender: {

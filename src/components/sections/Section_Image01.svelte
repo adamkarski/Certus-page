@@ -31,7 +31,7 @@
   <div class="image-container">
     <img
       src={imgSrc}
-      alt="Certus maszyny tworzone z pasją i precyzją"
+      alt="Maszyny CNC CERTUS"
       class="masked-image"
     />
     <div class="image-header" bind:this={headerEl} class:visible>

@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @import "./typography.scss";
 
+@font-face {
+  font-family: 'Snasm';
+  src: url('/fonts/Snasm-Italic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic, normal;
+  font-display: swap;
+}
+
 
 
 img{

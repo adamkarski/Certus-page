@@ -71,6 +71,10 @@
     color: var(--color-text-primary);
     background-color: #eeeeee;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 
     .text-container {
@@ -172,45 +176,6 @@
       .text-container {
         transform: translateX(-6px); // Przesuwamy tekst w lewo
         color: var(--color-text-white);
-      }
-    }
-  }
-  button.bestseller {
-    background-color: #7e8c00;
-    clip-path: polygon(0% 1%, 100% 0, 83% 100%, 0% 100%);
-    padding: 10px;
-    color: white;
-    position: relative;
-    bottom: 10%;
-    right: 10%;
-    width: 315px;
-    left: 0px;
-
-    .svg-container {
-      // background-color: #96a500;
-    }
-    .cta-svg {
-      width: 1.3em;
-      height: 1em;
-      left: 126px;
-      position: relative;
-    }
-    .text-container {
-      text-align: left;
-      transform: translateX(6px);
-    }
-    &:hover {
-      background-color: rgba(150, 165, 0, 1);
-      .cta-svg {
-        width: 1.3em;
-        height: 1em;
-        left: 26px;
-        position: relative;
-      }
-      .text-container {
-  
-        transform: translateX(18px); // Przesuwamy tekst w lewo
-        text-align: left;
       }
     }
   }

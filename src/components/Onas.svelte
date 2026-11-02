@@ -10,6 +10,7 @@
 <Section_Onas_Images />
 
 <section class="onas section">
+  <h1 class="sr-only">O nas – CERTUS, polski producent maszyn CNC</h1>
   <p
     class="description no-sel"
     use:typoFixAction
@@ -95,8 +96,7 @@
         Solidność i niezawodność
       </h3>
       <p use:typoFixAction>
-        Nasze maszyny tworzone są z myślą o wieloletniej eksploatacji. CERTUS to
-        jakość bez kompromisów – nasze urządzenia pracują 24/7.
+        Nasze maszyny tworzone są z myślą o wieloletniej eksploatacji w produkcji wielozmianowej.
       </p>
     </div>
     <div class="strength-card fade-in" in:fade>
@@ -123,11 +123,10 @@
         </svg>
       </div>
       <h3 use:typoFixAction in:fade={{ duration: 600, delay: 900 }}>
-        Najlepszy stosunek jakości do ceny
+        Projekt i montaż w Polsce
       </h3>
       <p use:typoFixAction>
-        Umożliwiamy inwestycje w profesjonalne maszyny bez przepłacania.
-        Wszystko projektujemy i montujemy w Polsce.
+        Wszystko projektujemy i montujemy w Polsce — z częściami zamiennymi dostępnymi na miejscu.
       </p>
     </div>
     <div class="strength-card fade-in" in:fade>
@@ -239,9 +238,7 @@
   <div class="dlaczego-content">
     <h2 class="section-title">Dlaczego CERTUS?</h2>
     <p class="dlaczego-text">
-      Wybierając CERTUS, inwestujesz w polską jakość, indywidualne podejście i
-      wieloletnie doświadczenie. Nasze maszyny CNC to gwarancja precyzji,
-      niezawodności i optymalnego stosunku jakości do ceny.
+      Wybierając CERTUS, kupujesz maszynę zaprojektowaną i zbudowaną w Polsce, z serwisem producenta i pełną dokumentacją od pierwszego dnia.
     </p>
     <CtaButton
       on:click={() => (window.location.href = "/kontakt")}

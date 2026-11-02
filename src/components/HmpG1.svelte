@@ -98,13 +98,17 @@
     switch (fieldName) {
       case "firstName":
         if (!value.trim()) return "Imię jest wymagane";
-        if (value.trim().length < 2) return "Imię musi mieć co najmniej 2 znaki";
-        if (value.trim().length > 50) return "Imię jest za długie (max 50 znaków)";
+        if (value.trim().length < 2)
+          return "Imię musi mieć co najmniej 2 znaki";
+        if (value.trim().length > 50)
+          return "Imię jest za długie (max 50 znaków)";
         return null;
       case "lastName":
         if (!value.trim()) return "Nazwisko jest wymagane";
-        if (value.trim().length < 2) return "Nazwisko musi mieć co najmniej 2 znaki";
-        if (value.trim().length > 50) return "Nazwisko jest za długie (max 50 znaków)";
+        if (value.trim().length < 2)
+          return "Nazwisko musi mieć co najmniej 2 znaki";
+        if (value.trim().length > 50)
+          return "Nazwisko jest za długie (max 50 znaków)";
         return null;
       case "email":
         return validateEmail(value);
@@ -121,7 +125,7 @@
   function validateSingleField(fieldName: string) {
     const error = validateField(
       fieldName,
-      formData[fieldName as keyof typeof formData]
+      formData[fieldName as keyof typeof formData],
     );
     if (error) {
       errors = { ...errors, [fieldName]: error };
@@ -258,6 +262,8 @@
 <div class="hmp-page">
   <!-- D1. HERO (ciemny pas na całą szerokość wg mockupu Dawida) -->
   <div class="hmp-hero-wrapper">
+    <!-- Osobny div tła z obrazem pozbawionym artefaktów JPG i efektem motion blur -->
+    <div class="hmp-hero-bg"></div>
     <section id="top" class="cx-wrap hmp-hero-section">
       <div class="cx-hero">
         <div class="cx-hero-text">
@@ -266,10 +272,13 @@
           </p>
           <h1 class="cx-hero-title">
             <MachineTitleSvg text="HMP-G1" height="1em" />
+            <span class="sr-only"
+              >HMP-G1 – kompaktowe centrum frezarskie CNC</span
+            >
           </h1>
           <p class="cx-hero-lead" use:typoFixAction>
-            Pełna zabudowa, ATC i wrzeciono do 6 kW<br />na mniej niż 1 metrze
-            kwadratowym powierzchni.
+            Pełna zabudowa, ATC i wrzeciono do 6 kW na powierzchni mniejszej niż
+            1 m².
           </p>
           <div class="cx-hero-buttons">
             <button
@@ -584,19 +593,23 @@
               <li>
                 <span class="bullet"></span>
                 <div class="bullet-content">
-                  Napisz, z jakiego materiału i jakiej wielkości są Twoje detale — dobierzemy optymalną konfigurację HMP-G1 i przygotujemy wycenę.
+                  Napisz, z jakiego materiału i jakiej wielkości są Twoje detale
+                  — dobierzemy optymalną konfigurację HMP-G1 i przygotujemy
+                  wycenę.
                 </div>
               </li>
               <li>
                 <span class="bullet"></span>
                 <div class="bullet-content">
-                  Nasz zespół inżynierów pomoże dobrać wrzeciono (do 6 kW), magazyn narzędzi ATC (10–16 pozycji) oraz system sterowania.
+                  Pomożemy dobrać wrzeciono (do 6 kW), magazyn narzędzi ATC
+                  (10–16 pozycji) i wyposażenie dodatkowe.
                 </div>
               </li>
               <li>
                 <span class="bullet"></span>
                 <div class="bullet-content">
-                  Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy szybko, zazwyczaj w ciągu 24 godzin.
+                  Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy
+                  szybko, zazwyczaj w ciągu 24 godzin.
                 </div>
               </li>
             </ul>
@@ -608,7 +621,9 @@
                 </span>
                 <div>
                   <b>
-                    <a href="tel:+48606324406" title="Zadzwoń do Certus">+48 606 324 406</a>
+                    <a href="tel:+48606324406" title="Zadzwoń do Certus"
+                      >+48 606 324 406</a
+                    >
                   </b>
                   <small>Dni robocze 8:00–16:00</small>
                 </div>
@@ -619,7 +634,10 @@
                 </span>
                 <div>
                   <b>
-                    <a href="mailto:biuro@mg-certus.pl" title="Wyślij e-mail do Certus">biuro@mg-certus.pl</a>
+                    <a
+                      href="mailto:biuro@mg-certus.pl"
+                      title="Wyślij e-mail do Certus">biuro@mg-certus.pl</a
+                    >
                   </b>
                   <small>Dział handlowy i techniczny</small>
                 </div>
@@ -647,7 +665,11 @@
 
           <!-- Prawa kolumna: Formularz kontaktowy -->
           <div class="contact-right">
-            <form class="contact-form" on:submit={handleSubmit} autocomplete="off">
+            <form
+              class="contact-form"
+              on:submit={handleSubmit}
+              autocomplete="off"
+            >
               <h3>Zapytaj o konfigurację HMP-G1</h3>
 
               <div class="form-row">
@@ -660,12 +682,14 @@
                     placeholder="Imię"
                     bind:value={formData.firstName}
                     class:error={errors.firstName}
-                    on:blur={() => validateSingleField('firstName')}
+                    on:blur={() => validateSingleField("firstName")}
                     maxlength="50"
                     autocomplete="given-name"
                     required
                   />
-                  {#if errors.firstName}<span class="error-message">{errors.firstName}</span>{/if}
+                  {#if errors.firstName}<span class="error-message"
+                      >{errors.firstName}</span
+                    >{/if}
                 </div>
                 <div class="form-group">
                   <label for="lastName">Nazwisko</label>
@@ -676,12 +700,14 @@
                     placeholder="Nazwisko"
                     bind:value={formData.lastName}
                     class:error={errors.lastName}
-                    on:blur={() => validateSingleField('lastName')}
+                    on:blur={() => validateSingleField("lastName")}
                     maxlength="50"
                     autocomplete="family-name"
                     required
                   />
-                  {#if errors.lastName}<span class="error-message">{errors.lastName}</span>{/if}
+                  {#if errors.lastName}<span class="error-message"
+                      >{errors.lastName}</span
+                    >{/if}
                 </div>
               </div>
 
@@ -694,12 +720,14 @@
                   placeholder="twoj@email.com"
                   bind:value={formData.email}
                   class:error={errors.email}
-                  on:blur={() => validateSingleField('email')}
+                  on:blur={() => validateSingleField("email")}
                   maxlength="254"
                   autocomplete="email"
                   required
                 />
-                {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
+                {#if errors.email}<span class="error-message"
+                    >{errors.email}</span
+                  >{/if}
               </div>
 
               <div class="form-group phone-group">
@@ -721,12 +749,14 @@
                     bind:value={formData.phone}
                     class:error={errors.phone}
                     on:input={handlePhoneInput}
-                    on:blur={() => validateSingleField('phone')}
+                    on:blur={() => validateSingleField("phone")}
                     required
                     autocomplete="tel-national"
                   />
                 </div>
-                {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
+                {#if errors.phone}<span class="error-message"
+                    >{errors.phone}</span
+                  >{/if}
               </div>
 
               <div class="form-row">
@@ -768,13 +798,18 @@
                   id="privacy"
                   type="checkbox"
                   bind:checked={formData.privacy}
-                  on:change={() => validateSingleField('privacy')}
+                  on:change={() => validateSingleField("privacy")}
                   required
                 />
                 <label for="privacy">
-                  Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zapytania zgodnie z
-                  <a href="/polityka-prywatnosci" target="_blank">polityką prywatności</a>. *
-                  {#if errors.privacy}<span class="error-message">{errors.privacy}</span>{/if}
+                  Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
+                  obsługi zapytania zgodnie z
+                  <a href="/polityka-prywatnosci" target="_blank"
+                    >polityką prywatności</a
+                  >. *
+                  {#if errors.privacy}<span class="error-message"
+                      >{errors.privacy}</span
+                    >{/if}
                 </label>
               </div>
 
@@ -833,9 +868,32 @@
     position: relative;
     overflow: hidden;
     padding-top: 130px;
-    background-image: url("/assets/maszyny/hmp-g1/tlo_panoramiczne1.webp");
-    // blur effect
+  }
+
+  /* Osobny div tła - studio backdrop z delikatnym blur */
+  .hmp-hero-bg {
+    position: absolute;
+    inset: -25px; /* ujemny margines niweluje prześwity krawędzi przy blur */
+    background-image: url("/assets/maszyny/hmp-g1/hearotlo01-copy.webp");
     background-size: cover;
+    background-position: center;
+    filter: blur(
+      0px
+    ); /* <<< delikatny blur usuwający wszelkie kropki i szumy */
+    transform: scale(1.03);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hmp-hero-wrapper::after {
+    z-index: 1;
+    content: "";
+    background-image: url(/assets/images/pattern-image1-2.png);
+    position: absolute;
+    width: 100vw;
+    height: 37px;
+    right: 0px;
+    bottom: 0px;
   }
 
   .header-sekcja {
@@ -870,7 +928,7 @@
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #c5d84a;
+    color: var(--color-primary-light, #c5d418);
   }
 
   .cx-hero-title {
@@ -898,8 +956,8 @@
   }
 
   .btn-primary {
-    background: #9acd32;
-    color: #232c32;
+    background: var(--color-primary, #96a500);
+    color: #ffffff;
     text-decoration: none;
     font-size: 15px;
     font-weight: 600;
@@ -914,7 +972,7 @@
       box-shadow 0.3s ease;
 
     &:hover {
-      background: #7e8c00;
+      background: var(--color-primary-dark, #7e8c00);
       color: #ffffff;
       filter: brightness(1.08);
       box-shadow: 0 4px 14px rgba(126, 140, 0, 0.4);
@@ -938,14 +996,14 @@
 
     &:hover {
       background: rgba(255, 255, 255, 0.15);
-      border-color: #9acd32;
-      color: #9acd32;
+      border-color: var(--color-primary, #96a500);
+      color: var(--color-primary-light, #c5d418);
     }
   }
 
   .btn-olive {
     align-self: flex-start;
-    background: #7e8c00;
+    background: var(--color-primary-dark, #7e8c00);
     color: #ffffff;
     text-decoration: none;
     font-size: 14px;
@@ -959,7 +1017,7 @@
       filter 0.3s ease;
 
     &:hover {
-      background: #96a500;
+      background: var(--color-primary, #96a500);
       filter: brightness(1.08);
     }
   }
@@ -973,21 +1031,21 @@
   .cx-hero-img-box::after {
     content: "";
     position: absolute;
-    bottom: -15px;
+    bottom: 244px;
     left: 50%;
-    transform: translateX(-50%);
-    width: 82%;
-    height: 38%;
+    transform: translate(-50%);
+    width: 84%;
+    height: 64%;
     background: radial-gradient(
       ellipse at center,
-      rgba(255, 255, 255, 0.45) 0%,
-      rgba(255, 255, 255, 0.15) 45%,
-      rgba(255, 255, 255, 0) 75%
+      #ffffff73,
+      #ffffff26 45%,
+      #fff0 75%
     );
     border-radius: 50%;
     z-index: 1;
     pointer-events: none;
-    filter: blur(14px);
+    filter: blur(62px);
   }
   .cx-hero-img {
     position: relative;
@@ -1006,7 +1064,7 @@
   }
 
   .cx-kpi-item {
-    border-top: 3px solid #9acd32;
+    border-top: 3px solid var(--color-primary, #96a500);
     padding-top: 14px;
   }
 
@@ -1035,7 +1093,7 @@
   .cx-cut {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -1px;
     width: 34%;
     height: 46px;
     background: #f7f7f7;
@@ -1176,7 +1234,7 @@
   .checkmark-text {
     font-size: 13px;
     font-weight: 600;
-    color: #7e8c00;
+    color: var(--color-primary-dark, #7e8c00);
   }
 
   .drawing-side {
@@ -1230,7 +1288,7 @@
 
   .benefit-card {
     background: #ffffff;
-    border-top: 3px solid #96a500;
+    border-top: 3px solid var(--color-primary, #96a500);
     border-radius: 10px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
     padding: 24px 20px;
@@ -1260,7 +1318,7 @@
   }
 
   .olive-link {
-    color: #7e8c00;
+    color: var(--color-primary-dark, #7e8c00);
     text-decoration: underline;
     transition: color 0.3s ease;
 

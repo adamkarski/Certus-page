@@ -91,7 +91,7 @@
 
     const navLink = megaMenuEl.parentElement?.querySelector("a.nav-link");
     const categoryList = megaMenuEl.querySelector(
-      ".megamenu-category-list"
+      ".megamenu-category-list",
     ) as HTMLElement;
 
     if (!navLink || !categoryList) return;
@@ -249,9 +249,12 @@
           <div
             class="relative dropDownMenu maszynyDropdown"
             role="group"
+            on:mouseenter={() => (isMaszynyDropdownOpen = true)}
             on:mouseleave={() => (isMaszynyDropdownOpen = false)}
           >
-            <a on:click|preventDefault={() => isMaszynyDropdownOpen=!isMaszynyDropdownOpen }
+            <a
+              on:click|preventDefault={() =>
+                (isMaszynyDropdownOpen = !isMaszynyDropdownOpen)}
               href="/maszyny"
               class="nav-link flex items-center space-x-1"
               class:active={isMaszynyActive}
@@ -276,7 +279,7 @@
               class:open={isMaszynyDropdownOpen}
               bind:this={megaMenuEl}
             >
-              <div class="flex">
+              <div class="flex items-stretch">
                 <div class="w-1/3 py-4 px-2 megamenu-category-list">
                   <ul>
                     {#each kategorieMaszyn as kategoria, i}
@@ -284,7 +287,6 @@
                         {#if !kategoria.url}
                           <a
                             href="/maszyny#{kategoria.id}"
-                            
                             class="submenu-item {kategoria.id}"
                             role="button"
                             on:mouseenter={() => (hoveredCategory = kategoria)}
@@ -308,12 +310,13 @@
                   </ul>
                 </div>
                 <div
-                  class="w-2/3 bg-gray-50 flex flex-col items-center justify-center p-4 image-container"
+                  class="w-2/3 bg-gray-50 flex items-center justify-center p-3 image-container"
                 >
                   {#if hoveredCategory}
                     {#key hoveredCategory.id}
                       <a
-                        href={hoveredCategory.url || `/maszyny#${hoveredCategory.id}`}
+                        href={hoveredCategory.url ||
+                          `/maszyny#${hoveredCategory.id}`}
                         on:click|preventDefault={() =>
                           handleMaszynyNavigation(hoveredCategory.id)}
                       >
@@ -391,14 +394,14 @@
 
                   <div class="bestseller-features mb-4">
                     <ul class="features-list">
-                      <li>✓ Najwyższa precyzja cięcia</li>
+                      <li>✓ Pole pracy 600 × 900 × 200 mm</li>
                       <li>✓ Zaufało nam ponad 500 firm</li>
                       <li>✓ Kompleksowa obsługa serwisowa</li>
                     </ul>
                   </div>
 
                   <div class="bestseller-cta">
-                    <CtaButton classs="bestseller" text="Sprawdz szczegóły" />
+                    <CtaButton text="Sprawdź szczegóły" />
                   </div>
                 </div>
               </a>
@@ -510,13 +513,17 @@
             <div class="mobile-submenu" transition:slide>
               {#each kategorieMaszyn as kategoria}
                 {#if kategoria.url}
-                  <a class="mobile-submenu-link" href={kategoria.url}>{kategoria.title}</a>
+                  <a class="mobile-submenu-link" href={kategoria.url}
+                    >{kategoria.title}</a
+                  >
                 {/if}
                 {#if kategoria.url == null}
-                  <a class="mobile-submenu-link" 
-                  on:click|preventDefault={() =>
-                              handleMaszynyNavigation(kategoria.id)}
-                  href="/maszyny#{kategoria.id}">{kategoria.title}</a>
+                  <a
+                    class="mobile-submenu-link"
+                    on:click|preventDefault={() =>
+                      handleMaszynyNavigation(kategoria.id)}
+                    href="/maszyny#{kategoria.id}">{kategoria.title}</a
+                  >
                 {/if}
               {/each}
             </div>
@@ -639,37 +646,8 @@
 
   .bestseller-cta {
     margin-top: 26px;
-  }
-  :global(button.bestseller:hover .cta-svg) {
-    width: 21px;
-    height: 13px;
-    left: 26px;
-    position: relative;
-    transform: rotate(1deg);
-    transform: scaleY(1.5);
-  }
-
-  :global(button.bestseller .cta-svg) {
-    transform: scaleY(1.5);
-  }
-  /* Dostosowanie CTA button w dropdown */
-  .bestseller-dropdown :global(.cta-button) {
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto;
-    height: 40px;
     display: flex;
     justify-content: center;
-    align-items: center;
-  }
-
-  .bestseller-dropdown :global(.cta-button .maszyny_span) {
-    text-align: center;
-    width: 100%;
-  }
-
-  .bestseller-dropdown :global(.cta-svg) {
-    margin-left: -60px;
   }
 
   .desktop-menu-items {
@@ -1028,9 +1006,12 @@
     border-radius: 20px !important;
     font-weight: 600 !important;
     font-size: 0.9rem !important;
+    white-space: nowrap !important;
     margin-right: 6px;
     letter-spacing: 0.02em;
-    transition: background-color 0.3s ease, filter 0.3s ease !important;
+    transition:
+      background-color 0.3s ease,
+      filter 0.3s ease !important;
 
     &:hover {
       background-color: #96a500 !important;
@@ -1066,7 +1047,7 @@
     /* Hidden by default */
     visibility: hidden;
     opacity: 0;
-    transform: translateY(-10px); /* transform: translateX(-50%) removed */
+    transform: translateY(-10px);
     transition: all 200ms ease-in-out;
     pointer-events: none;
 
@@ -1105,25 +1086,42 @@
 
   .image-container {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    height: 100%;
+    min-height: 420px;
+    background-color: #f9fafb;
+    border-radius: 0.85rem;
+    overflow: hidden;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
 
-    height: 50%;
+  .image-container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: auto 0;
+    cursor: pointer;
   }
 
   .menu-image {
     position: relative;
     width: 100%;
-    height: 50%;
-    transition: transform 0.3s ease;
-    transform: scale(0.95); // Default smaller size
+    height: 100%;
+    max-height: 380px;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(1.06);
   }
 
   .image-container a:hover .menu-image {
-    transform: scale(0.97); // Enlarge to normal size on hover
-  }
-
-  .image-container a {
-    display: block;
-    cursor: pointer;
+    transform: scale(1.1);
   }
 
   .bestseller-link-wrapper {

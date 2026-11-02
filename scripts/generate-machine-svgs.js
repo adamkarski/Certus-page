@@ -18,8 +18,14 @@ if (fs.existsSync(cachePath)) {
 const buffer = fs.readFileSync(fontPath);
 const font = opentype.parse(buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength));
 
+// Standardized vertical font box metrics to guarantee 100% IDENTICAL letter size
+// across all titles regardless of descenders (p, y, g) or accents (ę, ć, ó).
+const STANDARD_TOP = -720;
+const STANDARD_BOTTOM = 330;
+const STANDARD_HEIGHT = STANDARD_BOTTOM - STANDARD_TOP; // 1050
+
 function getSvgData(text, fontSize = 1000) {
-  const cacheKey = `${text}_${fontSize}`;
+  const cacheKey = `${text}_${fontSize}_v2`;
   if (diskCache[cacheKey]) {
     return diskCache[cacheKey];
   }
@@ -28,8 +34,9 @@ function getSvgData(text, fontSize = 1000) {
   const p = font.getPath(text, 0, 0, fontSize);
   const bbox = p.getBoundingBox();
   const width = Math.round((bbox.x2 - bbox.x1) * 10) / 10;
-  const height = Math.round((bbox.y2 - bbox.y1) * 10) / 10;
-  const normalizedPath = font.getPath(text, -bbox.x1, -bbox.y1, fontSize);
+  const height = STANDARD_HEIGHT;
+  // Uniform baseline placement (-STANDARD_TOP) ensures capitals and baseline align perfectly
+  const normalizedPath = font.getPath(text, -bbox.x1, -STANDARD_TOP, fontSize);
 
   const d = normalizedPath.commands
     .map((cmd) => {
@@ -94,7 +101,19 @@ const machineNames = [
   'CERTUS 1080 PRO',
   'CERTUS 1410',
   'CERTUS 0816',
-  'CERTUS 0815 ATC'
+  'CERTUS 0815 ATC',
+  'CNC HMM-ST',
+  'CNC HMM-GT',
+  'CNC HPP-CT',
+  'CNC HPP-OT',
+  'Kompaktowe centrum HMP-G1',
+  'Frezarki CNC HMM',
+  'Plotery przemysłowe CNC',
+  'Frezarki pięcioosiowe',
+  'Grawerki CNC',
+  'Plotery CNC HLP-FT',
+  'Certus 69',
+  'Maszyny specjalistyczne'
 ];
 
 const svgs = {};
