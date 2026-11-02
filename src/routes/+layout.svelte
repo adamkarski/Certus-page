@@ -44,7 +44,8 @@
       mutations.forEach(mutation => {
         if (mutation.type === 'childList') {
           mutation.addedNodes.forEach(node => {
-            if (node.nodeType === 1 && (node.querySelector?.('.maszyny-dane-tabela') || node.classList?.contains('maszyny-dane-tabela'))) {
+            const el = node as Element;
+            if (node.nodeType === 1 && (el.querySelector?.('.maszyny-dane-tabela') || el.classList?.contains('maszyny-dane-tabela'))) {
               shouldUpdate = true;
             }
           });

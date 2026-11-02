@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from "$app/stores";
-	import { getRouteSeo } from "$lib/data/seo-routes";
+	import { getRouteSeo, type RouteSeoData } from "$lib/data/seo-routes";
 
 	const BASE_URL = "https://mg-certus.pl";
 
@@ -22,7 +22,7 @@
 	};
 
 	$: pathname = ($page?.url?.pathname || "/").replace(/\/$/, "") || "/";
-	$: routeSeo = getRouteSeo(pathname) || {};
+	$: routeSeo = (getRouteSeo(pathname) || {}) as Partial<RouteSeoData>;
 
 	$: effectiveTitle =
 		title || pageSeo.title || routeSeo.title || "CERTUS - Maszyny i Centra Obróbcze CNC";
