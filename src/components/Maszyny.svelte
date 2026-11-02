@@ -141,8 +141,7 @@
       </div>
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
-          Maszyny standardowo wyposażone są w automatyczny system wymiany
-          narzędzi z magazynem
+          Opcjonalnie: automatyczna wymiana narzędzi z magazynem rewolwerowym
         </li>
         <li use:typoFixAction>
           Napęd realizowany jest przez Serwonapędy Hybrydowe lub Serwa AC (w
@@ -163,7 +162,6 @@
         <li use:typoFixAction>
           Dokładność i powtarzalność pracy w swojej klasie
         </li>
-        <li use:typoFixAction>Nowoczesne rozwiązania technologiczne</li>
         <li use:typoFixAction>
           Intuicyjna obsługa i wsparcie w języku polskim
         </li>
@@ -185,7 +183,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <Maszyny_table_frezarki_GT_ST />
+        <Maszyny_table_frezarki_GT_ST type="ST" />
       </div>
     </div>
 
@@ -208,8 +206,8 @@
     </div>
   </div>
   <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Frezarki-CNC-HMM-ST.pdf"
+    downloadText="Karta katalogowa (PDF)"
+    downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HMM-ST.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
@@ -274,8 +272,7 @@
           umożliwiają duże pola robocze bez zwiększania masy ruchomego stołu.
         </li>
         <li use:typoFixAction>
-          Segmentowe stoły: T‑slot / podciśnienie / hybryda; opcja przelotu dla
-          elementów ponadwymiarowych.
+          Stół segmentowy: T-rowkowy (opcjonalnie stalowa nakładka) lub podciśnieniowy; opcja przelotu dla elementów dłuższych niż pole pracy.
         </li>
         <li use:typoFixAction>
           Konsola sterownicza wolnostojąca; interfejs i wsparcie w języku
@@ -304,11 +301,10 @@
       </div>
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
-          Automatyczna wymiana narzędzi z magazynem w standardzie.
+          Opcjonalnie: automatyczna wymiana narzędzi z magazynem rewolwerowym.
         </li>
         <li use:typoFixAction>
-          Serwonapędy hybrydowe lub AC (wg konfiguracji); przekładnie zębate na
-          dużych osiach; precyzja i dynamika w całym polu roboczym.
+          Serwonapędy hybrydowe lub AC (wg konfiguracji). Oś Y napędzana tandemowo – brama na dwóch śrubach kulowych.
         </li>
         <li use:typoFixAction>
           Komunikacja LAN — łatwa integracja z siecią zakładową i systemami CAM.
@@ -331,7 +327,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <Maszyny_table_frezarki_GT_ST />
+        <Maszyny_table_frezarki_GT_ST type="GT" />
       </div>
     </div>
 
@@ -347,8 +343,8 @@
     </div>
   </div>
   <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Frezarki-CNC-HMM-GT.pdf"
+    downloadText="Karta katalogowa (PDF)"
+    downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HMM-GT.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
@@ -367,8 +363,7 @@
       <div class="cnc-row" use:typoFixAction>
          to wielkoformatowe centrum obróbcze CNC stanowiące wysokowydajną
           platformę przeznaczoną do skrawania w co najmniej trzech osiach, z możliwością
-          rozbudowy o dodatkowe osie sterowane. Dzięki temu łączą funkcje frezowania,
-          wiercenia, gwintowania, toczenia, cięcia, bigowania, a nawet dozowania materiałów.
+          rozbudowy o dodatkowe osie sterowane. Frezowanie, wiercenie, gwintowanie i cięcie, a na zamówienie – z dodatkowym wyposażeniem – także toczenie (4. oś), bigowanie i dozowanie.
       </div>
     </div>
     <div class="cnc-right">
@@ -415,7 +410,7 @@
         </li>
         <li use:typoFixAction>
           Do cięższych zastosowań przewidziano możliwość zastosowania wrzecion o
-          mocy do 16 kW, z automatycznym systemem wymiany narzędzi – liniowym
+          mocy do 16 kW, z opcjonalnym automatycznym systemem wymiany narzędzi – liniowym
           lub obrotowym
         </li>
       </ul>
@@ -425,15 +420,10 @@
       </div>
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
-          Standardowo centra wyposażone są w stół próżniowy rastrowy z pompą
-          próżniową o dużej wydajności, co umożliwia szybkie i pewne mocowanie
-          materiałów w arkuszach oraz elementów o nieregularnym kształcie (przy
-          użyciu bloków próżniowych)
+          Standardowo: stół T-rowkowy panelowy – mocowanie detali bezpośrednio do stołu, w imadłach lub dedykowanych uchwytach
         </li>
         <li use:typoFixAction>
-          Alternatywnie dostępny jest stół T-rowkowy, pozwalający na tradycyjne
-          mocowanie detali – bezpośrednio do stołu, przy użyciu imadeł lub
-          dedykowanych uchwytów
+          Opcjonalnie: stół podciśnieniowy – szybkie mocowanie arkuszy i elementów o nieregularnym kształcie
         </li>
       </ul>
     </div>
@@ -453,7 +443,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <Maszyny_table_ploteryPrzemyslowe_CT_OT />
+        <Maszyny_table_ploteryPrzemyslowe_CT_OT type="OT" />
       </div>
     </div>
 
@@ -469,8 +459,8 @@
     </div>
   </div>
   <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Plotery-przemyslowe-CNC-HPP-OT.pdf"
+    downloadText="Karta katalogowa (PDF)"
+    downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HPP-OT.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
@@ -539,13 +529,7 @@
       </div>
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
-          Obudowane maszyny są projektowane z myślą o jeszcze większej
-          sztywności konstrukcyjnej
-        </li>
-        <li use:typoFixAction>
-          Zwiększona masa i zamknięty układ wspomagają tłumienie drgań, co
-          przekłada się na wyższą precyzję pracy, zwłaszcza przy obróbce metali
-          i materiałów trudnoskrawalnych
+          Konstrukcja HPP-OT: brama napędzana obustronnie dwiema śrubami kulowymi, z elektroniczną kompensacją odchyłek bramy
         </li>
       </ul>
 
@@ -554,9 +538,7 @@
       </div>
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
-          Zabudowane plotery CNC znajdują zastosowanie w aplikacjach
-          wymagających powtarzalności i kontroli środowiska obróbki – m.in. w
-          przemyśle motoryzacyjnym, lotniczym, formierskim i technice medycznej
+          Do aplikacji wymagających powtarzalności, czystego stanowiska i pracy z chłodzeniem w zamkniętej komorze – aluminium, stal, tworzywa, formy i przyrządy
         </li>
         <li use:typoFixAction>
           Mogą pracować z szeroką gamą materiałów, od tworzyw sztucznych i
@@ -570,9 +552,7 @@
       </div>
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
-          Podobnie jak modele otwarte, urządzenia mogą być wyposażone w stół
-          podciśnieniowy, T-rowkowy lub hybrydowy, co pozwala na szybkie i
-          elastyczne mocowanie elementów o różnych kształtach i rozmiarach
+          Standardowo stół T-rowkowy panelowy. Opcje: stół podciśnieniowy oraz pionowa płyta T-rowkowa na końcu stołu – do mocowania detali pionowo
         </li>
       </ul>
     </div>
@@ -593,7 +573,7 @@
   <div class="maszyny-dane-content">
     <div class="maszyny-dane-table-column">
       <div class="maszyny-dane-tabela-wrap">
-        <Maszyny_table_ploteryPrzemyslowe_CT_OT />
+        <Maszyny_table_ploteryPrzemyslowe_CT_OT type="CT" />
       </div>
     </div>
 
@@ -616,8 +596,8 @@
     </div>
   </div>
   <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Plotery-przemyslowe-CNC-HPP-CT.pdf"
+    downloadText="Karta katalogowa (PDF)"
+    downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HPP-CT.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
@@ -762,8 +742,8 @@
     </div>
   </div>
   <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Grawerki-CNC.pdf"
+    downloadText="Karta katalogowa (PDF)"
+    downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_Grawerki-CNC.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
@@ -782,8 +762,7 @@
       <div class="cnc-row" use:typoFixAction>
         To zaawansowane
         urządzenia przeznaczone do precyzyjnej obróbki detali o złożonej geometrii.
-        Znajdują zastosowanie przede wszystkim w produkcji wielkogabarytowych form
-        odlewniczych, matryc do termoformowania, modeli kompozytowych oraz elementów
+        Znajdują zastosowanie przede wszystkim w produkcji matryc do termoformowania, modeli kompozytowych oraz elementów
         wymagających wielostronnej obróbki w jednym mocowaniu.
       </div>
     </div>
@@ -834,11 +813,7 @@
       <div class="maszyny-dane-podtytul">Konstrukcja i wydajność:</div>
       <ul class="maszyny-dane-lista-small">
         <li use:typoFixAction>
-          Głowice obrotowo-uchylne stosowane w tego typu urządzeniach
-          projektowane są z wykorzystaniem bezluzowych przekładni harmonicznych,
-          co zapewnia dużą sztywność przy zachowaniu wysokiej dynamiki ruchów.
-          Dzięki takiej konstrukcji urządzenia osiągają bardzo wysoką wydajność
-          i jakość obróbki w swojej klasie
+          Stół obrotowo-uchylny (oś A 0–360°, oś B 0–210°) napędzany bezluzowymi przekładniami falowymi (harmonicznymi) lub cykloidalnymi – duża sztywność przy zachowaniu dynamiki ruchu
         </li>
         <li use:typoFixAction>
           Urządzenia zaprojektowane są z myślą o intensywnej, wielozmianowej
@@ -901,8 +876,8 @@
     </div>
   </div>
   <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Frezarki-5osiowe.pdf"
+    downloadText="Karta katalogowa (PDF)"
+    downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_Frezarki-5-osiowe.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
@@ -978,7 +953,7 @@
       <div class="maszyny-dane-podtytul">Automatyzacja i wygoda:</div>
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
         <li use:typoFixAction>
-          Plotery liniowe mogą być opcjonalnie wyposażone w taśmowy lub
+          Plotery HLP-FT mogą być opcjonalnie wyposażone w taśmowy lub
           bezkońcowy stół transportowy, co znacząco zwiększa wydajność przy
           obróbce długich serii materiałów z roli lub arkuszy
         </li>
@@ -1042,8 +1017,8 @@
     </div>
   </div>
   <MachineMenu
-    downloadText="Do pobrania"
-    downloadHref="/do_pobrania/Plotery-linearne-CNC.pdf"
+    downloadText="Karta katalogowa (PDF)"
+    downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HLP-FT.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />

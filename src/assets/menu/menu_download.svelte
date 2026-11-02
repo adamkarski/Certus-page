@@ -1,6 +1,6 @@
 <script lang="ts">
   export let href: string = '#';
-  export let text: string = 'Do pobrania';
+  export let text: string = 'Karta katalogowa (PDF)';
 </script>
 
 <a {href} target="_blank" rel="noopener noreferrer nofollow" class="icon-link" title={text}>

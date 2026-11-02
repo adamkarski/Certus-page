@@ -25,11 +25,11 @@
   <div class="info-cards-wrapper">
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 0 : 9999 }}>
       <div class="info-card-header">
-        <img src="/assets/green-arrow.svg" alt="Markowe podzespoły" class="info-icon" />
-        <span class="info-title" use:typoFixAction>Markowe podzespoły:</span>
+        <img src="/assets/green-arrow.svg" alt="Sprawdzone komponenty" class="info-icon" />
+        <span class="info-title" use:typoFixAction>Sprawdzone komponenty:</span>
       </div>
       <p class="info-desc" use:typoFixAction>
-        Prowadnice liniowe, śruby kulowe i napędy od sprawdzonych dostawców, z częściami dostępnymi w Polsce i UE.
+        Prowadnice liniowe i śruby kulowe na osiach, serwonapędy, sterowanie PikoCNC z polskim interfejsem.
       </p>
     </div>
     <div class="info-card" in:fade={{ duration: 500, delay: visible ? 300 : 9999 }}>

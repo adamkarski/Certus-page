@@ -11,8 +11,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiar obszaru roboczego (mm)</div></td>
-        <td class="highlight-options"><ul class="options-list"><li>fi 350</li></ul></td>
+        <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Stół obrotowo-uchylny (mm)</div></td>
+        <td class="highlight-options"><ul class="options-list"><li>Ø 350</li></ul></td>
       </tr>
       <tr>
         <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczym</div></td>
@@ -22,7 +22,7 @@
         <td><img src="/assets/ikony/table/rodzajewzeciona.svg" alt="Wrzeciona" /><div class="text">Rodzaje wrzeciona</div></td>
         <td class="specs-text">
           <ul class="options-list">
-            <li>24k (2,2kW, 4kW, 6kW, *inne po indywidualnych ustanieniach)</li>
+            <li>24k (2,2kW, 4kW, 6kW, *inne po indywidualnych ustaleniach)</li>
             <li>30k (2,2kW, 4kW, 6kW)</li>
           </ul>
         </td>
@@ -50,12 +50,11 @@
             <li>Sonda 3D współpracująca z makrami pomiarowymi</li>
             <li>Centralny układ smarowania</li>
             <li>Kamera wizyjna</li>
-            <li>4 + 5 oś obrotowa na stole</li>
           </ul>
         </td>
       </tr>
       <tr>
-        <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Typ stołu roboczego</div></td>
+        <td><img src="/assets/ikony/table/stoelroboczy.svg" alt="Stół" /><div class="text">Mocowanie detalu</div></td>
         <td class="specs-text">
           <ul class="options-list">
             <li>T - rowkowy</li>

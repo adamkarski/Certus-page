@@ -1,6 +1,6 @@
-
 <script lang="ts">
- import '$lib/table.scss';
+  import '$lib/table.scss';
+  export let type: 'ST' | 'GT' = 'ST';
 </script>
 
 <table class="maszyny-dane-tabela frezarki">
@@ -25,6 +25,11 @@
             <li>1000×800</li>
             <li>1200×1000</li>
             <li>1200×1200</li>
+            {#if type === 'GT'}
+              <li>1400×800</li>
+              <li>1400×1000</li>
+              <li>1400×1200</li>
+            {/if}
           </ul>
         </td>
       </tr>
@@ -54,7 +59,7 @@
         </td>
         <td class="specs-text">
           <ul class="options-list">
-            <li>24k obrotów</li>
+            <li>24k obrotów (2,2–16 kW)</li>
             <li>40k obrotów (5kW)</li>
             <li>50k obrotów (3kW)</li>
             <li>Wolnoobrotowe z wysokim momentem (serwonapęd 5/7,5kW)</li>
@@ -105,6 +110,7 @@
             <li>Kamera wizyjna</li>
             <li>4. oś obrotowa</li>
             <li>5. oś obrotowa</li>
+            <li>Chiller do wrzeciona chłodzonego wodą</li>
           </ul>
         </td>
       </tr>
@@ -115,12 +121,19 @@
         </td>
         <td class="specs-text">
           <ul class="options-list">
-            <li>T-rowkowy</li>
+            <li>T-rowkowy (opcjonalnie stalowa nakładka)</li>
             <li>Podciśnieniowy</li>
-            <li>Próżniowy</li>
-            <li>Hybrydowy</li>
           </ul>
         </td>
       </tr>
+      {#if type === 'GT'}
+        <tr>
+          <td>
+            <img src="/assets/ikony/table/opcje.svg" alt="Przelot" />
+            <div class="text">Przelot w stole</div>
+          </td>
+          <td class="specs-text">Opcja</td>
+        </tr>
+      {/if}
     </tbody>
   </table>

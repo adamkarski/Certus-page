@@ -8,8 +8,8 @@
   import CtaButton from "./CtaButton.svelte";
   import "$lib/styles/form-styles.scss";
 
-  // Flag for catalog PDF (hidden until provided)
-  const showCatalogPdf = false;
+  // Flag for catalog PDF (enabled)
+  const showCatalogPdf = true;
 
   // Contact form state
   let formData = {
@@ -290,12 +290,12 @@
             </button>
             {#if showCatalogPdf}
               <a
-                href="/do_pobrania/Karta-katalogowa-HMP-G1.pdf"
+                href="/do_pobrania/CERTUS_Karta_katalogowa_HMP-G1.pdf"
                 class="btn-secondary"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
               >
-                Karta katalogowa PDF
+                Karta katalogowa HMP-G1 (PDF)
               </a>
             {/if}
           </div>
@@ -529,14 +529,14 @@
             {#if showCatalogPdf}
               <div id="pobierz" class="download-box">
                 <p class="download-title">Karta katalogowa HMP-G1</p>
-                <p class="download-status">PDF · [w przygotowaniu]</p>
+                <p class="download-status">Dokumentacja techniczna PDF</p>
                 <a
-                  href="/do_pobrania/Karta-katalogowa-HMP-G1.pdf"
+                  href="/do_pobrania/CERTUS_Karta_katalogowa_HMP-G1.pdf"
                   class="btn-olive"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener"
                 >
-                  Pobierz PDF
+                  Karta katalogowa HMP-G1 (PDF)
                 </a>
               </div>
             {/if}

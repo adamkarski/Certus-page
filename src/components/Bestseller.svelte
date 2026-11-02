@@ -216,28 +216,44 @@
         Urządzenie posiada otwartą przestrzeń roboczą, o polu pracy: w osi (X) 600mm x (Y) 900mm x (Z) 200 mm.
       </p>
 
-      <p use:typoFixAction>Możliwość wyposażenia w automatyczny obrotowy magazyn narzędzi (ATC) </p>
+      <p use:typoFixAction>
+        Automatyczna wymiana narzędzi w obu wersjach: magazyn liniowy na 6 narzędzi (PRO-L) lub rewolwerowy na 10 narzędzi (PRO-R), oprawka ISO20.
+      </p>
 
-
-      <h3>Obecnie produkowane modele:</h3>
+      <h3>Obecnie produkowane wersje:</h3>
       <ul>
         <li>
-          <strong>Model: CERTUS 69 Standard</strong> - Pole pracy 600x900x200 mm. Waga maszyny 350 kg.
+          <strong>C69 PRO-L</strong> – magazyn liniowy, 6 pozycji ISO20. Pole pracy 600 × 900 × 200 mm.
         </li>
         <li>
-          <strong>Model: CERTUS 69 Serwo</strong> - Pole pracy 600x900x200 mm. Waga maszyny 450 kg.
-        </li>
-        <li>
-          <strong>Model: CERTUS 69 Serwo ATC</strong> - Pole pracy 600x900x200 mm. Waga maszyny 580 kg.
+          <strong>C69 PRO-R</strong> – magazyn rewolwerowy, 10 pozycji ISO20. Pole pracy 600 × 900 × 200 mm.
         </li>
       </ul>
+      <p use:typoFixAction>
+        Wrzeciono do 6 kW · prowadnice liniowe rozmiar 20 · śruby kulowe · sterowanie PikoCNC.
+      </p>
 
       <p>
         Zapraszamy do składania zapytań: <a href="mailto:biuro@mg-certus.pl"
           >biuro@mg-certus.pl</a
         >
       </p>
-      <div>
+      <div class="bestseller-buttons">
+        <a
+          href="/do_pobrania/CERTUS_Karta_katalogowa_C69-PRO.pdf"
+          class="catalog-download-btn"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg class="pdf-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="12" y1="18" x2="12" y2="12"></line>
+            <line x1="9" y1="15" x2="12" y2="18"></line>
+            <line x1="15" y1="15" x2="12" y2="18"></line>
+          </svg>
+          Karta katalogowa C69 PRO (PDF)
+        </a>
         <CtaButton classs="ms-button" text="Zobacz galerię" on:click={() => openGallery("certus-69")} />
       </div>
 
@@ -285,7 +301,7 @@
         {/each}
       </div>
       <div class="call-to-action-section">
-        <h1>Oceń Potencjał !</h1>
+        <h2 use:typoFixAction>Oceń potencjał</h2>
         <p use:typoFixAction>
           To urządzenie wyróżnia się na rynku dzięki swoim unikalnym atutom. Aby
           w pełni ocenić jego potencjał, zapraszamy do przetestowania
@@ -504,6 +520,39 @@
 
   .text-column {
     flex: 2;
+
+    .bestseller-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
+
+    .catalog-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0 1.5rem;
+      height: 45px;
+      background: #96a500;
+      color: white;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      clip-path: polygon(0% 1%, 100% 0, 85% 100%, 0% 100%);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
+      .pdf-icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        background: #7e8c00;
+        color: white;
+      }
+    }
   }
 
   .image-column {

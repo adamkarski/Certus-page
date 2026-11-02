@@ -2,12 +2,6 @@
   import '$lib/table.scss';
  </script>
 
-
-
-
-
-
-
 <table class="maszyny-dane-tabela tnace">
     <thead>
       <tr>
@@ -20,13 +14,13 @@
         <td><img src="/assets/ikony/table/wymiary.svg" alt="Wymiary" /><div class="text">Wymiary obszaru roboczego (mm)</div></td>
         <td class="highlight-options">
           <ul class="options-list">
+            <li>700×1600</li>
+            <li>1000×1200</li>
+            <li>1000×1400</li>
             <li>1500×2000</li>
             <li>2000×2500</li>
             <li>2000×3000</li>
             <li>2000×4000</li>
-            <li>700×1600</li>
-            <li>1000×1200</li>
-            <li>1000×1400</li>
           </ul>
         </td>
       </tr>
@@ -34,13 +28,13 @@
         <td><img src="/assets/ikony/table/wysokosc.svg" alt="Wysokość" /><div class="text">Wysokość nad stołem roboczym (mm)</div></td>
         <td class="highlight-options">
           <ul class="options-list">
-          <li>270</li>
+            <li>270</li>
           </ul>
         </td>
       </tr>
       <tr>
         <td><div class="text">Nóż oscylacyjny</div></td>
-        <td class="standard-feature"><span class="check-mark">✓</span>Pneumatyczny</td>
+        <td class="specs-text">Pneumatyczny (opcja)</td>
       </tr>
       <tr>
         <td><div class="text">Głowica tnąca</div></td>
@@ -63,7 +57,7 @@
       </tr>
       <tr>
         <td><div class="text">Taśmowy, bezkońcowy stół transportowy</div></td>
-        <td class="standard-feature"><span class="check-mark">✓</span>Tak</td>
+        <td class="specs-text">Opcja</td>
       </tr>
     </tbody>
   </table>

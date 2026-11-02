@@ -2,7 +2,7 @@
   import MenuDownload from "$lib/../assets/menu/menu_download.svelte";
   import MenuEmail from "$lib/../assets/menu/menu_email.svelte";
 
-  export let downloadText = "Do pobrania";
+  export let downloadText = "Karta katalogowa (PDF)";
   export let downloadHref = "#";
   export let contactText = "Kontakt";
   export let contactHref = "#";
