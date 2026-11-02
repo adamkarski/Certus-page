@@ -7,15 +7,16 @@
 	export let image = `${base_url}/static/images/certusPage.jpg`; // Domyślny obrazek
 	export let type = 'website';
 
-
+	$: isHmp = $page?.url?.pathname?.startsWith('/hmp-g1');
 
 	// Konstruujemy pełne adresy URL
-	const canonicalUrl = `${base_url}${$page.url.pathname}`;
-	const imageUrl = image.startsWith('http') ? image : `${base_url}${image}`;
-	const logoUrl = `${base_url}/static/assets/logo-certus.svg`; // Zakładając, że logo jest w static/assets
+	$: canonicalUrl = `${base_url}${$page.url.pathname}`;
+	$: imageUrl = image.startsWith('http') ? image : `${base_url}${image}`;
+	$: logoUrl = `${base_url}/static/assets/logo-certus.svg`; // Zakładając, że logo jest w static/assets
 </script>
 
 <svelte:head>
+{#if !isHmp}
 	<!-- Standard SEO -->
 	<title>{title}</title>
 	<meta name="description" content={description} />
@@ -35,4 +36,5 @@
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={imageUrl} />
+{/if}
 </svelte:head>

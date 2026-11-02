@@ -313,15 +313,21 @@
         <ul use:typoFixAction class="contact-bullets no-sel">
           <li>
             <span class="bullet"></span>
-            Pobierz i wypełnij <a href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf" download class="bullet-link">formularz zgłoszenia usterki</a>, a następnie wyślij go na <a href="mailto:kontakt@mg-certus.pl" class="bullet-link">kontakt@mg-certus.pl</a>. Dołącz zdjęcia lub krótkie wideo problemu.
+            <div class="bullet-content">
+              Pobierz i wypełnij <a href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf" download class="bullet-link">formularz zgłoszenia usterki</a>, a następnie wyślij go na <a href="mailto:kontakt@mg-certus.pl" class="bullet-link">kontakt@mg-certus.pl</a>. Dołącz zdjęcia lub krótkie wideo problemu.
+            </div>
           </li>
           <li>
             <span class="bullet"></span>
-            Sprawy pilne: +48 606 324 406, w dni robocze 8:00–16:00. Oddzwaniamy najpóźniej następnego dnia roboczego.
+            <div class="bullet-content">
+              Sprawy pilne: +48 606 324 406, w dni robocze 8:00–16:00. Oddzwaniamy najpóźniej następnego dnia roboczego.
+            </div>
           </li>
           <li>
             <span class="bullet"></span>
-            Termin wizyty ustalamy po analizie zgłoszenia.
+            <div class="bullet-content">
+              Termin wizyty ustalamy po analizie zgłoszenia.
+            </div>
           </li>
         </ul>
         <div class="contact-info-block">
@@ -785,10 +791,14 @@
 
   .contact-bullets li {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     margin-bottom: 18px;
     line-height: 1.5;
     color: var(--color-gray-200);
+
+    .bullet-content {
+      flex: 1;
+    }
 
     a.bullet-link {
       color: var(--color-primary, #96a500);
@@ -819,11 +829,13 @@
 
   .bullet {
     width: 11px;
-    height: 63px;
+    min-height: 22px;
+    height: auto;
     background: var(--color-primary);
     border-radius: 0;
     margin-right: 16px;
-    margin-top: 4px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     flex-shrink: 0;
     position: relative;
   }

@@ -348,18 +348,24 @@
     <ul use:typoFixAction class="contact-bullets no-sel">
       <li>
         <span class="bullet"></span>
-        Wypełnij formularz, a nasz doradca skontaktuje się z Tobą, by omówić szczegóły
-        i przygotować indywidualną wycenę.
+        <div class="bullet-content">
+          Wypełnij formularz, a nasz doradca skontaktuje się z Tobą, by omówić szczegóły
+          i przygotować indywidualną wycenę.
+        </div>
       </li>
       <li>
         <span class="bullet"></span>
-        Nasz zespół ekspertów chętnie pomoże<br /> w doborze odpowiedniego urządzenia,
-        przygotuje ofertę lub wyjaśni szczegóły techniczne.
+        <div class="bullet-content">
+          Nasz zespół ekspertów chętnie pomoże<br /> w doborze odpowiedniego urządzenia,
+          przygotuje ofertę lub wyjaśni szczegóły techniczne.
+        </div>
       </li>
       <li>
         <span class="bullet"></span>
-        Skorzystaj z bezpłatnej konsultacji<br /> – odpowiadamy szybko i
-        rzeczowo,<br /> zazwyczaj w ciągu 24 godzin.
+        <div class="bullet-content">
+          Skorzystaj z bezpłatnej konsultacji<br /> – odpowiadamy szybko i
+          rzeczowo,<br /> zazwyczaj w ciągu 24 godzin.
+        </div>
       </li>
     </ul>
     <div class="contact-info-block">
@@ -765,19 +771,25 @@
 
   .contact-bullets li {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     margin-bottom: 18px;
     line-height: 1.5;
     color: var(--color-gray-200);
+
+    .bullet-content {
+      flex: 1;
+    }
   }
 
   .bullet {
     width: 11px;
-    height: 63px;
+    min-height: 22px;
+    height: auto;
     background: var(--color-primary);
     border-radius: 0;
     margin-right: 16px;
-    margin-top: 4px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     flex-shrink: 0;
     position: relative;
   }

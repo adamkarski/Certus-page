@@ -60,7 +60,7 @@
           },
           {
             label: "Robocizna serwisu",
-            value: "Bezpłatnie (0 zł)",
+            value: "Bezpłatnie",
             highlight: true,
           },
           {
@@ -275,7 +275,7 @@
               },
               {
                 label: "Robocizna serwisu",
-                value: "Bezpłatnie (0 zł)",
+                value: "Bezpłatnie",
                 highlight: true,
               },
               {
@@ -592,14 +592,16 @@
           <p class="cennik-sub" use:typoFixAction>W okresie gwarancji:</p>
           <ul class="cennik-list" use:typoFixAction>
             <li>robocizna serwisu — bezpłatnie,</li>
-            <li>
+            <li use:typoFixAction>
               części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie,
             </li>
-            <li>
+            <li use:typoFixAction>
               materiały eksploatacyjne i części zużywające się (np. smar,
               chłodziwo, tulejki zaciskowe, paski napędowe) — płatne,
             </li>
-            <li>dojazd serwisu — płatny wg stawki poniżej.</li>
+            <li use:typoFixAction>
+              dojazd serwisu — płatny wg obowiązującej stawki
+            </li>
           </ul>
         </div>
 
@@ -607,9 +609,16 @@
         <div class="cennik-item">
           <h4 use:typoFixAction>Serwis pogwarancyjny</h4>
           <p use:typoFixAction>
-            Robocizna, w tym diagnoza: <strong>240 zł netto/h</strong>.
+            Kompleksowe wsparcie techniczne, naprawy i diagnostyka maszyn CNC po
+            okresie gwarancji.
           </p>
-          <p use:typoFixAction>Części i materiały: wg wyceny po diagnozie.</p>
+          <p class="cennik-sub" use:typoFixAction>Stawki i warunki:</p>
+          <ul class="cennik-list" use:typoFixAction>
+            <li>
+              robocizna, w tym diagnoza — <strong>240 zł netto/h</strong>,
+            </li>
+            <li>części i materiały — wg wyceny po diagnozie.</li>
+          </ul>
         </div>
 
         <!-- Przegląd okresowy -->
@@ -619,44 +628,69 @@
             Zalecany co 12 miesięcy, co 6 miesięcy przy pracy wielozmianowej lub
             w trudnych warunkach (pył, praca z chłodziwem).
           </p>
-          <p use:typoFixAction>Czas: ok. 3–4 h dla frezarki HMM-ST.</p>
-          <p use:typoFixAction>
-            Rozliczenie: <strong>240 zł netto/h</strong> + dojazd.
-          </p>
+          <p class="cennik-sub" use:typoFixAction>Zakres i rozliczenie:</p>
+          <ul class="cennik-list" use:typoFixAction>
+            <li>czas — ok. 3–4 h dla frezarki HMM-ST,</li>
+            <li>
+              rozliczenie — <strong>240 zł netto/h</strong> + dojazd.
+            </li>
+          </ul>
         </div>
 
         <!-- Szkolenie operatora -->
         <div class="cennik-item">
           <h4 use:typoFixAction>Szkolenie operatora</h4>
           <p use:typoFixAction>
-            Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) — <strong
-              >w cenie maszyny</strong
-            >.
+            Szkolenia z bezpiecznej i efektywnej obsługi maszyn oraz systemów
+            sterowania CNC.
           </p>
-          <p use:typoFixAction>
-            Każde dodatkowe szkolenie — <strong>240 zł netto/h</strong>.
-          </p>
+          <p class="cennik-sub" use:typoFixAction>Warianty szkoleń:</p>
+          <ul class="cennik-list" use:typoFixAction>
+            <li>
+              szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) — <strong
+                >w cenie maszyny</strong
+              >,
+            </li>
+            <li>
+              każde dodatkowe szkolenie — <strong>240 zł netto/h</strong>.
+            </li>
+          </ul>
         </div>
 
         <!-- Dojazd -->
         <div class="cennik-item cennik-item-wide">
           <h4 use:typoFixAction>Dojazd</h4>
           <p use:typoFixAction>
-            <strong>2,50 zł netto/km</strong>, liczone w obie strony od siedziby
-            w Choczni. Czas dojazdu nie jest doliczany.
+            Dojazd ekipy serwisowej liczony w obie strony bezpośrednio od
+            siedziby w Choczni. Czas dojazdu nie jest doliczany.
           </p>
-          <p class="cennik-example" use:typoFixAction>
-            <em>Przykład:</em> klient w odległości 150 km → 300 km × 2,50 zł =
-            <strong>750 zł netto</strong>.
-          </p>
+          <p class="cennik-sub" use:typoFixAction>Stawka i rozliczenie:</p>
+          <ul class="cennik-list" use:typoFixAction>
+            <li>
+              stawka kilometrowa — <strong>2,50 zł netto/km</strong>,
+            </li>
+            <li>
+              przykład kalkulacji — klient w odległości 150 km → 300 km × 2,50
+              zł =
+              <strong>750 zł netto</strong>.
+            </li>
+          </ul>
         </div>
 
         <!-- Zdalna diagnostyka online -->
         <div class="cennik-item cennik-item-wide">
+          <h4 use:typoFixAction>Zdalna diagnostyka online</h4>
           <p use:typoFixAction>
-            <strong>Zdalna diagnostyka online:</strong> 100 zł netto za każde rozpoczęte
-            30 min.
+            Szybka pomoc techniczna, analiza parametrów oraz rozwiązywanie
+            problemów przez połączenie zdalne.
           </p>
+          <p class="cennik-sub" use:typoFixAction>Stawka i czas:</p>
+          <ul class="cennik-list" use:typoFixAction>
+            <li>
+              stawka za sesję — <strong>100 zł netto</strong> za każde rozpoczęte
+              30 min.
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -1536,21 +1570,24 @@
 
     .cennik-item {
       background: #ffffff;
-      padding: 20px 24px;
+      padding: 24px 28px;
       border-radius: 12px;
       border: 1px solid #ebebeb;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
 
       h4 {
         font-size: 1.15rem;
         font-weight: 700;
         color: var(--color-primary, #7e8c00);
         margin: 0 0 10px 0;
+        line-height: 1.35;
       }
 
       p {
         font-size: 0.95rem;
-        line-height: 1.5;
+        line-height: 1.55;
         color: #444;
         margin: 0 0 8px 0;
 
@@ -1561,19 +1598,25 @@
 
       .cennik-sub {
         font-weight: 600;
-        color: #333;
-        margin-top: 6px;
+        color: #222;
+        margin-top: 8px;
+        margin-bottom: 6px;
       }
 
       .cennik-list {
         margin: 6px 0 0 0;
         padding-left: 20px;
+        list-style-type: disc;
 
         li {
-          font-size: 0.9rem;
-          color: #555;
-          line-height: 1.45;
-          margin-bottom: 4px;
+          font-size: 0.95rem;
+          color: #444;
+          line-height: 1.55;
+          margin-bottom: 6px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
       }
 
@@ -1582,7 +1625,8 @@
         border-left: 3px solid var(--color-primary, #96a500);
         padding: 6px 12px;
         margin-top: 8px;
-        font-size: 0.9rem;
+        font-size: 0.92rem;
+        line-height: 1.5;
         color: #555;
       }
 

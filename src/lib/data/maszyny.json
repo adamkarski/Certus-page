@@ -1,6 +1,14 @@
 
 [
   {
+    "id": "hmp-g1",
+    "title": "Kompaktowe centrum HMP-G1",
+    "img": "/assets/maszyny/hmp-g1/hmp-g1-render.webp",
+    "startExpanded": false,
+    "url": "/hmp-g1",
+    "icon": "/assets/ikony/maszyny/frezarki.svg"
+  },
+  {
     "id": "frezarki",
     "title": "Frezarki CNC HMM",
     "img": "/assets/maszyny/renders/FREZARKI_HMM_Layers/FREZARKI_HMM_Layer1.png",

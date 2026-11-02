@@ -37,6 +37,7 @@
 
   // Reactive variables for active links
   $: currentPath = $page.url.pathname;
+  $: isHmpG1Active = currentPath.startsWith("/hmp-g1");
   $: isMaszynyActive = currentPath.startsWith("/maszyny");
   $: isBestsellerActive = currentPath.startsWith("/bestseller");
   $: isSerwisActive = currentPath.startsWith("/serwis");
@@ -238,6 +239,13 @@
         </div>
 
         <div class="desktop-menu-items">
+          <a
+            href="/hmp-g1"
+            class="nav-link nav-pill-nowosc"
+            class:active={isHmpG1Active}
+          >
+            Nowość: HMP-G1
+          </a>
           <div
             class="relative dropDownMenu maszynyDropdown"
             
@@ -465,6 +473,14 @@
           {/if}
         </div>
         <div class="mobile-links-container">
+          <a
+            href="/hmp-g1"
+            class="mobile-nav-link mobile-nav-pill-nowosc"
+            class:active={isHmpG1Active}
+            on:click={closeMobileMenu}
+          >
+            Nowość: HMP-G1
+          </a>
           <a
             href="/"
             class="mobile-nav-link"
@@ -1008,6 +1024,44 @@
       &:hover {
         filter: brightness(1.1);
       }
+    }
+  }
+
+  .nav-pill-nowosc {
+    background-color: #7e8c00 !important;
+    color: #ffffff !important;
+    padding: 8px 18px !important;
+    border-radius: 20px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    margin-right: 6px;
+    letter-spacing: 0.02em;
+    transition: background-color 0.3s ease, filter 0.3s ease !important;
+
+    &:hover {
+      background-color: #96a500 !important;
+      color: #ffffff !important;
+      filter: brightness(1.08);
+    }
+
+    &.active {
+      background-color: #96a500 !important;
+      box-shadow: 0 0 0 2px rgba(126, 140, 0, 0.4);
+    }
+  }
+
+  .mobile-nav-pill-nowosc {
+    background-color: #7e8c00 !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    margin-bottom: 8px;
+    text-align: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #96a500 !important;
+      color: #ffffff !important;
     }
   }
 

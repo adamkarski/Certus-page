@@ -71,11 +71,10 @@
     color: var(--color-text-primary);
     background-color: #eeeeee;
     cursor: pointer;
-    transition: all 0.4s ease;
-    // box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 
     .text-container {
-      transition: transform 0.4s ease;
+      transition: transform 0.3s ease;
       width: 81%;
     }
 
@@ -89,7 +88,7 @@
       align-items: center;
       justify-content: center;
       transform: translateX(100%);
-      transition: transform 0.4s ease;
+      transition: transform 0.3s ease;
       // background-color: #7e8c00; // Tło dla SVG
     }
 
@@ -120,6 +119,15 @@
       }
     }
 
+    &.hero:hover, &.backButton:hover, &.backFromCategory:hover {
+      .text-container {
+        transform: none !important;
+      }
+      .svg-container {
+        transform: translateX(100%) !important;
+      }
+    }
+
     &:focus {
       outline: none;
       box-shadow: 0 0 0 3px rgba(150, 165, 0, 0.5);
@@ -133,6 +141,7 @@
     position: absolute;
     bottom: 10%;
     left: 10%;
+    transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 
     .svg-container {
       background-color: #7e8c00;
@@ -140,6 +149,7 @@
 
     &:hover {
       background-color: #7e8c00;
+      filter: brightness(1.05);
     }
   }
   button.oferta-cta {

@@ -18,12 +18,13 @@
   } from "../../lib/visibilityStore";
 
   import MaszynyActiveMachine from "../Maszyny_activeMachine.svelte";
+  import MachineTitleSvg from "$lib/components/MachineTitleSvg.svelte";
 
   register();
 
   const initialScale = 0.85;
   let scaleStores = list.map(() =>
-    tweened(initialScale, { duration: 300, easing: quintOut })
+    tweened(initialScale, { duration: 300, easing: quintOut }),
   );
 
   // Stores for subcategory items
@@ -46,7 +47,7 @@
 
   function scaleOnHover(
     node: HTMLElement,
-    { store, initialValue }: { store: Writable<number>; initialValue: number }
+    { store, initialValue }: { store: Writable<number>; initialValue: number },
   ) {
     const unsubscribe = store.subscribe((value) => {
       node.style.transform = `scale(${value})`;
@@ -93,7 +94,7 @@
     if (browser) {
       // Select all swiper-slides in both main and sub views
       const allSlides = document.querySelectorAll(
-        ".slider-view swiper-slide, .subListMachines swiper-slide"
+        ".slider-view swiper-slide, .subListMachines swiper-slide",
       );
 
       allSlides.forEach((slide) => {
@@ -263,10 +264,13 @@
               if (swiperElement.swiper) {
                 setupSwiperEvents(swiperElement.swiper);
                 if (slideId) {
-                  const index = list.findIndex((item) => item.id === slideId);
-                  if (index !== -1) {
-                    lastActiveSlideIndex = index;
-                    swiperElement.swiper.slideTo(index);
+                  const listIndex = list.findIndex(
+                    (item) => item.id === slideId,
+                  );
+                  if (listIndex !== -1) {
+                    const swiperIndex = listIndex === 0 ? 0 : listIndex + 1;
+                    lastActiveSlideIndex = swiperIndex;
+                    swiperElement.swiper.slideTo(swiperIndex);
                   }
                 }
                 // Position toplines once the swiper is ready on initial load
@@ -372,6 +376,17 @@
     swiper.on("slideChange", () => {
       lastActiveSlideIndex = swiper.activeIndex; // Zapisz ostatni aktywny slajd
       updateNavigationButtons(swiper);
+
+      let currentSlideId;
+      if (swiper.activeIndex <= 1) {
+        currentSlideId = "hmp-g1";
+      } else {
+        const item = list[swiper.activeIndex - 1];
+        currentSlideId = item ? item.id : list[0].id;
+      }
+      const url = new URL(window.location.href);
+      url.searchParams.set("slide", currentSlideId);
+      history.replaceState({ slide: currentSlideId }, "", url.toString());
     });
 
     // Reinicjalizuj pagination
@@ -492,12 +507,12 @@
     updateSwiper(
       subSwiperFrezarkiEl,
       subSwiperSlidesPerView,
-      subSwiperSlidesPerGroup
+      subSwiperSlidesPerGroup,
     );
     updateSwiper(
       subSwiperPloteryEl,
       subSwiperSlidesPerView,
-      subSwiperSlidesPerGroup
+      subSwiperSlidesPerGroup,
     );
   }
 
@@ -597,10 +612,10 @@
   function updateSubSwiperNav(swiper, idPrefix) {
     if (!swiper) return;
     const prevButton = document.getElementById(
-      `swiper-button-prev-${idPrefix}`
+      `swiper-button-prev-${idPrefix}`,
     );
     const nextButton = document.getElementById(
-      `swiper-button-next-${idPrefix}`
+      `swiper-button-next-${idPrefix}`,
     );
 
     if (prevButton && nextButton) {
@@ -644,7 +659,15 @@
       const swiper = event.detail[0];
       const currentSlideIndex = swiper.activeIndex;
       lastActiveSlideIndex = currentSlideIndex; // Zapisz ostatni aktywny slajd
-      const currentSlideId = list[currentSlideIndex].id;
+
+      let currentSlideId;
+      if (currentSlideIndex <= 1) {
+        currentSlideId = "hmp-g1";
+      } else {
+        const item = list[currentSlideIndex - 1];
+        currentSlideId = item ? item.id : list[0].id;
+      }
+
       const url = new URL(window.location.href);
       url.searchParams.set("slide", currentSlideId);
       history.replaceState({ slide: currentSlideId }, "", url.toString());
@@ -694,9 +717,10 @@
 
       // Handle main swiper slide position
       if (slideId) {
-        const index = list.findIndex((item) => item.id === slideId);
-        if (index !== -1 && swiperElement && swiperElement.swiper) {
-          swiperElement.swiper.slideToLoop(index);
+        const listIndex = list.findIndex((item) => item.id === slideId);
+        if (listIndex !== -1 && swiperElement && swiperElement.swiper) {
+          const swiperIndex = listIndex === 0 ? 0 : listIndex + 1;
+          swiperElement.swiper.slideToLoop(swiperIndex);
         }
       } else if (
         !$activeCategoryStore &&
@@ -757,7 +781,7 @@
           history.pushState(
             { category: c, machine: category.machine },
             "",
-            url.toString()
+            url.toString(),
           );
           document.body.classList.add("active_machine_view"); // Add class for active machine view
         } else {
@@ -775,7 +799,7 @@
     // If a machine view is open...
     if ($activeMachineStore) {
       const categoryData = list.find(
-        (item) => item.id === $activeCategoryStore
+        (item) => item.id === $activeCategoryStore,
       );
 
       // Check if the parent category has a list of machines (sub-category view)
@@ -791,7 +815,7 @@
           history.pushState(
             { category: $activeCategoryStore, machine: null },
             "",
-            url.toString()
+            url.toString(),
           );
         }
         subSwiperKey++; // Force re-render of the sub-swiper
@@ -806,7 +830,7 @@
           history.pushState(
             { category: null, machine: null },
             "",
-            url.toString()
+            url.toString(),
           );
         }
         // The activeCategoryStore subscriber will handle main swiper re-rendering (swiperKey++).
@@ -826,7 +850,7 @@
         history.pushState(
           { category: null, machine: null },
           "",
-          url.toString()
+          url.toString(),
         );
       }
 
@@ -852,7 +876,7 @@
       history.pushState(
         { category: $activeCategoryStore, machine: x },
         "",
-        url.toString()
+        url.toString(),
       );
     }
     setTimeout(() => {
@@ -938,7 +962,7 @@
   $: {
     if (browser && $activeCategoryStore && !$activeMachineStore) {
       const categoryData = list.find(
-        (item) => item.id === $activeCategoryStore
+        (item) => item.id === $activeCategoryStore,
       );
       // If we've entered a "category view" for an item that should link
       // directly to a machine (i.e. 'machine' is a string), it's an invalid state.
@@ -1134,73 +1158,124 @@
                 }}
               >
                 {#each list as cat, i}
-                  <swiper-slide>
-                    <button
-                      use:scaleOnHover={{
-                        store: scaleStores[i],
-                        initialValue: initialScale,
-                      }}
-                      type="button"
-                      class="items items-left lift no-sel"
-                      on:click={() =>
-                        cat.url
-                          ? (window.location.href = cat.url)
-                          : openCategory(cat.id)}
-                    >
-                      <div class="headlines">
-                        <div class="topline">
-                          {cat.title}
-                          {#if cat.subtitle}
-                            {@html cat.subtitle}
-                          {/if}
+                  {#if cat.id === "hmp-g1"}
+                    <!-- Slide 1: Opis i CTA HMP-G1 -->
+                    <swiper-slide class="hmp-hero-swiper-slide hmp-slide-text">
+                      <div class="hmp-text-box">
+                        <span class="hmp-promo-badge">NOWOŚĆ</span>
+                        <h2 class="hmp-promo-title">
+                          <MachineTitleSvg text="HMP-G1" height="1em" />
+                        </h2>
+                        <div class="hmp-promo-subtitle">
+                          Kompaktowe centrum frezarskie CNC.
+                        </div>
+                        <p class="hmp-promo-desc">
+                          Pełna zabudowa, ATC i wrzeciono do 6 kW na mniej niż 1
+                          metrze kwadratowym powierzchni.
+                        </p>
+                        <div class="hmp-promo-buttons">
+                          <a
+                            href="/hmp-g1"
+                            class="hmp-promo-btn hmp-promo-btn-primary"
+                          >
+                            Poznaj HMP-G1
+                          </a>
+                          <a
+                            href="/hmp-g1#kontakt"
+                            class="hmp-promo-btn hmp-promo-btn-secondary"
+                          >
+                            Zapytaj o ofertę
+                          </a>
                         </div>
                       </div>
-                      <div class="item">
-                        <div class="image">
-                          {#if $imageLoadingStates[cat.id]}
-                            <img
-                              src={cat.img}
-                              alt={cat.title}
-                              draggable="false"
-                            />
-                          {:else}
-                            <div class="image-loader">
-                              <svg width="50" height="50" viewBox="0 0 50 50">
-                                <circle
-                                  cx="25"
-                                  cy="25"
-                                  r="20"
-                                  fill="none"
-                                  stroke-width="5"
-                                  stroke="#96a500"
-                                  stroke-dasharray="31.4 31.4"
-                                  stroke-linecap="round"
-                                >
-                                  <animateTransform
-                                    attributeName="transform"
-                                    type="rotate"
-                                    from="0 25 25"
-                                    to="360 25 25"
-                                    dur="1s"
-                                    repeatCount="indefinite"
-                                  />
-                                </circle>
-                              </svg>
-                            </div>
-                          {/if}
-                        </div>
-                      </div>
-                    </button>
+                    </swiper-slide>
 
-                    <div
-                      class="item_title no-sel"
-                      use:getTitle
-                      on:click={() =>
-                        cat.url
-                          ? (window.location.href = cat.url)
-                          : openCategory(cat.id)}
-                    ></div>
-                  </swiper-slide>
+                    <!-- Slide 2: Samo zdjęcie przezroczyste HMP-G1 -->
+                    <swiper-slide class="hmp-hero-swiper-slide hmp-slide-image">
+                      <a
+                        href="/hmp-g1"
+                        class="hmp-hero-img-link no-sel"
+                        aria-label="Frezarka CNC CERTUS HMP-G1 - zobacz szczegóły"
+                      >
+                        <div class="hmp-hero-render-wrapper">
+                          <img
+                            src="/assets/maszyny/hmp-g1/hmp-g1-render.webp"
+                            alt="Frezarka CNC CERTUS HMP-G1"
+                            class="hmp-hero-render-img"
+                            draggable="false"
+                          />
+                        </div>
+                      </a>
+                    </swiper-slide>
+                  {:else}
+                    <swiper-slide>
+                      <button
+                        use:scaleOnHover={{
+                          store: scaleStores[i],
+                          initialValue: initialScale,
+                        }}
+                        type="button"
+                        class="items items-left lift no-sel"
+                        on:click={() =>
+                          cat.url
+                            ? (window.location.href = cat.url)
+                            : openCategory(cat.id)}
+                      >
+                        <div class="headlines">
+                          <div class="topline">
+                            {cat.title}
+                            {#if cat.subtitle}
+                              {@html cat.subtitle}
+                            {/if}
+                          </div>
+                        </div>
+                        <div class="item">
+                          <div class="image">
+                            {#if $imageLoadingStates[cat.id]}
+                              <img
+                                src={cat.img}
+                                alt={cat.title}
+                                draggable="false"
+                              />
+                            {:else}
+                              <div class="image-loader">
+                                <svg width="50" height="50" viewBox="0 0 50 50">
+                                  <circle
+                                    cx="25"
+                                    cy="25"
+                                    r="20"
+                                    fill="none"
+                                    stroke-width="5"
+                                    stroke="#96a500"
+                                    stroke-dasharray="31.4 31.4"
+                                    stroke-linecap="round"
+                                  >
+                                    <animateTransform
+                                      attributeName="transform"
+                                      type="rotate"
+                                      from="0 25 25"
+                                      to="360 25 25"
+                                      dur="1s"
+                                      repeatCount="indefinite"
+                                    />
+                                  </circle>
+                                </svg>
+                              </div>
+                            {/if}
+                          </div>
+                        </div>
+                      </button>
+
+                      <div
+                        class="item_title no-sel"
+                        use:getTitle
+                        on:click={() =>
+                          cat.url
+                            ? (window.location.href = cat.url)
+                            : openCategory(cat.id)}
+                      ></div>
+                    </swiper-slide>
+                  {/if}
                 {/each}
 
                 <!-- Dodaj pagination element bezpośrednio -->
@@ -1537,7 +1612,6 @@
     position: relative;
     width: 100%;
     height: 100%;
-    
   }
 
   .category-content .subListMachines {
@@ -1675,23 +1749,25 @@
   }
 
   @media (max-height: 750px) {
-    .category-content .container button.backFromCategory{
-      
-
+    .category-content .container button.backFromCategory {
       transform: scale(0.6);
-      
     }
   }
 
   :global(button.backFromCategory) {
     z-index: 9999;
-    transition: all ease 0.4s;
     height: 42px !important;
     background-color: #96a500 !important;
     color: white !important;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      filter 0.3s ease,
+      box-shadow 0.3s ease !important;
 
     .text-container {
       z-index: 300;
+      transition: transform 0.3s ease;
     }
 
     &::before {
@@ -1702,6 +1778,22 @@
       right: 0;
       bottom: 0;
       background-image: url(/assets/images/pattern-image1-2.png);
+      transition:
+        opacity 0.3s ease,
+        filter 0.3s ease;
+    }
+
+    &:hover {
+      background-color: #7e8c00 !important;
+      filter: brightness(1.05);
+
+      .text-container {
+        transform: none !important;
+      }
+
+      &::before {
+        opacity: 0.9;
+      }
     }
   }
 
@@ -2407,6 +2499,248 @@
 
     button > div.item > div {
       transform: scale(1) !important;
+    }
+  }
+
+  /* HMP-G1 Hero Slide Styles (dwuboksowy układ HMP-G1 na stronie głównej) */
+  .hmp-hero-swiper-slide {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .hmp-slide-text {
+    padding: 20px 16px 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .hmp-text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    gap: 16px;
+    color: #1a1a1a;
+    max-width: 520px;
+    width: 100%;
+  }
+
+  .hmp-promo-badge {
+    align-self: flex-end;
+    background: #7e8c00;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  .hmp-promo-title {
+    font-size: 72px;
+    line-height: 0.95;
+    font-weight: 800;
+    color: #ffffff !important;
+    letter-spacing: 0.02em;
+    text-shadow: none;
+    margin: 0;
+    text-align: right;
+  }
+
+  .hmp-promo-subtitle {
+    font-size: 20px;
+    line-height: 1.4;
+    color: #ffffff !important;
+    font-weight: 600;
+    margin: 0;
+    text-align: right;
+  }
+
+  .hmp-promo-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffffff !important;
+    margin: 0;
+    text-align: right;
+  }
+
+  .hmp-promo-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .hmp-promo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 26px;
+    border-radius: 30px;
+    color: #ffffff !important;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease,
+      filter 0.3s ease,
+      box-shadow 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .hmp-promo-btn-primary {
+    background-color: #7e8c00;
+    color: #ffffff !important;
+    border: none;
+
+    &:hover {
+      background-color: #96a500;
+      color: #ffffff !important;
+      filter: brightness(1.08);
+      box-shadow: 0 6px 18px rgba(126, 140, 0, 0.4);
+    }
+  }
+
+  .hmp-promo-btn-secondary {
+    background-color: transparent;
+    color: #ffffff !important;
+    font-weight: 600;
+    padding: 13px 25px;
+    border: 1.5px solid #ffffff;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: #ffffff;
+      color: #ffffff !important;
+    }
+  }
+
+  /* Slide 2: Samo zdjęcie przezroczyste */
+  .hmp-slide-image {
+    padding: 20px 48px 20px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .hmp-hero-img-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .hmp-hero-render-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 520px;
+    width: 100%;
+    margin-left: 0;
+    cursor: pointer;
+    transform: scale(1.3);
+    transform-origin: center center;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+
+    &:hover {
+      transform: scale(1.38);
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .hmp-hero-render-img {
+    position: relative;
+    top: 15px;
+    left: -15px;
+    z-index: 2;
+    max-height: 480px;
+    width: auto;
+    max-width: 90%;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+  }
+
+  @media (max-width: 1024px) {
+    .hmp-slide-text {
+      padding: 30px 24px;
+      justify-content: center;
+    }
+
+    .hmp-slide-image {
+      padding: 24px;
+      justify-content: center;
+    }
+
+    .hmp-hero-img-link {
+      justify-content: center;
+    }
+
+    .hmp-text-box {
+      align-items: center;
+      text-align: center;
+    }
+
+    .hmp-promo-badge {
+      align-self: center;
+    }
+
+    .hmp-promo-title,
+    .hmp-promo-subtitle,
+    .hmp-promo-desc {
+      text-align: center;
+    }
+
+    .hmp-promo-buttons {
+      justify-content: center;
+    }
+
+    .hmp-promo-title {
+      font-size: 48px;
+    }
+
+    .hmp-promo-subtitle {
+      font-size: 18px;
+    }
+
+    .hmp-promo-desc {
+      font-size: 15px;
+    }
+
+    .hmp-hero-render-img {
+      max-height: 360px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hmp-slide-text {
+      padding: 20px 16px;
+    }
+
+    .hmp-promo-title {
+      font-size: 38px;
+    }
+
+    .hmp-hero-render-img {
+      max-height: 270px;
     }
   }
 </style>

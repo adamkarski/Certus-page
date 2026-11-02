@@ -7,6 +7,7 @@
   import Section_Image02 from "$lib/../components/sections/Section_Image02.svelte";
   import Section_Kontakt from "$lib/../components/sections/Section_Kontakt.svelte";
   import CtaButton from "./CtaButton.svelte";
+  import MachineTitleSvg from "$lib/components/MachineTitleSvg.svelte";
  
 
   const images = [
@@ -194,7 +195,7 @@
 
   <section class="main-content">
     <div class="text-column">
-      <h2>CERTUS 69</h2>
+      <h2><MachineTitleSvg text="CERTUS 69" height="1em" /></h2>
       <p use:typoFixAction>
         To w pełni funkcjonalna frezarka, grawerka CNC o szerokim zastosowaniu. Przeznaczona do pracy w materiałach taki jak:
         aluminium, metale kolorowe, drewno, plexi, obróbka drobnych elementów stalowych itp. 

@@ -1,5 +1,6 @@
 <script lang="ts">
   import CtaButton from "../components/CtaButton.svelte";
+  import MachineTitleSvg from "$lib/components/MachineTitleSvg.svelte";
   import {
     activeCategoryStore,
     activeMachineStore,
@@ -95,7 +96,7 @@ afterUpdate(() => {
           in:fade={{ duration: 300, delay: 0 }}
           out:fade={{ duration: 300, delay: 0 }}
         >
-          <h1>CERTUS HMM-ST</h1>
+          <h1><MachineTitleSvg text="CERTUS HMM-ST" height="1em" /></h1>
 
           <div class="left_image no-sel">
             
@@ -280,7 +281,7 @@ afterUpdate(() => {
           in:fade={{ duration: 300, delay: 0 }}
           out:fade={{ duration: 300, delay: 0 }}
         >
-          <h1>CERTUS HMM-GT</h1>
+          <h1><MachineTitleSvg text="CERTUS HMM-GT" height="1em" /></h1>
 
           <div class="left_image no-sel">
             
@@ -467,7 +468,7 @@ afterUpdate(() => {
           in:fade={{ duration: 300, delay: 200 }}
           out:fade={{ duration: 300, delay: 100 }}
         >
-          <h1>CERTUS HPP-CT</h1>
+          <h1><MachineTitleSvg text="CERTUS HPP-CT" height="1em" /></h1>
 
           <div class="left_image no-sel">
             
@@ -638,7 +639,7 @@ afterUpdate(() => {
           in:fade={{ duration: 300, delay: 200 }}
           out:fade={{ duration: 300, delay: 100 }}
         >
-          <h1>CERTUS HPP-OT</h1>
+          <h1><MachineTitleSvg text="CERTUS HPP-OT" height="1em" /></h1>
 
           <div class="left_image no-sel">
             
@@ -1135,7 +1136,7 @@ afterUpdate(() => {
           in:fade={{ duration: 300, delay: 200 }}
           out:fade={{ duration: 300, delay: 100 }}
         >
-          <h1>CNC HLP-FT</h1>
+          <h1><MachineTitleSvg text="HLP-FT" height="1em" /></h1>
 
           <div class="left_image no-sel">
             
@@ -1397,6 +1398,17 @@ body.no-scroll-hero.active_machine_view {
   :global(.activeMachine .backButton) {
     height: 44px !important;
     opacity: 0.95 !important;
+    transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease !important;
+
+    &:hover {
+      background-color: #7e8c00 !important;
+      opacity: 1 !important;
+      filter: brightness(1.05);
+
+      .text-container {
+        transform: none !important;
+      }
+    }
   }
   :global(.activeMachine .right_content) {
     color: #595959;

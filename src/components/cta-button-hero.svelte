@@ -28,7 +28,7 @@
   color: white;
   border: none;
   margin-left: 34px;
-    transition: all ease-in-out 0.2s;
+  transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.1);
 }
 
