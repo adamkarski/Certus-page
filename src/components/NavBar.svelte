@@ -669,10 +669,10 @@
     border-radius: 72px;
     color: #616d5d;
     font-weight: 200;
-    margin-right: 22px;
+    margin-right: 0px;
     height: 76px;
     margin-top: 0px;
-    padding: 0 1rem;
+    padding: 0 1.25rem 0 1rem;
   }
 
   .mobile-menu-button-container {
@@ -835,6 +835,7 @@
       display: flex !important;
       align-items: center;
       justify-content: center;
+      margin-right: 24px !important;
     }
     .ramka {
       margin-left: 2em !important;
@@ -851,7 +852,7 @@
       height: 80px;
     }
     .mobile-menu-button-container {
-      margin-right: 8px !important;
+      margin-right: 18px !important;
     }
   }
 
@@ -866,8 +867,8 @@
       margin-right: 3em !important;
     }
     .desktop-menu-items {
-      margin-right: 12px;
-      padding: 0 0.75rem;
+      margin-right: 0px;
+      padding: 0 1.25rem 0 0.75rem;
       gap: 0.15rem;
     }
     .nav-link {
