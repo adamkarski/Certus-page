@@ -1,5 +1,5 @@
 <script lang="ts">
-  
+  import LocalBusiness from '../../components/LocalBusiness.svelte';
   import Kontakt from '../../components/Kontakt.svelte';
 
   import Section_Header from "../../components/sections/Section_Header.svelte";
@@ -9,6 +9,8 @@
 </script>
 
 
+
+<LocalBusiness />
 
 <div class="app">
   <Section_Header />

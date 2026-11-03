@@ -73,11 +73,15 @@
   let scrolled = false;
   let showLottie = false;
   let windowWidth = 0;
-  $: isSmallScreen = windowWidth < 1100;
-  $: lottieSource = isSmallScreen
-    ? "https://cdn.lottielab.com/l/82wmUWPKg24DUr.json"
-    : "https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json";
-  $: logoMini = isSmallScreen ? "logomini" : "logofull";
+
+  // Przełączanie oparte wyłącznie na czystym breakpoint szerokości okna:
+  // Poniżej 1260px cała belka menu z pigułką HMP-G1 nie mieści pełnego logo z tekstem,
+  // więc wyświetlamy sam sygnet bez tekstu. Od 1260px wzwyż: pełne logo (sygnet + tekst).
+  $: isSmallLogo = windowWidth > 0 && windowWidth < 1260;
+  $: lottieSource = isSmallLogo
+    ? "/lottie_logo_sygnet.json"
+    : "/lottie_logo_full.json";
+  $: logoMini = isSmallLogo ? "logomini" : "logofull";
 
   // Dropdown state
   let isMaszynyDropdownOpen = false;
@@ -162,7 +166,7 @@
 
       const handleResize = () => {
         windowWidth = window.innerWidth;
-        if (window.innerWidth > 757 && isMobileMenuOpen) {
+        if (window.innerWidth >= 1024 && isMobileMenuOpen) {
           closeMobileMenu();
         }
       };
@@ -667,7 +671,7 @@
     font-weight: 200;
     margin-right: 22px;
     height: 76px;
-    margin-top: 2px;
+    margin-top: 0px;
     padding: 0 1rem;
   }
 
@@ -820,57 +824,54 @@
     }
   }
 
-  /* Responsywność nawigacji - uporządkowana */
+  /* Responsywność nawigacji - czyste przejścia */
 
-  /* Średnie ekrany - lekkie zmniejszenie */
-  @media (min-width: 758px) and (max-width: 1024px) {
+  /* Poniżej 1024px: tryb tablet i mobile - menu mobilne (hamburger) */
+  @media (max-width: 1023px) {
+    .desktop-menu-items {
+      display: none !important;
+    }
+    .mobile-menu-button-container {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
     .ramka {
-      transform: scale(0.85);
-      transform-origin: center;
+      margin-left: 2em !important;
+      margin-right: 2em !important;
+      transform: none !important;
     }
   }
 
-  /* Małe ekrany - większe zmniejszenie */
-  @media (min-width: 481px) and (max-width: 757px) {
-    .desktop-menu-items {
-      display: none;
-    }
-    .mobile-menu-button-container {
-      display: block;
-    }
+  /* Bardzo małe ekrany (smartfony) */
+  @media (max-width: 600px) {
     .ramka {
-      margin-left: 1em !important;
-      margin-right: 1em !important;
-      transform: scale(0.7);
-      transform-origin: center;
-    }
-    .contenerNav {
-      margin-top: 8px;
+      margin-left: 0.75em !important;
+      margin-right: 0.75em !important;
+      height: 80px;
     }
     .mobile-menu-button-container {
-      margin-right: 36px !important;
+      margin-right: 8px !important;
     }
   }
 
-  /* Bardzo małe ekrany - największe zmniejszenie */
-  @media (max-width: 480px) {
-    .desktop-menu-items {
-      display: none;
-    }
-    .mobile-menu-button-container {
-      display: block;
-    }
+  /* Ekrany laptop/desktop: zwężenie marginesów bocznych, aby menu nigdy nie dotykało krawędzi */
+  @media (min-width: 1024px) and (max-width: 1320px) {
     .ramka {
-      margin-left: 0.5em !important;
-      margin-right: 0.5em !important;
-      transform: scale(0.6);
-      transform-origin: center;
+      margin-left: 3em !important;
+      margin-right: 3em !important;
     }
-    .contenerNav {
-      margin-top: 8px;
+    nav.scrolled .ramka {
+      margin-left: 3em !important;
+      margin-right: 3em !important;
     }
-    .mobile-menu-button-container {
-      margin-right: 20px !important;
+    .desktop-menu-items {
+      margin-right: 12px;
+      padding: 0 0.75rem;
+      gap: 0.15rem;
+    }
+    .nav-link {
+      padding: 8px 12px;
     }
   }
 
@@ -942,7 +943,9 @@
       display: flex;
       gap: 1rem;
       width: 100%;
-      padding-top: 8px;
+      height: 100%;
+      align-items: center;
+      padding-top: 0px;
       flex-direction: row;
       margin-left: 12px;
       margin-right: 12px;
@@ -950,8 +953,31 @@
     }
   }
   .logoCertus {
-    /*  min-width: 200px; */
     padding-right: 3px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    &.logomini {
+      width: 52px;
+      height: 52px;
+      overflow: hidden;
+
+      :global(.lottie-player) {
+        width: 50px !important;
+        height: 50px !important;
+      }
+    }
+
+    &.logofull {
+      width: 210px;
+      height: 52px;
+
+      :global(.lottie-player) {
+        width: 210px !important;
+        height: 50px !important;
+      }
+    }
   }
 
   .submenu-item {
