@@ -26,11 +26,9 @@ import type { PageData } from './$types';
 
 </script>
 
-
-
-
-
-
+<svelte:head>
+	<meta name="robots" content="noindex, follow" />
+</svelte:head>
 
 <div class="app">
 	<Section_Header />

@@ -2,7 +2,21 @@
     AddHandler application/x-httpd-php82 .php
 </FilesMatch>
 
+# Security Headers & HSTS
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
 RewriteEngine On
+
+# 1. Wymuszenie HTTPS dla wszystkich zapytań do api.mg-certus.pl
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# 2. Przekierowanie ze starej domeny certuscnc.pl na https://mg-certus.pl
 RewriteCond %{REQUEST_URI} !^/api/
 RewriteCond %{HTTP_HOST} ^certuscnc\.pl$ [NC]
-RewriteRule ^(.*)$ http://mg-certus.pl/$1 [R=302,L]
+RewriteRule ^(.*)$ https://mg-certus.pl/$1 [R=301,L]

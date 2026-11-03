@@ -244,7 +244,8 @@
     }
   }
   #dokumentacja {
-    overflow: hidden;
+    overflow-x: clip;
+    overflow-y: visible;
     background-color: #ffffff;
     min-height: 50vh;
     &::before {
@@ -260,6 +261,7 @@
   .triangle {
     position: absolute;
     width: 400px;
+    max-width: 100%;
     height: 100px;
     top: 160px;
     left: 0;
@@ -322,7 +324,7 @@
   }
 
   .Dokumentacja_page {
-    min-width: 100vw;
+    width: 100%;
     margin: 0 auto;
     height: 260px;
   }

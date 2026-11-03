@@ -158,6 +158,11 @@
     }
   }
 }
+/* Na HMP-G1 trójkątny róg ::before ma nie być widoczny w ogóle */
+.hmp-contact-left::before,
+.hmp-page .contact-flex .contact-left::before {
+  display: none !important;
+}
 @media (max-width: 932px) {
   .image-container-02 {
     .phone-holder {

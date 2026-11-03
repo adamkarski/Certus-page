@@ -378,4 +378,10 @@ tbody tr td .text {
   background-color: #e3f2fd;
   transition: background-color 0.3s ease;
 }
+
+@media (max-width: 768px) {
+  .options-list li {
+    font-size: 14px;
+  }
+}
 /* --- KONIEC STYLI DLA NOWYCH TABEL --- */

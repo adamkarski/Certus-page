@@ -11,10 +11,10 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 	'/': {
 		title: 'CERTUS - Maszyny i Centra Obróbcze CNC | Polski Producent',
 		description:
-			'Specjalizujemy się w produkcji maszyn przemysłowych najwyższej jakości: centra obróbcze CNC, frezarki, plotery i grawerki. Ponad 20 lat doświadczenia.',
+			'Polski producent maszyn CNC: centra obróbcze, frezarki, plotery przemysłowe i grawerki. Projekt i montaż w Polsce, serwis producenta, ponad 20 lat w branży.',
 		ogTitle: 'CERTUS - Maszyny i Centra Obróbcze CNC | Polski Producent',
 		ogDescription:
-			'Wysokowydajne centra obróbcze CNC, frezarki, plotery i grawerki. Profesjonalne doradztwo, serwis i wdrożenia maszyn w przemyśle.',
+			'Polski producent maszyn CNC: centra obróbcze, frezarki, plotery przemysłowe i grawerki. Projekt i montaż w Polsce, serwis producenta, ponad 20 lat w branży.',
 		image: '/assets/images/certusPage.jpg',
 		type: 'website'
 	},

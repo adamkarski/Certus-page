@@ -344,7 +344,11 @@
 <div class="contact">
 
   <div class="contact-left no-sel" class:is-kontakt-page={isKontaktPage}>
-    <h2>Masz pytania? Skontaktuj się z nami!</h2>
+    {#if isKontaktPage}
+      <h1 use:typoFixAction>Masz pytania? Skontaktuj się z nami!</h1>
+    {:else}
+      <h2 use:typoFixAction>Masz pytania? Skontaktuj się z nami!</h2>
+    {/if}
     <ul use:typoFixAction class="contact-bullets no-sel">
       <li>
         <span class="bullet"></span>
@@ -754,6 +758,7 @@
     background-size: cover;
   }
 
+  .contact-left h1,
   .contact-left h2 {
     font-weight: 600 !important;
     margin-bottom: 32px;

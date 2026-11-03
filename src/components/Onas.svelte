@@ -301,7 +301,7 @@ section.branze {
   }
   .onas_page {
     display: none;
-    min-width: 100vw;
+    width: 100%;
     margin: 0 auto;
     min-height: 174px;
   }

@@ -277,7 +277,7 @@
             >
           </h1>
           <p class="cx-hero-lead" use:typoFixAction>
-            Pełna zabudowa, ATC i wrzeciono do 6 kW na powierzchni mniejszej niż
+            Pełna zabudowa, opcjonalne ATC i wrzeciona do 6 kW na powierzchni mniejszej niż
             1 m².
           </p>
           <div class="cx-hero-buttons">
@@ -403,7 +403,7 @@
             <h3 class="feat-title" use:typoFixAction>Kontrola procesu</h3>
             <p class="feat-desc" use:typoFixAction>
               Chłodzenie mgłą olejową lub cieczą, czujnik długości narzędzia,
-              centralne smarowanie — dobierane do materiału i trybu pracy.
+              sonda 3D do pomiaru materiału i detalu, centralne smarowanie — dobierane do materiału i trybu pracy.
             </p>
           </article>
         </div>
@@ -413,7 +413,9 @@
     <section class="cx-wrap section-pad-sm">
       <div class="white-card">
         <div class="header-sekcja">
-          <div><MachineTitleSvg text="HMP-G1" height="2em" /></div>
+          <div class="header-machine-logo">
+            <MachineTitleSvg text="HMP-G1" height="1.8em" shadow={false} />
+          </div>
 
           <div>
             <h2 class="card-title" use:typoFixAction>Dane techniczne</h2>
@@ -488,6 +490,7 @@
                 <span class="chip">Chłodzenie cieczą</span>
                 <span class="chip">Mgła olejowa</span>
                 <span class="chip">Pomiar długości narzędzia</span>
+                <span class="chip">Sonda 3D</span>
                 <span class="chip">Centralne smarowanie</span>
               </div>
             </div>
@@ -518,7 +521,7 @@
             </div>
           </div>
 
-          <!-- Prawa strona: rysunek wymiarowy + karta katalogowa -->
+          <!-- Prawa strona: rysunek wymiarowy + karta katalogowa + sonda 3D -->
           <div class="drawing-side">
             <img
               src="/assets/maszyny/hmp-g1/hmp-g1-render3.webp"
@@ -536,10 +539,22 @@
                   target="_blank"
                   rel="noopener"
                 >
-                  Karta katalogowa HMP-G1 (PDF)
+                  Pobierz
                 </a>
               </div>
             {/if}
+
+            <div class="sonda-card">
+              <div class="sonda-header">
+                <span class="sonda-badge">OPCJA</span>
+                <p class="sonda-title">Sonda 3D</p>
+              </div>
+              <p class="sonda-desc" use:typoFixAction>
+                Pomiar materiału i detalu bezpośrednio na maszynie. Ułatwia
+                wyznaczanie punktu zerowego oraz ustalanie położenia materiału i
+                detalu przed obróbką.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -899,8 +914,17 @@
   .header-sekcja {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .header-machine-logo {
+    display: inline-flex;
+    align-items: center;
+    color: #2b2b2b;
   }
   .hmp-hero-section {
     padding-top: 50px;
@@ -1104,10 +1128,12 @@
   /* SEKCJE */
   .section-pad {
     padding-top: 48px;
+    padding-bottom: 24px;
   }
 
   .section-pad-sm {
-    padding-top: 32px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .white-card {
@@ -1237,6 +1263,12 @@
     color: var(--color-primary-dark, #7e8c00);
   }
 
+  .table-text-val {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #444444;
+  }
+
   .drawing-side {
     display: flex;
     flex-direction: column;
@@ -1269,6 +1301,47 @@
     margin: 0;
     font-size: 13px;
     color: #a06a00;
+  }
+
+  .sonda-card {
+    background: #f7f7f7;
+    border-radius: 10px;
+    border-left: 3px solid var(--color-primary, #96a500);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sonda-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sonda-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--color-primary, #96a500);
+    color: #ffffff;
+  }
+
+  .sonda-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #444444;
+  }
+
+  .sonda-desc {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #555555;
   }
 
   /* D5. Po zakupie */
@@ -1329,15 +1402,11 @@
 
   /* D6. Kontakt - Spójny z /serwis i /kontakt */
   .contact-flex {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 1) 60%,
-      rgba(235, 235, 235, 1) 100%
-    );
+    background: transparent;
     height: auto;
     position: relative;
     top: 0px;
-    padding: 40px 0 80px 0;
+    padding: 32px 0 80px 0;
   }
 
   .contact-flex .background {
@@ -1374,17 +1443,7 @@
     position: relative;
 
     &::before {
-      content: "";
-      position: absolute;
-      overflow: hidden;
-      width: 110px;
-      height: 110px;
-      left: 0;
-      top: 0;
-      clip-path: polygon(0 0, 100% 0, 0 100%);
-      border-left: 2px solid rgb(255 255 255);
-      border-top: 2px solid rgb(255 255 255);
-      background-repeat: no-repeat;
+      display: none !important;
     }
 
     h2 {
@@ -1602,6 +1661,13 @@
 
     .white-card {
       padding: 24px;
+    }
+
+    .header-sekcja {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
     }
   }
 </style>

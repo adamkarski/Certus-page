@@ -67,7 +67,7 @@
     padding-top: 10px;
   }
   .image-section-02 {
-    width: 100vw;
+    width: 100%;
     position: relative;
     overflow: hidden;
 

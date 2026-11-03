@@ -69,7 +69,7 @@
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarka CNC HMM-ST" class="cnc-icon">
+        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarka CNC HMM-ST" class="cnc-icon" width="96" height="96">
         <strong class="cnc-title" use:typoFixAction>Frezarka CNC HMM-ST z ruchomym stołem</strong>
       </div>
       <div class="cnc-row" use:typoFixAction>
@@ -77,7 +77,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png" alt="Frezarka CNC HMM-ST">
+      <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp" alt="Frezarka CNC HMM-ST" width="1200" height="800">
     </div>
   </div>
 
@@ -172,10 +172,16 @@
       <img
         src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.png"
         alt="Schemat techniczny frezarki Certus 1080 PRO - widok 1"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
       <img
         src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.png"
         alt="Schemat techniczny frezarki Certus 1080 PRO - widok 2"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
     </div>
   </div>
@@ -220,7 +226,7 @@
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC HMM-GT" class="cnc-icon">
+        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC HMM-GT" class="cnc-icon" width="96" height="96" loading="lazy">
         <strong class="cnc-title" use:typoFixAction>Frezarka CNC HMM-GT z ruchomą bramą</strong>
       </div>
       <div class="cnc-row" use:typoFixAction>
@@ -232,7 +238,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png" alt="Frezarki CNC HMM-G" class="">
+      <img src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp" alt="Frezarki CNC HMM-G" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -316,10 +322,16 @@
       <img
         src="/assets/maszyny/SCHEMATY/Certus_1410_1.png"
         alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 1"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
       <img
         src="/assets/maszyny/SCHEMATY/Certus_1410_2.png"
         alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 2"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
     </div>
   </div>
@@ -357,7 +369,7 @@
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="cnc-icon">
+        <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="cnc-icon" width="96" height="96" loading="lazy">
         <strong class="cnc-title" use:typoFixAction>Wielkoformatowy ploter przemysłowy bez zabudowy – HPP-OT</strong>
       </div>
       <div class="cnc-row" use:typoFixAction>
@@ -367,7 +379,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="">
+      <img src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -432,10 +444,16 @@
       <img
         src="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
         alt="Schemat techniczny frezarki Certus 0816 - widok 1"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
       <img
         src="/assets/maszyny/SCHEMATY/Certus_0816_2.png"
         alt="Schemat techniczny frezarki Certus 0816 - widok 2"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
     </div>
   </div>
@@ -473,7 +491,7 @@
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="cnc-icon">
+        <img src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="cnc-icon" width="96" height="96" loading="lazy">
         <strong class="cnc-title" use:typoFixAction>Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT</strong>
       </div>
       <div class="cnc-row" use:typoFixAction>
@@ -485,7 +503,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="">
+      <img src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -561,11 +579,17 @@
       <img
         src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.png"
         alt="Schemat techniczny frezarki Certus 0815 - widok 5"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
 
       <img
         src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.png"
         alt="Schemat techniczny frezarki Certus 0815 - widok 3"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
     </div>
   </div>
@@ -610,7 +634,7 @@
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC Certus" class="cnc-icon">
+        <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC Certus" class="cnc-icon" width="96" height="96" loading="lazy">
         <strong class="cnc-title" use:typoFixAction>Grawerki CNC</strong>
       </div>
       <div class="cnc-row" use:typoFixAction>
@@ -622,7 +646,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png" alt="Grawerki CNC Certus" class="">
+      <img src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp" alt="Grawerki CNC Certus" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -707,11 +731,17 @@
       <img
         src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
         alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 1"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
 
       <img
         src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.png"
         alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 2"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
     </div>
   </div>
@@ -756,7 +786,7 @@
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="Frezarki CNC pięcioosiowe" class="cnc-icon">
+        <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="Frezarki CNC pięcioosiowe" class="cnc-icon" width="96" height="96" loading="lazy">
         <strong class="cnc-title" use:typoFixAction>Pięcioosiowe centra frezarskie CNC</strong>
       </div>
       <div class="cnc-row" use:typoFixAction>
@@ -767,7 +797,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png" alt="Frezarki CNC pięcioosiowe" class="">
+      <img src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp" alt="Frezarki CNC pięcioosiowe" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -781,9 +811,8 @@
       <div class="maszyny-dane-podtytul">Zaawansowane sterowanie:</div>
       <ul class="maszyny-dane-lista-small">
         <li use:typoFixAction>
-          Maszyny wyposażone są w nowoczesny system sterowania umożliwiający
-          jednoczesną interpolację wszystkich osi roboczych z projekcją
-          prędkości na czoło narzędzia
+          Sterowanie umożliwia jednoczesną interpolację wszystkich osi roboczych
+          z projekcją prędkości na czoło narzędzia
         </li>
         <li use:typoFixAction>
           Pozwala to na płynną i szybką obróbkę nawet najbardziej złożonych
@@ -842,10 +871,16 @@
       <img
         src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.png"
         alt="Schemat techniczny - widok 1"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
       <img
         src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.png"
         alt="Schemat techniczny - widok 2"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
     </div>
   </div>
@@ -890,7 +925,7 @@
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="Plotery CNC HLP-FT Certus" class="cnc-icon">
+        <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="Plotery CNC HLP-FT Certus" class="cnc-icon" width="96" height="96" loading="lazy">
         <strong class="cnc-title" use:typoFixAction>Plotery CNC HLP-FT</strong>
       </div>
       <div class="cnc-row" use:typoFixAction>
@@ -902,7 +937,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png" alt="Plotery CNC HLP-FT Certus" class="">
+      <img src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp" alt="Plotery CNC HLP-FT Certus" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -982,11 +1017,17 @@
       <img
         src="/assets/maszyny/SCHEMATY/Certus_1530_1.png"
         alt="Schemat techniczny frezarki Certus 1530 - widok 1"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
 
       <img
         src="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
         alt="Schemat techniczny frezarki Certus 1530 - widok 4"
+        width="2000"
+        height="2000"
+        loading="lazy"
       />
     </div>
   </div>

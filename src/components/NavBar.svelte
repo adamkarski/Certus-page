@@ -41,6 +41,7 @@
   $: isMaszynyActive = currentPath.startsWith("/maszyny");
   $: isBestsellerActive = currentPath.startsWith("/bestseller");
   $: isSerwisActive = currentPath.startsWith("/serwis");
+  $: isDokumentacjaActive = currentPath.startsWith("/dokumentacja");
   $: isOnasActive = currentPath.startsWith("/onas");
   $: isKontaktActive = currentPath.startsWith("/kontakt");
 
@@ -72,12 +73,11 @@
   let scrolled = false;
   let showLottie = false;
   let windowWidth = 0;
-  $: lottieSource =
-    windowWidth > 757 && windowWidth < 900
-      ? "https://cdn.lottielab.com/l/82wmUWPKg24DUr.json"
-      : "https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json";
-  $: logoMini =
-    windowWidth > 757 && windowWidth < 900 ? "logomini" : "logofull";
+  $: isSmallScreen = windowWidth < 1100;
+  $: lottieSource = isSmallScreen
+    ? "https://cdn.lottielab.com/l/82wmUWPKg24DUr.json"
+    : "https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json";
+  $: logoMini = isSmallScreen ? "logomini" : "logofull";
 
   // Dropdown state
   let isMaszynyDropdownOpen = false;
@@ -424,6 +424,7 @@
             class="mobile-menu-button"
             on:click={toggleMobileMenu}
             aria-label="Otwórz menu"
+            aria-expanded={isMobileMenuOpen}
             class:is-open={isMobileMenuOpen}
           >
             <div class="hamburger-icon">
@@ -539,6 +540,12 @@
             class="mobile-nav-link"
             class:active={isSerwisActive}
             on:click={closeMobileMenu}>Serwis</a
+          >
+          <a
+            href="/dokumentacja"
+            class="mobile-nav-link"
+            class:active={isDokumentacjaActive}
+            on:click={closeMobileMenu}>Dokumentacja</a
           >
           <a
             href="/onas"

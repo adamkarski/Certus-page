@@ -249,7 +249,7 @@
   bind:this={sectionEl}
 >
   <div class="serwis-services-header">
-    <h2 use:typoFixAction>Usługi Serwisowe</h2>
+    <h1 use:typoFixAction>Usługi Serwisowe</h1>
     <p use:typoFixAction>
       Kompleksowa opieka serwisowa dla wszystkich maszyn CNC
     </p>
@@ -779,11 +779,11 @@
         style="transition-delay: 200ms"
       >
         <div class="serwis-benefit-icon">
-          <img src="/assets/ikony/onas-wsparcie.svg" alt="Wdrożenie" />
+          <img src="/assets/ikony/onas-wsparcie.svg" alt="Oryginalne części zamienne" />
         </div>
         <h4 use:typoFixAction>Oryginalne części</h4>
         <p use:typoFixAction>
-          Najwyższa jakość komponentów bezpośrednio od producenta
+          Części zamienne z dostawą z Polski i UE
         </p>
       </div>
 
@@ -910,6 +910,7 @@
 
     padding: 0 0px;
 
+    h1,
     h2 {
       font-weight: 700;
       color: var(--color-text-secondary);
@@ -988,7 +989,8 @@
     .serwis-services-header {
       margin-bottom: 30px;
 
-      h2 {
+      h1,
+    h2 {
       }
 
       p {
@@ -1376,6 +1378,7 @@
     text-align: center;
     margin-bottom: 30px;
 
+    h1,
     h2 {
       font-weight: 700;
       color: var(--color-text-secondary);
@@ -1501,7 +1504,8 @@
     .serwis-section-header {
       margin-bottom: 60px;
 
-      h2 {
+      h1,
+    h2 {
       }
 
       p {

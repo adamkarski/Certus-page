@@ -40,20 +40,21 @@
       1. Za pośrednictwem Serwisu możemy przetwarzać następujące kategorie danych:
       <ul>
         <li>dane podawane w formularzu kontaktowym (np. imię, nazwisko, nazwa firmy, adres e-mail, numer telefonu, treść wiadomości),</li>
+        <li>nagrania głosowe (pliki audio z wiadomością głosową przesyłane dobrowolnie przez użytkownika za pośrednictwem formularza kontaktowego jako alternatywa dla wiadomości tekstowej),</li>
         <li>dane podawane dobrowolnie w korespondencji e-mail lub telefonicznej,</li>
         <li>dane niezbędne do przygotowania oferty, zawarcia i wykonania umowy (np. dane identyfikacyjne, dane kontaktowe, dane rozliczeniowe),</li>
         <li>dane techniczne związane z korzystaniem z Serwisu (np. adres IP, data i czas połączenia, informacje o przeglądarce, systemie operacyjnym) – gromadzone przez serwer oraz mechanizmy bezpieczeństwa (firewall, system logów).</li>
       </ul>
     <p>
-      2. Co do zasady nie zbieramy poprzez Serwis szczególnych kategorii danych (tzw. danych wrażliwych) w rozumieniu art. 9 RODO. Jeżeli użytkownik dobrowolnie przekaże takie dane, będą one przetwarzane wyłącznie w zakresie niezbędnym i uzasadnionym charakterem sprawy.
+      2. Co do zasady nie zbieramy poprzez Serwis szczególnych kategorii danych (tzw. danych wrażliwych) w rozumieniu art. 9 RODO. Przesyłane nagrania głosowe służą wyłącznie zapoznaniu się z treścią zapytania technicznego lub ofertowego i nie są przetwarzane w celu identyfikacji biometrycznej osób fizycznych. Jeżeli użytkownik w treści wiadomości dobrowolnie przekaże inne dane szczególnych kategorii, będą one przetwarzane wyłącznie w zakresie niezbędnym i uzasadnionym charakterem sprawy.
     </p>
 
     <h2>3. Cele i podstawy prawne przetwarzania danych</h2>
     <p>Dane osobowe przetwarzamy wyłącznie w zakresie niezbędnym do osiągnięcia określonych poniżej celów:</p>
-      1. Obsługa zapytań przesłanych przez formularz kontaktowy lub e-mail
+      1. Obsługa zapytań przesłanych przez formularz kontaktowy (w tym wiadomości tekstowych i nagrań głosowych) lub e-mail
       <ul>
-        <li>cel: udzielenie odpowiedzi, przygotowanie wstępnej oferty, bieżąca komunikacja,</li>
-        <li>podstawa prawna: art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes Administratora – komunikacja z potencjalnymi i obecnymi klientami) lub art. 6 ust. 1 lit. b RODO (podjęcie działań przed zawarciem umowy).</li>
+        <li>cel: zapoznanie się z treścią zapytania, udzielenie odpowiedzi, przygotowanie wstępnej oferty maszyn lub usług, bieżący kontakt z klientem,</li>
+        <li>podstawa prawna: art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes Administratora – komunikacja z potencjalnymi i obecnymi klientami oraz obsługa zapytań ofertowych) lub art. 6 ust. 1 lit. b RODO (podjęcie działań na żądanie osoby przed zawarciem umowy). W przypadku nagrań głosowych podstawą jest również dobrowolne działanie użytkownika polegające na nagraniu i przesłaniu pliku audio (art. 6 ust. 1 lit. a RODO).</li>
       </ul>
       2. Zawarcie i wykonanie umowy (np. sprzedaż maszyn, usług serwisowych, doradczych)
       <ul>
@@ -111,7 +112,7 @@
 
     <h2>7. Okres przechowywania danych</h2>
     <p>
-      1. Dane przetwarzane w ramach korespondencji (formularz kontaktowy, e-mail) są przechowywane przez okres niezbędny do udzielenia odpowiedzi i zakończenia sprawy, a następnie przez czas wynikający z okresu przedawnienia potencjalnych roszczeń.
+      1. Dane przetwarzane w ramach korespondencji (formularz kontaktowy, nagrania głosowe przesyłane formularzem, e-mail) trafiają na zabezpieczony serwer pocztowy Administratora i są przechowywane przez okres niezbędny do udzielenia odpowiedzi, przygotowania oferty i zakończenia sprawy, a następnie w ramach archiwum bieżącej korespondencji przez czas wynikający z okresu przedawnienia potencjalnych roszczeń.
     </p>
     <p>
       2. Dane przetwarzane w związku z zawarciem i wykonywaniem umów przechowujemy przez okres obowiązywania umowy, a następnie przez okres wynikający z przepisów prawa (m.in. podatkowych i rachunkowych) oraz okresów przedawnienia roszczeń.
@@ -145,13 +146,16 @@
       2. Podanie danych niezbędnych do zawarcia i realizacji umowy jest warunkiem jej zawarcia; brak podania danych może uniemożliwić świadczenie usług lub realizację dostaw.
     </p>
 
-    <h2>10. Zabezpieczenia danych</h2>
+    <h2>10. Zabezpieczenia danych i dostęp do mikrofonu</h2>
     <p>
-      1. Administrator stosuje odpowiednie środki techniczne i organizacyjne zapewniające ochronę przetwarzanych danych osobowych, odpowiednie do ryzyka naruszenia praw lub wolności osób, których dane dotyczą.
+      1. W celu umożliwienia nagrania wiadomości głosowej w formularzu kontaktowym, Serwis korzysta z interfejsu przeglądarki internetowej i prosi o jednorazową zgodę na dostęp do mikrofonu urządzenia użytkownika. Dostęp ten jest aktywny wyłącznie w trakcie rejestracji nagrania na żądanie użytkownika. Serwis nie rejestruje, nie przetwarza ani nie przesyła żadnego dźwięku w tle.
     </p>
-      2. W szczególności stosowane są:
+    <p>
+      2. Administrator stosuje odpowiednie środki techniczne i organizacyjne zapewniające ochronę przetwarzanych danych osobowych, odpowiednie do ryzyka naruszenia praw lub wolności osób, których dane dotyczą.
+    </p>
+      3. W szczególności stosowane są:
       <ul>
-        <li>zabezpieczenia serwerów i infrastruktury IT,</li>
+        <li>zabezpieczenia serwerów i infrastruktury IT, w tym szyfrowanie połączeń (certyfikat SSL),</li>
         <li>ograniczenia dostępu do danych (uprawnienia, hasła),</li>
         <li>procedury ochrony danych i poufności dla osób współpracujących z Administratorem.</li>
       </ul>

@@ -1161,6 +1161,14 @@
                   {#if cat.id === "hmp-g1"}
                     <!-- Slide 1: Opis i CTA HMP-G1 -->
                     <swiper-slide class="hmp-hero-swiper-slide hmp-slide-text">
+                      <div class="hmp-mobile-bg-image" aria-hidden="true">
+                        <img
+                          src="/assets/maszyny/hmp-g1/hmp-g1-render.webp"
+                          alt=""
+                          class="hmp-mobile-bg-render-img"
+                          draggable="false"
+                        />
+                      </div>
                       <div class="hmp-text-box">
                         <span class="hmp-promo-badge">NOWOŚĆ</span>
                         <h2 class="hmp-promo-title">
@@ -1170,7 +1178,7 @@
                           Kompaktowe centrum frezarskie CNC.
                         </div>
                         <p class="hmp-promo-desc">
-                          Pełna zabudowa, ATC i wrzeciono do 6 kW na powierzchni
+                          Pełna zabudowa, opcjonalne ATC i wrzeciona do 6 kW na powierzchni
                           mniejszej niż 1 m².
                         </p>
                         <div class="hmp-promo-buttons">
@@ -2588,6 +2596,11 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    position: relative;
+  }
+
+  .hmp-mobile-bg-image {
+    display: none;
   }
 
   .hmp-text-box {
@@ -2804,6 +2817,41 @@
 
     .hmp-hero-render-img {
       max-height: 360px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hmp-slide-image {
+      display: none !important;
+    }
+
+    .hmp-slide-text {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hmp-mobile-bg-image {
+      display: flex;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hmp-mobile-bg-render-img {
+      max-height: 82%;
+      width: auto;
+      max-width: 85%;
+      object-fit: contain;
+      opacity: 0.22;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.45));
+    }
+
+    .hmp-text-box {
+      position: relative;
+      z-index: 1;
     }
   }
 

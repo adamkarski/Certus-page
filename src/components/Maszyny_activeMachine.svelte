@@ -857,8 +857,7 @@ afterUpdate(() => {
 
             <ul class="">
               <li use:typoFixAction>
-                Maszyny wyposażone są w nowoczesny system sterowania
-                umożliwiający jednoczesną interpolację wszystkich osi roboczych
+                Sterowanie umożliwia jednoczesną interpolację wszystkich osi roboczych
                 z projekcją prędkości na czoło narzędzia
               </li>
               <li use:typoFixAction>

@@ -1,227 +1,158 @@
 <script lang="ts">
-  import { page } from '$app/stores';
-  import LogoCertus from '../assets/logo_certus.svelte';
-  import { fade, fly } from 'svelte/transition';
-  import { onMount } from 'svelte';
-  import CtaButtonKategory from '../components/cta-button-kategory.svelte';
+  import { page } from "$app/stores";
+  import Section_Header from "../components/sections/Section_Header.svelte";
+  import Section_Footer from "../components/sections/Section_Footer.svelte";
 
-  let mounted = false;
-
-  onMount(() => {
-    mounted = true;
-  });
-
-  $: status = $page.status;
-  $: message = $page.error?.message;
+  $: status = $page.status || 404;
 </script>
 
 <svelte:head>
-  <title>Strona nie została znaleziona - Certus</title>
-  <meta name="description" content="Przepraszamy, strona której szukasz nie istnieje." />
+  <title>Nie ma takiej strony - CERTUS Maszyny CNC</title>
+  <meta name="robots" content="noindex, follow" />
 </svelte:head>
 
-{#if mounted}
-  <div class="error-page gradientHero" transition:fade={{ duration: 500 }}>
-    <div class="error-container">
-      <!-- Logo -->
-      <div class="logo-container" transition:fly={{ y: -30, duration: 800, delay: 200 }}>
-        <LogoCertus />
-      </div>
-
-      <!-- Kod błędu -->
-      <div class="error-code" transition:fly={{ y: 30, duration: 800, delay: 400 }}>
-        {status || 404}
-      </div>
-
-      <!-- Komunikat błędu -->
-      <div class="error-message" transition:fly={{ y: 30, duration: 800, delay: 600 }}>
-        <h1>Ups! Strona nie została znaleziona</h1>
-        <p>
-          {#if status === 404}
-            Strona, której szukasz, nie istnieje lub została przeniesiona.
-          {:else if message}
-            {message}
-          {:else}
-            Wystąpił nieoczekiwany błąd.
-          {/if}
+<div class="app">
+  <Section_Header />
+  <main class="error-page-wrapper">
+    <section class="error-section">
+      <div class="error-container">
+        <span class="error-badge">{status}</span>
+        <h1>Nie ma takiej strony</h1>
+        <p class="error-desc">
+          Przepraszamy, strona której szukasz nie istnieje lub została przeniesiona pod inny adres.
         </p>
+        <div class="error-buttons">
+          <a href="/maszyny" class="error-btn btn-primary" title="Przejdź do oferty maszyn CNC">
+            Maszyny
+          </a>
+          <a href="/kontakt" class="error-btn btn-secondary" title="Skontaktuj się z nami">
+            Kontakt
+          </a>
+        </div>
       </div>
-
-      <!-- Akcje -->
-      <div class="error-actions" transition:fly={{ y: 30, duration: 800, delay: 800 }}>
-        <a href="/" style="text-decoration: none;" title="Wróć do strony głównej Certus">
-          <CtaButtonKategory text="Wróć do strony głównej" />
-        </a>
-        <button style="background: none; border: none; padding: 0; margin: 0;" on:click={() => history.back()}>
-          <CtaButtonKategory text="Wróć do poprzedniej strony" />
-        </button>
-      </div>
-
-      <!-- Dodatkowe linki -->
-      <div class="error-links" transition:fly={{ y: 30, duration: 800, delay: 1000 }}>
-
-
-
-
-        <a href="/maszyny" class="link" title="Zobacz nasze maszyny CNC">Nasze maszyny</a>
-        <a href="/onas" class="link" title="Dowiedz się więcej o firmie Certus">O nas</a>
-        <a href="/kontakt" class="link" title="Skontaktuj się z nami">Kontakt</a>
-      </div>
-    </div>
-  </div>
-{/if}
+    </section>
+  </main>
+  <Section_Footer />
+</div>
 
 <style lang="scss">
-
-  :global(.gradientHero) {
-    // background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
+  .app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f7f7f7;
+    overflow-x: hidden;
   }
 
-
-  .error-page {
-    position: fixed;
-    inset: 0;
+  .error-page-wrapper {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    padding: 2rem;
+    padding: 180px 20px 120px;
+    background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
     color: white;
+  }
+
+  .error-section {
+    width: 100%;
   }
 
   .error-container {
-    text-align: center;
-    max-width: 600px;
-    width: 100%;
-  }
-
-  .logo-container {
-    width: 200px;
-    height: auto;
-    margin: 0 auto 3rem;
-    opacity: 0.9;
-  }
-
-  .logo-container :global(svg) {
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-  }
-
-  .error-code {
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #ffffff, #e2e8f0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  
-  }
-
-  .error-message {
-    margin-bottom: 3rem;
-  }
-
-  .error-message h1 {
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  .error-message p {
-    opacity: 0.9;
-    line-height: 1.6;
-    max-width: 500px;
+    max-width: 620px;
     margin: 0 auto;
-  }
-
-  .error-actions {
+    text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 3rem;
     align-items: center;
+    gap: 18px;
   }
 
-  
+  .error-badge {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1;
+    color: #96a500;
+    letter-spacing: -2px;
+  }
 
-  .error-links {
+  h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .error-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e2e8f0;
+    max-width: 480px;
+    margin: 0;
+  }
+
+  .error-buttons {
     display: flex;
-    gap: 2rem;
-    justify-content: center;
+    gap: 16px;
+    margin-top: 14px;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .link {
-    color: rgba(255, 255, 255, 0.8);
+  .error-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 34px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    border-bottom: 2px solid transparent;
+    transition: all 0.25s ease;
+    min-width: 150px;
   }
 
-  .link:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.1);
-    border-bottom-color: #96a500;
+  .btn-primary {
+    background-color: #96a500;
+    color: #ffffff;
+    border: 2px solid #96a500;
+
+    &:hover {
+      background-color: #7e8c00;
+      border-color: #7e8c00;
+      transform: translateY(-2px);
+    }
   }
 
-:global(.error-page .cta-button){
+  .btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
 
-  width: 390px !important;
-  max-width: 90vw !important;
-    padding-right: 30px;
-    align-items: center !important;
-    text-align: left !important;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: #ffffff;
+      transform: translateY(-2px);
+    }
+  }
 
-}
-
-  /* Responsywność */
   @media (max-width: 768px) {
-    .error-page {
-      padding: 1rem;
+    .error-page-wrapper {
+      padding: 140px 16px 80px;
     }
 
-    .logo-container {
-      width: 150px;
-      margin-bottom: 2rem;
+    .error-badge {
+      font-size: 64px;
     }
 
-    .error-code {
-      margin-bottom: 1rem;
-    }
-
-    .error-message h1 {
-    }
-
-    .error-message p {
-    }
-
-    .error-actions {
-      margin-bottom: 2rem;
-    }
-
- 
-
-    .error-links {
-      gap: 1rem;
+    .error-buttons {
+      width: 100%;
       flex-direction: column;
-      align-items: center;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .error-code {
     }
 
-    .error-message h1 {
+    .error-btn {
+      width: 100%;
     }
-
-    .error-message p {
-    }
-
   }
 </style>

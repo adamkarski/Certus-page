@@ -33,6 +33,7 @@
     style="
       width:{size}px;
       height:{size}px;
+      max-width: 100%;
     "
   >
     <!-- ramka -->

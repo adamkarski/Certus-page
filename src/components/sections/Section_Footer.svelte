@@ -349,18 +349,19 @@
   }
 
   .footer-link {
-    transition: all 0.2s ease;
+    display: inline-block;
+    white-space: nowrap;
+    padding: 2px 4px;
+    border-radius: 4px;
     color: #ccc;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease, background-color 0.2s ease;
   }
 
   .footer-link:hover {
     color: white;
     background-color: var(--color-primary);
-    padding: 2px;
-    font-weight: 600;
-    transition: all 0.2s ease;
+    text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.8);
   }
 
   .contact-info {
