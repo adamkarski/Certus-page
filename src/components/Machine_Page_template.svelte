@@ -477,7 +477,145 @@
   </div>
 
   <main>
-    <!-- D2. KONSTRUKCJA (biała karta na szarym tle wg mockupu Dawida) -->
+    <!-- D2. SEKCJA INFORMACYJNA DLA MASZYN NA ZAMÓWIENIE (zaraz pod Hero) -->
+    {#if infoSection}
+      <section class="cx-wrap section-pad">
+        <div class="info-rich-card">
+          <div class="info-rich-header">
+            {#if infoSection.badge}
+              <span class="info-rich-badge">{infoSection.badge}</span>
+            {/if}
+            <h2 class="info-rich-title" use:typoFixAction>{infoSection.title}</h2>
+            <p class="info-rich-lead" use:typoFixAction>{infoSection.lead}</p>
+          </div>
+
+          <!-- Kto korzysta z maszyn specjalnych -->
+          {#if infoSection.targetItems && infoSection.targetItems.length > 0}
+            <div class="info-target-box">
+              <h3 class="info-block-heading">{infoSection.targetTitle || "Dla kogo budujemy maszyny specjalne"}</h3>
+              <div class="info-target-grid">
+                {#each infoSection.targetItems as target, i}
+                  <article class="info-target-chip">
+                    <span class="chip-icon-wrap">
+                      {#if i === 0}
+                        <!-- Fabryka / zakład -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20V8l5 3V8l5 3V4h8a2 2 0 0 1 2 2v14"/><path d="M2 20h20"/><rect x="14" y="9" width="3" height="3" rx=".5"/><rect x="14" y="14" width="3" height="3" rx=".5"/><rect x="6" y="14" width="3" height="3" rx=".5"/></svg>
+                      {:else if i === 1}
+                        <!-- Prototypowanie / narzędzia -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                      {:else if i === 2}
+                        <!-- Utrzymanie ruchu / koło zębate -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                      {:else}
+                        <!-- Zintegrowane stacje / layers -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                      {/if}
+                    </span>
+                    <p>{typeof target === 'string' ? target : target.text}</p>
+                  </article>
+                {/each}
+              </div>
+            </div>
+          {/if}
+
+          <!-- Jak pracujemy - Krok po kroku -->
+          {#if infoSection.processSteps && infoSection.processSteps.length > 0}
+            <div class="info-process-box">
+              <div class="section-title-group">
+                <h3 class="info-block-heading">{infoSection.processTitle || "Jak wygląda proces realizacji"}</h3>
+                {#if infoSection.processSubtitle}
+                  <p class="section-subtext">{infoSection.processSubtitle}</p>
+                {/if}
+              </div>
+              <div class="process-steps-grid">
+                {#each infoSection.processSteps as step, i}
+                  <article class="process-step-card">
+                    <div class="step-top-row">
+                      <span class="step-num">{step.number}</span>
+                      <span class="step-icon-inline">
+                        {#if i === 0}
+                          <!-- Rozmowa / konsultacja -->
+                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="12" y1="7" x2="12" y2="13"/></svg>
+                        {:else if i === 1}
+                          <!-- Rysunek / projekt -->
+                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        {:else}
+                          <!-- Montaż / uruchomienie -->
+                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        {/if}
+                      </span>
+                    </div>
+                    <div class="step-header">
+                      <h4 class="step-title">{step.title}</h4>
+                      {#if step.subtitle}
+                        <p class="step-subtitle">{step.subtitle}</p>
+                      {/if}
+                    </div>
+                    <p class="step-desc" use:typoFixAction>{step.desc}</p>
+                  </article>
+                {/each}
+              </div>
+            </div>
+          {/if}
+
+          <!-- Co przygotować do wyceny + Box wyceny -->
+          {#if infoSection.checklistItems && infoSection.checklistItems.length > 0}
+            <div class="info-checklist-wrap">
+              <div class="checklist-side">
+                <h3 class="info-block-heading">{infoSection.checklistTitle || "Co przygotować do wyceny?"}</h3>
+                {#if infoSection.checklistSubtitle}
+                  <p class="checklist-intro">{infoSection.checklistSubtitle}</p>
+                {/if}
+                <div class="checklist-items">
+                  {#each infoSection.checklistItems as item, i}
+                    <article class="checklist-item-card">
+                      <div class="chk-badge-wrap">
+                        <span class="chk-icon-inline">
+                          {#if i === 0}
+                            <!-- Zadanie / cel -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                          {:else if i === 1}
+                            <!-- Wymiary -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3H3v18"/><path d="M21 3l-9 9"/><line x1="3" y1="9" x2="7" y2="9"/><line x1="15" y1="3" x2="15" y2="7"/></svg>
+                          {:else}
+                            <!-- Materiał -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                          {/if}
+                        </span>
+                        <span class="chk-badge">{item.badge}</span>
+                      </div>
+                      <div class="chk-content">
+                        <h4 class="chk-title">{item.title}</h4>
+                        <p class="chk-desc" use:typoFixAction>{item.desc}</p>
+                      </div>
+                    </article>
+                  {/each}
+                </div>
+              </div>
+
+              {#if infoSection.quoteBox}
+                <aside class="quote-callout-card">
+                  <span class="quote-pill">Szybka konsultacja</span>
+                  <h4 class="quote-card-title">{infoSection.quoteBox.title}</h4>
+                  <p class="quote-card-text" use:typoFixAction>{infoSection.quoteBox.text}</p>
+                  <a href={`tel:${infoSection.quoteBox.phoneRaw}`} class="quote-card-phone">
+                    <span class="phone-icon-wrap">
+                      <img src="/assets/ikony/telefon.svg" alt="Telefon" />
+                    </span>
+                    <span>{infoSection.quoteBox.phone}</span>
+                  </a>
+                  <button type="button" class="btn-primary quote-card-btn" on:click={handleScrollToContact}>
+                    {infoSection.quoteBox.btnText}
+                  </button>
+                </aside>
+              {/if}
+            </div>
+          {/if}
+        </div>
+      </section>
+    {/if}
+
+    <!-- D3. KONSTRUKCJA (biała karta na szarym tle wg mockupu Dawida) -->
     {#if feats && feats.length > 0}
       <section class="cx-wrap section-pad">
         <div class="white-card">
@@ -588,102 +726,6 @@
         </div>
       </div>
     </section>
-
-    <!-- D4. SEKCJA INFORMACYJNA DLA MASZYN NA ZAMÓWIENIE -->
-    {#if infoSection}
-      <section class="cx-wrap section-pad">
-        <div class="info-rich-card">
-          <div class="info-rich-header">
-            {#if infoSection.badge}
-              <span class="info-rich-badge">{infoSection.badge}</span>
-            {/if}
-            <h2 class="info-rich-title" use:typoFixAction>{infoSection.title}</h2>
-            <p class="info-rich-lead" use:typoFixAction>{infoSection.lead}</p>
-          </div>
-
-          <!-- Kto korzysta z maszyn specjalnych -->
-          {#if infoSection.targetItems && infoSection.targetItems.length > 0}
-            <div class="info-target-box">
-              <h3 class="info-block-heading">{infoSection.targetTitle || "Dla kogo budujemy maszyny specjalne"}</h3>
-              <div class="info-target-grid">
-                {#each infoSection.targetItems as target}
-                  <article class="info-target-chip">
-                    <span class="chip-dot"></span>
-                    <p>{target}</p>
-                  </article>
-                {/each}
-              </div>
-            </div>
-          {/if}
-
-          <!-- Jak pracujemy - Krok po kroku -->
-          {#if infoSection.processSteps && infoSection.processSteps.length > 0}
-            <div class="info-process-box">
-              <div class="section-title-group">
-                <h3 class="info-block-heading">{infoSection.processTitle || "Jak wygląda proces realizacji"}</h3>
-                {#if infoSection.processSubtitle}
-                  <p class="section-subtext">{infoSection.processSubtitle}</p>
-                {/if}
-              </div>
-              <div class="process-steps-grid">
-                {#each infoSection.processSteps as step}
-                  <article class="process-step-card">
-                    <span class="step-num">{step.number}</span>
-                    <div class="step-header">
-                      <h4 class="step-title">{step.title}</h4>
-                      {#if step.subtitle}
-                        <p class="step-subtitle">{step.subtitle}</p>
-                      {/if}
-                    </div>
-                    <p class="step-desc" use:typoFixAction>{step.desc}</p>
-                  </article>
-                {/each}
-              </div>
-            </div>
-          {/if}
-
-          <!-- Co przygotować do wyceny + Box wyceny -->
-          {#if infoSection.checklistItems && infoSection.checklistItems.length > 0}
-            <div class="info-checklist-wrap">
-              <div class="checklist-side">
-                <h3 class="info-block-heading">{infoSection.checklistTitle || "Co przygotować do wyceny?"}</h3>
-                {#if infoSection.checklistSubtitle}
-                  <p class="checklist-intro">{infoSection.checklistSubtitle}</p>
-                {/if}
-                <div class="checklist-items">
-                  {#each infoSection.checklistItems as item}
-                    <article class="checklist-item-card">
-                      <span class="chk-badge">{item.badge}</span>
-                      <div class="chk-content">
-                        <h4 class="chk-title">{item.title}</h4>
-                        <p class="chk-desc" use:typoFixAction>{item.desc}</p>
-                      </div>
-                    </article>
-                  {/each}
-                </div>
-              </div>
-
-              {#if infoSection.quoteBox}
-                <aside class="quote-callout-card">
-                  <span class="quote-pill">Szybka konsultacja</span>
-                  <h4 class="quote-card-title">{infoSection.quoteBox.title}</h4>
-                  <p class="quote-card-text" use:typoFixAction>{infoSection.quoteBox.text}</p>
-                  <a href={`tel:${infoSection.quoteBox.phoneRaw}`} class="quote-card-phone">
-                    <span class="phone-icon-wrap">
-                      <img src="/assets/ikony/telefon.svg" alt="Telefon" />
-                    </span>
-                    <span>{infoSection.quoteBox.phone}</span>
-                  </a>
-                  <button type="button" class="btn-primary quote-card-btn" on:click={handleScrollToContact}>
-                    {infoSection.quoteBox.btnText}
-                  </button>
-                </aside>
-              {/if}
-            </div>
-          {/if}
-        </div>
-      </section>
-    {/if}
 
     <!-- D4. PO ZAKUPIE / INFORMACJE (wg mockupu Dawida) -->
     {#if benefits && benefits.length > 0}
@@ -1572,6 +1614,18 @@
       flex-shrink: 0;
     }
 
+    .chip-icon-wrap {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #f2f5dd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--color-primary-dark, #7e8c00);
+    }
+
     p {
       margin: 0;
       font-size: 14px;
@@ -1619,6 +1673,24 @@
       transform: translateY(-3px);
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     }
+  }
+
+  .step-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .step-icon-inline {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #f2f5dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-dark, #7e8c00);
   }
 
   .step-num {
@@ -1699,6 +1771,25 @@
     display: flex;
     align-items: flex-start;
     gap: 16px;
+  }
+
+  .chk-badge-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .chk-icon-inline {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #f2f5dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-dark, #7e8c00);
   }
 
   .chk-badge {

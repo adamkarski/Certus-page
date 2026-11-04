@@ -454,10 +454,10 @@ export const maszynySpecjalistyczneData: MachinePageData = {
     lead: "Projektujemy i wykonujemy urządzenia CNC od podstaw pod konkretne operacje wytwórcze. Stawiamy na praktyczność: minimum niepotrzebnej komplikacji, maksimum niezawodności i ergonomii na Twojej hali produkcyjnej.",
     targetTitle: "Dla kogo budujemy maszyny specjalistyczne?",
     targetItems: [
-      "Małe i średnie zakłady produkcyjne automatyzujące powtarzalne operacje",
-      "Warsztaty i działy prototypowania wymagające niestandardowych gabarytów lub osi",
-      "Działy utrzymania ruchu i linie produkcyjne potrzebujące urządzeń pomocniczych",
-      "Firmy poszukujące zintegrowanych stacji: cięcie, wiercenie, znakowanie w jednym cyklu"
+      { text: "Małe i średnie zakłady produkcyjne automatyzujące powtarzalne operacje" },
+      { text: "Warsztaty i działy prototypowania wymagające niestandardowych gabarytów lub osi" },
+      { text: "Działy utrzymania ruchu i linie produkcyjne potrzebujące urządzeń pomocniczych" },
+      { text: "Firmy poszukujące zintegrowanych stacji: cięcie, wiercenie, znakowanie w jednym cyklu" }
     ],
     processTitle: "Jak pracujemy – przejrzysty proces w 3 krokach",
     processSubtitle: "Bez zbędnych etapów, nadmiarowej biurokracji i z pełnym wsparciem inżynierskim.",
