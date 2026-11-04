@@ -1,182 +1,152 @@
 <script lang="ts">
-	// import { text } from '@sveltejs/kit';
   import { createEventDispatcher } from "svelte";
+  import { typoFixAction } from "$lib/utils/typography";
+
   export let text: string = "OK";
-  export let type: string = "button";
+  export let type: "button" | "submit" | "reset" = "button";
   export let disabled: boolean = false;
-  export let hero: boolean = false; // Dodajemy propsa do wariantu hero
+  export let variant: "primary" | "secondary" = "primary";
+  export let href: string = "";
   export let classs: string = "";
-  import { typoFixAction } from "$lib/utils/typography"; // Importujemy akcję do poprawy typografii
+  export let hero: boolean = false; // wsteczna kompatybilność
+
   const dispatch = createEventDispatcher();
 </script>
 
-<button
-  class:hero
-  class={classs}
-  on:click={() => dispatch("click")}
-  {type}
-  {disabled}
->
-  <span class="text-container">
-    <span use:typoFixAction class="maszyny_span">{text}</span>
-  </span>
-  <span class="svg-container">
-    <svg
-      class="cta-svg"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 158.04 93.76"
-    >
-      <polyline class="cls-1" points="109.49 0 158.04 0 49.13 93.76 0 93.76" />
-      <polygon
-        class="cls-2"
-        points="158.04 0 48.56 93.76 158.04 93.76 158.04 0"
-      />
-    </svg>
-  </span>
-</button>
+{#if href}
+  <a
+    {href}
+    class="certus-btn certus-btn--{variant} {classs}"
+    class:hero
+    class:disabled
+    on:click={(e) => {
+      if (disabled) {
+        e.preventDefault();
+      } else {
+        dispatch("click", e);
+      }
+    }}
+  >
+    <span class="btn-text" use:typoFixAction>{text}</span>
+    <span class="btn-pattern" aria-hidden="true"></span>
+  </a>
+{:else}
+  <button
+    {type}
+    {disabled}
+    class="certus-btn certus-btn--{variant} {classs}"
+    class:hero
+    on:click={(e) => dispatch("click", e)}
+  >
+    <span class="btn-text" use:typoFixAction>{text}</span>
+    <span class="btn-pattern" aria-hidden="true"></span>
+  </button>
+{/if}
 
 <style lang="scss">
-
-:global(body.home .contact-flex .text-left.ctaButton button) {
-
-}
-
-
-:global(section.dlaczego .onasbutton .text-container){
-  text-align: left !important;
-    width: 100% !important;
-    
-}
-
-  :global(.oferta-card .oferta-cta:hover .svg-container) {
-    display: none !important;
-  }
-
-  button {
-    clip-path: polygon(0% 1%, 100% 0, 80% 100%, 0% 100%);
-
+  .certus-btn {
     position: relative;
     display: inline-flex;
     align-items: center;
-    overflow: hidden;
-    border: none;
-    // border-radius: 0px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    padding: 0 2em;
-    height: 45px; // Zwiększamy wysokość dla lepszej proporcji
-    width: auto; // Szerokość dopasuje się do treści
-    min-width: 260px; // Minimalna szerokość
-    max-width: 90vw; // Maksymalna szerokość na mobilnych
-    color: var(--color-text-primary);
-    background-color: #eeeeee;
-    cursor: pointer;
+    justify-content: center;
+    text-decoration: none;
     font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.5;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 14px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+    box-sizing: border-box;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease,
+      filter 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.2s ease;
 
-    .text-container {
-      transition: transform 0.3s ease;
-      width: 81%;
+    .btn-text {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      pointer-events: none;
     }
 
-    .svg-container {
+    /* Subtelny poziomy biały wzorek w tle na spodzie przycisku */
+    .btn-pattern {
       position: absolute;
+      left: 0;
       right: 0;
-      top: 0;
-      height: 100%;
-      width: 50px; // Szerokość kontenera SVG
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      // background-color: #7e8c00; // Tło dla SVG
+      bottom: 0;
+      height: 18px;
+      background-image: url(/assets/images/pattern-video-3.png);
+      background-repeat: repeat-x;
+      background-position: center bottom;
+      background-size: auto 18px;
+      opacity: 0.35;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    .cta-svg {
-      width: 1.5em;
-      height: 1.5em;
-      .cls-1 {
-        fill: #c5d418;
-      }
-      .cls-2 {
-        fill: #96a500;
-      }
+    &:hover .btn-pattern {
+      opacity: 0.6;
+      transform: translateY(-1px);
     }
 
-    &:hover {
-      background-color: #7e8c00;
-      color: white;
-      border-radius: 0px;
-
-      .text-container {
-        // width: 50%; // Ustawiamy szerokość na auto, aby tekst mógł się rozciągać
-        transform: translateX(-25px); // Przesuwamy tekst w lewo
-      }
-
-      .svg-container {
-        transform: translateX(0) scale(4);
-        background-color: transparent !important;
-      }
-    }
-
-    &.hero:hover, &.backButton:hover, &.backFromCategory:hover {
-      .text-container {
-        transform: none !important;
-      }
-      .svg-container {
-        transform: translateX(100%) !important;
-      }
-    }
-
-    &:focus {
+    &:focus-visible {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(150, 165, 0, 0.5);
+      box-shadow: 0 0 0 3px rgba(126, 140, 0, 0.45);
+    }
+
+    &:disabled,
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
     }
   }
 
-  // Wariant HERO
-  button.hero {
-    background-color: #96a500;
-    color: white;
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
-    transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
-
-    .svg-container {
-      background-color: #7e8c00;
-    }
+  /* Wariant Primary (jak Poznaj HMP-G1) */
+  .certus-btn--primary {
+    background-color: #7e8c00;
+    color: #ffffff !important;
+    border: none;
 
     &:hover {
-      background-color: #7e8c00;
-      filter: brightness(1.05);
+      background-color: #96a500;
+      color: #ffffff !important;
+      filter: brightness(1.08);
+      box-shadow: 0 6px 18px rgba(126, 140, 0, 0.4);
     }
   }
-  button.oferta-cta {
-    
-    color: var(--color-text-primary);
-   
-    .svg-container {
-      // background-color: #7e8c00;
-    }
-    .cta-svg {
-    }
-    .text-container {
-      text-align: center;
-      width: 100%;
-      transition: transform 0.4s ease;
-    }
+
+  /* Wariant Secondary (jak Zapytaj o ofertę) */
+  .certus-btn--secondary {
+    background-color: transparent;
+    color: #ffffff !important;
+    border: 1.5px solid #ffffff;
+
     &:hover {
-      background-color: rgba(150, 165, 0, 1);
-      border-left: 4px solid #7e8c00;
-      .text-container {
-        transform: translateX(-6px); // Przesuwamy tekst w lewo
-        color: var(--color-text-white);
-      }
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: #ffffff;
+      color: #ffffff !important;
     }
+  }
+
+  /* Specyficzne klasy pomocnicze dla istniejących widoków */
+  :global(.oferta-card .certus-btn) {
+    min-width: 220px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  }
+
+  :global(.contact-flex .certus-btn) {
+    width: auto;
+    min-width: 200px;
   }
 </style>

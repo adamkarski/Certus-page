@@ -1,0 +1,1638 @@
+<script lang="ts">
+  import { onMount } from "svelte";
+  import axios from "axios";
+  import { Turnstile } from "svelte-turnstile";
+  import { typoFixAction } from "$lib/utils/typography";
+  import { scrollToElement } from "$lib/utils/smoothScroll";
+  import MachineTitleSvg from "$lib/components/MachineTitleSvg.svelte";
+  import CtaButton from "./CtaButton.svelte";
+  import Gallery from "$lib/components/Gallery.svelte";
+  import "$lib/styles/form-styles.scss";
+
+  // Typy danych dla szablonu
+  export interface KpiItem {
+    label: string;
+    value: string;
+    note: string;
+  }
+
+  export interface FeatItem {
+    imgSrc: string;
+    imgAlt: string;
+    title: string;
+    desc: string;
+    galleryIndex?: number;
+  }
+
+  export interface SpecRow {
+    param: string;
+    chips?: string[];
+    checkmarkText?: string;
+  }
+
+  export interface BenefitCard {
+    title: string;
+    text: string;
+    linkHref?: string;
+    linkText?: string;
+  }
+
+  export interface GalleryImage {
+    src: string;
+    fallbackSrc?: string;
+    title: string;
+    alt: string;
+  }
+
+  export interface BulletItem {
+    text: string;
+  }
+
+  // Właściwości (props) konfigurujące maszynę
+  export let machineId: string = "hmp-g1";
+  export let machineName: string = "HMP-G1";
+  export let promoBadge: string = "NOWOŚĆ";
+  export let heroPretitle: string = "Nowość · kompaktowe centrum frezarskie CNC";
+  export let heroTitleSrOnly: string = "HMP-G1 – kompaktowe centrum frezarskie CNC";
+  export let heroLead: string = "Pełna zabudowa, opcjonalne ATC i wrzeciona do 6 kW na powierzchni mniejszej niż 1 m².";
+  export let heroImageSrc: string = "/assets/maszyny/hmp-g1/hmp-g1-render2.webp";
+  export let heroImageAlt: string = "Frezarka CNC CERTUS HMP-G1 w pełnej zabudowie";
+  export let catalogPdfUrl: string = "/do_pobrania/CERTUS_Karta_katalogowa_HMP-G1.pdf";
+  export let catalogPdfTitle: string = "Karta katalogowa HMP-G1";
+  export let showCatalogPdf: boolean = true;
+
+  export let kpis: KpiItem[] = [];
+  export let constrSectionTitle: string = "Mały gabaryt. Ta sama konstrukcja co w dużych maszynach.";
+  export let constrSectionSubtitle: string = "HMP-G1 ma rozwiązania mechaniczne większych maszyn CERTUS — zmienione są wymiary, nie zasady.";
+  export let feats: FeatItem[] = [];
+
+  export let specs: SpecRow[] = [];
+  export let drawingImgSrc: string = "/assets/maszyny/hmp-g1/hmp-g1-render3.webp";
+  export let drawingImgAlt: string = "Wymiary zewnętrzne";
+
+  export let optionCardBadge: string = "OPCJA";
+  export let optionCardTitle: string = "Sonda 3D";
+  export let optionCardDesc: string = "Pomiar materiału i detalu bezpośrednio na maszynie. Ułatwia wyznaczanie punktu zerowego oraz ustalanie położenia materiału i detalu przed obróbką.";
+
+  export let benefits: BenefitCard[] = [];
+  export let galleryImages: GalleryImage[] = [];
+
+  export let contactBullets: string[] = [
+    `Napisz, z jakiego materiału i jakiej wielkości są Twoje detale — dobierzemy optymalną konfigurację ${machineName} i przygotujemy wycenę.`,
+    `Pomożemy dobrać wrzeciono, magazyn narzędzi ATC i wyposażenie dodatkowe.`,
+    `Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy szybko, zazwyczaj w ciągu 24 godzin.`
+  ];
+
+  export let formSubject: string = `Zapytanie: ${machineName}`;
+  export let formType: string = machineId;
+  export let formHeading: string = `Zapytaj o konfigurację ${machineName}`;
+
+  // Galeria zdjęć (otwierana po kliknięciu w render hero lub kafelki cech)
+  let isGalleryOpen = false;
+  let galleryInitialIndex = 0;
+
+  function openGallery(index = 0) {
+    if (galleryImages && galleryImages.length > 0) {
+      galleryInitialIndex = index;
+      isGalleryOpen = true;
+    }
+  }
+
+  function closeGallery() {
+    isGalleryOpen = false;
+  }
+
+  // Stan formularza kontaktowego
+  let formData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    material: "",
+    size: "",
+    message: "",
+    privacy: false,
+  };
+
+  let phonePrefix = "+48";
+
+  const countryPrefixes = [
+    { code: "PL", name: "Polska", prefix: "+48" },
+    { code: "AT", name: "Austria", prefix: "+43" },
+    { code: "BE", name: "Belgia", prefix: "+32" },
+    { code: "DE", name: "Niemcy", prefix: "+49" },
+    { code: "CZ", name: "Czechy", prefix: "+420" },
+    { code: "FR", name: "Francja", prefix: "+33" },
+    { code: "GB", name: "Wielka Brytania", prefix: "+44" },
+    { code: "IT", name: "Włochy", prefix: "+39" },
+    { code: "ES", name: "Hiszpania", prefix: "+34" },
+    { code: "NL", name: "Holandia", prefix: "+31" },
+    { code: "US", name: "USA", prefix: "+1" },
+  ];
+
+  function handlePhoneInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
+
+    if (value.startsWith("+")) {
+      for (const country of countryPrefixes) {
+        if (value.startsWith(country.prefix)) {
+          phonePrefix = country.prefix;
+          formData.phone = value.substring(country.prefix.length).trim();
+          break;
+        }
+      }
+    }
+  }
+
+  function handleCountryCodeInput(event: Event) {
+    const val = (event.target as HTMLInputElement).value;
+    for (const country of countryPrefixes) {
+      if (val.startsWith(country.prefix)) {
+        phonePrefix = country.prefix;
+        formData.phone = val.substring(country.prefix.length).trim();
+        return;
+      }
+    }
+    if (/^\d{7,}$/.test(val.replace(/[\s\-]/g, ""))) {
+      formData.phone = val.trim();
+      phonePrefix = "+48";
+    }
+  }
+
+  function validateEmail(email: string): string | null {
+    if (!email.trim()) return "Email jest wymagany";
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email.trim())) {
+      return "Nieprawidłowy format email";
+    }
+    if (email.length > 254) return "Email jest za długi (max 254 znaków)";
+    return null;
+  }
+
+  function validatePhone(phone: string): string | null {
+    if (!phone.trim()) return "Telefon jest wymagany";
+    const cleanPhone = phone.replace(/[\s\-]/g, "");
+    if (!/^\d+$/.test(cleanPhone)) {
+      return "Numer telefonu może zawierać tylko cyfry, spacje i myślniki";
+    }
+    if (cleanPhone.length < 7) {
+      return "Numer jest za krótki (min 7 cyfr)";
+    }
+    if (cleanPhone.length > 15) {
+      return "Numer jest za długi (max 15 cyfr)";
+    }
+    return null;
+  }
+
+  function validateField(fieldName: string, value: any): string | null {
+    switch (fieldName) {
+      case "firstName":
+        if (!value.trim()) return "Imię jest wymagane";
+        if (value.trim().length < 2)
+          return "Imię musi mieć co najmniej 2 znaki";
+        if (value.trim().length > 50)
+          return "Imię jest za długie (max 50 znaków)";
+        return null;
+      case "lastName":
+        if (!value.trim()) return "Nazwisko jest wymagane";
+        if (value.trim().length < 2)
+          return "Nazwisko musi mieć co najmniej 2 znaki";
+        if (value.trim().length > 50)
+          return "Nazwisko jest za długie (max 50 znaków)";
+        return null;
+      case "email":
+        return validateEmail(value);
+      case "phone":
+        return validatePhone(value);
+      case "privacy":
+        if (!value) return "Zgoda na przetwarzanie danych jest wymagana";
+        return null;
+      default:
+        return null;
+    }
+  }
+
+  let errors: Record<string, string> = {};
+
+  function validateSingleField(fieldName: string) {
+    const error = validateField(
+      fieldName,
+      formData[fieldName as keyof typeof formData],
+    );
+    if (error) {
+      errors = { ...errors, [fieldName]: error };
+    } else {
+      const { [fieldName]: _, ...rest } = errors;
+      errors = rest;
+    }
+  }
+
+  let isSubmitting = false;
+  let submitMessage = "";
+  let submitSuccess = false;
+  let turnstileToken: string | null = null;
+  let turnstileReset: (() => void) | undefined;
+
+  function validate() {
+    errors = {};
+    const firstNameErr = validateField("firstName", formData.firstName);
+    if (firstNameErr) errors.firstName = firstNameErr;
+
+    const lastNameErr = validateField("lastName", formData.lastName);
+    if (lastNameErr) errors.lastName = lastNameErr;
+
+    const emailErr = validateField("email", formData.email);
+    if (emailErr) errors.email = emailErr;
+
+    const phoneErr = validateField("phone", formData.phone);
+    if (phoneErr) errors.phone = phoneErr;
+
+    const privacyErr = validateField("privacy", formData.privacy);
+    if (privacyErr) errors.privacy = privacyErr;
+
+    return Object.keys(errors).length === 0;
+  }
+
+  async function handleSubmit(e: Event) {
+    e.preventDefault();
+    submitMessage = "";
+
+    if (!validate()) {
+      submitMessage = "Proszę uzupełnić wymagane pola formularza.";
+      submitSuccess = false;
+      return;
+    }
+
+    if (!turnstileToken) {
+      submitMessage =
+        "Weryfikacja zabezpieczeń nie powiodła się. Spróbuj ponownie za chwilę.";
+      submitSuccess = false;
+      return;
+    }
+
+    isSubmitting = true;
+    const fullPhone = `${phonePrefix} ${formData.phone}`.trim();
+    const formDataToSend = new FormData();
+    formDataToSend.append("firstName", formData.firstName);
+    formDataToSend.append("lastName", formData.lastName);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("phone", fullPhone);
+    formDataToSend.append("subject", formSubject);
+    formDataToSend.append("formType", formType);
+    formDataToSend.append("cf-turnstile-response", turnstileToken);
+
+    let fullMessage = `Dotyczy: Zapytanie o maszynę ${machineName}\n`;
+    if (formData.material)
+      fullMessage += `Obrabiany materiał: ${formData.material}\n`;
+    if (formData.size)
+      fullMessage += `Największy detal [mm]: ${formData.size}\n`;
+    fullMessage += `\nWiadomość od klienta:\n${formData.message || "(brak dodatkowej wiadomości)"}`;
+
+    formDataToSend.append("message", fullMessage);
+    formDataToSend.append("material", formData.material);
+    formDataToSend.append("size", formData.size);
+    formDataToSend.append("timestamp", new Date().toISOString());
+
+    try {
+      const apiUrl = "https://api.mg-certus.pl/sendEmail.php";
+      let res;
+      try {
+        res = await axios.post(apiUrl, formDataToSend, { timeout: 15000 });
+      } catch (err) {
+        res = await axios.post("/send-email.php", formDataToSend, {
+          timeout: 15000,
+        });
+      }
+
+      if (res.data && res.data.success) {
+        submitSuccess = true;
+        submitMessage =
+          `Dziękujemy za zapytanie! Skontaktujemy się z Tobą w ciągu 24 godzin z przygotowaną konfiguracją ${machineName}.`;
+        formData = {
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          material: "",
+          size: "",
+          message: "",
+          privacy: false,
+        };
+        errors = {};
+        turnstileReset?.();
+      } else {
+        submitSuccess = false;
+        submitMessage =
+          res.data?.message ||
+          "Wystąpił problem z wysłaniem wiadomości. Prosimy o kontakt telefoniczny lub mailowy.";
+      }
+    } catch (err) {
+      console.error("Błąd wysyłki formularza:", err);
+      submitSuccess = false;
+      submitMessage =
+        "Nie udało się połączyć z serwerem. Prosimy o bezpośredni kontakt na biuro@mg-certus.pl.";
+    } finally {
+      isSubmitting = false;
+    }
+  }
+
+  function handleScrollToContact() {
+    scrollToElement("kontakt", 1000, 140);
+  }
+
+  onMount(() => {
+    if (window.location.hash === "#kontakt") {
+      setTimeout(() => {
+        scrollToElement("kontakt", 1000, 140);
+      }, 300);
+    }
+  });
+</script>
+
+<div class="hmp-page">
+  <!-- D1. HERO (ciemny pas na całą szerokość wg mockupu Dawida) -->
+  <div class="hmp-hero-wrapper">
+    <!-- Tło ze zdjęciem studio -->
+    <div class="hmp-hero-bg"></div>
+    <section id="top" class="cx-wrap hmp-hero-section">
+      <div class="cx-hero">
+        <div class="cx-hero-text">
+          {#if promoBadge}
+            <span class="hero-promo-badge">{promoBadge}</span>
+          {/if}
+
+          <h1 class="cx-hero-title">
+            <MachineTitleSvg text={machineName} height="1em" />
+            <span class="sr-only">{heroTitleSrOnly}</span>
+          </h1>
+
+          <p class="cx-hero-lead" use:typoFixAction>
+            {heroLead}
+          </p>
+
+          <div class="cx-hero-buttons">
+            <button
+              type="button"
+              class="btn-primary"
+              on:click={handleScrollToContact}
+            >
+              Zapytaj o ofertę
+            </button>
+            {#if showCatalogPdf}
+              <a
+                href={catalogPdfUrl}
+                class="btn-secondary"
+                target="_blank"
+                rel="noopener"
+                title={`Karta katalogowa ${machineName} w formacie PDF`}
+                aria-label={`Pobierz kartę katalogową ${machineName} w formacie PDF`}
+              >
+                Karta katalogowa
+              </a>
+            {/if}
+          </div>
+        </div>
+
+        <!-- Zdjęcie maszyny w Hero - kliknięcie otwiera galerię -->
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+        <div
+          class="cx-hero-img-box {galleryImages && galleryImages.length > 0 ? 'clickable-hero-img' : ''}"
+          on:click={() => openGallery(0)}
+          role={galleryImages && galleryImages.length > 0 ? 'button' : undefined}
+          tabindex={galleryImages && galleryImages.length > 0 ? 0 : undefined}
+          title={galleryImages && galleryImages.length > 0 ? `Zobacz galerię zdjęć ${machineName}` : undefined}
+        >
+          <img
+            src={heroImageSrc}
+            alt={heroImageAlt}
+            class="cx-hero-img"
+          />
+        </div>
+      </div>
+
+      <!-- 4 kluczowe parametry (KPI) wg mockupu Dawida -->
+      {#if kpis && kpis.length > 0}
+        <div class="cx-kpi">
+          {#each kpis as kpi}
+            <div class="cx-kpi-item">
+              <p class="cx-kpi-label">{kpi.label}</p>
+              <p class="cx-kpi-value">{kpi.value}</p>
+              <p class="cx-kpi-note">{kpi.note}</p>
+            </div>
+          {/each}
+        </div>
+      {/if}
+    </section>
+
+    <!-- Ukośne ścięcie wg mockupu Dawida -->
+    <div class="cx-cut"></div>
+  </div>
+
+  <main>
+    <!-- D2. KONSTRUKCJA (biała karta na szarym tle wg mockupu Dawida) -->
+    {#if feats && feats.length > 0}
+      <section class="cx-wrap section-pad">
+        <div class="white-card">
+          <h2 class="card-title" use:typoFixAction>
+            {constrSectionTitle}
+          </h2>
+          <p class="card-subtitle" use:typoFixAction>
+            {constrSectionSubtitle}
+          </p>
+
+          <div class="cx-feat">
+            {#each feats as feat}
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+              <article
+                class="feat-item {feat.galleryIndex !== undefined && galleryImages && galleryImages.length > 0 ? 'clickable-feat-item' : ''}"
+                on:click={() => {
+                  if (feat.galleryIndex !== undefined) openGallery(feat.galleryIndex);
+                }}
+                role={feat.galleryIndex !== undefined ? 'button' : undefined}
+                tabindex={feat.galleryIndex !== undefined ? 0 : undefined}
+              >
+                <img
+                  src={feat.imgSrc}
+                  alt={feat.imgAlt}
+                  loading="lazy"
+                  class="feat-img"
+                />
+                <h3 class="feat-title" use:typoFixAction>{feat.title}</h3>
+                <p class="feat-desc" use:typoFixAction>{feat.desc}</p>
+              </article>
+            {/each}
+          </div>
+        </div>
+      </section>
+    {/if}
+
+    <!-- D3. DANE TECHNICZNE (styl tabeli 1:1 z HMP-G1) -->
+    <section class="cx-wrap section-pad-sm">
+      <div class="white-card">
+        <div class="header-sekcja">
+          <div><MachineTitleSvg text={machineName} height="2em" /></div>
+          <div>
+            <h2 class="card-title" use:typoFixAction>Dane techniczne</h2>
+          </div>
+        </div>
+
+        <div class="cx-spec">
+          <!-- Tabela z chipsami -->
+          <div class="table-card">
+            <div class="table-header">
+              <span>Parametr</span>
+              <span>Dostępne opcje</span>
+            </div>
+
+            {#each specs as row}
+              <div class="cx-tr">
+                <span class="cx-param">{row.param}</span>
+                {#if row.checkmarkText}
+                  <span class="checkmark-text">{row.checkmarkText}</span>
+                {:else if row.chips && row.chips.length > 0}
+                  <div class="chips-wrap">
+                    {#each row.chips as chip}
+                      <span class="chip">{chip}</span>
+                    {/each}
+                  </div>
+                {/if}
+              </div>
+            {/each}
+          </div>
+
+          <!-- Prawa strona: rysunek/schemat wymiarowy + pobieranie PDF + karta opcji -->
+          <div class="drawing-side">
+            <img
+              src={drawingImgSrc}
+              alt={drawingImgAlt}
+              loading="lazy"
+              class="drawing-img"
+            />
+
+            {#if showCatalogPdf}
+              <div id="pobierz" class="download-box">
+                <p class="download-title">{catalogPdfTitle}</p>
+                <p class="download-status">Dokumentacja techniczna PDF</p>
+                <a
+                  href={catalogPdfUrl}
+                  class="btn-olive"
+                  target="_blank"
+                  rel="noopener"
+                  title={`Pobierz dokumentację ${machineName}`}
+                  aria-label={`Pobierz kartę katalogową ${machineName}`}
+                >
+                  Pobierz
+                </a>
+              </div>
+            {/if}
+
+            <div class="sonda-card">
+              <div class="sonda-header">
+                <span class="sonda-badge">{optionCardBadge}</span>
+                <p class="sonda-title">{optionCardTitle}</p>
+              </div>
+              <p class="sonda-desc" use:typoFixAction>
+                {optionCardDesc}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- D4. PO ZAKUPIE (wg mockupu Dawida) -->
+    {#if benefits && benefits.length > 0}
+      <section class="cx-wrap section-pad-sm">
+        <h2 class="cards-section-title" use:typoFixAction>Po zakupie</h2>
+        <div class="cx-cards">
+          {#each benefits as benefit}
+            <div class="benefit-card">
+              <p class="benefit-title">{benefit.title}</p>
+              <p class="benefit-text" use:typoFixAction>
+                {benefit.text}
+                {#if benefit.linkHref}
+                  {" "}<a href={benefit.linkHref} class="olive-link">{benefit.linkText || "Szczegóły"}</a>
+                {/if}
+              </p>
+            </div>
+          {/each}
+        </div>
+      </section>
+    {/if}
+
+    <!-- D5. KONTAKT (oryginalne stylowanie kontaktu 1:1 z HMP-G1) -->
+    <section id="kontakt" class="contact-flex">
+      <div class="background">
+        <div class="contact">
+          <!-- Lewa kolumna: Treść kontaktowa z grafiką tła kontakt-background.jpg -->
+          <div class="contact-left no-sel hmp-contact-left">
+            <h2 use:typoFixAction>Masz pytania? Skontaktuj się z nami!</h2>
+            <ul use:typoFixAction class="contact-bullets no-sel">
+              {#each contactBullets as bullet}
+                <li>
+                  <span class="bullet"></span>
+                  <div class="bullet-content">
+                    {bullet}
+                  </div>
+                </li>
+              {/each}
+            </ul>
+
+            <div class="contact-info-block">
+              <div class="info-row">
+                <span class="info-icon">
+                  <img src="/assets/ikony/telefon.svg" alt="Telefon" />
+                </span>
+                <div>
+                  <b>
+                    <a href="tel:+48606324406" title="Zadzwoń do Certus"
+                      >+48 606 324 406</a
+                    >
+                  </b>
+                  <small>Dni robocze 8:00–16:00</small>
+                </div>
+              </div>
+              <div class="info-row">
+                <span class="info-icon">
+                  <img src="/assets/ikony/email.svg" alt="Email" />
+                </span>
+                <div>
+                  <b>
+                    <a
+                      href="mailto:biuro@mg-certus.pl"
+                      title="Wyślij e-mail do Certus">biuro@mg-certus.pl</a
+                    >
+                  </b>
+                  <small>Dział handlowy i techniczny</small>
+                </div>
+              </div>
+              <div class="info-row">
+                <span class="info-icon">
+                  <img src="/assets/ikony/lokalizacja.svg" alt="Lokalizacja" />
+                </span>
+                <div>
+                  <b>
+                    <a
+                      href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Nawiguj do siedziby firmy"
+                    >
+                      Biała Droga 177, 34-123 Chocznia
+                    </a>
+                  </b>
+                  <small>Siedziba i produkcja CERTUS</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prawa kolumna: Formularz kontaktowy -->
+          <div class="contact-right">
+            <form
+              class="contact-form"
+              on:submit={handleSubmit}
+              autocomplete="off"
+            >
+              <h3>{formHeading}</h3>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">Imię</label>
+                  <input
+                    id="firstName"
+                    name="firstName"
+                    type="text"
+                    placeholder="Imię"
+                    bind:value={formData.firstName}
+                    class:error={errors.firstName}
+                    on:blur={() => validateSingleField("firstName")}
+                    maxlength="50"
+                    autocomplete="given-name"
+                    required
+                  />
+                  {#if errors.firstName}<span class="error-message"
+                      >{errors.firstName}</span
+                    >{/if}
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Nazwisko</label>
+                  <input
+                    id="lastName"
+                    name="lastName"
+                    type="text"
+                    placeholder="Nazwisko"
+                    bind:value={formData.lastName}
+                    class:error={errors.lastName}
+                    on:blur={() => validateSingleField("lastName")}
+                    maxlength="50"
+                    autocomplete="family-name"
+                    required
+                  />
+                  {#if errors.lastName}<span class="error-message"
+                      >{errors.lastName}</span
+                    >{/if}
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="twoj@email.com"
+                  bind:value={formData.email}
+                  class:error={errors.email}
+                  on:blur={() => validateSingleField("email")}
+                  maxlength="254"
+                  autocomplete="email"
+                  required
+                />
+                {#if errors.email}<span class="error-message"
+                    >{errors.email}</span
+                  >{/if}
+              </div>
+
+              <div class="form-group phone-group">
+                <label for="phone">Telefon</label>
+                <div class="phone-input-wrapper">
+                  <input
+                    type="text"
+                    name="phoneCountryCode"
+                    bind:value={phonePrefix}
+                    class="country-code-input"
+                    autocomplete="tel-country-code"
+                    on:input={handleCountryCodeInput}
+                  />
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="123 456 789"
+                    bind:value={formData.phone}
+                    class:error={errors.phone}
+                    on:input={handlePhoneInput}
+                    on:blur={() => validateSingleField("phone")}
+                    required
+                    autocomplete="tel-national"
+                  />
+                </div>
+                {#if errors.phone}<span class="error-message"
+                    >{errors.phone}</span
+                  >{/if}
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="material">Obrabiany materiał</label>
+                  <input
+                    id="material"
+                    name="material"
+                    type="text"
+                    placeholder="np. aluminium, stal, mosiądz"
+                    bind:value={formData.material}
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="size">Największy detal [mm]</label>
+                  <input
+                    id="size"
+                    name="size"
+                    type="text"
+                    placeholder="np. 180 × 120 × 40"
+                    bind:value={formData.size}
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Wiadomość / uwagi do konfiguracji</label>
+                <textarea
+                  id="message"
+                  rows="4"
+                  placeholder="Opisz rodzaj obróbki, wymagane tolerancje lub zadaj pytanie..."
+                  bind:value={formData.message}
+                  maxlength="2000"
+                ></textarea>
+              </div>
+
+              <div class="form-group privacy-group checkbox-row">
+                <input
+                  id="privacy"
+                  type="checkbox"
+                  bind:checked={formData.privacy}
+                  on:change={() => validateSingleField("privacy")}
+                  required
+                />
+                <label for="privacy">
+                  Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
+                  obsługi zapytania zgodnie z
+                  <a href="/polityka-prywatnosci" target="_blank"
+                    >polityką prywatności</a
+                  >. *
+                  {#if errors.privacy}<span class="error-message"
+                      >{errors.privacy}</span
+                    >{/if}
+                </label>
+              </div>
+
+              <Turnstile
+                siteKey="0x4AAAAAAAxyxV79aWwI7t9_"
+                on:turnstile-callback={(e) => (turnstileToken = e.detail.token)}
+                on:turnstile-reset={() => (turnstileToken = null)}
+                bind:reset={turnstileReset}
+              />
+
+              {#if submitMessage}
+                <div
+                  class="submit-message"
+                  class:success={submitSuccess}
+                  class:error={!submitSuccess}
+                >
+                  {submitMessage}
+                </div>
+              {/if}
+
+              <div class="text-left ctaButton">
+                <CtaButton
+                  text={isSubmitting ? "Wysyłanie..." : "Wyślij zapytanie"}
+                  type="submit"
+                  disabled={isSubmitting}
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal galerii zdjęć -->
+{#if galleryImages && galleryImages.length > 0}
+  <Gallery
+    images={galleryImages}
+    isOpen={isGalleryOpen}
+    initialIndex={galleryInitialIndex}
+    onClose={closeGallery}
+  />
+{/if}
+
+<style lang="scss">
+  .hmp-page {
+    font-family: "Poppins", Arial, sans-serif;
+    color: #666666;
+    background: #f7f7f7;
+    font-size: 15px;
+    line-height: 1.6;
+    width: 100%;
+  }
+
+  .cx-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    box-sizing: border-box;
+  }
+
+  /* HERO */
+  .hmp-hero-wrapper {
+    background: linear-gradient(180deg, #545454 0%, #2e3032 100%);
+    position: relative;
+    overflow: hidden;
+    padding-top: 130px;
+  }
+
+  /* Osobny div tła - studio backdrop z delikatnym blur */
+  .hmp-hero-bg {
+    position: absolute;
+    inset: -25px; /* ujemny margines niweluje prześwity krawędzi przy blur */
+    background-image: url("/assets/maszyny/hmp-g1/hearotlo01-copy.webp");
+    background-size: cover;
+    background-position: center;
+    filter: blur(0px);
+    transform: scale(1.03);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hmp-hero-wrapper::after {
+    z-index: 1;
+    content: "";
+    background-image: url(/assets/images/pattern-image1-2.png);
+    position: absolute;
+    width: 100vw;
+    height: 37px;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  .header-sekcja {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .hmp-hero-section {
+    padding-top: 50px;
+    padding-bottom: 104px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cx-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 56px;
+    align-items: start;
+  }
+
+  .cx-hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 18px;
+  }
+
+  .cx-hero-title {
+    font-family: "Snasm", "Poppins", sans-serif !important;
+    margin: 0;
+    font-size: 84px;
+    line-height: 0.95;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+  }
+
+  .cx-hero-lead {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.55;
+    color: #efefef;
+  }
+
+  .cx-hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .btn-primary {
+    background: var(--color-primary, #96a500);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 26px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      filter 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      background: var(--color-primary-dark, #7e8c00);
+      color: #ffffff;
+      filter: brightness(1.08);
+      box-shadow: 0 4px 14px rgba(126, 140, 0, 0.4);
+    }
+  }
+
+  .btn-secondary {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 13px 25px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--color-primary, #96a500);
+      color: var(--color-primary-light, #c5d418);
+    }
+  }
+
+  .btn-olive {
+    align-self: flex-start;
+    background: var(--color-primary-dark, #7e8c00);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      filter 0.3s ease;
+
+    &:hover {
+      background: var(--color-primary, #96a500);
+      filter: brightness(1.08);
+    }
+  }
+
+  .clickable-hero-img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .clickable-feat-item {
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  .cx-hero-img-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .cx-hero-img-box::after {
+    content: "";
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90%;
+    height: 70%;
+    background: radial-gradient(
+      ellipse at center,
+      #ffffff73,
+      #ffffff26 45%,
+      #fff0 75%
+    );
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(62px);
+  }
+  .cx-hero-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: none;
+    transform: scale(1.14);
+    transform-origin: center center;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.45));
+  }
+
+  /* KPI */
+  .cx-kpi {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 56px;
+  }
+
+  .cx-kpi-item {
+    border-top: 3px solid var(--color-primary, #96a500);
+    padding-top: 14px;
+  }
+
+  .cx-kpi-label {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #bfc3c7;
+  }
+
+  .cx-kpi-value {
+    margin: 2px 0 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .cx-kpi-note {
+    margin: 0;
+    font-size: 13px;
+    color: #bfc3c7;
+  }
+
+  /* Ukośne ścięcie */
+  .cx-cut {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 34%;
+    height: 46px;
+    background: #f7f7f7;
+    clip-path: polygon(0 0, 82% 0, 100% 100%, 0 100%);
+    z-index: 1;
+  }
+
+  /* SEKCJE */
+  .section-pad {
+    padding-top: 48px;
+    padding-bottom: 24px;
+  }
+
+  .section-pad-sm {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .white-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  }
+
+  .card-title {
+    margin: 0 0 8px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #444444;
+  }
+
+  .card-subtitle {
+    margin: 0 0 36px;
+    max-width: 760px;
+    font-size: 15px;
+    color: #666666;
+  }
+
+  /* D2. Konstrukcja - 4 bloki */
+  .cx-feat {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .feat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .feat-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.4s ease;
+
+    .feat-item:hover & {
+      transform: scale(1.02);
+    }
+  }
+
+  .feat-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #444444;
+    padding-left: 12px;
+    border-left: 4px solid #96a500;
+  }
+
+  .feat-desc {
+    margin: 0;
+    font-size: 15px;
+    color: #666666;
+  }
+
+  /* D3. DANE TECHNICZNE (styl tabeli zachowany 1:1 z HMP-G1) */
+  .cx-spec {
+    display: grid;
+    grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+    gap: 28px;
+    align-items: start;
+    margin-top: 24px;
+  }
+
+  .table-card {
+    background: #fafbfc;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+
+  .table-header {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 16px;
+    padding: 14px 20px;
+    background: #f1f3f6;
+    color: #5d636b;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .cx-tr {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+    padding: 14px 20px;
+    border-top: 1px solid #eceef1;
+  }
+
+  .cx-param {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #5d636b;
+    font-weight: 500;
+  }
+
+  .chips-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    font-size: 13px;
+    padding: 4px 10px;
+    border: 1px solid #dadde2;
+    border-radius: 4px;
+    background: #f4f5f7;
+    color: #444444;
+    font-weight: 500;
+  }
+
+  .checkmark-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-primary-dark, #7e8c00);
+  }
+
+  .drawing-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .drawing-img {
+    width: 100%;
+    display: block;
+  }
+
+  .download-box {
+    background: #f7f7f7;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .download-title {
+    margin: 0;
+    font-weight: 600;
+    color: #444444;
+  }
+
+  .download-status {
+    margin: 0;
+    font-size: 13px;
+    color: #a06a00;
+  }
+
+  .sonda-card {
+    background: #f7f7f7;
+    border-radius: 10px;
+    border-left: 3px solid var(--color-primary, #96a500);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sonda-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sonda-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--color-primary, #96a500);
+    color: #ffffff;
+  }
+
+  .sonda-title {
+    margin: 0;
+    font-weight: 600;
+    color: #444444;
+    font-size: 14px;
+  }
+
+  .sonda-desc {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #555555;
+  }
+
+  /* D4. Po zakupie */
+  .cards-section-title {
+    margin: 0 0 22px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #444444;
+  }
+
+  .cx-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .benefit-card {
+    background: #ffffff;
+    border-top: 3px solid var(--color-primary, #96a500);
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    padding: 24px 20px;
+    text-align: center;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .benefit-title {
+    margin: 0 0 6px;
+    font-weight: 600;
+    color: #444444;
+    font-size: 15px;
+  }
+
+  .benefit-text {
+    margin: 0;
+    font-size: 14px;
+    color: #666666;
+    line-height: 1.5;
+  }
+
+  .olive-link {
+    color: var(--color-primary-dark, #7e8c00);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #4f5700;
+    }
+  }
+
+  /* D5. KONTAKT - ORYGINALNY STYL 1:1 Z HMP-G1 */
+  .contact-flex {
+    background: transparent;
+    height: auto;
+    position: relative;
+    top: 0px;
+    padding: 32px 0 80px 0;
+  }
+
+  .contact-flex .background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .contact-flex .background .contact {
+    display: flex;
+    gap: 0px;
+    box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
+    border-radius: 14px;
+    max-width: 1060px;
+    margin: 0 auto;
+    align-items: stretch;
+    position: relative;
+    background-color: white;
+  }
+
+  .contact-left {
+    flex: 1.1;
+    background: #232c32;
+    color: #fff;
+    border-radius: 20px 0px 0px 20px;
+    padding: 40px 36px 32px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 340px;
+    max-width: 480px;
+    background-image: url(/assets/kontakt-background.jpg);
+    background-size: cover;
+    position: relative;
+
+    &::before {
+      display: none !important;
+    }
+
+    h2 {
+      font-size: 1.5rem !important;
+      font-weight: 600 !important;
+      margin-bottom: 32px;
+      line-height: 1.2;
+      color: white !important;
+      max-width: 300px;
+    }
+  }
+
+  .contact-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+
+    li {
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      color: var(--color-gray-200);
+
+      .bullet-content {
+        flex: 1;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .bullet {
+    width: 11px;
+    min-height: 22px;
+    height: auto;
+    background: var(--color-primary);
+    border-radius: 0;
+    margin-right: 16px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .contact-info-block {
+    margin: 24px 0 12px 0;
+
+    a {
+      transition: all ease 0.3s;
+      color: #ffffff;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 10px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+
+      b {
+        font-size: 15px;
+        color: #ffffff;
+      }
+
+      small {
+        color: #ccc;
+        margin-top: 2px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .info-icon {
+    margin-right: 6px;
+    margin-top: 4px;
+    img {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+  }
+
+  .contact-right {
+    flex: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-form {
+    width: 100%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 36px 32px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    h3 {
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-align: center;
+      font-size: 1.25rem;
+    }
+  }
+
+  .phone-group {
+    .phone-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .country-code-input {
+      flex-shrink: 0;
+      width: 70px;
+      padding: 12px 8px;
+    }
+
+    input[type="tel"] {
+      flex-grow: 1;
+    }
+  }
+
+  .contact-flex .text-left.ctaButton {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 8px;
+
+    :global(button) {
+      height: 45px;
+      background-color: var(--color-primary);
+      color: white;
+    }
+  }
+
+  :global(.contact-flex .cta-button:hover) {
+    width: 64%;
+  }
+
+  .submit-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+
+    &.success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    &.error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+  }
+
+  /* RWD */
+  @media (max-width: 900px) {
+    .contact-flex .background .contact {
+      flex-direction: column;
+      padding: 24px 6px;
+      gap: 24px;
+      margin: 20px auto;
+    }
+
+    .contact-left,
+    .contact-right {
+      max-width: 100%;
+      min-width: 0;
+      padding: 24px 16px;
+    }
+
+    .contact-left {
+      border-radius: 20px 20px 0 0;
+    }
+
+    .cx-hero,
+    .cx-feat,
+    .cx-spec {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .cx-kpi,
+    .cx-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cx-tr,
+    .table-header {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    .cx-hero-title {
+      font-size: 52px;
+    }
+
+    .cx-hero-lead {
+      font-size: 16px;
+    }
+
+    .white-card {
+      padding: 24px;
+    }
+
+    .header-sekcja {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+  }
+</style>
+

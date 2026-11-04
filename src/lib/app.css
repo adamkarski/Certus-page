@@ -292,3 +292,19 @@ h2 {
   overflow: hidden;
 }
 
+/* ========================================
+   GLOBAL PROMO BADGE (NOWOŚĆ / BESTSELLER)
+   ======================================== */
+.hero-promo-badge {
+  align-self: flex-start;
+  background: var(--color-primary-dark, #7e8c00);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+

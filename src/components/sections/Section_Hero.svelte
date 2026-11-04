@@ -1170,7 +1170,7 @@
                         />
                       </div>
                       <div class="hmp-text-box">
-                        <span class="hmp-promo-badge">NOWOŚĆ</span>
+                        <span class="hero-promo-badge">NOWOŚĆ</span>
                         <h2 class="hmp-promo-title">
                           <MachineTitleSvg text="HMP-G1" height="1em" />
                         </h2>
@@ -1178,8 +1178,8 @@
                           Kompaktowe centrum frezarskie CNC.
                         </div>
                         <p class="hmp-promo-desc">
-                          Pełna zabudowa, opcjonalne ATC i wrzeciona do 6 kW na powierzchni
-                          mniejszej niż 1 m².
+                          Pełna zabudowa, opcjonalne ATC i wrzeciona do 6 kW na
+                          powierzchni mniejszej niż 1 m².
                         </p>
                         <div class="hmp-promo-buttons">
                           <a
@@ -1376,7 +1376,10 @@
                           </div>
                           <div class="headlines">
                             <div class="topline">
-                              <MachineTitleSvg text="CNC HMM-ST" height="1.15em" /><br /><span class="nawias"
+                              <MachineTitleSvg
+                                text="CNC HMM-ST"
+                                height="1.15em"
+                              /><br /><span class="nawias"
                                 >(ST - Sliding Table - ruchomy stół)</span
                               >
                             </div>
@@ -1417,7 +1420,10 @@
                           </div>
                           <div class="headlines">
                             <div class="topline">
-                              <MachineTitleSvg text="CNC HMM-GT" height="1.15em" /><br /><span class="nawias"
+                              <MachineTitleSvg
+                                text="CNC HMM-GT"
+                                height="1.15em"
+                              /><br /><span class="nawias"
                                 >(GT - Ganry Type - ruchoma brama)</span
                               >
                             </div>
@@ -1541,7 +1547,10 @@
                           </div>
                           <div class="headlines">
                             <div class="topline">
-                              <MachineTitleSvg text="CNC HPP-CT" height="1.15em" /><br /><span class="nawias"
+                              <MachineTitleSvg
+                                text="CNC HPP-CT"
+                                height="1.15em"
+                              /><br /><span class="nawias"
                                 >(CT — Closed Type - w zabudowie)</span
                               >
                             </div>
@@ -1582,7 +1591,10 @@
                           </div>
                           <div class="headlines">
                             <div class="topline">
-                              <MachineTitleSvg text="CNC HPP-OT" height="1.15em" /><br /><span class="nawias"
+                              <MachineTitleSvg
+                                text="CNC HPP-OT"
+                                height="1.15em"
+                              /><br /><span class="nawias"
                                 >(OT — Open Type - otwarte)</span
                               >
                             </div>
@@ -2614,16 +2626,8 @@
     width: 100%;
   }
 
-  .hmp-promo-badge {
+  .hero-promo-badge {
     align-self: flex-end;
-    background: #7e8c00;
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 6px 14px;
-    border-radius: 20px;
   }
 
   .hmp-promo-title {
@@ -2789,7 +2793,7 @@
       text-align: center;
     }
 
-    .hmp-promo-badge {
+    .hero-promo-badge {
       align-self: center;
     }
 

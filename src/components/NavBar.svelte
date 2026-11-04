@@ -7,6 +7,7 @@
 
   import kategorieMaszyn from "$lib/data/maszyny.json";
   import CtaButton from "./CtaButton.svelte";
+  import MachineTitleSvg from "$lib/components/MachineTitleSvg.svelte";
   import { cubicOut } from "svelte/easing";
   import { activePage, resetHeroSwiper } from "$lib/visibilityStore";
   import { scrollToElement } from "$lib/utils/smoothScroll";
@@ -73,11 +74,32 @@
   let scrolled = false;
   let showLottie = false;
   let windowWidth = 0;
+  let ramkaEl: HTMLElement;
+  let desktopMenuEl: HTMLElement;
+  let isSmallLogo = false;
 
-  // Przełączanie oparte wyłącznie na czystym breakpoint szerokości okna:
-  // Poniżej 1260px cała belka menu z pigułką HMP-G1 nie mieści pełnego logo z tekstem,
-  // więc wyświetlamy sam sygnet bez tekstu. Od 1260px wzwyż: pełne logo (sygnet + tekst).
-  $: isSmallLogo = windowWidth > 0 && windowWidth < 1260;
+  // Programowe dopasowanie logo:
+  // Mierzymy czy w ramce mieści się pełne logo z typografią (szerokość 210px + marginesy).
+  // Jeśli jest pełne menu desktopowe, sprawdzamy: czy dostępne miejsce w ramce >= szerokość menu + pełne logo + odstępy.
+  // Jeśli jest hamburger, pełne logo mieści się zawsze (o ile ramka ma min. 320px).
+  function checkLogoFit() {
+    if (!ramkaEl) return;
+    const ramkaWidth = ramkaEl.clientWidth;
+    const isDesktopVisible =
+      desktopMenuEl &&
+      window.getComputedStyle(desktopMenuEl).display !== "none";
+
+    if (isDesktopVisible) {
+      const menuWidth = desktopMenuEl.offsetWidth || 760;
+      // 220px (pełne logo) + 24px (gap) + menuWidth + 40px (bezpieczne marginesy od łuków kapsuły)
+      const neededForFull = 220 + 24 + menuWidth + 40;
+      isSmallLogo = ramkaWidth < neededForFull;
+    } else {
+      // Menu mobilne (hamburger ~50px + logo 210px + marginesy ~60px = 320px)
+      isSmallLogo = ramkaWidth < 360;
+    }
+  }
+
   $: lottieSource = isSmallLogo
     ? "/lottie_logo_sygnet.json"
     : "/lottie_logo_full.json";
@@ -169,9 +191,11 @@
         if (window.innerWidth >= 1024 && isMobileMenuOpen) {
           closeMobileMenu();
         }
+        checkLogoFit();
       };
       window.addEventListener("resize", handleResize);
       handleResize();
+      setTimeout(checkLogoFit, 50);
 
       window.addEventListener("keydown", handleKeyDown);
 
@@ -217,9 +241,9 @@
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-sel"
   class:scrolled
 >
-  <div class="px-4 sm:px-6 lg:px-8 ramka">
+  <div class="ramka" bind:this={ramkaEl}>
     <div class="relative menubar">
-      <div class="flex items-center justify-between px-8 py-4 contenerNav">
+      <div class="flex items-center justify-between contenerNav">
         <div class="flex items-center logoCertus {logoMini}">
           <a
             href="/"
@@ -242,7 +266,7 @@
           </a>
         </div>
 
-        <div class="desktop-menu-items">
+        <div class="desktop-menu-items" bind:this={desktopMenuEl}>
           <a
             href="/hmp-g1"
             class="nav-link nav-pill-nowosc"
@@ -378,31 +402,27 @@
               >
                 <div class="bestseller-content p-6">
                   <div class="bestseller-header mb-4">
-                    <h3 class="bestseller-title">
-                      Frezarko‑grawerka CNC<br /><span class="bestseller-name"
-                        >CERTUS 69</span
-                      >
-                    </h3>
-                    <p class="bestseller-subtitle">
-                      Najchętniej wybierana przez naszych klientów
-                    </p>
+                    <div class="bestseller-title">
+                      <MachineTitleSvg
+                        text="CERTUS 69"
+                        height="1.55em"
+                        shadow={false}
+                        className="bestseller-svg-title"
+                      />
+                    </div>
                   </div>
 
-                  <div class="bestseller-image mb-4">
+                  <div class="bestseller-image mb-3">
                     <img
-                      src="/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-glowne1.jpg"
-                      alt="Frezarko-grawerka CNC CERTUS 69"
+                      src="/assets/maszyny/certus-69/c69-hero-render.webp"
+                      alt="CERTUS 69"
                       class="bestseller-img"
                     />
                   </div>
 
-                  <div class="bestseller-features mb-4">
-                    <ul class="features-list">
-                      <li>✓ Pole pracy 600 × 900 × 200 mm</li>
-                      <li>✓ Zaufało nam ponad 500 firm</li>
-                      <li>✓ Kompleksowa obsługa serwisowa</li>
-                    </ul>
-                  </div>
+                  <p class="bestseller-subtitle mb-4">
+                    Najchętniej wybierana przez naszych klientów
+                  </p>
 
                   <div class="bestseller-cta">
                     <CtaButton text="Sprawdź szczegóły" />
@@ -609,21 +629,25 @@
   }
 
   .bestseller-title {
-    font-weight: 800;
     margin-bottom: 0px;
-    line-height: 1.3;
+    line-height: 1.1;
     text-align: right;
-    color: #232c327c;
-    font-size: 17px;
-    .bestseller-name {
-    }
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #2b2b2b;
+  }
+
+  :global(.bestseller-svg-title) {
+    color: #2b2b2b !important;
   }
 
   .bestseller-subtitle {
-    text-align: right;
+    text-align: center;
     color: #6b7280;
     margin-bottom: 0;
     line-height: 1.4;
+    font-size: 13.5px;
   }
 
   .bestseller-image {
@@ -669,6 +693,7 @@
     border-radius: 72px;
     color: #616d5d;
     font-weight: 200;
+    margin-left: -13px;
     margin-right: 0px;
     height: 76px;
     margin-top: 0px;
@@ -884,6 +909,7 @@
 
   nav .menubar {
     width: 100%;
+    height: 100%;
     transition: all 0.7s ease;
     box-shadow: 0px 0px 26px 21px #0000001a;
     border-radius: 52px;
@@ -946,10 +972,8 @@
       width: 100%;
       height: 100%;
       align-items: center;
-      padding-top: 0px;
+      padding: 0 1.5rem;
       flex-direction: row;
-      margin-left: 12px;
-      margin-right: 12px;
       justify-content: space-between;
     }
   }
@@ -958,6 +982,13 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
+
+    :global(.lottie-player) {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      transition: box-shadow 0.6s;
+    }
 
     &.logomini {
       width: 52px;
@@ -971,12 +1002,12 @@
     }
 
     &.logofull {
-      width: 210px;
+      width: 220px;
       height: 52px;
 
       :global(.lottie-player) {
-        width: 210px !important;
-        height: 50px !important;
+        width: 220px !important;
+        height: 52px !important;
       }
     }
   }
