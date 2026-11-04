@@ -32,6 +32,47 @@ export interface GalleryImage {
   alt: string;
 }
 
+export interface ProcessStep {
+  number: string;
+  title: string;
+  subtitle: string;
+  desc: string;
+  iconSvg?: string;
+}
+
+export interface ChecklistItem {
+  badge: string;
+  title: string;
+  desc: string;
+  iconSvg?: string;
+}
+
+export interface TargetItem {
+  text: string;
+  iconSvg?: string;
+}
+
+export interface InfoSectionData {
+  badge?: string;
+  title: string;
+  lead: string;
+  targetTitle?: string;
+  targetItems?: (string | TargetItem)[];
+  processTitle?: string;
+  processSubtitle?: string;
+  processSteps?: ProcessStep[];
+  checklistTitle?: string;
+  checklistSubtitle?: string;
+  checklistItems?: ChecklistItem[];
+  quoteBox?: {
+    title: string;
+    text: string;
+    phone: string;
+    phoneRaw: string;
+    btnText: string;
+  };
+}
+
 export interface MachinePageConfig {
   machineId: string;
   machineName: string;
@@ -54,7 +95,11 @@ export interface MachinePageConfig {
   optionCardBadge: string;
   optionCardTitle: string;
   optionCardDesc: string;
+  infoSection?: InfoSectionData | null;
+  benefitsSectionTitle?: string;
   benefits: BenefitCard[];
+  showGalleryStrip?: boolean;
+  galleryStripTitle?: string;
   galleryImages: GalleryImage[];
   contactBullets: string[];
   formSubject: string;
@@ -190,7 +235,7 @@ export const certus69Data: MachinePageConfig = {
   promoBadge: "BESTSELLER",
   heroPretitle: "Bestseller · kompaktowe centrum obróbcze CNC",
   heroTitleSrOnly: "CERTUS 69 – kompaktowe centrum obróbcze CNC",
-  heroLead: "Pole pracy 600 × 900 × 200 mm na kompaktowej podstawie, wrzeciono do 6 kW z oprawką ISO20 i automatyczną wymianą narzędzi: magazyn liniowy 6 poz. lub rewolwerowy 10 poz.",
+  heroLead: "Otwarta przestrzeń robocza, dwie wersje ATC i wrzeciona do 6 kW na kompaktowej podbudowie.",
   heroImageSrc: "/assets/maszyny/certus-69/c69-hero-render.webp",
   heroImageAlt: "Frezarka CNC CERTUS 69",
   catalogPdfUrl: "/do_pobrania/CERTUS_Karta_katalogowa_C69-PRO.pdf",
@@ -246,7 +291,7 @@ export const certus69Data: MachinePageConfig = {
     { param: "Opcje dodatkowe", chips: ["4. oś obrotowa", "Chłodzenie mgłą olejową", "Czujnik narzędzia"] },
     { param: "Materiały", chips: ["Aluminium i metale kolorowe", "Drobne elementy stalowe", "Plexi i tworzywa", "Drewno"] },
   ],
-  drawingImgSrc: "/assets/maszyny/SCHEMATY/Certus_69_1.png",
+  drawingImgSrc: "/assets/maszyny/SCHEMATY/Certus_69_1_cropped.png",
   drawingImgAlt: "Schemat techniczny i wymiary CERTUS 69",
   optionCardBadge: "OPCJA",
   optionCardTitle: "4. oś obrotowa",
@@ -321,4 +366,222 @@ export const certus69Data: MachinePageConfig = {
   formSubject: "Zapytanie: CERTUS 69",
   formType: "certus-69",
   formHeading: "Zapytaj o konfigurację CERTUS 69",
+};
+
+export const maszynySpecjalistyczneData: MachinePageData = {
+  machineId: "maszyny-specjalistyczne",
+  machineName: "SPECJALNE",
+  promoBadge: "NA ZAMÓWIENIE",
+  heroPretitle: "Projekt i produkcja CNC na indywidualne zamówienie",
+  heroTitleSrOnly: "Maszyny specjalistyczne CNC CERTUS – urządzenia na indywidualne zamówienie",
+  heroLead: "Gdy nie istnieje gotowe rozwiązanie do Twojego zadania, projektujemy i budujemy je od podstaw — prosto, rozsądnie i niezawodnie.",
+  heroImageSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-hero-transparent.webp",
+  heroImageAlt: "Maszyny specjalistyczne CNC budowane na zamówienie przez CERTUS",
+  catalogPdfUrl: "/kontakt",
+  catalogPdfTitle: "Wycena indywidualna",
+  showCatalogPdf: false,
+  kpis: [
+    {
+      label: "OBSZAR ROBOCZY",
+      value: "Dowolny",
+      note: "wymiary pod proces klienta",
+    },
+    {
+      label: "LICZBA OSI",
+      value: "3 do 5 osi",
+      note: "oraz osie obrotowe / liniowe",
+    },
+    {
+      label: "WRZECIONA I GŁOWICE",
+      value: "do 15 kW",
+      note: "frezowanie, cięcie, wiercenie",
+    },
+    {
+      label: "AUTOMATYZACJA",
+      value: "ATC / Robotyka",
+      note: "podajniki, pomiary, systemy wizyjne",
+    },
+  ],
+  constrSectionTitle: "Maszyny budowane pod Twoje zadanie produkcyjne.",
+  constrSectionSubtitle: "Nie dopasowujesz technologii do maszyny — to maszynę projektujemy ściśle pod Twój detal, materiał i halę.",
+  feats: [
+    {
+      imgSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-01.webp",
+      imgAlt: "Indywidualny projekt konstrukcji maszyny specjalistycznej",
+      title: "Konstrukcja pod proces",
+      desc: "Projektujemy i spawamy korpusy o sztywności dopasowanej do docelowych materiałów: od kompozytów i tworzyw po stale i metale kolorowe.",
+      galleryIndex: 0,
+    },
+    {
+      imgSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-02.webp",
+      imgAlt: "Prowadnice liniowe i napędy serwo",
+      title: "Sprawdzone napędy i komponenty",
+      desc: "Korzystamy wyłącznie z certyfikowanych podzespołów przemysłowych łatwo dostępnych w Polsce i UE: serwonapędy, śruby toczne i precyzyjne listwy zębate.",
+      galleryIndex: 1,
+    },
+    {
+      imgSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-03.webp",
+      imgAlt: "Dedykowane wrzeciona i głowice robocze",
+      title: "Dedykowana głowica i oprzyrządowanie",
+      desc: "Dobieramy wrzeciona wysokoobrotowe, agregaty kątowe, noże oscylacyjne, głowice tnące, znakujące lub automatyczne zespoły wiertarskie.",
+      galleryIndex: 2,
+    },
+    {
+      imgSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-04.webp",
+      imgAlt: "Sterowanie przemysłowe i automatyka PLC",
+      title: "Intuicyjne sterowanie i automatyka",
+      desc: "Wdrażamy systemy sterowania z przejrzystym interfejsem w języku polskim, integrację z liniami produkcyjnymi, czujnikami detali oraz bazami danych.",
+      galleryIndex: 3,
+    },
+  ],
+  specs: [
+    { param: "Wymiary obszaru roboczego (mm)", chips: ["Dostosowane do potrzeb (od małych gniazd po wielki format)"] },
+    { param: "Konfiguracja kinematyki", chips: ["3-osiowa", "4-osiowa", "5-osiowa", "Portałowa", "Z ruchomym stołem"] },
+    { param: "Rodzaje wrzecion i głowic", chips: ["Wysokoobrotowe (do 60 000 rpm)", "Wrzeciona dużej mocy do stali", "Głowice wiertarskie i tnące"] },
+    { param: "Wymiana narzędzi", chips: ["Ręczna", "Automatyczna ATC liniowa", "ATC karuzelowa / rewolwerowa"] },
+    { param: "Opcje automatyzacji", chips: ["Automatyczny załadunek / rozładunek", "Systemy wizyjne", "Zintegrowane sondy 3D", "Robotyka"] },
+    { param: "System sterowania", chips: ["PikoCNC PL", "Sterowanie przemysłowe dedykowane", "Pulpit wolnostojący"] },
+    { param: "Materiały obrabiane", chips: ["Aluminium i metale kolorowe", "Stal i odlewy", "Tworzywa sztuczne i kompozyty", "Materiały techniczne"] },
+  ],
+  drawingImgSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-schemat.webp",
+  drawingImgAlt: "Projekt specjalistycznej maszyny CNC CERTUS",
+  optionCardBadge: "INDYWIDUALNIE",
+  optionCardTitle: "Automatyzacja i integracja",
+  optionCardDesc: "Budujemy maszyny wyposażone w automatyczne podajniki materiału, systemy wizyjne, zintegrowane pomiary detalu oraz stanowiska zrobotyzowane.",
+  infoSection: {
+    badge: "OFERTA DEDYKOWANA",
+    title: "Gdy gotowe maszyny z katalogu nie rozwiązują problemu",
+    lead: "Projektujemy i wykonujemy urządzenia CNC od podstaw pod konkretne operacje wytwórcze. Stawiamy na praktyczność: minimum niepotrzebnej komplikacji, maksimum niezawodności i ergonomii na Twojej hali produkcyjnej.",
+    targetTitle: "Dla kogo budujemy maszyny specjalistyczne?",
+    targetItems: [
+      "Małe i średnie zakłady produkcyjne automatyzujące powtarzalne operacje",
+      "Warsztaty i działy prototypowania wymagające niestandardowych gabarytów lub osi",
+      "Działy utrzymania ruchu i linie produkcyjne potrzebujące urządzeń pomocniczych",
+      "Firmy poszukujące zintegrowanych stacji: cięcie, wiercenie, znakowanie w jednym cyklu"
+    ],
+    processTitle: "Jak pracujemy – przejrzysty proces w 3 krokach",
+    processSubtitle: "Bez zbędnych etapów, nadmiarowej biurokracji i z pełnym wsparciem inżynierskim.",
+    processSteps: [
+      {
+        number: "KROK 01",
+        title: "Krótka rozmowa i wytyczne",
+        subtitle: "Konsultacja techniczna",
+        desc: "Mówisz, co ma robić maszyna i jakie są ograniczenia: przestrzeń na hali, wymagana wydajność, tolerancje detalu, budżet i oczekiwany termin."
+      },
+      {
+        number: "KROK 02",
+        title: "Koncepcja i przejrzysta wycena",
+        subtitle: "Rysunek i kalkulacja",
+        desc: "Przygotowujemy prostą propozycję inżynierską — rysunek poglądowy, dokładny zakres komponentów, stałą cenę oraz harmonogram budowy."
+      },
+      {
+        number: "KROK 03",
+        title: "Produkcja, montaż i szkolenie",
+        subtitle: "Uruchomienie u Ciebie",
+        desc: "Składamy maszynę z europejskich komponentów, przywozimy, uruchamiamy na Twojej hali i szkolimy operatorów z obsługi i konserwacji."
+      }
+    ],
+    checklistTitle: "Co warto przygotować do wyceny?",
+    checklistSubtitle: "Abyśmy mogli szybko wrócić z konkretną propozycją techniczną i cenową, przydadzą się następujące informacje:",
+    checklistItems: [
+      {
+        badge: "01",
+        title: "Zadanie i operacja",
+        desc: "Krótki opis zadania (np. cięcie, frezowanie, wiercenie, podawanie) + 2-3 zdjęcia poglądowe detalu lub szkic stanowiska."
+      },
+      {
+        badge: "02",
+        title: "Wymiary i zakres roboczy",
+        desc: "Podstawowe gabaryty detalu (długość, szerokość, wysokość) oraz wymagany skok roboczy w osiach X, Y, Z."
+      },
+      {
+        badge: "03",
+        title: "Materiał i wydajność",
+        desc: "Rodzaj materiału (aluminium, tworzywa, stal, kompozyty) oraz oczekiwane tempo produkcji w szt./h lub min/detal."
+      }
+    ],
+    quoteBox: {
+      title: "Chcesz omówić swój pomysł?",
+      text: "Zadzwoń bezpośrednio do konstruktora lub wyślij szkic zadania przez formularz. Odpowiadamy konkretnie.",
+      phone: "+48 606 324 406",
+      phoneRaw: "+48606324406",
+      btnText: "Napisz do konstruktora"
+    }
+  },
+  benefitsSectionTitle: "Co zyskujesz współpracując z CERTUS?",
+  benefits: [
+    {
+      title: "Co robimy",
+      text: "Projektujemy i budujemy solidne urządzenia pod konkretne zastosowanie: cięcie, frezowanie, wiercenie, znakowanie, podawanie, testowanie elementów czy małe automaty.",
+    },
+    {
+      title: "Dla kogo",
+      text: "Dla firm chcących uprościć proces, przyspieszyć powtarzalne czynności i odciążyć ludzi od żmudnych operacji: warsztaty, linie montażowe, prototypownie.",
+    },
+    {
+      title: "Sprawdzone komponenty",
+      text: "Korzystamy wyłącznie ze sprawdzonych podzespołów przemysłowych łatwo dostępnych i serwisowalnych w Polsce i UE (Hiwin, Delta, Leadshine, PikoCNC).",
+    },
+    {
+      title: "Serwis i dokumentacja",
+      text: "Kompletna dokumentacja DTR, deklaracja zgodności WE, gwarancja i polski serwis fabryczny. Zapewniamy szybkie wsparcie telefoniczne i dojazdowe.",
+    },
+  ],
+  showGalleryStrip: true,
+  galleryStripTitle: "Zdjęcia z realizacji maszyn specjalistycznych",
+  galleryImages: [
+    {
+      src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-01.webp",
+      title: "Maszyna specjalistyczna CERTUS – Realizacja przemysłowa",
+      alt: "Maszyna specjalistyczna CNC CERTUS – widok ogólny",
+    },
+    {
+      src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-02.webp",
+      title: "Maszyna specjalistyczna CERTUS – Konstrukcja i podzespoły",
+      alt: "Szczegóły konstrukcyjne maszyny specjalistycznej",
+    },
+    {
+      src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-03.webp",
+      title: "Maszyna specjalistyczna CERTUS – Moduł roboczy",
+      alt: "Moduł roboczy maszyny specjalnej",
+    },
+    {
+      src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-04.webp",
+      title: "Maszyna specjalistyczna CERTUS – Zespół napędowy i brama",
+      alt: "Brama i napędy maszyny na zamówienie",
+    },
+    {
+      src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-05.webp",
+      title: "Maszyna specjalistyczna CERTUS – Stół i przestrzeń operacyjna",
+      alt: "Przestrzeń robocza maszyny specjalnej",
+    },
+    {
+      src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-06.webp",
+      title: "Maszyna specjalistyczna CERTUS – Precyzyjna głowica robocza",
+      alt: "Głowica robocza wykonana na zamówienie",
+    },
+    {
+      src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-07.webp",
+      title: "Maszyna specjalistyczna CERTUS – Detal mechaniczny",
+      alt: "Prowadnice i mechanika maszyny",
+    },
+    {
+      src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-08.webp",
+      title: "Maszyna specjalistyczna CERTUS – Układ sterowania i automatyka",
+      alt: "Automatyka maszyny specjalistycznej",
+    },
+    {
+      src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-09.webp",
+      title: "Maszyna specjalistyczna CERTUS – Gotowe urządzenie w hali",
+      alt: "Uruchomiona maszyna specjalistyczna CERTUS",
+    },
+  ],
+  contactBullets: [
+    "Opisz swoje zadanie produkcyjne — przygotujemy wstępną koncepcję, rysunek poglądowy i niezobowiązującą wycenę.",
+    "Dobierzemy optymalną technologię, wymiary pola pracy, rodzaj napędów oraz poziom automatyzacji.",
+    "Gwarantujemy bezpośredni kontakt z inżynierem prowadzącym projekt i szybką odpowiedź w 24h.",
+  ],
+  formSubject: "Zapytanie: Maszyny specjalistyczne",
+  formType: "maszyny-specjalistyczne",
+  formHeading: "Zapytaj o maszynę na zamówienie",
 };

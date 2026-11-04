@@ -37,6 +37,47 @@
     linkText?: string;
   }
 
+  export interface ProcessStep {
+    number: string;
+    title: string;
+    subtitle: string;
+    desc: string;
+    iconSvg?: string;
+  }
+
+  export interface ChecklistItem {
+    badge: string;
+    title: string;
+    desc: string;
+    iconSvg?: string;
+  }
+
+  export interface TargetItem {
+    text: string;
+    iconSvg?: string;
+  }
+
+  export interface InfoSectionData {
+    badge?: string;
+    title: string;
+    lead: string;
+    targetTitle?: string;
+    targetItems?: (string | TargetItem)[];
+    processTitle?: string;
+    processSubtitle?: string;
+    processSteps?: ProcessStep[];
+    checklistTitle?: string;
+    checklistSubtitle?: string;
+    checklistItems?: ChecklistItem[];
+    quoteBox?: {
+      title: string;
+      text: string;
+      phone: string;
+      phoneRaw: string;
+      btnText: string;
+    };
+  }
+
   export interface GalleryImage {
     src: string;
     fallbackSrc?: string;
@@ -66,6 +107,8 @@
   export let constrSectionSubtitle: string = "HMP-G1 ma rozwiązania mechaniczne większych maszyn CERTUS — zmienione są wymiary, nie zasady.";
   export let feats: FeatItem[] = [];
 
+  export let infoSection: InfoSectionData | null = null;
+
   export let specs: SpecRow[] = [];
   export let drawingImgSrc: string = "/assets/maszyny/hmp-g1/hmp-g1-render3.webp";
   export let drawingImgAlt: string = "Wymiary zewnętrzne";
@@ -74,7 +117,10 @@
   export let optionCardTitle: string = "Sonda 3D";
   export let optionCardDesc: string = "Pomiar materiału i detalu bezpośrednio na maszynie. Ułatwia wyznaczanie punktu zerowego oraz ustalanie położenia materiału i detalu przed obróbką.";
 
+  export let benefitsSectionTitle: string = "Po zakupie";
   export let benefits: BenefitCard[] = [];
+  export let showGalleryStrip: boolean = false;
+  export let galleryStripTitle: string = "Galeria realizacji";
   export let galleryImages: GalleryImage[] = [];
 
   export let contactBullets: string[] = [
@@ -473,7 +519,7 @@
     <section class="cx-wrap section-pad-sm">
       <div class="white-card">
         <div class="header-sekcja">
-          <div><MachineTitleSvg text={machineName} height="2em" /></div>
+          <div><MachineTitleSvg text={machineName} height="2em" shadow={false} /></div>
           <div>
             <h2 class="card-title" use:typoFixAction>Dane techniczne</h2>
           </div>
@@ -543,10 +589,106 @@
       </div>
     </section>
 
-    <!-- D4. PO ZAKUPIE (wg mockupu Dawida) -->
+    <!-- D4. SEKCJA INFORMACYJNA DLA MASZYN NA ZAMÓWIENIE -->
+    {#if infoSection}
+      <section class="cx-wrap section-pad">
+        <div class="info-rich-card">
+          <div class="info-rich-header">
+            {#if infoSection.badge}
+              <span class="info-rich-badge">{infoSection.badge}</span>
+            {/if}
+            <h2 class="info-rich-title" use:typoFixAction>{infoSection.title}</h2>
+            <p class="info-rich-lead" use:typoFixAction>{infoSection.lead}</p>
+          </div>
+
+          <!-- Kto korzysta z maszyn specjalnych -->
+          {#if infoSection.targetItems && infoSection.targetItems.length > 0}
+            <div class="info-target-box">
+              <h3 class="info-block-heading">{infoSection.targetTitle || "Dla kogo budujemy maszyny specjalne"}</h3>
+              <div class="info-target-grid">
+                {#each infoSection.targetItems as target}
+                  <article class="info-target-chip">
+                    <span class="chip-dot"></span>
+                    <p>{target}</p>
+                  </article>
+                {/each}
+              </div>
+            </div>
+          {/if}
+
+          <!-- Jak pracujemy - Krok po kroku -->
+          {#if infoSection.processSteps && infoSection.processSteps.length > 0}
+            <div class="info-process-box">
+              <div class="section-title-group">
+                <h3 class="info-block-heading">{infoSection.processTitle || "Jak wygląda proces realizacji"}</h3>
+                {#if infoSection.processSubtitle}
+                  <p class="section-subtext">{infoSection.processSubtitle}</p>
+                {/if}
+              </div>
+              <div class="process-steps-grid">
+                {#each infoSection.processSteps as step}
+                  <article class="process-step-card">
+                    <span class="step-num">{step.number}</span>
+                    <div class="step-header">
+                      <h4 class="step-title">{step.title}</h4>
+                      {#if step.subtitle}
+                        <p class="step-subtitle">{step.subtitle}</p>
+                      {/if}
+                    </div>
+                    <p class="step-desc" use:typoFixAction>{step.desc}</p>
+                  </article>
+                {/each}
+              </div>
+            </div>
+          {/if}
+
+          <!-- Co przygotować do wyceny + Box wyceny -->
+          {#if infoSection.checklistItems && infoSection.checklistItems.length > 0}
+            <div class="info-checklist-wrap">
+              <div class="checklist-side">
+                <h3 class="info-block-heading">{infoSection.checklistTitle || "Co przygotować do wyceny?"}</h3>
+                {#if infoSection.checklistSubtitle}
+                  <p class="checklist-intro">{infoSection.checklistSubtitle}</p>
+                {/if}
+                <div class="checklist-items">
+                  {#each infoSection.checklistItems as item}
+                    <article class="checklist-item-card">
+                      <span class="chk-badge">{item.badge}</span>
+                      <div class="chk-content">
+                        <h4 class="chk-title">{item.title}</h4>
+                        <p class="chk-desc" use:typoFixAction>{item.desc}</p>
+                      </div>
+                    </article>
+                  {/each}
+                </div>
+              </div>
+
+              {#if infoSection.quoteBox}
+                <aside class="quote-callout-card">
+                  <span class="quote-pill">Szybka konsultacja</span>
+                  <h4 class="quote-card-title">{infoSection.quoteBox.title}</h4>
+                  <p class="quote-card-text" use:typoFixAction>{infoSection.quoteBox.text}</p>
+                  <a href={`tel:${infoSection.quoteBox.phoneRaw}`} class="quote-card-phone">
+                    <span class="phone-icon-wrap">
+                      <img src="/assets/ikony/telefon.svg" alt="Telefon" />
+                    </span>
+                    <span>{infoSection.quoteBox.phone}</span>
+                  </a>
+                  <button type="button" class="btn-primary quote-card-btn" on:click={handleScrollToContact}>
+                    {infoSection.quoteBox.btnText}
+                  </button>
+                </aside>
+              {/if}
+            </div>
+          {/if}
+        </div>
+      </section>
+    {/if}
+
+    <!-- D4. PO ZAKUPIE / INFORMACJE (wg mockupu Dawida) -->
     {#if benefits && benefits.length > 0}
       <section class="cx-wrap section-pad-sm">
-        <h2 class="cards-section-title" use:typoFixAction>Po zakupie</h2>
+        <h2 class="cards-section-title" use:typoFixAction>{benefitsSectionTitle}</h2>
         <div class="cx-cards">
           {#each benefits as benefit}
             <div class="benefit-card">
@@ -557,6 +699,34 @@
                   {" "}<a href={benefit.linkHref} class="olive-link">{benefit.linkText || "Szczegóły"}</a>
                 {/if}
               </p>
+            </div>
+          {/each}
+        </div>
+      </section>
+    {/if}
+
+    <!-- D4b. WIDOCZNA GALERIA ZDJĘĆ / REALIZACJI (opcjonalny pasek/grid) -->
+    {#if showGalleryStrip && galleryImages && galleryImages.length > 0}
+      <section class="cx-wrap section-pad-sm gallery-strip-section">
+        <div class="gallery-strip-header">
+          <h2 class="cards-section-title" use:typoFixAction>{galleryStripTitle}</h2>
+          <p class="gallery-strip-subtitle">Kliknij dowolne zdjęcie, aby powiększyć i przejrzeć całą galerię.</p>
+        </div>
+        <div class="gallery-preview-grid">
+          {#each galleryImages as img, i}
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+            <div
+              class="gallery-preview-card"
+              on:click={() => openGallery(i)}
+              role="button"
+              tabindex="0"
+              title={img.title || img.alt}
+            >
+              <img src={img.src} alt={img.alt} loading="lazy" class="gallery-preview-thumb" />
+              <div class="gallery-preview-overlay">
+                <span class="gallery-zoom-badge">Powiększ</span>
+              </div>
             </div>
           {/each}
         </div>
@@ -1019,6 +1189,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    aspect-ratio: 1448 / 1086;
   }
   .cx-hero-img-box::after {
     content: "";
@@ -1043,6 +1214,7 @@
     position: relative;
     z-index: 2;
     width: 100%;
+    height: 100%;
     max-width: none;
     transform: scale(1.14);
     transform-origin: center center;
@@ -1191,10 +1363,12 @@
     grid-template-columns: 170px minmax(0, 1fr);
     gap: 16px;
     padding: 14px 20px;
-    background: #f1f3f6;
-    color: #5d636b;
+    background: #2b2b2b;
+    color: #ffffff;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .cx-tr {
@@ -1247,48 +1421,50 @@
   }
 
   .download-box {
-    background: #f7f7f7;
-    border-radius: 10px;
+    background: #2b2b2b;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .download-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .download-status {
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: #aaaaaa;
+  }
+
+  .sonda-card {
+    background: #fafafa;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
-  .download-title {
-    margin: 0;
-    font-weight: 600;
-    color: #444444;
-  }
-
-  .download-status {
-    margin: 0;
-    font-size: 13px;
-    color: #a06a00;
-  }
-
-  .sonda-card {
-    background: #f7f7f7;
-    border-radius: 10px;
-    border-left: 3px solid var(--color-primary, #96a500);
-    padding: 18px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
   .sonda-header {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   .sonda-badge {
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 2px 7px;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
     border-radius: 4px;
     background: var(--color-primary, #96a500);
     color: #ffffff;
@@ -1296,16 +1472,341 @@
 
   .sonda-title {
     margin: 0;
-    font-weight: 600;
-    color: #444444;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #333333;
   }
 
   .sonda-desc {
     margin: 0;
     font-size: 13px;
     line-height: 1.5;
+    color: #666666;
+  }
+
+  /* D4. SEKCJA INFORMACYJNA DLA MASZYN SPECJALNYCH */
+  .info-rich-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    container-type: inline-size;
+  }
+
+  .info-rich-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 860px;
+  }
+
+  .info-rich-badge {
+    align-self: flex-start;
+    background: #f1f4d8;
+    color: var(--color-primary-dark, #7e8c00);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  .info-rich-title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #222222;
+    line-height: 1.25;
+  }
+
+  .info-rich-lead {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
     color: #555555;
+  }
+
+  .info-block-heading {
+    margin: 0 0 16px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2b2b2b;
+  }
+
+  /* Target Chips */
+  .info-target-box {
+    border-top: 1px solid #ebebeb;
+    padding-top: 32px;
+  }
+
+  .info-target-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .info-target-chip {
+    background: #fafafa;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: #d0d0d0;
+    }
+
+    .chip-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-primary, #96a500);
+      flex-shrink: 0;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333333;
+      line-height: 1.4;
+    }
+  }
+
+  /* Process Steps Grid */
+  .info-process-box {
+    border-top: 1px solid #ebebeb;
+    padding-top: 32px;
+  }
+
+  .section-title-group {
+    margin-bottom: 24px;
+  }
+
+  .section-subtext {
+    margin: -8px 0 0;
+    font-size: 14px;
+    color: #777777;
+  }
+
+  .process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .process-step-card {
+    background: #fbfbfb;
+    border-top: 3px solid var(--color-primary, #96a500);
+    border-radius: 12px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .step-num {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--color-primary-dark, #7e8c00);
+    letter-spacing: 0.1em;
+    background: #f2f5dd;
+    padding: 2px 8px;
+    border-radius: 4px;
+    align-self: flex-start;
+  }
+
+  .step-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: static;
+    width: auto;
+  }
+
+  .step-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #222222;
+  }
+
+  .step-subtitle {
+    margin: 2px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888888;
+  }
+
+  .step-desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #555555;
+  }
+
+  /* Checklist and Quote Callout */
+  .info-checklist-wrap {
+    border-top: 1px solid #ebebeb;
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  @container (max-width: 800px) {
+    .info-checklist-wrap {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .checklist-intro {
+    margin: -8px 0 20px;
+    font-size: 14px;
+    color: #666666;
+  }
+
+  .checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .checklist-item-card {
+    background: #fafafa;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .chk-badge {
+    background: #2b2b2b;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .chk-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .chk-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #222222;
+  }
+
+  .chk-desc {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666666;
+  }
+
+  /* Quote Callout Box */
+  .quote-callout-card {
+    background: #2b2b2b;
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .quote-pill {
+    align-self: flex-start;
+    background: rgba(150, 165, 0, 0.25);
+    border: 1px solid var(--color-primary, #96a500);
+    color: var(--color-primary-light, #c5d418);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .quote-card-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .quote-card-text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #cccccc;
+  }
+
+  .quote-card-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 4px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary-light, #c5d418);
+    }
+  }
+
+  .phone-icon-wrap {
+    width: 34px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 18px;
+      height: 18px;
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  .quote-card-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
   }
 
   /* D4. Po zakupie */
@@ -1319,7 +1820,7 @@
 
   .cx-cards {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
   }
 
@@ -1362,6 +1863,82 @@
     &:hover {
       color: #4f5700;
     }
+  }
+
+  /* D4b. WIDOCZNA GALERIA */
+  .gallery-strip-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .gallery-strip-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .gallery-strip-subtitle {
+    margin: -10px 0 0;
+    font-size: 14px;
+    color: #777777;
+  }
+
+  .gallery-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .gallery-preview-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #e8e8e8;
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+
+      .gallery-preview-overlay {
+        opacity: 1;
+      }
+
+      .gallery-preview-thumb {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .gallery-preview-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .gallery-zoom-badge {
+    background: var(--color-primary, #96a500);
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   }
 
   /* D5. KONTAKT - ORYGINALNY STYL 1:1 Z HMP-G1 */

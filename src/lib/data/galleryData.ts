@@ -108,11 +108,15 @@ export const galleryData = [
     id: "maszyny-specjalne",
     title: "Maszyny Specjalne",
     images: [
-      { "src": "/assets/maszyny/galeria/webp/maszyna-specjalna-01.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-01.png", "title": "Maszyna Specjalna (1)", "alt": "Maszyna Specjalna" },
-      { "src": "/assets/maszyny/galeria/webp/maszyna-specjalna-02.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-02.png", "title": "Maszyna Specjalna (2)", "alt": "Maszyna Specjalna" },
-      { "src": "/assets/maszyny/galeria/webp/maszyna-specjalna-04.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-04.png", "title": "Maszyna Specjalna (4)", "alt": "Maszyna Specjalna" },
-      { "src": "/assets/maszyny/galeria/webp/maszyna-specjalna-07.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-07.png", "title": "Maszyna Specjalna (7)", "alt": "Maszyna Specjalna" },
-      { "src": "/assets/maszyny/galeria/webp/maszyna-specjalna-09.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-09.png", "title": "Maszyna Specjalna (9)", "alt": "Maszyna Specjalna" }
+      { "src": "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-01.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-01.png", "title": "Maszyna Specjalna CERTUS (1)", "alt": "Maszyna Specjalna CERTUS" },
+      { "src": "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-02.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-02.png", "title": "Maszyna Specjalna CERTUS (2)", "alt": "Maszyna Specjalna CERTUS" },
+      { "src": "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-03.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-04.png", "title": "Maszyna Specjalna CERTUS (3)", "alt": "Maszyna Specjalna CERTUS" },
+      { "src": "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-04.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-07.png", "title": "Maszyna Specjalna CERTUS (4)", "alt": "Maszyna Specjalna CERTUS" },
+      { "src": "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-05.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-09.png", "title": "Maszyna Specjalna CERTUS (5)", "alt": "Maszyna Specjalna CERTUS" },
+      { "src": "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-06.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-01.png", "title": "Maszyna Specjalna CERTUS (6)", "alt": "Maszyna Specjalna CERTUS" },
+      { "src": "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-07.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-02.png", "title": "Maszyna Specjalna CERTUS (7)", "alt": "Maszyna Specjalna CERTUS" },
+      { "src": "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-08.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-04.png", "title": "Maszyna Specjalna CERTUS (8)", "alt": "Maszyna Specjalna CERTUS" },
+      { "src": "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-09.webp", "fallbackSrc": "/assets/maszyny/galeria/maszyna-specjalna-07.png", "title": "Maszyna Specjalna CERTUS (9)", "alt": "Maszyna Specjalna CERTUS" }
     ]
   },
   {
