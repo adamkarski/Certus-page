@@ -69,12 +69,12 @@
         <div class="cx-kpi-item">
           <p class="cx-kpi-label">ZGŁOSZENIA</p>
           <p class="cx-kpi-value">pn–pt 8–16</p>
-          <p class="cx-kpi-note">oddzwaniamy następnego dnia rob.</p>
+          <p class="cx-kpi-note">telefon i e-mail</p>
         </div>
         <div class="cx-kpi-item">
           <p class="cx-kpi-label">PRZEGLĄDY</p>
           <p class="cx-kpi-value">co 12 mies.</p>
-          <p class="cx-kpi-note">co 6 przy pracy wielozmianowej</p>
+          <p class="cx-kpi-note">zalecany przegląd</p>
         </div>
       </div>
     </section>
@@ -138,7 +138,7 @@
             </div>
             <h3 class="service-title">Przeglądy okresowe</h3>
             <p class="service-desc" use:typoFixAction>
-              Co 12 miesięcy, co 6 przy pracy wielozmianowej. Zakres według karty przeglądu CERTUS — przegląd HMM-ST to ok. 3–4 h.
+              Co 12 miesięcy. Zakres według karty przeglądu CERTUS – przegląd HMM-ST to ok. 3–4 h.
             </p>
           </article>
 
@@ -203,7 +203,7 @@
                 <span class="chip-price">2,50 zł / km</span>
               </div>
               <div class="col-notes">
-                <span>liczony w obie strony od Chocznej</span>
+                <span>liczony w obie strony od Choczni</span>
               </div>
             </div>
 
@@ -294,7 +294,7 @@
           <div class="sidebar-info-card card-base-white">
             <h4 class="side-info-title">Przykład: dojazd</h4>
             <p class="side-info-text">
-              Klient 150 km od Chocznej: 2 × 150 km × 2,50 zł = <strong>750 zł netto</strong>.
+              Klient 150 km od Choczni: 2 × 150 km × 2,50 zł = <strong>750 zł netto</strong>.
             </p>
           </div>
 
@@ -353,7 +353,7 @@
             <span class="how-to-step">3. Oddzwonimy</span>
           </div>
           <p class="how-to-desc">
-            Najpóźniej następnego dnia roboczego, z terminem wizyty lub diagnostyki zdalnej.
+            Ustalimy termin wizyty lub diagnostyki zdalnej.
           </p>
         </div>
 

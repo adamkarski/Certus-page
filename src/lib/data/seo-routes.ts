@@ -21,10 +21,10 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 	'/serwis': {
 		title: 'Serwis maszyn CNC - Gwarancyjny i pogwarancyjny | CERTUS',
 		description:
-			'Serwis maszyn CNC: zespół który maszynę zbudował, części na miejscu, reakcja do 24-48h. Gwarancyjny, pogwarancyjny, przeglądy okresowe i szkolenia.',
-		ogTitle: 'Serwis maszyn CNC – Reakcja 24-48h, Części na Miejscu | CERTUS',
+			'Serwis maszyn CNC CERTUS: gwarancja 12 miesięcy od odbioru, serwis pogwarancyjny, przeglądy, szkolenia i diagnostyka zdalna. Cennik i zasady online.',
+		ogTitle: 'Serwis maszyn CNC – Gwarancyjny i Pogwarancyjny | CERTUS',
 		ogDescription:
-			'Szybki serwis gwarancyjny i pogwarancyjny maszyn CNC, diagnostyka, przeglądy oraz części zamienne na miejscu w Choczni. Sprawdź cennik i zgłoś usterkę.',
+			'Serwis maszyn CNC CERTUS: gwarancja 12 miesięcy od odbioru, serwis pogwarancyjny, przeglądy, szkolenia i diagnostyka zdalna. Cennik i zasady online.',
 		image: '/assets/images/serwis/hero-serwis-maszyna.png',
 		type: 'website'
 	},
@@ -55,7 +55,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Oferta Maszyn CNC i Centrów Obróbczych | CERTUS',
 		ogDescription:
 			'Frezarki CNC, plotery przemysłowe i centra obróbcze projektowane i produkowane w Polsce. Sprawdź naszą ofertę.',
-		image: '/assets/images/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg',
+		image: '/assets/images/baner1_plotery_hpp.jpg',
 		type: 'website'
 	},
 	'/maszyny-specjalne': {

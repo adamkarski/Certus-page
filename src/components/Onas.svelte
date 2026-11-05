@@ -52,9 +52,9 @@
       <!-- Pasek 4 KPI (klasy cx-kpi identyczne z HMP-G1 / C69) -->
       <div class="cx-kpi">
         <div class="cx-kpi-item">
-          <p class="cx-kpi-label">NA RYNKU CNC</p>
-          <p class="cx-kpi-value">od 2000 r.</p>
-          <p class="cx-kpi-note">doświadczenie właściciela</p>
+          <p class="cx-kpi-label">GWARANCJA</p>
+          <p class="cx-kpi-value">12 miesięcy</p>
+          <p class="cx-kpi-note">od dnia odbioru</p>
         </div>
         <div class="cx-kpi-item">
           <p class="cx-kpi-label">KLIENCI</p>
@@ -86,15 +86,11 @@
       <div class="split-grid">
         <div class="split-text">
           <span class="section-pretitle">K I M &nbsp; J E S T E Ś M Y</span>
-          <h2 class="section-heading" use:typoFixAction>Budujemy maszyny CNC do pracy, nie do katalogu.</h2>
+          <h2 class="section-heading" use:typoFixAction>Od kompaktowego centrum po produkcję wielozmianową.</h2>
           <div class="prose-paragraphs">
             <p use:typoFixAction>
               CERTUS to marka firmy MG-CERTUS. Robimy maszyny od kompaktowych centrów do małych warsztatów po
               plotery i frezarki do produkcji wielozmianowej, a także maszyny specjalne pod konkretny proces.
-            </p>
-            <p use:typoFixAction>
-              Każda konfiguracja zaczyna się od detalu, który klient ma obrabiać: materiału, wymiarów, tolerancji
-              i liczby zmian. Na tej podstawie dobieramy pole robocze, stół, wrzeciono i wymianę narzędzi.
             </p>
             <p use:typoFixAction>
               Modernizujemy też maszyny innych producentów.
@@ -141,34 +137,8 @@
             </h2>
 
             <p class="bio-desc" use:typoFixAction>
-              Założyciel CERTUS działa na rynku CNC od 2000 roku i był jednym z liderów Forum CNC – społeczności, która przez lata kształtowała polską branżę obrabiarek. To doświadczenie stoi dziś za każdą maszyną, którą projektujemy i montujemy w Choczni.
+              Założyciel CERTUS działa na rynku CNC od 2000 roku i był jednym z liderów Forum CNC – społeczności, która przez lata kształtowała polską branżę obrabiarek. To doświadczenie stoi dziś za każdą maszyną, którą projektujemy i montujemy.
             </p>
-
-            <div class="bio-features-row">
-              <div class="bio-feature-item">
-                <div class="bio-feature-bar"></div>
-                <div class="bio-feature-text">
-                  <span class="bio-feature-title">Forum CNC</span>
-                  <span class="bio-feature-sub">jeden z liderów społeczności</span>
-                </div>
-              </div>
-
-              <div class="bio-feature-item">
-                <div class="bio-feature-bar"></div>
-                <div class="bio-feature-text">
-                  <span class="bio-feature-title">Maszyny specjalne</span>
-                  <span class="bio-feature-sub">projekty pod proces klienta</span>
-                </div>
-              </div>
-
-              <div class="bio-feature-item">
-                <div class="bio-feature-bar"></div>
-                <div class="bio-feature-text">
-                  <span class="bio-feature-title">Modernizacje</span>
-                  <span class="bio-feature-sub">także maszyn innych producentów</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -198,7 +168,7 @@
           <span class="step-num">02</span>
           <h3 class="step-title">Projekt i montaż</h3>
           <p class="step-desc" use:typoFixAction>
-            Projektujemy i montujemy w Choczni. Części zamienne mamy na miejscu.
+            Projektujemy i montujemy u siebie. Części zamienne mamy na miejscu.
           </p>
         </div>
 
@@ -214,7 +184,7 @@
           <span class="step-num">04</span>
           <h3 class="step-title">Serwis producenta</h3>
           <p class="step-desc" use:typoFixAction>
-            12 miesięcy gwarancji, potem serwis pogwarancyjny, przeglądy i modernizacje. Robi je zespół, który maszynę zbudował.
+            12 miesięcy gwarancji, potem serwis pogwarancyjny, przeglądy i modernizacje.
           </p>
         </div>
       </div>
@@ -231,7 +201,7 @@
         <div class="split-grid split-grid-middle">
           <div class="split-text">
             <span class="section-pretitle">Z &nbsp; C Z E G O &nbsp; B U D U J E M Y</span>
-            <h2 class="section-heading" use:typoFixAction>Sprawdzone komponenty na każdej osi.</h2>
+            <h2 class="section-heading" use:typoFixAction>Sprawdzone komponenty.</h2>
             <p class="section-desc" use:typoFixAction>
               Prowadnice liniowe i śruby kulowe na osiach, serwonapędy i sterowanie PikoCNC z polskim interfejsem.
               Konstrukcje projektujemy pod wieloletnią eksploatację w produkcji wielozmianowej.
@@ -418,6 +388,10 @@
     overflow-x: clip;
     background-color: var(--color-bg-secondary, #f7f7f7);
     color: var(--color-text-primary, #333333);
+  }
+
+  .onas-contact-wrapper :global(.contact-left:before) {
+    display: none !important;
   }
 
   .section-pad {
