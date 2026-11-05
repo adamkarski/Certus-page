@@ -481,6 +481,7 @@
     {#if infoSection}
       <section class="cx-wrap section-pad">
         <div class="info-rich-card">
+          <!-- HEADER -->
           <div class="info-rich-header">
             {#if infoSection.badge}
               <span class="info-rich-badge">{infoSection.badge}</span>
@@ -489,7 +490,7 @@
             <p class="info-rich-lead" use:typoFixAction>{infoSection.lead}</p>
           </div>
 
-          <!-- Kto korzysta z maszyn specjalnych -->
+          <!-- DLA KOGO — duże karty z ikoną po lewej -->
           {#if infoSection.targetItems && infoSection.targetItems.length > 0}
             <div class="info-target-box">
               <h3 class="info-block-heading">{infoSection.targetTitle || "Dla kogo budujemy maszyny specjalne"}</h3>
@@ -498,17 +499,13 @@
                   <article class="info-target-chip">
                     <span class="chip-icon-wrap">
                       {#if i === 0}
-                        <!-- Fabryka / zakład -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20V8l5 3V8l5 3V4h8a2 2 0 0 1 2 2v14"/><path d="M2 20h20"/><rect x="14" y="9" width="3" height="3" rx=".5"/><rect x="14" y="14" width="3" height="3" rx=".5"/><rect x="6" y="14" width="3" height="3" rx=".5"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20V8l5 3V8l5 3V4h8a2 2 0 0 1 2 2v14"/><path d="M2 20h20"/><rect x="14" y="9" width="3" height="3" rx=".5"/><rect x="14" y="14" width="3" height="3" rx=".5"/><rect x="6" y="14" width="3" height="3" rx=".5"/></svg>
                       {:else if i === 1}
-                        <!-- Prototypowanie / narzędzia -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                       {:else if i === 2}
-                        <!-- Utrzymanie ruchu / koło zębate -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                       {:else}
-                        <!-- Zintegrowane stacje / layers -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
                       {/if}
                     </span>
                     <p>{typeof target === 'string' ? target : target.text}</p>
@@ -518,7 +515,7 @@
             </div>
           {/if}
 
-          <!-- Jak pracujemy - Krok po kroku -->
+          <!-- PROCES — 3 kolumny, numer jako duży accent -->
           {#if infoSection.processSteps && infoSection.processSteps.length > 0}
             <div class="info-process-box">
               <div class="section-title-group">
@@ -530,27 +527,22 @@
               <div class="process-steps-grid">
                 {#each infoSection.processSteps as step, i}
                   <article class="process-step-card">
-                    <div class="step-top-row">
-                      <span class="step-num">{step.number}</span>
+                    <div class="step-number-block">
+                      <span class="step-number-big">{String(i + 1).padStart(2, '0')}</span>
                       <span class="step-icon-inline">
                         {#if i === 0}
-                          <!-- Rozmowa / konsultacja -->
-                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="12" y1="7" x2="12" y2="13"/></svg>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                         {:else if i === 1}
-                          <!-- Rysunek / projekt -->
-                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                         {:else}
-                          <!-- Montaż / uruchomienie -->
-                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         {/if}
                       </span>
                     </div>
-                    <div class="step-header">
-                      <h4 class="step-title">{step.title}</h4>
-                      {#if step.subtitle}
-                        <p class="step-subtitle">{step.subtitle}</p>
-                      {/if}
-                    </div>
+                    <h4 class="step-title">{step.title}</h4>
+                    {#if step.subtitle}
+                      <p class="step-subtitle">{step.subtitle}</p>
+                    {/if}
                     <p class="step-desc" use:typoFixAction>{step.desc}</p>
                   </article>
                 {/each}
@@ -558,7 +550,7 @@
             </div>
           {/if}
 
-          <!-- Co przygotować do wyceny + Box wyceny -->
+          <!-- CHECKLISTA + KONTAKT -->
           {#if infoSection.checklistItems && infoSection.checklistItems.length > 0}
             <div class="info-checklist-wrap">
               <div class="checklist-side">
@@ -569,21 +561,7 @@
                 <div class="checklist-items">
                   {#each infoSection.checklistItems as item, i}
                     <article class="checklist-item-card">
-                      <div class="chk-badge-wrap">
-                        <span class="chk-icon-inline">
-                          {#if i === 0}
-                            <!-- Zadanie / cel -->
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                          {:else if i === 1}
-                            <!-- Wymiary -->
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3H3v18"/><path d="M21 3l-9 9"/><line x1="3" y1="9" x2="7" y2="9"/><line x1="15" y1="3" x2="15" y2="7"/></svg>
-                          {:else}
-                            <!-- Materiał -->
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                          {/if}
-                        </span>
-                        <span class="chk-badge">{item.badge}</span>
-                      </div>
+                      <span class="chk-num">{item.badge}</span>
                       <div class="chk-content">
                         <h4 class="chk-title">{item.title}</h4>
                         <p class="chk-desc" use:typoFixAction>{item.desc}</p>
@@ -727,22 +705,35 @@
       </div>
     </section>
 
-    <!-- D4. PO ZAKUPIE / INFORMACJE (wg mockupu Dawida) -->
+    <!-- D4. DLACZEGO CERTUS — kompaktowy strip z 4 filarami -->
     {#if benefits && benefits.length > 0}
       <section class="cx-wrap section-pad-sm">
-        <h2 class="cards-section-title" use:typoFixAction>{benefitsSectionTitle}</h2>
-        <div class="cx-cards">
-          {#each benefits as benefit}
-            <div class="benefit-card">
-              <p class="benefit-title">{benefit.title}</p>
-              <p class="benefit-text" use:typoFixAction>
-                {benefit.text}
-                {#if benefit.linkHref}
-                  {" "}<a href={benefit.linkHref} class="olive-link">{benefit.linkText || "Szczegóły"}</a>
-                {/if}
-              </p>
-            </div>
-          {/each}
+        <div class="why-certus-strip">
+          <h2 class="why-certus-title" use:typoFixAction>{benefitsSectionTitle}</h2>
+          <div class="why-certus-grid">
+            {#each benefits as benefit, i}
+              <article class="why-certus-item">
+                <span class="why-icon">
+                  {#if i === 0}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                  {:else if i === 1}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                  {:else if i === 2}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  {:else}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  {/if}
+                </span>
+                <h3 class="why-item-title">{benefit.title}</h3>
+                <p class="why-item-text" use:typoFixAction>
+                  {benefit.text}
+                  {#if benefit.linkHref}
+                    {" "}<a href={benefit.linkHref} class="olive-link">{benefit.linkText || "Szczegóły"}</a>
+                  {/if}
+                </p>
+              </article>
+            {/each}
+          </div>
         </div>
       </section>
     {/if}
@@ -1526,23 +1517,24 @@
     color: #666666;
   }
 
-  /* D4. SEKCJA INFORMACYJNA DLA MASZYN SPECJALNYCH */
+  /* D4. SEKCJA INFORMACYJNA DLA MASZYN SPECJALNYCH — REDESIGN */
   .info-rich-card {
     background: #ffffff;
-    border-radius: 16px;
-    padding: 48px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    padding: clamp(28px, 5cqi, 56px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 48px;
     container-type: inline-size;
+    container-name: infocard;
   }
 
   .info-rich-header {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-width: 860px;
+    gap: 14px;
+    max-inline-size: 780px;
   }
 
   .info-rich-badge {
@@ -1552,287 +1544,284 @@
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 4px 12px;
+    letter-spacing: 0.12em;
+    padding: 5px 14px;
     border-radius: 20px;
   }
 
   .info-rich-title {
     margin: 0;
-    font-size: 28px;
-    font-weight: 700;
-    color: #222222;
-    line-height: 1.25;
+    font-size: clamp(22px, 3cqi, 32px);
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
   }
 
   .info-rich-lead {
     margin: 0;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: clamp(14px, 1.8cqi, 17px);
+    line-height: 1.65;
     color: #555555;
   }
 
   .info-block-heading {
-    margin: 0 0 16px;
-    font-size: 20px;
+    margin: 0 0 20px;
+    font-size: clamp(17px, 2.2cqi, 22px);
     font-weight: 700;
-    color: #2b2b2b;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
   }
 
-  /* Target Chips */
+  /* ── TARGET CHIPS — 2×2 grid, taller cards ── */
   .info-target-box {
     border-top: 1px solid #ebebeb;
-    padding-top: 32px;
+    padding-top: 40px;
   }
 
   .info-target-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @container infocard (max-width: 600px) {
+    .info-target-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .info-target-chip {
-    background: #fafafa;
-    border: 1px solid #e8e8e8;
-    border-radius: 10px;
-    padding: 14px 18px;
+    background: #f8f9f3;
+    border: 1px solid #e6e8dc;
+    border-radius: 14px;
+    padding: 22px 24px;
     display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    align-items: flex-start;
+    gap: 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
     &:hover {
-      transform: translateY(-2px);
-      border-color: #d0d0d0;
-    }
-
-    .chip-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--color-primary, #96a500);
-      flex-shrink: 0;
+      border-color: var(--color-primary, #96a500);
+      box-shadow: 0 2px 12px rgba(150, 165, 0, 0.08);
     }
 
     .chip-icon-wrap {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: #f2f5dd;
+      inline-size: 40px;
+      block-size: 40px;
+      border-radius: 10px;
+      background: #edf0d4;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       color: var(--color-primary-dark, #7e8c00);
+
+      svg {
+        inline-size: 20px;
+        block-size: 20px;
+      }
     }
 
     p {
       margin: 0;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       color: #333333;
-      line-height: 1.4;
+      line-height: 1.5;
     }
   }
 
-  /* Process Steps Grid */
+  /* ── PROCESS STEPS — prominent numbers ── */
   .info-process-box {
     border-top: 1px solid #ebebeb;
-    padding-top: 32px;
+    padding-top: 40px;
   }
 
   .section-title-group {
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
 
   .section-subtext {
-    margin: -8px 0 0;
+    margin: 4px 0 0;
     font-size: 14px;
     color: #777777;
+    line-height: 1.5;
   }
 
   .process-steps-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 
-  .process-step-card {
-    background: #fbfbfb;
-    border-top: 3px solid var(--color-primary, #96a500);
-    border-radius: 12px;
-    padding: 24px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    position: relative;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  @container infocard (max-width: 700px) {
+    .process-steps-grid {
+      grid-template-columns: 1fr;
     }
   }
 
-  .step-top-row {
+  .process-step-card {
+    background: #f8f9f3;
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    border: 1px solid #e6e8dc;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      border-color: var(--color-primary, #96a500);
+      box-shadow: 0 4px 16px rgba(150, 165, 0, 0.08);
+    }
+  }
+
+  .step-number-block {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+  }
+
+  .step-number-big {
+    font-size: 36px;
+    font-weight: 800;
+    color: #edf0d4;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
   }
 
   .step-icon-inline {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: #f2f5dd;
+    inline-size: 36px;
+    block-size: 36px;
+    border-radius: 10px;
+    background: #edf0d4;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--color-primary-dark, #7e8c00);
-  }
 
-  .step-num {
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--color-primary-dark, #7e8c00);
-    letter-spacing: 0.1em;
-    background: #f2f5dd;
-    padding: 2px 8px;
-    border-radius: 4px;
-    align-self: flex-start;
-  }
-
-  .step-header {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    position: static;
-    width: auto;
+    svg {
+      inline-size: 18px;
+      block-size: 18px;
+    }
   }
 
   .step-title {
     margin: 0;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
-    color: #222222;
+    color: #1a1a1a;
+    line-height: 1.3;
   }
 
   .step-subtitle {
-    margin: 2px 0 0;
-    font-size: 12px;
+    margin: -6px 0 0;
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: #888888;
+    letter-spacing: 0.08em;
+    color: #999999;
   }
 
   .step-desc {
     margin: 0;
     font-size: 14px;
-    line-height: 1.55;
+    line-height: 1.6;
     color: #555555;
   }
 
-  /* Checklist and Quote Callout */
+  /* ── CHECKLIST + QUOTE — 2-column layout ── */
   .info-checklist-wrap {
     border-top: 1px solid #ebebeb;
-    padding-top: 32px;
+    padding-top: 40px;
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: 32px;
+    gap: 28px;
     align-items: start;
   }
 
-  @container (max-width: 800px) {
+  @container infocard (max-width: 780px) {
     .info-checklist-wrap {
       grid-template-columns: 1fr;
     }
   }
 
   .checklist-intro {
-    margin: -8px 0 20px;
+    margin: -8px 0 24px;
     font-size: 14px;
     color: #666666;
+    line-height: 1.5;
   }
 
   .checklist-items {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
   }
 
   .checklist-item-card {
-    background: #fafafa;
-    border: 1px solid #e8e8e8;
-    border-radius: 10px;
-    padding: 16px 18px;
+    background: #f8f9f3;
+    border: 1px solid #e6e8dc;
+    border-radius: 12px;
+    padding: 20px 22px;
     display: flex;
     align-items: flex-start;
-    gap: 16px;
+    gap: 18px;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--color-primary, #96a500);
+    }
   }
 
-  .chk-badge-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-  }
-
-  .chk-icon-inline {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    background: #f2f5dd;
+  .chk-num {
+    inline-size: 36px;
+    block-size: 36px;
+    border-radius: 10px;
+    background: #1a1a1a;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-primary-dark, #7e8c00);
-  }
-
-  .chk-badge {
-    background: #2b2b2b;
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 4px 8px;
-    border-radius: 4px;
     flex-shrink: 0;
+    letter-spacing: 0.04em;
   }
 
   .chk-content {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
 
   .chk-title {
     margin: 0;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
-    color: #222222;
+    color: #1a1a1a;
   }
 
   .chk-desc {
     margin: 0;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.55;
     color: #666666;
   }
 
-  /* Quote Callout Box */
+  /* ── QUOTE CALLOUT ── */
   .quote-callout-card {
-    background: #2b2b2b;
+    background: #1a1a1a;
     color: #ffffff;
-    border-radius: 14px;
+    border-radius: 16px;
     padding: 32px 28px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   }
 
   .quote-pill {
@@ -1900,50 +1889,84 @@
     margin-top: 8px;
   }
 
-  /* D4. Po zakupie */
+  /* D4. Dlaczego CERTUS — kompaktowy strip */
+  .why-certus-strip {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: clamp(28px, 4cqi, 48px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    container-type: inline-size;
+    container-name: whycertus;
+  }
+
+  .why-certus-title {
+    margin: 0 0 28px;
+    font-size: clamp(18px, 2.5cqi, 24px);
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+  }
+
+  .why-certus-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  @container whycertus (max-width: 700px) {
+    .why-certus-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @container whycertus (max-width: 400px) {
+    .why-certus-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .why-certus-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .why-icon {
+    inline-size: 40px;
+    block-size: 40px;
+    border-radius: 10px;
+    background: #f2f5dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-dark, #7e8c00);
+
+    svg {
+      inline-size: 20px;
+      block-size: 20px;
+    }
+  }
+
+  .why-item-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .why-item-text {
+    margin: 0;
+    font-size: 13px;
+    color: #666666;
+    line-height: 1.55;
+  }
+
   .cards-section-title {
     margin: 0 0 22px;
     text-align: center;
     font-size: 18px;
     font-weight: 700;
     color: #444444;
-  }
-
-  .cx-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-  }
-
-  .benefit-card {
-    background: #ffffff;
-    border-top: 3px solid var(--color-primary, #96a500);
-    border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-    padding: 24px 20px;
-    text-align: center;
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    }
-  }
-
-  .benefit-title {
-    margin: 0 0 6px;
-    font-weight: 600;
-    color: #444444;
-    font-size: 15px;
-  }
-
-  .benefit-text {
-    margin: 0;
-    font-size: 14px;
-    color: #666666;
-    line-height: 1.5;
   }
 
   .olive-link {

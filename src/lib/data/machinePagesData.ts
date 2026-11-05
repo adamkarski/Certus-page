@@ -508,26 +508,26 @@ export const maszynySpecjalistyczneData: MachinePageData = {
       btnText: "Napisz do konstruktora"
     }
   },
-  benefitsSectionTitle: "Co zyskujesz współpracując z CERTUS?",
+  benefitsSectionTitle: "Dlaczego CERTUS?",
   benefits: [
     {
-      title: "Co robimy",
-      text: "Projektujemy i budujemy solidne urządzenia pod konkretne zastosowanie: cięcie, frezowanie, wiercenie, znakowanie, podawanie, testowanie elementów czy małe automaty.",
+      title: "Europejskie podzespoły",
+      text: "Hiwin, Delta, Leadshine, PikoCNC — stosujemy wyłącznie sprawdzone komponenty łatwo dostępne i serwisowalne w Polsce i UE.",
     },
     {
-      title: "Dla kogo",
-      text: "Dla firm chcących uprościć proces, przyspieszyć powtarzalne czynności i odciążyć ludzi od żmudnych operacji: warsztaty, linie montażowe, prototypownie.",
+      title: "Stała cena i termin",
+      text: "Wycena obejmuje całość: projekt, budowę, transport, uruchomienie i szkolenie. Bez ukrytych kosztów, ze stałym harmonogramem.",
     },
     {
-      title: "Sprawdzone komponenty",
-      text: "Korzystamy wyłącznie ze sprawdzonych podzespołów przemysłowych łatwo dostępnych i serwisowalnych w Polsce i UE (Hiwin, Delta, Leadshine, PikoCNC).",
+      title: "Dokumentacja i zgodność",
+      text: "Kompletna dokumentacja techniczna DTR, deklaracja zgodności WE/CE, instrukcja obsługi w języku polskim.",
     },
     {
-      title: "Serwis i dokumentacja",
-      text: "Kompletna dokumentacja DTR, deklaracja zgodności WE, gwarancja i polski serwis fabryczny. Zapewniamy szybkie wsparcie telefoniczne i dojazdowe.",
+      title: "Serwis fabryczny",
+      text: "Gwarancja, dedykowany opiekun techniczny, szybka reakcja serwisowa (telefon + dojazd) i dostępność części zamiennych.",
     },
   ],
-  showGalleryStrip: true,
+  showGalleryStrip: false,
   galleryStripTitle: "Zdjęcia z realizacji maszyn specjalistycznych",
   galleryImages: [
     {
