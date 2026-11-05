@@ -76,6 +76,7 @@ export interface InfoSectionData {
 export interface MachinePageConfig {
   machineId: string;
   machineName: string;
+  heroTitleFontSize?: string;
   promoBadge: string;
   heroPretitle: string;
   heroTitleSrOnly: string;
@@ -369,14 +370,15 @@ export const certus69Data: MachinePageConfig = {
 };
 
 export const maszynySpecjalistyczneData: MachinePageData = {
-  machineId: "maszyny-specjalistyczne",
-  machineName: "SPECJALNE",
+  machineId: "maszyny-specjalne",
+  machineName: "MASZYNY SPECJALNE",
+  heroTitleFontSize: "clamp(28px, 3.6vw, 46px)",
   promoBadge: "NA ZAMÓWIENIE",
   heroPretitle: "Projekt i produkcja CNC na indywidualne zamówienie",
-  heroTitleSrOnly: "Maszyny specjalistyczne CNC CERTUS – urządzenia na indywidualne zamówienie",
+  heroTitleSrOnly: "Maszyny specjalne CNC CERTUS – urządzenia na indywidualne zamówienie",
   heroLead: "Gdy nie istnieje gotowe rozwiązanie do Twojego zadania, projektujemy i budujemy je od podstaw — prosto, rozsądnie i niezawodnie.",
   heroImageSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-hero-transparent.webp",
-  heroImageAlt: "Maszyny specjalistyczne CNC budowane na zamówienie przez CERTUS",
+  heroImageAlt: "Maszyny specjalne CNC budowane na zamówienie przez CERTUS",
   catalogPdfUrl: "/kontakt",
   catalogPdfTitle: "Wycena indywidualna",
   showCatalogPdf: false,
@@ -407,7 +409,7 @@ export const maszynySpecjalistyczneData: MachinePageData = {
   feats: [
     {
       imgSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-01.webp",
-      imgAlt: "Indywidualny projekt konstrukcji maszyny specjalistycznej",
+      imgAlt: "Indywidualny projekt konstrukcji maszyny specjalnej",
       title: "Konstrukcja pod proces",
       desc: "Projektujemy i spawamy korpusy o sztywności dopasowanej do docelowych materiałów: od kompozytów i tworzyw po stale i metale kolorowe.",
       galleryIndex: 0,
@@ -444,7 +446,7 @@ export const maszynySpecjalistyczneData: MachinePageData = {
     { param: "Materiały obrabiane", chips: ["Aluminium i metale kolorowe", "Stal i odlewy", "Tworzywa sztuczne i kompozyty", "Materiały techniczne"] },
   ],
   drawingImgSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-schemat.webp",
-  drawingImgAlt: "Projekt specjalistycznej maszyny CNC CERTUS",
+  drawingImgAlt: "Projekt maszyny specjalnej CNC CERTUS",
   optionCardBadge: "INDYWIDUALNIE",
   optionCardTitle: "Automatyzacja i integracja",
   optionCardDesc: "Budujemy maszyny wyposażone w automatyczne podajniki materiału, systemy wizyjne, zintegrowane pomiary detalu oraz stanowiska zrobotyzowane.",
@@ -452,7 +454,7 @@ export const maszynySpecjalistyczneData: MachinePageData = {
     badge: "OFERTA DEDYKOWANA",
     title: "Gdy gotowe maszyny z katalogu nie rozwiązują problemu",
     lead: "Projektujemy i wykonujemy urządzenia CNC od podstaw pod konkretne operacje wytwórcze. Stawiamy na praktyczność: minimum niepotrzebnej komplikacji, maksimum niezawodności i ergonomii na Twojej hali produkcyjnej.",
-    targetTitle: "Dla kogo budujemy maszyny specjalistyczne?",
+    targetTitle: "Dla kogo budujemy maszyny specjalne?",
     targetItems: [
       { text: "Małe i średnie zakłady produkcyjne automatyzujące powtarzalne operacje" },
       { text: "Warsztaty i działy prototypowania wymagające niestandardowych gabarytów lub osi" },
@@ -528,52 +530,52 @@ export const maszynySpecjalistyczneData: MachinePageData = {
     },
   ],
   showGalleryStrip: false,
-  galleryStripTitle: "Zdjęcia z realizacji maszyn specjalistycznych",
+  galleryStripTitle: "Zdjęcia z realizacji maszyn specjalnych",
   galleryImages: [
     {
       src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-01.webp",
-      title: "Maszyna specjalistyczna CERTUS – Realizacja przemysłowa",
-      alt: "Maszyna specjalistyczna CNC CERTUS – widok ogólny",
+      title: "Maszyna specjalna CERTUS – Realizacja przemysłowa",
+      alt: "Maszyna specjalna CNC CERTUS – widok ogólny",
     },
     {
       src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-02.webp",
-      title: "Maszyna specjalistyczna CERTUS – Konstrukcja i podzespoły",
-      alt: "Szczegóły konstrukcyjne maszyny specjalistycznej",
+      title: "Maszyna specjalna CERTUS – Konstrukcja i podzespoły",
+      alt: "Szczegóły konstrukcyjne maszyny specjalnej",
     },
     {
       src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-03.webp",
-      title: "Maszyna specjalistyczna CERTUS – Moduł roboczy",
+      title: "Maszyna specjalna CERTUS – Moduł roboczy",
       alt: "Moduł roboczy maszyny specjalnej",
     },
     {
       src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-04.webp",
-      title: "Maszyna specjalistyczna CERTUS – Zespół napędowy i brama",
+      title: "Maszyna specjalna CERTUS – Zespół napędowy i brama",
       alt: "Brama i napędy maszyny na zamówienie",
     },
     {
       src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-05.webp",
-      title: "Maszyna specjalistyczna CERTUS – Stół i przestrzeń operacyjna",
+      title: "Maszyna specjalna CERTUS – Stół i przestrzeń operacyjna",
       alt: "Przestrzeń robocza maszyny specjalnej",
     },
     {
       src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-06.webp",
-      title: "Maszyna specjalistyczna CERTUS – Precyzyjna głowica robocza",
+      title: "Maszyna specjalna CERTUS – Precyzyjna głowica robocza",
       alt: "Głowica robocza wykonana na zamówienie",
     },
     {
       src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-07.webp",
-      title: "Maszyna specjalistyczna CERTUS – Detal mechaniczny",
+      title: "Maszyna specjalna CERTUS – Detal mechaniczny",
       alt: "Prowadnice i mechanika maszyny",
     },
     {
       src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-08.webp",
-      title: "Maszyna specjalistyczna CERTUS – Układ sterowania i automatyka",
-      alt: "Automatyka maszyny specjalistycznej",
+      title: "Maszyna specjalna CERTUS – Układ sterowania i automatyka",
+      alt: "Automatyka maszyny specjalnej",
     },
     {
       src: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-09.webp",
-      title: "Maszyna specjalistyczna CERTUS – Gotowe urządzenie w hali",
-      alt: "Uruchomiona maszyna specjalistyczna CERTUS",
+      title: "Maszyna specjalna CERTUS – Gotowe urządzenie w hali",
+      alt: "Uruchomiona maszyna specjalna CERTUS",
     },
   ],
   contactBullets: [
@@ -581,7 +583,7 @@ export const maszynySpecjalistyczneData: MachinePageData = {
     "Dobierzemy optymalną technologię, wymiary pola pracy, rodzaj napędów oraz poziom automatyzacji.",
     "Gwarantujemy bezpośredni kontakt z inżynierem prowadzącym projekt i szybką odpowiedź w 24h.",
   ],
-  formSubject: "Zapytanie: Maszyny specjalistyczne",
-  formType: "maszyny-specjalistyczne",
+  formSubject: "Zapytanie: Maszyny specjalne",
+  formType: "maszyny-specjalne",
   formHeading: "Zapytaj o maszynę na zamówienie",
 };

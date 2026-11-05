@@ -58,11 +58,21 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		image: '/assets/images/certus-maszyny-tworzone-z-pasja-i-precyzja.jpg',
 		type: 'website'
 	},
-	'/maszyny-specjalistyczne': {
-		title: 'Maszyny Specjalistyczne CNC na Zamówienie | CERTUS',
+	'/maszyny-specjalne': {
+		title: 'Maszyny Specjalne CNC na Zamówienie | CERTUS',
 		description:
-			'Projektujemy i budujemy dedykowane maszyny specjalistyczne CNC pod indywidualne wymagania technologiczne i procesy produkcyjne klientów.',
-		ogTitle: 'Dedykowane Maszyny Specjalistyczne CNC | CERTUS',
+			'Projektujemy i budujemy dedykowane maszyny specjalne CNC pod indywidualne wymagania technologiczne i procesy produkcyjne klientów.',
+		ogTitle: 'Dedykowane Maszyny Specjalne CNC | CERTUS',
+		ogDescription:
+			'Indywidualne projekty maszyn CNC dopasowane do unikalnych potrzeb Twojego zakładu produkcyjnego.',
+		image: '/assets/images/maszyny-specjalistyczne/frezarko-grawerka-cnc-certus-69-glowne1.jpg',
+		type: 'website'
+	},
+	'/maszyny-specjalistyczne': {
+		title: 'Maszyny Specjalne CNC na Zamówienie | CERTUS',
+		description:
+			'Projektujemy i budujemy dedykowane maszyny specjalne CNC pod indywidualne wymagania technologiczne i procesy produkcyjne klientów.',
+		ogTitle: 'Dedykowane Maszyny Specjalne CNC | CERTUS',
 		ogDescription:
 			'Indywidualne projekty maszyn CNC dopasowane do unikalnych potrzeb Twojego zakładu produkcyjnego.',
 		image: '/assets/images/maszyny-specjalistyczne/frezarko-grawerka-cnc-certus-69-glowne1.jpg',

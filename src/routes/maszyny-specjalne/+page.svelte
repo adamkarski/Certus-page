@@ -4,8 +4,6 @@
   import MaszynySpecjalistyczne from "../../components/MaszynySpecjalistyczne.svelte";
 </script>
 
-
-
 <div class="app">
   <Section_Header />
   <main>
@@ -19,8 +17,5 @@
     width: 100%;
     overflow-x: hidden;
   }
-
-  :global(body) {
-  
-  }
 </style>
+

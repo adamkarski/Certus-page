@@ -1347,7 +1347,7 @@ afterUpdate(() => {
           {/if}
         </div>
       </div>
-    {:else if $activeCategoryStore === "specjalistyczne" && $activeMachineStore === "m_special"}
+    {:else if ($activeCategoryStore === "specjalne" || $activeCategoryStore === "specjalistyczne") && $activeMachineStore === "m_special"}
       <div class="active_flex" bind:this={containerRef}></div>
     {/if}
   </div>

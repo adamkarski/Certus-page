@@ -92,6 +92,7 @@
   // Właściwości (props) konfigurujące maszynę
   export let machineId: string = "hmp-g1";
   export let machineName: string = "HMP-G1";
+  export let heroTitleFontSize: string = ""; // Opcjonalny override rozmiaru czcionki tytułu w Hero
   export let promoBadge: string = "NOWOŚĆ";
   export let heroPretitle: string = "Nowość · kompaktowe centrum frezarskie CNC";
   export let heroTitleSrOnly: string = "HMP-G1 – kompaktowe centrum frezarskie CNC";
@@ -408,7 +409,7 @@
             <span class="hero-promo-badge">{promoBadge}</span>
           {/if}
 
-          <h1 class="cx-hero-title">
+          <h1 class="cx-hero-title" style={heroTitleFontSize ? `font-size: ${heroTitleFontSize};` : ''}>
             <MachineTitleSvg text={machineName} height="1em" />
             <span class="sr-only">{heroTitleSrOnly}</span>
           </h1>
