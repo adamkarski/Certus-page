@@ -179,6 +179,10 @@ if ($data['formType'] === 'main-kontakt') {
                 <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($data['lastName'] ?? '') . "</td></tr>
             <tr><td style=\"border-bottom: 1px solid #eee; font-weight: bold; color: #666;\">Email</td>
                 <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($data['email']) . "</td></tr>
+            <tr><td style=\"border-bottom: 1px solid #eee; font-weight: bold; color: #666;\">Model maszyny</td>
+                <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($data['machineModel'] ?? 'Nie podano') . "</td></tr>
+            <tr><td style=\"border-bottom: 1px solid #eee; font-weight: bold; color: #666;\">Numer seryjny</td>
+                <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($data['serialNumber'] ?? 'Nie podano') . "</td></tr>
             <tr><td style=\"border-bottom: 1px solid #eee; font-weight: bold; color: #666;\">Telefon</td>
                 <td style=\"border-bottom: 1px solid #eee;\">" . htmlspecialchars($phone) . "</td></tr>
             <tr><td style=\"font-weight: bold; color: #666;\">Opis problemu</td>

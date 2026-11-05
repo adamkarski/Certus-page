@@ -41,7 +41,7 @@
         <h2>Certus Maszyny CNC</h2>
         <p>
           Zapraszamy do zapoznania się ze szczegółowymi informacjami o każdej z naszych maszyn.
-          Tutaj uzyskasz pełne specyfikacje, opisy i dane techniczne kadej z naszych maszyn. 
+          Tutaj uzyskasz pełne specyfikacje, opisy i dane techniczne każdej z naszych maszyn. 
         </p>
         <!-- Changed class to match existing table wrapper for consistent styling -->
         <div class="maszyny-dane-tabela-wrap">

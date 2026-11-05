@@ -375,7 +375,7 @@ export const maszynySpecjalistyczneData: MachinePageData = {
   heroTitleFontSize: "clamp(28px, 3.6vw, 46px)",
   promoBadge: "NA ZAMÓWIENIE",
   heroPretitle: "Projekt i produkcja CNC na indywidualne zamówienie",
-  heroTitleSrOnly: "Maszyny specjalne CNC CERTUS – urządzenia na indywidualne zamówienie",
+  heroTitleSrOnly: "Maszyny specjalne CNC – budowa na zamówienie",
   heroLead: "Gdy nie istnieje gotowe rozwiązanie do Twojego zadania, projektujemy i budujemy je od podstaw — prosto, rozsądnie i niezawodnie.",
   heroImageSrc: "/assets/images/maszyny-specjalistyczne/webp/maszyna-specjalistyczna-hero-transparent.webp",
   heroImageAlt: "Maszyny specjalne CNC budowane na zamówienie przez CERTUS",

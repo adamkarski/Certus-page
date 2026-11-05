@@ -59,7 +59,7 @@
                 href="/do_pobrania/dokumentacja/CERTUS_OWS_Ogolne_Warunki_Sprzedazy.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" width="28" height="36" loading="lazy" />
               </a>
             </td>
           </tr>
@@ -73,7 +73,7 @@
                 href="/do_pobrania/dokumentacja/CERTUS_Zasady_serwisu_i_cennik.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" width="28" height="36" loading="lazy" />
               </a>
             </td>
           </tr>
@@ -87,7 +87,7 @@
                 href="/do_pobrania/dokumentacja/CERTUS_Protokol_odbioru_technicznego.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" width="28" height="36" loading="lazy" />
               </a>
             </td>
           </tr>
@@ -101,7 +101,7 @@
                 href="/do_pobrania/dokumentacja/CERTUS_Protokol_szkolenia_operatora.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" width="28" height="36" loading="lazy" />
               </a>
             </td>
           </tr>
@@ -115,7 +115,7 @@
                 href="/do_pobrania/dokumentacja/CERTUS_Karta_kontrolna_BHP.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" width="28" height="36" loading="lazy" />
               </a>
             </td>
           </tr>
@@ -129,7 +129,7 @@
                 href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" width="28" height="36" loading="lazy" />
               </a>
             </td>
           </tr>
@@ -143,7 +143,7 @@
                 href="/do_pobrania/dokumentacja/CERTUS_Protokol_serwisowy_karta_przegladu.pdf"
                 download
                 class="cta-button"
-                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" />
+                ><img src="/assets/ikony/doc.svg" alt="Pobierz PDF" width="28" height="36" loading="lazy" />
               </a>
             </td>
           </tr>

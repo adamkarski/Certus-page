@@ -8,6 +8,9 @@
   import { Turnstile } from 'svelte-turnstile';
 
   export let isKontaktPage = false;
+  export let customTitle: string = "";
+  export let customSubtitle: string = "";
+  export let customBullets: string[] = [];
 
   let formData = {
     firstName: "",
@@ -261,7 +264,7 @@
     const formDataToSend = new FormData();
 
     Object.keys(formData).forEach(key => {
-        formDataToSend.append(key, formData[key as keyof typeof formData]);
+        formDataToSend.append(key, String(formData[key as keyof typeof formData]));
     });
     
     const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;
@@ -345,37 +348,51 @@
 
   <div class="contact-left no-sel" class:is-kontakt-page={isKontaktPage}>
     {#if isKontaktPage}
-      <h1 use:typoFixAction>Masz pytania? Skontaktuj się z nami!</h1>
+      <h1 use:typoFixAction>{customTitle || "Masz pytania? Skontaktuj się z nami!"}</h1>
     {:else}
-      <h2 use:typoFixAction>Masz pytania? Skontaktuj się z nami!</h2>
+      <h2 use:typoFixAction>{customTitle || "Masz pytania? Skontaktuj się z nami!"}</h2>
+    {/if}
+    {#if customSubtitle}
+      <p class="contact-custom-subtitle" use:typoFixAction>{customSubtitle}</p>
     {/if}
     <ul use:typoFixAction class="contact-bullets no-sel">
-      <li>
-        <span class="bullet"></span>
-        <div class="bullet-content">
-          Wypełnij formularz, a nasz doradca skontaktuje się z Tobą, by omówić szczegóły
-          i przygotować indywidualną wycenę.
-        </div>
-      </li>
-      <li>
-        <span class="bullet"></span>
-        <div class="bullet-content">
-          Nasz zespół ekspertów chętnie pomoże<br /> w doborze odpowiedniego urządzenia,
-          przygotuje ofertę lub wyjaśni szczegóły techniczne.
-        </div>
-      </li>
-      <li>
-        <span class="bullet"></span>
-        <div class="bullet-content">
-          Skorzystaj z bezpłatnej konsultacji<br /> – odpowiadamy szybko i
-          rzeczowo,<br /> zazwyczaj w ciągu 24 godzin.
-        </div>
-      </li>
+      {#if customBullets && customBullets.length > 0}
+        {#each customBullets as bullet}
+          <li>
+            <span class="bullet"></span>
+            <div class="bullet-content">
+              {bullet}
+            </div>
+          </li>
+        {/each}
+      {:else}
+        <li>
+          <span class="bullet"></span>
+          <div class="bullet-content">
+            Wypełnij formularz, a nasz doradca skontaktuje się z Tobą, by omówić szczegóły
+            i przygotować indywidualną wycenę.
+          </div>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <div class="bullet-content">
+            Nasz zespół ekspertów chętnie pomoże<br /> w doborze odpowiedniego urządzenia,
+            przygotuje ofertę lub wyjaśni szczegóły techniczne.
+          </div>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <div class="bullet-content">
+            Skorzystaj z bezpłatnej konsultacji<br /> – odpowiadamy szybko i
+            rzeczowo,<br /> zazwyczaj w ciągu 24 godzin.
+          </div>
+        </li>
+      {/if}
     </ul>
     <div class="contact-info-block">
       <div class="info-row">
         <span class="info-icon"
-          ><img src="/assets/ikony/telefon.svg" alt="Telefon" /></span
+          ><img src="/assets/ikony/telefon.svg" alt="Telefon" width="24" height="24" loading="lazy" /></span
         >
         <b
           ><a href="tel:+48 606 324 406" title="Zadzwoń do Certus"
@@ -385,17 +402,20 @@
       </div>
       <div class="info-row">
         <span class="info-icon"
-          ><img src="/assets/ikony/email.svg" alt="Email" /></span
+          ><img src="/assets/ikony/email.svg" alt="Email" width="24" height="24" loading="lazy" /></span
         >
-        <b
-          ><a href="mailto:biuro@mg-certus.pl" title="Wyślij e-mail do Certus"
-            >biuro@mg-certus.pl</a
-          ></b
-        >
+        <div>
+          <b
+            ><a href="mailto:biuro@mg-certus.pl" title="Wyślij e-mail do Certus"
+              >biuro@mg-certus.pl</a
+            ></b
+          >
+          <small class="email-routing-hint">Zapytania ofertowe: <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a> · Zgłoszenia serwisowe: <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a></small>
+        </div>
       </div>
       <div class="info-row">
         <span class="info-icon"
-          ><img src="/assets/ikony/lokalizacja.svg" alt="Lokalizacja" /></span
+          ><img src="/assets/ikony/lokalizacja.svg" alt="Lokalizacja" width="24" height="24" loading="lazy" /></span
         >
         <b
           ><a
@@ -411,11 +431,11 @@
     <div class="contact-social">
       <a
         href="https://m.facebook.com/CertusCNC/"
-        aria-label="YouTube"
+        aria-label="Facebook"
         class="social-icon"
         rel="nofollow noopener noreferrer"
       >
-        <img src="/assets/ikony/facebook.svg" alt="facebook" />
+        <img src="/assets/ikony/facebook.svg" alt="facebook" width="24" height="24" loading="lazy" />
       </a>
 
       <a
@@ -424,7 +444,7 @@
         class="social-icon"
         rel="nofollow noopener noreferrer"
       >
-        <img src="/assets/ikony/youtube.svg" alt="youtube" />
+        <img src="/assets/ikony/youtube.svg" alt="youtube" width="24" height="24" loading="lazy" />
       </a>
     </div>
   </div>
@@ -768,6 +788,13 @@
     left: -31px;
   }
 
+  .contact-custom-subtitle {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-gray-200, #e2e8f0);
+    margin: -10px 0 24px;
+  }
+
   .contact-bullets {
     list-style: none;
     padding: 0;
@@ -814,6 +841,22 @@
 
     b {
       color: #fff;
+    }
+
+    .email-routing-hint {
+      display: block;
+      color: #a0a0a0;
+      font-size: 0.82rem;
+      margin-top: 4px;
+      line-height: 1.4;
+
+      a {
+        color: #b0bf1a;
+        text-decoration: underline;
+        &:hover {
+          color: #fff;
+        }
+      }
     }
   }
 

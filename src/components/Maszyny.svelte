@@ -69,7 +69,7 @@
   <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarka CNC HMM-ST" class="cnc-icon" width="96" height="96">
+        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarka CNC HMM-ST" class="cnc-icon" width="96" height="96" loading="lazy">
         <strong class="cnc-title" use:typoFixAction>Frezarka CNC HMM-ST z ruchomym stołem</strong>
       </div>
       <div class="cnc-row" use:typoFixAction>
@@ -77,7 +77,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp" alt="Frezarka CNC HMM-ST" width="1200" height="800">
+      <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp" alt="Frezarka CNC HMM-ST" width="1200" height="800" loading="lazy">
     </div>
   </div>
 

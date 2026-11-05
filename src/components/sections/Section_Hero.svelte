@@ -2513,7 +2513,14 @@
   }
 
   /* Mobile responsive */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
+    :global(.swiper-nav-button),
+    .swiper-nav-button {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
     .swiper-nav-button {
       width: 40px;
       height: 40px;

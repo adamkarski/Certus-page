@@ -34,7 +34,7 @@
       role="button"
     >
       <div class="oferta-icon">
-        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" />
+        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" width="100" height="100" loading="lazy" />
       </div>
 
       <CtaButton
@@ -55,6 +55,9 @@
         <img
           src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg"
           alt="Przemysłowe plotery CNC"
+          width="100"
+          height="100"
+          loading="lazy"
         />
       </div>
 
@@ -76,6 +79,9 @@
         <img
           src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg"
           alt="Przemysłowe plotery CNC"
+          width="100"
+          height="100"
+          loading="lazy"
         />
       </div>
 
@@ -97,6 +103,9 @@
         <img
           src="/assets/ikony/maszyny/frezarki5osiowe.svg"
           alt="Frezarki pięcioosiowe"
+          width="100"
+          height="100"
+          loading="lazy"
         />
       </div>
 
@@ -115,7 +124,7 @@
       role="button"
     >
       <div class="oferta-icon">
-        <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" />
+        <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" width="100" height="100" loading="lazy" />
       </div>
 
       <CtaButton
@@ -136,6 +145,9 @@
         <img
           src="/assets/ikony/maszyny/ploteryLinearne.svg"
           alt="Plotery CNC HLP-FT"
+          width="100"
+          height="100"
+          loading="lazy"
         />
       </div>
 
@@ -226,36 +238,48 @@
     }
   }
 
-  // Układ pionowy poniżej 600px
-  @media (max-width: 600px) {
+  // Kafelki kategorii na telefonie w 2 kolumnach (F2)
+  @media (max-width: 680px) {
+    :global(body.maszyny .oferta-container) {
+      padding-left: 0.75rem !important;
+      padding-right: 0.75rem !important;
+    }
+
     :global(.oferta-grid) {
-      grid-template-columns: 1fr;
-      gap: 25px;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 16px 10px !important;
+      justify-items: stretch !important;
 
       .oferta-card {
-        padding: 20px 15px;
-        max-width: 320px;
-        margin: 0 auto;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 12px 6px !important;
+        margin: 0 !important;
 
         // Dostosowanie ikon
         .oferta-icon {
-          margin-bottom: 20px;
-    
+          width: 52px !important;
+          min-width: 48px !important;
+          max-width: 60px !important;
+          margin-bottom: 12px !important;
 
           img {
-           
             width: 100%;
             height: auto;
           }
         }
 
-        // Dostosowanie przycisków CTA
+        // Dostosowanie przycisków CTA w 2 kolumnach
         :global(.oferta-cta) {
           width: 100% !important;
+          min-width: 0 !important;
           max-width: 100% !important;
           height: auto !important;
-          min-height: 50px !important;
-          padding: 12px 15px !important;
+          min-height: 44px !important;
+          padding: 8px 6px !important;
+          font-size: 0.8rem !important;
+          justify-content: center !important;
+          text-align: center !important;
         }
       }
     }

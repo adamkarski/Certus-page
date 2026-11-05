@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./typography.scss";
+@import "./styles/shared-components.scss";
 
 @font-face {
   font-family: 'Snasm';
@@ -47,6 +48,16 @@ body {
 }
 
 :root {
+  /* ===== HERO STUDIO BACKDROP (HMP-G1 / BESTSELLER) ===== */
+  --hero-graphite: #3e4042;              /* = strona główna */
+  --hero-tint: rgba(85, 68, 85, 0.27);   /* = strona główna */
+  --hero-wall: #232426;                  /* ściana, tony średnie */
+  --hero-ink: #121314;                   /* najciemniejsze brzegi */
+  --hero-floor-edge: #505154;            /* podłoga tuż przy horyzoncie / boki */
+  --hero-floor: #7a7b7f;                 /* podłoga – ton główny */
+  --hero-floor-hi: #e6e6e8;              /* odblaski świateł na podłodze */
+  --hero-horizon: 55.5%;                 /* wysokość linii horyzontu */
+
   /* ===== KOLORY GŁÓWNE ===== */
   --color-primary: #96a500; /* Główny zielony akcent */
   --color-primary-light: #c5d418; /* Jaśniejszy zielony */
@@ -291,6 +302,32 @@ h2 {
   z-index: 1;
   overflow: hidden;
 }
+
+/* =====================================================================
+   WCAG / MOBILE TOUCH TARGETS (min-height: 44px poniżej 768px)
+   ===================================================================== */
+@media (max-width: 767px) {
+  a[href^="tel:"],
+  a[href^="mailto:"],
+  .footer-links a,
+  .footer-link,
+  .footer-bottom a,
+  .privacy-link,
+  .privacy-text a,
+  a[href*="polityka-prywatnosci"],
+  .social-icon,
+  .social-link,
+  .bullet-link,
+  .info-row a,
+  .contact-social a,
+  .nav-mobile-link,
+  .mobile-menu a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
 
 /* ========================================
    GLOBAL PROMO BADGE (NOWOŚĆ / BESTSELLER)

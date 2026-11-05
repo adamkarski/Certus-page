@@ -21,11 +21,11 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 	'/serwis': {
 		title: 'Serwis maszyn CNC - Gwarancyjny i pogwarancyjny | CERTUS',
 		description:
-			'Profesjonalny serwis maszyn CNC Certus. Oferujemy serwis gwarancyjny, pogwarancyjny oraz modernizacje maszyn. Doświadczony zespół inżynierów i techników.',
-		ogTitle: 'Profesjonalny Serwis Maszyn CNC | CERTUS',
+			'Serwis maszyn CNC: zespół który maszynę zbudował, części na miejscu, reakcja do 24-48h. Gwarancyjny, pogwarancyjny, przeglądy okresowe i szkolenia.',
+		ogTitle: 'Serwis maszyn CNC – Reakcja 24-48h, Części na Miejscu | CERTUS',
 		ogDescription:
-			'Szybki serwis gwarancyjny i pogwarancyjny maszyn CNC, diagnostyka, naprawy oraz części zamienne. Sprawdź ofertę serwisu Certus.',
-		image: '/assets/certus-serwis-pogwarancyjny.png',
+			'Szybki serwis gwarancyjny i pogwarancyjny maszyn CNC, diagnostyka, przeglądy oraz części zamienne na miejscu w Choczni. Sprawdź cennik i zgłoś usterkę.',
+		image: '/assets/images/serwis/hero-serwis-maszyna.png',
 		type: 'website'
 	},
 	'/hmp-g1': {
@@ -59,10 +59,10 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		type: 'website'
 	},
 	'/maszyny-specjalne': {
-		title: 'Maszyny Specjalne CNC na Zamówienie | CERTUS',
+		title: 'Maszyny specjalne CNC – budowa na zamówienie | CERTUS',
 		description:
 			'Projektujemy i budujemy dedykowane maszyny specjalne CNC pod indywidualne wymagania technologiczne i procesy produkcyjne klientów.',
-		ogTitle: 'Dedykowane Maszyny Specjalne CNC | CERTUS',
+		ogTitle: 'Maszyny specjalne CNC – budowa na zamówienie | CERTUS',
 		ogDescription:
 			'Indywidualne projekty maszyn CNC dopasowane do unikalnych potrzeb Twojego zakładu produkcyjnego.',
 		image: '/assets/images/maszyny-specjalistyczne/frezarko-grawerka-cnc-certus-69-glowne1.jpg',
@@ -79,13 +79,13 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		type: 'website'
 	},
 	'/onas': {
-		title: 'O nas - Polski producent maszyn CNC | CERTUS',
+		title: 'O nas – Polski producent maszyn CNC | CERTUS',
 		description:
-			'Jesteśmy polskim producentem maszyn CNC z ponad 20-letnim doświadczeniem. Tworzymy precyzyjne centra obróbcze dopasowane do indywidualnych potrzeb.',
-		ogTitle: 'O firmie CERTUS – Polski Producent Maszyn CNC',
+			'Projektujemy i budujemy frezarki, plotery i centra obróbcze CNC w Choczni pod Wadowicami. Ponad 20 lat w branży CNC, 500+ wdrożeń w całej Polsce.',
+		ogTitle: 'O nas – CERTUS | Budujemy maszyny CNC do pracy, nie do katalogu',
 		ogDescription:
-			'Poznaj historię, technologię i wartości marki CERTUS. Ponad dwie dekady precyzji i pasji w inżynierii maszynowej.',
-		image: '/assets/images/onas/certus-maszyny-wielkogabarytowe-cnc.jpg',
+			'Poznaj zespół CERTUS, konfigurację maszyn pod detal klienta, sprawdzone komponenty na każdej osi i profesjonalny serwis producenta.',
+		image: '/assets/images/onas/hero-3maszyny.webp',
 		type: 'website'
 	},
 	'/kontakt': {

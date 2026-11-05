@@ -63,6 +63,7 @@
           <a
             href="https://m.facebook.com/CertusCNC/"
             class="social-link"
+            aria-label="Facebook"
             title="Odwiedź nas na Facebooku"
             rel="nofollow noopener noreferrer">
            
@@ -93,6 +94,7 @@
           <a
             href="https://www.youtube.com/user/MGCERTUS/videos"
             class="social-link"
+            aria-label="YouTube"
             title="Nasze maszyny CNC w akcji"
             rel="nofollow noopener noreferrer">
             

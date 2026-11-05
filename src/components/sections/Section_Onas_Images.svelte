@@ -97,13 +97,13 @@
 
       <div class="hero-text no-sel">
         {#if showHeroTitle}
-          <h1
+          <p
             class="hero-title no-sel"
             in:fade={{ duration: 1600, delay: 100 }}
           >
             <span in:fade={{ duration: 1600, delay: 800 }}>Your Vision,</span>
             <span in:fade={{ duration: 1600, delay: 1600 }}>Our Precision</span>
-          </h1>
+          </p>
         {/if}
       </div>
     </div>
@@ -111,6 +111,14 @@
 </section>
 
 <style lang="scss">
+  section.onas {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    overflow: hidden;
+  }
+
   .hero-text .hero-title {
     @media screen and (max-width: 768px) {
       font-size: 1.34rem;
@@ -122,6 +130,7 @@
   .triangle {
     position: absolute;
     width: 400px;
+    max-width: 100%;
     height: 100px;
     top: 399px;
     left: 0;
@@ -139,6 +148,22 @@
     }
   }
 
+  @media (max-width: 800px) {
+    .triangle {
+      &::after {
+        clip-path: polygon(0 0, 40% 0, 60% 101%, 0% 100%) !important;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    .triangle {
+      &::after {
+        clip-path: polygon(0 0, 20% 0, 40% 101%, 0% 100%) !important;
+      }
+    }
+  }
+
   .image-and-patterns-wrapper {
     position: absolute;
     top: 0;
@@ -151,7 +176,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     overflow: hidden; /* Added to contain overflowing children */
     height: 495px;
     z-index: 54;
@@ -187,11 +213,13 @@
     background: transparent;
     position: absolute;
     z-index: 2;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     text-align: center;
     top: 200px;
   }
-  .onas-header h1 {
+  .onas-header h1,
+  .onas-header .hero-title {
     margin: 0;
     color: white;
     text-shadow: 0 13px 27px rgba(0, 0, 0, 0.5);

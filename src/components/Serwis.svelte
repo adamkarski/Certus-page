@@ -1,1677 +1,1006 @@
 <script lang="ts">
-  import { fade } from "svelte/transition";
-  import { onMount } from "svelte";
   import { typoFixAction } from "$lib/utils/typography";
-
-  // Import komponentów serwisu
-  import ServiceModal from "./serwis/ServiceModal.svelte";
-  import BenefitsSection from "./serwis/BenefitsSection.svelte";
   import SerwisKontakt from "./serwis/SerwisKontakt.svelte";
 
-  // Import istniejących komponentów
-  import CtaButton from "./CtaButton.svelte";
-  import { smoothScrollTo } from "$lib/utils/smoothScroll";
-  import SectionImage03 from "./sections/Section_Image03.svelte";
-
-  let sectionEl: HTMLElement;
-  let benefitsSectionEl: HTMLElement;
-  let visible = false;
-  let benefitsVisible = false;
-  let modalOpen = false;
-  let selectedService: any = null;
-
-  onMount(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) visible = true;
-      },
-      { threshold: 0.1 },
-    );
-
-    const benefitsObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) benefitsVisible = true;
-      },
-      { threshold: 0.1 },
-    );
-
-    if (sectionEl) observer.observe(sectionEl);
-    if (benefitsSectionEl) benefitsObserver.observe(benefitsSectionEl);
-
-    return () => {
-      observer.disconnect();
-      benefitsObserver.disconnect();
-    };
-  });
-
-  // Funkcja zwracająca pełne dane serwisu na podstawie typu
-  function getServiceData(type: string) {
-    const servicesData = {
-      warranty: {
-        type: "warranty",
-        title: "Serwis Gwarancyjny",
-        description:
-          "12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie.",
-        highlights: ["Robocizna 0 zł", "Dojazd 2,50 zł/km"],
-        details: [
-          {
-            label: "Okres gwarancji",
-            value: "12 miesięcy od odbioru technicznego",
-          },
-          {
-            label: "Robocizna serwisu",
-            value: "Bezpłatnie",
-            highlight: true,
-          },
-          {
-            label: "Części gwarancyjne",
-            value: "Bezpłatnie",
-            highlight: true,
-          },
-          {
-            label: "Koszt dojazdu",
-            value: "2,50 zł netto/km",
-          },
-        ],
-        includes: [
-          "Robocizna serwisu w ramach naprawy gwarancyjnej",
-          "Części wymieniane w ramach naprawy gwarancyjnej",
-          "Wady materiałowe i błędy produkcyjne",
-          "Awarie wynikające z normalnego użytkowania",
-          "Raport z wykonanych prac",
-        ],
-        excludes: [
-          "Materiały eksploatacyjne i części zużywające się (smar, chłodziwo, tulejki, paski)",
-          "Koszt dojazdu serwisu (płatny 2,50 zł netto/km)",
-          "Błędy użytkownika i nieautoryzowane modyfikacje",
-          "Zaniedbania konserwacyjne",
-          "Eksploatacja niezgodna z przeznaczeniem i BHP",
-        ],
-      },
-      "post-warranty": {
-        type: "post-warranty",
-        title: "Serwis Pogwarancyjny",
-        description:
-          "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym.",
-        highlights: ["240 zł netto/h", "Dojazd 2,50 zł/km"],
-        details: [
-          {
-            label: "Stawka robocizny",
-            value: "240 zł netto/h",
-            highlight: true,
-          },
-          {
-            label: "Diagnoza usterki",
-            value: "240 zł netto/h",
-          },
-          {
-            label: "Koszt dojazdu",
-            value: "2,50 zł netto/km",
-          },
-          {
-            label: "Części i materiały",
-            value: "Wg wyceny po diagnozie",
-          },
-        ],
-        includes: [
-          "Diagnostyka awarii i usterek",
-          "Naprawa i regulacja podzespołów",
-          "Wymiana części zamiennych",
-          "Testowanie maszyny po naprawie",
-          "Szczegółowy raport serwisowy",
-        ],
-        note: "Dojazd 2,50 zł netto/km, liczony w obie strony od siedziby w Choczni. Czas dojazdu nie jest doliczany. Części i materiały wg wyceny po diagnozie.",
-      },
-      inspections: {
-        type: "inspections",
-        title: "Przeglądy Okresowe",
-        description:
-          "Zalecany co 12 miesięcy, co 6 miesięcy przy pracy wielozmianowej lub w trudnych warunkach (pył, praca z chłodziwem).",
-        highlights: ["240 zł netto/h", "Co 12 mies."],
-        details: [
-          {
-            label: "Częstotliwość",
-            value:
-              "Zalecany co 12 mies. (co 6 mies. przy pracy wielozmianowej)",
-          },
-          {
-            label: "Stawka robocizny",
-            value: "240 zł netto/h",
-            highlight: true,
-          },
-          {
-            label: "Szacowany czas",
-            value: "Ok. 3–4 h dla frezarki HMM-ST",
-          },
-          {
-            label: "Koszt dojazdu",
-            value: "2,50 zł netto/km",
-          },
-        ],
-        includes: [
-          "Diagnostyka wszystkich podzespołów i układu mechanicznego",
-          "Kontrola dokładności i geometrii osi",
-          "Sprawdzenie instalacji elektrycznej i automatyki",
-          "Kontrola układu smarowania i chłodzenia",
-          "Protokół serwisowy z kartą przeglądu i pomiarów",
-        ],
-        note: "Rozliczenie: 240 zł netto/h + dojazd 2,50 zł netto/km. Materiały eksploatacyjne i części płatne wg zużycia.",
-      },
-      additional: {
-        type: "additional",
-        title: "Usługi Dodatkowe",
-        description:
-          "Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) w cenie maszyny.",
-        highlights: [
-          "Szkolenie do 3h w cenie",
-          "Szkolenie dodatkowe 240 zł netto/h",
-        ],
-        services: [
-          {
-            name: "Szkolenie podstawowe operatora",
-            price: "W cenie maszyny",
-            description: "Do 3 h przy uruchomieniu maszyny",
-            details:
-              "Szkolenie operatora z obsługi maszyny i zasad BHP potwierdzone protokołem.",
-          },
-          {
-            name: "Szkolenie dodatkowe operatora",
-            price: "240 zł netto/h",
-            description: "Na miejscu lub wg ustaleń",
-            details:
-              "Każde dodatkowe szkolenie z zaawansowanej obsługi, oprogramowania lub dla nowych pracowników.",
-          },
-          {
-            name: "Zdalna diagnostyka online",
-            price: "100 zł netto",
-            description: "Za każde rozpoczęte 30 min",
-            details:
-              "Szybka pomoc techniczna i diagnostyka problemu przez internet.",
-          },
-          {
-            name: "Dojazd serwisu",
-            price: "2,50 zł netto/km",
-            description: "W obie strony od Choczni",
-            details:
-              "Czas dojazdu nie jest doliczany. Przykład: klient w odległości 150 km → 300 km × 2,50 zł = 750 zł netto.",
-          },
-        ],
-      },
-    };
-    return servicesData[type] || null;
-  }
-
-  function handleOpenModal(event: CustomEvent | { detail: { type: string } }) {
-    const data = event.detail;
-
-    // Jeśli przekazano tylko typ, pobierz pełne dane
-    if (data.type && !data.title) {
-      selectedService = getServiceData(data.type);
-    } else {
-      selectedService = data;
-    }
-
-    modalOpen = true;
-    document.body.style.overflow = "hidden";
-  }
-
-  function handleCloseModal() {
-    modalOpen = false;
-    selectedService = null;
-    document.body.style.overflow = "auto";
-  }
-
-  function scrollToServices() {
-    const servicesSection = document.getElementById("serwis-services");
-    if (servicesSection) {
-      const elementPosition =
-        servicesSection.getBoundingClientRect().top + window.pageYOffset;
-
-      // Używamy wspólnej funkcji scrollowania
-      smoothScrollTo(elementPosition, 1000, 140); // 1 sekunda animacji, 140px offset
+  function scrollToZgloszenie() {
+    const el = document.getElementById("zgloszenie-serwisowe");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
     }
   }
 
-  function makePhoneCall() {
-    window.open("tel:+48606324406", "_self");
+  function scrollToCennik() {
+    const el = document.getElementById("cennik");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
   }
 </script>
 
-<section class="serwis_page gradientHero_old">
-  <div class="first-container-back"></div>
-  <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
-</section>
+<div class="serwis-page no-sel">
+  <!-- ===================================================================
+       1. HERO STUDIO (Identyczna struktura, wysokość i światła jak HMP-G1 / C69 / O nas)
+       =================================================================== -->
+  <div class="hmp-hero-wrapper">
+    <!-- Tło ze zdjęciem studio i dwoma światłami na podłodze -->
+    <div class="hmp-hero-bg" aria-hidden="true"></div>
 
-<!-- Sekcja z kartami usług serwisowych używająca istniejących stylów -->
-<section
-  id="serwis-services"
-  class="info-cards-section no-sel"
-  bind:this={sectionEl}
->
-  <div class="serwis-services-header">
-    <h1 use:typoFixAction>Usługi Serwisowe</h1>
-    <p use:typoFixAction>
-      Kompleksowa opieka serwisowa dla wszystkich maszyn CNC
-    </p>
+    <section class="cx-wrap hmp-hero-section">
+      <div class="hero-grid">
+        <!-- Lewa kolumna: Treść -->
+        <div class="hero-text-col">
+          <span class="hero-pill-badge">Serwis producenta</span>
+          <h1 class="hero-h1">SERWIS</h1>
+          <p class="hero-lead" use:typoFixAction>
+            Gwarancja od dnia odbioru, szkolenie w cenie maszyny i serwis prowadzony przez ludzi, którzy ją zbudowali.
+          </p>
+
+          <div class="hero-actions">
+            <button type="button" on:click={scrollToZgloszenie} class="btn-certus-primary">Zgłoś usterkę</button>
+            <button type="button" on:click={scrollToCennik} class="btn-certus-outline">Zasady serwisu i cennik</button>
+          </div>
+        </div>
+
+        <!-- Prawa kolumna: Render frezarki w zabudowie stojącej na podłodze -->
+        <div class="hero-machine-col">
+          <div class="hero-machine-stage">
+            <img
+              src="/assets/images/serwis/hero-serwis-maszyna.webp"
+              alt="Frezarka CNC CERTUS w pełnej zabudowie – serwis fabryczny"
+              class="hero-machine-render"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pasek 4 KPI (klasy cx-kpi identyczne z HMP-G1 / C69 / O nas) -->
+      <div class="cx-kpi">
+        <div class="cx-kpi-item">
+          <p class="cx-kpi-label">GWARANCJA</p>
+          <p class="cx-kpi-value">12 miesięcy</p>
+          <p class="cx-kpi-note">od dnia odbioru</p>
+        </div>
+        <div class="cx-kpi-item">
+          <p class="cx-kpi-label">SZKOLENIE</p>
+          <p class="cx-kpi-value">do 3 h</p>
+          <p class="cx-kpi-note">w cenie maszyny</p>
+        </div>
+        <div class="cx-kpi-item">
+          <p class="cx-kpi-label">ZGŁOSZENIA</p>
+          <p class="cx-kpi-value">pn–pt 8–16</p>
+          <p class="cx-kpi-note">oddzwaniamy następnego dnia rob.</p>
+        </div>
+        <div class="cx-kpi-item">
+          <p class="cx-kpi-label">PRZEGLĄDY</p>
+          <p class="cx-kpi-value">co 12 mies.</p>
+          <p class="cx-kpi-note">co 6 przy pracy wielozmianowej</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ukośne ścięcie Hero przechodzące w tło -->
+    <div class="cx-cut" aria-hidden="true"></div>
   </div>
 
-  <div class="info-cards-wrapper">
-    <!-- Serwis Gwarancyjny -->
-    <div
-      class="info-card serwis-service-card warranty-card"
-      class:visible
-      on:click={() =>
-        handleOpenModal({
-          detail: {
-            type: "warranty",
-            title: "Serwis Gwarancyjny",
-            description:
-              "12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie.",
-            highlights: ["Robocizna 0 zł", "Dojazd 2,50 zł/km"],
-            details: [
-              {
-                label: "Okres gwarancji",
-                value: "12 miesięcy od odbioru technicznego",
-              },
-              {
-                label: "Robocizna serwisu",
-                value: "Bezpłatnie",
-                highlight: true,
-              },
-              {
-                label: "Części gwarancyjne",
-                value: "Bezpłatnie",
-                highlight: true,
-              },
-              { label: "Koszt dojazdu", value: "2,50 zł netto/km" },
-            ],
-            includes: [
-              "Robocizna serwisu w ramach naprawy gwarancyjnej",
-              "Części wymieniane w ramach naprawy gwarancyjnej",
-              "Wady materiałowe i błędy produkcyjne",
-              "Awarie wynikające z normalnego użytkowania",
-              "Raport z wykonanych prac",
-            ],
-            excludes: [
-              "Materiały eksploatacyjne i części zużywające się (smar, chłodziwo, tulejki, paski)",
-              "Koszt dojazdu serwisu (płatny 2,50 zł netto/km)",
-              "Błędy użytkownika i nieautoryzowane modyfikacje",
-              "Zaniedbania konserwacyjne",
-              "Eksploatacja niezgodna z przeznaczeniem i BHP",
-            ],
-          },
-        })}
-      on:keydown={(e) =>
-        e.key === "Enter" && handleOpenModal({ detail: { type: "warranty" } })}
-      role="button"
-      tabindex="0"
-      aria-label="Otwórz szczegóły usługi Serwis Gwarancyjny"
-    >
-      <div class="info-card-header">
-        <div class="serwis-service-icon warranty-icon info-icon">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-          </svg>
-        </div>
-        <span class="info-title" use:typoFixAction>Serwis Gwarancyjny</span>
-      </div>
-
-      <p class="info-desc" use:typoFixAction>
-        12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem odbioru
-        technicznego. Robocizna i części wymieniane w ramach naprawy
-        gwarancyjnej — bezpłatnie.
-      </p>
-
-      <div class="serwis-service-highlight">
-        <span class="serwis-highlight-item" use:typoFixAction
-          >Robocizna 0 zł</span
-        >
-        <span class="serwis-highlight-item" use:typoFixAction
-          >Dojazd 2,50 zł/km</span
-        >
-      </div>
-    </div>
-
-    <!-- Serwis Pogwarancyjny -->
-    <div
-      class="info-card serwis-service-card post-warranty-card"
-      class:visible
-      on:click={() =>
-        handleOpenModal({
-          detail: {
-            type: "post-warranty",
-            title: "Serwis Pogwarancyjny",
-            description:
-              "Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem technicznym.",
-            highlights: ["240 zł netto/h", "Dojazd 2,50 zł/km"],
-            details: [
-              {
-                label: "Stawka robocizny",
-                value: "240 zł netto/h",
-                highlight: true,
-              },
-              { label: "Diagnoza usterki", value: "240 zł netto/h" },
-              { label: "Koszt dojazdu", value: "2,50 zł netto/km" },
-              { label: "Części i materiały", value: "Wg wyceny po diagnozie" },
-            ],
-            includes: [
-              "Diagnostyka awarii i usterek",
-              "Naprawa i regulacja podzespołów",
-              "Wymiana części zamiennych",
-              "Testowanie maszyny po naprawie",
-              "Szczegółowy raport serwisowy",
-            ],
-            note: "Dojazd 2,50 zł netto/km, liczony w obie strony od siedziby w Choczni. Czas dojazdu nie jest doliczany. Części i materiały wg wyceny po diagnozie.",
-          },
-        })}
-      on:keydown={(e) =>
-        e.key === "Enter" &&
-        handleOpenModal({ detail: { type: "post-warranty" } })}
-      role="button"
-      tabindex="0"
-      aria-label="Otwórz szczegóły usługi Serwis Pogwarancyjny"
-    >
-      <div class="info-card-header">
-        <div class="serwis-service-icon post-warranty-icon info-icon">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
-            ></path>
-          </svg>
-        </div>
-        <span class="info-title" use:typoFixAction>Serwis Pogwarancyjny</span>
-      </div>
-
-      <p class="info-desc" use:typoFixAction>
-        Profesjonalne usługi serwisowe po okresie gwarancji z pełnym wsparciem
-        technicznym
-      </p>
-
-      <div class="serwis-service-highlight">
-        <span class="serwis-highlight-item" use:typoFixAction
-          >Koszt 240 zł netto/h</span
-        >
-        <span class="serwis-highlight-item" use:typoFixAction
-          >Dojazd 2,50 zł/km</span
-        >
-      </div>
-    </div>
-
-    <!-- Przeglądy Okresowe -->
-    <div
-      class="info-card serwis-service-card inspections-card"
-      class:visible
-      on:click={() =>
-        handleOpenModal({
-          detail: {
-            type: "inspections",
-            title: "Przeglądy Okresowe",
-            description:
-              "Zalecany co 12 miesięcy, co 6 miesięcy przy pracy wielozmianowej lub w trudnych warunkach (pył, praca z chłodziwem).",
-            highlights: ["240 zł netto/h", "Co 12 mies."],
-            details: [
-              {
-                label: "Częstotliwość",
-                value:
-                  "Zalecany co 12 mies. (co 6 mies. przy pracy wielozmianowej)",
-              },
-              {
-                label: "Stawka robocizny",
-                value: "240 zł netto/h",
-                highlight: true,
-              },
-              {
-                label: "Szacowany czas",
-                value: "Ok. 3–4 h dla frezarki HMM-ST",
-              },
-              {
-                label: "Koszt dojazdu",
-                value: "2,50 zł netto/km",
-              },
-            ],
-            includes: [
-              "Diagnostyka wszystkich podzespołów i układu mechanicznego",
-              "Kontrola dokładności i geometrii osi",
-              "Sprawdzenie instalacji elektrycznej i automatyki",
-              "Kontrola układu smarowania i chłodzenia",
-              "Protokół serwisowy z kartą przeglądu i pomiarów",
-            ],
-            note: "Rozliczenie: 240 zł netto/h + dojazd 2,50 zł netto/km. Materiały eksploatacyjne i części płatne wg zużycia.",
-          },
-        })}
-      on:keydown={(e) =>
-        e.key === "Enter" &&
-        handleOpenModal({ detail: { type: "inspections" } })}
-      role="button"
-      tabindex="0"
-      aria-label="Otwórz szczegóły usługi Przeglądy Okresowe"
-    >
-      <div class="info-card-header">
-        <div class="serwis-service-icon inspections-icon info-icon">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M9 11l3 3l8-8"></path>
-            <path
-              d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.51 0 2.93.37 4.18 1.03"
-            ></path>
-          </svg>
-        </div>
-        <span class="info-title" use:typoFixAction>Przeglądy Okresowe</span>
-      </div>
-
-      <p class="info-desc" use:typoFixAction>
-        Regularne przeglądy zapewniające optymalną pracę maszyn i przedłużające
-        ich żywotność
-      </p>
-
-      <div class="serwis-service-highlight">
-        <span class="serwis-highlight-item" use:typoFixAction
-          >Koszt 240 zł netto/h</span
-        >
-        <span class="serwis-highlight-item" use:typoFixAction>Co 12 mies.</span>
-      </div>
-    </div>
-
-    <!-- Usługi Dodatkowe -->
-    <div
-      class="info-card serwis-service-card additional-card"
-      class:visible
-      on:click={() =>
-        handleOpenModal({
-          detail: {
-            type: "additional",
-            title: "Usługi Dodatkowe",
-            description:
-              "Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) w cenie maszyny.",
-            highlights: [
-              "Szkolenie do 3h w cenie",
-              "Szkolenie dodatkowe 240 zł netto/h",
-            ],
-            services: [
-              {
-                name: "Szkolenie podstawowe operatora",
-                price: "W cenie maszyny",
-                description: "Do 3 h przy uruchomieniu maszyny",
-                details:
-                  "Szkolenie operatora z obsługi maszyny i zasad BHP potwierdzone protokołem.",
-              },
-              {
-                name: "Szkolenie dodatkowe operatora",
-                price: "240 zł netto/h",
-                description: "Na miejscu lub wg ustaleń",
-                details:
-                  "Każde dodatkowe szkolenie z zaawansowanej obsługi, oprogramowania lub dla nowych pracowników.",
-              },
-              {
-                name: "Zdalna diagnostyka online",
-                price: "100 zł netto",
-                description: "Za każde rozpoczęte 30 min",
-                details:
-                  "Szybka pomoc techniczna i diagnostyka problemu przez internet.",
-              },
-              {
-                name: "Dojazd serwisu",
-                price: "2,50 zł netto/km",
-                description: "W obie strony od Choczni",
-                details:
-                  "Czas dojazdu nie jest doliczany. Przykład: klient w odległości 150 km → 300 km × 2,50 zł = 750 zł netto.",
-              },
-            ],
-          },
-        })}
-      on:keydown={(e) =>
-        e.key === "Enter" &&
-        handleOpenModal({ detail: { type: "additional" } })}
-      role="button"
-      tabindex="0"
-      aria-label="Otwórz szczegóły usługi Usługi Dodatkowe"
-    >
-      <div class="info-card-header">
-        <div class="serwis-service-icon additional-icon info-icon">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="16"></line>
-            <line x1="8" y1="12" x2="16" y2="12"></line>
-          </svg>
-        </div>
-        <span class="info-title" use:typoFixAction>Usługi <br />Dodatkowe</span>
-      </div>
-
-      <p class="info-desc" use:typoFixAction>
-        Szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) w cenie maszyny.
-      </p>
-
-      <div class="serwis-service-highlight">
-        <span class="serwis-highlight-item" use:typoFixAction>
-          Szkolenie dodatkowe:<br />240 zł netto/h
-        </span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Nowy blok Cennik serwisu (B6) -->
-  <div class="cennik-serwisu-container">
-    <div class="cennik-serwisu-card">
-      <h3 class="cennik-title" use:typoFixAction>Cennik serwisu</h3>
-
-      <div class="cennik-grid">
-        <!-- Gwarancja -->
-        <div class="cennik-item">
-          <h4 use:typoFixAction>Gwarancja</h4>
-          <p use:typoFixAction>
-            12 miesięcy od dnia odbioru maszyny, potwierdzonego protokołem
-            odbioru technicznego.
+  <!-- ===================================================================
+       2. PEŁNA OPIEKA PO ZAKUPIE
+       =================================================================== -->
+  <section class="section-pad">
+    <div class="certus-container">
+      <div class="card-base-white care-card">
+        <div class="care-header">
+          <h2 class="care-title" use:typoFixAction>Pełna opieka po zakupie. Jeden zespół od budowy do serwisu.</h2>
+          <p class="care-sub" use:typoFixAction>
+            Zakres usług serwisowych dla wszystkich maszyn CERTUS. Stawki — w cenniku poniżej.
           </p>
-          <p class="cennik-sub" use:typoFixAction>W okresie gwarancji:</p>
-          <ul class="cennik-list" use:typoFixAction>
-            <li>robocizna serwisu — bezpłatnie,</li>
-            <li use:typoFixAction>
-              części wymieniane w ramach naprawy gwarancyjnej — bezpłatnie,
-            </li>
-            <li use:typoFixAction>
-              materiały eksploatacyjne i części zużywające się (np. smar,
-              chłodziwo, tulejki zaciskowe, paski napędowe) — płatne,
-            </li>
-            <li use:typoFixAction>
-              dojazd serwisu — płatny wg obowiązującej stawki
-            </li>
-          </ul>
         </div>
 
-        <!-- Serwis pogwarancyjny -->
-        <div class="cennik-item">
-          <h4 use:typoFixAction>Serwis pogwarancyjny</h4>
-          <p use:typoFixAction>
-            Kompleksowe wsparcie techniczne, naprawy i diagnostyka maszyn CNC po
-            okresie gwarancji.
-          </p>
-          <p class="cennik-sub" use:typoFixAction>Stawki i warunki:</p>
-          <ul class="cennik-list" use:typoFixAction>
-            <li>
-              robocizna, w tym diagnoza — <strong>240 zł netto/h</strong>,
-            </li>
-            <li>części i materiały — wg wyceny po diagnozie.</li>
-          </ul>
+        <div class="service-cards-grid">
+          <!-- 1. Serwis gwarancyjny -->
+          <article class="service-item">
+            <div class="service-thumb-box">
+              <img
+                src="/assets/images/serwis/serwis-gwarancyjny.webp"
+                alt="Serwis gwarancyjny maszyn CNC CERTUS"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="service-title">Serwis gwarancyjny</h3>
+            <p class="service-desc" use:typoFixAction>
+              12 miesięcy od dnia odbioru, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w naprawie gwarancyjnej — bez opłat.
+            </p>
+          </article>
+
+          <!-- 2. Serwis pogwarancyjny -->
+          <article class="service-item">
+            <div class="service-thumb-box">
+              <img
+                src="/assets/images/serwis/serwis-pogwarancyjny.webp"
+                alt="Serwis pogwarancyjny i modernizacje maszyn CNC"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="service-title">Serwis pogwarancyjny</h3>
+            <p class="service-desc" use:typoFixAction>
+              Diagnostyka i naprawy na miejscu u klienta, części zamienne, modernizacje maszyn.
+            </p>
+          </article>
+
+          <!-- 3. Przeglądy okresowe -->
+          <article class="service-item">
+            <div class="service-thumb-box">
+              <img
+                src="/assets/images/serwis/przeglady-okresowe.webp"
+                alt="Przeglądy okresowe obrabiarek CNC"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="service-title">Przeglądy okresowe</h3>
+            <p class="service-desc" use:typoFixAction>
+              Co 12 miesięcy, co 6 przy pracy wielozmianowej. Zakres według karty przeglądu CERTUS — przegląd HMM-ST to ok. 3–4 h.
+            </p>
+          </article>
+
+          <!-- 4. Szkolenia i diagnostyka zdalna -->
+          <article class="service-item">
+            <div class="service-thumb-box">
+              <img
+                src="/assets/images/serwis/szkolenia-diagnostyka.webp"
+                alt="Szkolenia operatorów i zdalna diagnostyka PikoCNC"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="service-title">Szkolenia i diagnostyka zdalna</h3>
+            <p class="service-desc" use:typoFixAction>
+              Szkolenie podstawowe operatora przy uruchomieniu (do 3 h) w cenie maszyny. Szkolenia dodatkowe i zdalna pomoc — według cennika.
+            </p>
+          </article>
         </div>
-
-        <!-- Przegląd okresowy -->
-        <div class="cennik-item">
-          <h4 use:typoFixAction>Przegląd okresowy</h4>
-          <p use:typoFixAction>
-            Zalecany co 12 miesięcy, co 6 miesięcy przy pracy wielozmianowej lub
-            w trudnych warunkach (pył, praca z chłodziwem).
-          </p>
-          <p class="cennik-sub" use:typoFixAction>Zakres i rozliczenie:</p>
-          <ul class="cennik-list" use:typoFixAction>
-            <li>czas — ok. 3–4 h dla frezarki HMM-ST,</li>
-            <li>
-              rozliczenie — <strong>240 zł netto/h</strong> + dojazd.
-            </li>
-          </ul>
-        </div>
-
-        <!-- Szkolenie operatora -->
-        <div class="cennik-item">
-          <h4 use:typoFixAction>Szkolenie operatora</h4>
-          <p use:typoFixAction>
-            Szkolenia z bezpiecznej i efektywnej obsługi maszyn oraz systemów
-            sterowania CNC.
-          </p>
-          <p class="cennik-sub" use:typoFixAction>Warianty szkoleń:</p>
-          <ul class="cennik-list" use:typoFixAction>
-            <li>
-              szkolenie podstawowe przy uruchomieniu maszyny (do 3 h) — <strong
-                >w cenie maszyny</strong
-              >,
-            </li>
-            <li>
-              każde dodatkowe szkolenie — <strong>240 zł netto/h</strong>.
-            </li>
-          </ul>
-        </div>
-
-        <!-- Dojazd -->
-        <div class="cennik-item cennik-item-wide">
-          <h4 use:typoFixAction>Dojazd</h4>
-          <p use:typoFixAction>
-            Dojazd ekipy serwisowej liczony w obie strony bezpośrednio od
-            siedziby w Choczni. Czas dojazdu nie jest doliczany.
-          </p>
-          <p class="cennik-sub" use:typoFixAction>Stawka i rozliczenie:</p>
-          <ul class="cennik-list" use:typoFixAction>
-            <li>
-              stawka kilometrowa — <strong>2,50 zł netto/km</strong>,
-            </li>
-            <li>
-              przykład kalkulacji — klient w odległości 150 km → 300 km × 2,50
-              zł =
-              <strong>750 zł netto</strong>.
-            </li>
-          </ul>
-        </div>
-
-        <!-- Zdalna diagnostyka online -->
-        <div class="cennik-item cennik-item-wide">
-          <h4 use:typoFixAction>Zdalna diagnostyka online</h4>
-          <p use:typoFixAction>
-            Szybka pomoc techniczna, analiza parametrów oraz rozwiązywanie
-            problemów przez połączenie zdalne.
-          </p>
-          <p class="cennik-sub" use:typoFixAction>Stawka i czas:</p>
-          <ul class="cennik-list" use:typoFixAction>
-            <li>
-              stawka za sesję — <strong>100 zł netto</strong> za każde rozpoczęte
-              30 min.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="cennik-footer">
-        <p use:typoFixAction>
-          Wszystkie ceny netto. Pełne warunki: <a href="/dokumentacja"
-            >„Zasady serwisu i cennik”</a
-          >
-          oraz <a href="/dokumentacja">OWS</a> w zakładce
-          <a href="/dokumentacja">Dokumentacja</a>.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="serwis" class="serwis">
-  <section id="serwis-details" class="serwis-details">
-    <div class="serwis-container container">
-      <div class="content-section">
-        <h2 class="section-title">
-          Wsparcie techniczne na najwyższym poziomie
-        </h2>
-        <p use:typoFixAction>
-          Naszym Klientom oferujemy wsparcie pogwarancyjne oraz możliwość
-          modernizacji zakupionych maszyn. Praca nie kończy się na sprzedaży —
-          maszynę serwisujemy przez cały okres jej eksploatacji.
-        </p>
-
-        <br />
-
-        <p class="intro-text" use:typoFixAction>
-          Rola naszego przedsiębiorstwa nie kończy się zaraz po dostarczeniu Ci
-          maszyn. Oferujemy bowiem także profesjonalny <b
-            >serwis gwarancyjny oraz pogwarancyjny</b
-          >. W ten sposób możemy zapewnić naszym Klientom pełen zakres wsparcia
-          technicznego.
-        </p>
       </div>
     </div>
   </section>
-</section>
 
-<section class="serwis-benefits" bind:this={benefitsSectionEl}>
-  <div class="serwis-benefits-container">
-    <div class="serwis-section-header">
-      <h2 use:typoFixAction>Dlaczego CERTUS?</h2>
-      <p use:typoFixAction>Zaufało nam już ponad 500 firm w całej Polsce</p>
+  <!-- ===================================================================
+       3. CENNIK SERWISU (Tabela + 3 karty boczne)
+       =================================================================== -->
+  <section class="section-pad-sm" id="cennik">
+    <div class="certus-container">
+      <div class="cennik-header-row">
+        <h2 class="cennik-main-title">CENNIK SERWISU</h2>
+        <span class="cennik-date-note">obowiązuje od 11/2026 · ceny netto</span>
+      </div>
+
+      <div class="cennik-layout">
+        <!-- Lewa kolumna: Tabela cennika -->
+        <div class="cennik-table-wrap">
+          <div class="cennik-table-header">
+            <div class="col-service">USŁUGA</div>
+            <div class="col-rate">STAWKA</div>
+            <div class="col-notes">UWAGI</div>
+          </div>
+
+          <div class="cennik-table-body">
+            <!-- Wiersz 1 -->
+            <div class="cennik-row">
+              <div class="col-service">
+                <span class="row-service-name">Robocizna i diagnoza</span>
+              </div>
+              <div class="col-rate">
+                <span class="chip-price">240 zł / h</span>
+              </div>
+              <div class="col-notes">
+                <span>po gwarancji</span>
+              </div>
+            </div>
+
+            <!-- Wiersz 2 -->
+            <div class="cennik-row">
+              <div class="col-service">
+                <span class="row-service-name">Dojazd</span>
+              </div>
+              <div class="col-rate">
+                <span class="chip-price">2,50 zł / km</span>
+              </div>
+              <div class="col-notes">
+                <span>liczony w obie strony od Chocznej</span>
+              </div>
+            </div>
+
+            <!-- Wiersz 3 -->
+            <div class="cennik-row">
+              <div class="col-service">
+                <span class="row-service-name">Diagnostyka zdalna</span>
+              </div>
+              <div class="col-rate">
+                <span class="chip-price">100 zł / 30 min</span>
+              </div>
+              <div class="col-notes">
+                <span>za każde rozpoczęte 30 min</span>
+              </div>
+            </div>
+
+            <!-- Wiersz 4 -->
+            <div class="cennik-row">
+              <div class="col-service">
+                <span class="row-service-name">Przegląd okresowy</span>
+              </div>
+              <div class="col-rate">
+                <span class="chip-price">240 zł / h</span>
+              </div>
+              <div class="col-notes">
+                <span>+ dojazd; HMM-ST ok. 3–4 h</span>
+              </div>
+            </div>
+
+            <!-- Wiersz 5 -->
+            <div class="cennik-row">
+              <div class="col-service">
+                <span class="row-service-name">Szkolenie podstawowe</span>
+              </div>
+              <div class="col-rate">
+                <span class="chip-price chip-accent">w cenie</span>
+              </div>
+              <div class="col-notes">
+                <span>przy uruchomieniu, do 3 h</span>
+              </div>
+            </div>
+
+            <!-- Wiersz 6 -->
+            <div class="cennik-row">
+              <div class="col-service">
+                <span class="row-service-name">Szkolenie dodatkowe</span>
+              </div>
+              <div class="col-rate">
+                <span class="chip-price">240 zł / h</span>
+              </div>
+              <div class="col-notes">
+                <span>zakres według potrzeb</span>
+              </div>
+            </div>
+
+            <!-- Wiersz 7 -->
+            <div class="cennik-row">
+              <div class="col-service">
+                <span class="row-service-name">Części i materiały</span>
+              </div>
+              <div class="col-rate">
+                <span class="chip-price">wg wyceny</span>
+              </div>
+              <div class="col-notes">
+                <span>po diagnozie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prawa kolumna: 3 karty informacyjne -->
+        <div class="cennik-sidebar">
+          <!-- Karta 1: Pobierz PDF -->
+          <div class="sidebar-download-card card-base-dark">
+            <h3 class="side-card-title">Zasady serwisu i cennik</h3>
+            <p class="side-card-sub">Dokument PDF · pełne warunki</p>
+            <a
+              href="/do_pobrania/dokumentacja/CERTUS_Zasady_serwisu_i_cennik.pdf"
+              target="_blank"
+              download
+              class="btn-certus-primary btn-pobierz"
+            >
+              Pobierz
+            </a>
+          </div>
+
+          <!-- Karta 2: Przykład dojazdu -->
+          <div class="sidebar-info-card card-base-white">
+            <h4 class="side-info-title">Przykład: dojazd</h4>
+            <p class="side-info-text">
+              Klient 150 km od Chocznej: 2 × 150 km × 2,50 zł = <strong>750 zł netto</strong>.
+            </p>
+          </div>
+
+          <!-- Karta 3: W okresie gwarancji -->
+          <div class="sidebar-info-card card-base-white">
+            <h4 class="side-info-title">W okresie gwarancji</h4>
+            <div class="warranty-terms">
+              <p>
+                <strong class="text-free">Bez opłat:</strong> robocizna, części wymieniane w naprawie.
+              </p>
+              <p>
+                <strong>Płatne:</strong> dojazd, materiały eksploatacyjne i części zużywające się (smar, chłodziwo, tulejki, paski).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="serwis-benefits-grid">
-      <div
-        class="serwis-benefit-item"
-        class:visible={benefitsVisible}
-        style="transition-delay: 0ms"
-      >
-        <div class="serwis-benefit-icon">
-          <img
-            src="/assets/ikony/doswiadczony-zespol.svg"
-            alt="Analiza potrzeb"
-          />
-        </div>
-        <h4 use:typoFixAction>Doświadczony zespół</h4>
-        <p use:typoFixAction>
-          20+ lat stażu w branży CNC i setki zadowolonych klientów
-        </p>
+  <!-- ===================================================================
+       4. JAK ZGŁOSIĆ USTERKĘ
+       =================================================================== -->
+  <section class="section-pad">
+    <div class="certus-container">
+      <div class="section-header-block center-text">
+        <h2 class="section-heading">Jak zgłosić usterkę</h2>
       </div>
 
-      <div
-        class="serwis-benefit-item"
-        class:visible={benefitsVisible}
-        style="transition-delay: 100ms"
-      >
-        <div class="serwis-benefit-icon">
-          <img src="/assets/ikony/szybka-reakcja.svg" alt="Dobór rozwiązań" />
+      <div class="how-to-grid">
+        <!-- Krok 1 -->
+        <div class="how-to-card">
+          <div class="how-to-top">
+            <span class="how-to-step">1. Pobierz formularz</span>
+          </div>
+          <p class="how-to-desc">
+            Formularz zgłoszenia usterki — z zakładki
+            <a href="/dokumentacja" class="link-underlined">Dokumentacja</a>
+            lub <a href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf" target="_blank" download class="link-underlined">pobierz PDF</a>.
+          </p>
         </div>
-        <h4 use:typoFixAction>Szybka reakcja</h4>
-        <p use:typoFixAction>
-          Oddzwaniamy najpóźniej następnego dnia roboczego
-        </p>
-      </div>
 
-      <div
-        class="serwis-benefit-item"
-        class:visible={benefitsVisible}
-        style="transition-delay: 200ms"
-      >
-        <div class="serwis-benefit-icon">
-          <img src="/assets/ikony/onas-wsparcie.svg" alt="Oryginalne części zamienne" />
+        <!-- Krok 2 -->
+        <div class="how-to-card">
+          <div class="how-to-top">
+            <span class="how-to-step">2. Wyślij e-mailem</span>
+          </div>
+          <p class="how-to-desc">
+            Na <a href="mailto:kontakt@mg-certus.pl" class="link-underlined">kontakt@mg-certus.pl</a> — ze zdjęciem lub filmem usterki.
+          </p>
         </div>
-        <h4 use:typoFixAction>Oryginalne części</h4>
-        <p use:typoFixAction>
-          Części zamienne z dostawą z Polski i UE
-        </p>
-      </div>
 
-      <div
-        class="serwis-benefit-item"
-        class:visible={benefitsVisible}
-        style="transition-delay: 300ms"
-      >
-        <div class="serwis-benefit-icon">
-          <img src="/assets/ikony/polski-serwis.svg" alt="Wsparcie" />
+        <!-- Krok 3 -->
+        <div class="how-to-card">
+          <div class="how-to-top">
+            <span class="how-to-step">3. Oddzwonimy</span>
+          </div>
+          <p class="how-to-desc">
+            Najpóźniej następnego dnia roboczego, z terminem wizyty lub diagnostyki zdalnej.
+          </p>
         </div>
-        <h4 use:typoFixAction>Serwis na miejscu</h4>
-        <p use:typoFixAction>
-          Przyjazd do klienta w całej Polsce z pełnym wyposażeniem
-        </p>
+
+        <!-- Krok 4: Pilne / Zadzwoń -->
+        <div class="how-to-card highlight-card">
+          <div class="how-to-top">
+            <span class="how-to-step text-urgent">Pilne? Zadzwoń</span>
+          </div>
+          <a href="tel:+48606324406" class="urgent-phone-link">+48 606 324 406</a>
+          <span class="urgent-hours">pn–pt, 8–16</span>
+        </div>
       </div>
     </div>
+  </section>
+
+  <!-- ===================================================================
+       5. ZGŁOSZENIE SERWISOWE (Oryginalny komponent SerwisKontakt)
+       =================================================================== -->
+  <div id="zgloszenie-serwisowe">
+    <SerwisKontakt />
   </div>
-</section>
-
-<!-- Sekcja kontaktowa dedykowana dla serwisu -->
-<SerwisKontakt />
-
-<!-- Dodatkowa sekcja z treścią -->
-
-<!-- Modal dla szczegółów usług -->
-<ServiceModal
-  isOpen={modalOpen}
-  service={selectedService}
-  on:close={handleCloseModal}
-/>
+</div>
 
 <style lang="scss">
-  .contact-form {
-    input {
-      color: var(--color-text-secondary);
-    }
-  }
-  .serwis-container {
-    overflow: hidden;
+  /* ===================================================================
+     LOKALNE STYLE DLA PODSTRONY SERWIS
+     =================================================================== */
+
+  .serwis-page {
     width: 100%;
-    padding: 0 9rem;
+    overflow-x: clip;
+    background-color: var(--color-bg-secondary, #f7f7f7);
+    color: var(--color-text-primary, #333333);
   }
 
-  .pattern-overlay {
-    position: relative;
-    top: 148px;
-    overflow: hidden;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    z-index: 2;
-    pointer-events: none;
-    opacity: 0.3;
-
-    .pattern.two {
-      transform: scale(1.2) skew(-15deg, 0deg);
-      background-image: url(/assets/images/pattern-image1-2.png);
-      position: absolute;
-      width: 100%;
-      height: 63px;
-      z-index: 11;
-      left: 0;
-      bottom: -10px;
-      pointer-events: auto;
-    }
+  .section-pad {
+    padding-top: clamp(48px, 6vw, 80px);
+    padding-bottom: clamp(48px, 6vw, 80px);
   }
 
-  .serwis_page {
-    min-width: 100vw;
-    margin: 0 auto;
-    min-height: 174px;
+  .section-pad-sm {
+    padding-top: clamp(24px, 4vw, 44px);
+    padding-bottom: clamp(24px, 4vw, 44px);
   }
 
-  .first-container-back {
-    background-image: url(/assets/first-block-polyline.svg);
-    position: absolute;
-    top: 147px;
-    width: 100%;
-    height: 44px;
-    background-repeat: no-repeat;
-    background-position-x: -1500px;
-    background-size: cover;
-    filter: contrast(8.5);
-  }
-  .serwis {
-    width: 100%;
-    padding: 10px 0;
-
-    color: var(--color-text-secondary);
-  }
-
-  // Style dla sekcji hero z przyciskami CTA
-  .serwis-hero-actions {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 40px;
-    flex-wrap: wrap;
-  }
-
-  .serwis-cta-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-
-  .section-header {
-    margin-bottom: 80px;
-  }
-
-  .content-intro {
-    margin-bottom: 40px;
-
-    .intro-text {
-      line-height: 1.8;
-      color: var(--color-text-secondary);
-      margin: 0;
-    }
-  }
-
-  // Style dla nagłówka sekcji usług serwisowych
-  .serwis-services-header {
+  .center-text {
     text-align: center;
-
-    padding: 0 0px;
-
-    h1,
-    h2 {
-      font-weight: 700;
-      color: var(--color-text-secondary);
-      margin-bottom: 16px;
-      position: relative;
-
-      /*  &::before {
-        content: "";
-        position: absolute;
-        left: -10%;
-        transform: translateX(-50%);
-        width: 4px;
-        height: 95px;
-        background: var(--color-primary);
-        border-radius: 2px;
-      } */
-    }
-
-    p {
-      color: var(--color-text-secondary);
-      opacity: 0.8;
-      max-width: 600px;
-      margin: 0 auto;
-    }
   }
 
-  // Style dla dodatkowej sekcji
-  .serwis-details {
-    width: 100%;
-    padding: 30px 0;
-    background: white;
-    color: var(--color-text-secondary);
+  /* ===== 1. HERO STUDIO LOCAL ===== */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
   }
 
-  .content-section {
-    margin-bottom: 20px;
-
-    .section-title {
-      position: relative;
-      color: var(--color-text-secondary);
-      font-family: "Poppins", sans-serif;
-      font-weight: 600;
-      text-align: left;
-      margin-top: 10px;
-
-      &::before {
-        content: "";
-        position: absolute;
-        left: -38px;
-        margin-top: -10px;
-        width: 28px;
-        height: 43px;
-        background-image: url(/assets/images/red-arrow.svg);
-      }
-    }
-
-    p {
-      line-height: 1.8;
-      margin-bottom: 0;
-    }
-  }
-
-  a:hover {
-    color: var(--color-primary);
-  }
-
-  // Responsive styles dla komponentów serwisu
-  @media (max-width: 768px) {
-    .serwis-hero-actions {
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      padding: 0 20px;
-    }
-
-    .serwis-services-header {
-      margin-bottom: 30px;
-
-      h1,
-    h2 {
-      }
-
-      p {
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .serwis-hero-actions {
-      padding: 0 16px;
-    }
-
-    .serwis-services-header h2 {
-    }
-  }
-
-  // Style info-cards skopiowane z Section_Referencje dla kart serwisowych
-  .info-cards-section {
-    width: 100%;
+  .hero-text-col {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
     align-items: center;
-    background: none;
-    padding: 30px 0;
+    margin-top: 8px;
+  }
+
+  .hero-machine-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-machine-stage {
+    width: 100%;
+    max-width: 630px; /* Powiększenie o 20% (wcześniej 520px) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-machine-render {
+    width: 100%;
+    height: auto;
+    max-height: 545px;
+    object-fit: contain;
+    /* filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5)); */
+    transform: translateY(14%) scale(1.3);
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.4) 12%,
+      rgba(0, 0, 0, 0.9) 28%,
+      #000000 40%,
+      #000000 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.4) 12%,
+      rgba(0, 0, 0, 0.9) 28%,
+      #000000 40%,
+      #00000087 100%
+    );
+    transition: transform 0.4s ease;
+
+    &:hover {
+      transform: translateY(14%) scale(1.32);
+    }
+  }
+
+  /* ===== 2. PEŁNA OPIEKA PO ZAKUPIE ===== */
+  .care-card {
+    padding: clamp(32px, 5vw, 56px);
+  }
+
+  .care-header {
+    margin-bottom: clamp(32px, 4vw, 48px);
+  }
+
+  .care-title {
+    font-size: clamp(22px, 2.8vw, 32px);
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.25;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.015em;
+  }
+
+  .care-sub {
+    font-size: clamp(14px, 1.2vw, 16px);
+    color: #666666;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .service-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(28px, 4vw, 48px);
+  }
+
+  .service-item {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .service-thumb-box {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e5e7eb;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.04);
+    }
+  }
+
+  .service-title {
+    margin: 0;
+    font-size: clamp(17px, 1.8vw, 20px);
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .service-desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #555555;
+  }
+
+  /* ===== 3. CENNIK SERWISU ===== */
+  .cennik-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .cennik-main-title {
+    font-family: 'Snasm', sans-serif;
+    font-size: clamp(24px, 3.2vw, 36px);
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
     margin: 0;
   }
 
-  .info-cards-wrapper {
+  .cennik-date-note {
+    font-size: 13px;
+    color: #888888;
+    font-weight: 500;
+  }
+
+  .cennik-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.95fr);
+    gap: clamp(24px, 3vw, 36px);
+    align-items: start;
+  }
+
+  /* Tabela lewa */
+  .cennik-table-wrap {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .cennik-table-header {
+    display: grid;
+    grid-template-columns: 210px 140px minmax(0, 1fr);
+    background: #232528;
+    color: #ffffff;
+    padding: 14px 22px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .cennik-table-body {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2.5vw;
-    width: 100%;
-
-    justify-content: center;
-    margin: 0 auto;
-    padding: 40px 20px 0 20px;
+    flex-direction: column;
   }
 
-  //   .info-card {
-  //   // position: relative;
-  //   // z-index: 1;
-  //   // background: #fff;
-  //   // filter: drop-shadow(0 8px 15px rgba(0,0,0,0.15));
-  //   // background-image: url('/assets/kontakt-background.jpg');
-  //   //   background-size: cover;
-  //   // background-position: center;
+  .cennik-row {
+    display: grid;
+    grid-template-columns: 210px 140px minmax(0, 1fr);
+    padding: 16px 22px;
+    border-bottom: 1px solid #eceef1;
+    align-items: center;
+    transition: background-color 0.2s ease;
 
-  // }
-
-  .info-card::before {
-    // content: '';
-    // position: absolute;
-    // z-index: 0;
-    // inset: 0;
-    // background: transparent;
-    // // clip-path: inherit;
-    // pointer-events: none;
-  }
-
-  .info-card {
-    filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% calc(100% - 50px),
-      calc(100% - 50px) 100%,
-      0 100%
-    );
-
-    span.add {
-      background-color: #b2b2b2;
-      color: white;
-      padding: 2px 4px;
-      border-radius: 5px;
-      float: left;
-      margin-top: 10px;
+    &:last-child {
+      border-bottom: none;
     }
 
-    background: #f7f7f7;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 32px 32px 32px 32px;
-    width: 100%;
-    max-width: 400px;
-    min-width: 320px;
-    min-height: 320px; // Zwiększone dla dodatkowych elementów serwisu
-    border-top: 4px solid #555a5e;
+    &:hover {
+      background: #fafbfa;
+    }
+  }
+
+  .row-service-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .col-notes {
+    font-size: 13px;
+    color: #666666;
+    line-height: 1.45;
+  }
+
+  /* Prawa kolumna cennika */
+  .cennik-sidebar {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    justify-content: flex-start;
-    position: relative;
   }
 
-  .info-card-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 8px;
-    flex-direction: row;
-    align-content: flex-start;
-    justify-content: flex-start;
-    height: 5em;
-  }
-
-  .info-icon {
-    width: 34px;
-    height: 44px;
-    margin-right: 2px;
-    margin-top: 2px;
-  }
-
-  .info-title {
-    font-weight: 700;
-    color: var(--color-text-secondary);
-    line-height: 1.1;
-    margin-top: 6px;
-    width: 50%;
-  }
-
-  .info-desc {
-    color: #222;
-    margin: 0;
-    font-weight: 400;
-    padding-left: 1em;
-    flex-grow: 1;
-  }
-
-  @media (max-width: 1440px) {
-    .info-cards-wrapper {
-      gap: 2vw;
-      padding: 40px 30px 0 30px;
-    }
-  }
-
-  @media (max-width: 1200px) {
-    .info-cards-wrapper {
-      gap: 1.5vw;
-      padding: 40px 20px 0 20px;
-    }
-  }
-
-  // Złamanie na dwa rzędy - 2 karty per rząd
-  @media (max-width: 1000px) {
-    .info-cards-wrapper {
-      gap: 24px;
-      padding: 40px 20px 0 20px;
-    }
-    .info-card {
-      width: calc(50% - 12px);
-      min-width: 280px;
-      max-width: 350px;
-    }
-  }
-
-  // Przejście na jedną kolumnę
-  @media (max-width: 700px) {
-    .info-cards-wrapper {
-      flex-direction: column;
-      align-items: center;
-      gap: 32px;
-      padding: 40px 20px 0 20px;
-    }
-    .info-card {
-      max-width: 600px;
-      min-width: 0;
-      width: 90vw;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .info-cards-wrapper {
-      padding: 40px 16px 0 16px;
-    }
-    .info-title {
-    }
-    .info-card {
-      padding: 20px 10px 20px 10px;
-      min-height: 280px;
-      width: 95vw;
-    }
-    .info-desc {
-    }
-  }
-
-  // Style specyficzne dla kart serwisowych
-  .serwis-service-card {
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow:
-        0 20px 25px -5px rgba(0, 0, 0, 0.1),
-        0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.15));
-    }
-
-    &:focus {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-  }
-
-  // Kolorowe obramowania dla różnych typów usług
-  .warranty-card {
-    /* border-top-color: #10b981; // Zielony */
-    border-top: 4px solid #555a5e;
-  }
-
-  .post-warranty-card {
-    // border-top-color: #3b82f6; // Niebieski
-    border-top: 4px solid #555a5e;
-  }
-
-  .inspections-card {
-    // border-top-color: #f59e0b; // Pomarańczowy
-    border-top: 4px solid #555a5e;
-  }
-
-  .additional-card {
-    // border-top-color: #8b5cf6; // Fioletowy
-    border-top: 4px solid #555a5e;
-  }
-
-  // Ikony serwisowe - używamy dokładnie tych samych wymiarów co info-icon
-  .serwis-service-icon {
-    width: 34px;
-    height: 44px;
-    margin-right: 2px;
-    margin-top: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    transform: scale(3.5);
-    left: 80%;
-    margin-top: -1%;
-    opacity: 0.2;
-    :global(svg) {
-      width: 24px;
-      height: 24px;
-    }
-  }
-
-  .warranty-icon {
-    color: #10b981;
-  }
-
-  .post-warranty-icon {
-    color: #3b82f6;
-  }
-
-  .inspections-icon {
-    color: #f59e0b;
-  }
-
-  .additional-icon {
-    color: #8b5cf6;
-  }
-
-  // Highlights (znaczniki)
-  .serwis-service-highlight {
+  .sidebar-download-card {
+    padding: 24px 26px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
-    margin: 12px 0;
-    padding-left: 1em;
-  }
-
-  .serwis-highlight-item {
-    background: var(--color-primary);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 12px;
-    font-weight: 600;
-    white-space: normal;
-    line-height: 1.35;
-    max-width: 100%;
-    box-sizing: border-box;
-    display: inline-block;
-  }
-
-  // Przycisk szczegółów
-  .serwis-service-btn {
-    background: none;
-    border: 2px solid var(--color-primary);
-    color: var(--color-primary);
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 6px;
-    margin-top: auto;
-    margin-left: 1em;
-    margin-right: 1em;
-
-    &:hover {
-      background: var(--color-primary);
-      color: white;
-    }
-
-    &:focus {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-
-    svg {
-      transition: transform 0.2s;
-    }
-
-    &:hover svg {
-      transform: translateY(2px);
-    }
   }
 
-  @media (max-width: 900px) {
-    .contact-flex {
-      flex-direction: column;
-      padding: 24px 6px;
-      gap: 24px;
-    }
-    .contact-left,
-    .contact-right {
-      max-width: 100%;
-      min-width: 0;
-      padding: 24px 12px;
-    }
+  .side-card-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
   }
 
-  @media (max-width: 768px) {
-    .serwis {
-      padding: 80px 0;
-    }
-
-    .serwis-container {
-      padding: 0 2rem;
-    }
-
-    .content-intro .intro-text {
-      font-size: 1rem;
-    }
-
-    .content-section .section-title {
-      font-size: 28px;
-      padding-left: 10px;
-
-      &::before {
-        left: -25px;
-        margin-top: -2px;
-      }
-    }
-
-    .serwis-details {
-      padding: 80px 0;
-    }
-
-    .serwis-service-highlight {
-      justify-content: flex-start;
-    }
-
-    .serwis-service-btn {
-      padding: 6px 12px;
-    }
+  .side-card-sub {
+    margin: 0 0 16px 0;
+    font-size: 13px;
+    color: #a0a6ad;
   }
 
-  // Style dla sekcji benefits
-  .serwis-benefits {
-    padding: 0px 0;
+  .btn-pobierz {
+    padding: 10px 24px;
+    font-size: 13px;
   }
 
-  .serwis-benefits-container {
-    margin: 10px auto;
-    padding: 0 20px;
-    margin-bottom: 30px;
+  .sidebar-info-card {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
-  .serwis-section-header {
-    text-align: center;
-    margin-bottom: 30px;
+  .side-info-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
 
-    h1,
-    h2 {
-      font-weight: 700;
-      color: var(--color-text-secondary);
-      margin-bottom: 16px;
-      position: relative;
+  .side-info-text {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #555555;
+  }
 
-      &::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -20px;
-        width: 60px;
-        height: 4px;
-        background: var(--color-primary);
-        border-radius: 2px;
-      }
-    }
+  .warranty-terms {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
     p {
-      color: var(--color-text-secondary);
-      opacity: 0.8;
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #555555;
+    }
+
+    .text-free {
+      color: var(--color-primary-dark, #7e8c00);
     }
   }
 
-  .serwis-benefits-grid {
+  /* ===== 4. JAK ZGŁOSIĆ USTERKĘ ===== */
+  .how-to-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap: 40px;
-    justify-items: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 24px);
+    margin-top: 32px;
   }
 
-  .serwis-benefit-item {
-    text-align: center;
-    max-width: 320px;
-    padding: 40px 32px;
-    background: white;
-    border-radius: 16px;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow:
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    opacity: 0;
-    transform: translateY(30px);
-
-    &.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .how-to-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e6e8dc;
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.25s ease;
 
     &:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 30px -12px rgba(0, 0, 0, 0.25);
+      border-color: var(--color-primary, #96a500);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(150, 165, 0, 0.1);
+    }
+
+    &.highlight-card {
+      border-top: 3px solid var(--color-primary, #96a500);
     }
   }
 
-  .serwis-benefit-icon {
-    width: 90px;
-    height: 90px;
-    background: var(--color-text-secondary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 24px;
-    box-shadow: 0 10px 15px -3px rgba(45, 45, 45, 0.3);
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255, 255, 255, 0.1),
-        transparent
-      );
-      transform: rotate(45deg);
-      transition: all 0.6s;
-    }
-
-    img {
-      width: 45px;
-      height: 45px;
-      filter: brightness(0) invert(1);
-      z-index: 1;
-      position: relative;
-    }
+  .how-to-step {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1a1a1a;
   }
 
-  .serwis-benefit-item:hover .serwis-benefit-icon::before {
-    left: 100%;
+  .text-urgent {
+    color: #1a1a1a;
   }
 
-  .serwis-benefit-item h4 {
-    font-weight: 600;
-    color: var(--color-text-secondary);
-    margin-bottom: 16px;
-    line-height: 1.3;
-  }
-
-  .serwis-benefit-item p {
-    color: var(--color-text-secondary);
-    opacity: 0.8;
-    line-height: 1.6;
+  .how-to-desc {
     margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #666666;
   }
 
-  @media (max-width: 768px) {
-    .serwis-benefits {
-      padding: 60px 0;
+  .link-underlined {
+    color: var(--color-primary-dark, #7e8c00);
+    text-decoration: underline;
+
+    &:hover {
+      color: #4a5400;
+    }
+  }
+
+  .urgent-phone-link {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--color-primary-dark, #7e8c00);
+    text-decoration: none;
+    margin-top: 2px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary, #96a500);
+    }
+  }
+
+  .urgent-hours {
+    font-size: 12px;
+    color: #888888;
+  }
+
+  /* ===== 5. FORMULARZ ZGŁOSZENIA SERWISOWEGO ===== */
+  .section-form-wrap {
+    padding-bottom: clamp(60px, 8vw, 100px);
+  }
+
+  .service-ticket-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: clamp(32px, 5vw, 64px);
+    padding: clamp(32px, 5vw, 56px);
+    align-items: start;
+  }
+
+  .ticket-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ticket-title {
+    font-size: clamp(24px, 3.2vw, 34px);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .ticket-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #b8bec4;
+    margin: 0 0 16px 0;
+  }
+
+  .ticket-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ticket-contact-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary-light, #c5d418);
+      transform: translateX(4px);
+    }
+  }
+
+  .ticket-bar {
+    width: 3px;
+    height: 22px;
+    background: var(--color-primary, #96a500);
+    border-radius: 2px;
+  }
+
+  .ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #b0b6bc;
+      letter-spacing: 0.02em;
     }
 
-    .serwis-benefits-container {
-      padding: 0 16px;
-    }
+    input,
+    textarea {
+      background: #1c1d1f;
+      border: 1px solid #3e4247;
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: #ffffff;
+      font-size: 14px;
+      font-family: inherit;
+      transition: all 0.2s ease;
 
-    .serwis-section-header {
-      margin-bottom: 60px;
-
-      h1,
-    h2 {
+      &:focus {
+        outline: none;
+        border-color: var(--color-primary, #96a500);
+        box-shadow: 0 0 0 2px rgba(150, 165, 0, 0.2);
+        background: #232528;
       }
 
-      p {
+      &::placeholder {
+        color: #656b73;
       }
     }
 
-    .serwis-benefits-grid {
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+  }
+
+  .form-action-row {
+    margin-top: 6px;
+  }
+
+  .btn-submit-ticket {
+    width: 100%;
+    padding: 14px 28px;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+  }
+
+  .form-feedback {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.45;
+
+    &.feedback-ok {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid #10b981;
+      color: #34d399;
+    }
+
+    &.feedback-err {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #ef4444;
+      color: #f87171;
+    }
+  }
+
+  /* ===================================================================
+     RESPONSYWNOŚĆ (RWD) ZGODNIE ZE STRONĄ 2 MOCKUPU
+     =================================================================== */
+
+  @media (max-width: 992px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .hero-machine-col {
+      order: 2;
+    }
+
+    .hero-machine-render {
+      transform: none;
+      mask-image: none;
+      -webkit-mask-image: none;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .service-cards-grid {
+      grid-template-columns: 1fr;
       gap: 32px;
+    }
+
+    .cennik-layout {
       grid-template-columns: 1fr;
     }
 
-    .serwis-benefit-item {
-      padding: 32px 24px;
-      max-width: 100%;
+    .how-to-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .serwis-benefit-icon {
-      width: 70px;
-      height: 70px;
-      margin-bottom: 20px;
-
-      img {
-        width: 35px;
-        height: 35px;
-      }
-    }
-
-    .serwis-benefit-item h4 {
-    }
-
-    .serwis-benefit-item p {
+    .service-ticket-card {
+      grid-template-columns: 1fr;
+      gap: 36px;
     }
   }
 
-  // Style dla nowego bloku Cennik serwisu (B6)
-  .cennik-serwisu-container {
-    width: 100%;
-    max-width: 1300px;
-    margin: 40px auto 20px auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-  }
-
-  .cennik-serwisu-card {
-    background: #f7f7f7;
-    border-radius: 16px;
-    border: 1px solid #e0e0e0;
-    border-top: 4px solid var(--color-primary, #96a500);
-    padding: 36px 40px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-
-    .cennik-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #222;
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+  @media (max-width: 640px) {
+    .cennik-table-header {
+      display: none;
     }
 
-    .cennik-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .cennik-item {
-      background: #ffffff;
-      padding: 24px 28px;
-      border-radius: 12px;
-      border: 1px solid #ebebeb;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    .cennik-row {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 16px 18px;
 
-      h4 {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: var(--color-primary, #7e8c00);
-        margin: 0 0 10px 0;
-        line-height: 1.35;
-      }
-
-      p {
-        font-size: 0.95rem;
-        line-height: 1.55;
-        color: #444;
-        margin: 0 0 8px 0;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-
-      .cennik-sub {
-        font-weight: 600;
-        color: #222;
-        margin-top: 8px;
-        margin-bottom: 6px;
-      }
-
-      .cennik-list {
-        margin: 6px 0 0 0;
-        padding-left: 20px;
-        list-style-type: disc;
-
-        li {
-          font-size: 0.95rem;
-          color: #444;
-          line-height: 1.55;
-          margin-bottom: 6px;
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-
-      .cennik-example {
-        background: #fdfdfd;
-        border-left: 3px solid var(--color-primary, #96a500);
-        padding: 6px 12px;
-        margin-top: 8px;
-        font-size: 0.92rem;
-        line-height: 1.5;
-        color: #555;
-      }
-
-      &.cennik-item-wide {
-        grid-column: 1 / -1;
+      .col-rate {
+        margin: 4px 0;
       }
     }
 
-    .cennik-footer {
-      margin-top: 24px;
-      padding-top: 16px;
-      border-top: 1px dashed #d5d5d5;
-      font-size: 0.95rem;
-      color: #666;
-
-      p {
-        margin: 0;
-      }
-
-      a {
-        color: var(--color-primary, #7e8c00);
-        font-weight: 600;
-        text-decoration: underline;
-
-        &:hover {
-          color: #222;
-        }
-      }
+    .how-to-grid {
+      grid-template-columns: 1fr;
     }
-  }
 
-  @media (max-width: 768px) {
-    .cennik-serwisu-card {
-      padding: 24px 18px;
+    .form-grid-2 {
+      grid-template-columns: 1fr;
+    }
 
-      .cennik-title {
-        font-size: 1.4rem;
-      }
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
 
-      .cennik-grid {
-        grid-template-columns: 1fr;
+      .btn-certus-primary,
+      .btn-certus-outline {
+        width: 100%;
+        text-align: center;
       }
     }
   }

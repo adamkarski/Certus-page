@@ -12,6 +12,8 @@
     lastName: "",
     email: "",
     phone: "",
+    machineModel: "",
+    serialNumber: "",
     message: "",
     privacy: false,
     serviceType: "Serwis Gwarancyjny",
@@ -199,7 +201,7 @@
     const formDataToSend = new FormData();
 
     Object.keys(formData).forEach(key => {
-        formDataToSend.append(key, formData[key as keyof typeof formData]);
+        formDataToSend.append(key, String(formData[key as keyof typeof formData]));
     });
 
     const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;
@@ -222,7 +224,7 @@
         });
 
       if (response.data.success) {
-        submitMessage = response.data.message || "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą najpóźniej następnego dnia roboczego.";
+        submitMessage = response.data.message || "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą po analizie zgłoszenia.";
 
         // Resetuj formularz
         formData = {
@@ -230,6 +232,8 @@
           lastName: "",
           email: "",
           phone: "",
+          machineModel: "",
+          serialNumber: "",
           message: "",
           privacy: false,
           serviceType: "Serwis Gwarancyjny",
@@ -320,7 +324,7 @@
           <li>
             <span class="bullet"></span>
             <div class="bullet-content">
-              Sprawy pilne: +48 606 324 406, w dni robocze 8:00–16:00. Oddzwaniamy najpóźniej następnego dnia roboczego.
+              Sprawy pilne: +48 606 324 406, w dni robocze 8:00–16:00.
             </div>
           </li>
           <li>
@@ -333,7 +337,7 @@
         <div class="contact-info-block">
           <div class="info-row">
             <span class="info-icon">
-              <img src="/assets/ikony/telefon.svg" alt="Telefon serwisowy" />
+              <img src="/assets/ikony/telefon.svg" alt="Telefon serwisowy" width="24" height="24" loading="lazy" />
             </span>
             <div>
               <b>
@@ -346,7 +350,7 @@
           </div>
           <div class="info-row">
             <span class="info-icon">
-              <img src="/assets/ikony/email.svg" alt="Email serwisowy" />
+              <img src="/assets/ikony/email.svg" alt="Email serwisowy" width="24" height="24" loading="lazy" />
             </span>
             <div>
               <b>
@@ -357,7 +361,7 @@
                   kontakt@mg-certus.pl
                 </a>
               </b>
-              <small>Zgłoszenia serwisowe</small>
+              <small>Zapytania ofertowe: <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a> · Zgłoszenia serwisowe: <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a></small>
             </div>
           </div>
           <div class="info-row">
@@ -365,6 +369,9 @@
               <img
                 src="/assets/ikony/lokalizacja.svg"
                 alt="Lokalizacja serwisu"
+                width="24"
+                height="24"
+                loading="lazy"
               />
             </span>
             <div>
@@ -389,7 +396,7 @@
             class="social-icon"
             rel="nofollow noopener noreferrer"
           >
-            <img src="/assets/ikony/facebook.svg" alt="facebook" />
+            <img src="/assets/ikony/facebook.svg" alt="facebook" width="24" height="24" loading="lazy" />
           </a>
           <a
             href="https://www.youtube.com/user/MGCERTUS/videos"
@@ -397,7 +404,7 @@
             class="social-icon"
             rel="nofollow noopener noreferrer"
           >
-            <img src="/assets/ikony/youtube.svg" alt="youtube" />
+            <img src="/assets/ikony/youtube.svg" alt="youtube" width="24" height="24" loading="lazy" />
           </a>
         </div>
       </div>
@@ -470,6 +477,31 @@
               <option value="Konsultacja techniczna">Konsultacja techniczna</option>
             </select>
             {#if errors.serviceType}<span class="error-message">{errors.serviceType}</span>{/if}
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="machineModel">Model maszyny</label>
+              <input
+                id="machineModel"
+                name="machineModel"
+                type="text"
+                placeholder="np. HMM-ST 6040, HLP-FT..."
+                bind:value={formData.machineModel}
+                maxlength="100"
+              />
+            </div>
+            <div class="form-group">
+              <label for="serialNumber">Numer seryjny</label>
+              <input
+                id="serialNumber"
+                name="serialNumber"
+                type="text"
+                placeholder="np. z tabliczki znamionowej"
+                bind:value={formData.serialNumber}
+                maxlength="50"
+              />
+            </div>
           </div>
 
           <div class="form-group phone-group">

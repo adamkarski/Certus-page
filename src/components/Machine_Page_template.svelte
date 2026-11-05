@@ -409,10 +409,10 @@
             <span class="hero-promo-badge">{promoBadge}</span>
           {/if}
 
-          <h1 class="cx-hero-title" style={heroTitleFontSize ? `font-size: ${heroTitleFontSize};` : ''}>
+          <div class="cx-hero-title" aria-hidden="true" style={heroTitleFontSize ? `font-size: ${heroTitleFontSize};` : ''}>
             <MachineTitleSvg text={machineName} height="1em" />
-            <span class="sr-only">{heroTitleSrOnly}</span>
-          </h1>
+          </div>
+          <h1 class="sr-only">{heroTitleSrOnly}</h1>
 
           <p class="cx-hero-lead" use:typoFixAction>
             {heroLead}
@@ -1043,37 +1043,8 @@
     box-sizing: border-box;
   }
 
-  /* HERO */
-  .hmp-hero-wrapper {
-    background: linear-gradient(180deg, #545454 0%, #2e3032 100%);
-    position: relative;
-    overflow: hidden;
-    padding-top: 130px;
-  }
-
-  /* Osobny div tła - studio backdrop z delikatnym blur */
-  .hmp-hero-bg {
-    position: absolute;
-    inset: -25px; /* ujemny margines niweluje prześwity krawędzi przy blur */
-    background-image: url("/assets/maszyny/hmp-g1/hearotlo01-copy.webp");
-    background-size: cover;
-    background-position: center;
-    filter: blur(0px);
-    transform: scale(1.03);
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .hmp-hero-wrapper::after {
-    z-index: 1;
-    content: "";
-    background-image: url(/assets/images/pattern-image1-2.png);
-    position: absolute;
-    width: 100vw;
-    height: 37px;
-    right: 0px;
-    bottom: 0px;
-  }
+  /* HERO: Główne style tła studio i dwóch świateł na podłodze (.hmp-hero-wrapper, .hmp-hero-bg, ::before, ::after)
+     są zdefiniowane globalnie w src/lib/styles/shared-components.scss */
 
   .header-sekcja {
     display: flex;
@@ -1225,6 +1196,7 @@
     width: 100%;
     aspect-ratio: 1448 / 1086;
   }
+  /* Rozjaśnienie (zblurowany glow) bezpośrednio pod/za zdjęciem maszyny jako ::after */
   .cx-hero-img-box::after {
     content: "";
     position: absolute;

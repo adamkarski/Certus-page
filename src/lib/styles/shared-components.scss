@@ -1,0 +1,491 @@
+/* =====================================================================
+   CERTUS – Global Shared Components Stylesheet
+   Wspólne style bazowe wielokrotnego użytku:
+   - Studio Hero & Tło (.hmp-hero-wrapper, .hmp-hero-bg, .cx-cut, .hero-studio, .hero-studio-bg)
+   - Dwa światła rozjaśnienia na podłodze (::before i ::after)
+   - Pasek KPI (.cx-kpi, .kpi-strip, .kpi-box, .kpi-label, .kpi-val, .kpi-sub)
+   - Typografia sekcji (.section-pretitle, .section-heading, .section-desc)
+   - Karty bazowe (.card-base-white, .card-base-dark, .card-proc-step)
+   - Przyciski (.btn-certus-primary, .btn-certus-outline, .btn-primary)
+   - Wskaźniki kontaktu i akcenty (.bullet-accent, .bullet)
+   ===================================================================== */
+
+/* Kontener centralny strony */
+.certus-container,
+.cx-wrap {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(16px, 3vw, 32px);
+  padding-right: clamp(16px, 3vw, 32px);
+  box-sizing: border-box;
+}
+
+/* =====================================================================
+   1. HERO STUDIO: Wrapper, Tło i Dwa Światła Rozjaśnienia na Podłodze
+   Identycznie jak na HMP-G1 i CERTUS 69
+   ===================================================================== */
+
+.hmp-hero-wrapper,
+.hero-studio-wrapper {
+  background: linear-gradient(180deg, #545454 0%, #2e3032 100%);
+  position: relative;
+  overflow: hidden;
+  padding-top: 130px; /* Wysokość odsunięcia od stałego menu identyczna jak HMP-G1 / C69 */
+
+  @media (max-width: 900px) {
+    padding-top: 100px;
+  }
+
+  &::after {
+    z-index: 1;
+    content: "";
+    background-image: url(/assets/images/pattern-image1-2.png);
+    position: absolute;
+    width: 100vw;
+    height: 37px;
+    right: 0px;
+    bottom: 0px;
+    pointer-events: none;
+  }
+}
+
+.hmp-hero-section,
+.hero-studio-section {
+  padding-top: 50px;
+  padding-bottom: 104px;
+  position: relative;
+  z-index: 20;
+
+  @media (max-width: 900px) {
+    padding-top: 24px;
+    padding-bottom: 64px;
+  }
+}
+
+/* TŁO HERO: baza studia (ściana, horyzont, podłoga, winieta, ziarno) */
+.hmp-hero-bg,
+.hero-studio-bg {
+  position: absolute;
+  inset: -25px;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    /* ziarno – usuwa pasy (banding) na gradientach */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+
+    /* cień tuż pod linią horyzontu (styk ściany z podłogą) */
+    linear-gradient(to bottom,
+      transparent var(--hero-horizon, 55.5%),
+      rgba(0, 0, 0, 0.28) calc(var(--hero-horizon, 55.5%) + 1%),
+      transparent calc(var(--hero-horizon, 55.5%) + 6%)),
+
+    /* winieta ściany – ciemne boki i góra (tylko nad horyzontem) */
+    radial-gradient(62% 100% at 50% 40%, transparent 35%, color-mix(in srgb, var(--hero-ink, #121314) 85%, transparent) 100%) top / 100% var(--hero-horizon, 55.5%) no-repeat,
+
+    /* poświata na ścianie */
+    linear-gradient(330deg, transparent 40%, var(--hero-tint, rgba(85, 68, 85, 0.27))) top / 100% var(--hero-horizon, 55.5%) no-repeat,
+
+    /* plama światła za maszyną na ścianie */
+    radial-gradient(34% 42% at 50% 32%, var(--hero-graphite, #3e4042) 0%, color-mix(in srgb, var(--hero-graphite, #3e4042) 55%, transparent) 45%, transparent 100%),
+
+    /* baza: ściana → horyzont → podłoga */
+    linear-gradient(to bottom,
+      #1c1d1f 0%,
+      var(--hero-wall, #232426) 30%,
+      #1e1f21 calc(var(--hero-horizon, 55.5%) - 1%),
+      #2c2d30 var(--hero-horizon, 55.5%),
+      var(--hero-floor-edge, #505154) calc(var(--hero-horizon, 55.5%) + 1.5%),
+      var(--hero-floor, #7a7b7f) calc(var(--hero-horizon, 55.5%) + 14%),
+      var(--hero-floor, #7a7b7f) 100%) var(--hero-wall, #232426);
+
+  /* =====================================================================
+     ROZJAŚNIENIA NA PODŁODZE (Domyślnie na .hmp-hero-bg, chyba że użyto osobnego .hmp-hero-lights)
+     ===================================================================== */
+  &:not(.has-custom-lights)::before {
+    content: "";
+    position: absolute;
+    left: 25%;
+    bottom: 72px;
+    transform: translateX(-50%);
+    width: 1380px;
+    height: 1320px;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--hero-floor-hi, #e6e6e8) 75%, transparent) 0%,
+      color-mix(in srgb, var(--hero-floor-hi, #e6e6e8) 20%, transparent) 45%,
+      transparent 75%
+    );
+    border-radius: 50%;
+    filter: blur(35px);
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.5;
+  }
+
+  &:not(.has-custom-lights)::after {
+    content: "";
+    position: absolute;
+    left: 73%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    width: 380px;
+    height: 220px;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--hero-floor-hi, #e6e6e8) 80%, transparent) 0%,
+      color-mix(in srgb, var(--hero-floor-hi, #e6e6e8) 22%, transparent) 45%,
+      transparent 75%
+    );
+    border-radius: 50%;
+    filter: blur(35px);
+    pointer-events: none;
+    z-index: 2;
+  }
+}
+
+/* =====================================================================
+   DEDYKOWANA WARSTWA ROZJAŚNIEŃ (.hmp-hero-lights)
+   Umożliwia umieszczenie świateł NAD elementami pośrednimi (np. zdjęciem w tle),
+   pozostając pod sekcją z treścią.
+   ===================================================================== */
+.hmp-hero-lights,
+.hero-studio-lights {
+  position: absolute;
+  inset: -25px;
+  z-index: 15;
+  pointer-events: none;
+  overflow: hidden;
+
+  /* ROZJAŚNIENIE 1: Lewe światło na podłodze */
+  &::before {
+    content: "";
+    position: absolute;
+    left: 25%;
+    bottom: 72px;
+    transform: translateX(-50%);
+    width: 1380px;
+    height: 1320px;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--hero-floor-hi, #e6e6e8) 75%, transparent) 0%,
+      color-mix(in srgb, var(--hero-floor-hi, #e6e6e8) 20%, transparent) 45%,
+      transparent 75%
+    );
+    border-radius: 50%;
+    filter: blur(35px);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* ROZJAŚNIENIE 2: Prawe światło na podłodze */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 73%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    width: 380px;
+    height: 220px;
+    background: radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--hero-floor-hi, #e6e6e8) 80%, transparent) 0%,
+      color-mix(in srgb, var(--hero-floor-hi, #e6e6e8) 22%, transparent) 45%,
+      transparent 75%
+    );
+    border-radius: 50%;
+    filter: blur(35px);
+    pointer-events: none;
+  }
+}
+
+/* Ukośne ścięcie Hero (dokładnie jak cx-cut w HMP-G1 i C69) */
+.cx-cut,
+.hero-cut-diagonal {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 34%;
+  height: 46px;
+  background: var(--color-bg-secondary, #f7f7f7);
+  clip-path: polygon(0 0, 82% 0, 100% 100%, 0 100%);
+  z-index: 3;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    width: 58%;
+    height: 34px;
+  }
+}
+
+/* Pigułka nad tytułem */
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(150, 165, 0, 0.22);
+  border: 1px solid var(--color-primary, #96a500);
+  color: var(--color-primary-light, #c5d418);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  line-height: 1.3;
+}
+
+.hero-h1 {
+  font-family: 'Snasm', sans-serif;
+  font-size: clamp(38px, 5.5vw, 68px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 16px 0 18px 0;
+}
+
+.hero-lead {
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.65;
+  color: #cfd3d8;
+  max-width: 600px;
+  margin-bottom: 28px;
+}
+
+/* =====================================================================
+   2. PASEK KPI: Identycznie jak cx-kpi w HMP-G1 i C69
+   ===================================================================== */
+.kpi-strip,
+.cx-kpi {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 28px);
+  margin-top: clamp(40px, 5vw, 56px);
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+    margin-top: 36px;
+  }
+}
+
+.kpi-box,
+.cx-kpi-item {
+  border-top: 3px solid var(--color-primary, #96a500);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kpi-label,
+.cx-kpi-label {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #bfc3c7;
+}
+
+.kpi-val,
+.cx-kpi-value {
+  margin: 0;
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.kpi-sub,
+.cx-kpi-note {
+  margin: 0;
+  font-size: 13px;
+  color: #bfc3c7;
+  line-height: 1.4;
+}
+
+/* =====================================================================
+   3. PRZYCISKI
+   ===================================================================== */
+.btn-certus-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary, #96a500);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  text-decoration: none !important;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  line-height: 1.2;
+
+  &:hover {
+    background: var(--color-primary-dark, #7e8c00);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(150, 165, 0, 0.35);
+  }
+}
+
+.btn-certus-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  line-height: 1.2;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+  }
+}
+
+/* =====================================================================
+   4. TYPOGRAFIA SEKCJI
+   ===================================================================== */
+.section-pretitle {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--color-primary-dark, #7e8c00);
+  margin-bottom: 12px;
+}
+
+.section-pretitle-light {
+  color: var(--color-primary-light, #c5d418);
+}
+
+.section-heading {
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+}
+
+.section-heading-white {
+  color: #ffffff;
+}
+
+.section-desc {
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.65;
+  color: #555555;
+  margin: 0;
+}
+
+/* =====================================================================
+   5. KARTY BAZOWE
+   ===================================================================== */
+.card-base-white {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #ebebeb;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.card-base-dark {
+  background: #232528;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  padding: clamp(26px, 4vw, 44px);
+}
+
+.card-proc-step {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e6e8dc;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+
+  &:hover {
+    border-color: var(--color-primary, #96a500);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(150, 165, 0, 0.12);
+  }
+
+  .step-num {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--color-primary, #96a500);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .step-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .step-desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #666666;
+  }
+}
+
+/* =====================================================================
+   6. WSKAŹNIKI KONTAKTU I BULLETY
+   ===================================================================== */
+.bullet-accent {
+  width: 4px;
+  min-height: 20px;
+  background: var(--color-primary, #96a500);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* =====================================================================
+   7. CHIPY I TABELE TECHNICZNE / CENNIKOWE
+   ===================================================================== */
+.chip-price {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #f4f5f7;
+  color: #2b2b2b;
+  border: 1px solid #dadde2;
+  white-space: nowrap;
+
+  &.chip-accent {
+    background: #edf0d4;
+    color: var(--color-primary-dark, #7e8c00);
+    border-color: #d6dd9e;
+  }
+}
