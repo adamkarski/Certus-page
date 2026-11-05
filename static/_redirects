@@ -15,6 +15,3 @@
 /do_pobrania/Plotery-linearne-CNC.pdf           /do_pobrania/CERTUS_Karta_katalogowa_HLP-FT.pdf            301
 /maszyny-specjalistyczne                        /maszyny-specjalne                                         301
 /maszyny-specjalistyczne/                       /maszyny-specjalne                                         301
-
-# Uniwersalne przekierowanie dla wszystkich nieistniejących adresów na stronę główną
-/*                                              /                                                          301
