@@ -5,7 +5,7 @@
     "title": "Kompaktowe centrum HMP-G1",
     "img": "/assets/maszyny/hmp-g1/hmp-g1-render-1200x800.webp",
     "startExpanded": false,
-    "url": "/hmp-g1",
+    "url": "/hmp-g1/",
     "icon": "/assets/ikony/maszyny/frezarki.svg"
   },
   {
@@ -118,7 +118,7 @@
     "title": "Certus 69",
     "img": "/assets/maszyny/certus-69/c69-hero-render.webp",
     "startExpanded": false,
-    "url": "/bestseller",
+    "url": "/bestseller/",
     "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
     "machine":"m_special"
   },
@@ -127,7 +127,7 @@
     "title": "Maszyny specjalne",
     "img": "/assets/maszyny/renders/Certus_wiertarka_V1_Layers/Certus_wiertarka_V1_Layer1.png",
     "startExpanded": false,
-    "url": "/maszyny-specjalne",
+    "url": "/maszyny-specjalne/",
     "icon": "/assets/ikony/maszyny/specjalistyczne.svg",
     "machine":"m_special"
   }

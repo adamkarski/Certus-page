@@ -1679,10 +1679,25 @@
 
   .category-content .subListMachines {
     height: 500px;
+    overflow: visible;
+
+    swiper-container {
+      overflow: visible;
+    }
+
+    swiper-slide {
+      overflow: visible;
+    }
+
+    .item_title {
+      bottom: -45px;
+      margin-bottom: 0;
+    }
   }
   .item_title {
     position: absolute;
-    margin-bottom: -57%;
+    bottom: -45px;
+    margin-bottom: 0;
     color: rgb(255, 255, 255);
     line-height: 1.2;
     transition: all 0.9s ease;
@@ -1723,7 +1738,8 @@
   @media screen and (max-width: 746px) {
     .item_title {
       font-size: clamp(1rem, 3.5vw, 1.35rem);
-      margin-bottom: -85% !important;
+      bottom: -60px;
+      margin-bottom: 0 !important;
 
       :global(span:not(.sr-only)),
       :global(.nawias) {

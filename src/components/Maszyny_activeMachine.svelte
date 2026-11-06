@@ -813,7 +813,7 @@ afterUpdate(() => {
           in:fade={{ duration: 300, delay: 200 }}
           out:fade={{ duration: 300, delay: 100 }}
         >
-          <h1>Frezarki Pięcioosiowe CNC</h1>
+          <h1><MachineTitleSvg text="Frezarki pięcioosiowe" height="1em" /></h1>
 
           <div class="left_image no-sel">
             
@@ -992,7 +992,7 @@ afterUpdate(() => {
           in:fade={{ duration: 300, delay: 200 }}
           out:fade={{ duration: 300, delay: 100 }}
         >
-          <h1>Grawerki CNC</h1>
+          <h1><MachineTitleSvg text="Grawerki CNC" height="1em" /></h1>
 
           <div class="left_image no-sel">
             
