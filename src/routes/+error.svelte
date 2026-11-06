@@ -1,22 +1,14 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { goto } from "$app/navigation";
   import { page } from "$app/stores";
   import Section_Header from "../components/sections/Section_Header.svelte";
   import Section_Footer from "../components/sections/Section_Footer.svelte";
 
   $: status = $page.status || 404;
-
-  onMount(() => {
-    // Automatyczne przekierowanie każdego błędu na stronę główną
-    goto("/", { replaceState: true });
-  });
 </script>
 
 <svelte:head>
-  <title>CERTUS Maszyny CNC</title>
+  <title>Nie ma takiej strony - CERTUS Maszyny CNC</title>
   <meta name="robots" content="noindex, follow" />
-  <meta http-equiv="refresh" content="0;url=/" />
 </svelte:head>
 
 <div class="app">
