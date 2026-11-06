@@ -47,7 +47,8 @@
 		? cleanImage
 		: `${BASE_URL}${cleanImage.startsWith("/") ? "" : "/"}${cleanImage}`;
 
-	$: canonicalUrl = `${BASE_URL}${pathname === "/" ? "" : pathname}`;
+	$: canonicalPath = pathname === "/" ? "/" : (pathname.endsWith("/") ? pathname : `${pathname}/`);
+	$: canonicalUrl = `${BASE_URL}${canonicalPath === "/" ? "" : canonicalPath}`;
 	$: logoUrl = `${BASE_URL}/assets/logo-certus.svg`;
 </script>
 
