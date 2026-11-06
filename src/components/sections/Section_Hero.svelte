@@ -1076,7 +1076,17 @@
       node.style.cursor = "pointer";
     }
   }
+  function handleGlobalKeydown(e: KeyboardEvent) {
+    if (e.key === "Escape" || e.keyCode === 27) {
+      if ($activeMachineStore || $activeCategoryStore) {
+        e.preventDefault();
+        close();
+      }
+    }
+  }
 </script>
+
+<svelte:window on:keydown={handleGlobalKeydown} />
 
 <!-- Tło i gradient pozostają statyczne -->
 <section class="hero">
@@ -1683,21 +1693,18 @@
 
     swiper-container {
       overflow: visible;
+      height: 100%;
     }
 
     swiper-slide {
       overflow: visible;
-    }
-
-    .item_title {
-      bottom: -45px;
-      margin-bottom: 0;
+      height: 100%;
+      position: relative;
     }
   }
   .item_title {
     position: absolute;
-    bottom: -45px;
-    margin-bottom: 0;
+    margin-bottom: -57%;
     color: rgb(255, 255, 255);
     line-height: 1.2;
     transition: all 0.9s ease;
@@ -1738,8 +1745,7 @@
   @media screen and (max-width: 746px) {
     .item_title {
       font-size: clamp(1rem, 3.5vw, 1.35rem);
-      bottom: -60px;
-      margin-bottom: 0 !important;
+      margin-bottom: -85% !important;
 
       :global(span:not(.sr-only)),
       :global(.nawias) {
