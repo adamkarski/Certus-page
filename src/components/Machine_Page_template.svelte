@@ -985,10 +985,21 @@
               </div>
 
               <Turnstile
-                siteKey="0x4AAAAAAAxyxV79aWwI7t9_"
-                on:turnstile-callback={(e) => (turnstileToken = e.detail.token)}
-                on:turnstile-reset={() => (turnstileToken = null)}
+                siteKey="0x4AAAAAACEnWiyzZjf30AYU"
+                theme="light"
                 bind:reset={turnstileReset}
+                on:callback={(e) => {
+                  turnstileToken = e.detail.token;
+                }}
+                on:expired={() => {
+                  turnstileToken = null;
+                }}
+                on:error={(e) => {
+                  turnstileToken = null;
+                  turnstileReset?.();
+                  submitMessage =
+                    "Błąd weryfikacji. Odświeżam zabezpieczenie...";
+                }}
               />
 
               {#if submitMessage}
