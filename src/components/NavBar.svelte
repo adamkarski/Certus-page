@@ -268,7 +268,7 @@
 
         <div class="desktop-menu-items" bind:this={desktopMenuEl}>
           <a
-            href="/hmp-g1"
+            href="/hmp-g1/"
             class="nav-link nav-pill-nowosc"
             class:active={isHmpG1Active}
           >
@@ -283,7 +283,7 @@
             <a
               on:click|preventDefault={() =>
                 (isMaszynyDropdownOpen = !isMaszynyDropdownOpen)}
-              href="/maszyny"
+              href="/maszyny/"
               class="nav-link flex items-center space-x-1"
               class:active={isMaszynyActive}
             >
@@ -314,7 +314,7 @@
                       <li>
                         {#if !kategoria.url}
                           <a
-                            href="/maszyny#{kategoria.id}"
+                            href="/maszyny/#{kategoria.id}"
                             class="submenu-item {kategoria.id}"
                             role="button"
                             on:mouseenter={() => (hoveredCategory = kategoria)}
@@ -325,7 +325,7 @@
 
                         {#if kategoria.url}
                           <a
-                            href={kategoria.url}
+                            href={kategoria.url.endsWith('/') ? kategoria.url : `${kategoria.url}/`}
                             class="submenu-item {kategoria.id}"
                             role="button"
                             on:mouseenter={() => (hoveredCategory = kategoria)}
@@ -343,8 +343,7 @@
                   {#if hoveredCategory}
                     {#key hoveredCategory.id}
                       <a
-                        href={hoveredCategory.url ||
-                          `/maszyny#${hoveredCategory.id}`}
+                        href={hoveredCategory.url ? (hoveredCategory.url.endsWith('/') ? hoveredCategory.url : `${hoveredCategory.url}/`) : `/maszyny/#{hoveredCategory.id}`}
                         on:click|preventDefault={() =>
                           handleMaszynyNavigation(hoveredCategory.id)}
                       >
@@ -369,7 +368,7 @@
             role="group"
           >
             <a
-              href="/bestseller"
+              href="/bestseller/"
               class="nav-link flex items-center space-x-1"
               class:active={isBestsellerActive}
             >
@@ -396,7 +395,7 @@
               class:open={isBestsellerDropdownOpen}
             >
               <a
-                href="/bestseller"
+                href="/bestseller/"
                 on:click={() => (isBestsellerDropdownOpen = false)}
                 class="bestseller-link-wrapper"
               >
@@ -432,12 +431,12 @@
             </div>
           </div>
 
-          <a href="/serwis" class="nav-link" class:active={isSerwisActive}
+          <a href="/serwis/" class="nav-link" class:active={isSerwisActive}
             >Serwis</a
           >
-          <a href="/onas" class="nav-link" class:active={isOnasActive}>O nas</a>
+          <a href="/onas/" class="nav-link" class:active={isOnasActive}>O nas</a>
           <a
-            href="/kontakt"
+            href="/kontakt/"
             class="nav-link kontakt-nav"
             class:active={isKontaktActive}>Kontakt</a
           >
@@ -500,7 +499,7 @@
         </div>
         <div class="mobile-links-container">
           <a
-            href="/hmp-g1"
+            href="/hmp-g1/"
             class="mobile-nav-link mobile-nav-pill-nowosc"
             class:active={isHmpG1Active}
             on:click={closeMobileMenu}
@@ -538,7 +537,7 @@
             <div class="mobile-submenu" transition:slide>
               {#each kategorieMaszyn as kategoria}
                 {#if kategoria.url}
-                  <a class="mobile-submenu-link" href={kategoria.url}
+                  <a class="mobile-submenu-link" href={kategoria.url.endsWith('/') ? kategoria.url : `${kategoria.url}/`}
                     >{kategoria.title}</a
                   >
                 {/if}
@@ -547,38 +546,38 @@
                     class="mobile-submenu-link"
                     on:click|preventDefault={() =>
                       handleMaszynyNavigation(kategoria.id)}
-                    href="/maszyny#{kategoria.id}">{kategoria.title}</a
+                    href="/maszyny/#{kategoria.id}">{kategoria.title}</a
                   >
                 {/if}
               {/each}
             </div>
           {/if}
           <a
-            href="/bestseller"
+            href="/bestseller/"
             class="mobile-nav-link"
             class:active={isBestsellerActive}
             on:click={closeMobileMenu}>Bestseller</a
           >
           <a
-            href="/serwis"
+            href="/serwis/"
             class="mobile-nav-link"
             class:active={isSerwisActive}
             on:click={closeMobileMenu}>Serwis</a
           >
           <a
-            href="/dokumentacja"
+            href="/dokumentacja/"
             class="mobile-nav-link"
             class:active={isDokumentacjaActive}
             on:click={closeMobileMenu}>Dokumentacja</a
           >
           <a
-            href="/onas"
+            href="/onas/"
             class="mobile-nav-link"
             class:active={isOnasActive}
             on:click={closeMobileMenu}>O nas</a
           >
           <a
-            href="/kontakt"
+            href="/kontakt/"
             class="mobile-nav-link"
             class:active={isKontaktActive}
             on:click={closeMobileMenu}>Kontakt</a

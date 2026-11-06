@@ -143,7 +143,7 @@
               
               {#if !kategoria.url}
               
-              <a href="/maszyny#{kategoria.id}"
+              <a href="/maszyny/#{kategoria.id}"
                 class="footer-link {kategoria.id}"
                 role="button"
               
@@ -155,7 +155,7 @@
               {/if}
 
               {#if kategoria.url} 
-              <a href="{kategoria.url}"
+              <a href="{kategoria.url.endsWith('/') ? kategoria.url : `${kategoria.url}/`}"
               class="footer-link {kategoria.id}"
               role="button"
             
@@ -183,16 +183,16 @@
       <div class="footer-section">
         <h4 class="footer-title">FIRMA</h4>
         <ul class="footer-links">
-          <li><a href="/onas" class="footer-link" title="O nas">O nas</a></li>
+          <li><a href="/onas/" class="footer-link" title="O nas">O nas</a></li>
               
           <li>
-            <a href="/dokumentacja" class="footer-link" title="Dokumentacja"
+            <a href="/dokumentacja/" class="footer-link" title="Dokumentacja"
               >Dokumentacja</a
             >
           </li>
 
           <li>
-            <a href="/kontakt" class="footer-link" title="Kontakt">Kontakt</a>
+            <a href="/kontakt/" class="footer-link" title="Kontakt">Kontakt</a>
           </li>
         </ul>
       </div>
@@ -239,7 +239,7 @@
         </p>
         <div class="footer-bottom-links">
           <a
-            href="/polityka-prywatnosci"
+            href="/polityka-prywatnosci/"
             class="footer-link"
             title="Polityka prywatności">Polityka prywatności</a
           >
