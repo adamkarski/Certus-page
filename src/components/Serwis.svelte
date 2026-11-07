@@ -32,7 +32,7 @@
           <span class="hero-pill-badge">Serwis producenta</span>
           <h1 class="hero-h1">SERWIS</h1>
           <p class="hero-lead" use:typoFixAction>
-            Gwarancja od dnia odbioru, szkolenie w cenie maszyny i serwis prowadzony przez ludzi, którzy ją zbudowali.
+            Gwarancja od dnia odbioru, szkolenie w cenie maszyny i bezpośrednie wsparcie techniczne konstruktorów i inżynierów CERTUS.
           </p>
 
           <div class="hero-actions">
@@ -48,6 +48,8 @@
               src="/assets/images/serwis/hero-serwis-maszyna.webp"
               alt="Frezarka CNC CERTUS w pełnej zabudowie – serwis fabryczny"
               class="hero-machine-render"
+              width="1024"
+              height="768"
               loading="eager"
             />
           </div>
@@ -90,7 +92,7 @@
     <div class="certus-container">
       <div class="card-base-white care-card">
         <div class="care-header">
-          <h2 class="care-title" use:typoFixAction>Pełna opieka po zakupie. Jeden zespół od budowy do serwisu.</h2>
+          <h2 class="care-title" use:typoFixAction>Pełna opieka po zakupie. Dedykowany zespół od projektu po serwis.</h2>
           <p class="care-sub" use:typoFixAction>
             Zakres usług serwisowych dla wszystkich maszyn CERTUS. Stawki — w cenniku poniżej.
           </p>
@@ -103,12 +105,14 @@
               <img
                 src="/assets/images/serwis/serwis-gwarancyjny.webp"
                 alt="Serwis gwarancyjny maszyn CNC CERTUS"
+                width="391"
+                height="263"
                 loading="lazy"
               />
             </div>
             <h3 class="service-title">Serwis gwarancyjny</h3>
             <p class="service-desc" use:typoFixAction>
-              12 miesięcy od dnia odbioru, potwierdzonego protokołem odbioru technicznego. Robocizna i części wymieniane w naprawie gwarancyjnej — bez opłat.
+              12 miesięcy od dnia odbioru, potwierdzonego protokołem odbioru technicznego. Prace serwisowe oraz części wymieniane w ramach gwarancji — bez opłat.
             </p>
           </article>
 
@@ -118,6 +122,8 @@
               <img
                 src="/assets/images/serwis/serwis-pogwarancyjny.webp"
                 alt="Serwis pogwarancyjny i modernizacje maszyn CNC"
+                width="620"
+                height="600"
                 loading="lazy"
               />
             </div>
@@ -133,6 +139,8 @@
               <img
                 src="/assets/images/serwis/przeglady-okresowe.webp"
                 alt="Przeglądy okresowe obrabiarek CNC"
+                width="391"
+                height="260"
                 loading="lazy"
               />
             </div>
@@ -148,6 +156,8 @@
               <img
                 src="/assets/images/serwis/szkolenia-diagnostyka.webp"
                 alt="Szkolenia operatorów i zdalna diagnostyka PikoCNC"
+                width="560"
+                height="678"
                 loading="lazy"
               />
             </div>
@@ -184,7 +194,7 @@
             <!-- Wiersz 1 -->
             <div class="cennik-row">
               <div class="col-service">
-                <span class="row-service-name">Robocizna i diagnoza</span>
+                <span class="row-service-name">Prace serwisowe i diagnostyka</span>
               </div>
               <div class="col-rate">
                 <span class="chip-price">240 zł / h</span>
@@ -203,7 +213,7 @@
                 <span class="chip-price">2,50 zł / km</span>
               </div>
               <div class="col-notes">
-                <span>liczony w obie strony od Choczni</span>
+                <span>liczony w obie strony od siedziby firmy</span>
               </div>
             </div>
 
@@ -294,7 +304,7 @@
           <div class="sidebar-info-card card-base-white">
             <h4 class="side-info-title">Przykład: dojazd</h4>
             <p class="side-info-text">
-              Klient 150 km od Choczni: 2 × 150 km × 2,50 zł = <strong>750 zł netto</strong>.
+              Klient 150 km od siedziby firmy: 2 × 150 km × 2,50 zł = <strong>750 zł netto</strong>.
             </p>
           </div>
 
@@ -303,7 +313,7 @@
             <h4 class="side-info-title">W okresie gwarancji</h4>
             <div class="warranty-terms">
               <p>
-                <strong class="text-free">Bez opłat:</strong> robocizna, części wymieniane w naprawie.
+                <strong class="text-free">Bez opłat:</strong> diagnostyka, prace serwisowe, części wymieniane w naprawie.
               </p>
               <p>
                 <strong>Płatne:</strong> dojazd, materiały eksploatacyjne i części zużywające się (smar, chłodziwo, tulejki, paski).

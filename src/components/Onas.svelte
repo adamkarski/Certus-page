@@ -341,7 +341,7 @@
           </a>
 
           <!-- 3. HMM-ST / HMM-GT -->
-          <a href="/maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stoem" class="machine-card">
+          <a href="/maszyny/#frezarki" class="machine-card">
             <div class="machine-thumb-wrap">
               <img src="/assets/images/onas/maszyny/hmm-st-gt.webp" alt="CERTUS HMM-ST / HMM-GT" loading="lazy" />
             </div>
@@ -352,7 +352,7 @@
           </a>
 
           <!-- 4. HPP-OT / HPP-CT -->
-          <a href="/maszynyCNC/ploteryPrzemyslowe/wielkoformatowy-ploter-przemyslowy-hpp-ot" class="machine-card">
+          <a href="/maszyny/#ploteryPrzemyslowe" class="machine-card">
             <div class="machine-thumb-wrap">
               <img src="/assets/images/onas/maszyny/hpp-ot-ct.webp" alt="CERTUS HPP-OT / HPP-CT" loading="lazy" />
             </div>

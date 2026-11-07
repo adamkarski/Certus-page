@@ -127,7 +127,7 @@
   export let contactBullets: string[] = [
     `Napisz, z jakiego materiału i jakiej wielkości są Twoje detale — dobierzemy optymalną konfigurację ${machineName} i przygotujemy wycenę.`,
     `Pomożemy dobrać wrzeciono, magazyn narzędzi ATC i wyposażenie dodatkowe.`,
-    `Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy szybko, zazwyczaj w ciągu 24 godzin.`
+    `Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy sprawnie, zazwyczaj w 1 dzień roboczy.`
   ];
 
   export let formSubject: string = `Zapytanie: ${machineName}`;
@@ -355,7 +355,7 @@
       if (res.data && res.data.success) {
         submitSuccess = true;
         submitMessage =
-          `Dziękujemy za zapytanie! Skontaktujemy się z Tobą w ciągu 24 godzin z przygotowaną konfiguracją ${machineName}.`;
+          `Dziękujemy za zapytanie! Skontaktujemy się z Tobą najszybciej jak to możliwe z przygotowaną konfiguracją ${machineName}.`;
         formData = {
           firstName: "",
           lastName: "",

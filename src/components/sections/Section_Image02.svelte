@@ -37,6 +37,8 @@
         src="/assets/images/baner2_wnetrze_hmm-st.jpg"
         alt="Obróbka detali i dobór maszyny CNC CERTUS"
         class="masked-image"
+        width="1536"
+        height="1024"
         loading="lazy"
         decoding="async"
       />

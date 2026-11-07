@@ -13,13 +13,11 @@ import type { PageData } from './$types';
 
 
 	onMount(() => {
-	 if (browser) {
-		showPreloader = true;
-		setTimeout(() => {
-			window.location.href = '/maszyny'; // Redirect to the main machines page
-		}, 1500); // 1.5 second delay for preloader
-	} 
-});
+		if (browser) {
+			const targetAnchor = category?.id ? `#${category.id}` : '';
+			window.location.replace(`/maszyny/${targetAnchor}`);
+		}
+	});
 
 
 

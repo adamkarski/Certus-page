@@ -299,7 +299,7 @@
       
       if (response.data.success) {
         submitMessage = response.data.message || 
-          "Dziękujemy za kontakt! Nasz zespół skontaktuje się z Tobą w ciągu 24 godzin.";
+          "Dziękujemy za kontakt! Nasz zespół skontaktuje się z Tobą najszybciej jak to możliwe.";
         
         formData = {
           firstName: "",
@@ -383,8 +383,7 @@
         <li>
           <span class="bullet"></span>
           <div class="bullet-content">
-            Skorzystaj z bezpłatnej konsultacji<br /> – odpowiadamy szybko i
-            rzeczowo,<br /> zazwyczaj w ciągu 24 godzin.
+            Skorzystaj z bezpłatnej konsultacji<br /> – odpowiadamy rzeczowo,<br /> z reguły w 1 dzień roboczy.
           </div>
         </li>
       {/if}

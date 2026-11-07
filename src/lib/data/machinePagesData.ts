@@ -223,7 +223,7 @@ export const hmpG1Data: MachinePageConfig = {
   contactBullets: [
     "Napisz, z jakiego materiału i jakiej wielkości są Twoje detale — dobierzemy optymalną konfigurację HMP-G1 i przygotujemy wycenę.",
     "Pomożemy dobrać wrzeciono (do 6 kW), magazyn narzędzi ATC (10–16 pozycji) i wyposażenie dodatkowe.",
-    "Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy szybko, zazwyczaj w ciągu 24 godzin.",
+    "Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy sprawnie, zazwyczaj w 1 dzień roboczy.",
   ],
   formSubject: "Zapytanie: HMP-G1",
   formType: "hmp-g1",
@@ -362,7 +362,7 @@ export const certus69Data: MachinePageConfig = {
   contactBullets: [
     "Napisz, z jakiego materiału i jakiej wielkości są Twoje detale — dobierzemy optymalną konfigurację CERTUS 69 i przygotujemy wycenę.",
     "Pomożemy dobrać wrzeciono (do 6 kW), wersję magazynu ATC (PRO-L 6 pozycji lub PRO-R 10 pozycji) i wyposażenie dodatkowe.",
-    "Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy szybko, zazwyczaj w ciągu 24 godzin.",
+    "Skorzystaj z bezpłatnej konsultacji technicznej — odpowiadamy sprawnie, zazwyczaj w 1 dzień roboczy.",
   ],
   formSubject: "Zapytanie: CERTUS 69",
   formType: "certus-69",

@@ -23,17 +23,16 @@
         <div class="">
           <ul>
             <li class="feature title-green" use:typoFixAction>
-              Kontrola jakości na każdym etapie, mierzalna precyzja detalu
+              Rygorystyczna kontrola jakości na każdym etapie montażu
             </li>
             <li class="feature title-green" use:typoFixAction>
-              Standardowe modele + maszyny specjalne pod Twój proces
+              Standardowe modele oraz maszyny specjalne projektowane pod Twój proces
             </li>
             <li class="feature title-green" use:typoFixAction>
-              Sztywne konstrukcje, markowe podzespoły, długi bezawaryjny cykl
-              pracy
+              Sztywne konstrukcje stalowe i sprawdzone podzespoły renomowanych marek
             </li>
             <li class="feature title-green" use:typoFixAction>
-              Szybkie wdrożenie i serwis, realne wsparcie po zakupie
+              Szybkie wdrożenie, szkolenie operatorów i bezpośrednie wsparcie serwisu
             </li>
           </ul>
         </div>
@@ -48,6 +47,9 @@
           <img
             src="/assets/ikony/onas-analiza-potrzeb.svg"
             alt="Analiza Potrzeb"
+            width="64"
+            height="64"
+            loading="lazy"
           />
           <div class="step-content">
             <div class="step-title">Analiza Potrzeb</div>
@@ -60,6 +62,9 @@
           <img
             src="/assets/ikony/onas-dobor-rozwiazan.svg"
             alt="Dobór rozwiązania"
+            width="64"
+            height="64"
+            loading="lazy"
           />
           <div class="step-content">
             <div class="step-title">Dobór Rozwiązania</div>
@@ -69,7 +74,7 @@
           </div>
         </div>
         <div class="step">
-          <img src="/assets/ikony/onas-wdrozenie.svg" alt="Wdrożenie" />
+          <img src="/assets/ikony/onas-wdrozenie.svg" alt="Wdrożenie" width="64" height="64" loading="lazy" />
           <div class="step-content">
             <div class="step-title">Wdrożenie</div>
             <div class="step-description">
@@ -78,7 +83,7 @@
           </div>
         </div>
         <div class="step">
-          <img src="/assets/ikony/onas-wsparcie.svg" alt="Wsparcie" />
+          <img src="/assets/ikony/onas-wsparcie.svg" alt="Wsparcie" width="64" height="64" loading="lazy" />
           <div class="step-content">
             <div class="step-title">Wsparcie</div>
             <div class="step-description">
@@ -105,8 +110,9 @@
   .o-nas {
     width: 100%;
     padding: 100px 0;
-    background: white;
+    background: #18191c;
     position: relative;
+    color: #e5e7eb;
   }
 
   .o-nas-container {
@@ -125,7 +131,13 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    color: #333;
+    color: #d1d5db;
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  .o-nas-left .step-description {
+    color: #9ca3af;
   }
 
   .o-nas-right {
@@ -137,12 +149,20 @@
   }
 
   .step {
-    background-color: #fff;
-    border-radius: 8px;
-
+    background-color: #222428;
+    border: 1px solid #33363d;
+    border-radius: 12px;
+    padding: 16px 20px;
     display: flex;
     align-items: center;
     gap: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      border-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+    }
   }
 
   .step-content {
@@ -153,19 +173,19 @@
   .step-title {
     font-weight: bold;
     margin-bottom: 5px;
-    color: var(--color-text-secondary);
+    color: #ffffff;
   }
 
   .step-description {
     min-width: 300px;
-    color: #555;
+    color: #9ca3af;
   }
 
   .o-nas-right img {
     width: 4em;
-
     object-fit: cover;
     padding: 0.4em;
+    filter: brightness(1.1);
   }
 
   @media (max-width: 930px) {

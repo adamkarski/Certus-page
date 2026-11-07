@@ -70,7 +70,7 @@
     <div class="cnc-left">
       <div class="cnc-row">
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarka CNC HMM-ST" class="cnc-icon" width="96" height="96" loading="lazy">
-        <strong class="cnc-title" use:typoFixAction>Frezarka CNC HMM-ST z ruchomym stołem</strong>
+        <h2 class="cnc-title" use:typoFixAction>Frezarka CNC HMM-ST z ruchomym stołem</h2>
       </div>
       <div class="cnc-row" use:typoFixAction>
         Zaprojektowana z myślą o szybkim i precyzyjnym frezowaniu materiałów takich jak stal, aluminium, drewno, tworzywa sztuczne i inne.
@@ -227,7 +227,7 @@
     <div class="cnc-left">
       <div class="cnc-row">
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC HMM-GT" class="cnc-icon" width="96" height="96" loading="lazy">
-        <strong class="cnc-title" use:typoFixAction>Frezarka CNC HMM-GT z ruchomą bramą</strong>
+        <h2 class="cnc-title" use:typoFixAction>Frezarka CNC HMM-GT z ruchomą bramą</h2>
       </div>
       <div class="cnc-row" use:typoFixAction>
         Do dużych formatów i ciężkich detali — detal stoi, pracuje brama. HMM‑GT
@@ -370,7 +370,7 @@
     <div class="cnc-left">
       <div class="cnc-row">
         <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="cnc-icon" width="96" height="96" loading="lazy">
-        <strong class="cnc-title" use:typoFixAction>Wielkoformatowy ploter przemysłowy bez zabudowy – HPP-OT</strong>
+        <h2 class="cnc-title" use:typoFixAction>Wielkoformatowy ploter przemysłowy bez zabudowy – HPP-OT</h2>
       </div>
       <div class="cnc-row" use:typoFixAction>
          to wielkoformatowe centrum obróbcze CNC stanowiące wysokowydajną
@@ -492,7 +492,7 @@
     <div class="cnc-left">
       <div class="cnc-row">
         <img src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="cnc-icon" width="96" height="96" loading="lazy">
-        <strong class="cnc-title" use:typoFixAction>Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT</strong>
+        <h2 class="cnc-title" use:typoFixAction>Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT</h2>
       </div>
       <div class="cnc-row" use:typoFixAction>
         To zaawansowane wieloosiowe centrum obróbcze, zaprojektowane z myślą o pracy w środowisku przemysłowym, gdzie kluczowe znaczenie mają
@@ -635,7 +635,7 @@
     <div class="cnc-left">
       <div class="cnc-row">
         <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC Certus" class="cnc-icon" width="96" height="96" loading="lazy">
-        <strong class="cnc-title" use:typoFixAction>Grawerki CNC</strong>
+        <h2 class="cnc-title" use:typoFixAction>Grawerki CNC</h2>
       </div>
       <div class="cnc-row" use:typoFixAction>
         To kompaktowe, precyzyjne urządzenia
@@ -787,7 +787,7 @@
     <div class="cnc-left">
       <div class="cnc-row">
         <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="Frezarki CNC pięcioosiowe" class="cnc-icon" width="96" height="96" loading="lazy">
-        <strong class="cnc-title" use:typoFixAction>Pięcioosiowe centra frezarskie CNC</strong>
+        <h2 class="cnc-title" use:typoFixAction>Pięcioosiowe centra frezarskie CNC</h2>
       </div>
       <div class="cnc-row" use:typoFixAction>
         To zaawansowane
@@ -926,7 +926,7 @@
     <div class="cnc-left">
       <div class="cnc-row">
         <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="Plotery CNC HLP-FT Certus" class="cnc-icon" width="96" height="96" loading="lazy">
-        <strong class="cnc-title" use:typoFixAction>Plotery CNC HLP-FT</strong>
+        <h2 class="cnc-title" use:typoFixAction>Plotery CNC HLP-FT</h2>
       </div>
       <div class="cnc-row" use:typoFixAction>
         To precyzyjne
@@ -948,10 +948,6 @@
 
   <div class="maszyny-dane-text-image">
     <div class="left">
-      <p use:typoFixAction>
-        <strong>Plotery CNC HLP-FT</strong><br /><br />
-      </p>
-
       <div class="maszyny-dane-podtytul">Wszechstronność i funkcjonalność:</div>
       <ul class="maszyny-dane-lista-small">
         <li use:typoFixAction>

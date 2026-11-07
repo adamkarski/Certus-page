@@ -1,6 +1,21 @@
-import type { PageLoad } from './$types';
+import type { PageLoad, EntryGenerator } from './$types';
 import maszynyData from '$lib/data/maszyny.json';
 import { error } from '@sveltejs/kit';
+
+export const entries: EntryGenerator = () => {
+	const entriesList: { category_id: string; machine_slug: string }[] = [];
+	for (const category of maszynyData) {
+		if (category.seo && Array.isArray(category.seo)) {
+			for (const machine of category.seo) {
+				entriesList.push({
+					category_id: category.id,
+					machine_slug: machine.slug
+				});
+			}
+		}
+	}
+	return entriesList;
+};
 
 export const load: PageLoad = async ({ params }) => {
 	const category = maszynyData.find((cat) => cat.id === params.category_id);

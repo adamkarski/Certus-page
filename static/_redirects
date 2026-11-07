@@ -16,6 +16,8 @@
 /do_pobrania/Plotery-linearne-CNC.pdf           /do_pobrania/CERTUS_Karta_katalogowa_HLP-FT.pdf            301
 /maszyny-specjalistyczne                        /maszyny-specjalne/                                        301
 /maszyny-specjalistyczne/                       /maszyny-specjalne/                                        301
+/maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stoem/  /maszyny/#frezarki                             301
+/maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stoem   /maszyny/#frezarki                             301
 
 # === Automatyczne przekierowania 301 bez slasha na kanoniczny slash (SEO & UX) ===
 /serwis                                         /serwis/   301
@@ -26,7 +28,7 @@
 /maszynyCNC/ploteryLinearne/plotery-cnc-hlp-ft  /maszynyCNC/ploteryLinearne/plotery-cnc-hlp-ft/   301
 /maszynyCNC/grawerki/grawerki-cnc               /maszynyCNC/grawerki/grawerki-cnc/   301
 /maszynyCNC/frezarki5osiowe/piecioosiowe-centra-frezarskie-cnc/maszynyCNC/frezarki5osiowe/piecioosiowe-centra-frezarskie-cnc/   301
-/maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stoem/maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stoem/   301
+/maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stolem/maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stolem/   301
 /maszynyCNC/frezarki/frezarka-cnc-hmm-gt-z-ruchoma-brama/maszynyCNC/frezarki/frezarka-cnc-hmm-gt-z-ruchoma-brama/   301
 /maszyny-specjalne                              /maszyny-specjalne/   301
 /maszyny                                        /maszyny/   301

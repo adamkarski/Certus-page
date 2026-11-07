@@ -30,6 +30,10 @@ const pages = htmlFiles.map((filePath) => {
   // Wyciągnij treść z głównych tagów
   const mainContent = root.querySelector('main')?.structuredText || '';
 
+  // Sprawdź czy strona ma meta robots noindex
+  const robotsMeta = root.querySelector('meta[name="robots"]')?.getAttribute('content') || '';
+  const isNoindex = robotsMeta.toLowerCase().includes('noindex');
+
   // Wygeneruj ścieżkę URL
   let urlPath = '/' + path.relative(buildDir, filePath)
     .replace(/\\/g, '/')
@@ -42,23 +46,27 @@ const pages = htmlFiles.map((filePath) => {
     urlPath = `${urlPath}/`;
   }
 
-  console.log(`📄 Indeksuję: ${filePath} -> ${urlPath}`);
+  console.log(`📄 Indeksuję: ${filePath} -> ${urlPath} ${isNoindex ? '(noindex)' : ''}`);
 
   return {
     slug: urlPath,
     title: title,
     content: mainContent.replace(/\s+/g, ' ').trim(), // Usuń nadmiarowe białe znaki
+    noindex: isNoindex,
   };
 });
 
+// Filtrujemy strony do sitemapy - wykluczamy strony z noindex oraz strony-widma
+const indexablePages = pages.filter(p => !p.noindex && !p.slug.startsWith('/maszynyCNC/'));
+
 // 1. Zapisz indeks wyszukiwania
-fs.writeFileSync(searchIndexPath, JSON.stringify(pages, null, 2));
-console.log(`💾 Indeks wyszukiwania z ${pages.length} stronami zapisany w: ${searchIndexPath}`);
+fs.writeFileSync(searchIndexPath, JSON.stringify(indexablePages.map(({ noindex, ...rest }) => rest), null, 2));
+console.log(`💾 Indeks wyszukiwania z ${indexablePages.length} stronami zapisany w: ${searchIndexPath}`);
 
 // 2. Automatycznie wygeneruj sitemap.xml ze wszystkimi podstronami (czyste adresy 200 OK z kanonicznym slashem)
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages
+${indexablePages
   .map(p => `  <url>\n    <loc>${BASE_URL}${p.slug === '/' ? '/' : p.slug}</loc>\n  </url>`)
   .join('\n')}
 </urlset>
@@ -67,7 +75,7 @@ fs.writeFileSync(sitemapPath, sitemapXml);
 if (fs.existsSync('build')) {
   fs.writeFileSync('build/sitemap.xml', sitemapXml);
 }
-console.log(`🗺️ Sitemap.xml zaktualizowany z ${pages.length} adresami URL (zgodnymi z SEO).`);
+console.log(`🗺️ Sitemap.xml zaktualizowany z ${indexablePages.length} adresami URL (zgodnymi z SEO).`);
 
 // 3. Automatycznie wygeneruj reguły _redirects (301 bez-slasha -> ze-slashem dla każdego adresu)
 const staticRedirects = [
@@ -87,7 +95,9 @@ const staticRedirects = [
   '/do_pobrania/Frezarki-5osiowe.pdf               /do_pobrania/CERTUS_Karta_katalogowa_Frezarki-5-osiowe.pdf  301',
   '/do_pobrania/Plotery-linearne-CNC.pdf           /do_pobrania/CERTUS_Karta_katalogowa_HLP-FT.pdf            301',
   '/maszyny-specjalistyczne                        /maszyny-specjalne/                                        301',
-  '/maszyny-specjalistyczne/                       /maszyny-specjalne/                                        301'
+  '/maszyny-specjalistyczne/                       /maszyny-specjalne/                                        301',
+  '/maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stoem/  /maszyny/#frezarki                             301',
+  '/maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stoem   /maszyny/#frezarki                             301'
 ];
 
 const autoSlashRedirects = [];

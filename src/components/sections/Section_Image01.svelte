@@ -37,6 +37,8 @@
         src="/assets/images/baner1_plotery_hpp.jpg"
         alt="Mechanika obrabiarek CNC CERTUS - prowadnice liniowe, śruby kulowe i serwonapędy"
         class="masked-image"
+        width="1536"
+        height="1024"
         loading="lazy"
         decoding="async"
       />

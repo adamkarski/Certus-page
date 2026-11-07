@@ -8,9 +8,7 @@
 
 <div class="app">
   <Section_Header />
-  <main>
-    <Bestseller />
-  </main>
+  <Bestseller />
   <Section_Footer />
 </div>
 

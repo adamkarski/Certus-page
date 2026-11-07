@@ -6,7 +6,7 @@
 <section id="mapawitryny" class="mapawitryny">
   <div class="mapawitryny-container container">
     <div class="section-header">
-      <h1 class="no-sel">MapaWitryny</h1>
+      <h1 class="no-sel">Mapa witryny</h1>
       <hr />
     </div>
   </div>

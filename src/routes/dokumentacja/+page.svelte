@@ -19,9 +19,13 @@
   maszynyData.forEach(category => {
     if (category.seo && Array.isArray(category.seo)) {
       category.seo.forEach(machine => {
+        let targetUrl = `/maszyny/#${category.id}`;
+        if (category.url) {
+          targetUrl = category.url.endsWith('/') ? category.url : `${category.url}/`;
+        }
         allMachineLinks.push({
           title: machine.name,
-          url: `/maszynyCNC/${category.id}/${machine.slug}`,
+          url: targetUrl,
           image: machine.image
         });
       });

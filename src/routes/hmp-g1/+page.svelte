@@ -8,9 +8,7 @@
 
 <div class="app">
   <Section_Header />
-  <main>
-    <HmpG1 />
-  </main>
+  <HmpG1 />
   <Section_Footer />
 </div>
 
