@@ -1,0 +1,24 @@
+// vite.config.ts
+import { sveltekit } from "file:///Users/tosh/Desktop/CERTUS%20BACKUP/icloud/Certus%20WWW/node_modules/@sveltejs/kit/src/exports/vite/index.js";
+import { defineConfig } from "file:///Users/tosh/Desktop/CERTUS%20BACKUP/icloud/Certus%20WWW/node_modules/vite/dist/node/index.js";
+import fs from "fs";
+var vite_config_default = defineConfig({
+  plugins: [sveltekit()],
+  server: {
+    host: true,
+    hmr: {
+      protocol: "wss"
+    },
+    https: {
+      key: fs.readFileSync("localhost+1-key.pem"),
+      cert: fs.readFileSync("localhost+1.pem")
+    },
+    watch: {
+      usePolling: true
+    }
+  }
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcudHMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCIvVXNlcnMvdG9zaC9EZXNrdG9wL0NFUlRVUyBCQUNLVVAvaWNsb3VkL0NlcnR1cyBXV1dcIjtjb25zdCBfX3ZpdGVfaW5qZWN0ZWRfb3JpZ2luYWxfZmlsZW5hbWUgPSBcIi9Vc2Vycy90b3NoL0Rlc2t0b3AvQ0VSVFVTIEJBQ0tVUC9pY2xvdWQvQ2VydHVzIFdXVy92aXRlLmNvbmZpZy50c1wiO2NvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9pbXBvcnRfbWV0YV91cmwgPSBcImZpbGU6Ly8vVXNlcnMvdG9zaC9EZXNrdG9wL0NFUlRVUyUyMEJBQ0tVUC9pY2xvdWQvQ2VydHVzJTIwV1dXL3ZpdGUuY29uZmlnLnRzXCI7aW1wb3J0IHsgc3ZlbHRla2l0IH0gZnJvbSAnQHN2ZWx0ZWpzL2tpdC92aXRlJztcbmltcG9ydCB7IGRlZmluZUNvbmZpZyB9IGZyb20gJ3ZpdGUnO1xuaW1wb3J0IGZzIGZyb20gJ2ZzJztcblxuZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29uZmlnKHtcbiAgcGx1Z2luczogW3N2ZWx0ZWtpdCgpXSxcbiAgc2VydmVyOiB7XG4gICAgaG9zdDogdHJ1ZSxcbiAgICBobXI6IHtcbiAgICAgIHByb3RvY29sOiAnd3NzJyxcbiAgICB9LFxuICAgIGh0dHBzOiB7XG4gICAgICBrZXk6IGZzLnJlYWRGaWxlU3luYygnbG9jYWxob3N0KzEta2V5LnBlbScpLFxuICAgICAgY2VydDogZnMucmVhZEZpbGVTeW5jKCdsb2NhbGhvc3QrMS5wZW0nKSxcbiAgICB9LFxuICAgIHdhdGNoOiB7XG4gICAgICB1c2VQb2xsaW5nOiB0cnVlLFxuICAgIH0sXG4gIH1cbn0pO1xuXG4iXSwKICAibWFwcGluZ3MiOiAiO0FBQStVLFNBQVMsaUJBQWlCO0FBQ3pXLFNBQVMsb0JBQW9CO0FBQzdCLE9BQU8sUUFBUTtBQUVmLElBQU8sc0JBQVEsYUFBYTtBQUFBLEVBQzFCLFNBQVMsQ0FBQyxVQUFVLENBQUM7QUFBQSxFQUNyQixRQUFRO0FBQUEsSUFDTixNQUFNO0FBQUEsSUFDTixLQUFLO0FBQUEsTUFDSCxVQUFVO0FBQUEsSUFDWjtBQUFBLElBQ0EsT0FBTztBQUFBLE1BQ0wsS0FBSyxHQUFHLGFBQWEscUJBQXFCO0FBQUEsTUFDMUMsTUFBTSxHQUFHLGFBQWEsaUJBQWlCO0FBQUEsSUFDekM7QUFBQSxJQUNBLE9BQU87QUFBQSxNQUNMLFlBQVk7QUFBQSxJQUNkO0FBQUEsRUFDRjtBQUNGLENBQUM7IiwKICAibmFtZXMiOiBbXQp9Cg==
