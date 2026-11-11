@@ -65,7 +65,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Maszyny specjalne CNC – budowa na zamówienie | CERTUS',
 		ogDescription:
 			'Indywidualne projekty maszyn CNC dopasowane do unikalnych potrzeb Twojego zakładu produkcyjnego.',
-		image: '/assets/images/maszyny-specjalistyczne/frezarko-grawerka-cnc-certus-69-glowne1.webp',
+		image: '/assets/images/maszyny-specjalne/frezarko-grawerka-cnc-certus-69-glowne1.webp',
 		type: 'website'
 	},
 	'/maszyny-specjalistyczne': {
@@ -75,7 +75,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Dedykowane Maszyny Specjalne CNC | CERTUS',
 		ogDescription:
 			'Indywidualne projekty maszyn CNC dopasowane do unikalnych potrzeb Twojego zakładu produkcyjnego.',
-		image: '/assets/images/maszyny-specjalistyczne/frezarko-grawerka-cnc-certus-69-glowne1.webp',
+		image: '/assets/images/maszyny-specjalne/frezarko-grawerka-cnc-certus-69-glowne1.webp',
 		type: 'website'
 	},
 	'/onas': {
