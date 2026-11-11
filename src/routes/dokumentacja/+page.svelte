@@ -176,19 +176,12 @@
     overflow: hidden;
 
     &:hover {
-      border-color: #96a500;
-      box-shadow: 0 6px 20px rgba(150, 165, 0, 0.18);
+      border-color: #cbd3dc;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       transform: translateY(-2px);
 
-      .card-model-badge {
-        background: #96a500;
-        :global(.machine-svg-title) {
-          color: #111213;
-        }
-      }
-
       .card-right .card-image {
-        transform: scale(1.05);
+        transform: scale(1.04);
       }
     }
   }
