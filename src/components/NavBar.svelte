@@ -637,12 +637,6 @@
             </div>
           {/if}
           <a
-            href="/bestseller/"
-            class="mobile-nav-link"
-            class:active={isBestsellerActive}
-            on:click={closeMobileMenu}>Bestseller</a
-          >
-          <a
             href="/serwis/"
             class="mobile-nav-link"
             class:active={isSerwisActive}
