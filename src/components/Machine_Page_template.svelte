@@ -117,6 +117,7 @@
   export let optionCardBadge: string = "OPCJA";
   export let optionCardTitle: string = "Sonda 3D";
   export let optionCardDesc: string = "Pomiar materiału i detalu bezpośrednio na maszynie. Ułatwia wyznaczanie punktu zerowego oraz ustalanie położenia materiału i detalu przed obróbką.";
+  export let optionCards: Array<{ badge?: string; title: string; desc: string }> = [];
 
   export let benefitsSectionTitle: string = "Po zakupie";
   export let benefits: BenefitCard[] = [];
@@ -692,15 +693,29 @@
               </div>
             {/if}
 
-            <div class="sonda-card">
-              <div class="sonda-header">
-                <span class="sonda-badge">{optionCardBadge}</span>
-                <p class="sonda-title">{optionCardTitle}</p>
+            {#if optionCards && optionCards.length > 0}
+              {#each optionCards as card}
+                <div class="sonda-card">
+                  <div class="sonda-header">
+                    <span class="sonda-badge">{card.badge || optionCardBadge}</span>
+                    <p class="sonda-title">{card.title}</p>
+                  </div>
+                  <p class="sonda-desc" use:typoFixAction>
+                    {card.desc}
+                  </p>
+                </div>
+              {/each}
+            {:else}
+              <div class="sonda-card">
+                <div class="sonda-header">
+                  <span class="sonda-badge">{optionCardBadge}</span>
+                  <p class="sonda-title">{optionCardTitle}</p>
+                </div>
+                <p class="sonda-desc" use:typoFixAction>
+                  {optionCardDesc}
+                </p>
               </div>
-              <p class="sonda-desc" use:typoFixAction>
-                {optionCardDesc}
-              </p>
-            </div>
+            {/if}
           </div>
         </div>
       </div>

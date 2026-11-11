@@ -96,6 +96,7 @@ export interface MachinePageConfig {
   optionCardBadge: string;
   optionCardTitle: string;
   optionCardDesc: string;
+  optionCards?: Array<{ badge?: string; title: string; desc: string }>;
   infoSection?: InfoSectionData | null;
   benefitsSectionTitle?: string;
   benefits: BenefitCard[];
@@ -297,6 +298,18 @@ export const certus69Data: MachinePageConfig = {
   optionCardBadge: "OPCJA",
   optionCardTitle: "4. oś obrotowa",
   optionCardDesc: "Możliwość łatwej rozbudowy o 4. oś obrotu bez utraty podstawowego pola pracy. Precyzyjne frezowanie elementów cylindrycznych i form.",
+  optionCards: [
+    {
+      badge: "OPCJA",
+      title: "4. oś obrotowa",
+      desc: "Możliwość łatwej rozbudowy o 4. oś obrotu bez utraty podstawowego pola pracy. Precyzyjne frezowanie elementów cylindrycznych i form."
+    },
+    {
+      badge: "OPCJA",
+      title: "Czujnik pomiaru detalu – sonda 3D",
+      desc: "Pomiar materiału i detalu bezpośrednio na stole maszyny. Ułatwia wyznaczanie punktu zerowego oraz precyzyjne bazowanie detalu przed obróbką."
+    }
+  ],
   benefits: [
     { title: "Uruchomienie", text: "Instalacja i szkolenie podstawowe operatora (do 3 h) w cenie maszyny." },
     { title: "Gwarancja 12 miesięcy", text: "Od dnia odbioru, potwierdzonego protokołem odbioru technicznego." },
