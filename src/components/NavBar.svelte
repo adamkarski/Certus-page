@@ -505,10 +505,10 @@
           >
             <div class="mobile-promo-text">
               <div class="mobile-promo-badge">
-                <MachineTitleSvg text="NOWOŚĆ" height="0.8em" shadow={false} />
+                <MachineTitleSvg text="NOWOŚĆ" height="0.95em" shadow={false} />
               </div>
               <div class="mobile-promo-title">
-                <MachineTitleSvg text="HMP-G1" height="1.3em" shadow={false} />
+                <MachineTitleSvg text="HMP-G1" height="1.6em" shadow={false} />
               </div>
               <span class="mobile-promo-subtitle">Kompaktowe centrum CNC &rarr;</span>
             </div>
@@ -522,7 +522,7 @@
             </div>
           </a>
 
-          <!-- Karta 2: Bestseller CERTUS 69 (Przezroczysta maszyna po lewej, ikona i tekst po prawej) -->
+          <!-- Karta 2: Bestseller CERTUS 69 (Przezroczysta maszyna po lewej, tekst po prawej) -->
           <a
             href="/bestseller/"
             class="mobile-promo-card mobile-promo-bestseller mobile-promo-reverse"
@@ -539,13 +539,10 @@
             </div>
             <div class="mobile-promo-text">
               <div class="mobile-promo-badge bestseller-badge">
-                <svg class="w-3.5 h-3.5 mr-1 inline-block" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                <MachineTitleSvg text="BESTSELLER" height="0.75em" shadow={false} />
+                <MachineTitleSvg text="BESTSELLER" height="0.9em" shadow={false} />
               </div>
               <div class="mobile-promo-title">
-                <MachineTitleSvg text="CERTUS 69" height="1.25em" shadow={false} />
+                <MachineTitleSvg text="CERTUS 69" height="1.5em" shadow={false} />
               </div>
               <span class="mobile-promo-subtitle">&larr; Najchętniej wybierana</span>
             </div>
@@ -1153,19 +1150,21 @@
     }
   }
 
-  /* Karty promocyjne w pełnoekranowym menu mobilnym */
+  /* Karty promocyjne w pełnoekranowym menu mobilnym z efektem 3D Pop-Out */
   .mobile-promo-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 10px 14px;
-    border-radius: 18px;
+    min-height: 96px;
+    padding: 14px 20px;
+    border-radius: 22px;
     text-decoration: none;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
-    margin-bottom: 8px;
+    overflow: visible; // Obrazek ma wystawać poza obrys karty!
+    margin-top: 16px;
+    margin-bottom: 22px;
     transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 
     &:active {
@@ -1174,52 +1173,59 @@
   }
 
   .mobile-promo-hmp {
-    background: linear-gradient(135deg, #748200 0%, #4d5700 100%);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow: 0 4px 14px rgba(116, 130, 0, 0.35);
+    background: linear-gradient(135deg, #6c7800 0%, #464f00 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
     color: #ffffff;
 
     .mobile-promo-badge {
-      background: rgba(255, 255, 255, 0.2);
-      color: #ffffff;
+      background: #ffffff;
+      color: #555f00;
+      font-weight: 800;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
   }
 
   .mobile-promo-bestseller {
-    background: linear-gradient(135deg, #2b343d 0%, #1a2026 100%);
-    border: 1px solid rgba(255, 215, 0, 0.35);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #252e37 0%, #171d23 100%);
+    border: 1.5px solid #ffd700;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
     color: #ffffff;
+    margin-top: 16px;
 
     .mobile-promo-badge {
-      background: linear-gradient(135deg, #ffd700 0%, #ff9800 100%);
+      background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
       color: #1a2026;
-      font-weight: 700;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
     }
   }
 
   .mobile-promo-card.mobile-promo-reverse {
     flex-direction: row;
+    padding-left: 14px;
+    padding-right: 20px;
   }
 
   .mobile-promo-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 3px;
+    gap: 4px;
     z-index: 2;
+    position: relative;
   }
 
   .mobile-promo-badge {
     display: inline-flex;
     align-items: center;
-    padding: 3px 9px;
+    padding: 4px 12px;
     border-radius: 9999px;
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.82rem;
+    font-weight: 800;
     width: fit-content;
-    letter-spacing: 0.04em;
-    margin-bottom: 2px;
+    letter-spacing: 0.05em;
+    margin-bottom: 3px;
   }
 
   .mobile-promo-title {
@@ -1227,6 +1233,7 @@
     align-items: center;
     color: #ffffff;
     line-height: 1.1;
+    margin-bottom: 2px;
 
     :global(svg) {
       color: #ffffff !important;
@@ -1234,26 +1241,43 @@
   }
 
   .mobile-promo-subtitle {
-    font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.78);
-    font-weight: 400;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    margin-top: 2px;
   }
 
   .mobile-promo-image-wrap {
     flex-shrink: 0;
-    width: 86px;
-    height: 68px;
+    width: 115px;
+    height: 76px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
+    z-index: 10;
   }
 
+  /* Zdjęcie jest większe i efektownie wystaje ponad i poza box */
   .mobile-promo-img {
-    max-width: 100%;
-    max-height: 100%;
+    position: absolute;
+    width: 135px;
+    max-width: none;
+    height: auto;
+    max-height: 120px;
     object-fit: contain;
-    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.65));
+    pointer-events: none;
+  }
+
+  .mobile-promo-hmp .mobile-promo-img {
+    right: -12px;
+    top: -20px;
+  }
+
+  .mobile-promo-bestseller .mobile-promo-img {
+    left: -12px;
+    top: -18px;
   }
 
   .mega-menu {
