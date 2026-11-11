@@ -109,8 +109,8 @@
 
     if (isDesktopVisible) {
       const menuWidth = desktopMenuEl.offsetWidth || 650;
-      // 175px (pełne logo) + 20px (gap) + menuWidth + 24px (marginesy kapsuły)
-      const neededForFull = 175 + 20 + menuWidth + 24;
+      // 197px (pełne logo) + 20px (gap) + menuWidth + 24px (marginesy kapsuły)
+      const neededForFull = 197 + 20 + menuWidth + 24;
       isSmallLogo = ramkaWidth < neededForFull;
     } else {
       isSmallLogo = ramkaWidth < 460;
@@ -1130,6 +1130,11 @@
       transition: box-shadow 0.6s;
     }
 
+    :global(.lottie-player svg) {
+      display: block;
+      overflow: visible;
+    }
+
     &.logomini {
       width: 40px;
       height: 40px;
@@ -1142,11 +1147,11 @@
     }
 
     &.logofull {
-      width: 170px;
+      width: 197px;
       height: 40px;
 
       :global(.lottie-player) {
-        width: 170px !important;
+        width: 197px !important;
         height: 40px !important;
       }
     }
