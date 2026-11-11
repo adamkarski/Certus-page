@@ -73,6 +73,11 @@ function getSvgData(text, fontSize = 1000) {
 }
 
 const machineNames = [
+  'NOWOŚĆ',
+  'Nowość',
+  'NOWOŚĆ: HMP-G1',
+  'BESTSELLER',
+  'Bestseller',
   'HMP-G1',
   'HMP',
   'G1',
@@ -92,6 +97,7 @@ const machineNames = [
   'CERTUS',
   'CERTUS 69',
   '69',
+  'C69',
   'CERTUS HMM-ST',
   'CERTUS HMM-GT',
   'CERTUS HPP-OT',

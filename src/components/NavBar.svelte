@@ -90,13 +90,12 @@
       window.getComputedStyle(desktopMenuEl).display !== "none";
 
     if (isDesktopVisible) {
-      const menuWidth = desktopMenuEl.offsetWidth || 760;
-      // 220px (pełne logo) + 24px (gap) + menuWidth + 40px (bezpieczne marginesy od łuków kapsuły)
-      const neededForFull = 220 + 24 + menuWidth + 40;
+      const menuWidth = desktopMenuEl.offsetWidth || 650;
+      // 175px (pełne logo) + 20px (gap) + menuWidth + 24px (marginesy kapsuły)
+      const neededForFull = 175 + 20 + menuWidth + 24;
       isSmallLogo = ramkaWidth < neededForFull;
     } else {
-      // Menu mobilne (hamburger ~50px + logo 210px + marginesy ~60px = 320px)
-      isSmallLogo = ramkaWidth < 360;
+      isSmallLogo = ramkaWidth < 460;
     }
   }
 
@@ -497,14 +496,61 @@
           {/if}
         </div>
         <div class="mobile-links-container">
+          <!-- Karta 1: Nowość HMP-G1 (Tekst po lewej, przezroczysta maszyna po prawej) -->
           <a
             href="/hmp-g1/"
-            class="mobile-nav-link mobile-nav-pill-nowosc"
+            class="mobile-promo-card mobile-promo-hmp"
             class:active={isHmpG1Active}
             on:click={closeMobileMenu}
           >
-            Nowość: HMP-G1
+            <div class="mobile-promo-text">
+              <div class="mobile-promo-badge">
+                <MachineTitleSvg text="NOWOŚĆ" height="0.8em" shadow={false} />
+              </div>
+              <div class="mobile-promo-title">
+                <MachineTitleSvg text="HMP-G1" height="1.3em" shadow={false} />
+              </div>
+              <span class="mobile-promo-subtitle">Kompaktowe centrum CNC &rarr;</span>
+            </div>
+            <div class="mobile-promo-image-wrap">
+              <img
+                src="/assets/maszyny/hmp-g1/hmp-g1-render2.webp"
+                alt="HMP-G1"
+                class="mobile-promo-img"
+                loading="lazy"
+              />
+            </div>
           </a>
+
+          <!-- Karta 2: Bestseller CERTUS 69 (Przezroczysta maszyna po lewej, ikona i tekst po prawej) -->
+          <a
+            href="/bestseller/"
+            class="mobile-promo-card mobile-promo-bestseller mobile-promo-reverse"
+            class:active={isBestsellerActive}
+            on:click={closeMobileMenu}
+          >
+            <div class="mobile-promo-image-wrap">
+              <img
+                src="/assets/maszyny/certus-69/c69-hero-render.webp"
+                alt="CERTUS 69"
+                class="mobile-promo-img"
+                loading="lazy"
+              />
+            </div>
+            <div class="mobile-promo-text">
+              <div class="mobile-promo-badge bestseller-badge">
+                <svg class="w-3.5 h-3.5 mr-1 inline-block" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <MachineTitleSvg text="BESTSELLER" height="0.75em" shadow={false} />
+              </div>
+              <div class="mobile-promo-title">
+                <MachineTitleSvg text="CERTUS 69" height="1.25em" shadow={false} />
+              </div>
+              <span class="mobile-promo-subtitle">&larr; Najchętniej wybierana</span>
+            </div>
+          </a>
+
           <a
             href="/"
             class="mobile-nav-link"
@@ -694,16 +740,14 @@
   .desktop-menu-items {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.2rem;
     background: white;
     border-radius: 9999px;
     color: #616d5d;
     font-weight: 200;
-    margin-left: -13px;
-    margin-right: 0px;
-    height: 74px;
-    margin-top: 0px;
-    padding: 0 14px 0 10px;
+    margin: 0;
+    height: 48px;
+    padding: 0 6px;
   }
 
   .mobile-menu-button-container {
@@ -773,10 +817,9 @@
 
   .mobile-menu-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 1);
     backdrop-filter: blur(5px);
     z-index: 1000;
@@ -786,15 +829,16 @@
 
   .mobile-menu-content {
     background: #232c32;
-    width: 100vw;
+    width: 100%;
     height: 100%;
+    box-sizing: border-box;
     display: flex;
     padding-top: 42px !important;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 1.5rem;
-    padding: 2rem;
+    padding: 1.5rem;
     transform-origin: left center;
     box-shadow: 5px 0px 25px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
@@ -880,30 +924,34 @@
     .ramka {
       margin-left: 0.75em !important;
       margin-right: 0.75em !important;
-      height: 80px;
+      height: 58px;
     }
     .mobile-menu-button-container {
-      margin-right: 18px !important;
+      margin-right: 12px !important;
     }
   }
 
   /* Ekrany laptop/desktop: zwężenie marginesów bocznych, aby menu nigdy nie dotykało krawędzi */
   @media (min-width: 1024px) and (max-width: 1320px) {
     .ramka {
-      margin-left: 3em !important;
-      margin-right: 3em !important;
+      margin-left: 2em !important;
+      margin-right: 2em !important;
+      height: 60px;
     }
     nav.scrolled .ramka {
-      margin-left: 3em !important;
-      margin-right: 3em !important;
+      margin-left: 2em !important;
+      margin-right: 2em !important;
     }
     .desktop-menu-items {
       margin-right: 0px;
-      padding: 0 12px 0 8px;
-      gap: 0.15rem;
+      padding: 0 5px;
+      gap: 0.1rem;
+      height: 46px;
     }
     .nav-link {
-      padding: 8px 12px;
+      padding: 0 10px;
+      font-size: 0.84rem;
+      height: 34px;
     }
   }
 
@@ -927,7 +975,7 @@
   }
 
   .nav-link.kontakt-nav {
-    margin-right: 2px;
+    margin-right: 0px;
   }
 
   *:focus {
@@ -942,7 +990,7 @@
   nav {
     width: 100vw;
     margin-top: 0;
-    padding-top: 2.3em;
+    padding-top: 1.25em;
     background: transparent;
     transition: all 0.3s ease-in-out;
   }
@@ -967,7 +1015,7 @@
 
   .ramka {
     display: flex;
-    height: 94px;
+    height: 60px;
     border-radius: 9999px;
     margin-left: 8em;
     margin-right: 8em;
@@ -978,7 +1026,7 @@
       width: 100%;
       height: 100%;
       align-items: center;
-      padding: 0 10px 0 1.5rem;
+      padding: 0 7px 0 1.25rem;
       flex-direction: row;
       justify-content: space-between;
     }
@@ -997,23 +1045,23 @@
     }
 
     &.logomini {
-      width: 52px;
-      height: 52px;
+      width: 40px;
+      height: 40px;
       overflow: hidden;
 
       :global(.lottie-player) {
-        width: 50px !important;
-        height: 50px !important;
+        width: 38px !important;
+        height: 38px !important;
       }
     }
 
     &.logofull {
-      width: 220px;
-      height: 52px;
+      width: 170px;
+      height: 40px;
 
       :global(.lottie-player) {
-        width: 220px !important;
-        height: 52px !important;
+        width: 170px !important;
+        height: 40px !important;
       }
     }
   }
@@ -1034,18 +1082,22 @@
   }
 
   .nav-link {
-    min-width: 79px;
-    padding: 8px 16px;
+    min-width: 72px;
+    height: 34px;
+    box-sizing: border-box;
+    padding: 0 13px;
     color: #4b5563;
-    transition: all 300ms ease-in-out;
+    transition: all 250ms ease-in-out;
     font-weight: 500;
+    font-size: 0.9rem;
     border-radius: 9999px;
     position: relative;
     overflow: hidden;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     outline: none;
+    white-space: nowrap;
 
     &:hover {
       color: var(--color-text-primary);
@@ -1073,14 +1125,18 @@
   .nav-pill-nowosc {
     background-color: #7e8c00 !important;
     color: #ffffff !important;
-    padding: 8px 18px !important;
+    height: 34px;
+    box-sizing: border-box;
+    padding: 0 14px !important;
     border-radius: 9999px !important;
     font-weight: 600 !important;
-    font-size: 0.9rem !important;
+    font-size: 0.85rem !important;
     white-space: nowrap !important;
-    margin-left: 2px;
-    margin-right: 4px;
+    margin: 0;
     letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     transition:
       background-color 0.3s ease,
       filter 0.3s ease !important;
@@ -1097,19 +1153,107 @@
     }
   }
 
-  .mobile-nav-pill-nowosc {
-    background-color: #7e8c00 !important;
-    color: #ffffff !important;
-    border-radius: 12px !important;
-    font-weight: 600 !important;
+  /* Karty promocyjne w pełnoekranowym menu mobilnym */
+  .mobile-promo-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 18px;
+    text-decoration: none;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
     margin-bottom: 8px;
-    text-align: center;
-    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 
-    &:hover {
-      background-color: #96a500 !important;
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .mobile-promo-hmp {
+    background: linear-gradient(135deg, #748200 0%, #4d5700 100%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 4px 14px rgba(116, 130, 0, 0.35);
+    color: #ffffff;
+
+    .mobile-promo-badge {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+  }
+
+  .mobile-promo-bestseller {
+    background: linear-gradient(135deg, #2b343d 0%, #1a2026 100%);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+
+    .mobile-promo-badge {
+      background: linear-gradient(135deg, #ffd700 0%, #ff9800 100%);
+      color: #1a2026;
+      font-weight: 700;
+    }
+  }
+
+  .mobile-promo-card.mobile-promo-reverse {
+    flex-direction: row;
+  }
+
+  .mobile-promo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    z-index: 2;
+  }
+
+  .mobile-promo-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: fit-content;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+
+  .mobile-promo-title {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    line-height: 1.1;
+
+    :global(svg) {
       color: #ffffff !important;
     }
+  }
+
+  .mobile-promo-subtitle {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 400;
+  }
+
+  .mobile-promo-image-wrap {
+    flex-shrink: 0;
+    width: 86px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .mobile-promo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
   }
 
   .mega-menu {
