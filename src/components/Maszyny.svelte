@@ -1,28 +1,24 @@
 <script lang="ts">
   import CtaButton from "./CtaButton.svelte";
   import OfertaGrid from "./OfertaGrid.svelte";
-  // import Section_Maszyny_Image01 from "./sections/Section_Maszyny_Image01.svelte";
   import Section_Maszyny_Video from "./sections/Section_Maszyny_Video.svelte";
   import Section_Maszyny_Image02 from "./sections/Section_Maszyny_Image02.svelte";
   import { typoFixAction } from "$lib/utils/typography";
 
   import Maszyny_table_frezarki_GT_ST from "./tables/Maszyny_table_frezarki_GT_ST.svelte";
-
   import Maszyny_table_ploteryPrzemyslowe_CT_OT from "./tables/Maszyny_table_plotery_przemyslowe_CT_OT.svelte";
-
   import Maszyny_table_ploteryLinearne from "./tables/Maszyny_table_ploteryLinearne.svelte";
   import Maszyny_table_grawerki from "./tables/Maszyny_table_grawerki.svelte";
   import Maszyny_table_frezarki5osiowe from "./tables/Maszyny_table_frezarki5osiowe.svelte";
 
-
   import MachineMenu from "./MachineMenu.svelte";
-
-  // import css styles
   import "$lib/table.scss";
 
   // Gallery Imports
   import Gallery from "$lib/components/Gallery.svelte";
-  import { galleryData } from "$lib/data/galleryData"; // Assuming galleryData.ts exports galleryData
+  import { galleryData } from "$lib/data/galleryData";
+  import { browser } from "$app/environment";
+  import { onMount } from "svelte";
 
   // Gallery State
   let isGalleryOpen: boolean = false;
@@ -42,13 +38,10 @@
 
   function closeGallery() {
     isGalleryOpen = false;
-    currentGalleryImages = []; // Clear images when closing
+    currentGalleryImages = [];
   }
 
-  // Import shared styles for studio hero, buttons & KPI
-  import "$lib/styles/shared-components.scss";
-
-  // Desktop: 1 poziom rozwijania szczegółów (domyślnie zwinięte, pierwsza otwarta)
+  // Desktop: 1 poziom rozwijania szczegółów (domyślnie pierwsza otwarta, reszta zwinięta)
   let desktopExpanded: Record<string, boolean> = {
     frezarki: true,
     "frezarki-gt": false,
@@ -81,28 +74,28 @@
     ploteryLinearne: false
   };
 
-  function toggleDesktopDetails(id: string) {
-    desktopExpanded[id] = !desktopExpanded[id];
+  function toggleDesktop(id: string) {
+    desktopExpanded = { ...desktopExpanded, [id]: !desktopExpanded[id] };
   }
 
   function toggleMobileMachine(id: string) {
-    mobileMachineExpanded[id] = !mobileMachineExpanded[id];
+    mobileMachineExpanded = { ...mobileMachineExpanded, [id]: !mobileMachineExpanded[id] };
   }
 
   function toggleMobileDetails(id: string) {
-    mobileDetailsExpanded[id] = !mobileDetailsExpanded[id];
+    mobileDetailsExpanded = { ...mobileDetailsExpanded, [id]: !mobileDetailsExpanded[id] };
   }
 
   function handleHashOpen(hash: string) {
     const cleanId = hash.replace("#", "");
     if (cleanId && desktopExpanded[cleanId] !== undefined) {
-      desktopExpanded[cleanId] = true;
-      mobileMachineExpanded[cleanId] = true;
+      desktopExpanded = { ...desktopExpanded, [cleanId]: true };
+      mobileMachineExpanded = { ...mobileMachineExpanded, [cleanId]: true };
+      mobileDetailsExpanded = { ...mobileDetailsExpanded, [cleanId]: true };
     }
   }
 
-  import { onMount as onMountMaszyny } from "svelte";
-  onMountMaszyny(() => {
+  onMount(() => {
     if (browser) {
       if (window.location.hash) {
         handleHashOpen(window.location.hash);
@@ -112,106 +105,53 @@
       });
     }
   });
-
 </script>
 
-<!-- ===================================================================
-     1. HERO STUDIO & MOCNY H1 POD SEO (spójny z /serwis, /onas, /hmp-g1)
-     =================================================================== -->
-<div class="hmp-hero-wrapper no-sel">
-  <div class="hmp-hero-bg has-custom-lights" aria-hidden="true"></div>
 
-  <div class="hero-image-backdrop" aria-hidden="true">
-    <img
-      src="/assets/images/onas/hero-tlo-maszyny.webp"
-      alt="Maszyny CNC CERTUS w hali produkcyjnej"
-      class="hero-backdrop-img"
-      loading="eager"
-    />
-  </div>
+<section class="maszyny_page gradientHero_old">
+  <div class="first-container-back"></div>
+  <div class="pattern-overlay no-sel s"><div class="pattern two"></div></div>
+</section>
 
-  <div class="hmp-hero-lights" aria-hidden="true"></div>
-
-  <section class="cx-wrap hmp-hero-section">
-    <div class="hero-grid">
-      <div class="hero-text-col">
-        <span class="hero-pill-badge">Polski producent obrabiarek CNC</span>
-        <h1 class="hero-h1">Centra obróbcze, frezarki i plotery przemysłowe CNC</h1>
-        <p class="hero-lead" use:typoFixAction>
-          Projektujemy, spawamy i budujemy w Polsce sztywne, precyzyjne obrabiarki CNC dopasowane do materiału, gabarytów detalu i tempa Twojej produkcji.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#maszyny-katalog" class="btn-certus-primary">Przeglądaj modele maszyn</a>
-          <a href="/kontakt" class="btn-certus-outline">Zapytaj o wycenę i dobór</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Pasek 4 KPI (klasy cx-kpi identyczne z /serwis, /onas, /hmp-g1) -->
-    <div class="cx-kpi">
-      <div class="cx-kpi-item">
-        <p class="cx-kpi-label">GWARANCJA</p>
-        <p class="cx-kpi-value">12 miesięcy</p>
-        <p class="cx-kpi-note">od dnia odbioru maszyny</p>
-      </div>
-      <div class="cx-kpi-item">
-        <p class="cx-kpi-label">PRODUKCJA</p>
-        <p class="cx-kpi-value">100% Polska</p>
-        <p class="cx-kpi-note">projekt, spawanie i montaż</p>
-      </div>
-      <div class="cx-kpi-item">
-        <p class="cx-kpi-label">DOŚWIADCZENIE</p>
-        <p class="cx-kpi-value">od 2000 r.</p>
-        <p class="cx-kpi-note">w budowie maszyn CNC</p>
-      </div>
-      <div class="cx-kpi-item">
-        <p class="cx-kpi-label">CZĘŚCI I SERWIS</p>
-        <p class="cx-kpi-value">na miejscu</p>
-        <p class="cx-kpi-note">bezpośrednie wsparcie producenta</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="cx-cut" aria-hidden="true"></div>
-</div>
-
-<!-- ===================================================================
-     2. MENU MASZYN Z IKONKAMI (OFERTAGRID) – ZACHOWANE Z POPRAWIONYM RWD & SEO
-     =================================================================== -->
-<section id="maszyny" class="maszyny-nav-section">
-  <div id="maszyny-katalog" class="certus-container">
-    <div class="section-title-wrap">
-      <span class="section-pretitle">Katalog obrabiarek CERTUS</span>
-      <h2 class="section-heading">Wybierz kategorię maszyny</h2>
-      <p class="section-desc">Kliknij kategorię, aby przejść bezpośrednio do wybranego modelu i specyfikacji technicznej.</p>
+<section id="maszyny" class="maszyny">
+  <div class="maszyny-container container">
+    <div class="section-header">
+      <h1 class="no-sel">Centra obróbcze, frezarki i plotery przemysłowe CNC</h1>
+      <hr />
     </div>
   </div>
   <OfertaGrid variant="maszyny" />
 </section>
 
-<!-- Frezarki CNC HMM-ST -->
+<!-- Frezarka CNC HMM-ST -->
 <section id="frezarki" class="maszyny-dane">
-  <!-- Pasek nagłówka mobilnego (Poziom 1 rozwijania na telefonie) -->
+  <!-- Mobile Level 1 Header (widoczne tylko na smartfonach) -->
   <div class="mobile-machine-header mobile-only">
     <button
       type="button"
-      class="mobile-machine-toggle-btn"
+      class="mobile-level1-btn"
       on:click={() => toggleMobileMachine('frezarki')}
       aria-expanded={mobileMachineExpanded['frezarki']}
     >
-      <span class="mobile-toggle-label">
-        {mobileMachineExpanded['frezarki'] ? 'Zwiń maszynę' : 'Zobacz model i specyfikację'}
-      </span>
-      <span class="mobile-toggle-icon" class:is-rotated={mobileMachineExpanded['frezarki']}>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </span>
+      <div class="mobile-level1-left">
+        <img src="/assets/ikony/maszyny/frezarki.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
+        <span class="mobile-level1-title">Frezarka CNC HMM-ST</span>
+      </div>
+      <div class="mobile-level1-right">
+        <span class="mobile-level1-status">
+          {mobileMachineExpanded['frezarki'] ? 'Zwiń' : 'Rozwiń'}
+        </span>
+        <span class="btn-arrow" class:is-rotated={mobileMachineExpanded['frezarki']}>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
     </button>
   </div>
 
-  <div class="machine-body-wrapper" class:mobile-collapsed={!mobileMachineExpanded['frezarki']}>
+  <!-- Główny kontener maszyny (na mobile zwijany poziomem 1) -->
+  <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['frezarki']}>
     <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -227,52 +167,50 @@
     </div>
   </div>
 
-    <!-- Przyciski rozwijania: 1 poziom na desktop, poziom 2 na mobile -->
-    <div class="machine-tier-controls">
+    <!-- Przyciski rozwijania parametrów -->
+    <div class="tier-controls-bar">
+      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
       <button
         type="button"
-        class="tier-expand-btn desktop-only"
-        on:click={() => toggleDesktopDetails('frezarki')}
+        class="spec-toggle-btn desktop-only"
+        on:click={() => toggleDesktop('frezarki')}
         aria-expanded={desktopExpanded['frezarki']}
       >
-        <span class="tier-btn-text">
-          {desktopExpanded['frezarki'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={desktopExpanded['frezarki']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={desktopExpanded['frezarki']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {desktopExpanded['frezarki'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
         </span>
       </button>
 
+      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
       <button
         type="button"
-        class="tier-expand-btn mobile-only"
+        class="spec-toggle-btn mobile-only"
         on:click={() => toggleMobileDetails('frezarki')}
         aria-expanded={mobileDetailsExpanded['frezarki']}
       >
-        <span class="tier-btn-text">
-          {mobileDetailsExpanded['frezarki'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={mobileDetailsExpanded['frezarki']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['frezarki']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {mobileDetailsExpanded['frezarki'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
         </span>
       </button>
     </div>
 
-    <!-- Zawartość szczegółowa: zawsze w DOM pod kątem SEO (rozwijana CSS) -->
+    <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
-      class="machine-tier-details"
-      class:desktop-expanded={desktopExpanded['frezarki']}
-      class:mobile-expanded={mobileDetailsExpanded['frezarki']}
+      class="machine-details-collapsible"
+      class:desktop-closed={!desktopExpanded['frezarki']}
+      class:mobile-l2-closed={!mobileDetailsExpanded['frezarki']}
     >
-      
-
-
-
-  <div class="maszyny-dane-text-image" use:typoFixAction>
+      <div class="maszyny-dane-text-image" use:typoFixAction>
     <div class="left">
 
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
@@ -400,42 +338,45 @@
       />
     </div>
   </div>
-  
-    </div>
-
-    <MachineMenu
+  <MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HMM-ST.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
-    
-
+    </div>
   </div>
 </section>
 
-<!-- Frezarki CNC HMM-GT -->
+<!-- Frezarka CNC HMM-GT -->
 <section id="frezarki-gt" class="maszyny-dane">
-  <!-- Pasek nagłówka mobilnego (Poziom 1 rozwijania na telefonie) -->
+  <!-- Mobile Level 1 Header (widoczne tylko na smartfonach) -->
   <div class="mobile-machine-header mobile-only">
     <button
       type="button"
-      class="mobile-machine-toggle-btn"
+      class="mobile-level1-btn"
       on:click={() => toggleMobileMachine('frezarki-gt')}
       aria-expanded={mobileMachineExpanded['frezarki-gt']}
     >
-      <span class="mobile-toggle-label">
-        {mobileMachineExpanded['frezarki-gt'] ? 'Zwiń maszynę' : 'Zobacz model i specyfikację'}
-      </span>
-      <span class="mobile-toggle-icon" class:is-rotated={mobileMachineExpanded['frezarki-gt']}>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </span>
+      <div class="mobile-level1-left">
+        <img src="/assets/ikony/maszyny/frezarki.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
+        <span class="mobile-level1-title">Frezarka CNC HMM-GT</span>
+      </div>
+      <div class="mobile-level1-right">
+        <span class="mobile-level1-status">
+          {mobileMachineExpanded['frezarki-gt'] ? 'Zwiń' : 'Rozwiń'}
+        </span>
+        <span class="btn-arrow" class:is-rotated={mobileMachineExpanded['frezarki-gt']}>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
     </button>
   </div>
 
-  <div class="machine-body-wrapper" class:mobile-collapsed={!mobileMachineExpanded['frezarki-gt']}>
+  <!-- Główny kontener maszyny (na mobile zwijany poziomem 1) -->
+  <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['frezarki-gt']}>
     <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -455,54 +396,50 @@
     </div>
   </div>
 
-    <!-- Przyciski rozwijania: 1 poziom na desktop, poziom 2 na mobile -->
-    <div class="machine-tier-controls">
+    <!-- Przyciski rozwijania parametrów -->
+    <div class="tier-controls-bar">
+      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
       <button
         type="button"
-        class="tier-expand-btn desktop-only"
-        on:click={() => toggleDesktopDetails('frezarki-gt')}
+        class="spec-toggle-btn desktop-only"
+        on:click={() => toggleDesktop('frezarki-gt')}
         aria-expanded={desktopExpanded['frezarki-gt']}
       >
-        <span class="tier-btn-text">
-          {desktopExpanded['frezarki-gt'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={desktopExpanded['frezarki-gt']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={desktopExpanded['frezarki-gt']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {desktopExpanded['frezarki-gt'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
         </span>
       </button>
 
+      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
       <button
         type="button"
-        class="tier-expand-btn mobile-only"
+        class="spec-toggle-btn mobile-only"
         on:click={() => toggleMobileDetails('frezarki-gt')}
         aria-expanded={mobileDetailsExpanded['frezarki-gt']}
       >
-        <span class="tier-btn-text">
-          {mobileDetailsExpanded['frezarki-gt'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={mobileDetailsExpanded['frezarki-gt']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['frezarki-gt']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {mobileDetailsExpanded['frezarki-gt'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
         </span>
       </button>
     </div>
 
-    <!-- Zawartość szczegółowa: zawsze w DOM pod kątem SEO (rozwijana CSS) -->
+    <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
-      class="machine-tier-details"
-      class:desktop-expanded={desktopExpanded['frezarki-gt']}
-      class:mobile-expanded={mobileDetailsExpanded['frezarki-gt']}
+      class="machine-details-collapsible"
+      class:desktop-closed={!desktopExpanded['frezarki-gt']}
+      class:mobile-l2-closed={!mobileDetailsExpanded['frezarki-gt']}
     >
-      
-
-
-
-
-
-  <div class="maszyny-dane-text-image">
+      <div class="maszyny-dane-text-image">
     <div class="left">
 
 
@@ -610,42 +547,45 @@
       />
     </div>
   </div>
-  
-    </div>
-
-    <MachineMenu
+  <MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HMM-GT.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
-    
-
+    </div>
   </div>
 </section>
 
-<!-- Przemysłowe plotery CNC -->
+<!-- Ploter CNC HPP-OT -->
 <section id="ploteryPrzemyslowe" class="maszyny-dane">
-  <!-- Pasek nagłówka mobilnego (Poziom 1 rozwijania na telefonie) -->
+  <!-- Mobile Level 1 Header (widoczne tylko na smartfonach) -->
   <div class="mobile-machine-header mobile-only">
     <button
       type="button"
-      class="mobile-machine-toggle-btn"
+      class="mobile-level1-btn"
       on:click={() => toggleMobileMachine('ploteryPrzemyslowe')}
       aria-expanded={mobileMachineExpanded['ploteryPrzemyslowe']}
     >
-      <span class="mobile-toggle-label">
-        {mobileMachineExpanded['ploteryPrzemyslowe'] ? 'Zwiń maszynę' : 'Zobacz model i specyfikację'}
-      </span>
-      <span class="mobile-toggle-icon" class:is-rotated={mobileMachineExpanded['ploteryPrzemyslowe']}>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </span>
+      <div class="mobile-level1-left">
+        <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
+        <span class="mobile-level1-title">Ploter CNC HPP-OT</span>
+      </div>
+      <div class="mobile-level1-right">
+        <span class="mobile-level1-status">
+          {mobileMachineExpanded['ploteryPrzemyslowe'] ? 'Zwiń' : 'Rozwiń'}
+        </span>
+        <span class="btn-arrow" class:is-rotated={mobileMachineExpanded['ploteryPrzemyslowe']}>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
     </button>
   </div>
 
-  <div class="machine-body-wrapper" class:mobile-collapsed={!mobileMachineExpanded['ploteryPrzemyslowe']}>
+  <!-- Główny kontener maszyny (na mobile zwijany poziomem 1) -->
+  <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['ploteryPrzemyslowe']}>
     <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -663,56 +603,50 @@
     </div>
   </div>
 
-    <!-- Przyciski rozwijania: 1 poziom na desktop, poziom 2 na mobile -->
-    <div class="machine-tier-controls">
+    <!-- Przyciski rozwijania parametrów -->
+    <div class="tier-controls-bar">
+      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
       <button
         type="button"
-        class="tier-expand-btn desktop-only"
-        on:click={() => toggleDesktopDetails('ploteryPrzemyslowe')}
+        class="spec-toggle-btn desktop-only"
+        on:click={() => toggleDesktop('ploteryPrzemyslowe')}
         aria-expanded={desktopExpanded['ploteryPrzemyslowe']}
       >
-        <span class="tier-btn-text">
-          {desktopExpanded['ploteryPrzemyslowe'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={desktopExpanded['ploteryPrzemyslowe']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={desktopExpanded['ploteryPrzemyslowe']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {desktopExpanded['ploteryPrzemyslowe'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
         </span>
       </button>
 
+      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
       <button
         type="button"
-        class="tier-expand-btn mobile-only"
+        class="spec-toggle-btn mobile-only"
         on:click={() => toggleMobileDetails('ploteryPrzemyslowe')}
         aria-expanded={mobileDetailsExpanded['ploteryPrzemyslowe']}
       >
-        <span class="tier-btn-text">
-          {mobileDetailsExpanded['ploteryPrzemyslowe'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={mobileDetailsExpanded['ploteryPrzemyslowe']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['ploteryPrzemyslowe']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {mobileDetailsExpanded['ploteryPrzemyslowe'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
         </span>
       </button>
     </div>
 
-    <!-- Zawartość szczegółowa: zawsze w DOM pod kątem SEO (rozwijana CSS) -->
+    <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
-      class="machine-tier-details"
-      class:desktop-expanded={desktopExpanded['ploteryPrzemyslowe']}
-      class:mobile-expanded={mobileDetailsExpanded['ploteryPrzemyslowe']}
+      class="machine-details-collapsible"
+      class:desktop-closed={!desktopExpanded['ploteryPrzemyslowe']}
+      class:mobile-l2-closed={!mobileDetailsExpanded['ploteryPrzemyslowe']}
     >
-      
-
-
-
-
-
-
-
-  <div class="maszyny-dane-text-image">
+      <div class="maszyny-dane-text-image">
 
       <div class="left">
 
@@ -799,42 +733,45 @@
       />
     </div>
   </div>
-  
-    </div>
-
-    <MachineMenu
+  <MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HPP-OT.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
-    
-
+    </div>
   </div>
 </section>
 
-<!-- Przemysłowe plotery CNC w zabudowie -->
+<!-- Ploter CNC HPP-CT (w zabudowie) -->
 <section id="ploteryPrzemysloweZabudowa" class="maszyny-dane">
-  <!-- Pasek nagłówka mobilnego (Poziom 1 rozwijania na telefonie) -->
+  <!-- Mobile Level 1 Header (widoczne tylko na smartfonach) -->
   <div class="mobile-machine-header mobile-only">
     <button
       type="button"
-      class="mobile-machine-toggle-btn"
+      class="mobile-level1-btn"
       on:click={() => toggleMobileMachine('ploteryPrzemysloweZabudowa')}
       aria-expanded={mobileMachineExpanded['ploteryPrzemysloweZabudowa']}
     >
-      <span class="mobile-toggle-label">
-        {mobileMachineExpanded['ploteryPrzemysloweZabudowa'] ? 'Zwiń maszynę' : 'Zobacz model i specyfikację'}
-      </span>
-      <span class="mobile-toggle-icon" class:is-rotated={mobileMachineExpanded['ploteryPrzemysloweZabudowa']}>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </span>
+      <div class="mobile-level1-left">
+        <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
+        <span class="mobile-level1-title">Ploter CNC HPP-CT (w zabudowie)</span>
+      </div>
+      <div class="mobile-level1-right">
+        <span class="mobile-level1-status">
+          {mobileMachineExpanded['ploteryPrzemysloweZabudowa'] ? 'Zwiń' : 'Rozwiń'}
+        </span>
+        <span class="btn-arrow" class:is-rotated={mobileMachineExpanded['ploteryPrzemysloweZabudowa']}>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
     </button>
   </div>
 
-  <div class="machine-body-wrapper" class:mobile-collapsed={!mobileMachineExpanded['ploteryPrzemysloweZabudowa']}>
+  <!-- Główny kontener maszyny (na mobile zwijany poziomem 1) -->
+  <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['ploteryPrzemysloweZabudowa']}>
     <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -854,55 +791,50 @@
     </div>
   </div>
 
-    <!-- Przyciski rozwijania: 1 poziom na desktop, poziom 2 na mobile -->
-    <div class="machine-tier-controls">
+    <!-- Przyciski rozwijania parametrów -->
+    <div class="tier-controls-bar">
+      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
       <button
         type="button"
-        class="tier-expand-btn desktop-only"
-        on:click={() => toggleDesktopDetails('ploteryPrzemysloweZabudowa')}
+        class="spec-toggle-btn desktop-only"
+        on:click={() => toggleDesktop('ploteryPrzemysloweZabudowa')}
         aria-expanded={desktopExpanded['ploteryPrzemysloweZabudowa']}
       >
-        <span class="tier-btn-text">
-          {desktopExpanded['ploteryPrzemysloweZabudowa'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={desktopExpanded['ploteryPrzemysloweZabudowa']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={desktopExpanded['ploteryPrzemysloweZabudowa']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {desktopExpanded['ploteryPrzemysloweZabudowa'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
         </span>
       </button>
 
+      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
       <button
         type="button"
-        class="tier-expand-btn mobile-only"
+        class="spec-toggle-btn mobile-only"
         on:click={() => toggleMobileDetails('ploteryPrzemysloweZabudowa')}
         aria-expanded={mobileDetailsExpanded['ploteryPrzemysloweZabudowa']}
       >
-        <span class="tier-btn-text">
-          {mobileDetailsExpanded['ploteryPrzemysloweZabudowa'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={mobileDetailsExpanded['ploteryPrzemysloweZabudowa']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['ploteryPrzemysloweZabudowa']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {mobileDetailsExpanded['ploteryPrzemysloweZabudowa'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
         </span>
       </button>
     </div>
 
-    <!-- Zawartość szczegółowa: zawsze w DOM pod kątem SEO (rozwijana CSS) -->
+    <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
-      class="machine-tier-details"
-      class:desktop-expanded={desktopExpanded['ploteryPrzemysloweZabudowa']}
-      class:mobile-expanded={mobileDetailsExpanded['ploteryPrzemysloweZabudowa']}
+      class="machine-details-collapsible"
+      class:desktop-closed={!desktopExpanded['ploteryPrzemysloweZabudowa']}
+      class:mobile-l2-closed={!mobileDetailsExpanded['ploteryPrzemysloweZabudowa']}
     >
-      
-
-
-
-
-
-
-  <div class="maszyny-dane-text-image">
+      <div class="maszyny-dane-text-image">
     <div class="left">
 
 
@@ -1009,42 +941,45 @@
       /> -->
     </div>
   </div>
-  
-    </div>
-
-    <MachineMenu
+  <MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HPP-CT.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
-    
-
+    </div>
   </div>
 </section>
 
 <!-- Grawerki CNC -->
 <section id="grawerki" class="maszyny-dane">
-  <!-- Pasek nagłówka mobilnego (Poziom 1 rozwijania na telefonie) -->
+  <!-- Mobile Level 1 Header (widoczne tylko na smartfonach) -->
   <div class="mobile-machine-header mobile-only">
     <button
       type="button"
-      class="mobile-machine-toggle-btn"
+      class="mobile-level1-btn"
       on:click={() => toggleMobileMachine('grawerki')}
       aria-expanded={mobileMachineExpanded['grawerki']}
     >
-      <span class="mobile-toggle-label">
-        {mobileMachineExpanded['grawerki'] ? 'Zwiń maszynę' : 'Zobacz model i specyfikację'}
-      </span>
-      <span class="mobile-toggle-icon" class:is-rotated={mobileMachineExpanded['grawerki']}>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </span>
+      <div class="mobile-level1-left">
+        <img src="/assets/ikony/maszyny/grawerki.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
+        <span class="mobile-level1-title">Grawerki CNC</span>
+      </div>
+      <div class="mobile-level1-right">
+        <span class="mobile-level1-status">
+          {mobileMachineExpanded['grawerki'] ? 'Zwiń' : 'Rozwiń'}
+        </span>
+        <span class="btn-arrow" class:is-rotated={mobileMachineExpanded['grawerki']}>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
     </button>
   </div>
 
-  <div class="machine-body-wrapper" class:mobile-collapsed={!mobileMachineExpanded['grawerki']}>
+  <!-- Główny kontener maszyny (na mobile zwijany poziomem 1) -->
+  <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['grawerki']}>
     <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -1064,55 +999,50 @@
     </div>
   </div>
 
-    <!-- Przyciski rozwijania: 1 poziom na desktop, poziom 2 na mobile -->
-    <div class="machine-tier-controls">
+    <!-- Przyciski rozwijania parametrów -->
+    <div class="tier-controls-bar">
+      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
       <button
         type="button"
-        class="tier-expand-btn desktop-only"
-        on:click={() => toggleDesktopDetails('grawerki')}
+        class="spec-toggle-btn desktop-only"
+        on:click={() => toggleDesktop('grawerki')}
         aria-expanded={desktopExpanded['grawerki']}
       >
-        <span class="tier-btn-text">
-          {desktopExpanded['grawerki'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={desktopExpanded['grawerki']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={desktopExpanded['grawerki']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {desktopExpanded['grawerki'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
         </span>
       </button>
 
+      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
       <button
         type="button"
-        class="tier-expand-btn mobile-only"
+        class="spec-toggle-btn mobile-only"
         on:click={() => toggleMobileDetails('grawerki')}
         aria-expanded={mobileDetailsExpanded['grawerki']}
       >
-        <span class="tier-btn-text">
-          {mobileDetailsExpanded['grawerki'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={mobileDetailsExpanded['grawerki']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['grawerki']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {mobileDetailsExpanded['grawerki'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
         </span>
       </button>
     </div>
 
-    <!-- Zawartość szczegółowa: zawsze w DOM pod kątem SEO (rozwijana CSS) -->
+    <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
-      class="machine-tier-details"
-      class:desktop-expanded={desktopExpanded['grawerki']}
-      class:mobile-expanded={mobileDetailsExpanded['grawerki']}
+      class="machine-details-collapsible"
+      class:desktop-closed={!desktopExpanded['grawerki']}
+      class:mobile-l2-closed={!mobileDetailsExpanded['grawerki']}
     >
-      
-
-
-
-
-
-
-  <div class="maszyny-dane-text-image">
+      <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
         <strong>Grawerki CNC</strong><br /><br />
@@ -1228,42 +1158,45 @@
       />
     </div>
   </div>
-  
-    </div>
-
-    <MachineMenu
+  <MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_Grawerki-CNC.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
-    
-
+    </div>
   </div>
 </section>
 
-<!-- Frezarki pięcioosiowe -->
+<!-- Frezarki CNC 5-osiowe -->
 <section id="frezarki5osiowe" class="maszyny-dane">
-  <!-- Pasek nagłówka mobilnego (Poziom 1 rozwijania na telefonie) -->
+  <!-- Mobile Level 1 Header (widoczne tylko na smartfonach) -->
   <div class="mobile-machine-header mobile-only">
     <button
       type="button"
-      class="mobile-machine-toggle-btn"
+      class="mobile-level1-btn"
       on:click={() => toggleMobileMachine('frezarki5osiowe')}
       aria-expanded={mobileMachineExpanded['frezarki5osiowe']}
     >
-      <span class="mobile-toggle-label">
-        {mobileMachineExpanded['frezarki5osiowe'] ? 'Zwiń maszynę' : 'Zobacz model i specyfikację'}
-      </span>
-      <span class="mobile-toggle-icon" class:is-rotated={mobileMachineExpanded['frezarki5osiowe']}>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </span>
+      <div class="mobile-level1-left">
+        <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
+        <span class="mobile-level1-title">Frezarki CNC 5-osiowe</span>
+      </div>
+      <div class="mobile-level1-right">
+        <span class="mobile-level1-status">
+          {mobileMachineExpanded['frezarki5osiowe'] ? 'Zwiń' : 'Rozwiń'}
+        </span>
+        <span class="btn-arrow" class:is-rotated={mobileMachineExpanded['frezarki5osiowe']}>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
     </button>
   </div>
 
-  <div class="machine-body-wrapper" class:mobile-collapsed={!mobileMachineExpanded['frezarki5osiowe']}>
+  <!-- Główny kontener maszyny (na mobile zwijany poziomem 1) -->
+  <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['frezarki5osiowe']}>
     <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -1282,51 +1215,50 @@
     </div>
   </div>
 
-    <!-- Przyciski rozwijania: 1 poziom na desktop, poziom 2 na mobile -->
-    <div class="machine-tier-controls">
+    <!-- Przyciski rozwijania parametrów -->
+    <div class="tier-controls-bar">
+      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
       <button
         type="button"
-        class="tier-expand-btn desktop-only"
-        on:click={() => toggleDesktopDetails('frezarki5osiowe')}
+        class="spec-toggle-btn desktop-only"
+        on:click={() => toggleDesktop('frezarki5osiowe')}
         aria-expanded={desktopExpanded['frezarki5osiowe']}
       >
-        <span class="tier-btn-text">
-          {desktopExpanded['frezarki5osiowe'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={desktopExpanded['frezarki5osiowe']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={desktopExpanded['frezarki5osiowe']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {desktopExpanded['frezarki5osiowe'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
         </span>
       </button>
 
+      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
       <button
         type="button"
-        class="tier-expand-btn mobile-only"
+        class="spec-toggle-btn mobile-only"
         on:click={() => toggleMobileDetails('frezarki5osiowe')}
         aria-expanded={mobileDetailsExpanded['frezarki5osiowe']}
       >
-        <span class="tier-btn-text">
-          {mobileDetailsExpanded['frezarki5osiowe'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={mobileDetailsExpanded['frezarki5osiowe']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['frezarki5osiowe']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {mobileDetailsExpanded['frezarki5osiowe'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
         </span>
       </button>
     </div>
 
-    <!-- Zawartość szczegółowa: zawsze w DOM pod kątem SEO (rozwijana CSS) -->
+    <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
-      class="machine-tier-details"
-      class:desktop-expanded={desktopExpanded['frezarki5osiowe']}
-      class:mobile-expanded={mobileDetailsExpanded['frezarki5osiowe']}
+      class="machine-details-collapsible"
+      class:desktop-closed={!desktopExpanded['frezarki5osiowe']}
+      class:mobile-l2-closed={!mobileDetailsExpanded['frezarki5osiowe']}
     >
-      
-
-
-  <div class="maszyny-dane-text-image">
+      <div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
         <strong></strong><br /><br />
@@ -1434,42 +1366,45 @@
       />
     </div>
   </div>
-  
-    </div>
-
-    <MachineMenu
+  <MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_Frezarki-5-osiowe.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
-    
-
+    </div>
   </div>
 </section>
 
-<!-- Plotery tnące linearne CNC -->
+<!-- Plotery linearne CNC HLP-FT -->
 <section id="ploteryLinearne" class="maszyny-dane">
-  <!-- Pasek nagłówka mobilnego (Poziom 1 rozwijania na telefonie) -->
+  <!-- Mobile Level 1 Header (widoczne tylko na smartfonach) -->
   <div class="mobile-machine-header mobile-only">
     <button
       type="button"
-      class="mobile-machine-toggle-btn"
+      class="mobile-level1-btn"
       on:click={() => toggleMobileMachine('ploteryLinearne')}
       aria-expanded={mobileMachineExpanded['ploteryLinearne']}
     >
-      <span class="mobile-toggle-label">
-        {mobileMachineExpanded['ploteryLinearne'] ? 'Zwiń maszynę' : 'Zobacz model i specyfikację'}
-      </span>
-      <span class="mobile-toggle-icon" class:is-rotated={mobileMachineExpanded['ploteryLinearne']}>
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </span>
+      <div class="mobile-level1-left">
+        <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
+        <span class="mobile-level1-title">Plotery linearne CNC HLP-FT</span>
+      </div>
+      <div class="mobile-level1-right">
+        <span class="mobile-level1-status">
+          {mobileMachineExpanded['ploteryLinearne'] ? 'Zwiń' : 'Rozwiń'}
+        </span>
+        <span class="btn-arrow" class:is-rotated={mobileMachineExpanded['ploteryLinearne']}>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
     </button>
   </div>
 
-  <div class="machine-body-wrapper" class:mobile-collapsed={!mobileMachineExpanded['ploteryLinearne']}>
+  <!-- Główny kontener maszyny (na mobile zwijany poziomem 1) -->
+  <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['ploteryLinearne']}>
     <div class="cnc-table">
     <div class="cnc-left">
       <div class="cnc-row">
@@ -1489,55 +1424,50 @@
     </div>
   </div>
 
-    <!-- Przyciski rozwijania: 1 poziom na desktop, poziom 2 na mobile -->
-    <div class="machine-tier-controls">
+    <!-- Przyciski rozwijania parametrów -->
+    <div class="tier-controls-bar">
+      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
       <button
         type="button"
-        class="tier-expand-btn desktop-only"
-        on:click={() => toggleDesktopDetails('ploteryLinearne')}
+        class="spec-toggle-btn desktop-only"
+        on:click={() => toggleDesktop('ploteryLinearne')}
         aria-expanded={desktopExpanded['ploteryLinearne']}
       >
-        <span class="tier-btn-text">
-          {desktopExpanded['ploteryLinearne'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={desktopExpanded['ploteryLinearne']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={desktopExpanded['ploteryLinearne']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {desktopExpanded['ploteryLinearne'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
         </span>
       </button>
 
+      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
       <button
         type="button"
-        class="tier-expand-btn mobile-only"
+        class="spec-toggle-btn mobile-only"
         on:click={() => toggleMobileDetails('ploteryLinearne')}
         aria-expanded={mobileDetailsExpanded['ploteryLinearne']}
       >
-        <span class="tier-btn-text">
-          {mobileDetailsExpanded['ploteryLinearne'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-        <span class="tier-btn-icon" class:is-rotated={mobileDetailsExpanded['ploteryLinearne']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['ploteryLinearne']}>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
+        </span>
+        <span>
+          {mobileDetailsExpanded['ploteryLinearne'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
         </span>
       </button>
     </div>
 
-    <!-- Zawartość szczegółowa: zawsze w DOM pod kątem SEO (rozwijana CSS) -->
+    <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
-      class="machine-tier-details"
-      class:desktop-expanded={desktopExpanded['ploteryLinearne']}
-      class:mobile-expanded={mobileDetailsExpanded['ploteryLinearne']}
+      class="machine-details-collapsible"
+      class:desktop-closed={!desktopExpanded['ploteryLinearne']}
+      class:mobile-l2-closed={!mobileDetailsExpanded['ploteryLinearne']}
     >
-      
-
-
-
-
-
-
-  <div class="maszyny-dane-text-image">
+      <div class="maszyny-dane-text-image">
     <div class="left">
       <div class="maszyny-dane-podtytul">Wszechstronność i funkcjonalność:</div>
       <ul class="maszyny-dane-lista-small">
@@ -1644,17 +1574,13 @@
       />
     </div>
   </div>
-  
-    </div>
-
-    <MachineMenu
+  <MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HLP-FT.pdf"
     contactText="Kontakt"
     contactHref="/kontakt"
   />
-    
-
+    </div>
   </div>
 </section>
 
@@ -1842,5 +1768,177 @@
   .section-header h1 {
     color: var(--color-text-secondary) !important;
     font-weight: 600 !important;
+  }
+
+  /* ———————————————— RESPONSIVE TOGGLE VISIBILITY ———————————————— */
+  .desktop-only {
+    display: inline-flex !important;
+  }
+  .mobile-only {
+    display: none !important;
+  }
+
+  @media (max-width: 768px) {
+    .desktop-only {
+      display: none !important;
+    }
+    .mobile-only {
+      display: block !important;
+    }
+    button.mobile-only {
+      display: inline-flex !important;
+    }
+  }
+
+  /* ———————————————— MOBILE LEVEL 1 HEADER ———————————————— */
+  .mobile-machine-header {
+    margin: 16px 0 8px 0;
+    padding: 0 16px;
+
+    .mobile-level1-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: #1e2022;
+      border: 1px solid rgba(150, 165, 0, 0.45);
+      border-radius: 12px;
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.25s ease;
+
+      &:active {
+        transform: scale(0.98);
+        border-color: #96a500;
+      }
+
+      .mobile-level1-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .mobile-level1-icon {
+          width: 32px;
+          height: 32px;
+          object-fit: contain;
+        }
+
+        .mobile-level1-title {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 600;
+          font-size: 1.05rem;
+          color: #ffffff;
+          text-align: left;
+        }
+      }
+
+      .mobile-level1-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .mobile-level1-status {
+          font-family: 'Poppins', sans-serif;
+          font-size: 0.85rem;
+          color: #96a500;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+        }
+      }
+    }
+  }
+
+  /* ———————————————— COLLAPSIBLE LOGIC (SEO-FRIENDLY CSS) ———————————————— */
+  @media (max-width: 768px) {
+    .machine-content-wrapper.mobile-l1-closed {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .machine-details-collapsible.desktop-closed {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .machine-details-collapsible.mobile-l2-closed {
+      display: none !important;
+    }
+  }
+
+  /* ———————————————— BUTTON STYLES ———————————————— */
+  .tier-controls-bar {
+    width: 100%;
+    max-width: 1200px;
+    margin: 18px auto 26px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-start;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      padding: 0 16px;
+      margin: 14px auto 20px auto;
+    }
+  }
+
+  .spec-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 13px 26px;
+    background: #1f2123;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    border: 1.5px solid #96a500;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    letter-spacing: 0.02em;
+
+    &:hover {
+      background: #96a500;
+      color: #111213;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(150, 165, 0, 0.35);
+
+      .btn-arrow svg {
+        stroke: #111213;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 12px 18px;
+      font-size: 0.9rem;
+      border-radius: 10px;
+    }
+  }
+
+  .btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    svg {
+      transition: stroke 0.2s ease;
+    }
+
+    &.is-rotated {
+      transform: rotate(180deg);
+    }
   }
 </style>

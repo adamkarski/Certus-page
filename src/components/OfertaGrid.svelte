@@ -279,8 +279,18 @@
 
   :global(.oferta-cta) {
     width: 100% !important;
-    min-width: 150px !important;
+    min-width: 0 !important;
     max-width: 100% !important;
+    white-space: normal !important;
+    text-align: center !important;
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+    line-height: 1.25 !important;
     clip-path: none !important;
+
+    .btn-text {
+      white-space: normal !important;
+      word-break: normal !important;
+    }
   }
 </style>
