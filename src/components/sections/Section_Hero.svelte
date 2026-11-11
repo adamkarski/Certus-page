@@ -1866,6 +1866,8 @@
       line-height: 1.2;
       opacity: 0.95;
     }
+
+
   }
   @media screen and (max-width: 746px) {
     .item_title {

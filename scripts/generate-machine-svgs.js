@@ -126,7 +126,8 @@ const machineNames = [
   'Grawerki CNC',
   'Plotery CNC HLP-FT',
   'Certus 69',
-  'Maszyny specjalistyczne'
+  'Maszyny specjalistyczne',
+  'Maszyny specjalne'
 ];
 
 const svgs = {};
