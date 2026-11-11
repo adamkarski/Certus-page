@@ -1007,11 +1007,20 @@
           triangleRect.width / 2 -
           buttonRect.width / 2;
 
-        backButton.style.position = "absolute";
-        backButton.style.top = `${top}px`;
-        backButton.style.left = `${left - 40}px`;
-        backButton.style.transform = "none";
-        backButton.style.zIndex = "100"; // Ensure it's on top
+        if (window.innerWidth <= 768) {
+          backButton.style.position = "absolute";
+          backButton.style.top = `${top}px`;
+          backButton.style.left = "20px";
+          backButton.style.transform = "scale(0.85)";
+          backButton.style.transformOrigin = "left center";
+          backButton.style.zIndex = "100";
+        } else {
+          backButton.style.position = "absolute";
+          backButton.style.top = `${top}px`;
+          backButton.style.left = `${left - 40}px`;
+          backButton.style.transform = "none";
+          backButton.style.zIndex = "100"; // Ensure it's on top
+        }
       }
     }
   }
@@ -1688,8 +1697,16 @@
   }
 
   .category-content .subListMachines {
-    height: 500px;
+    min-height: 540px;
+    height: 60vh;
+    max-height: 680px;
     overflow: visible;
+
+    @media (max-width: 768px) {
+      min-height: 440px;
+      height: 55vh;
+      max-height: 520px;
+    }
 
     swiper-container {
       overflow: visible;
@@ -1700,12 +1717,30 @@
       overflow: visible;
       height: 100%;
       position: relative;
+      padding-bottom: 25px;
+    }
+
+    .item .image img {
+      margin-top: 0;
+      max-height: 55vh;
+      object-fit: contain;
+    }
+
+    .item_title {
+      position: absolute;
+      bottom: -15px;
+      margin-bottom: 0;
+      width: 100%;
+
+      @media (max-width: 768px) {
+        bottom: -25px;
+        margin-bottom: 0 !important;
+      }
     }
   }
   .item_title {
     position: absolute;
-    bottom: -45px;
-    margin-bottom: 0;
+    margin-bottom: -57%;
     color: rgb(255, 255, 255);
     line-height: 1.2;
     transition: all 0.9s ease;
@@ -1746,8 +1781,7 @@
   @media screen and (max-width: 746px) {
     .item_title {
       font-size: clamp(1rem, 3.5vw, 1.35rem);
-      bottom: -60px;
-      margin-bottom: 0 !important;
+      margin-bottom: -85% !important;
 
       :global(span:not(.sr-only)),
       :global(.nawias) {
