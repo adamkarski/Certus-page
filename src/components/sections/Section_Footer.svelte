@@ -368,18 +368,25 @@
 
   .contact-info {
     margin-top: 0;
-    transition: all 0.2s ease;
 
     a {
-      transition: all 0.2s ease;
+      display: inline-block;
+      padding: 2px 6px;
+      margin-left: -6px;
+      border-radius: 4px;
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease;
+
+      &[href^="mailto:"],
+      &[href^="tel:"] {
+        white-space: nowrap;
+      }
     }
 
     a:hover {
-
       color: white;
       background-color: var(--color-primary);
-      padding: 2px;
-      
     }
   }
 
@@ -392,6 +399,7 @@
 
   .contact-icon {
     margin-right: 10px;
+    flex-shrink: 0;
   }
 
   .footer-bottom {
@@ -414,14 +422,12 @@
     display: flex;
     gap: 30px;
   
-    a{
-     
+    a {
       text-decoration: none;
       transition: color 0.3s ease;
     }
     a:hover {
-      padding: 0;
-      font-size: 14px;
+      color: white;
     }
   }
 

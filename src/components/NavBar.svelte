@@ -696,14 +696,14 @@
     align-items: center;
     gap: 0.25rem;
     background: white;
-    border-radius: 72px;
+    border-radius: 9999px;
     color: #616d5d;
     font-weight: 200;
     margin-left: -13px;
     margin-right: 0px;
-    height: 76px;
+    height: 74px;
     margin-top: 0px;
-    padding: 0 1.25rem 0 1rem;
+    padding: 0 14px 0 10px;
   }
 
   .mobile-menu-button-container {
@@ -899,7 +899,7 @@
     }
     .desktop-menu-items {
       margin-right: 0px;
-      padding: 0 1.25rem 0 0.75rem;
+      padding: 0 12px 0 8px;
       gap: 0.15rem;
     }
     .nav-link {
@@ -918,16 +918,16 @@
     height: 100%;
     transition: all 0.7s ease;
     box-shadow: 0px 0px 26px 21px #0000001a;
-    border-radius: 52px;
+    border-radius: 9999px;
   }
 
   nav.scrolled .menubar {
     box-shadow: none;
-    border-radius: 52px;
+    border-radius: 9999px;
   }
 
   .nav-link.kontakt-nav {
-    /*  margin-right: 20px; */
+    margin-right: 2px;
   }
 
   *:focus {
@@ -967,8 +967,8 @@
 
   .ramka {
     display: flex;
-    height: 95px;
-    border-radius: 72px;
+    height: 94px;
+    border-radius: 9999px;
     margin-left: 8em;
     margin-right: 8em;
     background-color: rgba(50, 50, 50, 0.95) !important;
@@ -978,7 +978,7 @@
       width: 100%;
       height: 100%;
       align-items: center;
-      padding: 0 1.5rem;
+      padding: 0 10px 0 1.5rem;
       flex-direction: row;
       justify-content: space-between;
     }
@@ -1039,7 +1039,7 @@
     color: #4b5563;
     transition: all 300ms ease-in-out;
     font-weight: 500;
-    border-radius: 12px;
+    border-radius: 9999px;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -1055,7 +1055,7 @@
     &.active {
       color: white !important;
       background-color: #788391 !important;
-      border-radius: 20px !important;
+      border-radius: 9999px !important;
 
       span {
         position: relative;
@@ -1074,11 +1074,12 @@
     background-color: #7e8c00 !important;
     color: #ffffff !important;
     padding: 8px 18px !important;
-    border-radius: 20px !important;
+    border-radius: 9999px !important;
     font-weight: 600 !important;
     font-size: 0.9rem !important;
     white-space: nowrap !important;
-    margin-right: 6px;
+    margin-left: 2px;
+    margin-right: 4px;
     letter-spacing: 0.02em;
     transition:
       background-color 0.3s ease,
