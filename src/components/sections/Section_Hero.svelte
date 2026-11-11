@@ -1378,7 +1378,7 @@
                           <div class="item">
                             <div class="image">
                               <img
-                                src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+                                src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
                                 alt="CNC HMM-ST"
                                 draggable="false"
                               />
@@ -1422,7 +1422,7 @@
                           <div class="item">
                             <div class="image">
                               <img
-                                src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
+                                src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp"
                                 alt="CNC HMM-GT"
                                 draggable="false"
                               />
@@ -1549,7 +1549,7 @@
                           <div class="item">
                             <div class="image">
                               <img
-                                src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+                                src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
                                 alt="Ploter przemysłowy"
                                 draggable="false"
                               />
@@ -1593,7 +1593,7 @@
                           <div class="item">
                             <div class="image">
                               <img
-                                src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
+                                src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp"
                                 alt="Ploter przemysłowy bez zabudowy"
                                 draggable="false"
                               />
@@ -1758,7 +1758,7 @@
     overflow: hidden;
     &::after {
       content: "";
-      background-image: url(/assets/images/pattern-image1-2.png);
+      background-image: url(/assets/images/pattern-image1-2.webp);
       position: absolute;
       width: 100vw;
       height: 37px;
@@ -1887,7 +1887,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url(/assets/images/pattern-image1-2.png);
+      background-image: url(/assets/images/pattern-image1-2.webp);
       transition:
         opacity 0.3s ease,
         filter 0.3s ease;

@@ -292,7 +292,7 @@ export const certus69Data: MachinePageConfig = {
     { param: "Opcje dodatkowe", chips: ["4. oś obrotowa", "Chłodzenie mgłą olejową", "Czujnik narzędzia"] },
     { param: "Materiały", chips: ["Aluminium i metale kolorowe", "Drobne elementy stalowe", "Plexi i tworzywa", "Drewno"] },
   ],
-  drawingImgSrc: "/assets/maszyny/SCHEMATY/Certus_69_1_cropped.png",
+  drawingImgSrc: "/assets/maszyny/SCHEMATY/Certus_69_1_cropped.webp",
   drawingImgAlt: "Schemat techniczny i wymiary CERTUS 69",
   optionCardBadge: "OPCJA",
   optionCardTitle: "4. oś obrotowa",

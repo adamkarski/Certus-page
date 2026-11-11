@@ -107,7 +107,7 @@ afterUpdate(() => {
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+                src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
                 alt="Frezarki CNC"
               />
             </picture>
@@ -258,7 +258,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.webp"
                     alt="Schemat techniczny frezarki Certus CNC HMM-ST 1080 PRO - widok 1 - "
                   />
                 </picture>
@@ -268,7 +268,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.webp"
                     alt="Schemat techniczny frezarki Certus CNC HMM-ST 1080 PRO - widok 2"
                   />
                 </picture>
@@ -301,7 +301,7 @@ afterUpdate(() => {
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.png"
+                src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp"
                 alt="Frezarki CNC"
               />
             </picture>
@@ -458,7 +458,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_1410_1.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_1410_1.webp"
                     alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 1"
                   />
                 </picture>
@@ -468,7 +468,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_1410_2.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_1410_2.webp"
                     alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 2"
                   />
                 </picture>
@@ -496,7 +496,7 @@ afterUpdate(() => {
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.png"
+                src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
                 alt="Ploter Przemysłowy Certus 0815 ATC w zabudowie"
               />
             </picture>
@@ -626,7 +626,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.webp"
                     alt="Schemat techniczny ploter Certus CNC HPP-CT 0815 ATC w zabudowie - widok 1"
                   />
                 </picture>
@@ -636,7 +636,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.webp"
                     alt="Schemat techniczny ploter Certus CNC HPP-CT 0815 ATC w zabudowie - widok 2"
                   />
                 </picture>
@@ -668,7 +668,7 @@ afterUpdate(() => {
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.png"
+                src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp"
                 alt="Ploter Przemysłowy Certus 0816 bez zabudowy"
               />
             </picture>
@@ -786,7 +786,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_0816_1.webp"
                     alt="Schemat techniczny ploter Certus CNC HPP-OT 0816 bez zabudowy - widok 1"
                   />
                 </picture>
@@ -796,7 +796,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_0816_2.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_0816_2.webp"
                     alt="Schemat techniczny ploter Certus CNC HPP-OT 0816 bez zabudowy - widok 2"
                   />
                 </picture>
@@ -824,7 +824,7 @@ afterUpdate(() => {
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
+                src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp"
                 alt="Frezarka Pięcioosiowe CNC Certus"
               />
             </picture>
@@ -965,7 +965,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.webp"
                     alt="Schemat techniczny Frezarka pięcioosiowa Certus - widok 1"
                   />
                 </picture>
@@ -975,7 +975,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.webp"
                     alt="Schemat techniczny Frezarka pięcioosiowa Certus - widok 2"
                   />
                 </picture>
@@ -1003,7 +1003,7 @@ afterUpdate(() => {
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
+                src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
                 alt="Grawerka CNC"
               />
             </picture>
@@ -1147,7 +1147,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.webp"
                     alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 1"
                   />
                 </picture>
@@ -1157,7 +1157,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.webp"
                     alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 2"
                   />
                 </picture>
@@ -1185,7 +1185,7 @@ afterUpdate(() => {
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.png"
+                src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp"
                 alt=""
               />
             </picture>
@@ -1328,7 +1328,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_1530_1.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_1530_1.webp"
                     alt="Schemat techniczny ploter linearny Certus 1530 - widok 1"
                   />
                 </picture>
@@ -1338,7 +1338,7 @@ afterUpdate(() => {
                     type="image/webp"
                   />
                   <img
-                    src="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
+                    src="/assets/maszyny/SCHEMATY/Certus_1530_2.webp"
                     alt="Schemat techniczny ploter linearny Certus 1530 - widok 2"
                   />
                 </picture>

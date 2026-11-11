@@ -15,7 +15,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'CERTUS - Maszyny i Centra Obróbcze CNC | Polski Producent',
 		ogDescription:
 			'Polski producent maszyn CNC: centra obróbcze, frezarki, plotery przemysłowe i grawerki. Projekt i montaż w Polsce, serwis producenta, ponad 20 lat w branży.',
-		image: '/assets/images/certusPage.jpg',
+		image: '/assets/images/certusPage.webp',
 		type: 'website'
 	},
 	'/serwis': {
@@ -25,7 +25,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Serwis maszyn CNC – Gwarancyjny i Pogwarancyjny | CERTUS',
 		ogDescription:
 			'Serwis maszyn CNC CERTUS: gwarancja 12 miesięcy od odbioru, serwis pogwarancyjny, przeglądy, szkolenia i diagnostyka zdalna. Cennik i zasady online.',
-		image: '/assets/images/serwis/hero-serwis-maszyna.png',
+		image: '/assets/images/serwis/hero-serwis-maszyna.webp',
 		type: 'website'
 	},
 	'/hmp-g1': {
@@ -45,7 +45,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Frezarko-Grawerka CNC Certus 69 – Bestseller | CERTUS',
 		ogDescription:
 			'Niezawodna, precyzyjna frezarko-grawerka CNC Certus 69. Sprawdź specyfikację techniczną, galerię i możliwości obróbki.',
-		image: '/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-glowne1.jpg',
+		image: '/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-glowne1.webp',
 		type: 'product'
 	},
 	'/maszyny': {
@@ -55,7 +55,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Oferta Maszyn CNC i Centrów Obróbczych | CERTUS',
 		ogDescription:
 			'Frezarki CNC, plotery przemysłowe i centra obróbcze projektowane i produkowane w Polsce. Sprawdź naszą ofertę.',
-		image: '/assets/images/baner1_plotery_hpp.jpg',
+		image: '/assets/images/baner1_plotery_hpp.webp',
 		type: 'website'
 	},
 	'/maszyny-specjalne': {
@@ -65,7 +65,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Maszyny specjalne CNC – budowa na zamówienie | CERTUS',
 		ogDescription:
 			'Indywidualne projekty maszyn CNC dopasowane do unikalnych potrzeb Twojego zakładu produkcyjnego.',
-		image: '/assets/images/maszyny-specjalistyczne/frezarko-grawerka-cnc-certus-69-glowne1.jpg',
+		image: '/assets/images/maszyny-specjalistyczne/frezarko-grawerka-cnc-certus-69-glowne1.webp',
 		type: 'website'
 	},
 	'/maszyny-specjalistyczne': {
@@ -75,7 +75,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Dedykowane Maszyny Specjalne CNC | CERTUS',
 		ogDescription:
 			'Indywidualne projekty maszyn CNC dopasowane do unikalnych potrzeb Twojego zakładu produkcyjnego.',
-		image: '/assets/images/maszyny-specjalistyczne/frezarko-grawerka-cnc-certus-69-glowne1.jpg',
+		image: '/assets/images/maszyny-specjalistyczne/frezarko-grawerka-cnc-certus-69-glowne1.webp',
 		type: 'website'
 	},
 	'/onas': {
@@ -95,7 +95,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Skontaktuj się z CERTUS – Doradztwo i Oferta Maszyn CNC',
 		ogDescription:
 			'Masz pytania dotyczące maszyn CNC, serwisu lub konfiguracji? Skontaktuj się z nami telefonicznie lub przez formularz.',
-		image: '/assets/kontakt-background.jpg',
+		image: '/assets/kontakt-background.webp',
 		type: 'website'
 	},
 	'/dokumentacja': {
@@ -105,7 +105,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Dokumentacja i Pliki do Pobrania | CERTUS',
 		ogDescription:
 			'Specyfikacje techniczne, karty katalogowe i dokumentacja maszyn CNC Certus.',
-		image: '/assets/images/certusPage.jpg',
+		image: '/assets/images/certusPage.webp',
 		type: 'website'
 	},
 	'/polityka-prywatnosci': {
@@ -115,7 +115,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Polityka Prywatności | CERTUS',
 		ogDescription:
 			'Zasady przetwarzania danych osobowych oraz ochrony prywatności w serwisie mg-certus.pl.',
-		image: '/assets/images/certusPage.jpg',
+		image: '/assets/images/certusPage.webp',
 		type: 'website'
 	},
 	'/mapa-witryny': {
@@ -125,7 +125,7 @@ export const routeSeoMap: Record<string, RouteSeoData> = {
 		ogTitle: 'Mapa Witryny | CERTUS',
 		ogDescription:
 			'Przegląd wszystkich podstron i modeli maszyn w serwisie mg-certus.pl.',
-		image: '/assets/images/certusPage.jpg',
+		image: '/assets/images/certusPage.webp',
 		type: 'website'
 	}
 };

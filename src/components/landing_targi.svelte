@@ -9,7 +9,7 @@
   let rightGradients: any[] = []; // Tablica gradientów dla prawej strony
   let machineImg: HTMLImageElement;
   let isMobile = false;
-  let imageSource = "/assets/landing_targi2025/MACHINE.jpg";
+  let imageSource = "/assets/landing_targi2025/MACHINE.webp";
 
   function handleClick() {
     landingVisible.hide();
@@ -32,8 +32,8 @@
 
     // Zaktualizuj źródło obrazka jeśli się zmieniło
     const newImageSource = isMobile
-      ? "/assets/landing_targi2025/MACHINE-mobile.jpg"
-      : "/assets/landing_targi2025/MACHINE.jpg";
+      ? "/assets/landing_targi2025/MACHINE-mobile.webp"
+      : "/assets/landing_targi2025/MACHINE.webp";
 
     if (newImageSource !== imageSource) {
       imageSource = newImageSource;
@@ -281,7 +281,7 @@
 
   <img
     class="gradient"
-    src="/assets/landing_targi2025/background1.png"
+    src="/assets/landing_targi2025/background1.webp"
     alt="Background"
   />
 </div>
@@ -333,7 +333,7 @@
     width: 100%;
     height: 100%;
     z-index: 1000;
-    background-image: url(/assets/landing_targi2025/background.jpg);
+    background-image: url(/assets/landing_targi2025/background.webp);
     background-size: cover;
   }
 

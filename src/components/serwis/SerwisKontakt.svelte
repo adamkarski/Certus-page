@@ -3,9 +3,9 @@
   import CtaButton from "../CtaButton.svelte";
   import { fade } from "svelte/transition";
   import { typoFixAction } from "$lib/utils/typography";
-  import axios from 'axios';
-  import '$lib/styles/form-styles.scss';
-  import { Turnstile } from 'svelte-turnstile';
+  import axios from "axios";
+  import "$lib/styles/form-styles.scss";
+  import { Turnstile } from "svelte-turnstile";
 
   let formData = {
     firstName: "",
@@ -26,7 +26,7 @@
   let turnstileToken: string | null = null;
   let turnstileReset: (() => void) | undefined;
 
-  let messageInputMode: 'text' | 'record' | null = null;
+  let messageInputMode: "text" | "record" | null = null;
   let isRecording = false;
   let recordingDuration = 0;
   let recordedFileName: string | null = null;
@@ -52,7 +52,7 @@
     const input = event.target as HTMLInputElement;
     let value = input.value;
 
-    if (value.startsWith('+')) {
+    if (value.startsWith("+")) {
       for (const country of countryPrefixes) {
         if (value.startsWith(country.prefix)) {
           phonePrefix = country.prefix;
@@ -74,7 +74,7 @@
       }
     }
     // If it's just digits without +, it might be the full number — keep prefix, put digits in phone
-    if (/^\d{7,}$/.test(val.replace(/[\s\-]/g, ''))) {
+    if (/^\d{7,}$/.test(val.replace(/[\s\-]/g, ""))) {
       formData.phone = val.trim();
       phonePrefix = "+48";
     }
@@ -92,7 +92,7 @@
 
   function validatePhone(phone: string): string | null {
     if (!phone.trim()) return "Telefon jest wymagany";
-    const cleanPhone = phone.replace(/[\s\-]/g, '');
+    const cleanPhone = phone.replace(/[\s\-]/g, "");
     if (!/^\d+$/.test(cleanPhone)) {
       return "Numer telefonu może zawierać tylko cyfry, spacje i myślniki";
     }
@@ -110,30 +110,38 @@
 
   function validateField(fieldName: string, value: any): string | null {
     switch (fieldName) {
-      case 'firstName':
+      case "firstName":
         if (!value.trim()) return "Imię jest wymagane";
-        if (value.trim().length < 2) return "Imię musi mieć co najmniej 2 znaki";
-        if (value.trim().length > 50) return "Imię jest za długie (max 50 znaków)";
+        if (value.trim().length < 2)
+          return "Imię musi mieć co najmniej 2 znaki";
+        if (value.trim().length > 50)
+          return "Imię jest za długie (max 50 znaków)";
         return null;
-      case 'lastName':
+      case "lastName":
         if (!value.trim()) return "Nazwisko jest wymagane";
-        if (value.trim().length < 2) return "Nazwisko musi mieć co najmniej 2 znaki";
-        if (value.trim().length > 50) return "Nazwisko jest za długie (max 50 znaków)";
+        if (value.trim().length < 2)
+          return "Nazwisko musi mieć co najmniej 2 znaki";
+        if (value.trim().length > 50)
+          return "Nazwisko jest za długie (max 50 znaków)";
         return null;
-      case 'email':
+      case "email":
         return validateEmail(value);
-      case 'phone':
+      case "phone":
         return validatePhone(value);
-      case 'serviceType':
+      case "serviceType":
         if (!value) return "Wybierz rodzaj usługi serwisowej";
         return null;
-      case 'message':
-        if (messageInputMode === 'text' && !value.trim()) return "Opis problemu jest wymagany";
-        if (messageInputMode === 'text' && value.trim().length < 10) return "Opis musi mieć co najmniej 10 znaków";
-        if (messageInputMode === 'text' && value.trim().length > 2000) return "Opis jest za długi (max 2000 znaków)";
-        if (messageInputMode === 'record' && !recordedFile) return "Nagraj wiadomość głosową";
+      case "message":
+        if (messageInputMode === "text" && !value.trim())
+          return "Opis problemu jest wymagany";
+        if (messageInputMode === "text" && value.trim().length < 10)
+          return "Opis musi mieć co najmniej 10 znaków";
+        if (messageInputMode === "text" && value.trim().length > 2000)
+          return "Opis jest za długi (max 2000 znaków)";
+        if (messageInputMode === "record" && !recordedFile)
+          return "Nagraj wiadomość głosową";
         return null;
-      case 'privacy':
+      case "privacy":
         if (!value) return "Zgoda na przetwarzanie danych jest wymagana";
         return null;
       default:
@@ -142,7 +150,10 @@
   }
 
   function validateSingleField(fieldName: string) {
-    const error = validateField(fieldName, formData[fieldName as keyof typeof formData]);
+    const error = validateField(
+      fieldName,
+      formData[fieldName as keyof typeof formData],
+    );
     if (error) {
       errors = { ...errors, [fieldName]: error };
     } else {
@@ -157,23 +168,34 @@
 
   function getCharCountColor(text: string, maxLength: number): string {
     const remaining = getRemainingChars(text, maxLength);
-    if (remaining < 50) return '#ef4444';
-    if (remaining < 200) return '#f59e0b';
-    return '#6b7280';
+    if (remaining < 50) return "#ef4444";
+    if (remaining < 200) return "#f59e0b";
+    return "#6b7280";
   }
 
   function validate() {
     const newErrors: Record<string, string> = {};
-    
-    const fieldsToValidate = ['firstName', 'lastName', 'email', 'phone', 'message', 'privacy', 'serviceType'];
-    
+
+    const fieldsToValidate = [
+      "firstName",
+      "lastName",
+      "email",
+      "phone",
+      "message",
+      "privacy",
+      "serviceType",
+    ];
+
     for (const field of fieldsToValidate) {
-      const error = validateField(field, formData[field as keyof typeof formData]);
+      const error = validateField(
+        field,
+        formData[field as keyof typeof formData],
+      );
       if (error) {
         newErrors[field] = error;
       }
     }
-    
+
     errors = newErrors;
     return Object.keys(newErrors).length === 0;
   }
@@ -182,16 +204,17 @@
     event.preventDefault();
     submitMessage = "";
 
-    console.log('Form data on submit:', formData);
+    console.log("Form data on submit:", formData);
 
     if (!validate()) {
-      console.log('Validation errors:', errors);
+      console.log("Validation errors:", errors);
       submitMessage = "Proszę poprawić błędy w formularzu.";
       return;
     }
 
     if (!turnstileToken) {
-      submitMessage = "Weryfikacja zabezpieczeń nie powiodła się. Spróbuj ponownie za chwilę.";
+      submitMessage =
+        "Weryfikacja zabezpieczeń nie powiodła się. Spróbuj ponownie za chwilę.";
       isSubmitting = false;
       return;
     }
@@ -200,31 +223,40 @@
 
     const formDataToSend = new FormData();
 
-    Object.keys(formData).forEach(key => {
-        formDataToSend.append(key, String(formData[key as keyof typeof formData]));
+    Object.keys(formData).forEach((key) => {
+      formDataToSend.append(
+        key,
+        String(formData[key as keyof typeof formData]),
+      );
     });
 
     const phoneWithPrefix = `${phonePrefix} ${formData.phone.trim()}`;
-    formDataToSend.set('phone', phoneWithPrefix);
-    formDataToSend.append('cf-turnstile-response', turnstileToken);
+    formDataToSend.set("phone", phoneWithPrefix);
+    formDataToSend.append("cf-turnstile-response", turnstileToken);
 
-    if (messageInputMode === 'record' && recordedFile) {
-        formDataToSend.append('messageType', 'audio');
-        formDataToSend.append('audio', recordedFile, recordedFileName || 'audio-message.wav');
+    if (messageInputMode === "record" && recordedFile) {
+      formDataToSend.append("messageType", "audio");
+      formDataToSend.append(
+        "audio",
+        recordedFile,
+        recordedFileName || "audio-message.wav",
+      );
     } else {
-        formDataToSend.append('messageType', 'text');
+      formDataToSend.append("messageType", "text");
     }
 
-    formDataToSend.append('formType', 'serwis-kontakt');
+    formDataToSend.append("formType", "serwis-kontakt");
 
     try {
-        const apiUrl = 'https://api.mg-certus.pl/sendEmail.php';
-        const response = await axios.post(apiUrl, formDataToSend, {
-            timeout: 30000,
-        });
+      const apiUrl = "https://api.mg-certus.pl/sendEmail.php";
+      const response = await axios.post(apiUrl, formDataToSend, {
+        timeout: 30000,
+      });
 
       if (response.data.success) {
-        submitMessage = response.data.message || "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą po analizie zgłoszenia.";
+        submitMessage =
+          response.data.message ||
+          "Dziękujemy za kontakt! Nasz zespół serwisowy skontaktuje się z Tobą po analizie zgłoszenia.";
 
         // Resetuj formularz
         formData = {
@@ -246,18 +278,17 @@
         // Zresetuj Turnstile dla kolejnego użycia
         turnstileToken = null; // Clear token
         turnstileReset?.();
-
       } else {
-        submitMessage = response.data.message || "Wystąpił problem z wysyłaniem formularza.";
+        submitMessage =
+          response.data.message || "Wystąpił problem z wysyłaniem formularza.";
       }
     } catch (error) {
       turnstileReset?.();
       if (axios.isAxiosError(error)) {
-        if (error.code === 'ECONNABORTED') {
+        if (error.code === "ECONNABORTED") {
           submitMessage = "Timeout - spróbuj ponownie za chwilę.";
         }
-      }
-      else {
+      } else {
         submitMessage = "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.";
       }
     } finally {
@@ -265,18 +296,16 @@
     }
   }
 
-  
-
   async function startRecording() {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       mediaRecorder = new MediaRecorder(stream);
       audioChunks = [];
-      mediaRecorder.ondataavailable = event => {
+      mediaRecorder.ondataavailable = (event) => {
         audioChunks.push(event.data);
       };
       mediaRecorder.onstop = () => {
-        recordedFile = new Blob(audioChunks, { type: 'audio/wav' });
+        recordedFile = new Blob(audioChunks, { type: "audio/wav" });
         recordedFileName = `nagranie-${new Date().toISOString()}.wav`;
         isRecording = false;
       };
@@ -291,7 +320,8 @@
         }
       }, 1000);
     } catch (err) {
-      submitMessage = "Nie udało się rozpocząć nagrywania. Sprawdź uprawnienia do mikrofonu.";
+      submitMessage =
+        "Nie udało się rozpocząć nagrywania. Sprawdź uprawnienia do mikrofonu.";
     }
   }
 
@@ -306,9 +336,8 @@
     recordedFileName = null;
     recordingDuration = 0;
   }
-
-  
 </script>
+
 <section class="contact-flex">
   <div class="background">
     <div class="contact">
@@ -318,7 +347,14 @@
           <li>
             <span class="bullet"></span>
             <div class="bullet-content">
-              Pobierz i wypełnij <a href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf" download class="bullet-link">formularz zgłoszenia usterki</a>, a następnie wyślij go na <a href="mailto:kontakt@mg-certus.pl" class="bullet-link">kontakt@mg-certus.pl</a>. Dołącz zdjęcia lub krótkie wideo problemu.
+              Pobierz i wypełnij <a
+                href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf"
+                download
+                class="bullet-link">formularz zgłoszenia usterki</a
+              >, a następnie wyślij go na
+              <a href="mailto:kontakt@mg-certus.pl" class="bullet-link"
+                >kontakt@mg-certus.pl</a
+              >. Dołącz zdjęcia lub krótkie wideo problemu.
             </div>
           </li>
           <li>
@@ -337,7 +373,13 @@
         <div class="contact-info-block">
           <div class="info-row">
             <span class="info-icon">
-              <img src="/assets/ikony/telefon.svg" alt="Telefon serwisowy" width="24" height="24" loading="lazy" />
+              <img
+                src="/assets/ikony/telefon.svg"
+                alt="Telefon serwisowy"
+                width="24"
+                height="24"
+                loading="lazy"
+              />
             </span>
             <div>
               <b>
@@ -350,7 +392,13 @@
           </div>
           <div class="info-row">
             <span class="info-icon">
-              <img src="/assets/ikony/email.svg" alt="Email serwisowy" width="24" height="24" loading="lazy" />
+              <img
+                src="/assets/ikony/email.svg"
+                alt="Email serwisowy"
+                width="24"
+                height="24"
+                loading="lazy"
+              />
             </span>
             <div>
               <b>
@@ -361,7 +409,13 @@
                   kontakt@mg-certus.pl
                 </a>
               </b>
-              <small>Zapytania ofertowe: <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a> · Zgłoszenia serwisowe: <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a></small>
+              <small
+                >Zapytania ofertowe: <a href="mailto:biuro@mg-certus.pl"
+                  >biuro@mg-certus.pl</a
+                ><br />Zgłoszenia serwisowe:
+                <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a
+                ></small
+              >
             </div>
           </div>
           <div class="info-row">
@@ -396,7 +450,13 @@
             class="social-icon"
             rel="nofollow noopener noreferrer"
           >
-            <img src="/assets/ikony/facebook.svg" alt="facebook" width="24" height="24" loading="lazy" />
+            <img
+              src="/assets/ikony/facebook.svg"
+              alt="facebook"
+              width="24"
+              height="24"
+              loading="lazy"
+            />
           </a>
           <a
             href="https://www.youtube.com/user/MGCERTUS/videos"
@@ -404,7 +464,13 @@
             class="social-icon"
             rel="nofollow noopener noreferrer"
           >
-            <img src="/assets/ikony/youtube.svg" alt="youtube" width="24" height="24" loading="lazy" />
+            <img
+              src="/assets/ikony/youtube.svg"
+              alt="youtube"
+              width="24"
+              height="24"
+              loading="lazy"
+            />
           </a>
         </div>
       </div>
@@ -423,12 +489,14 @@
                 placeholder="Imię"
                 bind:value={formData.firstName}
                 class:error={errors.firstName}
-                on:blur={() => validateSingleField('firstName')}
+                on:blur={() => validateSingleField("firstName")}
                 maxlength="50"
                 autocomplete="given-name"
                 required
               />
-              {#if errors.firstName}<span class="error-message">{errors.firstName}</span>{/if}
+              {#if errors.firstName}<span class="error-message"
+                  >{errors.firstName}</span
+                >{/if}
             </div>
             <div class="form-group">
               <label for="lastName">Nazwisko</label>
@@ -439,12 +507,14 @@
                 placeholder="Nazwisko"
                 bind:value={formData.lastName}
                 class:error={errors.lastName}
-                on:blur={() => validateSingleField('lastName')}
+                on:blur={() => validateSingleField("lastName")}
                 maxlength="50"
                 autocomplete="family-name"
                 required
               />
-              {#if errors.lastName}<span class="error-message">{errors.lastName}</span>{/if}
+              {#if errors.lastName}<span class="error-message"
+                  >{errors.lastName}</span
+                >{/if}
             </div>
           </div>
 
@@ -457,26 +527,37 @@
               placeholder="twoj@email.com"
               bind:value={formData.email}
               class:error={errors.email}
-              on:blur={() => validateSingleField('email')}
+              on:blur={() => validateSingleField("email")}
               maxlength="254"
               autocomplete="email"
               required
             />
-            {#if errors.email}<span class="error-message">{errors.email}</span>{/if}
+            {#if errors.email}<span class="error-message">{errors.email}</span
+              >{/if}
           </div>
 
           <div class="form-group">
             <label for="serviceType">Typ usługi serwisowej</label>
-            <select id="serviceType" bind:value={formData.serviceType} class:error={errors.serviceType} on:change={() => validateSingleField('serviceType')} required>
+            <select
+              id="serviceType"
+              bind:value={formData.serviceType}
+              class:error={errors.serviceType}
+              on:change={() => validateSingleField("serviceType")}
+              required
+            >
               <option value="Serwis Gwarancyjny">Serwis gwarancyjny</option>
               <option value="Serwis Pogwarancyjny">Serwis pogwarancyjny</option>
               <option value="Przegląd Techniczny">Przegląd techniczny</option>
               <option value="Naprawa awaryjna">Naprawa awaryjna</option>
               <option value="Konserwacja">Konserwacja</option>
               <option value="Modernizacja">Modernizacja</option>
-              <option value="Konsultacja techniczna">Konsultacja techniczna</option>
+              <option value="Konsultacja techniczna"
+                >Konsultacja techniczna</option
+              >
             </select>
-            {#if errors.serviceType}<span class="error-message">{errors.serviceType}</span>{/if}
+            {#if errors.serviceType}<span class="error-message"
+                >{errors.serviceType}</span
+              >{/if}
           </div>
 
           <div class="form-row">
@@ -523,26 +604,33 @@
                 bind:value={formData.phone}
                 class:error={errors.phone}
                 on:input={handlePhoneInput}
-                on:blur={() => validateSingleField('phone')}
+                on:blur={() => validateSingleField("phone")}
                 required
                 autocomplete="tel-national"
               />
             </div>
-            {#if errors.phone}<span class="error-message">{errors.phone}</span>{/if}
+            {#if errors.phone}<span class="error-message">{errors.phone}</span
+              >{/if}
           </div>
 
           <div class="form-group">
             <label for="message">Opis problemu</label>
             {#if messageInputMode === null}
               <div class="message-mode-selection">
-                <button type="button" on:click={() => messageInputMode = 'text'}>
+                <button
+                  type="button"
+                  on:click={() => (messageInputMode = "text")}
+                >
                   <img
                     src="/assets/ikony/message.svg"
                     alt="Wiadomość tekstowa"
                   />
                   <span>Napisz wiadomość</span>
                 </button>
-                <button type="button" on:click={() => messageInputMode = 'record'}>
+                <button
+                  type="button"
+                  on:click={() => (messageInputMode = "record")}
+                >
                   <img src="/assets/ikony/record.svg" alt="Wiadomość głosowa" />
                   <span>Nagraj wiadomość</span>
                 </button>
@@ -553,11 +641,14 @@
                 placeholder="Opisz problem z maszyną, objawy awarii, model urządzenia..."
                 bind:value={formData.message}
                 rows="4"
-                on:blur={() => validateSingleField('message')}
+                on:blur={() => validateSingleField("message")}
                 maxlength="2000"
                 required
               ></textarea>
-              <div class="char-counter" style="color: {getCharCountColor(formData.message, 2000)}">
+              <div
+                class="char-counter"
+                style="color: {getCharCountColor(formData.message, 2000)}"
+              >
                 {getRemainingChars(formData.message, 2000)} znaków pozostało
               </div>
               <button
@@ -588,7 +679,13 @@
                     <div class="recording-dot"></div>
                     <div class="recording-info">
                       <span class="recording-text">Nagrywanie...</span>
-                      <span class="recording-duration">{Math.floor(recordingDuration / 60)}:{(recordingDuration % 60).toString().padStart(2, '0')}</span>
+                      <span class="recording-duration"
+                        >{Math.floor(recordingDuration / 60)}:{(
+                          recordingDuration % 60
+                        )
+                          .toString()
+                          .padStart(2, "0")}</span
+                      >
                     </div>
                     <button
                       type="button"
@@ -603,7 +700,13 @@
                     <img src="/assets/ikony/audio-file.svg" alt="Plik audio" />
                     <div class="file-info">
                       <span class="file-name">{recordedFileName}</span>
-                      <small class="file-duration">{Math.floor(recordingDuration / 60)}:{(recordingDuration % 60).toString().padStart(2, '0')} min</small>
+                      <small class="file-duration"
+                        >{Math.floor(recordingDuration / 60)}:{(
+                          recordingDuration % 60
+                        )
+                          .toString()
+                          .padStart(2, "0")} min</small
+                      >
                     </div>
                     <button
                       type="button"
@@ -624,7 +727,9 @@
                 Zmień na wiadomość tekstową
               </button>
             {/if}
-            {#if errors.message}<span class="error-message">{errors.message}</span>{/if}
+            {#if errors.message}<span class="error-message"
+                >{errors.message}</span
+              >{/if}
           </div>
 
           <div class="form-group privacy-group checkbox-row">
@@ -632,7 +737,7 @@
               id="privacy"
               type="checkbox"
               bind:checked={formData.privacy}
-              on:change={() => validateSingleField('privacy')}
+              on:change={() => validateSingleField("privacy")}
               required
             />
             <label for="privacy">
@@ -641,9 +746,10 @@
               <a href="/polityka-prywatnosci" target="_blank"
                 >polityką prywatności</a
               >.
-              {#if errors.privacy}<span class="error-message">{errors.privacy}</span>{/if}
+              {#if errors.privacy}<span class="error-message"
+                  >{errors.privacy}</span
+                >{/if}
             </label>
-            
           </div>
 
           {#if submitMessage}
@@ -656,26 +762,38 @@
             </div>
           {/if}
 
-
-
-
-
-          
-
-          <Turnstile siteKey="0x4AAAAAACEnWiyzZjf30AYU" theme="light" bind:reset={turnstileReset} on:callback={(e) => { turnstileToken = e.detail.token; }} on:expired={() => { turnstileToken = null; }} on:error={(e) => { turnstileToken = null; turnstileReset?.(); submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie..."; console.error('Turnstile error:', e.detail.code); }} />
+          <Turnstile
+            siteKey="0x4AAAAAACEnWiyzZjf30AYU"
+            theme="light"
+            bind:reset={turnstileReset}
+            on:callback={(e) => {
+              turnstileToken = e.detail.token;
+            }}
+            on:expired={() => {
+              turnstileToken = null;
+            }}
+            on:error={(e) => {
+              turnstileToken = null;
+              turnstileReset?.();
+              submitMessage = "Błąd weryfikacji. Odświeżam zabezpieczenie...";
+              console.error("Turnstile error:", e.detail.code);
+            }}
+          />
 
           <div class="text-left ctaButton">
             <CtaButton
-              text={isSubmitting
-                ? "Wysyłanie..."
-                : "Wyślij zgłoszenie"}
+              text={isSubmitting ? "Wysyłanie..." : "Wyślij zgłoszenie"}
               type="submit"
               disabled={isSubmitting}
             />
           </div>
 
           <p class="form-download-note" use:typoFixAction>
-            Możesz też pobrać <a href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf" download>formularz zgłoszenia usterki (PDF)</a>, wypełnić go i wysłać na <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a>.
+            Możesz też pobrać <a
+              href="/do_pobrania/dokumentacja/CERTUS_Zgloszenie_usterki.pdf"
+              download>formularz zgłoszenia usterki (PDF)</a
+            >, wypełnić go i wysłać na
+            <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a>.
           </p>
         </form>
       </div>
@@ -684,7 +802,6 @@
 </section>
 
 <style lang="scss">
-
   .phone-group {
     .phone-input-wrapper {
       display: flex;
@@ -702,15 +819,15 @@
     }
   }
 
-  :global(.recorded-file){
+  :global(.recorded-file) {
     color: var(--color-text-secondary) !important;
   }
   #serviceType {
     color: var(--color-text-secondary) !important;
   }
 
-  #phone{
-   /*  width: auto;
+  #phone {
+    /*  width: auto;
     max-width: 50%; */
   }
 
@@ -727,7 +844,6 @@
     height: auto;
     position: relative;
     top: 0px;
-   
   }
 
   .contact-flex .background .contact {
@@ -758,7 +874,7 @@
   }
 
   .serwis-contact-left {
-    background-image: url(/assets/kontakt-background.jpg); 
+    background-image: url(/assets/kontakt-background.webp);
 
     h2 {
       color: white;
@@ -774,7 +890,6 @@
     height: 110px;
     margin-left: -70px;
     margin-top: -74px;
-
 
     clip-path: polygon(0 0, 100% 0, 0 100%);
     border-left: 2px solid rgb(255 255 255);
@@ -797,7 +912,7 @@
     justify-content: space-between;
     min-width: 340px;
     max-width: 480px;
-    background-image: url(/assets/kontakt-background.jpg);
+    background-image: url(/assets/kontakt-background.webp);
     background-size: cover;
   }
 
@@ -870,7 +985,7 @@
 
   .contact-info-block {
     margin: 32px 0 18px 0;
-    a{
+    a {
       transition: all ease 0.3s;
     }
   }
@@ -912,7 +1027,7 @@
     background: #cddc39;
     border-radius: 50%;
     transition: background 0.2s;
-    box-shadow: 0 2px 8px rgba(44, 90, 160,.08);
+    box-shadow: 0 2px 8px rgba(44, 90, 160, 0.08);
   }
 
   .social-icon:hover {
@@ -927,10 +1042,10 @@
   }
 
   .contact-form h3 {
-      color: var(--color-text-secondary);
-      margin-bottom: 20px;
-      font-weight: 600;
-      text-align: center;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
   }
 
   @media (max-width: 900px) {
@@ -955,7 +1070,7 @@
 
   @media (max-width: 768px) {
     .contact-form h3 {
-        margin-bottom: 16px;
+      margin-bottom: 16px;
     }
 
     .contact-left h2 {

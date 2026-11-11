@@ -83,7 +83,7 @@
       right: 0;
       bottom: 0;
       height: 18px;
-      background-image: url(/assets/images/pattern-video-3.png);
+      background-image: url(/assets/images/pattern-video-3.webp);
       background-repeat: repeat-x;
       background-position: center bottom;
       background-size: auto 18px;

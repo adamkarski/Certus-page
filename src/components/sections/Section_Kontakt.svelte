@@ -773,7 +773,7 @@
     justify-content: space-between;
     min-width: 340px;
     max-width: 480px;
-    background-image: url(/assets/kontakt-background.jpg);
+    background-image: url(/assets/kontakt-background.webp);
     background-size: cover;
   }
 

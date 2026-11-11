@@ -31,7 +31,7 @@
 
     .pattern.two {
       transform: scale(1.2) skew(-15deg, 0deg);
-      background-image: url(/assets/images/pattern-image1-2.png);
+      background-image: url(/assets/images/pattern-image1-2.webp);
       position: absolute;
       width: 100%;
       height: 63px;

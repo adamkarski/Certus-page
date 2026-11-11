@@ -62,7 +62,7 @@
       class="masked-video"
       title="Wideo prezentujące procesy produkcyjne Certus"
       preload="none"
-      poster="/assets/images/pattern-video-1.png"
+      poster="/assets/images/pattern-video-1.webp"
       bind:this={videoElement}
     />
 
@@ -94,7 +94,7 @@
     opacity: 0.6;
   }
   .video-pattern-1 {
-    background-image: url(/assets/images/pattern-video-1.png);
+    background-image: url(/assets/images/pattern-video-1.webp);
     position: absolute;
     width: 184px;
     height: 263px;
@@ -104,7 +104,7 @@
     pointer-events: auto;
   }
   .video-pattern-2 {
-    background-image: url(/assets/images/pattern-video-2.png);
+    background-image: url(/assets/images/pattern-video-2.webp);
     position: absolute;
     width: 102px;
     height: 194px;
@@ -116,7 +116,7 @@
     background-position-x: -115px;
   }
   .video-pattern-3 {
-    background-image: url(/assets/images/pattern-video-3.png);
+    background-image: url(/assets/images/pattern-video-3.webp);
     position: absolute;
     width: 100%;
     height: 64px;

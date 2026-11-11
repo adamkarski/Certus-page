@@ -41,7 +41,7 @@
 	$: effectiveType = type || pageSeo.type || routeSeo.type || "website";
 
 	$: rawImage =
-		image || pageSeo.image || routeSeo.image || "/assets/images/certusPage.jpg";
+		image || pageSeo.image || routeSeo.image || "/assets/images/certusPage.webp";
 	$: cleanImage = rawImage.replace(/^\/static\//, "/").replace(/^static\//, "/");
 	$: imageUrl = cleanImage.startsWith("http")
 		? cleanImage

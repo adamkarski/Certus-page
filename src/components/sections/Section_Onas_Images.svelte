@@ -6,31 +6,31 @@
 
   const images = [
     {
-      src: "/assets/images/onas/certus-frezarki-maszyny-cnc.jpg",
+      src: "/assets/images/onas/certus-frezarki-maszyny-cnc.webp",
       alt: "Certus frezarki maszyny CNC",
     },
     {
-      src: "/assets/images/onas/certus-maszyny-aluminium.jpg",
+      src: "/assets/images/onas/certus-maszyny-aluminium.webp",
       alt: "Certus maszyny aluminium",
     },
     {
-      src: "/assets/images/onas/certus-maszyny-stol.jpg",
+      src: "/assets/images/onas/certus-maszyny-stol.webp",
       alt: "Certus maszyny stół",
     },
     {
-      src: "/assets/images/onas/certus-maszyny-wielkogabarytowe-cnc.jpg",
+      src: "/assets/images/onas/certus-maszyny-wielkogabarytowe-cnc.webp",
       alt: "Certus maszyny wielkogabarytowe CNC",
     },
     {
-      src: "/assets/images/onas/element-obrabiany-maszynami-certus-2.jpg",
+      src: "/assets/images/onas/element-obrabiany-maszynami-certus-2.webp",
       alt: "Element obrabiany maszynami Certus 2",
     },
     {
-      src: "/assets/images/onas/element-obrabiany-maszynami-certus.jpg",
+      src: "/assets/images/onas/element-obrabiany-maszynami-certus.webp",
       alt: "Element obrabiany maszynami Certus",
     },
     {
-      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-10.jpg",
+      src: "/assets/images/bestseller/frezarko-grawerka-cnc-certus-69-model-10.webp",
       alt: "Przemysł jubilerski Certus CNC maszyny",
     },
   ];
@@ -186,7 +186,7 @@
   }
 
   .onas-pattern-2 {
-    background-image: url(/assets/images/pattern-video-2.png);
+    background-image: url(/assets/images/pattern-video-2.webp);
     position: absolute;
     width: 102px;
     height: 194px;
@@ -198,7 +198,7 @@
     background-position-x: -115px;
   }
   .onas-pattern-3 {
-    background-image: url(/assets/images/pattern-video-3.png);
+    background-image: url(/assets/images/pattern-video-3.webp);
     position: absolute;
     width: 100%;
     height: 64px;

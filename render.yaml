@@ -1,0 +1,101 @@
+services:
+  - type: web
+    name: mg-certus
+    runtime: static
+    buildCommand: npm run build
+    staticPublishPath: ./build
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Strict-Transport-Security
+        value: max-age=31536000; includeSubDomains; preload
+      - path: /*
+        name: Permissions-Policy
+        value: camera=(), geolocation=(), microphone=(self)
+    routes:
+      # === 301 Przekierowania starych adresów i PDF ===
+      - type: redirect
+        source: /maszyny-specjalistyczne
+        destination: /maszyny-specjalne/
+      - type: redirect
+        source: /maszyny-specjalistyczne/
+        destination: /maszyny-specjalne/
+      - type: redirect
+        source: /maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stoem
+        destination: /maszyny/#frezarki
+      - type: redirect
+        source: /maszynyCNC/frezarki/frezarka-cnc-hmm-st-z-ruchomym-stoem/
+        destination: /maszyny/#frezarki
+      - type: redirect
+        source: /do_pobrania/Plotery-linearne-CNC.pdf
+        destination: /do_pobrania/CERTUS_Karta_katalogowa_HLP-FT.pdf
+      - type: redirect
+        source: /do_pobrania/Frezarki-5osiowe.pdf
+        destination: /do_pobrania/CERTUS_Karta_katalogowa_Frezarki-5-osiowe.pdf
+      - type: redirect
+        source: /do_pobrania/Grawerki-CNC.pdf
+        destination: /do_pobrania/CERTUS_Karta_katalogowa_Grawerki-CNC.pdf
+      - type: redirect
+        source: /do_pobrania/Plotery-przemyslowe-CNC-HPP-CT.pdf
+        destination: /do_pobrania/CERTUS_Karta_katalogowa_HPP-CT.pdf
+      - type: redirect
+        source: /do_pobrania/Plotery-przemyslowe-CNC-HPP-OT.pdf
+        destination: /do_pobrania/CERTUS_Karta_katalogowa_HPP-OT.pdf
+      - type: redirect
+        source: /do_pobrania/Frezarki-CNC-HMM-GT.pdf
+        destination: /do_pobrania/CERTUS_Karta_katalogowa_HMM-GT.pdf
+      - type: redirect
+        source: /do_pobrania/Frezarki-CNC-HMM-ST.pdf
+        destination: /do_pobrania/CERTUS_Karta_katalogowa_HMM-ST.pdf
+
+      # === 301 Przekierowania bez slasha -> na wersję kanoniczną ze slashem ===
+      - type: redirect
+        source: /serwis
+        destination: /serwis/
+      - type: redirect
+        source: /onas
+        destination: /onas/
+      - type: redirect
+        source: /kontakt
+        destination: /kontakt/
+      - type: redirect
+        source: /maszyny
+        destination: /maszyny/
+      - type: redirect
+        source: /hmp-g1
+        destination: /hmp-g1/
+      - type: redirect
+        source: /bestseller
+        destination: /bestseller/
+      - type: redirect
+        source: /dokumentacja
+        destination: /dokumentacja/
+      - type: redirect
+        source: /maszyny-specjalne
+        destination: /maszyny-specjalne/
+      - type: redirect
+        source: /mapa-witryny
+        destination: /mapa-witryny/
+      - type: redirect
+        source: /polityka-prywatnosci
+        destination: /polityka-prywatnosci/
+      - type: redirect
+        source: /maszynyCNC/ploteryLinearne/plotery-cnc-hlp-ft
+        destination: /maszynyCNC/ploteryLinearne/plotery-cnc-hlp-ft/
+      - type: redirect
+        source: /maszynyCNC/grawerki/grawerki-cnc
+        destination: /maszynyCNC/grawerki/grawerki-cnc/
+
+      # === Obsługa błędów 404 (zamiast przepisywania na index.html) ===
+      - type: rewrite
+        source: /*
+        destination: /404.html

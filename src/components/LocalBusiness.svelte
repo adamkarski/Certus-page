@@ -8,7 +8,7 @@
   "legalName": "P.P.H.U. „MG-CERTUS” Górecki Mariusz",
   "url": "https://mg-certus.pl/",
   "logo": "https://mg-certus.pl/assets/logo-certus.svg",
-  "image": "https://mg-certus.pl/assets/kontakt-background.jpg",
+  "image": "https://mg-certus.pl/assets/kontakt-background.webp",
   "description": "Polski producent profesjonalnych obrabiarek i maszyn CNC z ponad 20-letnim doświadczeniem: centra frezarskie, frezarki CNC, plotery przemysłowe oraz grawerki.",
   "email": "biuro@mg-certus.pl",
   "telephone": "+48606324406",

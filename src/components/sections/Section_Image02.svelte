@@ -34,7 +34,7 @@
         type="image/webp"
       />
       <img
-        src="/assets/images/baner2_wnetrze_hmm-st.jpg"
+        src="/assets/images/baner2_wnetrze_hmm-st.webp"
         alt="Obróbka detali i dobór maszyny CNC CERTUS"
         class="masked-image"
         width="1536"
@@ -176,7 +176,7 @@
     opacity: 0.85;
 
     .pattern.one {
-      background-image: url(/assets/images/pattern-image1.png);
+      background-image: url(/assets/images/pattern-image1.webp);
       background-repeat: no-repeat;
       background-position: right top;
       position: absolute;
@@ -187,7 +187,7 @@
     }
 
     .pattern.two {
-      background-image: url(/assets/images/pattern-image1-2.png);
+      background-image: url(/assets/images/pattern-image1-2.webp);
       background-repeat: no-repeat;
       background-position: left bottom;
       position: absolute;

@@ -104,7 +104,7 @@ h3 {
       
 
       .pattern.one {
-        background-image: url(/assets/images/pattern-image2-1.png);
+        background-image: url(/assets/images/pattern-image2-1.webp);
         position: absolute;
         width: 157px;
         height: 181px;
@@ -114,7 +114,7 @@ h3 {
         pointer-events: auto;
       }
       .pattern.two {
-        background-image: url(/assets/images/pattern-image1-2.png);
+        background-image: url(/assets/images/pattern-image1-2.webp);
         position: absolute;
         width: 100%;
         height: 63px;

@@ -170,14 +170,14 @@
     <div class="right">
       <br />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.png"
+        src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_1.webp"
         alt="Schemat techniczny frezarki Certus 1080 PRO - widok 1"
         width="2000"
         height="2000"
         loading="lazy"
       />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.png"
+        src="/assets/maszyny/SCHEMATY/Certus_1080_PRO_2.webp"
         alt="Schemat techniczny frezarki Certus 1080 PRO - widok 2"
         width="2000"
         height="2000"
@@ -196,7 +196,7 @@
     <div class="maszyny-dane-gallery-column">
      <!--  <Section_Maszyny_Image01
         sectionId="frezarki-image-01"
-        imgSrc="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.png"
+        imgSrc="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
         title="Frezarki CNC HMM-ST"
         subtitle="Precyzyjne obróbki skrawaniem"
       /> -->
@@ -320,14 +320,14 @@
     <div class="right">
       <br />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_1410_1.png"
+        src="/assets/maszyny/SCHEMATY/Certus_1410_1.webp"
         alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 1"
         width="2000"
         height="2000"
         loading="lazy"
       />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_1410_2.png"
+        src="/assets/maszyny/SCHEMATY/Certus_1410_2.webp"
         alt="Schemat techniczny frezarki Certus CNC HMM-GT 1410 - widok 2"
         width="2000"
         height="2000"
@@ -442,14 +442,14 @@
     <div class="right">
       <br />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_0816_1.png"
+        src="/assets/maszyny/SCHEMATY/Certus_0816_1.webp"
         alt="Schemat techniczny frezarki Certus 0816 - widok 1"
         width="2000"
         height="2000"
         loading="lazy"
       />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_0816_2.png"
+        src="/assets/maszyny/SCHEMATY/Certus_0816_2.webp"
         alt="Schemat techniczny frezarki Certus 0816 - widok 2"
         width="2000"
         height="2000"
@@ -577,7 +577,7 @@
     <div class="right">
       <br />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.png"
+        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_1.webp"
         alt="Schemat techniczny frezarki Certus 0815 - widok 5"
         width="2000"
         height="2000"
@@ -585,7 +585,7 @@
       />
 
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.png"
+        src="/assets/maszyny/SCHEMATY/Certus_0815_ATC_2.webp"
         alt="Schemat techniczny frezarki Certus 0815 - widok 3"
         width="2000"
         height="2000"
@@ -613,7 +613,7 @@
 
     <!--   <Section_Maszyny_Image01
         sectionId="zabudowa-specs"
-        imgSrc="/assets/certus-pomoc-wdrozenia.png"
+        imgSrc="/assets/certus-pomoc-wdrozenia.webp"
         title="Dokumentacja techniczna"
         subtitle="Pobierz specyfikację"
       /> -->
@@ -729,7 +729,7 @@
     <div class="right">
       <br />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.png"
+        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_1.webp"
         alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 1"
         width="2000"
         height="2000"
@@ -737,7 +737,7 @@
       />
 
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.png"
+        src="/assets/maszyny/SCHEMATY/Certus_Grawerka_frezarka_nabiurkowa_2.webp"
         alt="Schemat techniczny Certus Grawerka Frezarka Nabiurkowa - widok 2"
         width="2000"
         height="2000"
@@ -756,7 +756,7 @@
     <div class="maszyny-dane-gallery-column">
     <!--   <Section_Maszyny_Image01
         sectionId="grawerki-image"
-        imgSrc="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.png"
+        imgSrc="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
         title="Grawerki CNC"
         subtitle="Precyzyjne grawerowanie"
       /> -->
@@ -869,14 +869,14 @@
     <div class="right">
       <br />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.png"
+        src="/assets/maszyny/SCHEMATY/Certus_5_Osi_1.webp"
         alt="Schemat techniczny - widok 1"
         width="2000"
         height="2000"
         loading="lazy"
       />
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.png"
+        src="/assets/maszyny/SCHEMATY/Certus_5_Osi_2.webp"
         alt="Schemat techniczny - widok 2"
         width="2000"
         height="2000"
@@ -895,7 +895,7 @@
     <div class="maszyny-dane-gallery-column">
    <!--    <Section_Maszyny_Image01
         sectionId="frezarki5osiowe-image"
-        imgSrc="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.png"
+        imgSrc="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp"
         title="Frezarki pięcioosiowe"
         subtitle="Zaawansowana obróbka"
       /> -->
@@ -1011,7 +1011,7 @@
       <br />
 
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_1530_1.png"
+        src="/assets/maszyny/SCHEMATY/Certus_1530_1.webp"
         alt="Schemat techniczny frezarki Certus 1530 - widok 1"
         width="2000"
         height="2000"
@@ -1019,7 +1019,7 @@
       />
 
       <img
-        src="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
+        src="/assets/maszyny/SCHEMATY/Certus_1530_2.webp"
         alt="Schemat techniczny frezarki Certus 1530 - widok 4"
         width="2000"
         height="2000"
@@ -1038,7 +1038,7 @@
     <div class="maszyny-dane-gallery-column">
      <!--  <Section_Maszyny_Image01
         sectionId="ploteryLinearne-image"
-        imgSrc="/assets/maszyny/SCHEMATY/Certus_1530_2.png"
+        imgSrc="/assets/maszyny/SCHEMATY/Certus_1530_2.webp"
         title="Plotery CNC HLP-FT"
         subtitle="Precyzyjne cięcie"
       /> -->
