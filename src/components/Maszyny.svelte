@@ -86,6 +86,12 @@
     mobileDetailsExpanded = { ...mobileDetailsExpanded, [id]: !mobileDetailsExpanded[id] };
   }
 
+  function toggleSpecs(id: string) {
+    const isNowOpen = !(desktopExpanded[id] || mobileDetailsExpanded[id]);
+    desktopExpanded = { ...desktopExpanded, [id]: isNowOpen };
+    mobileDetailsExpanded = { ...mobileDetailsExpanded, [id]: isNowOpen };
+  }
+
   function handleHashOpen(hash: string) {
     const cleanId = hash.replace("#", "");
     if (cleanId && desktopExpanded[cleanId] !== undefined) {
@@ -161,48 +167,38 @@
       <div class="cnc-row" use:typoFixAction>
         Zaprojektowana z myślą o szybkim i precyzyjnym frezowaniu materiałów takich jak stal, aluminium, drewno, tworzywa sztuczne i inne.
       </div>
+      <!-- Przycisk Specyfikacja wyrównany do lewej zaraz pod tekstem -->
+      <div class="spec-btn-row">
+        <button
+          type="button"
+          class="spec-btn"
+          on:click={() => toggleSpecs('frezarki')}
+          aria-expanded={desktopExpanded['frezarki'] || mobileDetailsExpanded['frezarki']}
+        >
+          <svg class="spec-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span class="spec-label">Specyfikacja</span>
+          <span class="btn-arrow" class:is-rotated={desktopExpanded['frezarki'] || mobileDetailsExpanded['frezarki']}>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
     <div class="cnc-right">
       <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp" alt="Frezarka CNC HMM-ST" width="1200" height="800" loading="lazy">
     </div>
   </div>
-
-    <!-- Przyciski rozwijania parametrów -->
-    <div class="tier-controls-bar">
-      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
-      <button
-        type="button"
-        class="spec-toggle-btn desktop-only"
-        on:click={() => toggleDesktop('frezarki')}
-        aria-expanded={desktopExpanded['frezarki']}
-      >
-        <span class="btn-arrow" class:is-rotated={desktopExpanded['frezarki']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {desktopExpanded['frezarki'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-      </button>
-
-      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
-      <button
-        type="button"
-        class="spec-toggle-btn mobile-only"
-        on:click={() => toggleMobileDetails('frezarki')}
-        aria-expanded={mobileDetailsExpanded['frezarki']}
-      >
-        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['frezarki']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {mobileDetailsExpanded['frezarki'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-      </button>
-    </div>
 
     <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
@@ -390,48 +386,38 @@
         stopach, kompozytach, tworzywach, drewnie oraz — w odpowiedniej
         konfiguracji wrzeciona — w wybranych stalach.
       </div>
+      <!-- Przycisk Specyfikacja wyrównany do lewej zaraz pod tekstem -->
+      <div class="spec-btn-row">
+        <button
+          type="button"
+          class="spec-btn"
+          on:click={() => toggleSpecs('frezarki-gt')}
+          aria-expanded={desktopExpanded['frezarki-gt'] || mobileDetailsExpanded['frezarki-gt']}
+        >
+          <svg class="spec-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span class="spec-label">Specyfikacja</span>
+          <span class="btn-arrow" class:is-rotated={desktopExpanded['frezarki-gt'] || mobileDetailsExpanded['frezarki-gt']}>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
     <div class="cnc-right">
       <img src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp" alt="Frezarki CNC HMM-G" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
-
-    <!-- Przyciski rozwijania parametrów -->
-    <div class="tier-controls-bar">
-      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
-      <button
-        type="button"
-        class="spec-toggle-btn desktop-only"
-        on:click={() => toggleDesktop('frezarki-gt')}
-        aria-expanded={desktopExpanded['frezarki-gt']}
-      >
-        <span class="btn-arrow" class:is-rotated={desktopExpanded['frezarki-gt']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {desktopExpanded['frezarki-gt'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-      </button>
-
-      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
-      <button
-        type="button"
-        class="spec-toggle-btn mobile-only"
-        on:click={() => toggleMobileDetails('frezarki-gt')}
-        aria-expanded={mobileDetailsExpanded['frezarki-gt']}
-      >
-        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['frezarki-gt']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {mobileDetailsExpanded['frezarki-gt'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-      </button>
-    </div>
 
     <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
@@ -597,48 +583,38 @@
           platformę przeznaczoną do skrawania w co najmniej trzech osiach, z możliwością
           rozbudowy o dodatkowe osie sterowane. Frezowanie, wiercenie, gwintowanie i cięcie, a na zamówienie – z dodatkowym wyposażeniem – także toczenie (4. oś), bigowanie i dozowanie.
       </div>
+      <!-- Przycisk Specyfikacja wyrównany do lewej zaraz pod tekstem -->
+      <div class="spec-btn-row">
+        <button
+          type="button"
+          class="spec-btn"
+          on:click={() => toggleSpecs('ploteryPrzemyslowe')}
+          aria-expanded={desktopExpanded['ploteryPrzemyslowe'] || mobileDetailsExpanded['ploteryPrzemyslowe']}
+        >
+          <svg class="spec-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span class="spec-label">Specyfikacja</span>
+          <span class="btn-arrow" class:is-rotated={desktopExpanded['ploteryPrzemyslowe'] || mobileDetailsExpanded['ploteryPrzemyslowe']}>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
     <div class="cnc-right">
       <img src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
-
-    <!-- Przyciski rozwijania parametrów -->
-    <div class="tier-controls-bar">
-      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
-      <button
-        type="button"
-        class="spec-toggle-btn desktop-only"
-        on:click={() => toggleDesktop('ploteryPrzemyslowe')}
-        aria-expanded={desktopExpanded['ploteryPrzemyslowe']}
-      >
-        <span class="btn-arrow" class:is-rotated={desktopExpanded['ploteryPrzemyslowe']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {desktopExpanded['ploteryPrzemyslowe'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-      </button>
-
-      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
-      <button
-        type="button"
-        class="spec-toggle-btn mobile-only"
-        on:click={() => toggleMobileDetails('ploteryPrzemyslowe')}
-        aria-expanded={mobileDetailsExpanded['ploteryPrzemyslowe']}
-      >
-        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['ploteryPrzemyslowe']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {mobileDetailsExpanded['ploteryPrzemyslowe'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-      </button>
-    </div>
 
     <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
@@ -785,48 +761,38 @@
         gwintowanie czy bigowanie, jednak dzięki pełnej zabudowie oferują
         dodatkowe korzyści operacyjne i eksploatacyjne.
       </div>
+      <!-- Przycisk Specyfikacja wyrównany do lewej zaraz pod tekstem -->
+      <div class="spec-btn-row">
+        <button
+          type="button"
+          class="spec-btn"
+          on:click={() => toggleSpecs('ploteryPrzemysloweZabudowa')}
+          aria-expanded={desktopExpanded['ploteryPrzemysloweZabudowa'] || mobileDetailsExpanded['ploteryPrzemysloweZabudowa']}
+        >
+          <svg class="spec-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span class="spec-label">Specyfikacja</span>
+          <span class="btn-arrow" class:is-rotated={desktopExpanded['ploteryPrzemysloweZabudowa'] || mobileDetailsExpanded['ploteryPrzemysloweZabudowa']}>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
     <div class="cnc-right">
       <img src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
-
-    <!-- Przyciski rozwijania parametrów -->
-    <div class="tier-controls-bar">
-      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
-      <button
-        type="button"
-        class="spec-toggle-btn desktop-only"
-        on:click={() => toggleDesktop('ploteryPrzemysloweZabudowa')}
-        aria-expanded={desktopExpanded['ploteryPrzemysloweZabudowa']}
-      >
-        <span class="btn-arrow" class:is-rotated={desktopExpanded['ploteryPrzemysloweZabudowa']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {desktopExpanded['ploteryPrzemysloweZabudowa'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-      </button>
-
-      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
-      <button
-        type="button"
-        class="spec-toggle-btn mobile-only"
-        on:click={() => toggleMobileDetails('ploteryPrzemysloweZabudowa')}
-        aria-expanded={mobileDetailsExpanded['ploteryPrzemysloweZabudowa']}
-      >
-        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['ploteryPrzemysloweZabudowa']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {mobileDetailsExpanded['ploteryPrzemysloweZabudowa'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-      </button>
-    </div>
 
     <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
@@ -993,48 +959,38 @@
         form wtryskowych, stempli, narzędzi precyzyjnych, tabliczek znamionowych,
         paneli frontowych, biżuterii oraz w mikroobróbce komponentów technicznych.
       </div>
+      <!-- Przycisk Specyfikacja wyrównany do lewej zaraz pod tekstem -->
+      <div class="spec-btn-row">
+        <button
+          type="button"
+          class="spec-btn"
+          on:click={() => toggleSpecs('grawerki')}
+          aria-expanded={desktopExpanded['grawerki'] || mobileDetailsExpanded['grawerki']}
+        >
+          <svg class="spec-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span class="spec-label">Specyfikacja</span>
+          <span class="btn-arrow" class:is-rotated={desktopExpanded['grawerki'] || mobileDetailsExpanded['grawerki']}>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
     <div class="cnc-right">
       <img src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp" alt="Grawerki CNC Certus" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
-
-    <!-- Przyciski rozwijania parametrów -->
-    <div class="tier-controls-bar">
-      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
-      <button
-        type="button"
-        class="spec-toggle-btn desktop-only"
-        on:click={() => toggleDesktop('grawerki')}
-        aria-expanded={desktopExpanded['grawerki']}
-      >
-        <span class="btn-arrow" class:is-rotated={desktopExpanded['grawerki']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {desktopExpanded['grawerki'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-      </button>
-
-      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
-      <button
-        type="button"
-        class="spec-toggle-btn mobile-only"
-        on:click={() => toggleMobileDetails('grawerki')}
-        aria-expanded={mobileDetailsExpanded['grawerki']}
-      >
-        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['grawerki']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {mobileDetailsExpanded['grawerki'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-      </button>
-    </div>
 
     <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
@@ -1209,48 +1165,38 @@
         Znajdują zastosowanie przede wszystkim w produkcji matryc do termoformowania, modeli kompozytowych oraz elementów
         wymagających wielostronnej obróbki w jednym mocowaniu.
       </div>
+      <!-- Przycisk Specyfikacja wyrównany do lewej zaraz pod tekstem -->
+      <div class="spec-btn-row">
+        <button
+          type="button"
+          class="spec-btn"
+          on:click={() => toggleSpecs('frezarki5osiowe')}
+          aria-expanded={desktopExpanded['frezarki5osiowe'] || mobileDetailsExpanded['frezarki5osiowe']}
+        >
+          <svg class="spec-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span class="spec-label">Specyfikacja</span>
+          <span class="btn-arrow" class:is-rotated={desktopExpanded['frezarki5osiowe'] || mobileDetailsExpanded['frezarki5osiowe']}>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
     <div class="cnc-right">
       <img src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp" alt="Frezarki CNC pięcioosiowe" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
-
-    <!-- Przyciski rozwijania parametrów -->
-    <div class="tier-controls-bar">
-      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
-      <button
-        type="button"
-        class="spec-toggle-btn desktop-only"
-        on:click={() => toggleDesktop('frezarki5osiowe')}
-        aria-expanded={desktopExpanded['frezarki5osiowe']}
-      >
-        <span class="btn-arrow" class:is-rotated={desktopExpanded['frezarki5osiowe']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {desktopExpanded['frezarki5osiowe'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-      </button>
-
-      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
-      <button
-        type="button"
-        class="spec-toggle-btn mobile-only"
-        on:click={() => toggleMobileDetails('frezarki5osiowe')}
-        aria-expanded={mobileDetailsExpanded['frezarki5osiowe']}
-      >
-        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['frezarki5osiowe']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {mobileDetailsExpanded['frezarki5osiowe'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-      </button>
-    </div>
 
     <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
@@ -1418,48 +1364,38 @@
         reklamowym, tekstylnym, kompozytowym i wielu innych branżach, gdzie wymagana
         jest wysoka jakość krawędzi oraz powtarzalność obróbki.
       </div>
+      <!-- Przycisk Specyfikacja wyrównany do lewej zaraz pod tekstem -->
+      <div class="spec-btn-row">
+        <button
+          type="button"
+          class="spec-btn"
+          on:click={() => toggleSpecs('ploteryLinearne')}
+          aria-expanded={desktopExpanded['ploteryLinearne'] || mobileDetailsExpanded['ploteryLinearne']}
+        >
+          <svg class="spec-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+          <span class="spec-label">Specyfikacja</span>
+          <span class="btn-arrow" class:is-rotated={desktopExpanded['ploteryLinearne'] || mobileDetailsExpanded['ploteryLinearne']}>
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+      </div>
     </div>
     <div class="cnc-right">
       <img src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp" alt="Plotery CNC HLP-FT Certus" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
-
-    <!-- Przyciski rozwijania parametrów -->
-    <div class="tier-controls-bar">
-      <!-- Przycisk na Desktop: 1 poziom rozwijania -->
-      <button
-        type="button"
-        class="spec-toggle-btn desktop-only"
-        on:click={() => toggleDesktop('ploteryLinearne')}
-        aria-expanded={desktopExpanded['ploteryLinearne']}
-      >
-        <span class="btn-arrow" class:is-rotated={desktopExpanded['ploteryLinearne']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {desktopExpanded['ploteryLinearne'] ? 'Zwiń specyfikację techniczną i parametry' : 'Rozwiń pełną specyfikację techniczną i parametry'}
-        </span>
-      </button>
-
-      <!-- Przycisk na Mobile: Poziom 2 rozwijania szczegółów -->
-      <button
-        type="button"
-        class="spec-toggle-btn mobile-only"
-        on:click={() => toggleMobileDetails('ploteryLinearne')}
-        aria-expanded={mobileDetailsExpanded['ploteryLinearne']}
-      >
-        <span class="btn-arrow" class:is-rotated={mobileDetailsExpanded['ploteryLinearne']}>
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </span>
-        <span>
-          {mobileDetailsExpanded['ploteryLinearne'] ? 'Zwiń parametry i wyposażenie' : 'Rozwiń parametry techniczne i wyposażenie'}
-        </span>
-      </button>
-    </div>
 
     <!-- Szczegółowe parametry: zawsze w HTML dla robotów SEO, ukrywane wyłącznie klasami CSS -->
     <div
@@ -1871,44 +1807,72 @@
   }
 
   /* ———————————————— BUTTON STYLES ———————————————— */
-  .tier-controls-bar {
-    width: 100%;
-    max-width: 1200px;
-    margin: 18px auto 26px auto;
-    padding: 0 20px;
+  .spec-btn-row {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+    margin-top: 18px;
+    margin-bottom: 6px;
 
     @media (max-width: 768px) {
-      justify-content: center;
-      padding: 0 16px;
-      margin: 14px auto 20px auto;
+      margin-top: 14px;
+      margin-bottom: 12px;
     }
   }
 
-  .spec-toggle-btn {
+  .spec-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 13px 26px;
+    gap: 8px;
+    padding: 7px 16px;
     background: #1f2123;
     color: #ffffff;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
+    font-size: 13.5px;
     font-weight: 500;
     border-radius: 9999px;
     border: 1.5px solid #96a500;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-    letter-spacing: 0.02em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    letter-spacing: 0.01em;
+
+    .spec-icon {
+      stroke: #96a500;
+      flex-shrink: 0;
+      transition: stroke 0.2s ease;
+    }
+
+    .spec-label {
+      line-height: 1;
+    }
+
+    .btn-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+      svg {
+        stroke: #96a500;
+        transition: stroke 0.2s ease;
+      }
+
+      &.is-rotated {
+        transform: rotate(180deg);
+      }
+    }
 
     &:hover {
       background: #96a500;
       color: #111213;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(150, 165, 0, 0.35);
+      border-color: #96a500;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(150, 165, 0, 0.3);
+
+      .spec-icon {
+        stroke: #111213;
+      }
 
       .btn-arrow svg {
         stroke: #111213;
@@ -1917,13 +1881,6 @@
 
     &:active {
       transform: translateY(0);
-    }
-
-    @media (max-width: 768px) {
-      width: 100%;
-      padding: 12px 18px;
-      font-size: 0.9rem;
-      border-radius: 10px;
     }
   }
 
