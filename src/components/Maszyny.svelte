@@ -1573,40 +1573,54 @@
       max-width: 100%;
       height: auto;
     }
-    @media (max-width: 600px) {
-
-      .cnc-table {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: auto auto;
-      }
-      .cnc-right img{
-        padding: 0.3rem;
-      }
-    }
     @media (max-width: 900px) {
-
-      .maszyny-dane{
-
+      .maszyny-dane {
         padding: 1rem 1rem 0.5rem 1rem;
-
-
       }
       .cnc-table {
-        grid-template-columns: 3fr 1fr;
+        grid-template-columns: 2fr 1fr;
       }
       .cnc-left {
-        padding: 1em 0.5em;
+        padding: 0.75em 0.5em;
       }
-
     }
-    @media (max-width: 600px) {
-      .cnc-table {
-        grid-template-columns: 1fr 1fr;
-      }
-      .cnc-left, .cnc-right {
-        padding: 0.5em;
-      }
 
+    @media (max-width: 768px) {
+      .maszyny-dane {
+        padding: 0.75rem 0.5rem;
+      }
+      .cnc-table {
+        grid-template-columns: 1fr !important;
+        display: flex;
+        flex-direction: column;
+      }
+      .cnc-left {
+        padding: 0.5em 0;
+        width: 100%;
+
+        .cnc-icon {
+          width: 52px;
+          height: 52px;
+          margin-right: 12px;
+        }
+
+        .cnc-title {
+          max-width: 100%;
+          font-size: 1.2rem;
+          line-height: 1.25;
+        }
+      }
+      .cnc-right {
+        padding: 0.75rem 0;
+        min-width: 0;
+        width: 100%;
+
+        img {
+          max-width: 300px;
+          margin: 0 auto;
+          display: block;
+        }
+      }
     }
 
 
