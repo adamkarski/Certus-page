@@ -25,6 +25,39 @@
   import { galleryData } from "$lib/data/galleryData"; // Assuming galleryData.ts exports galleryData
 
   // Gallery State
+  
+  // Active Category & Visibility State
+  let activeTab: string = "all"; // 'all' or section id
+  let expandedMobileSections: Record<string, boolean> = {
+    "frezarki": false,
+    "frezarki-gt": false,
+    "ploteryPrzemyslowe": false,
+    "ploteryPrzemysloweZabudowa": false,
+    "grawerki": false,
+    "frezarki5osiowe": false,
+    "ploteryLinearne": false
+  };
+
+  function selectTab(tabId: string) {
+    activeTab = tabId;
+  }
+
+  function toggleMobileSection(secId: string) {
+    expandedMobileSections[secId] = !expandedMobileSections[secId];
+    expandedMobileSections = { ...expandedMobileSections };
+  }
+
+  const categoryTabs = [
+    { id: "all", label: "Wszystkie obrabiarki" },
+    { id: "frezarki", label: "Frezarki HMM-ST" },
+    { id: "frezarki-gt", label: "Frezarki HMM-GT" },
+    { id: "ploteryPrzemyslowe", label: "Plotery HPP-OT" },
+    { id: "ploteryPrzemysloweZabudowa", label: "Plotery w zabudowie HPP-CT" },
+    { id: "frezarki5osiowe", label: "Frezarki 5-osiowe" },
+    { id: "grawerki", label: "Grawerki CNC" },
+    { id: "ploteryLinearne", label: "Plotery linearne HLP-FT" }
+  ];
+
   let isGalleryOpen: boolean = false;
   let currentGalleryImages: Array<{ src: string; title: string; alt: string }> = [];
 
@@ -54,16 +87,41 @@
 <section id="maszyny" class="maszyny">
   <div class="maszyny-container container">
     <div class="section-header">
-      <h1 class="no-sel">Kategorie maszyn</h1>
-
+      <div class="section-pretitle">POLSKI PRODUCENT OBRABIAREK CNC</div>
+      <h1 class="no-sel">Maszyny i obrabiarki CNC CERTUS</h1>
+      <p class="section-lead">Precyzyjne centra obróbcze, frezarki i plotery przemysłowe projektowane i produkowane w Polsce. Wybierz kategorię poniżej lub skonsultuj dobór z naszym inżynierem.</p>
+      <div class="header-cta-row">
+        <a href="/kontakt" class="header-cta-primary">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Bezpłatna konsultacja i dobór maszyny
+        </a>
+        <a href="/dokumentacja" class="header-cta-secondary">Karty katalogowe i specyfikacje</a>
+      </div>
       <hr />
     </div>
   </div>
-  <OfertaGrid variant="maszyny" />
+    <div class="category-tabs-container">
+    <div class="category-tabs-nav" role="tablist">
+      {#each categoryTabs as tab}
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeTab === tab.id}
+          class="tab-btn"
+          class:active={activeTab === tab.id}
+          on:click={() => selectTab(tab.id)}
+        >
+          {tab.label}
+        </button>
+      {/each}
+    </div>
+  </div>
 </section>
 
 <!-- Frezarki CNC HMM-ST -->
-<section id="frezarki" class="maszyny-dane">
+<section id="frezarki" class="maszyny-dane" class:tab-hidden={activeTab !== "all" && activeTab !== "frezarki"}>
 
 
   <div class="cnc-table">
@@ -83,7 +141,14 @@
 
 
 
-  <div class="maszyny-dane-text-image" use:typoFixAction>
+  
+  <div class="mobile-accordion-toggle">
+    <button type="button" class="btn-toggle-mobile" on:click={() => toggleMobileSection("frezarki")}>
+      <span>{expandedMobileSections["frezarki"] ? "▲ Zwiń szczegółowy opis i dane techniczne" : "▼ Rozwiń pełną specyfikację, tabelę modeli i wyposażenie"}</span>
+    </button>
+  </div>
+  <div class="collapsible-mobile-body" class:expanded={expandedMobileSections["frezarki"]}>
+<div class="maszyny-dane-text-image" use:typoFixAction>
     <div class="left">
 
       <ul class="maszyny-dane-lista-small" use:typoFixAction>
@@ -211,7 +276,8 @@
       />
     </div>
   </div>
-  <MachineMenu
+    </div>
+<MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HMM-ST.pdf"
     contactText="Kontakt"
@@ -220,7 +286,7 @@
 </section>
 
 <!-- Frezarki CNC HMM-GT -->
-<section id="frezarki-gt" class="maszyny-dane">
+<section id="frezarki-gt" class="maszyny-dane" class:tab-hidden={activeTab !== "all" && activeTab !== "frezarki-gt"}>
 
 
   <div class="cnc-table">
@@ -246,7 +312,14 @@
 
 
 
-  <div class="maszyny-dane-text-image">
+  
+  <div class="mobile-accordion-toggle">
+    <button type="button" class="btn-toggle-mobile" on:click={() => toggleMobileSection("frezarki-gt")}>
+      <span>{expandedMobileSections["frezarki-gt"] ? "▲ Zwiń szczegółowy opis i dane techniczne" : "▼ Rozwiń pełną specyfikację, tabelę modeli i wyposażenie"}</span>
+    </button>
+  </div>
+  <div class="collapsible-mobile-body" class:expanded={expandedMobileSections["frezarki-gt"]}>
+<div class="maszyny-dane-text-image">
     <div class="left">
 
 
@@ -354,7 +427,8 @@
       />
     </div>
   </div>
-  <MachineMenu
+    </div>
+<MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HMM-GT.pdf"
     contactText="Kontakt"
@@ -363,7 +437,7 @@
 </section>
 
 <!-- Przemysłowe plotery CNC -->
-<section id="ploteryPrzemyslowe" class="maszyny-dane">
+<section id="ploteryPrzemyslowe" class="maszyny-dane" class:tab-hidden={activeTab !== "all" && activeTab !== "ploteryPrzemyslowe"}>
 
 
   <div class="cnc-table">
@@ -389,7 +463,14 @@
 
 
 
-  <div class="maszyny-dane-text-image">
+  
+  <div class="mobile-accordion-toggle">
+    <button type="button" class="btn-toggle-mobile" on:click={() => toggleMobileSection("ploteryPrzemyslowe")}>
+      <span>{expandedMobileSections["ploteryPrzemyslowe"] ? "▲ Zwiń szczegółowy opis i dane techniczne" : "▼ Rozwiń pełną specyfikację, tabelę modeli i wyposażenie"}</span>
+    </button>
+  </div>
+  <div class="collapsible-mobile-body" class:expanded={expandedMobileSections["ploteryPrzemyslowe"]}>
+<div class="maszyny-dane-text-image">
 
       <div class="left">
 
@@ -476,7 +557,8 @@
       />
     </div>
   </div>
-  <MachineMenu
+    </div>
+<MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HPP-OT.pdf"
     contactText="Kontakt"
@@ -485,7 +567,7 @@
 </section>
 
 <!-- Przemysłowe plotery CNC w zabudowie -->
-<section id="ploteryPrzemysloweZabudowa" class="maszyny-dane">
+<section id="ploteryPrzemysloweZabudowa" class="maszyny-dane" class:tab-hidden={activeTab !== "all" && activeTab !== "ploteryPrzemysloweZabudowa"}>
 
 
   <div class="cnc-table">
@@ -512,7 +594,14 @@
 
 
 
-  <div class="maszyny-dane-text-image">
+  
+  <div class="mobile-accordion-toggle">
+    <button type="button" class="btn-toggle-mobile" on:click={() => toggleMobileSection("ploteryPrzemysloweZabudowa")}>
+      <span>{expandedMobileSections["ploteryPrzemysloweZabudowa"] ? "▲ Zwiń szczegółowy opis i dane techniczne" : "▼ Rozwiń pełną specyfikację, tabelę modeli i wyposażenie"}</span>
+    </button>
+  </div>
+  <div class="collapsible-mobile-body" class:expanded={expandedMobileSections["ploteryPrzemysloweZabudowa"]}>
+<div class="maszyny-dane-text-image">
     <div class="left">
 
 
@@ -619,7 +708,8 @@
       /> -->
     </div>
   </div>
-  <MachineMenu
+    </div>
+<MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HPP-CT.pdf"
     contactText="Kontakt"
@@ -628,7 +718,7 @@
 </section>
 
 <!-- Grawerki CNC -->
-<section id="grawerki" class="maszyny-dane">
+<section id="grawerki" class="maszyny-dane" class:tab-hidden={activeTab !== "all" && activeTab !== "grawerki"}>
 
 
   <div class="cnc-table">
@@ -655,7 +745,14 @@
 
 
 
-  <div class="maszyny-dane-text-image">
+  
+  <div class="mobile-accordion-toggle">
+    <button type="button" class="btn-toggle-mobile" on:click={() => toggleMobileSection("grawerki")}>
+      <span>{expandedMobileSections["grawerki"] ? "▲ Zwiń szczegółowy opis i dane techniczne" : "▼ Rozwiń pełną specyfikację, tabelę modeli i wyposażenie"}</span>
+    </button>
+  </div>
+  <div class="collapsible-mobile-body" class:expanded={expandedMobileSections["grawerki"]}>
+<div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
         <strong>Grawerki CNC</strong><br /><br />
@@ -771,7 +868,8 @@
       />
     </div>
   </div>
-  <MachineMenu
+    </div>
+<MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_Grawerki-CNC.pdf"
     contactText="Kontakt"
@@ -780,7 +878,7 @@
 </section>
 
 <!-- Frezarki pięcioosiowe -->
-<section id="frezarki5osiowe" class="maszyny-dane">
+<section id="frezarki5osiowe" class="maszyny-dane" class:tab-hidden={activeTab !== "all" && activeTab !== "frezarki5osiowe"}>
 
 
   <div class="cnc-table">
@@ -802,7 +900,14 @@
   </div>
 
 
-  <div class="maszyny-dane-text-image">
+  
+  <div class="mobile-accordion-toggle">
+    <button type="button" class="btn-toggle-mobile" on:click={() => toggleMobileSection("frezarki5osiowe")}>
+      <span>{expandedMobileSections["frezarki5osiowe"] ? "▲ Zwiń szczegółowy opis i dane techniczne" : "▼ Rozwiń pełną specyfikację, tabelę modeli i wyposażenie"}</span>
+    </button>
+  </div>
+  <div class="collapsible-mobile-body" class:expanded={expandedMobileSections["frezarki5osiowe"]}>
+<div class="maszyny-dane-text-image">
     <div class="left">
       <p use:typoFixAction>
         <strong></strong><br /><br />
@@ -910,7 +1015,8 @@
       />
     </div>
   </div>
-  <MachineMenu
+    </div>
+<MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_Frezarki-5-osiowe.pdf"
     contactText="Kontakt"
@@ -919,7 +1025,7 @@
 </section>
 
 <!-- Plotery tnące linearne CNC -->
-<section id="ploteryLinearne" class="maszyny-dane">
+<section id="ploteryLinearne" class="maszyny-dane" class:tab-hidden={activeTab !== "all" && activeTab !== "ploteryLinearne"}>
 
 
   <div class="cnc-table">
@@ -946,7 +1052,14 @@
 
 
 
-  <div class="maszyny-dane-text-image">
+  
+  <div class="mobile-accordion-toggle">
+    <button type="button" class="btn-toggle-mobile" on:click={() => toggleMobileSection("ploteryLinearne")}>
+      <span>{expandedMobileSections["ploteryLinearne"] ? "▲ Zwiń szczegółowy opis i dane techniczne" : "▼ Rozwiń pełną specyfikację, tabelę modeli i wyposażenie"}</span>
+    </button>
+  </div>
+  <div class="collapsible-mobile-body" class:expanded={expandedMobileSections["ploteryLinearne"]}>
+<div class="maszyny-dane-text-image">
     <div class="left">
       <div class="maszyny-dane-podtytul">Wszechstronność i funkcjonalność:</div>
       <ul class="maszyny-dane-lista-small">
@@ -1053,7 +1166,8 @@
       />
     </div>
   </div>
-  <MachineMenu
+    </div>
+<MachineMenu
     downloadText="Karta katalogowa (PDF)"
     downloadHref="/do_pobrania/CERTUS_Karta_katalogowa_HLP-FT.pdf"
     contactText="Kontakt"
@@ -1246,4 +1360,238 @@
     color: var(--color-text-secondary) !important;
     font-weight: 600 !important;
   }
+
+  /* =========================================================
+     Nowy ujednolicony styl dla sekcji /maszyny/
+     - Dwa poziomy widoczności (Desktop: Zakładki, Mobile: Akordeon)
+     - Header CTA & Pretitle
+     - Premium look & feel
+     ========================================================= */
+
+  .section-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .section-pretitle {
+    display: inline-block;
+    color: #c5d418;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-lead {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .header-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .header-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #c5d418;
+      color: #111827;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+
+      &:hover {
+        background: #d9e632;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(197, 212, 24, 0.35);
+      }
+    }
+
+    .header-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #e5e7eb;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  /* Pasek zakładek kategorii */
+  .category-tabs-container {
+    width: 100%;
+    margin-bottom: 3.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+  }
+
+  .category-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #9ca3af;
+      padding: 0.65rem 1.25rem;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #f3f4f6;
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+
+      &.active {
+        background: #c5d418;
+        border-color: #c5d418;
+        color: #111827;
+        font-weight: 600;
+        box-shadow: 0 2px 10px rgba(197, 212, 24, 0.25);
+      }
+    }
+  }
+
+  /* Ukrywanie nielistowanych sekcji w trybie filtra zakładek */
+  .maszyny-dane.tab-hidden {
+    display: none !important;
+  }
+
+  /* Podrasowanie wyglądu kart maszyn */
+  .maszyny-dane {
+    transition: opacity 0.3s ease;
+    margin-bottom: 4rem;
+    padding: 2.5rem clamp(1rem, 3vw, 2.5rem);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+
+    .cnc-table {
+      margin-bottom: 2rem;
+    }
+  }
+
+  /* Akordeon mobilny */
+  .mobile-accordion-toggle {
+    display: none; /* Domyślnie ukryty na desktopie - pełny widok */
+    margin: 1.5rem 0;
+    text-align: center;
+
+    .btn-toggle-mobile {
+      width: 100%;
+      background: rgba(197, 212, 24, 0.12);
+      border: 1px solid rgba(197, 212, 24, 0.35);
+      color: #c5d418;
+      padding: 0.95rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+
+      &:hover, &:active {
+        background: rgba(197, 212, 24, 0.2);
+        border-color: #c5d418;
+      }
+    }
+  }
+
+  .collapsible-mobile-body {
+    /* Na desktopie treść jest zawsze w 100% widoczna */
+    display: block;
+  }
+
+  /* Responsywność dla urządzeń mobilnych */
+  @media (max-width: 900px) {
+    .category-tabs-nav {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding: 0.5rem 1rem;
+    }
+
+    .mobile-accordion-toggle {
+      display: block; /* Włączony akordeon na telefonach i małych tabletach */
+    }
+
+    .collapsible-mobile-body {
+      display: none; /* Domyślnie zwinięte na mobile */
+
+      &.expanded {
+        display: block;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+    }
+
+    .header-cta-row {
+      flex-direction: column;
+      width: 100%;
+
+      .header-cta-primary,
+      .header-cta-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
 </style>
