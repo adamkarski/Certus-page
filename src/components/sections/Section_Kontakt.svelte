@@ -390,41 +390,45 @@
     </ul>
     <div class="contact-info-block">
       <div class="info-row">
-        <span class="info-icon"
-          ><img src="/assets/ikony/telefon.svg" alt="Telefon" width="24" height="24" loading="lazy" /></span
-        >
-        <b
-          ><a href="tel:+48 606 324 406" title="Zadzwoń do Certus"
-            >+48 606 324 406</a
-          ></b
-        >
+        <div class="info-main">
+          <span class="info-icon"
+            ><img src="/assets/ikony/telefon.svg" alt="Telefon" width="22" height="22" loading="lazy" /></span
+          >
+          <b
+            ><a href="tel:+48 606 324 406" title="Zadzwoń do Certus"
+              >+48 606 324 406</a
+            ></b
+          >
+        </div>
       </div>
       <div class="info-row">
-        <span class="info-icon"
-          ><img src="/assets/ikony/email.svg" alt="Email" width="24" height="24" loading="lazy" /></span
-        >
-        <div>
+        <div class="info-main">
+          <span class="info-icon"
+            ><img src="/assets/ikony/email.svg" alt="Email" width="22" height="22" loading="lazy" /></span
+          >
           <b
             ><a href="mailto:biuro@mg-certus.pl" title="Wyślij e-mail do Certus"
               >biuro@mg-certus.pl</a
             ></b
           >
-          <small class="email-routing-hint">Zapytania ofertowe: <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a> · Zgłoszenia serwisowe: <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a></small>
         </div>
+        <small class="email-routing-hint">Zapytania ofertowe: <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a> · Zgłoszenia serwisowe: <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a></small>
       </div>
       <div class="info-row">
-        <span class="info-icon"
-          ><img src="/assets/ikony/lokalizacja.svg" alt="Lokalizacja" width="24" height="24" loading="lazy" /></span
-        >
-        <b
-          ><a
-            href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
-            target="_blank"
-            title="Otwórz lokalizację Certus w Google Maps"
-            rel="noopener noreferrer"
-            >Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</a
+        <div class="info-main">
+          <span class="info-icon"
+            ><img src="/assets/ikony/lokalizacja.svg" alt="Lokalizacja" width="22" height="22" loading="lazy" /></span
           >
-        </b>
+          <b
+            ><a
+              href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              title="Otwórz lokalizację Certus w Google Maps"
+              rel="noopener noreferrer"
+              >Biała Droga 177, 34-123 Chocznia, woj. Małopolskie</a
+            >
+          </b>
+        </div>
       </div>
     </div>
     <div class="contact-social">
@@ -834,12 +838,36 @@
 
   .info-row {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 16px;
-    gap: 10px;
+    margin-bottom: 18px;
 
-    b {
-      color: #fff;
+    .info-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      line-height: 1.25;
+
+      .info-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        margin: 0;
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+      }
+
+      b {
+        color: #fff;
+        line-height: 1.25;
+      }
     }
 
     .email-routing-hint {
@@ -847,6 +875,7 @@
       color: #a0a0a0;
       font-size: 0.82rem;
       margin-top: 4px;
+      padding-left: 34px;
       line-height: 1.4;
 
       a {
@@ -857,11 +886,28 @@
         }
       }
     }
-  }
 
-  .info-icon {
-    margin-right: 6px;
-    margin-top: 4px;
+    @media (max-width: 600px) {
+      margin-bottom: 16px;
+
+      .info-main {
+        gap: 10px;
+
+        .info-icon {
+          width: 20px;
+          height: 20px;
+        }
+
+        b {
+          font-size: 1.05rem;
+        }
+      }
+
+      .email-routing-hint {
+        font-size: 0.78rem;
+        padding-left: 30px;
+      }
+    }
   }
 
   .contact-social {

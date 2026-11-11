@@ -289,7 +289,7 @@ export const certus69Data: MachinePageConfig = {
     { param: "Prowadzenie i napęd osi", chips: ["Prowadnice liniowe, rozmiar 20", "Śruby kulowe, pasek HTD"] },
     { param: "Stół roboczy", chips: ["Aluminiowy T-rowkowy"] },
     { param: "Sterowanie", chips: ["PikoCNC PL · PikoCAM · pulpit z PC"] },
-    { param: "Opcje dodatkowe", chips: ["4. oś obrotowa", "Chłodzenie mgłą olejową", "Czujnik narzędzia"] },
+    { param: "Opcje dodatkowe", chips: ["4. oś obrotowa", "Chłodzenie mgłą olejową", "Czujnik narzędzia", "Czujnik pomiaru detalu – sonda 3D"] },
     { param: "Materiały", chips: ["Aluminium i metale kolorowe", "Drobne elementy stalowe", "Plexi i tworzywa", "Drewno"] },
   ],
   drawingImgSrc: "/assets/maszyny/SCHEMATY/Certus_69_1_cropped.webp",

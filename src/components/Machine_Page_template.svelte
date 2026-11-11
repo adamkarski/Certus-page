@@ -787,37 +787,37 @@
 
             <div class="contact-info-block">
               <div class="info-row">
-                <span class="info-icon">
-                  <img src="/assets/ikony/telefon.svg" alt="Telefon" />
-                </span>
-                <div>
+                <div class="info-main">
+                  <span class="info-icon">
+                    <img src="/assets/ikony/telefon.svg" alt="Telefon" width="22" height="22" loading="lazy" />
+                  </span>
                   <b>
                     <a href="tel:+48606324406" title="Zadzwoń do Certus"
                       >+48 606 324 406</a
                     >
                   </b>
-                  <small>Dni robocze 8:00–16:00</small>
                 </div>
+                <small>Dni robocze 8:00–16:00</small>
               </div>
               <div class="info-row">
-                <span class="info-icon">
-                  <img src="/assets/ikony/email.svg" alt="Email" />
-                </span>
-                <div>
+                <div class="info-main">
+                  <span class="info-icon">
+                    <img src="/assets/ikony/email.svg" alt="Email" width="22" height="22" loading="lazy" />
+                  </span>
                   <b>
                     <a
                       href="mailto:biuro@mg-certus.pl"
                       title="Wyślij e-mail do Certus">biuro@mg-certus.pl</a
                     >
                   </b>
-                  <small>Dział handlowy i techniczny</small>
                 </div>
+                <small>Dział handlowy i techniczny</small>
               </div>
               <div class="info-row">
-                <span class="info-icon">
-                  <img src="/assets/ikony/lokalizacja.svg" alt="Lokalizacja" />
-                </span>
-                <div>
+                <div class="info-main">
+                  <span class="info-icon">
+                    <img src="/assets/ikony/lokalizacja.svg" alt="Lokalizacja" width="22" height="22" loading="lazy" />
+                  </span>
                   <b>
                     <a
                       href="https://www.google.com/maps/dir//Bia%C5%82a+Droga+177,+34-123+Chocznia/@49.8630838,19.3645919,17989m/data=!3m1!1e3!4m9!4m8!1m0!1m5!1m1!1s0x471685f8e05f1bf3:0x5264562f84f98863!2m2!1d19.4469926!2d49.8630023!3e0?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"
@@ -828,8 +828,8 @@
                       Biała Droga 177, 34-123 Chocznia
                     </a>
                   </b>
-                  <small>Siedziba i produkcja CERTUS</small>
                 </div>
+                <small>Siedziba i produkcja CERTUS</small>
               </div>
             </div>
           </div>
@@ -2143,34 +2143,67 @@
 
   .info-row {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 16px;
-    gap: 10px;
+    margin-bottom: 18px;
 
-    div {
-      display: flex;
-      flex-direction: column;
+    .info-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      line-height: 1.25;
+
+      .info-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        margin: 0;
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+      }
 
       b {
         font-size: 15px;
         color: #ffffff;
+        line-height: 1.25;
+      }
+    }
+
+    small {
+      color: #ccc;
+      margin-top: 4px;
+      padding-left: 34px;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 600px) {
+      margin-bottom: 16px;
+
+      .info-main {
+        gap: 10px;
+
+        .info-icon {
+          width: 20px;
+          height: 20px;
+        }
+
+        b {
+          font-size: 14px;
+        }
       }
 
       small {
-        color: #ccc;
-        margin-top: 2px;
-        font-size: 12px;
+        font-size: 11px;
+        padding-left: 30px;
       }
-    }
-  }
-
-  .info-icon {
-    margin-right: 6px;
-    margin-top: 4px;
-    img {
-      width: 20px;
-      height: 20px;
-      display: block;
     }
   }
 
