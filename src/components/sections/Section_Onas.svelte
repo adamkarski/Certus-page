@@ -110,9 +110,9 @@
   .o-nas {
     width: 100%;
     padding: 100px 0;
-    background: #18191c;
+    background: white;
     position: relative;
-    color: #e5e7eb;
+    color: #1f2937;
   }
 
   .o-nas-container {
@@ -131,13 +131,13 @@
     display: flex;
     align-items: center;
     margin-bottom: 15px;
-    color: #d1d5db;
+    color: #374151;
     font-size: 1.05rem;
     line-height: 1.5;
   }
 
   .o-nas-left .step-description {
-    color: #9ca3af;
+    color: #4b5563;
   }
 
   .o-nas-right {
@@ -149,19 +149,20 @@
   }
 
   .step {
-    background-color: #222428;
-    border: 1px solid #33363d;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
     border-radius: 12px;
     padding: 16px 20px;
     display: flex;
     align-items: center;
     gap: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-    transition: border-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 
     &:hover {
       border-color: var(--color-primary-dark);
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -173,19 +174,18 @@
   .step-title {
     font-weight: bold;
     margin-bottom: 5px;
-    color: #ffffff;
+    color: var(--color-text-secondary);
   }
 
   .step-description {
     min-width: 300px;
-    color: #9ca3af;
+    color: #4b5563;
   }
 
   .o-nas-right img {
     width: 4em;
     object-fit: cover;
     padding: 0.4em;
-    filter: brightness(1.1);
   }
 
   @media (max-width: 930px) {

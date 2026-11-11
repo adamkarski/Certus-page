@@ -142,7 +142,7 @@
     >
       <div class="mobile-level1-left">
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
-        <span class="mobile-level1-title">Frezarka CNC HMM-ST</span>
+        <span class="mobile-level1-title">Frezarka HMM-ST</span>
       </div>
       <div class="mobile-level1-right">
         <span class="mobile-level1-status">
@@ -165,7 +165,7 @@
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
         <div class="cnc-title-group">
           <div class="cnc-svg-title">
-            <MachineTitleSvg text="CNC HMM-ST" height="1.6em" shadow={false} />
+            <MachineTitleSvg text="HMM-ST" height="1.6em" shadow={false} />
           </div>
           <h2 class="cnc-title" use:typoFixAction>Frezarka z ruchomym stołem</h2>
         </div>
@@ -362,7 +362,7 @@
     >
       <div class="mobile-level1-left">
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
-        <span class="mobile-level1-title">Frezarka CNC HMM-GT</span>
+        <span class="mobile-level1-title">Frezarka HMM-GT</span>
       </div>
       <div class="mobile-level1-right">
         <span class="mobile-level1-status">
@@ -385,7 +385,7 @@
         <img src="/assets/ikony/maszyny/frezarki.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
         <div class="cnc-title-group">
           <div class="cnc-svg-title">
-            <MachineTitleSvg text="CNC HMM-GT" height="1.6em" shadow={false} />
+            <MachineTitleSvg text="HMM-GT" height="1.6em" shadow={false} />
           </div>
           <h2 class="cnc-title" use:typoFixAction>Frezarka z ruchomą bramą</h2>
         </div>
@@ -566,7 +566,7 @@
     >
       <div class="mobile-level1-left">
         <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
-        <span class="mobile-level1-title">Ploter CNC HPP-OT</span>
+        <span class="mobile-level1-title">Ploter HPP-OT</span>
       </div>
       <div class="mobile-level1-right">
         <span class="mobile-level1-status">
@@ -589,7 +589,7 @@
         <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
         <div class="cnc-title-group">
           <div class="cnc-svg-title">
-            <MachineTitleSvg text="CNC HPP-OT" height="1.6em" shadow={false} />
+            <MachineTitleSvg text="HPP-OT" height="1.6em" shadow={false} />
           </div>
           <h2 class="cnc-title" use:typoFixAction>Wielkoformatowy ploter przemysłowy bez zabudowy</h2>
         </div>
@@ -747,7 +747,7 @@
     >
       <div class="mobile-level1-left">
         <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
-        <span class="mobile-level1-title">Ploter CNC HPP-CT (w zabudowie)</span>
+        <span class="mobile-level1-title">Ploter HPP-CT (w zabudowie)</span>
       </div>
       <div class="mobile-level1-right">
         <span class="mobile-level1-status">
@@ -770,7 +770,7 @@
         <img src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
         <div class="cnc-title-group">
           <div class="cnc-svg-title">
-            <MachineTitleSvg text="CNC HPP-CT" height="1.6em" shadow={false} />
+            <MachineTitleSvg text="HPP-CT" height="1.6em" shadow={false} />
           </div>
           <h2 class="cnc-title" use:typoFixAction>Zaawansowany wieloosiowy ploter przemysłowy w zabudowie</h2>
         </div>
@@ -950,7 +950,7 @@
     >
       <div class="mobile-level1-left">
         <img src="/assets/ikony/maszyny/grawerki.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
-        <span class="mobile-level1-title">Grawerki CNC</span>
+        <span class="mobile-level1-title">Grawerki</span>
       </div>
       <div class="mobile-level1-right">
         <span class="mobile-level1-status">
@@ -973,7 +973,7 @@
         <img src="/assets/ikony/maszyny/grawerki.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
         <div class="cnc-title-group">
           <div class="cnc-svg-title">
-            <MachineTitleSvg text="CNC GRAWER" height="1.6em" shadow={false} />
+            <MachineTitleSvg text="GRAWER" height="1.6em" shadow={false} />
           </div>
           <h2 class="cnc-title" use:typoFixAction>Kompaktowe grawerki precyzyjne</h2>
         </div>
@@ -1162,7 +1162,7 @@
     >
       <div class="mobile-level1-left">
         <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
-        <span class="mobile-level1-title">Frezarki CNC 5-osiowe</span>
+        <span class="mobile-level1-title">Frezarki 5-osiowe</span>
       </div>
       <div class="mobile-level1-right">
         <span class="mobile-level1-status">
@@ -1185,9 +1185,9 @@
         <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
         <div class="cnc-title-group">
           <div class="cnc-svg-title">
-            <MachineTitleSvg text="CNC 5-OSIOWE" height="1.6em" shadow={false} />
+            <MachineTitleSvg text="5-OSIOWE" height="1.6em" shadow={false} />
           </div>
-          <h2 class="cnc-title" use:typoFixAction>Pięcioosiowe centra frezarskie CNC</h2>
+          <h2 class="cnc-title" use:typoFixAction>Pięcioosiowe centra frezarskie</h2>
         </div>
       </div>
       <div class="cnc-desc" use:typoFixAction>
@@ -1365,7 +1365,7 @@
     >
       <div class="mobile-level1-left">
         <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="" class="mobile-level1-icon" width="32" height="32" loading="lazy" />
-        <span class="mobile-level1-title">Plotery linearne CNC HLP-FT</span>
+        <span class="mobile-level1-title">Plotery linearne HLP-FT</span>
       </div>
       <div class="mobile-level1-right">
         <span class="mobile-level1-status">
@@ -1388,9 +1388,9 @@
         <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
         <div class="cnc-title-group">
           <div class="cnc-svg-title">
-            <MachineTitleSvg text="CNC HLP-FT" height="1.6em" shadow={false} />
+            <MachineTitleSvg text="HLP-FT" height="1.6em" shadow={false} />
           </div>
-          <h2 class="cnc-title" use:typoFixAction>Plotery CNC ze stołem hybrydowym</h2>
+          <h2 class="cnc-title" use:typoFixAction>Plotery ze stołem hybrydowym</h2>
         </div>
       </div>
       <div class="cnc-desc" use:typoFixAction>
@@ -1571,7 +1571,7 @@
     grid-template-columns: 1.6fr 1.2fr;
     width: 100%;
     background: #fff;
-    align-items: end;
+    align-items: start;
     gap: 32px;
     padding: 10px 0 20px 0;
   }
@@ -1579,7 +1579,7 @@
   .cnc-left {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     min-width: 220px;
   }
 
@@ -1598,6 +1598,7 @@
     flex-shrink: 0;
     object-fit: contain;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+    transform: translateY(-9px);
   }
 
   .cnc-title-group {
@@ -1633,11 +1634,11 @@
 
   .cnc-right {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
     min-width: 200px;
     padding: 0;
-    align-self: end;
+    align-self: start;
 
     img {
       max-width: 100%;
@@ -1661,6 +1662,7 @@
     .cnc-icon {
       width: 52px;
       height: 52px;
+      transform: translateY(-8px);
     }
   }
 
@@ -1687,6 +1689,7 @@
     .cnc-icon {
       width: 44px;
       height: 44px;
+      transform: translateY(-6px);
     }
     .cnc-title {
       font-size: 1.05rem;

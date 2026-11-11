@@ -1017,7 +1017,7 @@
         } else {
           backButton.style.position = "absolute";
           backButton.style.top = `${top}px`;
-          backButton.style.left = `${left - 40}px`;
+          backButton.style.left = "50px";
           backButton.style.transform = "none";
           backButton.style.zIndex = "100"; // Ensure it's on top
         }
@@ -1659,7 +1659,7 @@
                           <div class="headlines">
                             <div class="topline">
                               <MachineTitleSvg
-                                text="CNC HPP-OT"
+                                text="HPP-OT"
                                 height="1.15em"
                               /><br /><span class="nawias"
                                 >(OT — Open Type - otwarte)</span

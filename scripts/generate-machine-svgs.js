@@ -117,6 +117,7 @@ const machineNames = [
   'CNC 5-OSIOWE',
   '5-OSIOWE',
   'CNC GRAWER',
+  'GRAWER',
   'CNC HLP-FT',
   'Kompaktowe centrum HMP-G1',
   'Frezarki CNC HMM',

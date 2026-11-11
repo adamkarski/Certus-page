@@ -392,7 +392,7 @@
 
   .contact-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 15px;
     color: #ccc;
   }
@@ -400,6 +400,10 @@
   .contact-icon {
     margin-right: 10px;
     flex-shrink: 0;
+    margin-top: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .footer-bottom {

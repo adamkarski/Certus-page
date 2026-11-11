@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { onMount, tick } from "svelte";
+  import { onMount, onDestroy, tick } from "svelte";
+  import { browser } from "$app/environment";
   import { fly, fade, slide } from "svelte/transition";
   import { preloaderVisible } from "$lib/preloaderStore";
   import { goto } from "$app/navigation";
@@ -35,6 +36,20 @@
     isMobileMenuOpen = false;
     isMobileMaszynyOpen = false;
   }
+
+  $: if (browser) {
+    if (isMobileMenuOpen) {
+      document.body.classList.add("mobile-nav-locked");
+    } else {
+      document.body.classList.remove("mobile-nav-locked");
+    }
+  }
+
+  onDestroy(() => {
+    if (browser) {
+      document.body.classList.remove("mobile-nav-locked");
+    }
+  });
 
   // Reactive variables for active links
   $: currentPath = $page.url.pathname;
@@ -462,12 +477,8 @@
   {#if isMobileMenuOpen}
     <div
       class="mobile-menu-overlay"
-      on:click={closeMobileMenu}
-      on:keydown={(e) => {
-        if (e.key === "Enter" || e.key === " ") closeMobileMenu();
-      }}
-      role="button"
-      tabindex="0"
+      role="region"
+      aria-label="Pełnoekranowe menu"
       transition:fade={{ duration: 200 }}
     >
       <div
@@ -476,24 +487,44 @@
         aria-modal="true"
         aria-label="Menu mobilne"
         tabindex="-1"
-        on:click|stopPropagation
-        on:keydown|stopPropagation
         transition:fly={{ x: "-100%", duration: 300, easing: cubicOut }}
       >
         <div class="mobile-menu-header">
           {#if LottiePlayer}
-            <svelte:component
-              this={LottiePlayer}
-              src={"https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"}
-              autoplay
-              loop={false}
-              controls={false}
-              height="auto"
-              width="180px"
-              background="transparent"
-              controlsLayout="none"
-            />
+            <div class="mobile-menu-logo">
+              <svelte:component
+                this={LottiePlayer}
+                src={"https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"}
+                autoplay
+                loop={false}
+                controls={false}
+                height="auto"
+                width="170px"
+                background="transparent"
+                controlsLayout="none"
+              />
+            </div>
           {/if}
+          <button
+            type="button"
+            class="mobile-menu-close-btn"
+            on:click={closeMobileMenu}
+            aria-label="Zamknij menu"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="28"
+              height="28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
         </div>
         <div class="mobile-links-container">
           <!-- Karta 1: Nowość HMP-G1 (Tekst po lewej, przezroczysta maszyna po prawej) -->
@@ -817,9 +848,9 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 1);
-    backdrop-filter: blur(5px);
-    z-index: 1000;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
     display: flex;
     justify-content: flex-start;
   }
@@ -830,22 +861,54 @@
     height: 100%;
     box-sizing: border-box;
     display: flex;
-    padding-top: 42px !important;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    padding: 1.5rem 1.25rem 3rem 1.25rem;
     transform-origin: left center;
     box-shadow: 5px 0px 25px rgba(0, 0, 0, 0.5);
     overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .mobile-menu-header {
+    display: flex;
     width: 100%;
-    padding-bottom: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 1rem;
+    flex-shrink: 0;
+  }
+
+  .mobile-menu-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-menu-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.08);
+    }
+  }
+
+  :global(body.mobile-nav-locked) {
+    overflow: hidden !important;
   }
 
   .mobile-links-container {

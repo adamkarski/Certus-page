@@ -1445,6 +1445,10 @@ body.no-scroll-hero.active_machine_view {
     }
   }
   :global(.activeMachine .backButton) {
+    position: absolute !important;
+    bottom: 40px !important;
+    left: 50px !important;
+    z-index: 100 !important;
     height: 44px !important;
     opacity: 0.95 !important;
     transition: background-color 0.3s ease, color 0.3s ease, filter 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease !important;
@@ -1457,6 +1461,24 @@ body.no-scroll-hero.active_machine_view {
       .text-container {
         transform: none !important;
       }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    :global(.activeMachine .backButton) {
+      bottom: 24px !important;
+      left: 24px !important;
+      height: 40px !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :global(.activeMachine .backButton) {
+      bottom: 16px !important;
+      left: 16px !important;
+      height: 38px !important;
+      font-size: 13px !important;
+      padding: 8px 18px !important;
     }
   }
   :global(.activeMachine .right_content) {
