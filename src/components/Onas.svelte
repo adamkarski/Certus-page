@@ -63,12 +63,12 @@
         </div>
         <div class="cx-kpi-item">
           <p class="cx-kpi-label">PROJEKT I MONTAŻ</p>
-          <p class="cx-kpi-value">Chocznia</p>
-          <p class="cx-kpi-note">woj. małopolskie</p>
+          <p class="cx-kpi-value">100% Polska</p>
+          <p class="cx-kpi-note">Małopolska</p>
         </div>
         <div class="cx-kpi-item">
           <p class="cx-kpi-label">SERWIS</p>
-          <p class="cx-kpi-value">producenta</p>
+          <p class="cx-kpi-value">Producenta</p>
           <p class="cx-kpi-note">gwarancyjny i pogwarancyjny</p>
         </div>
       </div>
