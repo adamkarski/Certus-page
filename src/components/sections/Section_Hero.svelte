@@ -1704,7 +1704,8 @@
   }
   .item_title {
     position: absolute;
-    margin-bottom: -57%;
+    bottom: -45px;
+    margin-bottom: 0;
     color: rgb(255, 255, 255);
     line-height: 1.2;
     transition: all 0.9s ease;
@@ -1745,7 +1746,8 @@
   @media screen and (max-width: 746px) {
     .item_title {
       font-size: clamp(1rem, 3.5vw, 1.35rem);
-      margin-bottom: -85% !important;
+      bottom: -60px;
+      margin-bottom: 0 !important;
 
       :global(span:not(.sr-only)),
       :global(.nawias) {
@@ -1755,7 +1757,7 @@
   }
 
   :global(.home .hero) {
-    overflow: hidden;
+    overflow: visible;
     &::after {
       content: "";
       background-image: url(/assets/images/pattern-image1-2.webp);
