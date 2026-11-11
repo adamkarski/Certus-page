@@ -26,30 +26,27 @@
 
 <div class="oferta-container container">
   <div class="oferta-grid">
-    <div 
+    <a 
+      href="/maszyny#frezarki"
       class="oferta-card" 
-      on:click={() => navigateToMachine("frezarki")}
-      on:keydown={(event) => handleKeyDown(event, "frezarki")}
-      tabindex="0"
-      role="button"
+      on:click|preventDefault={() => navigateToMachine("frezarki")}
+      title="Frezarki CNC HMM-ST z ruchomym stołem"
     >
       <div class="oferta-icon">
-        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC" width="100" height="100" loading="lazy" />
+        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC HMM" width="100" height="100" loading="lazy" />
       </div>
 
       <CtaButton
         classs="oferta-cta"
         text="Frezarki CNC HMM"
-        
       />
-    </div>
+    </a>
 
-    <div 
+    <a 
+      href="/maszyny#ploteryPrzemyslowe"
       class="oferta-card" 
-      on:click={() => navigateToMachine("ploteryPrzemyslowe")}
-      on:keydown={(event) => handleKeyDown(event, "ploteryPrzemyslowe")}
-      tabindex="0"
-      role="button"
+      on:click|preventDefault={() => navigateToMachine("ploteryPrzemyslowe")}
+      title="Plotery przemysłowe CNC bez zabudowy HPP-OT"
     >
       <div class="oferta-icon">
         <img
@@ -64,21 +61,19 @@
       <CtaButton
         classs="oferta-cta"
         text="Plotery CNC"
-        
       />
-    </div>
+    </a>
 
-    <div 
+    <a 
+      href="/maszyny#ploteryPrzemysloweZabudowa"
       class="oferta-card" 
-      on:click={() => navigateToMachine("ploteryPrzemysloweZabudowa")}
-      on:keydown={(event) => handleKeyDown(event, "ploteryPrzemysloweZabudowa")}
-      tabindex="0"
-      role="button"
+      on:click|preventDefault={() => navigateToMachine("ploteryPrzemysloweZabudowa")}
+      title="Plotery przemysłowe CNC w pełnej zabudowie HPP-CT"
     >
       <div class="oferta-icon">
         <img
           src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg"
-          alt="Przemysłowe plotery CNC"
+          alt="Przemysłowe plotery CNC w zabudowie"
           width="100"
           height="100"
           loading="lazy"
@@ -88,16 +83,14 @@
       <CtaButton
         classs="oferta-cta"
         text="Plotery CNC w zabudowie"
-        
       />
-    </div>
+    </a>
 
-    <div 
+    <a 
+      href="/maszyny#frezarki5osiowe"
       class="oferta-card" 
-      on:click={() => navigateToMachine("frezarki5osiowe")}
-      on:keydown={(event) => handleKeyDown(event, "frezarki5osiowe")}
-      tabindex="0"
-      role="button"
+      on:click|preventDefault={() => navigateToMachine("frezarki5osiowe")}
+      title="Pięcioosiowe centra frezarskie CNC"
     >
       <div class="oferta-icon">
         <img
@@ -112,16 +105,14 @@
       <CtaButton
         classs="oferta-cta"
         text="Frezarki pięcioosiowe"
-        
       />
-    </div>
+    </a>
 
-    <div 
+    <a 
+      href="/maszyny#grawerki"
       class="oferta-card" 
-      on:click={() => navigateToMachine("grawerki")}
-      on:keydown={(event) => handleKeyDown(event, "grawerki")}
-      tabindex="0"
-      role="button"
+      on:click|preventDefault={() => navigateToMachine("grawerki")}
+      title="Grawerki CNC CERTUS"
     >
       <div class="oferta-icon">
         <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC" width="100" height="100" loading="lazy" />
@@ -130,16 +121,14 @@
       <CtaButton
         classs="oferta-cta"
         text="Grawerki CNC"
-        
       />
-    </div>
+    </a>
 
-    <div 
+    <a 
+      href="/maszyny#ploteryLinearne"
       class="oferta-card" 
-      on:click={() => navigateToMachine("ploteryLinearne")}
-      on:keydown={(event) => handleKeyDown(event, "ploteryLinearne")}
-      tabindex="0"
-      role="button"
+      on:click|preventDefault={() => navigateToMachine("ploteryLinearne")}
+      title="Plotery CNC z napędem liniowym HLP-FT"
     >
       <div class="oferta-icon">
         <img
@@ -154,51 +143,59 @@
       <CtaButton
         classs="oferta-cta"
         text="Plotery CNC HLP-FT"
-        
       />
-    </div>
+    </a>
   </div>
 </div>
 
 <style lang="scss">
   .oferta-container {
-    overflow: hidden;
+    overflow: visible;
     width: 100%;
-    padding: 0 0rem;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
   }
 
   :global(body.maszyny .oferta-container) {
-    padding-left: 6em !important;
-    padding-right: 6em !important;
+    padding-left: clamp(1rem, 3vw, 2.5rem) !important;
+    padding-right: clamp(1rem, 3vw, 2.5rem) !important;
   }
 
   :global(.oferta-grid) {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: end;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem 1rem;
+    justify-content: center;
     justify-items: center;
-    .oferta-card {
-      padding: 10px 0px;
-    border-radius: 0px;
-    text-align: center;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    margin: 0 auto;
 
-    margin-bottom: 20px;
+    .oferta-card {
+      padding: 12px 6px;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 190px;
+      text-decoration: none;
+      color: inherit;
+      box-sizing: border-box;
+
       span {
-        text-align: left;
+        text-align: center;
       }
     }
-    .oferta-card {
-      width: min-content;
-    }
+
     .oferta-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
     }
 
     :global(.oferta-card:hover .oferta-cta) {
@@ -207,38 +204,35 @@
     }
 
     :global(.oferta-card:hover .oferta-cta .text-container) {
-      transform: translateX(-6px);
+      transform: translateX(-4px);
       color: var(--color-text-white);
     }
 
     .oferta-icon {
-      margin-bottom: 25px;
-      display: block;
-      width: 3.5em;
-      min-width: 100px;
-      max-width: 140px !important;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 4rem;
+      min-width: 80px;
+      max-width: 110px !important;
 
       img {
         width: 100%;
-    height: auto;
-   
-    
+        height: auto;
+        display: block;
       }
     }
   }
 
-  // Responsive styles
-  @media (min-width: 1617px) {
+  @media (max-width: 1280px) {
     :global(.oferta-grid) {
-      grid-template-columns: repeat(6, 1fr);
-
-      .oferta-icon {
-    
-      }
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem 1.25rem;
     }
   }
 
-  // Kafelki kategorii na telefonie w 2 kolumnach (F2)
+  // Kafelki kategorii na telefonie w 2 kolumnach (F3)
   @media (max-width: 680px) {
     :global(body.maszyny .oferta-container) {
       padding-left: 0.75rem !important;
@@ -247,16 +241,15 @@
 
     :global(.oferta-grid) {
       grid-template-columns: repeat(2, 1fr) !important;
-      gap: 16px 10px !important;
+      gap: 14px 10px !important;
       justify-items: stretch !important;
 
       .oferta-card {
         width: 100% !important;
         max-width: 100% !important;
-        padding: 12px 6px !important;
+        padding: 10px 4px !important;
         margin: 0 !important;
 
-        // Dostosowanie ikon
         .oferta-icon {
           width: 52px !important;
           min-width: 48px !important;
@@ -269,14 +262,13 @@
           }
         }
 
-        // Dostosowanie przycisków CTA w 2 kolumnach
         :global(.oferta-cta) {
           width: 100% !important;
           min-width: 0 !important;
           max-width: 100% !important;
           height: auto !important;
-          min-height: 44px !important;
-          padding: 8px 6px !important;
+          min-height: 42px !important;
+          padding: 8px 4px !important;
           font-size: 0.8rem !important;
           justify-content: center !important;
           text-align: center !important;
@@ -285,64 +277,10 @@
     }
   }
 
-  // Style dla przycisków CTA - pozwalamy na łamanie tekstu
   :global(.oferta-cta) {
     width: 100% !important;
-    min-width: 180px !important;
+    min-width: 150px !important;
     max-width: 100% !important;
     clip-path: none !important;
-  }
-
-  :global(.oferta-cta .text-container .maszyny_span) {
-
-  }
-
-  @media (max-width: 768px) {
-    .oferta-container {
-      padding: 0 2rem;
-      margin-left: 0px;
-    }
-
-    :global(.oferta-grid) {
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-
-      .oferta-card {
-        padding: 15px 5px;
-      }
-
-      .oferta-icon {
-        margin-bottom: 20px;
-        width: 3em;
-
-        img {
-          margin-left: 0.5em;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 480px) {
-    .oferta-container {
-      padding: 0 1rem;
-    }
-
-    :global(.oferta-grid) {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-
-      .oferta-card {
-        padding: 10px 5px;
-      }
-
-      .oferta-icon {
-        margin-bottom: 15px;
-        width: 2.5em;
-
-        img {
-          margin-left: 0.4em;
-        }
-      }
-    }
   }
 </style>

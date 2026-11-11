@@ -1738,6 +1738,47 @@
       }
     }
   }
+
+  .slider-view {
+    swiper-slide:not(.hmp-hero-swiper-slide) {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding-top: 10px;
+      padding-bottom: 30px;
+
+      button.items {
+        flex: 0 1 auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .item .image img {
+      margin-top: 0;
+      max-height: 48vh;
+      max-width: 90vw;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .item_title {
+      position: relative;
+      bottom: auto;
+      margin-top: 14px;
+      margin-bottom: 0 !important;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
   .item_title {
     position: absolute;
     margin-bottom: -57%;
