@@ -1776,12 +1776,12 @@
 
     .item_title {
       position: absolute;
-      bottom: -15px;
+      bottom: 15px;
       margin-bottom: 0;
       width: 100%;
 
       @media (max-width: 768px) {
-        bottom: -25px;
+        bottom: 5px;
         margin-bottom: 0 !important;
       }
     }
