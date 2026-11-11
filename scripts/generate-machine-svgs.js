@@ -2,7 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import opentype from 'opentype.js';
 
-const fontPath = 'dokumenty na stronę/HMP-G1/FONT SNASM 28fc7216a1b52f6feda6901861c3d3e5/Snasm W00 Italic/Snasm W00 Italic.ttf';
+const fontPath = fs.existsSync('static/fonts/Snasm-Italic.ttf')
+  ? 'static/fonts/Snasm-Italic.ttf'
+  : 'dokumenty na stronę/HMP-G1/FONT SNASM 28fc7216a1b52f6feda6901861c3d3e5/Snasm W00 Italic/Snasm W00 Italic.ttf';
 const cachePath = 'scripts/.svg-cache.json';
 
 // Persistent disk cache to prevent unnecessary recalculations
@@ -106,6 +108,10 @@ const machineNames = [
   'CNC HMM-GT',
   'CNC HPP-CT',
   'CNC HPP-OT',
+  'CNC 5-OSIOWE',
+  '5-OSIOWE',
+  'CNC GRAWER',
+  'CNC HLP-FT',
   'Kompaktowe centrum HMP-G1',
   'Frezarki CNC HMM',
   'Plotery przemysłowe CNC',

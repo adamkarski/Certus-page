@@ -12,6 +12,7 @@
   import Maszyny_table_frezarki5osiowe from "./tables/Maszyny_table_frezarki5osiowe.svelte";
 
   import MachineMenu from "./MachineMenu.svelte";
+  import MachineTitleSvg from "$lib/components/MachineTitleSvg.svelte";
   import "$lib/table.scss";
 
   // Gallery Imports
@@ -160,11 +161,16 @@
   <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['frezarki']}>
     <div class="cnc-table">
     <div class="cnc-left">
-      <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarka CNC HMM-ST" class="cnc-icon" width="96" height="96" loading="lazy">
-        <h2 class="cnc-title" use:typoFixAction>Frezarka CNC HMM-ST z ruchomym stołem</h2>
+      <div class="cnc-header-block">
+        <img src="/assets/ikony/maszyny/frezarki.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
+        <div class="cnc-title-group">
+          <div class="cnc-svg-title">
+            <MachineTitleSvg text="CNC HMM-ST" height="1.6em" shadow={false} />
+          </div>
+          <h2 class="cnc-title" use:typoFixAction>Frezarka z ruchomym stołem</h2>
+        </div>
       </div>
-      <div class="cnc-row" use:typoFixAction>
+      <div class="cnc-desc" use:typoFixAction>
         Zaprojektowana z myślą o szybkim i precyzyjnym frezowaniu materiałów takich jak stal, aluminium, drewno, tworzywa sztuczne i inne.
       </div>
       <!-- Przycisk Specyfikacja wyrównany do lewej zaraz pod tekstem -->
@@ -375,11 +381,16 @@
   <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['frezarki-gt']}>
     <div class="cnc-table">
     <div class="cnc-left">
-      <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/frezarki.svg" alt="Frezarki CNC HMM-GT" class="cnc-icon" width="96" height="96" loading="lazy">
-        <h2 class="cnc-title" use:typoFixAction>Frezarka CNC HMM-GT z ruchomą bramą</h2>
+      <div class="cnc-header-block">
+        <img src="/assets/ikony/maszyny/frezarki.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
+        <div class="cnc-title-group">
+          <div class="cnc-svg-title">
+            <MachineTitleSvg text="CNC HMM-GT" height="1.6em" shadow={false} />
+          </div>
+          <h2 class="cnc-title" use:typoFixAction>Frezarka z ruchomą bramą</h2>
+        </div>
       </div>
-      <div class="cnc-row" use:typoFixAction>
+      <div class="cnc-desc" use:typoFixAction>
         Do dużych formatów i ciężkich detali — detal stoi, pracuje brama. HMM‑GT
         zaprojektowano do szybkieji precyzyjnej obróbki arkuszy oraz elementów
         o dużej masie i gabarytach. Doskonale sprawdza się w aluminium i jego
@@ -574,14 +585,19 @@
   <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['ploteryPrzemyslowe']}>
     <div class="cnc-table">
     <div class="cnc-left">
-      <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="cnc-icon" width="96" height="96" loading="lazy">
-        <h2 class="cnc-title" use:typoFixAction>Wielkoformatowy ploter przemysłowy bez zabudowy – HPP-OT</h2>
+      <div class="cnc-header-block">
+        <img src="/assets/ikony/maszyny/ploteryPrzemyslowe.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
+        <div class="cnc-title-group">
+          <div class="cnc-svg-title">
+            <MachineTitleSvg text="CNC HPP-OT" height="1.6em" shadow={false} />
+          </div>
+          <h2 class="cnc-title" use:typoFixAction>Wielkoformatowy ploter przemysłowy bez zabudowy</h2>
+        </div>
       </div>
-      <div class="cnc-row" use:typoFixAction>
-         to wielkoformatowe centrum obróbcze CNC stanowiące wysokowydajną
-          platformę przeznaczoną do skrawania w co najmniej trzech osiach, z możliwością
-          rozbudowy o dodatkowe osie sterowane. Frezowanie, wiercenie, gwintowanie i cięcie, a na zamówienie – z dodatkowym wyposażeniem – także toczenie (4. oś), bigowanie i dozowanie.
+      <div class="cnc-desc" use:typoFixAction>
+        Wielkoformatowe centrum obróbcze CNC stanowiące wysokowydajną
+        platformę przeznaczoną do skrawania w co najmniej trzech osiach, z możliwością
+        rozbudowy o dodatkowe osie sterowane. Frezowanie, wiercenie, gwintowanie i cięcie, a na zamówienie – z dodatkowym wyposażeniem – także toczenie (4. oś), bigowanie i dozowanie.
       </div>
       <!-- Przycisk Specyfikacja wyrównany do lewej zaraz pod tekstem -->
       <div class="spec-btn-row">
@@ -750,11 +766,16 @@
   <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['ploteryPrzemysloweZabudowa']}>
     <div class="cnc-table">
     <div class="cnc-left">
-      <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="cnc-icon" width="96" height="96" loading="lazy">
-        <h2 class="cnc-title" use:typoFixAction>Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT</h2>
+      <div class="cnc-header-block">
+        <img src="/assets/ikony/maszyny/ploteryPrzemysloweWzabudowie.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
+        <div class="cnc-title-group">
+          <div class="cnc-svg-title">
+            <MachineTitleSvg text="CNC HPP-CT" height="1.6em" shadow={false} />
+          </div>
+          <h2 class="cnc-title" use:typoFixAction>Zaawansowany wieloosiowy ploter przemysłowy w zabudowie</h2>
+        </div>
       </div>
-      <div class="cnc-row" use:typoFixAction>
+      <div class="cnc-desc" use:typoFixAction>
         To zaawansowane wieloosiowe centrum obróbcze, zaprojektowane z myślą o pracy w środowisku przemysłowym, gdzie kluczowe znaczenie mają
         bezpieczeństwo, czystość procesu oraz stabilność parametrów pracy.
         Podobnie jak modele otwarte, pozwalają na frezowanie, wiercenie, cięcie,
@@ -948,11 +969,16 @@
   <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['grawerki']}>
     <div class="cnc-table">
     <div class="cnc-left">
-      <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/grawerki.svg" alt="Grawerki CNC Certus" class="cnc-icon" width="96" height="96" loading="lazy">
-        <h2 class="cnc-title" use:typoFixAction>Grawerki CNC</h2>
+      <div class="cnc-header-block">
+        <img src="/assets/ikony/maszyny/grawerki.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
+        <div class="cnc-title-group">
+          <div class="cnc-svg-title">
+            <MachineTitleSvg text="CNC GRAWER" height="1.6em" shadow={false} />
+          </div>
+          <h2 class="cnc-title" use:typoFixAction>Kompaktowe grawerki precyzyjne</h2>
+        </div>
       </div>
-      <div class="cnc-row" use:typoFixAction>
+      <div class="cnc-desc" use:typoFixAction>
         To kompaktowe, precyzyjne urządzenia
         dedykowane do obróbki materiałów wymagających bardzo dużej dokładności przy
         niewielkich wymiarach obszaru roboczego. Znajdą zastosowanie m.in. w produkcji
@@ -1155,11 +1181,16 @@
   <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['frezarki5osiowe']}>
     <div class="cnc-table">
     <div class="cnc-left">
-      <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="Frezarki CNC pięcioosiowe" class="cnc-icon" width="96" height="96" loading="lazy">
-        <h2 class="cnc-title" use:typoFixAction>Pięcioosiowe centra frezarskie CNC</h2>
+      <div class="cnc-header-block">
+        <img src="/assets/ikony/maszyny/frezarki5osiowe.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
+        <div class="cnc-title-group">
+          <div class="cnc-svg-title">
+            <MachineTitleSvg text="CNC 5-OSIOWE" height="1.6em" shadow={false} />
+          </div>
+          <h2 class="cnc-title" use:typoFixAction>Pięcioosiowe centra frezarskie CNC</h2>
+        </div>
       </div>
-      <div class="cnc-row" use:typoFixAction>
+      <div class="cnc-desc" use:typoFixAction>
         To zaawansowane
         urządzenia przeznaczone do precyzyjnej obróbki detali o złożonej geometrii.
         Znajdują zastosowanie przede wszystkim w produkcji matryc do termoformowania, modeli kompozytowych oraz elementów
@@ -1353,11 +1384,16 @@
   <div class="machine-content-wrapper" class:mobile-l1-closed={!mobileMachineExpanded['ploteryLinearne']}>
     <div class="cnc-table">
     <div class="cnc-left">
-      <div class="cnc-row">
-        <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="Plotery CNC HLP-FT Certus" class="cnc-icon" width="96" height="96" loading="lazy">
-        <h2 class="cnc-title" use:typoFixAction>Plotery CNC HLP-FT</h2>
+      <div class="cnc-header-block">
+        <img src="/assets/ikony/maszyny/ploteryLinearne.svg" alt="" class="cnc-icon" width="56" height="56" loading="lazy">
+        <div class="cnc-title-group">
+          <div class="cnc-svg-title">
+            <MachineTitleSvg text="CNC HLP-FT" height="1.6em" shadow={false} />
+          </div>
+          <h2 class="cnc-title" use:typoFixAction>Plotery CNC ze stołem hybrydowym</h2>
+        </div>
       </div>
-      <div class="cnc-row" use:typoFixAction>
+      <div class="cnc-desc" use:typoFixAction>
         To precyzyjne
         i wydajne urządzenia zaprojektowane do cięcia, bigowania, znakowania i opisywania
         szerokiej gamy materiałów płaskich. Idealnie sprawdzają się w przemyśle opakowaniowym,
@@ -1531,97 +1567,144 @@
 
 
   .cnc-table {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      width: 100%;
-      background: #fff;
-    }
-    .cnc-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-width: 220px;
-    }
-    .cnc-row {
-      color: rgb(102, 102, 102);
+    display: grid;
+    grid-template-columns: 1.6fr 1.2fr;
+    width: 100%;
+    background: #fff;
+    align-items: end;
+    gap: 32px;
+    padding: 10px 0 20px 0;
+  }
+
+  .cnc-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-width: 220px;
+  }
+
+  .cnc-header-block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #eef1f4;
+  }
+
+  .cnc-icon {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+  }
+
+  .cnc-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cnc-svg-title {
+    display: flex;
+    align-items: center;
+    color: #1a1c1e;
+    line-height: 1;
+  }
+
+  .cnc-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #2b2e33;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .cnc-desc {
+    color: #5d636b;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 6px;
+  }
+
+  .cnc-right {
     display: flex;
     align-items: flex-end;
-    padding: 0.5em 0;
-    align-content: flex-end;
+    justify-content: center;
+    min-width: 200px;
+    padding: 0;
+    align-self: end;
 
-    }
-    .cnc-row + .cnc-row {
-      border-top: 1px solid #ccc;
-    }
-    .cnc-icon {
-      width: 96px;
-      height: 96px;
-      margin-right: 15px;
-      flex-shrink: 0;
-    }
-    .cnc-left .cnc-title{
-      max-width: 80%;
-    }
-    .cnc-right {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 200px;
-      padding: 0em;
-    }
-    .cnc-right img {
+    img {
       max-width: 100%;
       height: auto;
-    }
-    @media (max-width: 900px) {
-      .maszyny-dane {
-        padding: 1rem 1rem 0.5rem 1rem;
-      }
-      .cnc-table {
-        grid-template-columns: 2fr 1fr;
-      }
-      .cnc-left {
-        padding: 0.75em 0.5em;
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.08));
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
       }
     }
+  }
 
-    @media (max-width: 768px) {
-      .maszyny-dane {
-        padding: 0.75rem 0.5rem;
-      }
-      .cnc-table {
-        grid-template-columns: 1fr !important;
-        display: flex;
-        flex-direction: column;
-      }
-      .cnc-left {
-        padding: 0.5em 0;
-        width: 100%;
+  @media (max-width: 1024px) {
+    .cnc-table {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 20px;
+    }
+    .cnc-icon {
+      width: 52px;
+      height: 52px;
+    }
+  }
 
-        .cnc-icon {
-          width: 52px;
-          height: 52px;
-          margin-right: 12px;
-        }
-
-        .cnc-title {
-          max-width: 100%;
-          font-size: 1.2rem;
-          line-height: 1.25;
-        }
-      }
-      .cnc-right {
-        padding: 0.75rem 0;
-        min-width: 0;
-        width: 100%;
-
-        img {
-          max-width: 300px;
-          margin: 0 auto;
-          display: block;
-        }
+  @media (max-width: 768px) {
+    .maszyny-dane {
+      padding: 0.75rem 0.5rem;
+    }
+    .cnc-table {
+      grid-template-columns: 1fr !important;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 6px 0 16px 0;
+    }
+    .cnc-left {
+      padding: 0.25em 0;
+      width: 100%;
+    }
+    .cnc-header-block {
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+    }
+    .cnc-icon {
+      width: 44px;
+      height: 44px;
+    }
+    .cnc-title {
+      font-size: 1.05rem;
+    }
+    .cnc-desc {
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    .cnc-right {
+      padding: 0.5rem 0;
+      width: 100%;
+      img {
+        max-width: 290px;
+        margin: 0 auto;
+        display: block;
       }
     }
+  }
 
 
   .first-container-back {

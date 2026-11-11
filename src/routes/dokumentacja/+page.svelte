@@ -4,6 +4,7 @@
   import Dokumentacja from '../../components/Dokumentacja.svelte';
   import Section_Image01 from '../../components/sections/Section_Image01.svelte';
   import Section_Referencje from '../../components/sections/Section_Referencje.svelte';
+  import MachineTitleSvg from '$lib/components/MachineTitleSvg.svelte';
   import { typoFixAction } from '$lib/utils/typography';
 
   import maszynyData from '$lib/data/maszyny.json';
@@ -91,7 +92,11 @@
           {#each allMachineLinks as link}
             <a href="{link.url}" class="machine-seo-card">
               <div class="card-left">
-                <div class="card-model-badge">{link.modelCode}</div>
+                <div class="card-model-wrap">
+                  <span class="card-model-badge">
+                    <MachineTitleSvg text={link.modelCode} height="1.15em" shadow={false} />
+                  </span>
+                </div>
                 <h3 class="card-title" use:typoFixAction>{link.subtitle}</h3>
                 {#if link.description}
                   <p class="card-desc" use:typoFixAction>{link.description}</p>
@@ -177,7 +182,9 @@
 
       .card-model-badge {
         background: #96a500;
-        color: #111213;
+        :global(.machine-svg-title) {
+          color: #111213;
+        }
       }
 
       .card-right .card-image {
@@ -195,19 +202,26 @@
     align-items: flex-start;
   }
 
+  .card-model-wrap {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+  }
+
   .card-model-badge {
-    display: inline-block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #1f2123;
+    display: inline-flex;
+    align-items: center;
     background: #eef2f6;
-    padding: 3px 9px;
-    border-radius: 5px;
-    margin-bottom: 6px;
+    color: #1a1c1e;
+    padding: 5px 12px;
+    border-radius: 6px;
+    line-height: 1;
     transition: all 0.2s ease;
+
+    :global(.machine-svg-title) {
+      color: #1a1c1e;
+      transition: color 0.2s ease;
+    }
   }
 
   .card-title {
