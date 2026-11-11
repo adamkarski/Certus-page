@@ -202,7 +202,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp" alt="Frezarka CNC HMM-ST" width="1200" height="800" loading="lazy">
+      <img src="/assets/maszyny/renders_hmp_style/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp" alt="Frezarka CNC HMM-ST" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -325,7 +325,7 @@
     <div class="maszyny-dane-gallery-column">
      <!--  <Section_Maszyny_Image01
         sectionId="frezarki-image-01"
-        imgSrc="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
+        imgSrc="/assets/maszyny/renders_hmp_style/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
         title="Frezarki CNC HMM-ST"
         subtitle="Precyzyjne obróbki skrawaniem"
       /> -->
@@ -426,7 +426,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp" alt="Frezarki CNC HMM-G" class="" width="1200" height="800" loading="lazy">
+      <img src="/assets/maszyny/renders_hmp_style/Certus_1410_Layers/Certus_1410_Layer1.webp" alt="Frezarki CNC HMM-G" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -628,7 +628,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="" width="1200" height="800" loading="lazy">
+      <img src="/assets/maszyny/renders_hmp_style/Certus_0816_Layers/Certus_0816_Layer1.webp" alt="Przemysłowe plotery CNC ploter przemysłowy bez zabudowy – HPP-OT" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -811,7 +811,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="" width="1200" height="800" loading="lazy">
+      <img src="/assets/maszyny/renders_hmp_style/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp" alt="Zaawansowany wieloosiowy ploter przemysłowy w zabudowie CERTUS HPP-CT" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -1014,7 +1014,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp" alt="Grawerki CNC Certus" class="" width="1200" height="800" loading="lazy">
+      <img src="/assets/maszyny/renders_hmp_style/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp" alt="Grawerki CNC Certus" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -1125,7 +1125,7 @@
     <div class="maszyny-dane-gallery-column">
     <!--   <Section_Maszyny_Image01
         sectionId="grawerki-image"
-        imgSrc="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
+        imgSrc="/assets/maszyny/renders_hmp_style/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
         title="Grawerki CNC"
         subtitle="Precyzyjne grawerowanie"
       /> -->
@@ -1225,7 +1225,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp" alt="Frezarki CNC pięcioosiowe" class="" width="1200" height="800" loading="lazy">
+      <img src="/assets/maszyny/renders_hmp_style/5_osiowa_Layers/5_osiowa_Layer1.webp" alt="Frezarki CNC pięcioosiowe" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 
@@ -1328,7 +1328,7 @@
     <div class="maszyny-dane-gallery-column">
    <!--    <Section_Maszyny_Image01
         sectionId="frezarki5osiowe-image"
-        imgSrc="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp"
+        imgSrc="/assets/maszyny/renders_hmp_style/5_osiowa_Layers/5_osiowa_Layer1.webp"
         title="Frezarki pięcioosiowe"
         subtitle="Zaawansowana obróbka"
       /> -->
@@ -1429,7 +1429,7 @@
       </div>
     </div>
     <div class="cnc-right">
-      <img src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp" alt="Plotery CNC HLP-FT Certus" class="" width="1200" height="800" loading="lazy">
+      <img src="/assets/maszyny/renders_hmp_style/Certus_1530_Layers/Certus_1530_Layer1.webp" alt="Plotery CNC HLP-FT Certus" class="" width="1200" height="800" loading="lazy">
     </div>
   </div>
 

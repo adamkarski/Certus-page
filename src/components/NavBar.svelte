@@ -429,7 +429,7 @@
 
                   <div class="bestseller-image mb-3">
                     <img
-                      src="/assets/maszyny/certus-69/c69-hero-render.webp"
+                      src="/assets/maszyny/certus-69_hmp_style/c69-hero-render.webp"
                       alt="CERTUS 69"
                       class="bestseller-img"
                     />
@@ -565,7 +565,7 @@
           >
             <div class="mobile-promo-image-wrap">
               <img
-                src="/assets/maszyny/certus-69/c69-hero-render.webp"
+                src="/assets/maszyny/certus-69_hmp_style/c69-hero-render.webp"
                 alt="CERTUS 69"
                 class="mobile-promo-img"
                 loading="lazy"

@@ -1435,7 +1435,7 @@
                           <div class="item">
                             <div class="image">
                               <img
-                                src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
+                                src="/assets/maszyny/renders_hmp_style/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
                                 alt="CNC HMM-ST"
                                 draggable="false"
                               />
@@ -1479,7 +1479,7 @@
                           <div class="item">
                             <div class="image">
                               <img
-                                src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp"
+                                src="/assets/maszyny/renders_hmp_style/Certus_1410_Layers/Certus_1410_Layer1.webp"
                                 alt="CNC HMM-GT"
                                 draggable="false"
                               />
@@ -1606,7 +1606,7 @@
                           <div class="item">
                             <div class="image">
                               <img
-                                src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
+                                src="/assets/maszyny/renders_hmp_style/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
                                 alt="Ploter przemysłowy"
                                 draggable="false"
                               />
@@ -1650,7 +1650,7 @@
                           <div class="item">
                             <div class="image">
                               <img
-                                src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp"
+                                src="/assets/maszyny/renders_hmp_style/Certus_0816_Layers/Certus_0816_Layer1.webp"
                                 alt="Ploter przemysłowy bez zabudowy"
                                 draggable="false"
                               />

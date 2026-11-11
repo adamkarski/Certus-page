@@ -238,7 +238,7 @@ export const certus69Data: MachinePageConfig = {
   heroPretitle: "Bestseller · kompaktowe centrum obróbcze CNC",
   heroTitleSrOnly: "CERTUS 69 – kompaktowe centrum obróbcze CNC",
   heroLead: "Otwarta przestrzeń robocza, dwie wersje ATC i wrzeciona do 6 kW na kompaktowej podbudowie.",
-  heroImageSrc: "/assets/maszyny/certus-69/c69-hero-render.webp",
+  heroImageSrc: "/assets/maszyny/certus-69_hmp_style/c69-hero-render.webp",
   heroImageAlt: "Frezarka CNC CERTUS 69",
   catalogPdfUrl: "/do_pobrania/CERTUS_Karta_katalogowa_C69-PRO.pdf",
   catalogPdfTitle: "Karta katalogowa C69 PRO",

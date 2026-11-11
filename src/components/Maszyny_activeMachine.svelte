@@ -102,12 +102,12 @@ afterUpdate(() => {
             
             <picture class="back_image">
               <source
-                srcset="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
+                srcset="/assets/maszyny/renders_hmp_style/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
                 type="image/webp"
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
+                src="/assets/maszyny/renders_hmp_style/Certus_1080_PRO_Layers/Certus_1080_PRO_Layer1.webp"
                 alt="Frezarki CNC"
               />
             </picture>
@@ -296,12 +296,12 @@ afterUpdate(() => {
             
             <picture class="back_image">
               <source
-                srcset="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp"
+                srcset="/assets/maszyny/renders_hmp_style/Certus_1410_Layers/Certus_1410_Layer1.webp"
                 type="image/webp"
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_1410_Layers/Certus_1410_Layer1.webp"
+                src="/assets/maszyny/renders_hmp_style/Certus_1410_Layers/Certus_1410_Layer1.webp"
                 alt="Frezarki CNC"
               />
             </picture>
@@ -491,12 +491,12 @@ afterUpdate(() => {
             
             <picture class="back_image">
               <source
-                srcset="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
+                srcset="/assets/maszyny/renders_hmp_style/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
                 type="image/webp"
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
+                src="/assets/maszyny/renders_hmp_style/Certus_0815_ATC_Layers/Certus_0815_ATC_Layer1.webp"
                 alt="Ploter Przemysłowy Certus 0815 ATC w zabudowie"
               />
             </picture>
@@ -663,12 +663,12 @@ afterUpdate(() => {
             
             <picture class="back_image">
               <source
-                srcset="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp"
+                srcset="/assets/maszyny/renders_hmp_style/Certus_0816_Layers/Certus_0816_Layer1.webp"
                 type="image/webp"
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_0816_Layers/Certus_0816_Layer1.webp"
+                src="/assets/maszyny/renders_hmp_style/Certus_0816_Layers/Certus_0816_Layer1.webp"
                 alt="Ploter Przemysłowy Certus 0816 bez zabudowy"
               />
             </picture>
@@ -819,12 +819,12 @@ afterUpdate(() => {
             
             <picture class="back_image">
               <source
-                srcset="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp"
+                srcset="/assets/maszyny/renders_hmp_style/5_osiowa_Layers/5_osiowa_Layer1.webp"
                 type="image/webp"
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/5_osiowa_Layers/5_osiowa_Layer1.webp"
+                src="/assets/maszyny/renders_hmp_style/5_osiowa_Layers/5_osiowa_Layer1.webp"
                 alt="Frezarka Pięcioosiowe CNC Certus"
               />
             </picture>
@@ -998,12 +998,12 @@ afterUpdate(() => {
             
             <picture class="back_image">
               <source
-                srcset="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
+                srcset="/assets/maszyny/renders_hmp_style/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
                 type="image/webp"
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
+                src="/assets/maszyny/renders_hmp_style/Certus_Grawerka_Layers/Certus_Grawerka_Layer1.webp"
                 alt="Grawerka CNC"
               />
             </picture>
@@ -1180,12 +1180,12 @@ afterUpdate(() => {
             
             <picture class="back_image">
               <source
-                srcset="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp"
+                srcset="/assets/maszyny/renders_hmp_style/Certus_1530_Layers/Certus_1530_Layer1.webp"
                 type="image/webp"
               />
               <img
                 draggable="false"
-                src="/assets/maszyny/renders/Certus_1530_Layers/Certus_1530_Layer1.webp"
+                src="/assets/maszyny/renders_hmp_style/Certus_1530_Layers/Certus_1530_Layer1.webp"
                 alt=""
               />
             </picture>
