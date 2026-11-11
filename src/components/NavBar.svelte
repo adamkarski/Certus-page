@@ -281,11 +281,10 @@
             on:mouseleave={() => (isMaszynyDropdownOpen = false)}
           >
             <a
-              on:click|preventDefault={() =>
-                (isMaszynyDropdownOpen = !isMaszynyDropdownOpen)}
               href="/maszyny/"
               class="nav-link flex items-center space-x-1"
               class:active={isMaszynyActive}
+              on:click={() => (isMaszynyDropdownOpen = false)}
             >
               <span>Maszyny</span>
               <svg
@@ -535,6 +534,14 @@
           </button>
           {#if isMobileMaszynyOpen}
             <div class="mobile-submenu" transition:slide>
+              <a
+                class="mobile-submenu-link"
+                href="/maszyny/"
+                on:click={closeMobileMenu}
+                style="font-weight: 700; color: #fff;"
+              >
+                Wszystkie maszyny &rarr;
+              </a>
               {#each kategorieMaszyn as kategoria}
                 {#if kategoria.url}
                   <a class="mobile-submenu-link" href={kategoria.url.endsWith('/') ? kategoria.url : `${kategoria.url}/`}
