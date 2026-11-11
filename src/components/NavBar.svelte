@@ -39,14 +39,17 @@
 
   $: if (browser) {
     if (isMobileMenuOpen) {
+      document.documentElement.classList.add("mobile-nav-locked");
       document.body.classList.add("mobile-nav-locked");
     } else {
+      document.documentElement.classList.remove("mobile-nav-locked");
       document.body.classList.remove("mobile-nav-locked");
     }
   }
 
   onDestroy(() => {
     if (browser) {
+      document.documentElement.classList.remove("mobile-nav-locked");
       document.body.classList.remove("mobile-nav-locked");
     }
   });
@@ -845,20 +848,27 @@
 
   .mobile-menu-overlay {
     position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(8px);
     z-index: 2000;
     display: flex;
     justify-content: flex-start;
+    overflow: hidden;
   }
 
   .mobile-menu-content {
     background: #232c32;
     width: 100%;
+    max-width: 100vw;
     height: 100%;
+    height: 100dvh;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -870,6 +880,20 @@
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--color-primary);
+    }
   }
 
   .mobile-menu-header {
@@ -907,8 +931,16 @@
     }
   }
 
+  :global(html.mobile-nav-locked),
   :global(body.mobile-nav-locked) {
     overflow: hidden !important;
+    height: 100% !important;
+  }
+
+  :global(html.mobile-nav-locked::-webkit-scrollbar),
+  :global(body.mobile-nav-locked::-webkit-scrollbar) {
+    display: none !important;
+    width: 0 !important;
   }
 
   .mobile-links-container {
