@@ -319,7 +319,7 @@
 
         <div class="machines-grid-4">
           <!-- 1. HMP-G1 -->
-          <a href="/hmp-g1" class="machine-card">
+          <a href="/hmp-g1/" class="machine-card">
             <div class="machine-thumb-wrap">
               <img src="/assets/images/onas/maszyny/hmp-g1.webp" alt="CERTUS HMP-G1" loading="lazy" />
             </div>

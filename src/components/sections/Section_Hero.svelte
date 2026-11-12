@@ -1250,13 +1250,13 @@
                         </p>
                         <div class="hmp-promo-buttons">
                           <a
-                            href="/hmp-g1"
+                            href="/hmp-g1/"
                             class="hmp-promo-btn hmp-promo-btn-primary"
                           >
                             Poznaj HMP-G1
                           </a>
                           <a
-                            href="/hmp-g1#kontakt"
+                            href="/hmp-g1/#kontakt"
                             class="hmp-promo-btn hmp-promo-btn-secondary"
                           >
                             Zapytaj o ofertę
@@ -1268,7 +1268,7 @@
                     <!-- Slide 2: Samo zdjęcie przezroczyste HMP-G1 -->
                     <swiper-slide class="hmp-hero-swiper-slide hmp-slide-image">
                       <a
-                        href="/hmp-g1"
+                        href="/hmp-g1/"
                         class="hmp-hero-img-link no-sel"
                         aria-label="Frezarka CNC CERTUS HMP-G1 - zobacz szczegóły"
                       >
