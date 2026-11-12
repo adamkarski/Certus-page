@@ -142,14 +142,6 @@ a {
   text-align: center;
 }
 
-
-
-.logomini .lottie-player .animation svg > g > g:nth-child(4) {
-  opacity: 0;
-}
-
-
-
 /* Animations */
 @keyframes fadeInUp {
   from {
