@@ -40,7 +40,7 @@
             {#if LottiePlayer}
               <svelte:component
                 this={LottiePlayer}
-                src="https://cdn.lottielab.com/l/7A9mq1tJRKvSyz.json"
+                src="/lottie_logo_full.json"
                 autoplay={true}
                 loop={false}
                 controls={false}

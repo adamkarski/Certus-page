@@ -128,6 +128,10 @@
   :global(.gradientHero_old) {
     background: linear-gradient(180deg, #545454 0%, #3e4042 100%);
   }
+:global(.lottie-player .animation svg > g > g:nth-child(5)) {
+    // g > g:nth-child(3) > g > g:nth-child(6)
+    opacity: 0;
+  }
 .preloader {
     position: fixed;
     inset: 0;
