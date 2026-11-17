@@ -113,7 +113,8 @@
       const neededForFull = 175 + 20 + menuWidth + 24;
       isSmallLogo = ramkaWidth < neededForFull;
     } else {
-      isSmallLogo = ramkaWidth < 460;
+      // Menu mobilne / hamburger: pełne logo (170px) + hamburger (50px) + marginesy swobodnie mieszczą się powyżej 260px
+      isSmallLogo = ramkaWidth < 260;
     }
   }
 
@@ -1053,6 +1054,9 @@
     }
     .mobile-menu-button-container {
       margin-right: 12px !important;
+    }
+    .logoCertus {
+      margin-left: 6px;
     }
   }
 
