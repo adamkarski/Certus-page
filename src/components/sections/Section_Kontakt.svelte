@@ -412,7 +412,10 @@
             ></b
           >
         </div>
-        <small class="email-routing-hint">Zapytania ofertowe: <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a> · Zgłoszenia serwisowe: <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a></small>
+        <small class="email-routing-hint">
+          <span class="routing-line">Zapytania ofertowe: <a href="mailto:biuro@mg-certus.pl">biuro@mg-certus.pl</a></span>
+          <span class="routing-line">Zgłoszenia serwisowe: <a href="mailto:kontakt@mg-certus.pl">kontakt@mg-certus.pl</a></span>
+        </small>
       </div>
       <div class="info-row">
         <div class="info-main">
@@ -871,16 +874,23 @@
     }
 
     .email-routing-hint {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
       color: #a0a0a0;
       font-size: 0.82rem;
-      margin-top: 4px;
+      margin-top: 5px;
       padding-left: 34px;
       line-height: 1.4;
+
+      .routing-line {
+        display: block;
+      }
 
       a {
         color: #b0bf1a;
         text-decoration: underline;
+        white-space: nowrap;
         &:hover {
           color: #fff;
         }
@@ -906,6 +916,7 @@
       .email-routing-hint {
         font-size: 0.78rem;
         padding-left: 30px;
+        gap: 4px;
       }
     }
   }
